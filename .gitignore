@@ -1,0 +1,39 @@
+# Composer dependencies
+/vendor/
+composer.lock
+
+# PHPUnit
+.phpunit.result.cache
+coverage/
+junit.xml
+phpunit.xml
+phpunit.xml.dist
+
+# PHPStan / Psalm / Phan (статический анализ)
+phpstan.neon
+phpstan.neon.dist
+phpstan-baseline.neon
+psalm.xml
+psalm.xml.dist
+phan.config.php
+
+# Cache and logs
+.cache/
+*.cache
+*.log
+
+# IDE / Editor configs
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# OpenAPI Generator artifacts
+.openapi-generator/
+
+# Other
+*.swp
+*.swo
