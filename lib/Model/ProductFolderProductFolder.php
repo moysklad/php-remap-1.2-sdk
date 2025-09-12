@@ -77,6 +77,7 @@ class ProductFolderProductFolder implements ModelInterface, ArrayAccess, \JsonSe
         'vat_enabled' => 'bool',
         'effective_vat' => 'int',
         'effective_vat_enabled' => 'bool',
+        'use_parent_vat' => 'bool',
         'shared' => 'bool',
         'group' => '\OpenAPI\Client\Model\ProductFolderGroup',
         'owner' => '\OpenAPI\Client\Model\ProductFolderOwner',
@@ -112,6 +113,7 @@ class ProductFolderProductFolder implements ModelInterface, ArrayAccess, \JsonSe
         'vat_enabled' => null,
         'effective_vat' => null,
         'effective_vat_enabled' => null,
+        'use_parent_vat' => null,
         'shared' => null,
         'group' => null,
         'owner' => null,
@@ -145,6 +147,7 @@ class ProductFolderProductFolder implements ModelInterface, ArrayAccess, \JsonSe
         'vat_enabled' => false,
         'effective_vat' => false,
         'effective_vat_enabled' => false,
+        'use_parent_vat' => false,
         'shared' => false,
         'group' => false,
         'owner' => false,
@@ -258,6 +261,7 @@ class ProductFolderProductFolder implements ModelInterface, ArrayAccess, \JsonSe
         'vat_enabled' => 'vatEnabled',
         'effective_vat' => 'effectiveVat',
         'effective_vat_enabled' => 'effectiveVatEnabled',
+        'use_parent_vat' => 'useParentVat',
         'shared' => 'shared',
         'group' => 'group',
         'owner' => 'owner',
@@ -291,6 +295,7 @@ class ProductFolderProductFolder implements ModelInterface, ArrayAccess, \JsonSe
         'vat_enabled' => 'setVatEnabled',
         'effective_vat' => 'setEffectiveVat',
         'effective_vat_enabled' => 'setEffectiveVatEnabled',
+        'use_parent_vat' => 'setUseParentVat',
         'shared' => 'setShared',
         'group' => 'setGroup',
         'owner' => 'setOwner',
@@ -324,6 +329,7 @@ class ProductFolderProductFolder implements ModelInterface, ArrayAccess, \JsonSe
         'vat_enabled' => 'getVatEnabled',
         'effective_vat' => 'getEffectiveVat',
         'effective_vat_enabled' => 'getEffectiveVatEnabled',
+        'use_parent_vat' => 'getUseParentVat',
         'shared' => 'getShared',
         'group' => 'getGroup',
         'owner' => 'getOwner',
@@ -433,6 +439,7 @@ class ProductFolderProductFolder implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('vat_enabled', $data ?? [], null);
         $this->setIfExists('effective_vat', $data ?? [], null);
         $this->setIfExists('effective_vat_enabled', $data ?? [], null);
+        $this->setIfExists('use_parent_vat', $data ?? [], null);
         $this->setIfExists('shared', $data ?? [], null);
         $this->setIfExists('group', $data ?? [], null);
         $this->setIfExists('owner', $data ?? [], null);
@@ -1033,6 +1040,33 @@ class ProductFolderProductFolder implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable effective_vat_enabled cannot be null');
         }
         $this->container['effective_vat_enabled'] = $effective_vat_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_parent_vat
+     *
+     * @return bool|null
+     */
+    public function getUseParentVat()
+    {
+        return $this->container['use_parent_vat'];
+    }
+
+    /**
+     * Sets use_parent_vat
+     *
+     * @param bool|null $use_parent_vat Используется ли ставка НДС родительской группы
+     *
+     * @return self
+     */
+    public function setUseParentVat($use_parent_vat)
+    {
+        if (is_null($use_parent_vat)) {
+            throw new \InvalidArgumentException('non-nullable use_parent_vat cannot be null');
+        }
+        $this->container['use_parent_vat'] = $use_parent_vat;
 
         return $this;
     }

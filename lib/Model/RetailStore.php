@@ -107,7 +107,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'only_in_stock' => 'bool',
         'order_to_state' => '\OpenAPI\Client\Model\RetailStoreOrderToState',
         'print_always' => 'bool',
-        'product_folders' => '\OpenAPI\Client\Model\MetaList',
+        'product_folders' => '\OpenAPI\Client\Model\RetailStoreProductFolders',
         'receipt_template' => '\OpenAPI\Client\Model\RetailStoreReceiptTemplate',
         'required_fio' => 'bool',
         'required_phone' => 'bool',
@@ -2164,7 +2164,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets product_folders
      *
-     * @return \OpenAPI\Client\Model\MetaList|null
+     * @return \OpenAPI\Client\Model\RetailStoreProductFolders|null
      */
     public function getProductFolders()
     {
@@ -2174,7 +2174,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets product_folders
      *
-     * @param \OpenAPI\Client\Model\MetaList|null $product_folders Список групп товаров
+     * @param \OpenAPI\Client\Model\RetailStoreProductFolders|null $product_folders product_folders
      *
      * @return self
      */

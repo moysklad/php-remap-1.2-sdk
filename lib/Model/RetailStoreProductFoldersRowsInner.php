@@ -1,6 +1,6 @@
 <?php
 /**
- * Uom
+ * RetailStoreProductFoldersRowsInner
  *
  * PHP version 7.4
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Uom Class Doc Comment
+ * RetailStoreProductFoldersRowsInner Class Doc Comment
  *
  * @category Class
- * @description Единица измерения
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailStoreProductFoldersRowsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'uom';
+    protected static $openAPIModelName = 'retail_store_productFolders_rows_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,13 +61,22 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'account_id' => 'string',
         'name' => 'string',
-        'description' => 'string',
         'code' => 'string',
-        'group' => '\OpenAPI\Client\Model\CounterpartyGroup',
-        'owner' => '\OpenAPI\Client\Model\CounterpartyOwner',
-        'updated' => '\DateTime',
+        'external_code' => 'string',
+        'archived' => 'bool',
+        'path_name' => 'string',
+        'description' => 'string',
+        'vat' => 'int',
+        'vat_enabled' => 'bool',
+        'effective_vat' => 'int',
+        'effective_vat_enabled' => 'bool',
+        'use_parent_vat' => 'bool',
         'shared' => 'bool',
-        'external_code' => 'string'
+        'group' => '\OpenAPI\Client\Model\ProductFolderGroup',
+        'owner' => '\OpenAPI\Client\Model\ProductFolderOwner',
+        'updated' => '\DateTime',
+        'product_folder' => '\OpenAPI\Client\Model\ProductFolderProductFolder',
+        'tax_system' => 'string'
     ];
 
     /**
@@ -83,13 +91,22 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'uuid',
         'account_id' => 'uuid',
         'name' => null,
-        'description' => null,
         'code' => null,
+        'external_code' => null,
+        'archived' => null,
+        'path_name' => null,
+        'description' => null,
+        'vat' => null,
+        'vat_enabled' => null,
+        'effective_vat' => null,
+        'effective_vat_enabled' => null,
+        'use_parent_vat' => null,
+        'shared' => null,
         'group' => null,
         'owner' => null,
         'updated' => 'date-time',
-        'shared' => null,
-        'external_code' => null
+        'product_folder' => null,
+        'tax_system' => null
     ];
 
     /**
@@ -102,13 +119,22 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'account_id' => false,
         'name' => false,
-        'description' => false,
         'code' => false,
+        'external_code' => false,
+        'archived' => false,
+        'path_name' => false,
+        'description' => false,
+        'vat' => false,
+        'vat_enabled' => false,
+        'effective_vat' => false,
+        'effective_vat_enabled' => false,
+        'use_parent_vat' => false,
+        'shared' => false,
         'group' => false,
         'owner' => false,
         'updated' => false,
-        'shared' => false,
-        'external_code' => false
+        'product_folder' => false,
+        'tax_system' => false
     ];
 
     /**
@@ -201,13 +227,22 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'account_id' => 'accountId',
         'name' => 'name',
-        'description' => 'description',
         'code' => 'code',
+        'external_code' => 'externalCode',
+        'archived' => 'archived',
+        'path_name' => 'pathName',
+        'description' => 'description',
+        'vat' => 'vat',
+        'vat_enabled' => 'vatEnabled',
+        'effective_vat' => 'effectiveVat',
+        'effective_vat_enabled' => 'effectiveVatEnabled',
+        'use_parent_vat' => 'useParentVat',
+        'shared' => 'shared',
         'group' => 'group',
         'owner' => 'owner',
         'updated' => 'updated',
-        'shared' => 'shared',
-        'external_code' => 'externalCode'
+        'product_folder' => 'productFolder',
+        'tax_system' => 'taxSystem'
     ];
 
     /**
@@ -220,13 +255,22 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'account_id' => 'setAccountId',
         'name' => 'setName',
-        'description' => 'setDescription',
         'code' => 'setCode',
+        'external_code' => 'setExternalCode',
+        'archived' => 'setArchived',
+        'path_name' => 'setPathName',
+        'description' => 'setDescription',
+        'vat' => 'setVat',
+        'vat_enabled' => 'setVatEnabled',
+        'effective_vat' => 'setEffectiveVat',
+        'effective_vat_enabled' => 'setEffectiveVatEnabled',
+        'use_parent_vat' => 'setUseParentVat',
+        'shared' => 'setShared',
         'group' => 'setGroup',
         'owner' => 'setOwner',
         'updated' => 'setUpdated',
-        'shared' => 'setShared',
-        'external_code' => 'setExternalCode'
+        'product_folder' => 'setProductFolder',
+        'tax_system' => 'setTaxSystem'
     ];
 
     /**
@@ -239,13 +283,22 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'account_id' => 'getAccountId',
         'name' => 'getName',
-        'description' => 'getDescription',
         'code' => 'getCode',
+        'external_code' => 'getExternalCode',
+        'archived' => 'getArchived',
+        'path_name' => 'getPathName',
+        'description' => 'getDescription',
+        'vat' => 'getVat',
+        'vat_enabled' => 'getVatEnabled',
+        'effective_vat' => 'getEffectiveVat',
+        'effective_vat_enabled' => 'getEffectiveVatEnabled',
+        'use_parent_vat' => 'getUseParentVat',
+        'shared' => 'getShared',
         'group' => 'getGroup',
         'owner' => 'getOwner',
         'updated' => 'getUpdated',
-        'shared' => 'getShared',
-        'external_code' => 'getExternalCode'
+        'product_folder' => 'getProductFolder',
+        'tax_system' => 'getTaxSystem'
     ];
 
     /**
@@ -289,6 +342,31 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const TAX_SYSTEM_GENERAL_TAX_SYSTEM = 'GENERAL_TAX_SYSTEM';
+    public const TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME';
+    public const TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME';
+    public const TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX = 'UNIFIED_AGRICULTURAL_TAX';
+    public const TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM = 'PRESUMPTIVE_TAX_SYSTEM';
+    public const TAX_SYSTEM_PATENT_BASED = 'PATENT_BASED';
+    public const TAX_SYSTEM_TAX_SYSTEM_SAME_AS_GROUP = 'TAX_SYSTEM_SAME_AS_GROUP';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTaxSystemAllowableValues()
+    {
+        return [
+            self::TAX_SYSTEM_GENERAL_TAX_SYSTEM,
+            self::TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME,
+            self::TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME,
+            self::TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX,
+            self::TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM,
+            self::TAX_SYSTEM_PATENT_BASED,
+            self::TAX_SYSTEM_TAX_SYSTEM_SAME_AS_GROUP,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -309,13 +387,22 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('external_code', $data ?? [], null);
+        $this->setIfExists('archived', $data ?? [], null);
+        $this->setIfExists('path_name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('vat', $data ?? [], null);
+        $this->setIfExists('vat_enabled', $data ?? [], null);
+        $this->setIfExists('effective_vat', $data ?? [], null);
+        $this->setIfExists('effective_vat_enabled', $data ?? [], null);
+        $this->setIfExists('use_parent_vat', $data ?? [], null);
+        $this->setIfExists('shared', $data ?? [], null);
         $this->setIfExists('group', $data ?? [], null);
         $this->setIfExists('owner', $data ?? [], null);
         $this->setIfExists('updated', $data ?? [], null);
-        $this->setIfExists('shared', $data ?? [], null);
-        $this->setIfExists('external_code', $data ?? [], null);
+        $this->setIfExists('product_folder', $data ?? [], null);
+        $this->setIfExists('tax_system', $data ?? [], null);
     }
 
     /**
@@ -349,16 +436,25 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
         }
 
-        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4096)) {
-            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
-        }
-
         if (!is_null($this->container['code']) && (mb_strlen($this->container['code']) > 255)) {
             $invalidProperties[] = "invalid value for 'code', the character length must be smaller than or equal to 255.";
         }
 
         if (!is_null($this->container['external_code']) && (mb_strlen($this->container['external_code']) > 255)) {
             $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4096)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
+        }
+
+        $allowedValues = $this->getTaxSystemAllowableValues();
+        if (!is_null($this->container['tax_system']) && !in_array($this->container['tax_system'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'tax_system', must be one of '%s'",
+                $this->container['tax_system'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -416,7 +512,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id ID единицы измерения
+     * @param string|null $id ID группы товаров
      *
      * @return self
      */
@@ -470,7 +566,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name Наименование единицы измерения
+     * @param string|null $name Наименование группы товаров
      *
      * @return self
      */
@@ -480,41 +576,10 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Uom., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling RetailStoreProductFoldersRowsInner., must be smaller than or equal to 255.');
         }
 
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description Описание единицы измерения
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        if ((mb_strlen($description) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling Uom., must be smaller than or equal to 4096.');
-        }
-
-        $this->container['description'] = $description;
 
         return $this;
     }
@@ -532,7 +597,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets code
      *
-     * @param string|null $code Код единицы измерения
+     * @param string|null $code Код группы товаров
      *
      * @return self
      */
@@ -542,7 +607,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
         if ((mb_strlen($code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $code when calling Uom., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $code when calling RetailStoreProductFoldersRowsInner., must be smaller than or equal to 255.');
         }
 
         $this->container['code'] = $code;
@@ -551,82 +616,252 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets group
+     * Gets external_code
      *
-     * @return \OpenAPI\Client\Model\CounterpartyGroup|null
+     * @return string|null
      */
-    public function getGroup()
+    public function getExternalCode()
     {
-        return $this->container['group'];
+        return $this->container['external_code'];
     }
 
     /**
-     * Sets group
+     * Sets external_code
      *
-     * @param \OpenAPI\Client\Model\CounterpartyGroup|null $group group
+     * @param string|null $external_code Внешний код группы товаров
      *
      * @return self
      */
-    public function setGroup($group)
+    public function setExternalCode($external_code)
     {
-        if (is_null($group)) {
-            throw new \InvalidArgumentException('non-nullable group cannot be null');
+        if (is_null($external_code)) {
+            throw new \InvalidArgumentException('non-nullable external_code cannot be null');
         }
-        $this->container['group'] = $group;
+        if ((mb_strlen($external_code) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $external_code when calling RetailStoreProductFoldersRowsInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['external_code'] = $external_code;
 
         return $this;
     }
 
     /**
-     * Gets owner
+     * Gets archived
      *
-     * @return \OpenAPI\Client\Model\CounterpartyOwner|null
+     * @return bool|null
      */
-    public function getOwner()
+    public function getArchived()
     {
-        return $this->container['owner'];
+        return $this->container['archived'];
     }
 
     /**
-     * Sets owner
+     * Sets archived
      *
-     * @param \OpenAPI\Client\Model\CounterpartyOwner|null $owner owner
+     * @param bool|null $archived Добавлена ли группа товаров в архив
      *
      * @return self
      */
-    public function setOwner($owner)
+    public function setArchived($archived)
     {
-        if (is_null($owner)) {
-            throw new \InvalidArgumentException('non-nullable owner cannot be null');
+        if (is_null($archived)) {
+            throw new \InvalidArgumentException('non-nullable archived cannot be null');
         }
-        $this->container['owner'] = $owner;
+        $this->container['archived'] = $archived;
 
         return $this;
     }
 
     /**
-     * Gets updated
+     * Gets path_name
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getUpdated()
+    public function getPathName()
     {
-        return $this->container['updated'];
+        return $this->container['path_name'];
     }
 
     /**
-     * Sets updated
+     * Sets path_name
      *
-     * @param \DateTime|null $updated Момент последнего обновления сущности
+     * @param string|null $path_name Наименование родительской группы
      *
      * @return self
      */
-    public function setUpdated($updated)
+    public function setPathName($path_name)
     {
-        if (is_null($updated)) {
-            throw new \InvalidArgumentException('non-nullable updated cannot be null');
+        if (is_null($path_name)) {
+            throw new \InvalidArgumentException('non-nullable path_name cannot be null');
         }
-        $this->container['updated'] = $updated;
+        $this->container['path_name'] = $path_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description Описание группы товаров
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        if ((mb_strlen($description) > 4096)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling RetailStoreProductFoldersRowsInner., must be smaller than or equal to 4096.');
+        }
+
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets vat
+     *
+     * @return int|null
+     */
+    public function getVat()
+    {
+        return $this->container['vat'];
+    }
+
+    /**
+     * Sets vat
+     *
+     * @param int|null $vat НДС %
+     *
+     * @return self
+     */
+    public function setVat($vat)
+    {
+        if (is_null($vat)) {
+            throw new \InvalidArgumentException('non-nullable vat cannot be null');
+        }
+        $this->container['vat'] = $vat;
+
+        return $this;
+    }
+
+    /**
+     * Gets vat_enabled
+     *
+     * @return bool|null
+     */
+    public function getVatEnabled()
+    {
+        return $this->container['vat_enabled'];
+    }
+
+    /**
+     * Sets vat_enabled
+     *
+     * @param bool|null $vat_enabled Включен ли НДС для группы
+     *
+     * @return self
+     */
+    public function setVatEnabled($vat_enabled)
+    {
+        if (is_null($vat_enabled)) {
+            throw new \InvalidArgumentException('non-nullable vat_enabled cannot be null');
+        }
+        $this->container['vat_enabled'] = $vat_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets effective_vat
+     *
+     * @return int|null
+     */
+    public function getEffectiveVat()
+    {
+        return $this->container['effective_vat'];
+    }
+
+    /**
+     * Sets effective_vat
+     *
+     * @param int|null $effective_vat Реальный НДС %
+     *
+     * @return self
+     */
+    public function setEffectiveVat($effective_vat)
+    {
+        if (is_null($effective_vat)) {
+            throw new \InvalidArgumentException('non-nullable effective_vat cannot be null');
+        }
+        $this->container['effective_vat'] = $effective_vat;
+
+        return $this;
+    }
+
+    /**
+     * Gets effective_vat_enabled
+     *
+     * @return bool|null
+     */
+    public function getEffectiveVatEnabled()
+    {
+        return $this->container['effective_vat_enabled'];
+    }
+
+    /**
+     * Sets effective_vat_enabled
+     *
+     * @param bool|null $effective_vat_enabled Дополнительный признак для определения разграничения реального НДС
+     *
+     * @return self
+     */
+    public function setEffectiveVatEnabled($effective_vat_enabled)
+    {
+        if (is_null($effective_vat_enabled)) {
+            throw new \InvalidArgumentException('non-nullable effective_vat_enabled cannot be null');
+        }
+        $this->container['effective_vat_enabled'] = $effective_vat_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_parent_vat
+     *
+     * @return bool|null
+     */
+    public function getUseParentVat()
+    {
+        return $this->container['use_parent_vat'];
+    }
+
+    /**
+     * Sets use_parent_vat
+     *
+     * @param bool|null $use_parent_vat Используется ли ставка НДС родительской группы
+     *
+     * @return self
+     */
+    public function setUseParentVat($use_parent_vat)
+    {
+        if (is_null($use_parent_vat)) {
+            throw new \InvalidArgumentException('non-nullable use_parent_vat cannot be null');
+        }
+        $this->container['use_parent_vat'] = $use_parent_vat;
 
         return $this;
     }
@@ -659,32 +894,146 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets external_code
+     * Gets group
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\ProductFolderGroup|null
      */
-    public function getExternalCode()
+    public function getGroup()
     {
-        return $this->container['external_code'];
+        return $this->container['group'];
     }
 
     /**
-     * Sets external_code
+     * Sets group
      *
-     * @param string|null $external_code Внешний код единицы измерения
+     * @param \OpenAPI\Client\Model\ProductFolderGroup|null $group group
      *
      * @return self
      */
-    public function setExternalCode($external_code)
+    public function setGroup($group)
     {
-        if (is_null($external_code)) {
-            throw new \InvalidArgumentException('non-nullable external_code cannot be null');
+        if (is_null($group)) {
+            throw new \InvalidArgumentException('non-nullable group cannot be null');
         }
-        if ((mb_strlen($external_code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $external_code when calling Uom., must be smaller than or equal to 255.');
-        }
+        $this->container['group'] = $group;
 
-        $this->container['external_code'] = $external_code;
+        return $this;
+    }
+
+    /**
+     * Gets owner
+     *
+     * @return \OpenAPI\Client\Model\ProductFolderOwner|null
+     */
+    public function getOwner()
+    {
+        return $this->container['owner'];
+    }
+
+    /**
+     * Sets owner
+     *
+     * @param \OpenAPI\Client\Model\ProductFolderOwner|null $owner owner
+     *
+     * @return self
+     */
+    public function setOwner($owner)
+    {
+        if (is_null($owner)) {
+            throw new \InvalidArgumentException('non-nullable owner cannot be null');
+        }
+        $this->container['owner'] = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdated()
+    {
+        return $this->container['updated'];
+    }
+
+    /**
+     * Sets updated
+     *
+     * @param \DateTime|null $updated Момент последнего обновления
+     *
+     * @return self
+     */
+    public function setUpdated($updated)
+    {
+        if (is_null($updated)) {
+            throw new \InvalidArgumentException('non-nullable updated cannot be null');
+        }
+        $this->container['updated'] = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_folder
+     *
+     * @return \OpenAPI\Client\Model\ProductFolderProductFolder|null
+     */
+    public function getProductFolder()
+    {
+        return $this->container['product_folder'];
+    }
+
+    /**
+     * Sets product_folder
+     *
+     * @param \OpenAPI\Client\Model\ProductFolderProductFolder|null $product_folder product_folder
+     *
+     * @return self
+     */
+    public function setProductFolder($product_folder)
+    {
+        if (is_null($product_folder)) {
+            throw new \InvalidArgumentException('non-nullable product_folder cannot be null');
+        }
+        $this->container['product_folder'] = $product_folder;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_system
+     *
+     * @return string|null
+     */
+    public function getTaxSystem()
+    {
+        return $this->container['tax_system'];
+    }
+
+    /**
+     * Sets tax_system
+     *
+     * @param string|null $tax_system Код системы налогообложения
+     *
+     * @return self
+     */
+    public function setTaxSystem($tax_system)
+    {
+        if (is_null($tax_system)) {
+            throw new \InvalidArgumentException('non-nullable tax_system cannot be null');
+        }
+        $allowedValues = $this->getTaxSystemAllowableValues();
+        if (!in_array($tax_system, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'tax_system', must be one of '%s'",
+                    $tax_system,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['tax_system'] = $tax_system;
 
         return $this;
     }

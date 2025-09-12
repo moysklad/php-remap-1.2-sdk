@@ -181,7 +181,7 @@ class NotesAuthorApplication implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $attributeMap = [
         'meta' => 'meta',
         'id' => 'id',
-        'account_id' => 'accountId',
+        'account_id' => 'account_id',
         'name' => 'name',
         'app_uid' => 'appUid'
     ];

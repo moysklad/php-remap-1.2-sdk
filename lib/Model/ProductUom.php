@@ -60,9 +60,14 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\Meta',
         'id' => 'string',
+        'account_id' => 'string',
         'name' => 'string',
         'description' => 'string',
         'code' => 'string',
+        'group' => '\OpenAPI\Client\Model\CounterpartyGroup',
+        'owner' => '\OpenAPI\Client\Model\CounterpartyOwner',
+        'updated' => '\DateTime',
+        'shared' => 'bool',
         'external_code' => 'string'
     ];
 
@@ -76,9 +81,14 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'meta' => null,
         'id' => 'uuid',
+        'account_id' => 'uuid',
         'name' => null,
         'description' => null,
         'code' => null,
+        'group' => null,
+        'owner' => null,
+        'updated' => 'date-time',
+        'shared' => null,
         'external_code' => null
     ];
 
@@ -90,9 +100,14 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'meta' => false,
         'id' => false,
+        'account_id' => false,
         'name' => false,
         'description' => false,
         'code' => false,
+        'group' => false,
+        'owner' => false,
+        'updated' => false,
+        'shared' => false,
         'external_code' => false
     ];
 
@@ -184,9 +199,14 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'meta' => 'meta',
         'id' => 'id',
+        'account_id' => 'accountId',
         'name' => 'name',
         'description' => 'description',
         'code' => 'code',
+        'group' => 'group',
+        'owner' => 'owner',
+        'updated' => 'updated',
+        'shared' => 'shared',
         'external_code' => 'externalCode'
     ];
 
@@ -198,9 +218,14 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'meta' => 'setMeta',
         'id' => 'setId',
+        'account_id' => 'setAccountId',
         'name' => 'setName',
         'description' => 'setDescription',
         'code' => 'setCode',
+        'group' => 'setGroup',
+        'owner' => 'setOwner',
+        'updated' => 'setUpdated',
+        'shared' => 'setShared',
         'external_code' => 'setExternalCode'
     ];
 
@@ -212,9 +237,14 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'meta' => 'getMeta',
         'id' => 'getId',
+        'account_id' => 'getAccountId',
         'name' => 'getName',
         'description' => 'getDescription',
         'code' => 'getCode',
+        'group' => 'getGroup',
+        'owner' => 'getOwner',
+        'updated' => 'getUpdated',
+        'shared' => 'getShared',
         'external_code' => 'getExternalCode'
     ];
 
@@ -277,9 +307,14 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('group', $data ?? [], null);
+        $this->setIfExists('owner', $data ?? [], null);
+        $this->setIfExists('updated', $data ?? [], null);
+        $this->setIfExists('shared', $data ?? [], null);
         $this->setIfExists('external_code', $data ?? [], null);
     }
 
@@ -309,6 +344,22 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4096)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
+        }
+
+        if (!is_null($this->container['code']) && (mb_strlen($this->container['code']) > 255)) {
+            $invalidProperties[] = "invalid value for 'code', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['external_code']) && (mb_strlen($this->container['external_code']) > 255)) {
+            $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
+        }
 
         return $invalidProperties;
     }
@@ -380,6 +431,33 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id ID учетной записи
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string|null
@@ -401,6 +479,10 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling ProductUom., must be smaller than or equal to 255.');
+        }
+
         $this->container['name'] = $name;
 
         return $this;
@@ -428,6 +510,10 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($description)) {
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
+        if ((mb_strlen($description) > 4096)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling ProductUom., must be smaller than or equal to 4096.');
+        }
+
         $this->container['description'] = $description;
 
         return $this;
@@ -455,7 +541,119 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($code)) {
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
+        if ((mb_strlen($code) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $code when calling ProductUom., must be smaller than or equal to 255.');
+        }
+
         $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets group
+     *
+     * @return \OpenAPI\Client\Model\CounterpartyGroup|null
+     */
+    public function getGroup()
+    {
+        return $this->container['group'];
+    }
+
+    /**
+     * Sets group
+     *
+     * @param \OpenAPI\Client\Model\CounterpartyGroup|null $group group
+     *
+     * @return self
+     */
+    public function setGroup($group)
+    {
+        if (is_null($group)) {
+            throw new \InvalidArgumentException('non-nullable group cannot be null');
+        }
+        $this->container['group'] = $group;
+
+        return $this;
+    }
+
+    /**
+     * Gets owner
+     *
+     * @return \OpenAPI\Client\Model\CounterpartyOwner|null
+     */
+    public function getOwner()
+    {
+        return $this->container['owner'];
+    }
+
+    /**
+     * Sets owner
+     *
+     * @param \OpenAPI\Client\Model\CounterpartyOwner|null $owner owner
+     *
+     * @return self
+     */
+    public function setOwner($owner)
+    {
+        if (is_null($owner)) {
+            throw new \InvalidArgumentException('non-nullable owner cannot be null');
+        }
+        $this->container['owner'] = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdated()
+    {
+        return $this->container['updated'];
+    }
+
+    /**
+     * Sets updated
+     *
+     * @param \DateTime|null $updated Момент последнего обновления сущности
+     *
+     * @return self
+     */
+    public function setUpdated($updated)
+    {
+        if (is_null($updated)) {
+            throw new \InvalidArgumentException('non-nullable updated cannot be null');
+        }
+        $this->container['updated'] = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Gets shared
+     *
+     * @return bool|null
+     */
+    public function getShared()
+    {
+        return $this->container['shared'];
+    }
+
+    /**
+     * Sets shared
+     *
+     * @param bool|null $shared Общий доступ
+     *
+     * @return self
+     */
+    public function setShared($shared)
+    {
+        if (is_null($shared)) {
+            throw new \InvalidArgumentException('non-nullable shared cannot be null');
+        }
+        $this->container['shared'] = $shared;
 
         return $this;
     }
@@ -482,6 +680,10 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($external_code)) {
             throw new \InvalidArgumentException('non-nullable external_code cannot be null');
         }
+        if ((mb_strlen($external_code) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $external_code when calling ProductUom., must be smaller than or equal to 255.');
+        }
+
         $this->container['external_code'] = $external_code;
 
         return $this;
