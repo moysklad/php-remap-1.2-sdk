@@ -95,7 +95,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
         'bonus_points' => 'int',
         'bonus_program' => '\OpenAPI\Client\Model\Meta',
         'price_type' => '\OpenAPI\Client\Model\Meta',
-        'state' => '\OpenAPI\Client\Model\Meta',
+        'state' => '\OpenAPI\Client\Model\CounterpartyState',
         'accounts' => '\OpenAPI\Client\Model\CounterpartyAccounts',
         'contactpersons' => '\OpenAPI\Client\Model\CounterpartyContactpersons',
         'notes' => '\OpenAPI\Client\Model\CounterpartyNotes',
@@ -1799,7 +1799,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets state
      *
-     * @return \OpenAPI\Client\Model\Meta|null
+     * @return \OpenAPI\Client\Model\CounterpartyState|null
      */
     public function getState()
     {
@@ -1809,7 +1809,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets state
      *
-     * @param \OpenAPI\Client\Model\Meta|null $state state
+     * @param \OpenAPI\Client\Model\CounterpartyState|null $state state
      *
      * @return self
      */

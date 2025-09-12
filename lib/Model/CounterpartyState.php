@@ -1,6 +1,6 @@
 <?php
 /**
- * File
+ * CounterpartyState
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * File Class Doc Comment
+ * CounterpartyState Class Doc Comment
  *
  * @category Class
- * @description Файл
+ * @description Статус Контрагента
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class File implements ModelInterface, ArrayAccess, \JsonSerializable
+class CounterpartyState implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'file';
+    protected static $openAPIModelName = 'counterparty_state';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,13 +59,12 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\Meta',
-        'title' => 'string',
-        'filename' => 'string',
-        'size' => 'int',
-        'created' => '\DateTime',
-        'created_by' => '\OpenAPI\Client\Model\FileCreatedBy',
-        'tiny' => '\OpenAPI\Client\Model\Meta',
-        'miniature' => '\OpenAPI\Client\Model\Meta'
+        'id' => 'string',
+        'name' => 'string',
+        'account_id' => 'string',
+        'color' => 'int',
+        'entity_type' => 'string',
+        'state_type' => 'string'
     ];
 
     /**
@@ -77,13 +76,12 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'meta' => null,
-        'title' => null,
-        'filename' => null,
-        'size' => null,
-        'created' => 'date-time',
-        'created_by' => null,
-        'tiny' => null,
-        'miniature' => null
+        'id' => 'uuid',
+        'name' => null,
+        'account_id' => 'uuid',
+        'color' => null,
+        'entity_type' => null,
+        'state_type' => null
     ];
 
     /**
@@ -93,13 +91,12 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'meta' => false,
-        'title' => false,
-        'filename' => false,
-        'size' => false,
-        'created' => false,
-        'created_by' => false,
-        'tiny' => false,
-        'miniature' => false
+        'id' => false,
+        'name' => false,
+        'account_id' => false,
+        'color' => false,
+        'entity_type' => false,
+        'state_type' => false
     ];
 
     /**
@@ -189,13 +186,12 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'meta' => 'meta',
-        'title' => 'title',
-        'filename' => 'filename',
-        'size' => 'size',
-        'created' => 'created',
-        'created_by' => 'createdBy',
-        'tiny' => 'tiny',
-        'miniature' => 'miniature'
+        'id' => 'id',
+        'name' => 'name',
+        'account_id' => 'accountId',
+        'color' => 'color',
+        'entity_type' => 'entityType',
+        'state_type' => 'stateType'
     ];
 
     /**
@@ -205,13 +201,12 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'meta' => 'setMeta',
-        'title' => 'setTitle',
-        'filename' => 'setFilename',
-        'size' => 'setSize',
-        'created' => 'setCreated',
-        'created_by' => 'setCreatedBy',
-        'tiny' => 'setTiny',
-        'miniature' => 'setMiniature'
+        'id' => 'setId',
+        'name' => 'setName',
+        'account_id' => 'setAccountId',
+        'color' => 'setColor',
+        'entity_type' => 'setEntityType',
+        'state_type' => 'setStateType'
     ];
 
     /**
@@ -221,13 +216,12 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'meta' => 'getMeta',
-        'title' => 'getTitle',
-        'filename' => 'getFilename',
-        'size' => 'getSize',
-        'created' => 'getCreated',
-        'created_by' => 'getCreatedBy',
-        'tiny' => 'getTiny',
-        'miniature' => 'getMiniature'
+        'id' => 'getId',
+        'name' => 'getName',
+        'account_id' => 'getAccountId',
+        'color' => 'getColor',
+        'entity_type' => 'getEntityType',
+        'state_type' => 'getStateType'
     ];
 
     /**
@@ -271,6 +265,23 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const STATE_TYPE_REGULAR = 'Regular';
+    public const STATE_TYPE_SUCCESSFUL = 'Successful';
+    public const STATE_TYPE_UNSUCCESSFUL = 'Unsuccessful';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStateTypeAllowableValues()
+    {
+        return [
+            self::STATE_TYPE_REGULAR,
+            self::STATE_TYPE_SUCCESSFUL,
+            self::STATE_TYPE_UNSUCCESSFUL,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -288,13 +299,12 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('filename', $data ?? [], null);
-        $this->setIfExists('size', $data ?? [], null);
-        $this->setIfExists('created', $data ?? [], null);
-        $this->setIfExists('created_by', $data ?? [], null);
-        $this->setIfExists('tiny', $data ?? [], null);
-        $this->setIfExists('miniature', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('color', $data ?? [], null);
+        $this->setIfExists('entity_type', $data ?? [], null);
+        $this->setIfExists('state_type', $data ?? [], null);
     }
 
     /**
@@ -324,12 +334,13 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 255)) {
-            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['filename']) && (mb_strlen($this->container['filename']) > 255)) {
-            $invalidProperties[] = "invalid value for 'filename', the character length must be smaller than or equal to 255.";
+        $allowedValues = $this->getStateTypeAllowableValues();
+        if (!is_null($this->container['state_type']) && !in_array($this->container['state_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'state_type', must be one of '%s'",
+                $this->container['state_type'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -375,198 +386,173 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets title
+     * Gets id
      *
      * @return string|null
      */
-    public function getTitle()
+    public function getId()
     {
-        return $this->container['title'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets title
+     * Sets id
      *
-     * @param string|null $title Название файла
+     * @param string|null $id ID статуса
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setId($id)
     {
-        if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        if ((mb_strlen($title) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling File., must be smaller than or equal to 255.');
-        }
-
-        $this->container['title'] = $title;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets filename
+     * Gets name
      *
      * @return string|null
      */
-    public function getFilename()
+    public function getName()
     {
-        return $this->container['filename'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets filename
+     * Sets name
      *
-     * @param string|null $filename Имя файла
+     * @param string|null $name Наименование статуса
      *
      * @return self
      */
-    public function setFilename($filename)
+    public function setName($name)
     {
-        if (is_null($filename)) {
-            throw new \InvalidArgumentException('non-nullable filename cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if ((mb_strlen($filename) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $filename when calling File., must be smaller than or equal to 255.');
-        }
-
-        $this->container['filename'] = $filename;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets size
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id ID учетной записи
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets color
      *
      * @return int|null
      */
-    public function getSize()
+    public function getColor()
     {
-        return $this->container['size'];
+        return $this->container['color'];
     }
 
     /**
-     * Sets size
+     * Sets color
      *
-     * @param int|null $size Размер файла в байтах
+     * @param int|null $color Цвет Статуса
      *
      * @return self
      */
-    public function setSize($size)
+    public function setColor($color)
     {
-        if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
+        if (is_null($color)) {
+            throw new \InvalidArgumentException('non-nullable color cannot be null');
         }
-        $this->container['size'] = $size;
+        $this->container['color'] = $color;
 
         return $this;
     }
 
     /**
-     * Gets created
+     * Gets entity_type
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getCreated()
+    public function getEntityType()
     {
-        return $this->container['created'];
+        return $this->container['entity_type'];
     }
 
     /**
-     * Sets created
+     * Sets entity_type
      *
-     * @param \DateTime|null $created Время создания объекта
+     * @param string|null $entity_type Тип сущности, к которой относится Статус (ключевое слово в рамках JSON API)
      *
      * @return self
      */
-    public function setCreated($created)
+    public function setEntityType($entity_type)
     {
-        if (is_null($created)) {
-            throw new \InvalidArgumentException('non-nullable created cannot be null');
+        if (is_null($entity_type)) {
+            throw new \InvalidArgumentException('non-nullable entity_type cannot be null');
         }
-        $this->container['created'] = $created;
+        $this->container['entity_type'] = $entity_type;
 
         return $this;
     }
 
     /**
-     * Gets created_by
+     * Gets state_type
      *
-     * @return \OpenAPI\Client\Model\FileCreatedBy|null
+     * @return string|null
      */
-    public function getCreatedBy()
+    public function getStateType()
     {
-        return $this->container['created_by'];
+        return $this->container['state_type'];
     }
 
     /**
-     * Sets created_by
+     * Sets state_type
      *
-     * @param \OpenAPI\Client\Model\FileCreatedBy|null $created_by created_by
+     * @param string|null $state_type Тип Статуса
      *
      * @return self
      */
-    public function setCreatedBy($created_by)
+    public function setStateType($state_type)
     {
-        if (is_null($created_by)) {
-            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
+        if (is_null($state_type)) {
+            throw new \InvalidArgumentException('non-nullable state_type cannot be null');
         }
-        $this->container['created_by'] = $created_by;
-
-        return $this;
-    }
-
-    /**
-     * Gets tiny
-     *
-     * @return \OpenAPI\Client\Model\Meta|null
-     */
-    public function getTiny()
-    {
-        return $this->container['tiny'];
-    }
-
-    /**
-     * Sets tiny
-     *
-     * @param \OpenAPI\Client\Model\Meta|null $tiny Метаданные уменьшенного изображения (поле передается только для Файлов изображений)
-     *
-     * @return self
-     */
-    public function setTiny($tiny)
-    {
-        if (is_null($tiny)) {
-            throw new \InvalidArgumentException('non-nullable tiny cannot be null');
+        $allowedValues = $this->getStateTypeAllowableValues();
+        if (!in_array($state_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'state_type', must be one of '%s'",
+                    $state_type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['tiny'] = $tiny;
-
-        return $this;
-    }
-
-    /**
-     * Gets miniature
-     *
-     * @return \OpenAPI\Client\Model\Meta|null
-     */
-    public function getMiniature()
-    {
-        return $this->container['miniature'];
-    }
-
-    /**
-     * Sets miniature
-     *
-     * @param \OpenAPI\Client\Model\Meta|null $miniature Метаданные миниатюры изображения (поле передается только для Файлов изображений)
-     *
-     * @return self
-     */
-    public function setMiniature($miniature)
-    {
-        if (is_null($miniature)) {
-            throw new \InvalidArgumentException('non-nullable miniature cannot be null');
-        }
-        $this->container['miniature'] = $miniature;
+        $this->container['state_type'] = $state_type;
 
         return $this;
     }

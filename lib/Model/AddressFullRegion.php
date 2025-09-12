@@ -63,7 +63,8 @@ class AddressFullRegion implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => 'string',
         'description' => 'string',
         'code' => 'string',
-        'external_code' => 'string'
+        'external_code' => 'string',
+        'updated' => '\DateTime'
     ];
 
     /**
@@ -79,7 +80,8 @@ class AddressFullRegion implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => null,
         'description' => null,
         'code' => null,
-        'external_code' => null
+        'external_code' => null,
+        'updated' => 'date-time'
     ];
 
     /**
@@ -93,7 +95,8 @@ class AddressFullRegion implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => false,
         'description' => false,
         'code' => false,
-        'external_code' => false
+        'external_code' => false,
+        'updated' => false
     ];
 
     /**
@@ -187,7 +190,8 @@ class AddressFullRegion implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => 'name',
         'description' => 'description',
         'code' => 'code',
-        'external_code' => 'externalCode'
+        'external_code' => 'externalCode',
+        'updated' => 'updated'
     ];
 
     /**
@@ -201,7 +205,8 @@ class AddressFullRegion implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => 'setName',
         'description' => 'setDescription',
         'code' => 'setCode',
-        'external_code' => 'setExternalCode'
+        'external_code' => 'setExternalCode',
+        'updated' => 'setUpdated'
     ];
 
     /**
@@ -215,7 +220,8 @@ class AddressFullRegion implements ModelInterface, ArrayAccess, \JsonSerializabl
         'name' => 'getName',
         'description' => 'getDescription',
         'code' => 'getCode',
-        'external_code' => 'getExternalCode'
+        'external_code' => 'getExternalCode',
+        'updated' => 'getUpdated'
     ];
 
     /**
@@ -281,6 +287,7 @@ class AddressFullRegion implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('external_code', $data ?? [], null);
+        $this->setIfExists('updated', $data ?? [], null);
     }
 
     /**
@@ -483,6 +490,33 @@ class AddressFullRegion implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable external_code cannot be null');
         }
         $this->container['external_code'] = $external_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdated()
+    {
+        return $this->container['updated'];
+    }
+
+    /**
+     * Sets updated
+     *
+     * @param \DateTime|null $updated Момент последнего обновления сущности
+     *
+     * @return self
+     */
+    public function setUpdated($updated)
+    {
+        if (is_null($updated)) {
+            throw new \InvalidArgumentException('non-nullable updated cannot be null');
+        }
+        $this->container['updated'] = $updated;
 
         return $this;
     }

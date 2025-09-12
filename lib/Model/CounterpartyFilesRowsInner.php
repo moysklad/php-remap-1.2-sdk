@@ -62,7 +62,9 @@ class CounterpartyFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSe
         'filename' => 'string',
         'size' => 'int',
         'created' => '\DateTime',
-        'created_by' => '\OpenAPI\Client\Model\FileCreatedBy'
+        'created_by' => '\OpenAPI\Client\Model\FileCreatedBy',
+        'tiny' => '\OpenAPI\Client\Model\Meta',
+        'miniature' => '\OpenAPI\Client\Model\Meta'
     ];
 
     /**
@@ -78,7 +80,9 @@ class CounterpartyFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSe
         'filename' => null,
         'size' => null,
         'created' => 'date-time',
-        'created_by' => null
+        'created_by' => null,
+        'tiny' => null,
+        'miniature' => null
     ];
 
     /**
@@ -92,7 +96,9 @@ class CounterpartyFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSe
         'filename' => false,
         'size' => false,
         'created' => false,
-        'created_by' => false
+        'created_by' => false,
+        'tiny' => false,
+        'miniature' => false
     ];
 
     /**
@@ -186,7 +192,9 @@ class CounterpartyFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSe
         'filename' => 'filename',
         'size' => 'size',
         'created' => 'created',
-        'created_by' => 'createdBy'
+        'created_by' => 'createdBy',
+        'tiny' => 'tiny',
+        'miniature' => 'miniature'
     ];
 
     /**
@@ -200,7 +208,9 @@ class CounterpartyFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSe
         'filename' => 'setFilename',
         'size' => 'setSize',
         'created' => 'setCreated',
-        'created_by' => 'setCreatedBy'
+        'created_by' => 'setCreatedBy',
+        'tiny' => 'setTiny',
+        'miniature' => 'setMiniature'
     ];
 
     /**
@@ -214,7 +224,9 @@ class CounterpartyFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSe
         'filename' => 'getFilename',
         'size' => 'getSize',
         'created' => 'getCreated',
-        'created_by' => 'getCreatedBy'
+        'created_by' => 'getCreatedBy',
+        'tiny' => 'getTiny',
+        'miniature' => 'getMiniature'
     ];
 
     /**
@@ -280,6 +292,8 @@ class CounterpartyFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('size', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
         $this->setIfExists('created_by', $data ?? [], null);
+        $this->setIfExists('tiny', $data ?? [], null);
+        $this->setIfExists('miniature', $data ?? [], null);
     }
 
     /**
@@ -498,6 +512,60 @@ class CounterpartyFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable created_by cannot be null');
         }
         $this->container['created_by'] = $created_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets tiny
+     *
+     * @return \OpenAPI\Client\Model\Meta|null
+     */
+    public function getTiny()
+    {
+        return $this->container['tiny'];
+    }
+
+    /**
+     * Sets tiny
+     *
+     * @param \OpenAPI\Client\Model\Meta|null $tiny tiny
+     *
+     * @return self
+     */
+    public function setTiny($tiny)
+    {
+        if (is_null($tiny)) {
+            throw new \InvalidArgumentException('non-nullable tiny cannot be null');
+        }
+        $this->container['tiny'] = $tiny;
+
+        return $this;
+    }
+
+    /**
+     * Gets miniature
+     *
+     * @return \OpenAPI\Client\Model\Meta|null
+     */
+    public function getMiniature()
+    {
+        return $this->container['miniature'];
+    }
+
+    /**
+     * Sets miniature
+     *
+     * @param \OpenAPI\Client\Model\Meta|null $miniature miniature
+     *
+     * @return self
+     */
+    public function setMiniature($miniature)
+    {
+        if (is_null($miniature)) {
+            throw new \InvalidArgumentException('non-nullable miniature cannot be null');
+        }
+        $this->container['miniature'] = $miniature;
 
         return $this;
     }
