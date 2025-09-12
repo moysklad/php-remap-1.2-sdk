@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductFiles
+ * NotesAuthorApplication
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ProductFiles Class Doc Comment
+ * NotesAuthorApplication Class Doc Comment
  *
  * @category Class
- * @description Метаданные массива Файлов
+ * @description Метаданные Решения - создателя события
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
+class NotesAuthorApplication implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product_files';
+    protected static $openAPIModelName = 'notes_authorApplication';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,11 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\MetaList',
-        'rows' => '\OpenAPI\Client\Model\ProductFilesRowsInner[]'
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'id' => 'string',
+        'account_id' => 'string',
+        'name' => 'string',
+        'app_uid' => 'string'
     ];
 
     /**
@@ -71,7 +74,10 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'meta' => null,
-        'rows' => null
+        'id' => 'uuid',
+        'account_id' => 'uuid',
+        'name' => null,
+        'app_uid' => null
     ];
 
     /**
@@ -81,7 +87,10 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'meta' => false,
-        'rows' => false
+        'id' => false,
+        'account_id' => false,
+        'name' => false,
+        'app_uid' => false
     ];
 
     /**
@@ -171,7 +180,10 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'meta' => 'meta',
-        'rows' => 'rows'
+        'id' => 'id',
+        'account_id' => 'accountId',
+        'name' => 'name',
+        'app_uid' => 'appUid'
     ];
 
     /**
@@ -181,7 +193,10 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'meta' => 'setMeta',
-        'rows' => 'setRows'
+        'id' => 'setId',
+        'account_id' => 'setAccountId',
+        'name' => 'setName',
+        'app_uid' => 'setAppUid'
     ];
 
     /**
@@ -191,7 +206,10 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'meta' => 'getMeta',
-        'rows' => 'getRows'
+        'id' => 'getId',
+        'account_id' => 'getAccountId',
+        'name' => 'getName',
+        'app_uid' => 'getAppUid'
     ];
 
     /**
@@ -252,7 +270,10 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('rows', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('app_uid', $data ?? [], null);
     }
 
     /**
@@ -300,7 +321,7 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets meta
      *
-     * @return \OpenAPI\Client\Model\MetaList|null
+     * @return \OpenAPI\Client\Model\Meta|null
      */
     public function getMeta()
     {
@@ -310,7 +331,7 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets meta
      *
-     * @param \OpenAPI\Client\Model\MetaList|null $meta meta
+     * @param \OpenAPI\Client\Model\Meta|null $meta meta
      *
      * @return self
      */
@@ -325,28 +346,109 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets rows
+     * Gets id
      *
-     * @return \OpenAPI\Client\Model\ProductFilesRowsInner[]|null
+     * @return string|null
      */
-    public function getRows()
+    public function getId()
     {
-        return $this->container['rows'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets rows
+     * Sets id
      *
-     * @param \OpenAPI\Client\Model\ProductFilesRowsInner[]|null $rows rows
+     * @param string|null $id ID решения
      *
      * @return self
      */
-    public function setRows($rows)
+    public function setId($id)
     {
-        if (is_null($rows)) {
-            throw new \InvalidArgumentException('non-nullable rows cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['rows'] = $rows;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id ID учетной записи
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Наименование решения
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets app_uid
+     *
+     * @return string|null
+     */
+    public function getAppUid()
+    {
+        return $this->container['app_uid'];
+    }
+
+    /**
+     * Sets app_uid
+     *
+     * @param string|null $app_uid Логин решения
+     *
+     * @return self
+     */
+    public function setAppUid($app_uid)
+    {
+        if (is_null($app_uid)) {
+            throw new \InvalidArgumentException('non-nullable app_uid cannot be null');
+        }
+        $this->container['app_uid'] = $app_uid;
 
         return $this;
     }

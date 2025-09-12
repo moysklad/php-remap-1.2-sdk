@@ -58,7 +58,7 @@ class CounterpartyContactpersons implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\Meta',
+        'meta' => '\OpenAPI\Client\Model\MetaList',
         'rows' => '\OpenAPI\Client\Model\Contactpersons[]'
     ];
 
@@ -300,7 +300,7 @@ class CounterpartyContactpersons implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets meta
      *
-     * @return \OpenAPI\Client\Model\Meta|null
+     * @return \OpenAPI\Client\Model\MetaList|null
      */
     public function getMeta()
     {
@@ -310,7 +310,7 @@ class CounterpartyContactpersons implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets meta
      *
-     * @param \OpenAPI\Client\Model\Meta|null $meta meta
+     * @param \OpenAPI\Client\Model\MetaList|null $meta meta
      *
      * @return self
      */

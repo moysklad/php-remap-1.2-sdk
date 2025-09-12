@@ -1,6 +1,6 @@
 <?php
 /**
- * File
+ * Application
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * File Class Doc Comment
+ * Application Class Doc Comment
  *
  * @category Class
- * @description Файл
+ * @description Решение
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class File implements ModelInterface, ArrayAccess, \JsonSerializable
+class Application implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'file';
+    protected static $openAPIModelName = 'application';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,10 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\Meta',
-        'title' => 'string',
-        'filename' => 'string',
-        'size' => 'int',
-        'created' => '\DateTime',
-        'created_by' => '\OpenAPI\Client\Model\FileCreatedBy'
+        'id' => 'string',
+        'account_id' => 'string',
+        'name' => 'string',
+        'app_uid' => 'string'
     ];
 
     /**
@@ -75,11 +74,10 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'meta' => null,
-        'title' => null,
-        'filename' => null,
-        'size' => null,
-        'created' => 'date-time',
-        'created_by' => null
+        'id' => 'uuid',
+        'account_id' => 'uuid',
+        'name' => null,
+        'app_uid' => null
     ];
 
     /**
@@ -89,11 +87,10 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'meta' => false,
-        'title' => false,
-        'filename' => false,
-        'size' => false,
-        'created' => false,
-        'created_by' => false
+        'id' => false,
+        'account_id' => false,
+        'name' => false,
+        'app_uid' => false
     ];
 
     /**
@@ -183,11 +180,10 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'meta' => 'meta',
-        'title' => 'title',
-        'filename' => 'filename',
-        'size' => 'size',
-        'created' => 'created',
-        'created_by' => 'createdBy'
+        'id' => 'id',
+        'account_id' => 'accountId',
+        'name' => 'name',
+        'app_uid' => 'appUid'
     ];
 
     /**
@@ -197,11 +193,10 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'meta' => 'setMeta',
-        'title' => 'setTitle',
-        'filename' => 'setFilename',
-        'size' => 'setSize',
-        'created' => 'setCreated',
-        'created_by' => 'setCreatedBy'
+        'id' => 'setId',
+        'account_id' => 'setAccountId',
+        'name' => 'setName',
+        'app_uid' => 'setAppUid'
     ];
 
     /**
@@ -211,11 +206,10 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'meta' => 'getMeta',
-        'title' => 'getTitle',
-        'filename' => 'getFilename',
-        'size' => 'getSize',
-        'created' => 'getCreated',
-        'created_by' => 'getCreatedBy'
+        'id' => 'getId',
+        'account_id' => 'getAccountId',
+        'name' => 'getName',
+        'app_uid' => 'getAppUid'
     ];
 
     /**
@@ -276,11 +270,10 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('filename', $data ?? [], null);
-        $this->setIfExists('size', $data ?? [], null);
-        $this->setIfExists('created', $data ?? [], null);
-        $this->setIfExists('created_by', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('app_uid', $data ?? [], null);
     }
 
     /**
@@ -309,14 +302,6 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 255)) {
-            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['filename']) && (mb_strlen($this->container['filename']) > 255)) {
-            $invalidProperties[] = "invalid value for 'filename', the character length must be smaller than or equal to 255.";
-        }
 
         return $invalidProperties;
     }
@@ -361,144 +346,109 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets title
+     * Gets id
      *
      * @return string|null
      */
-    public function getTitle()
+    public function getId()
     {
-        return $this->container['title'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets title
+     * Sets id
      *
-     * @param string|null $title Название файла
+     * @param string|null $id ID решения
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setId($id)
     {
-        if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        if ((mb_strlen($title) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling File., must be smaller than or equal to 255.');
-        }
-
-        $this->container['title'] = $title;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets filename
+     * Gets account_id
      *
      * @return string|null
      */
-    public function getFilename()
+    public function getAccountId()
     {
-        return $this->container['filename'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets filename
+     * Sets account_id
      *
-     * @param string|null $filename Имя файла
+     * @param string|null $account_id ID учетной записи
      *
      * @return self
      */
-    public function setFilename($filename)
+    public function setAccountId($account_id)
     {
-        if (is_null($filename)) {
-            throw new \InvalidArgumentException('non-nullable filename cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        if ((mb_strlen($filename) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $filename when calling File., must be smaller than or equal to 255.');
-        }
-
-        $this->container['filename'] = $filename;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets size
+     * Gets name
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getSize()
+    public function getName()
     {
-        return $this->container['size'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets size
+     * Sets name
      *
-     * @param int|null $size Размер файла в байтах
+     * @param string|null $name Наименование решения
      *
      * @return self
      */
-    public function setSize($size)
+    public function setName($name)
     {
-        if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['size'] = $size;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets created
+     * Gets app_uid
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getCreated()
+    public function getAppUid()
     {
-        return $this->container['created'];
+        return $this->container['app_uid'];
     }
 
     /**
-     * Sets created
+     * Sets app_uid
      *
-     * @param \DateTime|null $created Время создания объекта
+     * @param string|null $app_uid Логин решения
      *
      * @return self
      */
-    public function setCreated($created)
+    public function setAppUid($app_uid)
     {
-        if (is_null($created)) {
-            throw new \InvalidArgumentException('non-nullable created cannot be null');
+        if (is_null($app_uid)) {
+            throw new \InvalidArgumentException('non-nullable app_uid cannot be null');
         }
-        $this->container['created'] = $created;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_by
-     *
-     * @return \OpenAPI\Client\Model\FileCreatedBy|null
-     */
-    public function getCreatedBy()
-    {
-        return $this->container['created_by'];
-    }
-
-    /**
-     * Sets created_by
-     *
-     * @param \OpenAPI\Client\Model\FileCreatedBy|null $created_by created_by
-     *
-     * @return self
-     */
-    public function setCreatedBy($created_by)
-    {
-        if (is_null($created_by)) {
-            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
-        }
-        $this->container['created_by'] = $created_by;
+        $this->container['app_uid'] = $app_uid;
 
         return $this;
     }

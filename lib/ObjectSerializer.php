@@ -42,7 +42,7 @@ use OpenAPI\Client\Model\ModelInterface;
 class ObjectSerializer
 {
     /** @var string */
-    private static $dateTimeFormat = \DateTime::ATOM;
+    private static $dateTimeFormat = 'Y-m-d H:i:s.v';
 
     /**
      * Change the date format

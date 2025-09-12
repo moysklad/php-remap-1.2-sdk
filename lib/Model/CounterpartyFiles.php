@@ -1,6 +1,6 @@
 <?php
 /**
- * File
+ * CounterpartyFiles
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * File Class Doc Comment
+ * CounterpartyFiles Class Doc Comment
  *
  * @category Class
- * @description Файл
+ * @description Метаданные массива Файлов
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class File implements ModelInterface, ArrayAccess, \JsonSerializable
+class CounterpartyFiles implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'file';
+    protected static $openAPIModelName = 'counterparty_files';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,8 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\Meta',
-        'title' => 'string',
-        'filename' => 'string',
-        'size' => 'int',
-        'created' => '\DateTime',
-        'created_by' => '\OpenAPI\Client\Model\FileCreatedBy'
+        'meta' => '\OpenAPI\Client\Model\MetaList',
+        'rows' => '\OpenAPI\Client\Model\CounterpartyFilesRowsInner[]'
     ];
 
     /**
@@ -75,11 +71,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'meta' => null,
-        'title' => null,
-        'filename' => null,
-        'size' => null,
-        'created' => 'date-time',
-        'created_by' => null
+        'rows' => null
     ];
 
     /**
@@ -89,11 +81,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'meta' => false,
-        'title' => false,
-        'filename' => false,
-        'size' => false,
-        'created' => false,
-        'created_by' => false
+        'rows' => false
     ];
 
     /**
@@ -183,11 +171,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'meta' => 'meta',
-        'title' => 'title',
-        'filename' => 'filename',
-        'size' => 'size',
-        'created' => 'created',
-        'created_by' => 'createdBy'
+        'rows' => 'rows'
     ];
 
     /**
@@ -197,11 +181,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'meta' => 'setMeta',
-        'title' => 'setTitle',
-        'filename' => 'setFilename',
-        'size' => 'setSize',
-        'created' => 'setCreated',
-        'created_by' => 'setCreatedBy'
+        'rows' => 'setRows'
     ];
 
     /**
@@ -211,11 +191,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'meta' => 'getMeta',
-        'title' => 'getTitle',
-        'filename' => 'getFilename',
-        'size' => 'getSize',
-        'created' => 'getCreated',
-        'created_by' => 'getCreatedBy'
+        'rows' => 'getRows'
     ];
 
     /**
@@ -276,11 +252,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('filename', $data ?? [], null);
-        $this->setIfExists('size', $data ?? [], null);
-        $this->setIfExists('created', $data ?? [], null);
-        $this->setIfExists('created_by', $data ?? [], null);
+        $this->setIfExists('rows', $data ?? [], null);
     }
 
     /**
@@ -310,14 +282,6 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 255)) {
-            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['filename']) && (mb_strlen($this->container['filename']) > 255)) {
-            $invalidProperties[] = "invalid value for 'filename', the character length must be smaller than or equal to 255.";
-        }
-
         return $invalidProperties;
     }
 
@@ -336,7 +300,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets meta
      *
-     * @return \OpenAPI\Client\Model\Meta|null
+     * @return \OpenAPI\Client\Model\MetaList|null
      */
     public function getMeta()
     {
@@ -346,7 +310,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets meta
      *
-     * @param \OpenAPI\Client\Model\Meta|null $meta meta
+     * @param \OpenAPI\Client\Model\MetaList|null $meta meta
      *
      * @return self
      */
@@ -361,144 +325,28 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets title
+     * Gets rows
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\CounterpartyFilesRowsInner[]|null
      */
-    public function getTitle()
+    public function getRows()
     {
-        return $this->container['title'];
+        return $this->container['rows'];
     }
 
     /**
-     * Sets title
+     * Sets rows
      *
-     * @param string|null $title Название файла
+     * @param \OpenAPI\Client\Model\CounterpartyFilesRowsInner[]|null $rows rows
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setRows($rows)
     {
-        if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        if (is_null($rows)) {
+            throw new \InvalidArgumentException('non-nullable rows cannot be null');
         }
-        if ((mb_strlen($title) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling File., must be smaller than or equal to 255.');
-        }
-
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets filename
-     *
-     * @return string|null
-     */
-    public function getFilename()
-    {
-        return $this->container['filename'];
-    }
-
-    /**
-     * Sets filename
-     *
-     * @param string|null $filename Имя файла
-     *
-     * @return self
-     */
-    public function setFilename($filename)
-    {
-        if (is_null($filename)) {
-            throw new \InvalidArgumentException('non-nullable filename cannot be null');
-        }
-        if ((mb_strlen($filename) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $filename when calling File., must be smaller than or equal to 255.');
-        }
-
-        $this->container['filename'] = $filename;
-
-        return $this;
-    }
-
-    /**
-     * Gets size
-     *
-     * @return int|null
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param int|null $size Размер файла в байтах
-     *
-     * @return self
-     */
-    public function setSize($size)
-    {
-        if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
-        }
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /**
-     * Gets created
-     *
-     * @return \DateTime|null
-     */
-    public function getCreated()
-    {
-        return $this->container['created'];
-    }
-
-    /**
-     * Sets created
-     *
-     * @param \DateTime|null $created Время создания объекта
-     *
-     * @return self
-     */
-    public function setCreated($created)
-    {
-        if (is_null($created)) {
-            throw new \InvalidArgumentException('non-nullable created cannot be null');
-        }
-        $this->container['created'] = $created;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_by
-     *
-     * @return \OpenAPI\Client\Model\FileCreatedBy|null
-     */
-    public function getCreatedBy()
-    {
-        return $this->container['created_by'];
-    }
-
-    /**
-     * Sets created_by
-     *
-     * @param \OpenAPI\Client\Model\FileCreatedBy|null $created_by created_by
-     *
-     * @return self
-     */
-    public function setCreatedBy($created_by)
-    {
-        if (is_null($created_by)) {
-            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
-        }
-        $this->container['created_by'] = $created_by;
+        $this->container['rows'] = $rows;
 
         return $this;
     }

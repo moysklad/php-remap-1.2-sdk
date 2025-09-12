@@ -89,9 +89,9 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'uom' => '\OpenAPI\Client\Model\ProductUom',
         'product_folder' => '\OpenAPI\Client\Model\ProductProductFolder',
         'images' => '\OpenAPI\Client\Model\ProductImages',
-        'files' => '\OpenAPI\Client\Model\ProductFiles',
-        'barcodes' => '\OpenAPI\Client\Model\ProductBarcodesInner[]',
-        'packs' => '\OpenAPI\Client\Model\ProductPacksInner[]',
+        'files' => '\OpenAPI\Client\Model\CounterpartyFiles',
+        'barcodes' => '\OpenAPI\Client\Model\Barcode[]',
+        'packs' => '\OpenAPI\Client\Model\Pack[]',
         'tracking_type' => 'string',
         'tnved' => 'string',
         'payment_item_type' => 'string',
@@ -1776,7 +1776,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets files
      *
-     * @return \OpenAPI\Client\Model\ProductFiles|null
+     * @return \OpenAPI\Client\Model\CounterpartyFiles|null
      */
     public function getFiles()
     {
@@ -1786,7 +1786,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets files
      *
-     * @param \OpenAPI\Client\Model\ProductFiles|null $files files
+     * @param \OpenAPI\Client\Model\CounterpartyFiles|null $files files
      *
      * @return self
      */
@@ -1803,7 +1803,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets barcodes
      *
-     * @return \OpenAPI\Client\Model\ProductBarcodesInner[]|null
+     * @return \OpenAPI\Client\Model\Barcode[]|null
      */
     public function getBarcodes()
     {
@@ -1813,7 +1813,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets barcodes
      *
-     * @param \OpenAPI\Client\Model\ProductBarcodesInner[]|null $barcodes Штрихкоды товара
+     * @param \OpenAPI\Client\Model\Barcode[]|null $barcodes Штрихкоды товара
      *
      * @return self
      */
@@ -1830,7 +1830,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets packs
      *
-     * @return \OpenAPI\Client\Model\ProductPacksInner[]|null
+     * @return \OpenAPI\Client\Model\Pack[]|null
      */
     public function getPacks()
     {
@@ -1840,7 +1840,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets packs
      *
-     * @param \OpenAPI\Client\Model\ProductPacksInner[]|null $packs Упаковки товара
+     * @param \OpenAPI\Client\Model\Pack[]|null $packs Упаковки товара
      *
      * @return self
      */

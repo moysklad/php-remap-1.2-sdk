@@ -98,6 +98,8 @@ class ProductSupplier implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => '\OpenAPI\Client\Model\Meta',
         'accounts' => '\OpenAPI\Client\Model\CounterpartyAccounts',
         'contactpersons' => '\OpenAPI\Client\Model\CounterpartyContactpersons',
+        'notes' => '\OpenAPI\Client\Model\CounterpartyNotes',
+        'files' => '\OpenAPI\Client\Model\CounterpartyFiles',
         'tags' => 'string[]',
         'attributes' => '\OpenAPI\Client\Model\Attribute[]'
     ];
@@ -150,6 +152,8 @@ class ProductSupplier implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => null,
         'accounts' => null,
         'contactpersons' => null,
+        'notes' => null,
+        'files' => null,
         'tags' => null,
         'attributes' => null
     ];
@@ -200,6 +204,8 @@ class ProductSupplier implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => false,
         'accounts' => false,
         'contactpersons' => false,
+        'notes' => false,
+        'files' => false,
         'tags' => false,
         'attributes' => false
     ];
@@ -330,6 +336,8 @@ class ProductSupplier implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => 'state',
         'accounts' => 'accounts',
         'contactpersons' => 'contactpersons',
+        'notes' => 'notes',
+        'files' => 'files',
         'tags' => 'tags',
         'attributes' => 'attributes'
     ];
@@ -380,6 +388,8 @@ class ProductSupplier implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => 'setState',
         'accounts' => 'setAccounts',
         'contactpersons' => 'setContactpersons',
+        'notes' => 'setNotes',
+        'files' => 'setFiles',
         'tags' => 'setTags',
         'attributes' => 'setAttributes'
     ];
@@ -430,6 +440,8 @@ class ProductSupplier implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => 'getState',
         'accounts' => 'getAccounts',
         'contactpersons' => 'getContactpersons',
+        'notes' => 'getNotes',
+        'files' => 'getFiles',
         'tags' => 'getTags',
         'attributes' => 'getAttributes'
     ];
@@ -563,6 +575,8 @@ class ProductSupplier implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('state', $data ?? [], null);
         $this->setIfExists('accounts', $data ?? [], null);
         $this->setIfExists('contactpersons', $data ?? [], null);
+        $this->setIfExists('notes', $data ?? [], null);
+        $this->setIfExists('files', $data ?? [], null);
         $this->setIfExists('tags', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
     }
@@ -1859,6 +1873,60 @@ class ProductSupplier implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable contactpersons cannot be null');
         }
         $this->container['contactpersons'] = $contactpersons;
+
+        return $this;
+    }
+
+    /**
+     * Gets notes
+     *
+     * @return \OpenAPI\Client\Model\CounterpartyNotes|null
+     */
+    public function getNotes()
+    {
+        return $this->container['notes'];
+    }
+
+    /**
+     * Sets notes
+     *
+     * @param \OpenAPI\Client\Model\CounterpartyNotes|null $notes notes
+     *
+     * @return self
+     */
+    public function setNotes($notes)
+    {
+        if (is_null($notes)) {
+            throw new \InvalidArgumentException('non-nullable notes cannot be null');
+        }
+        $this->container['notes'] = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Gets files
+     *
+     * @return \OpenAPI\Client\Model\CounterpartyFiles|null
+     */
+    public function getFiles()
+    {
+        return $this->container['files'];
+    }
+
+    /**
+     * Sets files
+     *
+     * @param \OpenAPI\Client\Model\CounterpartyFiles|null $files files
+     *
+     * @return self
+     */
+    public function setFiles($files)
+    {
+        if (is_null($files)) {
+            throw new \InvalidArgumentException('non-nullable files cannot be null');
+        }
+        $this->container['files'] = $files;
 
         return $this;
     }

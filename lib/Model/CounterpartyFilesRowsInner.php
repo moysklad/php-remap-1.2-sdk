@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductPacksInner
+ * CounterpartyFilesRowsInner
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ProductPacksInner Class Doc Comment
+ * CounterpartyFilesRowsInner Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductPacksInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class CounterpartyFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ProductPacksInner implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product_packs_inner';
+    protected static $openAPIModelName = 'counterparty_files_rows_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,12 @@ class ProductPacksInner implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'uom' => '\OpenAPI\Client\Model\ProductUom',
-        'quantity' => 'float'
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'title' => 'string',
+        'filename' => 'string',
+        'size' => 'int',
+        'created' => '\DateTime',
+        'created_by' => '\OpenAPI\Client\Model\FileCreatedBy'
     ];
 
     /**
@@ -70,9 +73,12 @@ class ProductPacksInner implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'uuid',
-        'uom' => null,
-        'quantity' => 'float'
+        'meta' => null,
+        'title' => null,
+        'filename' => null,
+        'size' => null,
+        'created' => 'date-time',
+        'created_by' => null
     ];
 
     /**
@@ -81,9 +87,12 @@ class ProductPacksInner implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'uom' => false,
-        'quantity' => false
+        'meta' => false,
+        'title' => false,
+        'filename' => false,
+        'size' => false,
+        'created' => false,
+        'created_by' => false
     ];
 
     /**
@@ -172,9 +181,12 @@ class ProductPacksInner implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'uom' => 'uom',
-        'quantity' => 'quantity'
+        'meta' => 'meta',
+        'title' => 'title',
+        'filename' => 'filename',
+        'size' => 'size',
+        'created' => 'created',
+        'created_by' => 'createdBy'
     ];
 
     /**
@@ -183,9 +195,12 @@ class ProductPacksInner implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'uom' => 'setUom',
-        'quantity' => 'setQuantity'
+        'meta' => 'setMeta',
+        'title' => 'setTitle',
+        'filename' => 'setFilename',
+        'size' => 'setSize',
+        'created' => 'setCreated',
+        'created_by' => 'setCreatedBy'
     ];
 
     /**
@@ -194,9 +209,12 @@ class ProductPacksInner implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'uom' => 'getUom',
-        'quantity' => 'getQuantity'
+        'meta' => 'getMeta',
+        'title' => 'getTitle',
+        'filename' => 'getFilename',
+        'size' => 'getSize',
+        'created' => 'getCreated',
+        'created_by' => 'getCreatedBy'
     ];
 
     /**
@@ -256,9 +274,12 @@ class ProductPacksInner implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('uom', $data ?? [], null);
-        $this->setIfExists('quantity', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('filename', $data ?? [], null);
+        $this->setIfExists('size', $data ?? [], null);
+        $this->setIfExists('created', $data ?? [], null);
+        $this->setIfExists('created_by', $data ?? [], null);
     }
 
     /**
@@ -288,6 +309,14 @@ class ProductPacksInner implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 255)) {
+            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['filename']) && (mb_strlen($this->container['filename']) > 255)) {
+            $invalidProperties[] = "invalid value for 'filename', the character length must be smaller than or equal to 255.";
+        }
+
         return $invalidProperties;
     }
 
@@ -304,82 +333,171 @@ class ProductPacksInner implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets id
+     * Gets meta
+     *
+     * @return \OpenAPI\Client\Model\Meta|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \OpenAPI\Client\Model\Meta|null $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        }
+        $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
      *
      * @return string|null
      */
-    public function getId()
+    public function getTitle()
     {
-        return $this->container['id'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets id
+     * Sets title
      *
-     * @param string|null $id ID упаковки
+     * @param string|null $title Название файла
      *
      * @return self
      */
-    public function setId($id)
+    public function setTitle($title)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
         }
-        $this->container['id'] = $id;
+        if ((mb_strlen($title) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $title when calling CounterpartyFilesRowsInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets uom
+     * Gets filename
      *
-     * @return \OpenAPI\Client\Model\ProductUom|null
+     * @return string|null
      */
-    public function getUom()
+    public function getFilename()
     {
-        return $this->container['uom'];
+        return $this->container['filename'];
     }
 
     /**
-     * Sets uom
+     * Sets filename
      *
-     * @param \OpenAPI\Client\Model\ProductUom|null $uom uom
+     * @param string|null $filename Имя файла
      *
      * @return self
      */
-    public function setUom($uom)
+    public function setFilename($filename)
     {
-        if (is_null($uom)) {
-            throw new \InvalidArgumentException('non-nullable uom cannot be null');
+        if (is_null($filename)) {
+            throw new \InvalidArgumentException('non-nullable filename cannot be null');
         }
-        $this->container['uom'] = $uom;
+        if ((mb_strlen($filename) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $filename when calling CounterpartyFilesRowsInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['filename'] = $filename;
 
         return $this;
     }
 
     /**
-     * Gets quantity
+     * Gets size
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getQuantity()
+    public function getSize()
     {
-        return $this->container['quantity'];
+        return $this->container['size'];
     }
 
     /**
-     * Sets quantity
+     * Sets size
      *
-     * @param float|null $quantity Количество товаров в упаковке
+     * @param int|null $size Размер файла в байтах
      *
      * @return self
      */
-    public function setQuantity($quantity)
+    public function setSize($size)
     {
-        if (is_null($quantity)) {
-            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+        if (is_null($size)) {
+            throw new \InvalidArgumentException('non-nullable size cannot be null');
         }
-        $this->container['quantity'] = $quantity;
+        $this->container['size'] = $size;
+
+        return $this;
+    }
+
+    /**
+     * Gets created
+     *
+     * @return \DateTime|null
+     */
+    public function getCreated()
+    {
+        return $this->container['created'];
+    }
+
+    /**
+     * Sets created
+     *
+     * @param \DateTime|null $created Время создания объекта
+     *
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        if (is_null($created)) {
+            throw new \InvalidArgumentException('non-nullable created cannot be null');
+        }
+        $this->container['created'] = $created;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_by
+     *
+     * @return \OpenAPI\Client\Model\FileCreatedBy|null
+     */
+    public function getCreatedBy()
+    {
+        return $this->container['created_by'];
+    }
+
+    /**
+     * Sets created_by
+     *
+     * @param \OpenAPI\Client\Model\FileCreatedBy|null $created_by created_by
+     *
+     * @return self
+     */
+    public function setCreatedBy($created_by)
+    {
+        if (is_null($created_by)) {
+            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
+        }
+        $this->container['created_by'] = $created_by;
 
         return $this;
     }

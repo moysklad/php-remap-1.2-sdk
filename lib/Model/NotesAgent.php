@@ -1,6 +1,6 @@
 <?php
 /**
- * ContactpersonsAgent
+ * NotesAgent
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ContactpersonsAgent Class Doc Comment
+ * NotesAgent Class Doc Comment
  *
  * @category Class
- * @description Ссылка на контрагента-владельца счета
+ * @description Метаданные Контрагента
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializable
+class NotesAgent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'contactpersons_agent';
+    protected static $openAPIModelName = 'notes_agent';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -813,7 +813,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['name'] = $name;
@@ -844,7 +844,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
         if ((mb_strlen($code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $code when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $code when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['code'] = $code;
@@ -875,7 +875,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable external_code cannot be null');
         }
         if ((mb_strlen($external_code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $external_code when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $external_code when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['external_code'] = $external_code;
@@ -987,7 +987,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
         if ((mb_strlen($description) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling ContactpersonsAgent., must be smaller than or equal to 4096.');
+            throw new \InvalidArgumentException('invalid length for $description when calling NotesAgent., must be smaller than or equal to 4096.');
         }
 
         $this->container['description'] = $description;
@@ -1136,7 +1136,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable actual_address cannot be null');
         }
         if ((mb_strlen($actual_address) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $actual_address when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $actual_address when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['actual_address'] = $actual_address;
@@ -1167,7 +1167,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable legal_address cannot be null');
         }
         if ((mb_strlen($legal_address) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $legal_address when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $legal_address when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['legal_address'] = $legal_address;
@@ -1198,7 +1198,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable inn cannot be null');
         }
         if ((mb_strlen($inn) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $inn when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $inn when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['inn'] = $inn;
@@ -1229,7 +1229,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable kpp cannot be null');
         }
         if ((mb_strlen($kpp) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $kpp when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $kpp when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['kpp'] = $kpp;
@@ -1260,7 +1260,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable ogrn cannot be null');
         }
         if ((mb_strlen($ogrn) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $ogrn when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $ogrn when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['ogrn'] = $ogrn;
@@ -1291,7 +1291,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable ogrnip cannot be null');
         }
         if ((mb_strlen($ogrnip) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $ogrnip when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $ogrnip when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['ogrnip'] = $ogrnip;
@@ -1322,7 +1322,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable okpo cannot be null');
         }
         if ((mb_strlen($okpo) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $okpo when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $okpo when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['okpo'] = $okpo;
@@ -1353,7 +1353,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable certificate_number cannot be null');
         }
         if ((mb_strlen($certificate_number) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $certificate_number when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $certificate_number when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['certificate_number'] = $certificate_number;
@@ -1411,7 +1411,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable legal_title cannot be null');
         }
         if ((mb_strlen($legal_title) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $legal_title when calling ContactpersonsAgent., must be smaller than or equal to 4096.');
+            throw new \InvalidArgumentException('invalid length for $legal_title when calling NotesAgent., must be smaller than or equal to 4096.');
         }
 
         $this->container['legal_title'] = $legal_title;
@@ -1442,7 +1442,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable legal_first_name cannot be null');
         }
         if ((mb_strlen($legal_first_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $legal_first_name when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $legal_first_name when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['legal_first_name'] = $legal_first_name;
@@ -1473,7 +1473,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable legal_last_name cannot be null');
         }
         if ((mb_strlen($legal_last_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $legal_last_name when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $legal_last_name when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['legal_last_name'] = $legal_last_name;
@@ -1504,7 +1504,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable legal_middle_name cannot be null');
         }
         if ((mb_strlen($legal_middle_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $legal_middle_name when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $legal_middle_name when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['legal_middle_name'] = $legal_middle_name;
@@ -1599,7 +1599,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable discount_card_number cannot be null');
         }
         if ((mb_strlen($discount_card_number) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $discount_card_number when calling ContactpersonsAgent., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $discount_card_number when calling NotesAgent., must be smaller than or equal to 255.');
         }
 
         $this->container['discount_card_number'] = $discount_card_number;

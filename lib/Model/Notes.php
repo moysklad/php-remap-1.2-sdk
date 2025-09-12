@@ -1,6 +1,6 @@
 <?php
 /**
- * File
+ * Notes
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * File Class Doc Comment
+ * Notes Class Doc Comment
  *
  * @category Class
- * @description Файл
+ * @description Событие Контрагента
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class File implements ModelInterface, ArrayAccess, \JsonSerializable
+class Notes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'file';
+    protected static $openAPIModelName = 'notes';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,13 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\Meta',
-        'title' => 'string',
-        'filename' => 'string',
-        'size' => 'int',
+        'id' => 'string',
+        'account_id' => 'string',
+        'agent' => '\OpenAPI\Client\Model\NotesAgent',
+        'author' => '\OpenAPI\Client\Model\NotesAuthor',
+        'author_application' => '\OpenAPI\Client\Model\NotesAuthorApplication',
         'created' => '\DateTime',
-        'created_by' => '\OpenAPI\Client\Model\FileCreatedBy'
+        'description' => 'string'
     ];
 
     /**
@@ -75,11 +77,13 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'meta' => null,
-        'title' => null,
-        'filename' => null,
-        'size' => null,
+        'id' => 'uuid',
+        'account_id' => 'uuid',
+        'agent' => null,
+        'author' => null,
+        'author_application' => null,
         'created' => 'date-time',
-        'created_by' => null
+        'description' => null
     ];
 
     /**
@@ -89,11 +93,13 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'meta' => false,
-        'title' => false,
-        'filename' => false,
-        'size' => false,
+        'id' => false,
+        'account_id' => false,
+        'agent' => false,
+        'author' => false,
+        'author_application' => false,
         'created' => false,
-        'created_by' => false
+        'description' => false
     ];
 
     /**
@@ -183,11 +189,13 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'meta' => 'meta',
-        'title' => 'title',
-        'filename' => 'filename',
-        'size' => 'size',
+        'id' => 'id',
+        'account_id' => 'accountId',
+        'agent' => 'agent',
+        'author' => 'author',
+        'author_application' => 'authorApplication',
         'created' => 'created',
-        'created_by' => 'createdBy'
+        'description' => 'description'
     ];
 
     /**
@@ -197,11 +205,13 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'meta' => 'setMeta',
-        'title' => 'setTitle',
-        'filename' => 'setFilename',
-        'size' => 'setSize',
+        'id' => 'setId',
+        'account_id' => 'setAccountId',
+        'agent' => 'setAgent',
+        'author' => 'setAuthor',
+        'author_application' => 'setAuthorApplication',
         'created' => 'setCreated',
-        'created_by' => 'setCreatedBy'
+        'description' => 'setDescription'
     ];
 
     /**
@@ -211,11 +221,13 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'meta' => 'getMeta',
-        'title' => 'getTitle',
-        'filename' => 'getFilename',
-        'size' => 'getSize',
+        'id' => 'getId',
+        'account_id' => 'getAccountId',
+        'agent' => 'getAgent',
+        'author' => 'getAuthor',
+        'author_application' => 'getAuthorApplication',
         'created' => 'getCreated',
-        'created_by' => 'getCreatedBy'
+        'description' => 'getDescription'
     ];
 
     /**
@@ -276,11 +288,13 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('filename', $data ?? [], null);
-        $this->setIfExists('size', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('agent', $data ?? [], null);
+        $this->setIfExists('author', $data ?? [], null);
+        $this->setIfExists('author_application', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
-        $this->setIfExists('created_by', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
     }
 
     /**
@@ -310,12 +324,8 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 255)) {
-            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['filename']) && (mb_strlen($this->container['filename']) > 255)) {
-            $invalidProperties[] = "invalid value for 'filename', the character length must be smaller than or equal to 255.";
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4096)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
         }
 
         return $invalidProperties;
@@ -361,90 +371,136 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets title
+     * Gets id
      *
      * @return string|null
      */
-    public function getTitle()
+    public function getId()
     {
-        return $this->container['title'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets title
+     * Sets id
      *
-     * @param string|null $title Название файла
+     * @param string|null $id ID События
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setId($id)
     {
-        if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        if ((mb_strlen($title) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling File., must be smaller than or equal to 255.');
-        }
-
-        $this->container['title'] = $title;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets filename
+     * Gets account_id
      *
      * @return string|null
      */
-    public function getFilename()
+    public function getAccountId()
     {
-        return $this->container['filename'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets filename
+     * Sets account_id
      *
-     * @param string|null $filename Имя файла
+     * @param string|null $account_id ID учетной записи
      *
      * @return self
      */
-    public function setFilename($filename)
+    public function setAccountId($account_id)
     {
-        if (is_null($filename)) {
-            throw new \InvalidArgumentException('non-nullable filename cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        if ((mb_strlen($filename) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $filename when calling File., must be smaller than or equal to 255.');
-        }
-
-        $this->container['filename'] = $filename;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets size
+     * Gets agent
      *
-     * @return int|null
+     * @return \OpenAPI\Client\Model\NotesAgent|null
      */
-    public function getSize()
+    public function getAgent()
     {
-        return $this->container['size'];
+        return $this->container['agent'];
     }
 
     /**
-     * Sets size
+     * Sets agent
      *
-     * @param int|null $size Размер файла в байтах
+     * @param \OpenAPI\Client\Model\NotesAgent|null $agent agent
      *
      * @return self
      */
-    public function setSize($size)
+    public function setAgent($agent)
     {
-        if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
+        if (is_null($agent)) {
+            throw new \InvalidArgumentException('non-nullable agent cannot be null');
         }
-        $this->container['size'] = $size;
+        $this->container['agent'] = $agent;
+
+        return $this;
+    }
+
+    /**
+     * Gets author
+     *
+     * @return \OpenAPI\Client\Model\NotesAuthor|null
+     */
+    public function getAuthor()
+    {
+        return $this->container['author'];
+    }
+
+    /**
+     * Sets author
+     *
+     * @param \OpenAPI\Client\Model\NotesAuthor|null $author author
+     *
+     * @return self
+     */
+    public function setAuthor($author)
+    {
+        if (is_null($author)) {
+            throw new \InvalidArgumentException('non-nullable author cannot be null');
+        }
+        $this->container['author'] = $author;
+
+        return $this;
+    }
+
+    /**
+     * Gets author_application
+     *
+     * @return \OpenAPI\Client\Model\NotesAuthorApplication|null
+     */
+    public function getAuthorApplication()
+    {
+        return $this->container['author_application'];
+    }
+
+    /**
+     * Sets author_application
+     *
+     * @param \OpenAPI\Client\Model\NotesAuthorApplication|null $author_application author_application
+     *
+     * @return self
+     */
+    public function setAuthorApplication($author_application)
+    {
+        if (is_null($author_application)) {
+            throw new \InvalidArgumentException('non-nullable author_application cannot be null');
+        }
+        $this->container['author_application'] = $author_application;
 
         return $this;
     }
@@ -477,28 +533,32 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets created_by
+     * Gets description
      *
-     * @return \OpenAPI\Client\Model\FileCreatedBy|null
+     * @return string|null
      */
-    public function getCreatedBy()
+    public function getDescription()
     {
-        return $this->container['created_by'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets created_by
+     * Sets description
      *
-     * @param \OpenAPI\Client\Model\FileCreatedBy|null $created_by created_by
+     * @param string|null $description Текст события Контрагента
      *
      * @return self
      */
-    public function setCreatedBy($created_by)
+    public function setDescription($description)
     {
-        if (is_null($created_by)) {
-            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['created_by'] = $created_by;
+        if ((mb_strlen($description) > 4096)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling Notes., must be smaller than or equal to 4096.');
+        }
+
+        $this->container['description'] = $description;
 
         return $this;
     }

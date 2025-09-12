@@ -1,6 +1,6 @@
 <?php
 /**
- * File
+ * Barcode
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * File Class Doc Comment
+ * Barcode Class Doc Comment
  *
  * @category Class
- * @description Файл
+ * @description Штрихкод
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class File implements ModelInterface, ArrayAccess, \JsonSerializable
+class Barcode implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'file';
+    protected static $openAPIModelName = 'barcode';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,11 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\Meta',
-        'title' => 'string',
-        'filename' => 'string',
-        'size' => 'int',
-        'created' => '\DateTime',
-        'created_by' => '\OpenAPI\Client\Model\FileCreatedBy'
+        'ean13' => 'string',
+        'ean8' => 'string',
+        'code128' => 'string',
+        'gtin' => 'string',
+        'upc' => 'string'
     ];
 
     /**
@@ -74,12 +73,11 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'meta' => null,
-        'title' => null,
-        'filename' => null,
-        'size' => null,
-        'created' => 'date-time',
-        'created_by' => null
+        'ean13' => null,
+        'ean8' => null,
+        'code128' => null,
+        'gtin' => null,
+        'upc' => null
     ];
 
     /**
@@ -88,12 +86,11 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'meta' => false,
-        'title' => false,
-        'filename' => false,
-        'size' => false,
-        'created' => false,
-        'created_by' => false
+        'ean13' => false,
+        'ean8' => false,
+        'code128' => false,
+        'gtin' => false,
+        'upc' => false
     ];
 
     /**
@@ -182,12 +179,11 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'meta' => 'meta',
-        'title' => 'title',
-        'filename' => 'filename',
-        'size' => 'size',
-        'created' => 'created',
-        'created_by' => 'createdBy'
+        'ean13' => 'ean13',
+        'ean8' => 'ean8',
+        'code128' => 'code128',
+        'gtin' => 'gtin',
+        'upc' => 'upc'
     ];
 
     /**
@@ -196,12 +192,11 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'meta' => 'setMeta',
-        'title' => 'setTitle',
-        'filename' => 'setFilename',
-        'size' => 'setSize',
-        'created' => 'setCreated',
-        'created_by' => 'setCreatedBy'
+        'ean13' => 'setEan13',
+        'ean8' => 'setEan8',
+        'code128' => 'setCode128',
+        'gtin' => 'setGtin',
+        'upc' => 'setUpc'
     ];
 
     /**
@@ -210,12 +205,11 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'meta' => 'getMeta',
-        'title' => 'getTitle',
-        'filename' => 'getFilename',
-        'size' => 'getSize',
-        'created' => 'getCreated',
-        'created_by' => 'getCreatedBy'
+        'ean13' => 'getEan13',
+        'ean8' => 'getEan8',
+        'code128' => 'getCode128',
+        'gtin' => 'getGtin',
+        'upc' => 'getUpc'
     ];
 
     /**
@@ -275,12 +269,11 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('filename', $data ?? [], null);
-        $this->setIfExists('size', $data ?? [], null);
-        $this->setIfExists('created', $data ?? [], null);
-        $this->setIfExists('created_by', $data ?? [], null);
+        $this->setIfExists('ean13', $data ?? [], null);
+        $this->setIfExists('ean8', $data ?? [], null);
+        $this->setIfExists('code128', $data ?? [], null);
+        $this->setIfExists('gtin', $data ?? [], null);
+        $this->setIfExists('upc', $data ?? [], null);
     }
 
     /**
@@ -310,14 +303,6 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 255)) {
-            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['filename']) && (mb_strlen($this->container['filename']) > 255)) {
-            $invalidProperties[] = "invalid value for 'filename', the character length must be smaller than or equal to 255.";
-        }
-
         return $invalidProperties;
     }
 
@@ -334,171 +319,136 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets meta
-     *
-     * @return \OpenAPI\Client\Model\Meta|null
-     */
-    public function getMeta()
-    {
-        return $this->container['meta'];
-    }
-
-    /**
-     * Sets meta
-     *
-     * @param \OpenAPI\Client\Model\Meta|null $meta meta
-     *
-     * @return self
-     */
-    public function setMeta($meta)
-    {
-        if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
-        }
-        $this->container['meta'] = $meta;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
+     * Gets ean13
      *
      * @return string|null
      */
-    public function getTitle()
+    public function getEan13()
     {
-        return $this->container['title'];
+        return $this->container['ean13'];
     }
 
     /**
-     * Sets title
+     * Sets ean13
      *
-     * @param string|null $title Название файла
+     * @param string|null $ean13 Штрихкод в формате EAN13
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setEan13($ean13)
     {
-        if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        if (is_null($ean13)) {
+            throw new \InvalidArgumentException('non-nullable ean13 cannot be null');
         }
-        if ((mb_strlen($title) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling File., must be smaller than or equal to 255.');
-        }
-
-        $this->container['title'] = $title;
+        $this->container['ean13'] = $ean13;
 
         return $this;
     }
 
     /**
-     * Gets filename
+     * Gets ean8
      *
      * @return string|null
      */
-    public function getFilename()
+    public function getEan8()
     {
-        return $this->container['filename'];
+        return $this->container['ean8'];
     }
 
     /**
-     * Sets filename
+     * Sets ean8
      *
-     * @param string|null $filename Имя файла
+     * @param string|null $ean8 Штрихкод в формате EAN8
      *
      * @return self
      */
-    public function setFilename($filename)
+    public function setEan8($ean8)
     {
-        if (is_null($filename)) {
-            throw new \InvalidArgumentException('non-nullable filename cannot be null');
+        if (is_null($ean8)) {
+            throw new \InvalidArgumentException('non-nullable ean8 cannot be null');
         }
-        if ((mb_strlen($filename) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $filename when calling File., must be smaller than or equal to 255.');
-        }
-
-        $this->container['filename'] = $filename;
+        $this->container['ean8'] = $ean8;
 
         return $this;
     }
 
     /**
-     * Gets size
+     * Gets code128
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getSize()
+    public function getCode128()
     {
-        return $this->container['size'];
+        return $this->container['code128'];
     }
 
     /**
-     * Sets size
+     * Sets code128
      *
-     * @param int|null $size Размер файла в байтах
+     * @param string|null $code128 Штрихкод в формате Code128
      *
      * @return self
      */
-    public function setSize($size)
+    public function setCode128($code128)
     {
-        if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
+        if (is_null($code128)) {
+            throw new \InvalidArgumentException('non-nullable code128 cannot be null');
         }
-        $this->container['size'] = $size;
+        $this->container['code128'] = $code128;
 
         return $this;
     }
 
     /**
-     * Gets created
+     * Gets gtin
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getCreated()
+    public function getGtin()
     {
-        return $this->container['created'];
+        return $this->container['gtin'];
     }
 
     /**
-     * Sets created
+     * Sets gtin
      *
-     * @param \DateTime|null $created Время создания объекта
+     * @param string|null $gtin Штрихкод в формате GTIN
      *
      * @return self
      */
-    public function setCreated($created)
+    public function setGtin($gtin)
     {
-        if (is_null($created)) {
-            throw new \InvalidArgumentException('non-nullable created cannot be null');
+        if (is_null($gtin)) {
+            throw new \InvalidArgumentException('non-nullable gtin cannot be null');
         }
-        $this->container['created'] = $created;
+        $this->container['gtin'] = $gtin;
 
         return $this;
     }
 
     /**
-     * Gets created_by
+     * Gets upc
      *
-     * @return \OpenAPI\Client\Model\FileCreatedBy|null
+     * @return string|null
      */
-    public function getCreatedBy()
+    public function getUpc()
     {
-        return $this->container['created_by'];
+        return $this->container['upc'];
     }
 
     /**
-     * Sets created_by
+     * Sets upc
      *
-     * @param \OpenAPI\Client\Model\FileCreatedBy|null $created_by created_by
+     * @param string|null $upc Штрихкод в формате UPC
      *
      * @return self
      */
-    public function setCreatedBy($created_by)
+    public function setUpc($upc)
     {
-        if (is_null($created_by)) {
-            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
+        if (is_null($upc)) {
+            throw new \InvalidArgumentException('non-nullable upc cannot be null');
         }
-        $this->container['created_by'] = $created_by;
+        $this->container['upc'] = $upc;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductBarcodesInner
+ * Pack
  *
  * PHP version 7.4
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ProductBarcodesInner Class Doc Comment
+ * Pack Class Doc Comment
  *
  * @category Class
+ * @description Упаковка
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductBarcodesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class Pack implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class ProductBarcodesInner implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product_barcodes_inner';
+    protected static $openAPIModelName = 'pack';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +58,10 @@ class ProductBarcodesInner implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ean13' => 'string',
-        'ean8' => 'string',
-        'code128' => 'string',
-        'gtin' => 'string',
-        'upc' => 'string'
+        'id' => 'string',
+        'uom' => '\OpenAPI\Client\Model\ProductUom',
+        'quantity' => 'float',
+        'barcodes' => '\OpenAPI\Client\Model\Barcode[]'
     ];
 
     /**
@@ -72,11 +72,10 @@ class ProductBarcodesInner implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'ean13' => null,
-        'ean8' => null,
-        'code128' => null,
-        'gtin' => null,
-        'upc' => null
+        'id' => 'uuid',
+        'uom' => null,
+        'quantity' => 'float',
+        'barcodes' => null
     ];
 
     /**
@@ -85,11 +84,10 @@ class ProductBarcodesInner implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ean13' => false,
-        'ean8' => false,
-        'code128' => false,
-        'gtin' => false,
-        'upc' => false
+        'id' => false,
+        'uom' => false,
+        'quantity' => false,
+        'barcodes' => false
     ];
 
     /**
@@ -178,11 +176,10 @@ class ProductBarcodesInner implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'ean13' => 'ean13',
-        'ean8' => 'ean8',
-        'code128' => 'code128',
-        'gtin' => 'gtin',
-        'upc' => 'upc'
+        'id' => 'id',
+        'uom' => 'uom',
+        'quantity' => 'quantity',
+        'barcodes' => 'barcodes'
     ];
 
     /**
@@ -191,11 +188,10 @@ class ProductBarcodesInner implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'ean13' => 'setEan13',
-        'ean8' => 'setEan8',
-        'code128' => 'setCode128',
-        'gtin' => 'setGtin',
-        'upc' => 'setUpc'
+        'id' => 'setId',
+        'uom' => 'setUom',
+        'quantity' => 'setQuantity',
+        'barcodes' => 'setBarcodes'
     ];
 
     /**
@@ -204,11 +200,10 @@ class ProductBarcodesInner implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'ean13' => 'getEan13',
-        'ean8' => 'getEan8',
-        'code128' => 'getCode128',
-        'gtin' => 'getGtin',
-        'upc' => 'getUpc'
+        'id' => 'getId',
+        'uom' => 'getUom',
+        'quantity' => 'getQuantity',
+        'barcodes' => 'getBarcodes'
     ];
 
     /**
@@ -268,11 +263,10 @@ class ProductBarcodesInner implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('ean13', $data ?? [], null);
-        $this->setIfExists('ean8', $data ?? [], null);
-        $this->setIfExists('code128', $data ?? [], null);
-        $this->setIfExists('gtin', $data ?? [], null);
-        $this->setIfExists('upc', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('uom', $data ?? [], null);
+        $this->setIfExists('quantity', $data ?? [], null);
+        $this->setIfExists('barcodes', $data ?? [], null);
     }
 
     /**
@@ -318,136 +312,109 @@ class ProductBarcodesInner implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets ean13
+     * Gets id
      *
      * @return string|null
      */
-    public function getEan13()
+    public function getId()
     {
-        return $this->container['ean13'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets ean13
+     * Sets id
      *
-     * @param string|null $ean13 Штрихкод в формате EAN13
+     * @param string|null $id ID упаковки
      *
      * @return self
      */
-    public function setEan13($ean13)
+    public function setId($id)
     {
-        if (is_null($ean13)) {
-            throw new \InvalidArgumentException('non-nullable ean13 cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['ean13'] = $ean13;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets ean8
+     * Gets uom
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\ProductUom|null
      */
-    public function getEan8()
+    public function getUom()
     {
-        return $this->container['ean8'];
+        return $this->container['uom'];
     }
 
     /**
-     * Sets ean8
+     * Sets uom
      *
-     * @param string|null $ean8 Штрихкод в формате EAN8
+     * @param \OpenAPI\Client\Model\ProductUom|null $uom uom
      *
      * @return self
      */
-    public function setEan8($ean8)
+    public function setUom($uom)
     {
-        if (is_null($ean8)) {
-            throw new \InvalidArgumentException('non-nullable ean8 cannot be null');
+        if (is_null($uom)) {
+            throw new \InvalidArgumentException('non-nullable uom cannot be null');
         }
-        $this->container['ean8'] = $ean8;
+        $this->container['uom'] = $uom;
 
         return $this;
     }
 
     /**
-     * Gets code128
+     * Gets quantity
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getCode128()
+    public function getQuantity()
     {
-        return $this->container['code128'];
+        return $this->container['quantity'];
     }
 
     /**
-     * Sets code128
+     * Sets quantity
      *
-     * @param string|null $code128 Штрихкод в формате Code128
+     * @param float|null $quantity Количество товаров в упаковке
      *
      * @return self
      */
-    public function setCode128($code128)
+    public function setQuantity($quantity)
     {
-        if (is_null($code128)) {
-            throw new \InvalidArgumentException('non-nullable code128 cannot be null');
+        if (is_null($quantity)) {
+            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
-        $this->container['code128'] = $code128;
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }
 
     /**
-     * Gets gtin
+     * Gets barcodes
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\Barcode[]|null
      */
-    public function getGtin()
+    public function getBarcodes()
     {
-        return $this->container['gtin'];
+        return $this->container['barcodes'];
     }
 
     /**
-     * Sets gtin
+     * Sets barcodes
      *
-     * @param string|null $gtin Штрихкод в формате GTIN
+     * @param \OpenAPI\Client\Model\Barcode[]|null $barcodes Штрихкоды упаковки
      *
      * @return self
      */
-    public function setGtin($gtin)
+    public function setBarcodes($barcodes)
     {
-        if (is_null($gtin)) {
-            throw new \InvalidArgumentException('non-nullable gtin cannot be null');
+        if (is_null($barcodes)) {
+            throw new \InvalidArgumentException('non-nullable barcodes cannot be null');
         }
-        $this->container['gtin'] = $gtin;
-
-        return $this;
-    }
-
-    /**
-     * Gets upc
-     *
-     * @return string|null
-     */
-    public function getUpc()
-    {
-        return $this->container['upc'];
-    }
-
-    /**
-     * Sets upc
-     *
-     * @param string|null $upc Штрихкод в формате UPC
-     *
-     * @return self
-     */
-    public function setUpc($upc)
-    {
-        if (is_null($upc)) {
-            throw new \InvalidArgumentException('non-nullable upc cannot be null');
-        }
-        $this->container['upc'] = $upc;
+        $this->container['barcodes'] = $barcodes;
 
         return $this;
     }

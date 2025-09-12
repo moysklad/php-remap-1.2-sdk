@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductFilesRowsInner
+ * CounterpartyNotes
  *
  * PHP version 7.4
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ProductFilesRowsInner Class Doc Comment
+ * CounterpartyNotes Class Doc Comment
  *
  * @category Class
+ * @description Массив контактных лиц
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class CounterpartyNotes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product_files_rows_inner';
+    protected static $openAPIModelName = 'counterparty_notes';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +58,8 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\Meta',
-        'id' => 'string',
-        'title' => 'string',
-        'filename' => 'string',
-        'size' => 'int',
-        'updated' => '\DateTime',
-        'extension' => 'string'
+        'meta' => '\OpenAPI\Client\Model\MetaList',
+        'rows' => '\OpenAPI\Client\Model\Notes[]'
     ];
 
     /**
@@ -75,12 +71,7 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPIFormats = [
         'meta' => null,
-        'id' => 'uuid',
-        'title' => null,
-        'filename' => null,
-        'size' => null,
-        'updated' => 'date-time',
-        'extension' => null
+        'rows' => null
     ];
 
     /**
@@ -90,12 +81,7 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPINullables = [
         'meta' => false,
-        'id' => false,
-        'title' => false,
-        'filename' => false,
-        'size' => false,
-        'updated' => false,
-        'extension' => false
+        'rows' => false
     ];
 
     /**
@@ -185,12 +171,7 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'meta' => 'meta',
-        'id' => 'id',
-        'title' => 'title',
-        'filename' => 'filename',
-        'size' => 'size',
-        'updated' => 'updated',
-        'extension' => 'extension'
+        'rows' => 'rows'
     ];
 
     /**
@@ -200,12 +181,7 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'meta' => 'setMeta',
-        'id' => 'setId',
-        'title' => 'setTitle',
-        'filename' => 'setFilename',
-        'size' => 'setSize',
-        'updated' => 'setUpdated',
-        'extension' => 'setExtension'
+        'rows' => 'setRows'
     ];
 
     /**
@@ -215,12 +191,7 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'meta' => 'getMeta',
-        'id' => 'getId',
-        'title' => 'getTitle',
-        'filename' => 'getFilename',
-        'size' => 'getSize',
-        'updated' => 'getUpdated',
-        'extension' => 'getExtension'
+        'rows' => 'getRows'
     ];
 
     /**
@@ -281,12 +252,7 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(?array $data = null)
     {
         $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('filename', $data ?? [], null);
-        $this->setIfExists('size', $data ?? [], null);
-        $this->setIfExists('updated', $data ?? [], null);
-        $this->setIfExists('extension', $data ?? [], null);
+        $this->setIfExists('rows', $data ?? [], null);
     }
 
     /**
@@ -316,14 +282,6 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 255)) {
-            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['filename']) && (mb_strlen($this->container['filename']) > 255)) {
-            $invalidProperties[] = "invalid value for 'filename', the character length must be smaller than or equal to 255.";
-        }
-
         return $invalidProperties;
     }
 
@@ -342,7 +300,7 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets meta
      *
-     * @return \OpenAPI\Client\Model\Meta|null
+     * @return \OpenAPI\Client\Model\MetaList|null
      */
     public function getMeta()
     {
@@ -352,7 +310,7 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets meta
      *
-     * @param \OpenAPI\Client\Model\Meta|null $meta meta
+     * @param \OpenAPI\Client\Model\MetaList|null $meta meta
      *
      * @return self
      */
@@ -367,171 +325,28 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets id
+     * Gets rows
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\Notes[]|null
      */
-    public function getId()
+    public function getRows()
     {
-        return $this->container['id'];
+        return $this->container['rows'];
     }
 
     /**
-     * Sets id
+     * Sets rows
      *
-     * @param string|null $id ID файла
+     * @param \OpenAPI\Client\Model\Notes[]|null $rows rows
      *
      * @return self
      */
-    public function setId($id)
+    public function setRows($rows)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($rows)) {
+            throw new \InvalidArgumentException('non-nullable rows cannot be null');
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title Название файла
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
-        }
-        if ((mb_strlen($title) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling ProductFilesRowsInner., must be smaller than or equal to 255.');
-        }
-
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets filename
-     *
-     * @return string|null
-     */
-    public function getFilename()
-    {
-        return $this->container['filename'];
-    }
-
-    /**
-     * Sets filename
-     *
-     * @param string|null $filename Имя файла
-     *
-     * @return self
-     */
-    public function setFilename($filename)
-    {
-        if (is_null($filename)) {
-            throw new \InvalidArgumentException('non-nullable filename cannot be null');
-        }
-        if ((mb_strlen($filename) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $filename when calling ProductFilesRowsInner., must be smaller than or equal to 255.');
-        }
-
-        $this->container['filename'] = $filename;
-
-        return $this;
-    }
-
-    /**
-     * Gets size
-     *
-     * @return int|null
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param int|null $size Размер файла в байтах
-     *
-     * @return self
-     */
-    public function setSize($size)
-    {
-        if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
-        }
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdated()
-    {
-        return $this->container['updated'];
-    }
-
-    /**
-     * Sets updated
-     *
-     * @param \DateTime|null $updated Время последнего изменения
-     *
-     * @return self
-     */
-    public function setUpdated($updated)
-    {
-        if (is_null($updated)) {
-            throw new \InvalidArgumentException('non-nullable updated cannot be null');
-        }
-        $this->container['updated'] = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Gets extension
-     *
-     * @return string|null
-     */
-    public function getExtension()
-    {
-        return $this->container['extension'];
-    }
-
-    /**
-     * Sets extension
-     *
-     * @param string|null $extension Расширение файла
-     *
-     * @return self
-     */
-    public function setExtension($extension)
-    {
-        if (is_null($extension)) {
-            throw new \InvalidArgumentException('non-nullable extension cannot be null');
-        }
-        $this->container['extension'] = $extension;
+        $this->container['rows'] = $rows;
 
         return $this;
     }
