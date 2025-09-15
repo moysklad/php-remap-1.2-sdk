@@ -64,8 +64,8 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'description' => 'string',
         'code' => 'string',
-        'group' => '\OpenAPI\Client\Model\CounterpartyGroup',
-        'owner' => '\OpenAPI\Client\Model\CounterpartyOwner',
+        'group' => '\OpenAPI\Client\Model\ProductGroup',
+        'owner' => '\OpenAPI\Client\Model\ProductOwner',
         'updated' => '\DateTime',
         'shared' => 'bool',
         'external_code' => 'string'
@@ -553,7 +553,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets group
      *
-     * @return \OpenAPI\Client\Model\CounterpartyGroup|null
+     * @return \OpenAPI\Client\Model\ProductGroup|null
      */
     public function getGroup()
     {
@@ -563,7 +563,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets group
      *
-     * @param \OpenAPI\Client\Model\CounterpartyGroup|null $group group
+     * @param \OpenAPI\Client\Model\ProductGroup|null $group group
      *
      * @return self
      */
@@ -580,7 +580,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\CounterpartyOwner|null
+     * @return \OpenAPI\Client\Model\ProductOwner|null
      */
     public function getOwner()
     {
@@ -590,7 +590,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\CounterpartyOwner|null $owner owner
+     * @param \OpenAPI\Client\Model\ProductOwner|null $owner owner
      *
      * @return self
      */

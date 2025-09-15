@@ -89,8 +89,8 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
         'sex' => 'string',
         'discount_card_number' => 'string',
         'shared' => 'bool',
-        'group' => '\OpenAPI\Client\Model\CounterpartyGroup',
-        'owner' => '\OpenAPI\Client\Model\CounterpartyOwner',
+        'group' => '\OpenAPI\Client\Model\ProductGroup',
+        'owner' => '\OpenAPI\Client\Model\ProductOwner',
         'sales_amount' => 'int',
         'bonus_points' => 'int',
         'bonus_program' => '\OpenAPI\Client\Model\Meta',
@@ -99,7 +99,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
         'accounts' => '\OpenAPI\Client\Model\CounterpartyAccounts',
         'contactpersons' => '\OpenAPI\Client\Model\CounterpartyContactpersons',
         'notes' => '\OpenAPI\Client\Model\CounterpartyNotes',
-        'files' => '\OpenAPI\Client\Model\CounterpartyFiles',
+        'files' => '\OpenAPI\Client\Model\ProductFiles',
         'tags' => 'string[]',
         'attributes' => '\OpenAPI\Client\Model\Attribute[]'
     ];
@@ -1637,7 +1637,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets group
      *
-     * @return \OpenAPI\Client\Model\CounterpartyGroup|null
+     * @return \OpenAPI\Client\Model\ProductGroup|null
      */
     public function getGroup()
     {
@@ -1647,7 +1647,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets group
      *
-     * @param \OpenAPI\Client\Model\CounterpartyGroup|null $group group
+     * @param \OpenAPI\Client\Model\ProductGroup|null $group group
      *
      * @return self
      */
@@ -1664,7 +1664,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\CounterpartyOwner|null
+     * @return \OpenAPI\Client\Model\ProductOwner|null
      */
     public function getOwner()
     {
@@ -1674,7 +1674,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\CounterpartyOwner|null $owner owner
+     * @param \OpenAPI\Client\Model\ProductOwner|null $owner owner
      *
      * @return self
      */
@@ -1907,7 +1907,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets files
      *
-     * @return \OpenAPI\Client\Model\CounterpartyFiles|null
+     * @return \OpenAPI\Client\Model\ProductFiles|null
      */
     public function getFiles()
     {
@@ -1917,7 +1917,7 @@ class ContactpersonsAgent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets files
      *
-     * @param \OpenAPI\Client\Model\CounterpartyFiles|null $files files
+     * @param \OpenAPI\Client\Model\ProductFiles|null $files files
      *
      * @return self
      */

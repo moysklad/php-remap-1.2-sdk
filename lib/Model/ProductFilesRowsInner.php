@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductUom
+ * ProductFilesRowsInner
  *
  * PHP version 7.4
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ProductUom Class Doc Comment
+ * ProductFilesRowsInner Class Doc Comment
  *
  * @category Class
- * @description Метаданные единиц измерения
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
+class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product_uom';
+    protected static $openAPIModelName = 'product_files_rows_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,16 +58,13 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\Meta',
-        'id' => 'string',
-        'account_id' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'code' => 'string',
-        'group' => '\OpenAPI\Client\Model\ProductGroup',
-        'owner' => '\OpenAPI\Client\Model\ProductOwner',
-        'updated' => '\DateTime',
-        'shared' => 'bool',
-        'external_code' => 'string'
+        'title' => 'string',
+        'filename' => 'string',
+        'size' => 'int',
+        'created' => '\DateTime',
+        'created_by' => '\OpenAPI\Client\Model\FileCreatedBy',
+        'tiny' => '\OpenAPI\Client\Model\Meta',
+        'miniature' => '\OpenAPI\Client\Model\Meta'
     ];
 
     /**
@@ -80,16 +76,13 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'meta' => null,
-        'id' => 'uuid',
-        'account_id' => 'uuid',
-        'name' => null,
-        'description' => null,
-        'code' => null,
-        'group' => null,
-        'owner' => null,
-        'updated' => 'date-time',
-        'shared' => null,
-        'external_code' => null
+        'title' => null,
+        'filename' => null,
+        'size' => null,
+        'created' => 'date-time',
+        'created_by' => null,
+        'tiny' => null,
+        'miniature' => null
     ];
 
     /**
@@ -99,16 +92,13 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'meta' => false,
-        'id' => false,
-        'account_id' => false,
-        'name' => false,
-        'description' => false,
-        'code' => false,
-        'group' => false,
-        'owner' => false,
-        'updated' => false,
-        'shared' => false,
-        'external_code' => false
+        'title' => false,
+        'filename' => false,
+        'size' => false,
+        'created' => false,
+        'created_by' => false,
+        'tiny' => false,
+        'miniature' => false
     ];
 
     /**
@@ -198,16 +188,13 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'meta' => 'meta',
-        'id' => 'id',
-        'account_id' => 'accountId',
-        'name' => 'name',
-        'description' => 'description',
-        'code' => 'code',
-        'group' => 'group',
-        'owner' => 'owner',
-        'updated' => 'updated',
-        'shared' => 'shared',
-        'external_code' => 'externalCode'
+        'title' => 'title',
+        'filename' => 'filename',
+        'size' => 'size',
+        'created' => 'created',
+        'created_by' => 'createdBy',
+        'tiny' => 'tiny',
+        'miniature' => 'miniature'
     ];
 
     /**
@@ -217,16 +204,13 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'meta' => 'setMeta',
-        'id' => 'setId',
-        'account_id' => 'setAccountId',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'code' => 'setCode',
-        'group' => 'setGroup',
-        'owner' => 'setOwner',
-        'updated' => 'setUpdated',
-        'shared' => 'setShared',
-        'external_code' => 'setExternalCode'
+        'title' => 'setTitle',
+        'filename' => 'setFilename',
+        'size' => 'setSize',
+        'created' => 'setCreated',
+        'created_by' => 'setCreatedBy',
+        'tiny' => 'setTiny',
+        'miniature' => 'setMiniature'
     ];
 
     /**
@@ -236,16 +220,13 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'meta' => 'getMeta',
-        'id' => 'getId',
-        'account_id' => 'getAccountId',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'code' => 'getCode',
-        'group' => 'getGroup',
-        'owner' => 'getOwner',
-        'updated' => 'getUpdated',
-        'shared' => 'getShared',
-        'external_code' => 'getExternalCode'
+        'title' => 'getTitle',
+        'filename' => 'getFilename',
+        'size' => 'getSize',
+        'created' => 'getCreated',
+        'created_by' => 'getCreatedBy',
+        'tiny' => 'getTiny',
+        'miniature' => 'getMiniature'
     ];
 
     /**
@@ -306,16 +287,13 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('group', $data ?? [], null);
-        $this->setIfExists('owner', $data ?? [], null);
-        $this->setIfExists('updated', $data ?? [], null);
-        $this->setIfExists('shared', $data ?? [], null);
-        $this->setIfExists('external_code', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('filename', $data ?? [], null);
+        $this->setIfExists('size', $data ?? [], null);
+        $this->setIfExists('created', $data ?? [], null);
+        $this->setIfExists('created_by', $data ?? [], null);
+        $this->setIfExists('tiny', $data ?? [], null);
+        $this->setIfExists('miniature', $data ?? [], null);
     }
 
     /**
@@ -345,20 +323,12 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 255)) {
+            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 255.";
         }
 
-        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4096)) {
-            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
-        }
-
-        if (!is_null($this->container['code']) && (mb_strlen($this->container['code']) > 255)) {
-            $invalidProperties[] = "invalid value for 'code', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['external_code']) && (mb_strlen($this->container['external_code']) > 255)) {
-            $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
+        if (!is_null($this->container['filename']) && (mb_strlen($this->container['filename']) > 255)) {
+            $invalidProperties[] = "invalid value for 'filename', the character length must be smaller than or equal to 255.";
         }
 
         return $invalidProperties;
@@ -404,287 +374,198 @@ class ProductUom implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets id
+     * Gets title
      *
      * @return string|null
      */
-    public function getId()
+    public function getTitle()
     {
-        return $this->container['id'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets id
+     * Sets title
      *
-     * @param string|null $id ID единицы измерения
+     * @param string|null $title Название файла
      *
      * @return self
      */
-    public function setId($id)
+    public function setTitle($title)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
         }
-        $this->container['id'] = $id;
+        if ((mb_strlen($title) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $title when calling ProductFilesRowsInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets account_id
+     * Gets filename
      *
      * @return string|null
      */
-    public function getAccountId()
+    public function getFilename()
     {
-        return $this->container['account_id'];
+        return $this->container['filename'];
     }
 
     /**
-     * Sets account_id
+     * Sets filename
      *
-     * @param string|null $account_id ID учетной записи
+     * @param string|null $filename Имя файла
      *
      * @return self
      */
-    public function setAccountId($account_id)
+    public function setFilename($filename)
     {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        if (is_null($filename)) {
+            throw new \InvalidArgumentException('non-nullable filename cannot be null');
         }
-        $this->container['account_id'] = $account_id;
+        if ((mb_strlen($filename) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $filename when calling ProductFilesRowsInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['filename'] = $filename;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets size
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getName()
+    public function getSize()
     {
-        return $this->container['name'];
+        return $this->container['size'];
     }
 
     /**
-     * Sets name
+     * Sets size
      *
-     * @param string|null $name Наименование единицы измерения
+     * @param int|null $size Размер файла в байтах
      *
      * @return self
      */
-    public function setName($name)
+    public function setSize($size)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($size)) {
+            throw new \InvalidArgumentException('non-nullable size cannot be null');
         }
-        if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ProductUom., must be smaller than or equal to 255.');
-        }
-
-        $this->container['name'] = $name;
+        $this->container['size'] = $size;
 
         return $this;
     }
 
     /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description Описание единицы измерения
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        if ((mb_strlen($description) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling ProductUom., must be smaller than or equal to 4096.');
-        }
-
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string|null $code Код единицы измерения
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        if ((mb_strlen($code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $code when calling ProductUom., must be smaller than or equal to 255.');
-        }
-
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets group
-     *
-     * @return \OpenAPI\Client\Model\ProductGroup|null
-     */
-    public function getGroup()
-    {
-        return $this->container['group'];
-    }
-
-    /**
-     * Sets group
-     *
-     * @param \OpenAPI\Client\Model\ProductGroup|null $group group
-     *
-     * @return self
-     */
-    public function setGroup($group)
-    {
-        if (is_null($group)) {
-            throw new \InvalidArgumentException('non-nullable group cannot be null');
-        }
-        $this->container['group'] = $group;
-
-        return $this;
-    }
-
-    /**
-     * Gets owner
-     *
-     * @return \OpenAPI\Client\Model\ProductOwner|null
-     */
-    public function getOwner()
-    {
-        return $this->container['owner'];
-    }
-
-    /**
-     * Sets owner
-     *
-     * @param \OpenAPI\Client\Model\ProductOwner|null $owner owner
-     *
-     * @return self
-     */
-    public function setOwner($owner)
-    {
-        if (is_null($owner)) {
-            throw new \InvalidArgumentException('non-nullable owner cannot be null');
-        }
-        $this->container['owner'] = $owner;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated
+     * Gets created
      *
      * @return \DateTime|null
      */
-    public function getUpdated()
+    public function getCreated()
     {
-        return $this->container['updated'];
+        return $this->container['created'];
     }
 
     /**
-     * Sets updated
+     * Sets created
      *
-     * @param \DateTime|null $updated Момент последнего обновления сущности
+     * @param \DateTime|null $created Время создания объекта
      *
      * @return self
      */
-    public function setUpdated($updated)
+    public function setCreated($created)
     {
-        if (is_null($updated)) {
-            throw new \InvalidArgumentException('non-nullable updated cannot be null');
+        if (is_null($created)) {
+            throw new \InvalidArgumentException('non-nullable created cannot be null');
         }
-        $this->container['updated'] = $updated;
+        $this->container['created'] = $created;
 
         return $this;
     }
 
     /**
-     * Gets shared
+     * Gets created_by
      *
-     * @return bool|null
+     * @return \OpenAPI\Client\Model\FileCreatedBy|null
      */
-    public function getShared()
+    public function getCreatedBy()
     {
-        return $this->container['shared'];
+        return $this->container['created_by'];
     }
 
     /**
-     * Sets shared
+     * Sets created_by
      *
-     * @param bool|null $shared Общий доступ
+     * @param \OpenAPI\Client\Model\FileCreatedBy|null $created_by created_by
      *
      * @return self
      */
-    public function setShared($shared)
+    public function setCreatedBy($created_by)
     {
-        if (is_null($shared)) {
-            throw new \InvalidArgumentException('non-nullable shared cannot be null');
+        if (is_null($created_by)) {
+            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
         }
-        $this->container['shared'] = $shared;
+        $this->container['created_by'] = $created_by;
 
         return $this;
     }
 
     /**
-     * Gets external_code
+     * Gets tiny
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\Meta|null
      */
-    public function getExternalCode()
+    public function getTiny()
     {
-        return $this->container['external_code'];
+        return $this->container['tiny'];
     }
 
     /**
-     * Sets external_code
+     * Sets tiny
      *
-     * @param string|null $external_code Внешний код единицы измерения
+     * @param \OpenAPI\Client\Model\Meta|null $tiny tiny
      *
      * @return self
      */
-    public function setExternalCode($external_code)
+    public function setTiny($tiny)
     {
-        if (is_null($external_code)) {
-            throw new \InvalidArgumentException('non-nullable external_code cannot be null');
+        if (is_null($tiny)) {
+            throw new \InvalidArgumentException('non-nullable tiny cannot be null');
         }
-        if ((mb_strlen($external_code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $external_code when calling ProductUom., must be smaller than or equal to 255.');
-        }
+        $this->container['tiny'] = $tiny;
 
-        $this->container['external_code'] = $external_code;
+        return $this;
+    }
+
+    /**
+     * Gets miniature
+     *
+     * @return \OpenAPI\Client\Model\Meta|null
+     */
+    public function getMiniature()
+    {
+        return $this->container['miniature'];
+    }
+
+    /**
+     * Sets miniature
+     *
+     * @param \OpenAPI\Client\Model\Meta|null $miniature miniature
+     *
+     * @return self
+     */
+    public function setMiniature($miniature)
+    {
+        if (is_null($miniature)) {
+            throw new \InvalidArgumentException('non-nullable miniature cannot be null');
+        }
+        $this->container['miniature'] = $miniature;
 
         return $this;
     }

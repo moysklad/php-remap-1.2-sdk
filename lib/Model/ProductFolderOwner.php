@@ -81,8 +81,8 @@ class ProductFolderOwner implements ModelInterface, ArrayAccess, \JsonSerializab
         'full_name' => 'string',
         'short_fio' => 'string',
         'shared' => 'bool',
-        'group' => '\OpenAPI\Client\Model\CounterpartyGroup',
-        'owner' => '\OpenAPI\Client\Model\CounterpartyOwner',
+        'group' => '\OpenAPI\Client\Model\ProductGroup',
+        'owner' => '\OpenAPI\Client\Model\ProductOwner',
         'inn' => 'string',
         'position' => 'string',
         'uid' => 'string',
@@ -1191,7 +1191,7 @@ class ProductFolderOwner implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets group
      *
-     * @return \OpenAPI\Client\Model\CounterpartyGroup|null
+     * @return \OpenAPI\Client\Model\ProductGroup|null
      */
     public function getGroup()
     {
@@ -1201,7 +1201,7 @@ class ProductFolderOwner implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets group
      *
-     * @param \OpenAPI\Client\Model\CounterpartyGroup|null $group group
+     * @param \OpenAPI\Client\Model\ProductGroup|null $group group
      *
      * @return self
      */
@@ -1218,7 +1218,7 @@ class ProductFolderOwner implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\CounterpartyOwner|null
+     * @return \OpenAPI\Client\Model\ProductOwner|null
      */
     public function getOwner()
     {
@@ -1228,7 +1228,7 @@ class ProductFolderOwner implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\CounterpartyOwner|null $owner owner
+     * @param \OpenAPI\Client\Model\ProductOwner|null $owner owner
      *
      * @return self
      */

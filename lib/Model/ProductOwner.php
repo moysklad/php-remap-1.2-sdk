@@ -1,6 +1,6 @@
 <?php
 /**
- * FileCreatedBy
+ * ProductOwner
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * FileCreatedBy Class Doc Comment
+ * ProductOwner Class Doc Comment
  *
  * @category Class
- * @description Метаданные сотрудника, загрузившего Файл
+ * @description Метаданные владельца (Сотрудника)
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
+class ProductOwner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'file_createdBy';
+    protected static $openAPIModelName = 'product_owner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -605,7 +605,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling ProductOwner., must be smaller than or equal to 255.');
         }
 
         $this->container['name'] = $name;
@@ -636,7 +636,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable external_code cannot be null');
         }
         if ((mb_strlen($external_code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $external_code when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $external_code when calling ProductOwner., must be smaller than or equal to 255.');
         }
 
         $this->container['external_code'] = $external_code;
@@ -748,7 +748,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
         if ((mb_strlen($description) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling FileCreatedBy., must be smaller than or equal to 4096.');
+            throw new \InvalidArgumentException('invalid length for $description when calling ProductOwner., must be smaller than or equal to 4096.');
         }
 
         $this->container['description'] = $description;
@@ -833,7 +833,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable first_name cannot be null');
         }
         if ((mb_strlen($first_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $first_name when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $first_name when calling ProductOwner., must be smaller than or equal to 255.');
         }
 
         $this->container['first_name'] = $first_name;
@@ -864,7 +864,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable middle_name cannot be null');
         }
         if ((mb_strlen($middle_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $middle_name when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $middle_name when calling ProductOwner., must be smaller than or equal to 255.');
         }
 
         $this->container['middle_name'] = $middle_name;
@@ -895,7 +895,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable last_name cannot be null');
         }
         if ((mb_strlen($last_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $last_name when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $last_name when calling ProductOwner., must be smaller than or equal to 255.');
         }
 
         $this->container['last_name'] = $last_name;
@@ -1061,7 +1061,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable inn cannot be null');
         }
         if ((mb_strlen($inn) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $inn when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $inn when calling ProductOwner., must be smaller than or equal to 255.');
         }
 
         $this->container['inn'] = $inn;
@@ -1092,7 +1092,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable position cannot be null');
         }
         if ((mb_strlen($position) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $position when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $position when calling ProductOwner., must be smaller than or equal to 255.');
         }
 
         $this->container['position'] = $position;
@@ -1123,7 +1123,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable uid cannot be null');
         }
         if ((mb_strlen($uid) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $uid when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $uid when calling ProductOwner., must be smaller than or equal to 255.');
         }
 
         $this->container['uid'] = $uid;

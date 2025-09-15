@@ -62,6 +62,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => 'string',
         'alcoholic' => '\OpenAPI\Client\Model\ProductAlcoholic',
         'archived' => 'bool',
+        'tobacco' => 'bool',
         'name' => 'string',
         'code' => 'string',
         'external_code' => 'string',
@@ -77,8 +78,8 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'variants_count' => 'int',
         'is_serial_trackable' => 'bool',
         'shared' => 'bool',
-        'group' => '\OpenAPI\Client\Model\CounterpartyGroup',
-        'owner' => '\OpenAPI\Client\Model\CounterpartyOwner',
+        'group' => '\OpenAPI\Client\Model\ProductGroup',
+        'owner' => '\OpenAPI\Client\Model\ProductOwner',
         'updated' => '\DateTime',
         'weight' => 'float',
         'volume' => 'float',
@@ -89,7 +90,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'uom' => '\OpenAPI\Client\Model\ProductUom',
         'product_folder' => '\OpenAPI\Client\Model\ProductProductFolder',
         'images' => '\OpenAPI\Client\Model\ProductImages',
-        'files' => '\OpenAPI\Client\Model\CounterpartyFiles',
+        'files' => '\OpenAPI\Client\Model\ProductFiles',
         'barcodes' => '\OpenAPI\Client\Model\Barcode[]',
         'packs' => '\OpenAPI\Client\Model\Pack[]',
         'tracking_type' => 'string',
@@ -121,6 +122,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => 'uuid',
         'alcoholic' => null,
         'archived' => null,
+        'tobacco' => null,
         'name' => null,
         'code' => null,
         'external_code' => null,
@@ -178,6 +180,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => false,
         'alcoholic' => false,
         'archived' => false,
+        'tobacco' => false,
         'name' => false,
         'code' => false,
         'external_code' => false,
@@ -315,6 +318,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => 'accountId',
         'alcoholic' => 'alcoholic',
         'archived' => 'archived',
+        'tobacco' => 'tobacco',
         'name' => 'name',
         'code' => 'code',
         'external_code' => 'externalCode',
@@ -372,6 +376,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => 'setAccountId',
         'alcoholic' => 'setAlcoholic',
         'archived' => 'setArchived',
+        'tobacco' => 'setTobacco',
         'name' => 'setName',
         'code' => 'setCode',
         'external_code' => 'setExternalCode',
@@ -429,6 +434,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => 'getAccountId',
         'alcoholic' => 'getAlcoholic',
         'archived' => 'getArchived',
+        'tobacco' => 'getTobacco',
         'name' => 'getName',
         'code' => 'getCode',
         'external_code' => 'getExternalCode',
@@ -741,6 +747,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('alcoholic', $data ?? [], null);
         $this->setIfExists('archived', $data ?? [], null);
+        $this->setIfExists('tobacco', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('external_code', $data ?? [], null);
@@ -1020,6 +1027,33 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable archived cannot be null');
         }
         $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets tobacco
+     *
+     * @return bool|null
+     */
+    public function getTobacco()
+    {
+        return $this->container['tobacco'];
+    }
+
+    /**
+     * Sets tobacco
+     *
+     * @param bool|null $tobacco Признак товара, как табачной продукции
+     *
+     * @return self
+     */
+    public function setTobacco($tobacco)
+    {
+        if (is_null($tobacco)) {
+            throw new \InvalidArgumentException('non-nullable tobacco cannot be null');
+        }
+        $this->container['tobacco'] = $tobacco;
 
         return $this;
     }
@@ -1452,7 +1486,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets group
      *
-     * @return \OpenAPI\Client\Model\CounterpartyGroup|null
+     * @return \OpenAPI\Client\Model\ProductGroup|null
      */
     public function getGroup()
     {
@@ -1462,7 +1496,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets group
      *
-     * @param \OpenAPI\Client\Model\CounterpartyGroup|null $group group
+     * @param \OpenAPI\Client\Model\ProductGroup|null $group group
      *
      * @return self
      */
@@ -1479,7 +1513,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\CounterpartyOwner|null
+     * @return \OpenAPI\Client\Model\ProductOwner|null
      */
     public function getOwner()
     {
@@ -1489,7 +1523,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\CounterpartyOwner|null $owner owner
+     * @param \OpenAPI\Client\Model\ProductOwner|null $owner owner
      *
      * @return self
      */
@@ -1776,7 +1810,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets files
      *
-     * @return \OpenAPI\Client\Model\CounterpartyFiles|null
+     * @return \OpenAPI\Client\Model\ProductFiles|null
      */
     public function getFiles()
     {
@@ -1786,7 +1820,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets files
      *
-     * @param \OpenAPI\Client\Model\CounterpartyFiles|null $files files
+     * @param \OpenAPI\Client\Model\ProductFiles|null $files files
      *
      * @return self
      */

@@ -32,6 +32,7 @@ use OpenAPI\Client\Api\ProductsApi;
 use OpenAPI\Client\Configuration;
 use OpenAPI\Client\ApiException;
 use OpenAPI\Client\Model\EntityProductPostRequest;
+use OpenAPI\Client\Model\Product;
 use OpenAPI\Client\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -85,7 +86,7 @@ class ProductsApiTest extends TestCase
     public function testGetProducts(): void
     {
         // вызов API
-        $products = $this->api->entityProductGet(100, 0, null, null, 'country,files.createdBy,group,images,owner.group,productFolder.productFolder,supplier.notes.agent,supplier.notes.author,supplier.notes.authorApplication,supplier.group,supplier.owner.group,supplier.state,supplier.contactpersons,supplier.files.createdBy');
+        $products = $this->api->entityProductGet(100, 0, null, null, 'packs.uom,country,files.createdBy.owner,files.createdBy.group,files.createdBy.cashiers,group,images,owner.owner.owner,owner.group,owner.owner.cashiers,owner.cashiers.employee,owner.cashiers.retailStore,productFolder.productFolder,productFolder.owner.cashiers,productFolder.group,uom,buyPrice.currency,salePrices.currency,images.miniature,minPrice.currency,productFolder.productFolder.productFolder,supplier.notes.agent,supplier.accounts,supplier.notes.agent,supplier.notes.author,supplier.notes.authorApplication,supplier.group,supplier.owner.group,supplier.state,supplier.contactpersons,supplier.files.createdBy');
 
         // проверим, что ответ не пустой
         $value = $products->__toString();
@@ -104,88 +105,49 @@ class ProductsApiTest extends TestCase
         // если SDK возвращает массив — проверим тип
 //         $this->assertIsArray($products);
     }
-//
-//    /**
-//     * Test case for entityProductDeletePost
-//     *
-//     * Массовое удаление товаров.
-//     *
-//     */
-//    public function testEntityProductDeletePost()
-//    {
-//        // TODO: implement
-//        self::markTestIncomplete('Not implemented');
-//    }
-//
-//    /**
-//     * Test case for entityProductGet
-//     *
-//     * Получить список товаров.
-//     *
-//     */
-//    public function testEntityProductGet()
-//    {
-//        // TODO: implement
-//        self::markTestIncomplete('Not implemented');
-//    }
-//
-//    /**
-//     * Test case for entityProductIdDelete
-//     *
-//     * Удалить товар.
-//     *
-//     */
-//    public function testEntityProductIdDelete()
-//    {
-//        // TODO: implement
-//        self::markTestIncomplete('Not implemented');
-//    }
-//
-//    /**
-//     * Test case for entityProductIdGet
-//     *
-//     * Получить товар по ID.
-//     *
-//     */
-//    public function testEntityProductIdGet()
-//    {
-//        // TODO: implement
-//        self::markTestIncomplete('Not implemented');
-//    }
-//
-//    /**
-//     * Test case for entityProductIdPut
-//     *
-//     * Обновить товар.
-//     *
-//     */
-//    public function testEntityProductIdPut()
-//    {
-//        // TODO: implement
-//        self::markTestIncomplete('Not implemented');
-//    }
-//
-//    /**
-//     * Test case for entityProductMetadataGet
-//     *
-//     * Получить метаданные товаров.
-//     *
-//     */
-//    public function testEntityProductMetadataGet()
-//    {
-//        // TODO: implement
-//        self::markTestIncomplete('Not implemented');
-//    }
-//
-//    /**
-//     * Test case for entityProductPost
-//     *
-//     * Создать товар.
-//     *
-//     */
-//    public function testEntityProductPost()
-//    {
-//        // TODO: implement
-//        self::markTestIncomplete('Not implemented');
-//    }
+
+    public function testEntityCreateUpdateDeleteProduct()
+    {
+        $product = new EntityProductPostRequest();
+        $product->setName('123');
+        $createdProduct = $this->api->entityProductPost($product);
+        $this->assertEquals('123', $createdProduct->getName());
+        $this->assertNotNull($createdProduct->getId());
+    }
+
+    public function testEntityProductGet()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    public function testEntityProductIdDelete()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    public function testEntityProductIdGet()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    public function testEntityProductIdPut()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    public function testEntityProductMetadataGet()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    public function testEntityProductPost()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

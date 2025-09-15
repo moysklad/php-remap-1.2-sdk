@@ -394,7 +394,7 @@ class ProductsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['*/*'],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -798,7 +798,7 @@ class ProductsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['*/*'],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1040,7 +1040,7 @@ class ProductsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['*/*'],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1345,7 +1345,7 @@ class ProductsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['*/*'],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1661,7 +1661,7 @@ class ProductsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['*/*'],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1952,7 +1952,7 @@ class ProductsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['*/*'],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -2022,7 +2022,7 @@ class ProductsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EntityProductPost200Response|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
+     * @return \OpenAPI\Client\Model\EntityProductPostRequest|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
     public function entityProductPost($entity_product_post_request, string $contentType = self::contentTypes['entityProductPost'][0])
     {
@@ -2040,7 +2040,7 @@ class ProductsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EntityProductPost200Response|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EntityProductPostRequest|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function entityProductPostWithHttpInfo($entity_product_post_request, string $contentType = self::contentTypes['entityProductPost'][0])
     {
@@ -2072,7 +2072,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\EntityProductPost200Response',
+                        '\OpenAPI\Client\Model\EntityProductPostRequest',
                         $request,
                         $response,
                     );
@@ -2112,7 +2112,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\EntityProductPost200Response',
+                '\OpenAPI\Client\Model\EntityProductPostRequest',
                 $request,
                 $response,
             );
@@ -2121,7 +2121,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\EntityProductPost200Response',
+                        '\OpenAPI\Client\Model\EntityProductPostRequest',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2191,7 +2191,7 @@ class ProductsApi
      */
     public function entityProductPostAsyncWithHttpInfo($entity_product_post_request, string $contentType = self::contentTypes['entityProductPost'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\EntityProductPost200Response';
+        $returnType = '\OpenAPI\Client\Model\EntityProductPostRequest';
         $request = $this->entityProductPostRequest($entity_product_post_request, $contentType);
 
         return $this->client
@@ -2262,7 +2262,7 @@ class ProductsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['*/*'],
+            ['application/json', ],
             $contentType,
             $multipart
         );

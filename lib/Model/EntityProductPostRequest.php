@@ -60,47 +60,53 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'meta' => '\OpenAPI\Client\Model\Meta',
         'id' => 'string',
         'account_id' => 'string',
+        'alcoholic' => '\OpenAPI\Client\Model\ProductAlcoholic',
+        'archived' => 'bool',
+        'tobacco' => 'bool',
         'name' => 'string',
         'code' => 'string',
         'external_code' => 'string',
-        'archived' => 'bool',
-        'created' => '\DateTime',
-        'updated' => '\DateTime',
+        'path_name' => 'string',
+        'article' => 'string',
         'description' => 'string',
-        'company_type' => 'string',
-        'email' => 'string',
-        'phone' => 'string',
-        'fax' => 'string',
-        'actual_address' => 'string',
-        'legal_address' => 'string',
-        'inn' => 'string',
-        'kpp' => 'string',
-        'ogrn' => 'string',
-        'ogrnip' => 'string',
-        'okpo' => 'string',
-        'certificate_number' => 'string',
-        'certificate_date' => '\DateTime',
-        'legal_title' => 'string',
-        'legal_first_name' => 'string',
-        'legal_last_name' => 'string',
-        'legal_middle_name' => 'string',
-        'birth_date' => '\DateTime',
-        'sex' => 'string',
-        'discount_card_number' => 'string',
+        'vat' => 'int',
+        'vat_enabled' => 'bool',
+        'use_parent_vat' => 'bool',
+        'effective_vat' => 'int',
+        'effective_vat_enabled' => 'bool',
+        'discount_prohibited' => 'bool',
+        'variants_count' => 'int',
+        'is_serial_trackable' => 'bool',
         'shared' => 'bool',
-        'group' => '\OpenAPI\Client\Model\CounterpartyGroup',
-        'owner' => '\OpenAPI\Client\Model\CounterpartyOwner',
-        'sales_amount' => 'int',
-        'bonus_points' => 'int',
-        'bonus_program' => '\OpenAPI\Client\Model\Meta',
-        'price_type' => '\OpenAPI\Client\Model\Meta',
-        'state' => '\OpenAPI\Client\Model\CounterpartyState',
-        'accounts' => '\OpenAPI\Client\Model\CounterpartyAccounts',
-        'contactpersons' => '\OpenAPI\Client\Model\CounterpartyContactpersons',
-        'notes' => '\OpenAPI\Client\Model\CounterpartyNotes',
-        'files' => '\OpenAPI\Client\Model\CounterpartyFiles',
-        'tags' => 'string[]',
-        'attributes' => '\OpenAPI\Client\Model\Attribute[]'
+        'group' => '\OpenAPI\Client\Model\ProductGroup',
+        'owner' => '\OpenAPI\Client\Model\ProductOwner',
+        'updated' => '\DateTime',
+        'weight' => 'float',
+        'volume' => 'float',
+        'buy_price' => '\OpenAPI\Client\Model\ProductBuyPrice',
+        'sale_prices' => '\OpenAPI\Client\Model\ProductSalePricesInner[]',
+        'supplier' => '\OpenAPI\Client\Model\ProductSupplier',
+        'country' => '\OpenAPI\Client\Model\ProductCountry',
+        'uom' => '\OpenAPI\Client\Model\ProductUom',
+        'product_folder' => '\OpenAPI\Client\Model\ProductProductFolder',
+        'images' => '\OpenAPI\Client\Model\ProductImages',
+        'files' => '\OpenAPI\Client\Model\ProductFiles',
+        'barcodes' => '\OpenAPI\Client\Model\Barcode[]',
+        'packs' => '\OpenAPI\Client\Model\Pack[]',
+        'tracking_type' => 'string',
+        'tnved' => 'string',
+        'payment_item_type' => 'string',
+        'tax_system' => 'string',
+        'attributes' => '\OpenAPI\Client\Model\Attribute[]',
+        'minimum_balance' => 'float',
+        'minimum_stock' => '\OpenAPI\Client\Model\ProductMinimumStock',
+        'min_price' => '\OpenAPI\Client\Model\ProductMinPrice',
+        'weighed' => 'bool',
+        'on_tap' => 'bool',
+        'partial_disposal' => 'bool',
+        'things' => 'string[]',
+        'sync_id' => 'string',
+        'ppe_type' => 'string'
     ];
 
     /**
@@ -114,47 +120,53 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'meta' => null,
         'id' => 'uuid',
         'account_id' => 'uuid',
+        'alcoholic' => null,
+        'archived' => null,
+        'tobacco' => null,
         'name' => null,
         'code' => null,
         'external_code' => null,
-        'archived' => null,
-        'created' => 'date-time',
-        'updated' => 'date-time',
+        'path_name' => null,
+        'article' => null,
         'description' => null,
-        'company_type' => null,
-        'email' => 'email',
-        'phone' => null,
-        'fax' => null,
-        'actual_address' => null,
-        'legal_address' => null,
-        'inn' => null,
-        'kpp' => null,
-        'ogrn' => null,
-        'ogrnip' => null,
-        'okpo' => null,
-        'certificate_number' => null,
-        'certificate_date' => 'date-time',
-        'legal_title' => null,
-        'legal_first_name' => null,
-        'legal_last_name' => null,
-        'legal_middle_name' => null,
-        'birth_date' => 'date-time',
-        'sex' => null,
-        'discount_card_number' => null,
+        'vat' => null,
+        'vat_enabled' => null,
+        'use_parent_vat' => null,
+        'effective_vat' => null,
+        'effective_vat_enabled' => null,
+        'discount_prohibited' => null,
+        'variants_count' => null,
+        'is_serial_trackable' => null,
         'shared' => null,
         'group' => null,
         'owner' => null,
-        'sales_amount' => null,
-        'bonus_points' => null,
-        'bonus_program' => null,
-        'price_type' => null,
-        'state' => null,
-        'accounts' => null,
-        'contactpersons' => null,
-        'notes' => null,
+        'updated' => 'date-time',
+        'weight' => 'float',
+        'volume' => 'float',
+        'buy_price' => null,
+        'sale_prices' => null,
+        'supplier' => null,
+        'country' => null,
+        'uom' => null,
+        'product_folder' => null,
+        'images' => null,
         'files' => null,
-        'tags' => null,
-        'attributes' => null
+        'barcodes' => null,
+        'packs' => null,
+        'tracking_type' => null,
+        'tnved' => null,
+        'payment_item_type' => null,
+        'tax_system' => null,
+        'attributes' => null,
+        'minimum_balance' => 'float',
+        'minimum_stock' => null,
+        'min_price' => null,
+        'weighed' => null,
+        'on_tap' => null,
+        'partial_disposal' => null,
+        'things' => null,
+        'sync_id' => 'uuid',
+        'ppe_type' => null
     ];
 
     /**
@@ -166,47 +178,53 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'meta' => false,
         'id' => false,
         'account_id' => false,
+        'alcoholic' => false,
+        'archived' => false,
+        'tobacco' => false,
         'name' => false,
         'code' => false,
         'external_code' => false,
-        'archived' => false,
-        'created' => false,
-        'updated' => false,
+        'path_name' => false,
+        'article' => false,
         'description' => false,
-        'company_type' => false,
-        'email' => false,
-        'phone' => false,
-        'fax' => false,
-        'actual_address' => false,
-        'legal_address' => false,
-        'inn' => false,
-        'kpp' => false,
-        'ogrn' => false,
-        'ogrnip' => false,
-        'okpo' => false,
-        'certificate_number' => false,
-        'certificate_date' => false,
-        'legal_title' => false,
-        'legal_first_name' => false,
-        'legal_last_name' => false,
-        'legal_middle_name' => false,
-        'birth_date' => false,
-        'sex' => false,
-        'discount_card_number' => false,
+        'vat' => false,
+        'vat_enabled' => false,
+        'use_parent_vat' => false,
+        'effective_vat' => false,
+        'effective_vat_enabled' => false,
+        'discount_prohibited' => false,
+        'variants_count' => false,
+        'is_serial_trackable' => false,
         'shared' => false,
         'group' => false,
         'owner' => false,
-        'sales_amount' => false,
-        'bonus_points' => false,
-        'bonus_program' => false,
-        'price_type' => false,
-        'state' => false,
-        'accounts' => false,
-        'contactpersons' => false,
-        'notes' => false,
+        'updated' => false,
+        'weight' => false,
+        'volume' => false,
+        'buy_price' => false,
+        'sale_prices' => false,
+        'supplier' => false,
+        'country' => false,
+        'uom' => false,
+        'product_folder' => false,
+        'images' => false,
         'files' => false,
-        'tags' => false,
-        'attributes' => false
+        'barcodes' => false,
+        'packs' => false,
+        'tracking_type' => false,
+        'tnved' => false,
+        'payment_item_type' => false,
+        'tax_system' => false,
+        'attributes' => false,
+        'minimum_balance' => false,
+        'minimum_stock' => false,
+        'min_price' => false,
+        'weighed' => false,
+        'on_tap' => false,
+        'partial_disposal' => false,
+        'things' => false,
+        'sync_id' => false,
+        'ppe_type' => false
     ];
 
     /**
@@ -298,47 +316,53 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'meta' => 'meta',
         'id' => 'id',
         'account_id' => 'accountId',
+        'alcoholic' => 'alcoholic',
+        'archived' => 'archived',
+        'tobacco' => 'tobacco',
         'name' => 'name',
         'code' => 'code',
         'external_code' => 'externalCode',
-        'archived' => 'archived',
-        'created' => 'created',
-        'updated' => 'updated',
+        'path_name' => 'pathName',
+        'article' => 'article',
         'description' => 'description',
-        'company_type' => 'companyType',
-        'email' => 'email',
-        'phone' => 'phone',
-        'fax' => 'fax',
-        'actual_address' => 'actualAddress',
-        'legal_address' => 'legalAddress',
-        'inn' => 'inn',
-        'kpp' => 'kpp',
-        'ogrn' => 'ogrn',
-        'ogrnip' => 'ogrnip',
-        'okpo' => 'okpo',
-        'certificate_number' => 'certificateNumber',
-        'certificate_date' => 'certificateDate',
-        'legal_title' => 'legalTitle',
-        'legal_first_name' => 'legalFirstName',
-        'legal_last_name' => 'legalLastName',
-        'legal_middle_name' => 'legalMiddleName',
-        'birth_date' => 'birthDate',
-        'sex' => 'sex',
-        'discount_card_number' => 'discountCardNumber',
+        'vat' => 'vat',
+        'vat_enabled' => 'vatEnabled',
+        'use_parent_vat' => 'useParentVat',
+        'effective_vat' => 'effectiveVat',
+        'effective_vat_enabled' => 'effectiveVatEnabled',
+        'discount_prohibited' => 'discountProhibited',
+        'variants_count' => 'variantsCount',
+        'is_serial_trackable' => 'isSerialTrackable',
         'shared' => 'shared',
         'group' => 'group',
         'owner' => 'owner',
-        'sales_amount' => 'salesAmount',
-        'bonus_points' => 'bonusPoints',
-        'bonus_program' => 'bonusProgram',
-        'price_type' => 'priceType',
-        'state' => 'state',
-        'accounts' => 'accounts',
-        'contactpersons' => 'contactpersons',
-        'notes' => 'notes',
+        'updated' => 'updated',
+        'weight' => 'weight',
+        'volume' => 'volume',
+        'buy_price' => 'buyPrice',
+        'sale_prices' => 'salePrices',
+        'supplier' => 'supplier',
+        'country' => 'country',
+        'uom' => 'uom',
+        'product_folder' => 'productFolder',
+        'images' => 'images',
         'files' => 'files',
-        'tags' => 'tags',
-        'attributes' => 'attributes'
+        'barcodes' => 'barcodes',
+        'packs' => 'packs',
+        'tracking_type' => 'trackingType',
+        'tnved' => 'tnved',
+        'payment_item_type' => 'paymentItemType',
+        'tax_system' => 'taxSystem',
+        'attributes' => 'attributes',
+        'minimum_balance' => 'minimumBalance',
+        'minimum_stock' => 'minimumStock',
+        'min_price' => 'minPrice',
+        'weighed' => 'weighed',
+        'on_tap' => 'onTap',
+        'partial_disposal' => 'partialDisposal',
+        'things' => 'things',
+        'sync_id' => 'syncId',
+        'ppe_type' => 'ppeType'
     ];
 
     /**
@@ -350,47 +374,53 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'meta' => 'setMeta',
         'id' => 'setId',
         'account_id' => 'setAccountId',
+        'alcoholic' => 'setAlcoholic',
+        'archived' => 'setArchived',
+        'tobacco' => 'setTobacco',
         'name' => 'setName',
         'code' => 'setCode',
         'external_code' => 'setExternalCode',
-        'archived' => 'setArchived',
-        'created' => 'setCreated',
-        'updated' => 'setUpdated',
+        'path_name' => 'setPathName',
+        'article' => 'setArticle',
         'description' => 'setDescription',
-        'company_type' => 'setCompanyType',
-        'email' => 'setEmail',
-        'phone' => 'setPhone',
-        'fax' => 'setFax',
-        'actual_address' => 'setActualAddress',
-        'legal_address' => 'setLegalAddress',
-        'inn' => 'setInn',
-        'kpp' => 'setKpp',
-        'ogrn' => 'setOgrn',
-        'ogrnip' => 'setOgrnip',
-        'okpo' => 'setOkpo',
-        'certificate_number' => 'setCertificateNumber',
-        'certificate_date' => 'setCertificateDate',
-        'legal_title' => 'setLegalTitle',
-        'legal_first_name' => 'setLegalFirstName',
-        'legal_last_name' => 'setLegalLastName',
-        'legal_middle_name' => 'setLegalMiddleName',
-        'birth_date' => 'setBirthDate',
-        'sex' => 'setSex',
-        'discount_card_number' => 'setDiscountCardNumber',
+        'vat' => 'setVat',
+        'vat_enabled' => 'setVatEnabled',
+        'use_parent_vat' => 'setUseParentVat',
+        'effective_vat' => 'setEffectiveVat',
+        'effective_vat_enabled' => 'setEffectiveVatEnabled',
+        'discount_prohibited' => 'setDiscountProhibited',
+        'variants_count' => 'setVariantsCount',
+        'is_serial_trackable' => 'setIsSerialTrackable',
         'shared' => 'setShared',
         'group' => 'setGroup',
         'owner' => 'setOwner',
-        'sales_amount' => 'setSalesAmount',
-        'bonus_points' => 'setBonusPoints',
-        'bonus_program' => 'setBonusProgram',
-        'price_type' => 'setPriceType',
-        'state' => 'setState',
-        'accounts' => 'setAccounts',
-        'contactpersons' => 'setContactpersons',
-        'notes' => 'setNotes',
+        'updated' => 'setUpdated',
+        'weight' => 'setWeight',
+        'volume' => 'setVolume',
+        'buy_price' => 'setBuyPrice',
+        'sale_prices' => 'setSalePrices',
+        'supplier' => 'setSupplier',
+        'country' => 'setCountry',
+        'uom' => 'setUom',
+        'product_folder' => 'setProductFolder',
+        'images' => 'setImages',
         'files' => 'setFiles',
-        'tags' => 'setTags',
-        'attributes' => 'setAttributes'
+        'barcodes' => 'setBarcodes',
+        'packs' => 'setPacks',
+        'tracking_type' => 'setTrackingType',
+        'tnved' => 'setTnved',
+        'payment_item_type' => 'setPaymentItemType',
+        'tax_system' => 'setTaxSystem',
+        'attributes' => 'setAttributes',
+        'minimum_balance' => 'setMinimumBalance',
+        'minimum_stock' => 'setMinimumStock',
+        'min_price' => 'setMinPrice',
+        'weighed' => 'setWeighed',
+        'on_tap' => 'setOnTap',
+        'partial_disposal' => 'setPartialDisposal',
+        'things' => 'setThings',
+        'sync_id' => 'setSyncId',
+        'ppe_type' => 'setPpeType'
     ];
 
     /**
@@ -402,47 +432,53 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'meta' => 'getMeta',
         'id' => 'getId',
         'account_id' => 'getAccountId',
+        'alcoholic' => 'getAlcoholic',
+        'archived' => 'getArchived',
+        'tobacco' => 'getTobacco',
         'name' => 'getName',
         'code' => 'getCode',
         'external_code' => 'getExternalCode',
-        'archived' => 'getArchived',
-        'created' => 'getCreated',
-        'updated' => 'getUpdated',
+        'path_name' => 'getPathName',
+        'article' => 'getArticle',
         'description' => 'getDescription',
-        'company_type' => 'getCompanyType',
-        'email' => 'getEmail',
-        'phone' => 'getPhone',
-        'fax' => 'getFax',
-        'actual_address' => 'getActualAddress',
-        'legal_address' => 'getLegalAddress',
-        'inn' => 'getInn',
-        'kpp' => 'getKpp',
-        'ogrn' => 'getOgrn',
-        'ogrnip' => 'getOgrnip',
-        'okpo' => 'getOkpo',
-        'certificate_number' => 'getCertificateNumber',
-        'certificate_date' => 'getCertificateDate',
-        'legal_title' => 'getLegalTitle',
-        'legal_first_name' => 'getLegalFirstName',
-        'legal_last_name' => 'getLegalLastName',
-        'legal_middle_name' => 'getLegalMiddleName',
-        'birth_date' => 'getBirthDate',
-        'sex' => 'getSex',
-        'discount_card_number' => 'getDiscountCardNumber',
+        'vat' => 'getVat',
+        'vat_enabled' => 'getVatEnabled',
+        'use_parent_vat' => 'getUseParentVat',
+        'effective_vat' => 'getEffectiveVat',
+        'effective_vat_enabled' => 'getEffectiveVatEnabled',
+        'discount_prohibited' => 'getDiscountProhibited',
+        'variants_count' => 'getVariantsCount',
+        'is_serial_trackable' => 'getIsSerialTrackable',
         'shared' => 'getShared',
         'group' => 'getGroup',
         'owner' => 'getOwner',
-        'sales_amount' => 'getSalesAmount',
-        'bonus_points' => 'getBonusPoints',
-        'bonus_program' => 'getBonusProgram',
-        'price_type' => 'getPriceType',
-        'state' => 'getState',
-        'accounts' => 'getAccounts',
-        'contactpersons' => 'getContactpersons',
-        'notes' => 'getNotes',
+        'updated' => 'getUpdated',
+        'weight' => 'getWeight',
+        'volume' => 'getVolume',
+        'buy_price' => 'getBuyPrice',
+        'sale_prices' => 'getSalePrices',
+        'supplier' => 'getSupplier',
+        'country' => 'getCountry',
+        'uom' => 'getUom',
+        'product_folder' => 'getProductFolder',
+        'images' => 'getImages',
         'files' => 'getFiles',
-        'tags' => 'getTags',
-        'attributes' => 'getAttributes'
+        'barcodes' => 'getBarcodes',
+        'packs' => 'getPacks',
+        'tracking_type' => 'getTrackingType',
+        'tnved' => 'getTnved',
+        'payment_item_type' => 'getPaymentItemType',
+        'tax_system' => 'getTaxSystem',
+        'attributes' => 'getAttributes',
+        'minimum_balance' => 'getMinimumBalance',
+        'minimum_stock' => 'getMinimumStock',
+        'min_price' => 'getMinPrice',
+        'weighed' => 'getWeighed',
+        'on_tap' => 'getOnTap',
+        'partial_disposal' => 'getPartialDisposal',
+        'things' => 'getThings',
+        'sync_id' => 'getSyncId',
+        'ppe_type' => 'getPpeType'
     ];
 
     /**
@@ -486,23 +522,118 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
-    public const COMPANY_TYPE_LEGAL = 'legal';
-    public const COMPANY_TYPE_ENTREPRENEUR = 'entrepreneur';
-    public const COMPANY_TYPE_INDIVIDUAL = 'individual';
-    public const SEX_MALE = 'MALE';
-    public const SEX_FEMALE = 'FEMALE';
+    public const TRACKING_TYPE_BEER_ALCOHOL = 'BEER_ALCOHOL';
+    public const TRACKING_TYPE_BICYCLE = 'BICYCLE';
+    public const TRACKING_TYPE_ELECTRONICS = 'ELECTRONICS';
+    public const TRACKING_TYPE_FOOD_SUPPLEMENT = 'FOOD_SUPPLEMENT';
+    public const TRACKING_TYPE_LP_CLOTHES = 'LP_CLOTHES';
+    public const TRACKING_TYPE_LP_LINENS = 'LP_LINENS';
+    public const TRACKING_TYPE_MEDICAL_DEVICES = 'MEDICAL_DEVICES';
+    public const TRACKING_TYPE_MILK = 'MILK';
+    public const TRACKING_TYPE_NABEER = 'NABEER';
+    public const TRACKING_TYPE_NCP = 'NCP';
+    public const TRACKING_TYPE_NOT_TRACKED = 'NOT_TRACKED';
+    public const TRACKING_TYPE_OTP = 'OTP';
+    public const TRACKING_TYPE_PERFUMERY = 'PERFUMERY';
+    public const TRACKING_TYPE_PET_FOOD = 'PET_FOOD';
+    public const TRACKING_TYPE_SANITIZER = 'SANITIZER';
+    public const TRACKING_TYPE_SEAFOOD = 'SEAFOOD';
+    public const TRACKING_TYPE_SHOES = 'SHOES';
+    public const TRACKING_TYPE_SOFT_DRINKS = 'SOFT_DRINKS';
+    public const TRACKING_TYPE_TIRES = 'TIRES';
+    public const TRACKING_TYPE_TOBACCO = 'TOBACCO';
+    public const TRACKING_TYPE_VEGETABLE_OIL = 'VEGETABLE_OIL';
+    public const TRACKING_TYPE_VETPHARMA = 'VETPHARMA';
+    public const TRACKING_TYPE_WATER = 'WATER';
+    public const PAYMENT_ITEM_TYPE_GOOD = 'GOOD';
+    public const PAYMENT_ITEM_TYPE_EXCISABLE_GOOD = 'EXCISABLE_GOOD';
+    public const PAYMENT_ITEM_TYPE_COMPOUND_PAYMENT_ITEM = 'COMPOUND_PAYMENT_ITEM';
+    public const PAYMENT_ITEM_TYPE_ANOTHER_PAYMENT_ITEM = 'ANOTHER_PAYMENT_ITEM';
+    public const TAX_SYSTEM_GENERAL_TAX_SYSTEM = 'GENERAL_TAX_SYSTEM';
+    public const TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME';
+    public const TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME';
+    public const TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX = 'UNIFIED_AGRICULTURAL_TAX';
+    public const TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM = 'PRESUMPTIVE_TAX_SYSTEM';
+    public const TAX_SYSTEM_PATENT_BASED = 'PATENT_BASED';
+    public const TAX_SYSTEM_TAX_SYSTEM_SAME_AS_GROUP = 'TAX_SYSTEM_SAME_AS_GROUP';
+    public const PPE_TYPE__2400001225408 = '2400001225408';
+    public const PPE_TYPE__2400001225606 = '2400001225606';
+    public const PPE_TYPE__2400001226108 = '2400001226108';
+    public const PPE_TYPE__2400001226306 = '2400001226306';
+    public const PPE_TYPE__2400001226405 = '2400001226405';
+    public const PPE_TYPE__2400001323807 = '2400001323807';
+    public const PPE_TYPE__2400001368105 = '2400001368105';
+    public const PPE_TYPE__2400001393107 = '2400001393107';
+    public const PPE_TYPE__2400001393503 = '2400001393503';
+    public const PPE_TYPE__2400001393602 = '2400001393602';
+    public const PPE_TYPE__2400001565306 = '2400001565306';
+    public const PPE_TYPE__2400001807703 = '2400001807703';
+    public const PPE_TYPE__2400001818303 = '2400001818303';
+    public const PPE_TYPE__2400001857005 = '2400001857005';
+    public const PPE_TYPE__2400001857203 = '2400001857203';
+    public const PPE_TYPE__2400001858309 = '2400001858309';
+    public const PPE_TYPE__2400001858507 = '2400001858507';
+    public const PPE_TYPE__2400002015909 = '2400002015909';
+    public const PPE_TYPE__2400002016005 = '2400002016005';
+    public const PPE_TYPE__2400002016104 = '2400002016104';
+    public const PPE_TYPE__2400002052805 = '2400002052805';
+    public const PPE_TYPE__2400002052904 = '2400002052904';
+    public const PPE_TYPE__2400002186203 = '2400002186203';
+    public const PPE_TYPE__2400002886707 = '2400002886707';
+    public const PPE_TYPE__2400002886806 = '2400002886806';
+    public const PPE_TYPE__2400002984502 = '2400002984502';
+    public const PPE_TYPE__2400003117107 = '2400003117107';
+    public const PPE_TYPE__2400003117206 = '2400003117206';
+    public const PPE_TYPE__2400003161209 = '2400003161209';
+    public const PPE_TYPE__2400003207907 = '2400003207907';
+    public const PPE_TYPE__2400003215308 = '2400003215308';
+    public const PPE_TYPE__2400003227806 = '2400003227806';
+    public const PPE_TYPE__2400003237409 = '2400003237409';
+    public const PPE_TYPE__2400003263408 = '2400003263408';
+    public const PPE_TYPE__2400003297700 = '2400003297700';
+    public const PPE_TYPE__2400003356704 = '2400003356704';
+    public const PPE_TYPE__2400003356803 = '2400003356803';
+    public const PPE_TYPE__2400003356902 = '2400003356902';
+    public const PPE_TYPE__2400003433108 = '2400003433108';
+    public const PPE_TYPE__2400003492303 = '2400003492303';
+    public const PPE_TYPE__2400003495700 = '2400003495700';
+    public const PPE_TYPE__2400003495809 = '2400003495809';
+    public const PPE_TYPE__2400003495908 = '2400003495908';
+    public const PPE_TYPE__2400003496004 = '2400003496004';
+    public const PPE_TYPE__2400003496103 = '2400003496103';
+    public const PPE_TYPE__2400003675805 = '2400003675805';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getCompanyTypeAllowableValues()
+    public function getTrackingTypeAllowableValues()
     {
         return [
-            self::COMPANY_TYPE_LEGAL,
-            self::COMPANY_TYPE_ENTREPRENEUR,
-            self::COMPANY_TYPE_INDIVIDUAL,
+            self::TRACKING_TYPE_BEER_ALCOHOL,
+            self::TRACKING_TYPE_BICYCLE,
+            self::TRACKING_TYPE_ELECTRONICS,
+            self::TRACKING_TYPE_FOOD_SUPPLEMENT,
+            self::TRACKING_TYPE_LP_CLOTHES,
+            self::TRACKING_TYPE_LP_LINENS,
+            self::TRACKING_TYPE_MEDICAL_DEVICES,
+            self::TRACKING_TYPE_MILK,
+            self::TRACKING_TYPE_NABEER,
+            self::TRACKING_TYPE_NCP,
+            self::TRACKING_TYPE_NOT_TRACKED,
+            self::TRACKING_TYPE_OTP,
+            self::TRACKING_TYPE_PERFUMERY,
+            self::TRACKING_TYPE_PET_FOOD,
+            self::TRACKING_TYPE_SANITIZER,
+            self::TRACKING_TYPE_SEAFOOD,
+            self::TRACKING_TYPE_SHOES,
+            self::TRACKING_TYPE_SOFT_DRINKS,
+            self::TRACKING_TYPE_TIRES,
+            self::TRACKING_TYPE_TOBACCO,
+            self::TRACKING_TYPE_VEGETABLE_OIL,
+            self::TRACKING_TYPE_VETPHARMA,
+            self::TRACKING_TYPE_WATER,
         ];
     }
 
@@ -511,11 +642,88 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
      *
      * @return string[]
      */
-    public function getSexAllowableValues()
+    public function getPaymentItemTypeAllowableValues()
     {
         return [
-            self::SEX_MALE,
-            self::SEX_FEMALE,
+            self::PAYMENT_ITEM_TYPE_GOOD,
+            self::PAYMENT_ITEM_TYPE_EXCISABLE_GOOD,
+            self::PAYMENT_ITEM_TYPE_COMPOUND_PAYMENT_ITEM,
+            self::PAYMENT_ITEM_TYPE_ANOTHER_PAYMENT_ITEM,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTaxSystemAllowableValues()
+    {
+        return [
+            self::TAX_SYSTEM_GENERAL_TAX_SYSTEM,
+            self::TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME,
+            self::TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME,
+            self::TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX,
+            self::TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM,
+            self::TAX_SYSTEM_PATENT_BASED,
+            self::TAX_SYSTEM_TAX_SYSTEM_SAME_AS_GROUP,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPpeTypeAllowableValues()
+    {
+        return [
+            self::PPE_TYPE__2400001225408,
+            self::PPE_TYPE__2400001225606,
+            self::PPE_TYPE__2400001226108,
+            self::PPE_TYPE__2400001226306,
+            self::PPE_TYPE__2400001226405,
+            self::PPE_TYPE__2400001323807,
+            self::PPE_TYPE__2400001368105,
+            self::PPE_TYPE__2400001393107,
+            self::PPE_TYPE__2400001393503,
+            self::PPE_TYPE__2400001393602,
+            self::PPE_TYPE__2400001565306,
+            self::PPE_TYPE__2400001807703,
+            self::PPE_TYPE__2400001818303,
+            self::PPE_TYPE__2400001857005,
+            self::PPE_TYPE__2400001857203,
+            self::PPE_TYPE__2400001858309,
+            self::PPE_TYPE__2400001858507,
+            self::PPE_TYPE__2400002015909,
+            self::PPE_TYPE__2400002016005,
+            self::PPE_TYPE__2400002016104,
+            self::PPE_TYPE__2400002052805,
+            self::PPE_TYPE__2400002052904,
+            self::PPE_TYPE__2400002186203,
+            self::PPE_TYPE__2400002886707,
+            self::PPE_TYPE__2400002886806,
+            self::PPE_TYPE__2400002984502,
+            self::PPE_TYPE__2400003117107,
+            self::PPE_TYPE__2400003117206,
+            self::PPE_TYPE__2400003161209,
+            self::PPE_TYPE__2400003207907,
+            self::PPE_TYPE__2400003215308,
+            self::PPE_TYPE__2400003227806,
+            self::PPE_TYPE__2400003237409,
+            self::PPE_TYPE__2400003263408,
+            self::PPE_TYPE__2400003297700,
+            self::PPE_TYPE__2400003356704,
+            self::PPE_TYPE__2400003356803,
+            self::PPE_TYPE__2400003356902,
+            self::PPE_TYPE__2400003433108,
+            self::PPE_TYPE__2400003492303,
+            self::PPE_TYPE__2400003495700,
+            self::PPE_TYPE__2400003495809,
+            self::PPE_TYPE__2400003495908,
+            self::PPE_TYPE__2400003496004,
+            self::PPE_TYPE__2400003496103,
+            self::PPE_TYPE__2400003675805,
         ];
     }
 
@@ -537,47 +745,53 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('alcoholic', $data ?? [], null);
+        $this->setIfExists('archived', $data ?? [], null);
+        $this->setIfExists('tobacco', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('external_code', $data ?? [], null);
-        $this->setIfExists('archived', $data ?? [], null);
-        $this->setIfExists('created', $data ?? [], null);
-        $this->setIfExists('updated', $data ?? [], null);
+        $this->setIfExists('path_name', $data ?? [], null);
+        $this->setIfExists('article', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('company_type', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
-        $this->setIfExists('phone', $data ?? [], null);
-        $this->setIfExists('fax', $data ?? [], null);
-        $this->setIfExists('actual_address', $data ?? [], null);
-        $this->setIfExists('legal_address', $data ?? [], null);
-        $this->setIfExists('inn', $data ?? [], null);
-        $this->setIfExists('kpp', $data ?? [], null);
-        $this->setIfExists('ogrn', $data ?? [], null);
-        $this->setIfExists('ogrnip', $data ?? [], null);
-        $this->setIfExists('okpo', $data ?? [], null);
-        $this->setIfExists('certificate_number', $data ?? [], null);
-        $this->setIfExists('certificate_date', $data ?? [], null);
-        $this->setIfExists('legal_title', $data ?? [], null);
-        $this->setIfExists('legal_first_name', $data ?? [], null);
-        $this->setIfExists('legal_last_name', $data ?? [], null);
-        $this->setIfExists('legal_middle_name', $data ?? [], null);
-        $this->setIfExists('birth_date', $data ?? [], null);
-        $this->setIfExists('sex', $data ?? [], null);
-        $this->setIfExists('discount_card_number', $data ?? [], null);
+        $this->setIfExists('vat', $data ?? [], null);
+        $this->setIfExists('vat_enabled', $data ?? [], null);
+        $this->setIfExists('use_parent_vat', $data ?? [], null);
+        $this->setIfExists('effective_vat', $data ?? [], null);
+        $this->setIfExists('effective_vat_enabled', $data ?? [], null);
+        $this->setIfExists('discount_prohibited', $data ?? [], null);
+        $this->setIfExists('variants_count', $data ?? [], null);
+        $this->setIfExists('is_serial_trackable', $data ?? [], null);
         $this->setIfExists('shared', $data ?? [], null);
         $this->setIfExists('group', $data ?? [], null);
         $this->setIfExists('owner', $data ?? [], null);
-        $this->setIfExists('sales_amount', $data ?? [], null);
-        $this->setIfExists('bonus_points', $data ?? [], null);
-        $this->setIfExists('bonus_program', $data ?? [], null);
-        $this->setIfExists('price_type', $data ?? [], null);
-        $this->setIfExists('state', $data ?? [], null);
-        $this->setIfExists('accounts', $data ?? [], null);
-        $this->setIfExists('contactpersons', $data ?? [], null);
-        $this->setIfExists('notes', $data ?? [], null);
+        $this->setIfExists('updated', $data ?? [], null);
+        $this->setIfExists('weight', $data ?? [], null);
+        $this->setIfExists('volume', $data ?? [], null);
+        $this->setIfExists('buy_price', $data ?? [], null);
+        $this->setIfExists('sale_prices', $data ?? [], null);
+        $this->setIfExists('supplier', $data ?? [], null);
+        $this->setIfExists('country', $data ?? [], null);
+        $this->setIfExists('uom', $data ?? [], null);
+        $this->setIfExists('product_folder', $data ?? [], null);
+        $this->setIfExists('images', $data ?? [], null);
         $this->setIfExists('files', $data ?? [], null);
-        $this->setIfExists('tags', $data ?? [], null);
+        $this->setIfExists('barcodes', $data ?? [], null);
+        $this->setIfExists('packs', $data ?? [], null);
+        $this->setIfExists('tracking_type', $data ?? [], null);
+        $this->setIfExists('tnved', $data ?? [], null);
+        $this->setIfExists('payment_item_type', $data ?? [], null);
+        $this->setIfExists('tax_system', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('minimum_balance', $data ?? [], null);
+        $this->setIfExists('minimum_stock', $data ?? [], null);
+        $this->setIfExists('min_price', $data ?? [], null);
+        $this->setIfExists('weighed', $data ?? [], null);
+        $this->setIfExists('on_tap', $data ?? [], null);
+        $this->setIfExists('partial_disposal', $data ?? [], null);
+        $this->setIfExists('things', $data ?? [], null);
+        $this->setIfExists('sync_id', $data ?? [], null);
+        $this->setIfExists('ppe_type', $data ?? [], null);
     }
 
     /**
@@ -619,78 +833,52 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
             $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
         }
 
+        if (!is_null($this->container['article']) && (mb_strlen($this->container['article']) > 255)) {
+            $invalidProperties[] = "invalid value for 'article', the character length must be smaller than or equal to 255.";
+        }
+
         if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4096)) {
             $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
         }
 
-        $allowedValues = $this->getCompanyTypeAllowableValues();
-        if (!is_null($this->container['company_type']) && !in_array($this->container['company_type'], $allowedValues, true)) {
+        $allowedValues = $this->getTrackingTypeAllowableValues();
+        if (!is_null($this->container['tracking_type']) && !in_array($this->container['tracking_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'company_type', must be one of '%s'",
-                $this->container['company_type'],
+                "invalid value '%s' for 'tracking_type', must be one of '%s'",
+                $this->container['tracking_type'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if (!is_null($this->container['actual_address']) && (mb_strlen($this->container['actual_address']) > 255)) {
-            $invalidProperties[] = "invalid value for 'actual_address', the character length must be smaller than or equal to 255.";
+        if (!is_null($this->container['tnved']) && (mb_strlen($this->container['tnved']) > 255)) {
+            $invalidProperties[] = "invalid value for 'tnved', the character length must be smaller than or equal to 255.";
         }
 
-        if (!is_null($this->container['legal_address']) && (mb_strlen($this->container['legal_address']) > 255)) {
-            $invalidProperties[] = "invalid value for 'legal_address', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['inn']) && (mb_strlen($this->container['inn']) > 255)) {
-            $invalidProperties[] = "invalid value for 'inn', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['kpp']) && (mb_strlen($this->container['kpp']) > 255)) {
-            $invalidProperties[] = "invalid value for 'kpp', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['ogrn']) && (mb_strlen($this->container['ogrn']) > 255)) {
-            $invalidProperties[] = "invalid value for 'ogrn', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['ogrnip']) && (mb_strlen($this->container['ogrnip']) > 255)) {
-            $invalidProperties[] = "invalid value for 'ogrnip', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['okpo']) && (mb_strlen($this->container['okpo']) > 255)) {
-            $invalidProperties[] = "invalid value for 'okpo', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['certificate_number']) && (mb_strlen($this->container['certificate_number']) > 255)) {
-            $invalidProperties[] = "invalid value for 'certificate_number', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['legal_title']) && (mb_strlen($this->container['legal_title']) > 4096)) {
-            $invalidProperties[] = "invalid value for 'legal_title', the character length must be smaller than or equal to 4096.";
-        }
-
-        if (!is_null($this->container['legal_first_name']) && (mb_strlen($this->container['legal_first_name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'legal_first_name', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['legal_last_name']) && (mb_strlen($this->container['legal_last_name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'legal_last_name', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['legal_middle_name']) && (mb_strlen($this->container['legal_middle_name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'legal_middle_name', the character length must be smaller than or equal to 255.";
-        }
-
-        $allowedValues = $this->getSexAllowableValues();
-        if (!is_null($this->container['sex']) && !in_array($this->container['sex'], $allowedValues, true)) {
+        $allowedValues = $this->getPaymentItemTypeAllowableValues();
+        if (!is_null($this->container['payment_item_type']) && !in_array($this->container['payment_item_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'sex', must be one of '%s'",
-                $this->container['sex'],
+                "invalid value '%s' for 'payment_item_type', must be one of '%s'",
+                $this->container['payment_item_type'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if (!is_null($this->container['discount_card_number']) && (mb_strlen($this->container['discount_card_number']) > 255)) {
-            $invalidProperties[] = "invalid value for 'discount_card_number', the character length must be smaller than or equal to 255.";
+        $allowedValues = $this->getTaxSystemAllowableValues();
+        if (!is_null($this->container['tax_system']) && !in_array($this->container['tax_system'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'tax_system', must be one of '%s'",
+                $this->container['tax_system'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getPpeTypeAllowableValues();
+        if (!is_null($this->container['ppe_type']) && !in_array($this->container['ppe_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'ppe_type', must be one of '%s'",
+                $this->container['ppe_type'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -748,7 +936,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets id
      *
-     * @param string|null $id ID контрагента
+     * @param string|null $id ID товара
      *
      * @return self
      */
@@ -790,6 +978,87 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
+     * Gets alcoholic
+     *
+     * @return \OpenAPI\Client\Model\ProductAlcoholic|null
+     */
+    public function getAlcoholic()
+    {
+        return $this->container['alcoholic'];
+    }
+
+    /**
+     * Sets alcoholic
+     *
+     * @param \OpenAPI\Client\Model\ProductAlcoholic|null $alcoholic alcoholic
+     *
+     * @return self
+     */
+    public function setAlcoholic($alcoholic)
+    {
+        if (is_null($alcoholic)) {
+            throw new \InvalidArgumentException('non-nullable alcoholic cannot be null');
+        }
+        $this->container['alcoholic'] = $alcoholic;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived
+     *
+     * @return bool|null
+     */
+    public function getArchived()
+    {
+        return $this->container['archived'];
+    }
+
+    /**
+     * Sets archived
+     *
+     * @param bool|null $archived Добавлен ли товар в архив
+     *
+     * @return self
+     */
+    public function setArchived($archived)
+    {
+        if (is_null($archived)) {
+            throw new \InvalidArgumentException('non-nullable archived cannot be null');
+        }
+        $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets tobacco
+     *
+     * @return bool|null
+     */
+    public function getTobacco()
+    {
+        return $this->container['tobacco'];
+    }
+
+    /**
+     * Sets tobacco
+     *
+     * @param bool|null $tobacco Признак товара, как табачной продукции
+     *
+     * @return self
+     */
+    public function setTobacco($tobacco)
+    {
+        if (is_null($tobacco)) {
+            throw new \InvalidArgumentException('non-nullable tobacco cannot be null');
+        }
+        $this->container['tobacco'] = $tobacco;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string|null
@@ -802,7 +1071,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets name
      *
-     * @param string|null $name Наименование контрагента
+     * @param string|null $name Наименование товара
      *
      * @return self
      */
@@ -833,7 +1102,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets code
      *
-     * @param string|null $code Код контрагента
+     * @param string|null $code Код товара
      *
      * @return self
      */
@@ -864,7 +1133,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets external_code
      *
-     * @param string|null $external_code Внешний код контрагента
+     * @param string|null $external_code Внешний код товара
      *
      * @return self
      */
@@ -883,82 +1152,59 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets archived
+     * Gets path_name
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getArchived()
+    public function getPathName()
     {
-        return $this->container['archived'];
+        return $this->container['path_name'];
     }
 
     /**
-     * Sets archived
+     * Sets path_name
      *
-     * @param bool|null $archived Добавлен ли контрагент в архив
+     * @param string|null $path_name Наименование группы, в которую входит товар
      *
      * @return self
      */
-    public function setArchived($archived)
+    public function setPathName($path_name)
     {
-        if (is_null($archived)) {
-            throw new \InvalidArgumentException('non-nullable archived cannot be null');
+        if (is_null($path_name)) {
+            throw new \InvalidArgumentException('non-nullable path_name cannot be null');
         }
-        $this->container['archived'] = $archived;
+        $this->container['path_name'] = $path_name;
 
         return $this;
     }
 
     /**
-     * Gets created
+     * Gets article
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getCreated()
+    public function getArticle()
     {
-        return $this->container['created'];
+        return $this->container['article'];
     }
 
     /**
-     * Sets created
+     * Sets article
      *
-     * @param \DateTime|null $created Момент создания
+     * @param string|null $article Артикул
      *
      * @return self
      */
-    public function setCreated($created)
+    public function setArticle($article)
     {
-        if (is_null($created)) {
-            throw new \InvalidArgumentException('non-nullable created cannot be null');
+        if (is_null($article)) {
+            throw new \InvalidArgumentException('non-nullable article cannot be null');
         }
-        $this->container['created'] = $created;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdated()
-    {
-        return $this->container['updated'];
-    }
-
-    /**
-     * Sets updated
-     *
-     * @param \DateTime|null $updated Момент последнего обновления
-     *
-     * @return self
-     */
-    public function setUpdated($updated)
-    {
-        if (is_null($updated)) {
-            throw new \InvalidArgumentException('non-nullable updated cannot be null');
+        if ((mb_strlen($article) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $article when calling EntityProductPostRequest., must be smaller than or equal to 255.');
         }
-        $this->container['updated'] = $updated;
+
+        $this->container['article'] = $article;
 
         return $this;
     }
@@ -976,7 +1222,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets description
      *
-     * @param string|null $description Комментарий к контрагенту
+     * @param string|null $description Описание товара
      *
      * @return self
      */
@@ -995,613 +1241,217 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets company_type
+     * Gets vat
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getCompanyType()
+    public function getVat()
     {
-        return $this->container['company_type'];
+        return $this->container['vat'];
     }
 
     /**
-     * Sets company_type
+     * Sets vat
      *
-     * @param string|null $company_type Тип контрагента
+     * @param int|null $vat НДС %
      *
      * @return self
      */
-    public function setCompanyType($company_type)
+    public function setVat($vat)
     {
-        if (is_null($company_type)) {
-            throw new \InvalidArgumentException('non-nullable company_type cannot be null');
+        if (is_null($vat)) {
+            throw new \InvalidArgumentException('non-nullable vat cannot be null');
         }
-        $allowedValues = $this->getCompanyTypeAllowableValues();
-        if (!in_array($company_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'company_type', must be one of '%s'",
-                    $company_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['company_type'] = $company_type;
+        $this->container['vat'] = $vat;
 
         return $this;
     }
 
     /**
-     * Gets email
+     * Gets vat_enabled
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getEmail()
+    public function getVatEnabled()
     {
-        return $this->container['email'];
+        return $this->container['vat_enabled'];
     }
 
     /**
-     * Sets email
+     * Sets vat_enabled
      *
-     * @param string|null $email Адрес электронной почты
+     * @param bool|null $vat_enabled Включен ли НДС для товара
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setVatEnabled($vat_enabled)
     {
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+        if (is_null($vat_enabled)) {
+            throw new \InvalidArgumentException('non-nullable vat_enabled cannot be null');
         }
-        $this->container['email'] = $email;
+        $this->container['vat_enabled'] = $vat_enabled;
 
         return $this;
     }
 
     /**
-     * Gets phone
+     * Gets use_parent_vat
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getPhone()
+    public function getUseParentVat()
     {
-        return $this->container['phone'];
+        return $this->container['use_parent_vat'];
     }
 
     /**
-     * Sets phone
+     * Sets use_parent_vat
      *
-     * @param string|null $phone Номер телефона
+     * @param bool|null $use_parent_vat Используется ли ставка НДС родительской группы
      *
      * @return self
      */
-    public function setPhone($phone)
+    public function setUseParentVat($use_parent_vat)
     {
-        if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
+        if (is_null($use_parent_vat)) {
+            throw new \InvalidArgumentException('non-nullable use_parent_vat cannot be null');
         }
-        $this->container['phone'] = $phone;
+        $this->container['use_parent_vat'] = $use_parent_vat;
 
         return $this;
     }
 
     /**
-     * Gets fax
+     * Gets effective_vat
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getFax()
+    public function getEffectiveVat()
     {
-        return $this->container['fax'];
+        return $this->container['effective_vat'];
     }
 
     /**
-     * Sets fax
+     * Sets effective_vat
      *
-     * @param string|null $fax Номер факса
+     * @param int|null $effective_vat Реальный НДС %
      *
      * @return self
      */
-    public function setFax($fax)
+    public function setEffectiveVat($effective_vat)
     {
-        if (is_null($fax)) {
-            throw new \InvalidArgumentException('non-nullable fax cannot be null');
+        if (is_null($effective_vat)) {
+            throw new \InvalidArgumentException('non-nullable effective_vat cannot be null');
         }
-        $this->container['fax'] = $fax;
+        $this->container['effective_vat'] = $effective_vat;
 
         return $this;
     }
 
     /**
-     * Gets actual_address
+     * Gets effective_vat_enabled
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getActualAddress()
+    public function getEffectiveVatEnabled()
     {
-        return $this->container['actual_address'];
+        return $this->container['effective_vat_enabled'];
     }
 
     /**
-     * Sets actual_address
+     * Sets effective_vat_enabled
      *
-     * @param string|null $actual_address Фактический адрес контрагента
+     * @param bool|null $effective_vat_enabled Дополнительный признак для определения разграничения реального НДС
      *
      * @return self
      */
-    public function setActualAddress($actual_address)
+    public function setEffectiveVatEnabled($effective_vat_enabled)
     {
-        if (is_null($actual_address)) {
-            throw new \InvalidArgumentException('non-nullable actual_address cannot be null');
+        if (is_null($effective_vat_enabled)) {
+            throw new \InvalidArgumentException('non-nullable effective_vat_enabled cannot be null');
         }
-        if ((mb_strlen($actual_address) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $actual_address when calling EntityProductPostRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['actual_address'] = $actual_address;
+        $this->container['effective_vat_enabled'] = $effective_vat_enabled;
 
         return $this;
     }
 
     /**
-     * Gets legal_address
+     * Gets discount_prohibited
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getLegalAddress()
+    public function getDiscountProhibited()
     {
-        return $this->container['legal_address'];
+        return $this->container['discount_prohibited'];
     }
 
     /**
-     * Sets legal_address
+     * Sets discount_prohibited
      *
-     * @param string|null $legal_address Юридический адрес контрагента
+     * @param bool|null $discount_prohibited Признак запрета скидок
      *
      * @return self
      */
-    public function setLegalAddress($legal_address)
+    public function setDiscountProhibited($discount_prohibited)
     {
-        if (is_null($legal_address)) {
-            throw new \InvalidArgumentException('non-nullable legal_address cannot be null');
+        if (is_null($discount_prohibited)) {
+            throw new \InvalidArgumentException('non-nullable discount_prohibited cannot be null');
         }
-        if ((mb_strlen($legal_address) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $legal_address when calling EntityProductPostRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['legal_address'] = $legal_address;
+        $this->container['discount_prohibited'] = $discount_prohibited;
 
         return $this;
     }
 
     /**
-     * Gets inn
+     * Gets variants_count
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getInn()
+    public function getVariantsCount()
     {
-        return $this->container['inn'];
+        return $this->container['variants_count'];
     }
 
     /**
-     * Sets inn
+     * Sets variants_count
      *
-     * @param string|null $inn ИНН
+     * @param int|null $variants_count Количество модификаций у данного товара
      *
      * @return self
      */
-    public function setInn($inn)
+    public function setVariantsCount($variants_count)
     {
-        if (is_null($inn)) {
-            throw new \InvalidArgumentException('non-nullable inn cannot be null');
+        if (is_null($variants_count)) {
+            throw new \InvalidArgumentException('non-nullable variants_count cannot be null');
         }
-        if ((mb_strlen($inn) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $inn when calling EntityProductPostRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['inn'] = $inn;
+        $this->container['variants_count'] = $variants_count;
 
         return $this;
     }
 
     /**
-     * Gets kpp
+     * Gets is_serial_trackable
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getKpp()
+    public function getIsSerialTrackable()
     {
-        return $this->container['kpp'];
+        return $this->container['is_serial_trackable'];
     }
 
     /**
-     * Sets kpp
+     * Sets is_serial_trackable
      *
-     * @param string|null $kpp КПП
+     * @param bool|null $is_serial_trackable Учет по серийным номерам
      *
      * @return self
      */
-    public function setKpp($kpp)
+    public function setIsSerialTrackable($is_serial_trackable)
     {
-        if (is_null($kpp)) {
-            throw new \InvalidArgumentException('non-nullable kpp cannot be null');
+        if (is_null($is_serial_trackable)) {
+            throw new \InvalidArgumentException('non-nullable is_serial_trackable cannot be null');
         }
-        if ((mb_strlen($kpp) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $kpp when calling EntityProductPostRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['kpp'] = $kpp;
-
-        return $this;
-    }
-
-    /**
-     * Gets ogrn
-     *
-     * @return string|null
-     */
-    public function getOgrn()
-    {
-        return $this->container['ogrn'];
-    }
-
-    /**
-     * Sets ogrn
-     *
-     * @param string|null $ogrn ОГРН
-     *
-     * @return self
-     */
-    public function setOgrn($ogrn)
-    {
-        if (is_null($ogrn)) {
-            throw new \InvalidArgumentException('non-nullable ogrn cannot be null');
-        }
-        if ((mb_strlen($ogrn) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $ogrn when calling EntityProductPostRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['ogrn'] = $ogrn;
-
-        return $this;
-    }
-
-    /**
-     * Gets ogrnip
-     *
-     * @return string|null
-     */
-    public function getOgrnip()
-    {
-        return $this->container['ogrnip'];
-    }
-
-    /**
-     * Sets ogrnip
-     *
-     * @param string|null $ogrnip ОГРНИП
-     *
-     * @return self
-     */
-    public function setOgrnip($ogrnip)
-    {
-        if (is_null($ogrnip)) {
-            throw new \InvalidArgumentException('non-nullable ogrnip cannot be null');
-        }
-        if ((mb_strlen($ogrnip) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $ogrnip when calling EntityProductPostRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['ogrnip'] = $ogrnip;
-
-        return $this;
-    }
-
-    /**
-     * Gets okpo
-     *
-     * @return string|null
-     */
-    public function getOkpo()
-    {
-        return $this->container['okpo'];
-    }
-
-    /**
-     * Sets okpo
-     *
-     * @param string|null $okpo ОКПО
-     *
-     * @return self
-     */
-    public function setOkpo($okpo)
-    {
-        if (is_null($okpo)) {
-            throw new \InvalidArgumentException('non-nullable okpo cannot be null');
-        }
-        if ((mb_strlen($okpo) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $okpo when calling EntityProductPostRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['okpo'] = $okpo;
-
-        return $this;
-    }
-
-    /**
-     * Gets certificate_number
-     *
-     * @return string|null
-     */
-    public function getCertificateNumber()
-    {
-        return $this->container['certificate_number'];
-    }
-
-    /**
-     * Sets certificate_number
-     *
-     * @param string|null $certificate_number Номер свидетельства
-     *
-     * @return self
-     */
-    public function setCertificateNumber($certificate_number)
-    {
-        if (is_null($certificate_number)) {
-            throw new \InvalidArgumentException('non-nullable certificate_number cannot be null');
-        }
-        if ((mb_strlen($certificate_number) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $certificate_number when calling EntityProductPostRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['certificate_number'] = $certificate_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets certificate_date
-     *
-     * @return \DateTime|null
-     */
-    public function getCertificateDate()
-    {
-        return $this->container['certificate_date'];
-    }
-
-    /**
-     * Sets certificate_date
-     *
-     * @param \DateTime|null $certificate_date Дата свидетельства
-     *
-     * @return self
-     */
-    public function setCertificateDate($certificate_date)
-    {
-        if (is_null($certificate_date)) {
-            throw new \InvalidArgumentException('non-nullable certificate_date cannot be null');
-        }
-        $this->container['certificate_date'] = $certificate_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets legal_title
-     *
-     * @return string|null
-     */
-    public function getLegalTitle()
-    {
-        return $this->container['legal_title'];
-    }
-
-    /**
-     * Sets legal_title
-     *
-     * @param string|null $legal_title Полное наименование
-     *
-     * @return self
-     */
-    public function setLegalTitle($legal_title)
-    {
-        if (is_null($legal_title)) {
-            throw new \InvalidArgumentException('non-nullable legal_title cannot be null');
-        }
-        if ((mb_strlen($legal_title) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $legal_title when calling EntityProductPostRequest., must be smaller than or equal to 4096.');
-        }
-
-        $this->container['legal_title'] = $legal_title;
-
-        return $this;
-    }
-
-    /**
-     * Gets legal_first_name
-     *
-     * @return string|null
-     */
-    public function getLegalFirstName()
-    {
-        return $this->container['legal_first_name'];
-    }
-
-    /**
-     * Sets legal_first_name
-     *
-     * @param string|null $legal_first_name Имя для ИП и физлица
-     *
-     * @return self
-     */
-    public function setLegalFirstName($legal_first_name)
-    {
-        if (is_null($legal_first_name)) {
-            throw new \InvalidArgumentException('non-nullable legal_first_name cannot be null');
-        }
-        if ((mb_strlen($legal_first_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $legal_first_name when calling EntityProductPostRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['legal_first_name'] = $legal_first_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets legal_last_name
-     *
-     * @return string|null
-     */
-    public function getLegalLastName()
-    {
-        return $this->container['legal_last_name'];
-    }
-
-    /**
-     * Sets legal_last_name
-     *
-     * @param string|null $legal_last_name Фамилия для ИП и физлица
-     *
-     * @return self
-     */
-    public function setLegalLastName($legal_last_name)
-    {
-        if (is_null($legal_last_name)) {
-            throw new \InvalidArgumentException('non-nullable legal_last_name cannot be null');
-        }
-        if ((mb_strlen($legal_last_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $legal_last_name when calling EntityProductPostRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['legal_last_name'] = $legal_last_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets legal_middle_name
-     *
-     * @return string|null
-     */
-    public function getLegalMiddleName()
-    {
-        return $this->container['legal_middle_name'];
-    }
-
-    /**
-     * Sets legal_middle_name
-     *
-     * @param string|null $legal_middle_name Отчество для ИП и физлица
-     *
-     * @return self
-     */
-    public function setLegalMiddleName($legal_middle_name)
-    {
-        if (is_null($legal_middle_name)) {
-            throw new \InvalidArgumentException('non-nullable legal_middle_name cannot be null');
-        }
-        if ((mb_strlen($legal_middle_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $legal_middle_name when calling EntityProductPostRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['legal_middle_name'] = $legal_middle_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets birth_date
-     *
-     * @return \DateTime|null
-     */
-    public function getBirthDate()
-    {
-        return $this->container['birth_date'];
-    }
-
-    /**
-     * Sets birth_date
-     *
-     * @param \DateTime|null $birth_date Дата рождения для физлица
-     *
-     * @return self
-     */
-    public function setBirthDate($birth_date)
-    {
-        if (is_null($birth_date)) {
-            throw new \InvalidArgumentException('non-nullable birth_date cannot be null');
-        }
-        $this->container['birth_date'] = $birth_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets sex
-     *
-     * @return string|null
-     */
-    public function getSex()
-    {
-        return $this->container['sex'];
-    }
-
-    /**
-     * Sets sex
-     *
-     * @param string|null $sex Пол контрагента
-     *
-     * @return self
-     */
-    public function setSex($sex)
-    {
-        if (is_null($sex)) {
-            throw new \InvalidArgumentException('non-nullable sex cannot be null');
-        }
-        $allowedValues = $this->getSexAllowableValues();
-        if (!in_array($sex, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sex', must be one of '%s'",
-                    $sex,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['sex'] = $sex;
-
-        return $this;
-    }
-
-    /**
-     * Gets discount_card_number
-     *
-     * @return string|null
-     */
-    public function getDiscountCardNumber()
-    {
-        return $this->container['discount_card_number'];
-    }
-
-    /**
-     * Sets discount_card_number
-     *
-     * @param string|null $discount_card_number Номер дисконтной карты контрагента
-     *
-     * @return self
-     */
-    public function setDiscountCardNumber($discount_card_number)
-    {
-        if (is_null($discount_card_number)) {
-            throw new \InvalidArgumentException('non-nullable discount_card_number cannot be null');
-        }
-        if ((mb_strlen($discount_card_number) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $discount_card_number when calling EntityProductPostRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['discount_card_number'] = $discount_card_number;
+        $this->container['is_serial_trackable'] = $is_serial_trackable;
 
         return $this;
     }
@@ -1636,7 +1486,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets group
      *
-     * @return \OpenAPI\Client\Model\CounterpartyGroup|null
+     * @return \OpenAPI\Client\Model\ProductGroup|null
      */
     public function getGroup()
     {
@@ -1646,7 +1496,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets group
      *
-     * @param \OpenAPI\Client\Model\CounterpartyGroup|null $group group
+     * @param \OpenAPI\Client\Model\ProductGroup|null $group group
      *
      * @return self
      */
@@ -1663,7 +1513,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\CounterpartyOwner|null
+     * @return \OpenAPI\Client\Model\ProductOwner|null
      */
     public function getOwner()
     {
@@ -1673,7 +1523,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\CounterpartyOwner|null $owner owner
+     * @param \OpenAPI\Client\Model\ProductOwner|null $owner owner
      *
      * @return self
      */
@@ -1688,217 +1538,271 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets sales_amount
+     * Gets updated
      *
-     * @return int|null
+     * @return \DateTime|null
      */
-    public function getSalesAmount()
+    public function getUpdated()
     {
-        return $this->container['sales_amount'];
+        return $this->container['updated'];
     }
 
     /**
-     * Sets sales_amount
+     * Sets updated
      *
-     * @param int|null $sales_amount Сумма продаж
+     * @param \DateTime|null $updated Момент последнего обновления сущности
      *
      * @return self
      */
-    public function setSalesAmount($sales_amount)
+    public function setUpdated($updated)
     {
-        if (is_null($sales_amount)) {
-            throw new \InvalidArgumentException('non-nullable sales_amount cannot be null');
+        if (is_null($updated)) {
+            throw new \InvalidArgumentException('non-nullable updated cannot be null');
         }
-        $this->container['sales_amount'] = $sales_amount;
+        $this->container['updated'] = $updated;
 
         return $this;
     }
 
     /**
-     * Gets bonus_points
+     * Gets weight
      *
-     * @return int|null
+     * @return float|null
      */
-    public function getBonusPoints()
+    public function getWeight()
     {
-        return $this->container['bonus_points'];
+        return $this->container['weight'];
     }
 
     /**
-     * Sets bonus_points
+     * Sets weight
      *
-     * @param int|null $bonus_points Бонусные баллы по активной бонусной программе
+     * @param float|null $weight Вес
      *
      * @return self
      */
-    public function setBonusPoints($bonus_points)
+    public function setWeight($weight)
     {
-        if (is_null($bonus_points)) {
-            throw new \InvalidArgumentException('non-nullable bonus_points cannot be null');
+        if (is_null($weight)) {
+            throw new \InvalidArgumentException('non-nullable weight cannot be null');
         }
-        $this->container['bonus_points'] = $bonus_points;
+        $this->container['weight'] = $weight;
 
         return $this;
     }
 
     /**
-     * Gets bonus_program
+     * Gets volume
      *
-     * @return \OpenAPI\Client\Model\Meta|null
+     * @return float|null
      */
-    public function getBonusProgram()
+    public function getVolume()
     {
-        return $this->container['bonus_program'];
+        return $this->container['volume'];
     }
 
     /**
-     * Sets bonus_program
+     * Sets volume
      *
-     * @param \OpenAPI\Client\Model\Meta|null $bonus_program bonus_program
+     * @param float|null $volume Объем
      *
      * @return self
      */
-    public function setBonusProgram($bonus_program)
+    public function setVolume($volume)
     {
-        if (is_null($bonus_program)) {
-            throw new \InvalidArgumentException('non-nullable bonus_program cannot be null');
+        if (is_null($volume)) {
+            throw new \InvalidArgumentException('non-nullable volume cannot be null');
         }
-        $this->container['bonus_program'] = $bonus_program;
+        $this->container['volume'] = $volume;
 
         return $this;
     }
 
     /**
-     * Gets price_type
+     * Gets buy_price
      *
-     * @return \OpenAPI\Client\Model\Meta|null
+     * @return \OpenAPI\Client\Model\ProductBuyPrice|null
      */
-    public function getPriceType()
+    public function getBuyPrice()
     {
-        return $this->container['price_type'];
+        return $this->container['buy_price'];
     }
 
     /**
-     * Sets price_type
+     * Sets buy_price
      *
-     * @param \OpenAPI\Client\Model\Meta|null $price_type price_type
+     * @param \OpenAPI\Client\Model\ProductBuyPrice|null $buy_price buy_price
      *
      * @return self
      */
-    public function setPriceType($price_type)
+    public function setBuyPrice($buy_price)
     {
-        if (is_null($price_type)) {
-            throw new \InvalidArgumentException('non-nullable price_type cannot be null');
+        if (is_null($buy_price)) {
+            throw new \InvalidArgumentException('non-nullable buy_price cannot be null');
         }
-        $this->container['price_type'] = $price_type;
+        $this->container['buy_price'] = $buy_price;
 
         return $this;
     }
 
     /**
-     * Gets state
+     * Gets sale_prices
      *
-     * @return \OpenAPI\Client\Model\CounterpartyState|null
+     * @return \OpenAPI\Client\Model\ProductSalePricesInner[]|null
      */
-    public function getState()
+    public function getSalePrices()
     {
-        return $this->container['state'];
+        return $this->container['sale_prices'];
     }
 
     /**
-     * Sets state
+     * Sets sale_prices
      *
-     * @param \OpenAPI\Client\Model\CounterpartyState|null $state state
+     * @param \OpenAPI\Client\Model\ProductSalePricesInner[]|null $sale_prices Цены продажи
      *
      * @return self
      */
-    public function setState($state)
+    public function setSalePrices($sale_prices)
     {
-        if (is_null($state)) {
-            throw new \InvalidArgumentException('non-nullable state cannot be null');
+        if (is_null($sale_prices)) {
+            throw new \InvalidArgumentException('non-nullable sale_prices cannot be null');
         }
-        $this->container['state'] = $state;
+        $this->container['sale_prices'] = $sale_prices;
 
         return $this;
     }
 
     /**
-     * Gets accounts
+     * Gets supplier
      *
-     * @return \OpenAPI\Client\Model\CounterpartyAccounts|null
+     * @return \OpenAPI\Client\Model\ProductSupplier|null
      */
-    public function getAccounts()
+    public function getSupplier()
     {
-        return $this->container['accounts'];
+        return $this->container['supplier'];
     }
 
     /**
-     * Sets accounts
+     * Sets supplier
      *
-     * @param \OpenAPI\Client\Model\CounterpartyAccounts|null $accounts accounts
+     * @param \OpenAPI\Client\Model\ProductSupplier|null $supplier supplier
      *
      * @return self
      */
-    public function setAccounts($accounts)
+    public function setSupplier($supplier)
     {
-        if (is_null($accounts)) {
-            throw new \InvalidArgumentException('non-nullable accounts cannot be null');
+        if (is_null($supplier)) {
+            throw new \InvalidArgumentException('non-nullable supplier cannot be null');
         }
-        $this->container['accounts'] = $accounts;
+        $this->container['supplier'] = $supplier;
 
         return $this;
     }
 
     /**
-     * Gets contactpersons
+     * Gets country
      *
-     * @return \OpenAPI\Client\Model\CounterpartyContactpersons|null
+     * @return \OpenAPI\Client\Model\ProductCountry|null
      */
-    public function getContactpersons()
+    public function getCountry()
     {
-        return $this->container['contactpersons'];
+        return $this->container['country'];
     }
 
     /**
-     * Sets contactpersons
+     * Sets country
      *
-     * @param \OpenAPI\Client\Model\CounterpartyContactpersons|null $contactpersons contactpersons
+     * @param \OpenAPI\Client\Model\ProductCountry|null $country country
      *
      * @return self
      */
-    public function setContactpersons($contactpersons)
+    public function setCountry($country)
     {
-        if (is_null($contactpersons)) {
-            throw new \InvalidArgumentException('non-nullable contactpersons cannot be null');
+        if (is_null($country)) {
+            throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
-        $this->container['contactpersons'] = $contactpersons;
+        $this->container['country'] = $country;
 
         return $this;
     }
 
     /**
-     * Gets notes
+     * Gets uom
      *
-     * @return \OpenAPI\Client\Model\CounterpartyNotes|null
+     * @return \OpenAPI\Client\Model\ProductUom|null
      */
-    public function getNotes()
+    public function getUom()
     {
-        return $this->container['notes'];
+        return $this->container['uom'];
     }
 
     /**
-     * Sets notes
+     * Sets uom
      *
-     * @param \OpenAPI\Client\Model\CounterpartyNotes|null $notes notes
+     * @param \OpenAPI\Client\Model\ProductUom|null $uom uom
      *
      * @return self
      */
-    public function setNotes($notes)
+    public function setUom($uom)
     {
-        if (is_null($notes)) {
-            throw new \InvalidArgumentException('non-nullable notes cannot be null');
+        if (is_null($uom)) {
+            throw new \InvalidArgumentException('non-nullable uom cannot be null');
         }
-        $this->container['notes'] = $notes;
+        $this->container['uom'] = $uom;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_folder
+     *
+     * @return \OpenAPI\Client\Model\ProductProductFolder|null
+     */
+    public function getProductFolder()
+    {
+        return $this->container['product_folder'];
+    }
+
+    /**
+     * Sets product_folder
+     *
+     * @param \OpenAPI\Client\Model\ProductProductFolder|null $product_folder product_folder
+     *
+     * @return self
+     */
+    public function setProductFolder($product_folder)
+    {
+        if (is_null($product_folder)) {
+            throw new \InvalidArgumentException('non-nullable product_folder cannot be null');
+        }
+        $this->container['product_folder'] = $product_folder;
+
+        return $this;
+    }
+
+    /**
+     * Gets images
+     *
+     * @return \OpenAPI\Client\Model\ProductImages|null
+     */
+    public function getImages()
+    {
+        return $this->container['images'];
+    }
+
+    /**
+     * Sets images
+     *
+     * @param \OpenAPI\Client\Model\ProductImages|null $images images
+     *
+     * @return self
+     */
+    public function setImages($images)
+    {
+        if (is_null($images)) {
+            throw new \InvalidArgumentException('non-nullable images cannot be null');
+        }
+        $this->container['images'] = $images;
 
         return $this;
     }
@@ -1906,7 +1810,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets files
      *
-     * @return \OpenAPI\Client\Model\CounterpartyFiles|null
+     * @return \OpenAPI\Client\Model\ProductFiles|null
      */
     public function getFiles()
     {
@@ -1916,7 +1820,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets files
      *
-     * @param \OpenAPI\Client\Model\CounterpartyFiles|null $files files
+     * @param \OpenAPI\Client\Model\ProductFiles|null $files files
      *
      * @return self
      */
@@ -1931,28 +1835,197 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets tags
+     * Gets barcodes
      *
-     * @return string[]|null
+     * @return \OpenAPI\Client\Model\Barcode[]|null
      */
-    public function getTags()
+    public function getBarcodes()
     {
-        return $this->container['tags'];
+        return $this->container['barcodes'];
     }
 
     /**
-     * Sets tags
+     * Sets barcodes
      *
-     * @param string[]|null $tags Группы контрагента
+     * @param \OpenAPI\Client\Model\Barcode[]|null $barcodes Штрихкоды товара
      *
      * @return self
      */
-    public function setTags($tags)
+    public function setBarcodes($barcodes)
     {
-        if (is_null($tags)) {
-            throw new \InvalidArgumentException('non-nullable tags cannot be null');
+        if (is_null($barcodes)) {
+            throw new \InvalidArgumentException('non-nullable barcodes cannot be null');
         }
-        $this->container['tags'] = $tags;
+        $this->container['barcodes'] = $barcodes;
+
+        return $this;
+    }
+
+    /**
+     * Gets packs
+     *
+     * @return \OpenAPI\Client\Model\Pack[]|null
+     */
+    public function getPacks()
+    {
+        return $this->container['packs'];
+    }
+
+    /**
+     * Sets packs
+     *
+     * @param \OpenAPI\Client\Model\Pack[]|null $packs Упаковки товара
+     *
+     * @return self
+     */
+    public function setPacks($packs)
+    {
+        if (is_null($packs)) {
+            throw new \InvalidArgumentException('non-nullable packs cannot be null');
+        }
+        $this->container['packs'] = $packs;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_type
+     *
+     * @return string|null
+     */
+    public function getTrackingType()
+    {
+        return $this->container['tracking_type'];
+    }
+
+    /**
+     * Sets tracking_type
+     *
+     * @param string|null $tracking_type Тип маркируемой продукции
+     *
+     * @return self
+     */
+    public function setTrackingType($tracking_type)
+    {
+        if (is_null($tracking_type)) {
+            throw new \InvalidArgumentException('non-nullable tracking_type cannot be null');
+        }
+        $allowedValues = $this->getTrackingTypeAllowableValues();
+        if (!in_array($tracking_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'tracking_type', must be one of '%s'",
+                    $tracking_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['tracking_type'] = $tracking_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets tnved
+     *
+     * @return string|null
+     */
+    public function getTnved()
+    {
+        return $this->container['tnved'];
+    }
+
+    /**
+     * Sets tnved
+     *
+     * @param string|null $tnved Код ТН ВЭД
+     *
+     * @return self
+     */
+    public function setTnved($tnved)
+    {
+        if (is_null($tnved)) {
+            throw new \InvalidArgumentException('non-nullable tnved cannot be null');
+        }
+        if ((mb_strlen($tnved) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $tnved when calling EntityProductPostRequest., must be smaller than or equal to 255.');
+        }
+
+        $this->container['tnved'] = $tnved;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_item_type
+     *
+     * @return string|null
+     */
+    public function getPaymentItemType()
+    {
+        return $this->container['payment_item_type'];
+    }
+
+    /**
+     * Sets payment_item_type
+     *
+     * @param string|null $payment_item_type Признак предмета расчета
+     *
+     * @return self
+     */
+    public function setPaymentItemType($payment_item_type)
+    {
+        if (is_null($payment_item_type)) {
+            throw new \InvalidArgumentException('non-nullable payment_item_type cannot be null');
+        }
+        $allowedValues = $this->getPaymentItemTypeAllowableValues();
+        if (!in_array($payment_item_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'payment_item_type', must be one of '%s'",
+                    $payment_item_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['payment_item_type'] = $payment_item_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_system
+     *
+     * @return string|null
+     */
+    public function getTaxSystem()
+    {
+        return $this->container['tax_system'];
+    }
+
+    /**
+     * Sets tax_system
+     *
+     * @param string|null $tax_system Код системы налогообложения
+     *
+     * @return self
+     */
+    public function setTaxSystem($tax_system)
+    {
+        if (is_null($tax_system)) {
+            throw new \InvalidArgumentException('non-nullable tax_system cannot be null');
+        }
+        $allowedValues = $this->getTaxSystemAllowableValues();
+        if (!in_array($tax_system, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'tax_system', must be one of '%s'",
+                    $tax_system,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['tax_system'] = $tax_system;
 
         return $this;
     }
@@ -1980,6 +2053,261 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
         $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets minimum_balance
+     *
+     * @return float|null
+     * @deprecated
+     */
+    public function getMinimumBalance()
+    {
+        return $this->container['minimum_balance'];
+    }
+
+    /**
+     * Sets minimum_balance
+     *
+     * @param float|null $minimum_balance Неснижаемый остаток (устаревшее)
+     *
+     * @return self
+     * @deprecated
+     */
+    public function setMinimumBalance($minimum_balance)
+    {
+        if (is_null($minimum_balance)) {
+            throw new \InvalidArgumentException('non-nullable minimum_balance cannot be null');
+        }
+        $this->container['minimum_balance'] = $minimum_balance;
+
+        return $this;
+    }
+
+    /**
+     * Gets minimum_stock
+     *
+     * @return \OpenAPI\Client\Model\ProductMinimumStock|null
+     */
+    public function getMinimumStock()
+    {
+        return $this->container['minimum_stock'];
+    }
+
+    /**
+     * Sets minimum_stock
+     *
+     * @param \OpenAPI\Client\Model\ProductMinimumStock|null $minimum_stock minimum_stock
+     *
+     * @return self
+     */
+    public function setMinimumStock($minimum_stock)
+    {
+        if (is_null($minimum_stock)) {
+            throw new \InvalidArgumentException('non-nullable minimum_stock cannot be null');
+        }
+        $this->container['minimum_stock'] = $minimum_stock;
+
+        return $this;
+    }
+
+    /**
+     * Gets min_price
+     *
+     * @return \OpenAPI\Client\Model\ProductMinPrice|null
+     */
+    public function getMinPrice()
+    {
+        return $this->container['min_price'];
+    }
+
+    /**
+     * Sets min_price
+     *
+     * @param \OpenAPI\Client\Model\ProductMinPrice|null $min_price min_price
+     *
+     * @return self
+     */
+    public function setMinPrice($min_price)
+    {
+        if (is_null($min_price)) {
+            throw new \InvalidArgumentException('non-nullable min_price cannot be null');
+        }
+        $this->container['min_price'] = $min_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets weighed
+     *
+     * @return bool|null
+     */
+    public function getWeighed()
+    {
+        return $this->container['weighed'];
+    }
+
+    /**
+     * Sets weighed
+     *
+     * @param bool|null $weighed Поле, показывающее является ли товар весовым
+     *
+     * @return self
+     */
+    public function setWeighed($weighed)
+    {
+        if (is_null($weighed)) {
+            throw new \InvalidArgumentException('non-nullable weighed cannot be null');
+        }
+        $this->container['weighed'] = $weighed;
+
+        return $this;
+    }
+
+    /**
+     * Gets on_tap
+     *
+     * @return bool|null
+     */
+    public function getOnTap()
+    {
+        return $this->container['on_tap'];
+    }
+
+    /**
+     * Sets on_tap
+     *
+     * @param bool|null $on_tap Поле, показывающее является ли товар разливным
+     *
+     * @return self
+     */
+    public function setOnTap($on_tap)
+    {
+        if (is_null($on_tap)) {
+            throw new \InvalidArgumentException('non-nullable on_tap cannot be null');
+        }
+        $this->container['on_tap'] = $on_tap;
+
+        return $this;
+    }
+
+    /**
+     * Gets partial_disposal
+     *
+     * @return bool|null
+     */
+    public function getPartialDisposal()
+    {
+        return $this->container['partial_disposal'];
+    }
+
+    /**
+     * Sets partial_disposal
+     *
+     * @param bool|null $partial_disposal Управление состоянием частичного выбытия маркированного товара
+     *
+     * @return self
+     */
+    public function setPartialDisposal($partial_disposal)
+    {
+        if (is_null($partial_disposal)) {
+            throw new \InvalidArgumentException('non-nullable partial_disposal cannot be null');
+        }
+        $this->container['partial_disposal'] = $partial_disposal;
+
+        return $this;
+    }
+
+    /**
+     * Gets things
+     *
+     * @return string[]|null
+     */
+    public function getThings()
+    {
+        return $this->container['things'];
+    }
+
+    /**
+     * Sets things
+     *
+     * @param string[]|null $things Серийные номера
+     *
+     * @return self
+     */
+    public function setThings($things)
+    {
+        if (is_null($things)) {
+            throw new \InvalidArgumentException('non-nullable things cannot be null');
+        }
+        $this->container['things'] = $things;
+
+        return $this;
+    }
+
+    /**
+     * Gets sync_id
+     *
+     * @return string|null
+     */
+    public function getSyncId()
+    {
+        return $this->container['sync_id'];
+    }
+
+    /**
+     * Sets sync_id
+     *
+     * @param string|null $sync_id ID синхронизации
+     *
+     * @return self
+     */
+    public function setSyncId($sync_id)
+    {
+        if (is_null($sync_id)) {
+            throw new \InvalidArgumentException('non-nullable sync_id cannot be null');
+        }
+        $this->container['sync_id'] = $sync_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets ppe_type
+     *
+     * @return string|null
+     */
+    public function getPpeType()
+    {
+        return $this->container['ppe_type'];
+    }
+
+    /**
+     * Sets ppe_type
+     *
+     * @param string|null $ppe_type Код вида номенклатурной классификации медицинских средств индивидуальной защиты
+     *
+     * @return self
+     */
+    public function setPpeType($ppe_type)
+    {
+        if (is_null($ppe_type)) {
+            throw new \InvalidArgumentException('non-nullable ppe_type cannot be null');
+        }
+        $allowedValues = $this->getPpeTypeAllowableValues();
+        if (!in_array($ppe_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'ppe_type', must be one of '%s'",
+                    $ppe_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['ppe_type'] = $ppe_type;
 
         return $this;
     }
