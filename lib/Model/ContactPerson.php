@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductFilesRowsInner
+ * ContactPerson
  *
  * PHP version 7.4
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ProductFilesRowsInner Class Doc Comment
+ * ContactPerson Class Doc Comment
  *
  * @category Class
+ * @description Контактные лица Контрагентов
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class ContactPerson implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product_files_rows_inner';
+    protected static $openAPIModelName = 'ContactPerson';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +59,16 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\Meta',
-        'title' => 'string',
-        'filename' => 'string',
-        'size' => 'int',
-        'created' => '\DateTime',
-        'created_by' => '\OpenAPI\Client\Model\FileCreatedBy',
-        'tiny' => '\OpenAPI\Client\Model\Meta',
-        'miniature' => '\OpenAPI\Client\Model\Meta'
+        'id' => 'string',
+        'account_id' => 'string',
+        'updated' => '\DateTime',
+        'name' => 'string',
+        'description' => 'string',
+        'email' => 'string',
+        'phone' => 'string',
+        'position' => 'string',
+        'external_code' => 'string',
+        'agent' => '\OpenAPI\Client\Model\Counterparty'
     ];
 
     /**
@@ -76,13 +80,16 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPIFormats = [
         'meta' => null,
-        'title' => null,
-        'filename' => null,
-        'size' => null,
-        'created' => 'date-time',
-        'created_by' => null,
-        'tiny' => null,
-        'miniature' => null
+        'id' => 'uuid',
+        'account_id' => 'uuid',
+        'updated' => 'date-time',
+        'name' => null,
+        'description' => null,
+        'email' => 'email',
+        'phone' => null,
+        'position' => null,
+        'external_code' => null,
+        'agent' => null
     ];
 
     /**
@@ -92,13 +99,16 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPINullables = [
         'meta' => false,
-        'title' => false,
-        'filename' => false,
-        'size' => false,
-        'created' => false,
-        'created_by' => false,
-        'tiny' => false,
-        'miniature' => false
+        'id' => false,
+        'account_id' => false,
+        'updated' => false,
+        'name' => false,
+        'description' => false,
+        'email' => false,
+        'phone' => false,
+        'position' => false,
+        'external_code' => false,
+        'agent' => false
     ];
 
     /**
@@ -188,13 +198,16 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'meta' => 'meta',
-        'title' => 'title',
-        'filename' => 'filename',
-        'size' => 'size',
-        'created' => 'created',
-        'created_by' => 'createdBy',
-        'tiny' => 'tiny',
-        'miniature' => 'miniature'
+        'id' => 'id',
+        'account_id' => 'accountId',
+        'updated' => 'updated',
+        'name' => 'name',
+        'description' => 'description',
+        'email' => 'email',
+        'phone' => 'phone',
+        'position' => 'position',
+        'external_code' => 'externalCode',
+        'agent' => 'agent'
     ];
 
     /**
@@ -204,13 +217,16 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'meta' => 'setMeta',
-        'title' => 'setTitle',
-        'filename' => 'setFilename',
-        'size' => 'setSize',
-        'created' => 'setCreated',
-        'created_by' => 'setCreatedBy',
-        'tiny' => 'setTiny',
-        'miniature' => 'setMiniature'
+        'id' => 'setId',
+        'account_id' => 'setAccountId',
+        'updated' => 'setUpdated',
+        'name' => 'setName',
+        'description' => 'setDescription',
+        'email' => 'setEmail',
+        'phone' => 'setPhone',
+        'position' => 'setPosition',
+        'external_code' => 'setExternalCode',
+        'agent' => 'setAgent'
     ];
 
     /**
@@ -220,13 +236,16 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'meta' => 'getMeta',
-        'title' => 'getTitle',
-        'filename' => 'getFilename',
-        'size' => 'getSize',
-        'created' => 'getCreated',
-        'created_by' => 'getCreatedBy',
-        'tiny' => 'getTiny',
-        'miniature' => 'getMiniature'
+        'id' => 'getId',
+        'account_id' => 'getAccountId',
+        'updated' => 'getUpdated',
+        'name' => 'getName',
+        'description' => 'getDescription',
+        'email' => 'getEmail',
+        'phone' => 'getPhone',
+        'position' => 'getPosition',
+        'external_code' => 'getExternalCode',
+        'agent' => 'getAgent'
     ];
 
     /**
@@ -287,13 +306,16 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(?array $data = null)
     {
         $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('filename', $data ?? [], null);
-        $this->setIfExists('size', $data ?? [], null);
-        $this->setIfExists('created', $data ?? [], null);
-        $this->setIfExists('created_by', $data ?? [], null);
-        $this->setIfExists('tiny', $data ?? [], null);
-        $this->setIfExists('miniature', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('updated', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('phone', $data ?? [], null);
+        $this->setIfExists('position', $data ?? [], null);
+        $this->setIfExists('external_code', $data ?? [], null);
+        $this->setIfExists('agent', $data ?? [], null);
     }
 
     /**
@@ -323,12 +345,8 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 255)) {
-            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['filename']) && (mb_strlen($this->container['filename']) > 255)) {
-            $invalidProperties[] = "invalid value for 'filename', the character length must be smaller than or equal to 255.";
+        if (!is_null($this->container['external_code']) && (mb_strlen($this->container['external_code']) > 255)) {
+            $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
         }
 
         return $invalidProperties;
@@ -374,198 +392,275 @@ class ProductFilesRowsInner implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets title
+     * Gets id
      *
      * @return string|null
      */
-    public function getTitle()
+    public function getId()
     {
-        return $this->container['title'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets title
+     * Sets id
      *
-     * @param string|null $title Название файла
+     * @param string|null $id ID контактного лица
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setId($id)
     {
-        if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        if ((mb_strlen($title) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling ProductFilesRowsInner., must be smaller than or equal to 255.');
-        }
-
-        $this->container['title'] = $title;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets filename
+     * Gets account_id
      *
      * @return string|null
      */
-    public function getFilename()
+    public function getAccountId()
     {
-        return $this->container['filename'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets filename
+     * Sets account_id
      *
-     * @param string|null $filename Имя файла
+     * @param string|null $account_id ID учетной записи
      *
      * @return self
      */
-    public function setFilename($filename)
+    public function setAccountId($account_id)
     {
-        if (is_null($filename)) {
-            throw new \InvalidArgumentException('non-nullable filename cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        if ((mb_strlen($filename) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $filename when calling ProductFilesRowsInner., must be smaller than or equal to 255.');
-        }
-
-        $this->container['filename'] = $filename;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets size
-     *
-     * @return int|null
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param int|null $size Размер файла в байтах
-     *
-     * @return self
-     */
-    public function setSize($size)
-    {
-        if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
-        }
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /**
-     * Gets created
+     * Gets updated
      *
      * @return \DateTime|null
      */
-    public function getCreated()
+    public function getUpdated()
     {
-        return $this->container['created'];
+        return $this->container['updated'];
     }
 
     /**
-     * Sets created
+     * Sets updated
      *
-     * @param \DateTime|null $created Время создания объекта
+     * @param \DateTime|null $updated Время последнего изменения
      *
      * @return self
      */
-    public function setCreated($created)
+    public function setUpdated($updated)
     {
-        if (is_null($created)) {
-            throw new \InvalidArgumentException('non-nullable created cannot be null');
+        if (is_null($updated)) {
+            throw new \InvalidArgumentException('non-nullable updated cannot be null');
         }
-        $this->container['created'] = $created;
+        $this->container['updated'] = $updated;
 
         return $this;
     }
 
     /**
-     * Gets created_by
+     * Gets name
      *
-     * @return \OpenAPI\Client\Model\FileCreatedBy|null
+     * @return string|null
      */
-    public function getCreatedBy()
+    public function getName()
     {
-        return $this->container['created_by'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets created_by
+     * Sets name
      *
-     * @param \OpenAPI\Client\Model\FileCreatedBy|null $created_by created_by
+     * @param string|null $name ФИО контактного лица
      *
      * @return self
      */
-    public function setCreatedBy($created_by)
+    public function setName($name)
     {
-        if (is_null($created_by)) {
-            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['created_by'] = $created_by;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets tiny
+     * Gets description
      *
-     * @return \OpenAPI\Client\Model\Meta|null
+     * @return string|null
      */
-    public function getTiny()
+    public function getDescription()
     {
-        return $this->container['tiny'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets tiny
+     * Sets description
      *
-     * @param \OpenAPI\Client\Model\Meta|null $tiny tiny
+     * @param string|null $description Описание контактного лица
      *
      * @return self
      */
-    public function setTiny($tiny)
+    public function setDescription($description)
     {
-        if (is_null($tiny)) {
-            throw new \InvalidArgumentException('non-nullable tiny cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['tiny'] = $tiny;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets miniature
+     * Gets email
      *
-     * @return \OpenAPI\Client\Model\Meta|null
+     * @return string|null
      */
-    public function getMiniature()
+    public function getEmail()
     {
-        return $this->container['miniature'];
+        return $this->container['email'];
     }
 
     /**
-     * Sets miniature
+     * Sets email
      *
-     * @param \OpenAPI\Client\Model\Meta|null $miniature miniature
+     * @param string|null $email Адрес электронной почты
      *
      * @return self
      */
-    public function setMiniature($miniature)
+    public function setEmail($email)
     {
-        if (is_null($miniature)) {
-            throw new \InvalidArgumentException('non-nullable miniature cannot be null');
+        if (is_null($email)) {
+            throw new \InvalidArgumentException('non-nullable email cannot be null');
         }
-        $this->container['miniature'] = $miniature;
+        $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone
+     *
+     * @return string|null
+     */
+    public function getPhone()
+    {
+        return $this->container['phone'];
+    }
+
+    /**
+     * Sets phone
+     *
+     * @param string|null $phone Номер телефона
+     *
+     * @return self
+     */
+    public function setPhone($phone)
+    {
+        if (is_null($phone)) {
+            throw new \InvalidArgumentException('non-nullable phone cannot be null');
+        }
+        $this->container['phone'] = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Gets position
+     *
+     * @return string|null
+     */
+    public function getPosition()
+    {
+        return $this->container['position'];
+    }
+
+    /**
+     * Sets position
+     *
+     * @param string|null $position Должность
+     *
+     * @return self
+     */
+    public function setPosition($position)
+    {
+        if (is_null($position)) {
+            throw new \InvalidArgumentException('non-nullable position cannot be null');
+        }
+        $this->container['position'] = $position;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_code
+     *
+     * @return string|null
+     */
+    public function getExternalCode()
+    {
+        return $this->container['external_code'];
+    }
+
+    /**
+     * Sets external_code
+     *
+     * @param string|null $external_code Внешний код контактного лица
+     *
+     * @return self
+     */
+    public function setExternalCode($external_code)
+    {
+        if (is_null($external_code)) {
+            throw new \InvalidArgumentException('non-nullable external_code cannot be null');
+        }
+        if ((mb_strlen($external_code) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $external_code when calling ContactPerson., must be smaller than or equal to 255.');
+        }
+
+        $this->container['external_code'] = $external_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets agent
+     *
+     * @return \OpenAPI\Client\Model\Counterparty|null
+     */
+    public function getAgent()
+    {
+        return $this->container['agent'];
+    }
+
+    /**
+     * Sets agent
+     *
+     * @param \OpenAPI\Client\Model\Counterparty|null $agent agent
+     *
+     * @return self
+     */
+    public function setAgent($agent)
+    {
+        if (is_null($agent)) {
+            throw new \InvalidArgumentException('non-nullable agent cannot be null');
+        }
+        $this->container['agent'] = $agent;
 
         return $this;
     }

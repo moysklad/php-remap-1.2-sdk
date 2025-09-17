@@ -50,7 +50,7 @@ class CounterpartyContactpersons implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'counterparty_contactpersons';
+    protected static $openAPIModelName = 'Counterparty_contactpersons';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,7 @@ class CounterpartyContactpersons implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\MetaList',
-        'rows' => '\OpenAPI\Client\Model\Contactpersons[]'
+        'rows' => '\OpenAPI\Client\Model\ContactPerson[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CounterpartyContactpersons implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets rows
      *
-     * @return \OpenAPI\Client\Model\Contactpersons[]|null
+     * @return \OpenAPI\Client\Model\ContactPerson[]|null
      */
     public function getRows()
     {
@@ -337,7 +337,7 @@ class CounterpartyContactpersons implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\Contactpersons[]|null $rows rows
+     * @param \OpenAPI\Client\Model\ContactPerson[]|null $rows rows
      *
      * @return self
      */

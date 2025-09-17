@@ -50,7 +50,7 @@ class StoreBalance implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'store-balance';
+    protected static $openAPIModelName = 'StoreBalance';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +61,7 @@ class StoreBalance implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'account_id' => 'string',
         'meta' => '\OpenAPI\Client\Model\Meta',
-        'store' => '\OpenAPI\Client\Model\StoreBalanceStore',
+        'store' => '\OpenAPI\Client\Model\Store',
         'quantity' => 'float'
     ];
 
@@ -402,7 +402,7 @@ class StoreBalance implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets store
      *
-     * @return \OpenAPI\Client\Model\StoreBalanceStore|null
+     * @return \OpenAPI\Client\Model\Store|null
      */
     public function getStore()
     {
@@ -412,7 +412,7 @@ class StoreBalance implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets store
      *
-     * @param \OpenAPI\Client\Model\StoreBalanceStore|null $store store
+     * @param \OpenAPI\Client\Model\Store|null $store store
      *
      * @return self
      */

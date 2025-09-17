@@ -50,7 +50,7 @@ class CounterpartyAccounts implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'counterparty_accounts';
+    protected static $openAPIModelName = 'Counterparty_accounts';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,7 @@ class CounterpartyAccounts implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\MetaList',
-        'rows' => '\OpenAPI\Client\Model\Accounts[]'
+        'rows' => '\OpenAPI\Client\Model\Account[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CounterpartyAccounts implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets rows
      *
-     * @return \OpenAPI\Client\Model\Accounts[]|null
+     * @return \OpenAPI\Client\Model\Account[]|null
      */
     public function getRows()
     {
@@ -337,7 +337,7 @@ class CounterpartyAccounts implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\Accounts[]|null $rows rows
+     * @param \OpenAPI\Client\Model\Account[]|null $rows rows
      *
      * @return self
      */

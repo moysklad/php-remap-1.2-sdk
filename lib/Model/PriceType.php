@@ -50,7 +50,7 @@ class PriceType implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'price-type';
+    protected static $openAPIModelName = 'PriceType';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

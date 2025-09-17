@@ -50,7 +50,7 @@ class RetailStoreAcquire implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'retail_store_acquire';
+    protected static $openAPIModelName = 'RetailStore_acquire';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

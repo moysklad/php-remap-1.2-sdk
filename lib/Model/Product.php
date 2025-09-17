@@ -49,7 +49,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product';
+    protected static $openAPIModelName = 'Product';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -78,17 +78,17 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'variants_count' => 'int',
         'is_serial_trackable' => 'bool',
         'shared' => 'bool',
-        'group' => '\OpenAPI\Client\Model\ProductGroup',
-        'owner' => '\OpenAPI\Client\Model\ProductOwner',
+        'group' => '\OpenAPI\Client\Model\Group',
+        'owner' => '\OpenAPI\Client\Model\Owner',
         'updated' => '\DateTime',
         'weight' => 'float',
         'volume' => 'float',
-        'buy_price' => '\OpenAPI\Client\Model\ProductBuyPrice',
-        'sale_prices' => '\OpenAPI\Client\Model\ProductSalePricesInner[]',
-        'supplier' => '\OpenAPI\Client\Model\ProductSupplier',
-        'country' => '\OpenAPI\Client\Model\ProductCountry',
-        'uom' => '\OpenAPI\Client\Model\ProductUom',
-        'product_folder' => '\OpenAPI\Client\Model\ProductProductFolder',
+        'buy_price' => '\OpenAPI\Client\Model\BuyPrice',
+        'sale_prices' => '\OpenAPI\Client\Model\SalePrice[]',
+        'supplier' => '\OpenAPI\Client\Model\Counterparty',
+        'country' => '\OpenAPI\Client\Model\Country',
+        'uom' => '\OpenAPI\Client\Model\Uom',
+        'product_folder' => '\OpenAPI\Client\Model\ProductFolder',
         'images' => '\OpenAPI\Client\Model\ProductImages',
         'files' => '\OpenAPI\Client\Model\ProductFiles',
         'barcodes' => '\OpenAPI\Client\Model\Barcode[]',
@@ -100,7 +100,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'attributes' => '\OpenAPI\Client\Model\Attribute[]',
         'minimum_balance' => 'float',
         'minimum_stock' => '\OpenAPI\Client\Model\ProductMinimumStock',
-        'min_price' => '\OpenAPI\Client\Model\ProductMinPrice',
+        'min_price' => '\OpenAPI\Client\Model\MinPrice',
         'weighed' => 'bool',
         'on_tap' => 'bool',
         'partial_disposal' => 'bool',
@@ -1486,7 +1486,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets group
      *
-     * @return \OpenAPI\Client\Model\ProductGroup|null
+     * @return \OpenAPI\Client\Model\Group|null
      */
     public function getGroup()
     {
@@ -1496,7 +1496,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets group
      *
-     * @param \OpenAPI\Client\Model\ProductGroup|null $group group
+     * @param \OpenAPI\Client\Model\Group|null $group group
      *
      * @return self
      */
@@ -1513,7 +1513,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\ProductOwner|null
+     * @return \OpenAPI\Client\Model\Owner|null
      */
     public function getOwner()
     {
@@ -1523,7 +1523,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\ProductOwner|null $owner owner
+     * @param \OpenAPI\Client\Model\Owner|null $owner owner
      *
      * @return self
      */
@@ -1621,7 +1621,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets buy_price
      *
-     * @return \OpenAPI\Client\Model\ProductBuyPrice|null
+     * @return \OpenAPI\Client\Model\BuyPrice|null
      */
     public function getBuyPrice()
     {
@@ -1631,7 +1631,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets buy_price
      *
-     * @param \OpenAPI\Client\Model\ProductBuyPrice|null $buy_price buy_price
+     * @param \OpenAPI\Client\Model\BuyPrice|null $buy_price buy_price
      *
      * @return self
      */
@@ -1648,7 +1648,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sale_prices
      *
-     * @return \OpenAPI\Client\Model\ProductSalePricesInner[]|null
+     * @return \OpenAPI\Client\Model\SalePrice[]|null
      */
     public function getSalePrices()
     {
@@ -1658,7 +1658,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sale_prices
      *
-     * @param \OpenAPI\Client\Model\ProductSalePricesInner[]|null $sale_prices Цены продажи
+     * @param \OpenAPI\Client\Model\SalePrice[]|null $sale_prices Цены продажи
      *
      * @return self
      */
@@ -1675,7 +1675,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets supplier
      *
-     * @return \OpenAPI\Client\Model\ProductSupplier|null
+     * @return \OpenAPI\Client\Model\Counterparty|null
      */
     public function getSupplier()
     {
@@ -1685,7 +1685,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets supplier
      *
-     * @param \OpenAPI\Client\Model\ProductSupplier|null $supplier supplier
+     * @param \OpenAPI\Client\Model\Counterparty|null $supplier supplier
      *
      * @return self
      */
@@ -1702,7 +1702,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets country
      *
-     * @return \OpenAPI\Client\Model\ProductCountry|null
+     * @return \OpenAPI\Client\Model\Country|null
      */
     public function getCountry()
     {
@@ -1712,7 +1712,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country
      *
-     * @param \OpenAPI\Client\Model\ProductCountry|null $country country
+     * @param \OpenAPI\Client\Model\Country|null $country country
      *
      * @return self
      */
@@ -1729,7 +1729,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets uom
      *
-     * @return \OpenAPI\Client\Model\ProductUom|null
+     * @return \OpenAPI\Client\Model\Uom|null
      */
     public function getUom()
     {
@@ -1739,7 +1739,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets uom
      *
-     * @param \OpenAPI\Client\Model\ProductUom|null $uom uom
+     * @param \OpenAPI\Client\Model\Uom|null $uom uom
      *
      * @return self
      */
@@ -1756,7 +1756,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets product_folder
      *
-     * @return \OpenAPI\Client\Model\ProductProductFolder|null
+     * @return \OpenAPI\Client\Model\ProductFolder|null
      */
     public function getProductFolder()
     {
@@ -1766,7 +1766,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets product_folder
      *
-     * @param \OpenAPI\Client\Model\ProductProductFolder|null $product_folder product_folder
+     * @param \OpenAPI\Client\Model\ProductFolder|null $product_folder product_folder
      *
      * @return self
      */
@@ -2116,7 +2116,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets min_price
      *
-     * @return \OpenAPI\Client\Model\ProductMinPrice|null
+     * @return \OpenAPI\Client\Model\MinPrice|null
      */
     public function getMinPrice()
     {
@@ -2126,7 +2126,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets min_price
      *
-     * @param \OpenAPI\Client\Model\ProductMinPrice|null $min_price min_price
+     * @param \OpenAPI\Client\Model\MinPrice|null $min_price min_price
      *
      * @return self
      */

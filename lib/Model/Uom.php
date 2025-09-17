@@ -50,7 +50,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'uom';
+    protected static $openAPIModelName = 'Uom';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -64,8 +64,8 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'description' => 'string',
         'code' => 'string',
-        'group' => '\OpenAPI\Client\Model\ProductGroup',
-        'owner' => '\OpenAPI\Client\Model\ProductOwner',
+        'group' => '\OpenAPI\Client\Model\Group',
+        'owner' => '\OpenAPI\Client\Model\Owner',
         'updated' => '\DateTime',
         'shared' => 'bool',
         'external_code' => 'string'
@@ -553,7 +553,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets group
      *
-     * @return \OpenAPI\Client\Model\ProductGroup|null
+     * @return \OpenAPI\Client\Model\Group|null
      */
     public function getGroup()
     {
@@ -563,7 +563,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets group
      *
-     * @param \OpenAPI\Client\Model\ProductGroup|null $group group
+     * @param \OpenAPI\Client\Model\Group|null $group group
      *
      * @return self
      */
@@ -580,7 +580,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\ProductOwner|null
+     * @return \OpenAPI\Client\Model\Owner|null
      */
     public function getOwner()
     {
@@ -590,7 +590,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\ProductOwner|null $owner owner
+     * @param \OpenAPI\Client\Model\Owner|null $owner owner
      *
      * @return self
      */

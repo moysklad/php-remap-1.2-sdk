@@ -1,6 +1,6 @@
 <?php
 /**
- * Contactpersons
+ * OwnerSalary
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Contactpersons Class Doc Comment
+ * OwnerSalary Class Doc Comment
  *
  * @category Class
- * @description Контактные лица Контрагентов
+ * @description Оклад сотрудника
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Contactpersons implements ModelInterface, ArrayAccess, \JsonSerializable
+class OwnerSalary implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Contactpersons implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'contactpersons';
+    protected static $openAPIModelName = 'Owner_salary';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,17 +58,7 @@ class Contactpersons implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\Meta',
-        'id' => 'string',
-        'account_id' => 'string',
-        'updated' => '\DateTime',
-        'name' => 'string',
-        'description' => 'string',
-        'email' => 'string',
-        'phone' => 'string',
-        'position' => 'string',
-        'external_code' => 'string',
-        'agent' => '\OpenAPI\Client\Model\ContactpersonsAgent'
+        'value' => 'float'
     ];
 
     /**
@@ -79,17 +69,7 @@ class Contactpersons implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'meta' => null,
-        'id' => 'uuid',
-        'account_id' => 'uuid',
-        'updated' => 'date-time',
-        'name' => null,
-        'description' => null,
-        'email' => 'email',
-        'phone' => null,
-        'position' => null,
-        'external_code' => null,
-        'agent' => null
+        'value' => 'float'
     ];
 
     /**
@@ -98,17 +78,7 @@ class Contactpersons implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'meta' => false,
-        'id' => false,
-        'account_id' => false,
-        'updated' => false,
-        'name' => false,
-        'description' => false,
-        'email' => false,
-        'phone' => false,
-        'position' => false,
-        'external_code' => false,
-        'agent' => false
+        'value' => false
     ];
 
     /**
@@ -197,17 +167,7 @@ class Contactpersons implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'meta' => 'meta',
-        'id' => 'id',
-        'account_id' => 'accountId',
-        'updated' => 'updated',
-        'name' => 'name',
-        'description' => 'description',
-        'email' => 'email',
-        'phone' => 'phone',
-        'position' => 'position',
-        'external_code' => 'externalCode',
-        'agent' => 'agent'
+        'value' => 'value'
     ];
 
     /**
@@ -216,17 +176,7 @@ class Contactpersons implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'meta' => 'setMeta',
-        'id' => 'setId',
-        'account_id' => 'setAccountId',
-        'updated' => 'setUpdated',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'email' => 'setEmail',
-        'phone' => 'setPhone',
-        'position' => 'setPosition',
-        'external_code' => 'setExternalCode',
-        'agent' => 'setAgent'
+        'value' => 'setValue'
     ];
 
     /**
@@ -235,17 +185,7 @@ class Contactpersons implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'meta' => 'getMeta',
-        'id' => 'getId',
-        'account_id' => 'getAccountId',
-        'updated' => 'getUpdated',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'email' => 'getEmail',
-        'phone' => 'getPhone',
-        'position' => 'getPosition',
-        'external_code' => 'getExternalCode',
-        'agent' => 'getAgent'
+        'value' => 'getValue'
     ];
 
     /**
@@ -305,17 +245,7 @@ class Contactpersons implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('updated', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
-        $this->setIfExists('phone', $data ?? [], null);
-        $this->setIfExists('position', $data ?? [], null);
-        $this->setIfExists('external_code', $data ?? [], null);
-        $this->setIfExists('agent', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
     }
 
     /**
@@ -345,10 +275,6 @@ class Contactpersons implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['external_code']) && (mb_strlen($this->container['external_code']) > 255)) {
-            $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
-        }
-
         return $invalidProperties;
     }
 
@@ -365,302 +291,28 @@ class Contactpersons implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets meta
+     * Gets value
      *
-     * @return \OpenAPI\Client\Model\Meta|null
+     * @return float|null
      */
-    public function getMeta()
+    public function getValue()
     {
-        return $this->container['meta'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets meta
+     * Sets value
      *
-     * @param \OpenAPI\Client\Model\Meta|null $meta meta
+     * @param float|null $value Сумма оклада
      *
      * @return self
      */
-    public function setMeta($meta)
+    public function setValue($value)
     {
-        if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        if (is_null($value)) {
+            throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
-        $this->container['meta'] = $meta;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id ID контактного лица
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets account_id
-     *
-     * @return string|null
-     */
-    public function getAccountId()
-    {
-        return $this->container['account_id'];
-    }
-
-    /**
-     * Sets account_id
-     *
-     * @param string|null $account_id ID учетной записи
-     *
-     * @return self
-     */
-    public function setAccountId($account_id)
-    {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
-        }
-        $this->container['account_id'] = $account_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdated()
-    {
-        return $this->container['updated'];
-    }
-
-    /**
-     * Sets updated
-     *
-     * @param \DateTime|null $updated Время последнего изменения
-     *
-     * @return self
-     */
-    public function setUpdated($updated)
-    {
-        if (is_null($updated)) {
-            throw new \InvalidArgumentException('non-nullable updated cannot be null');
-        }
-        $this->container['updated'] = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name ФИО контактного лица
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description Описание контактного лица
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets email
-     *
-     * @return string|null
-     */
-    public function getEmail()
-    {
-        return $this->container['email'];
-    }
-
-    /**
-     * Sets email
-     *
-     * @param string|null $email Адрес электронной почты
-     *
-     * @return self
-     */
-    public function setEmail($email)
-    {
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
-        }
-        $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets phone
-     *
-     * @return string|null
-     */
-    public function getPhone()
-    {
-        return $this->container['phone'];
-    }
-
-    /**
-     * Sets phone
-     *
-     * @param string|null $phone Номер телефона
-     *
-     * @return self
-     */
-    public function setPhone($phone)
-    {
-        if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
-        }
-        $this->container['phone'] = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Gets position
-     *
-     * @return string|null
-     */
-    public function getPosition()
-    {
-        return $this->container['position'];
-    }
-
-    /**
-     * Sets position
-     *
-     * @param string|null $position Должность
-     *
-     * @return self
-     */
-    public function setPosition($position)
-    {
-        if (is_null($position)) {
-            throw new \InvalidArgumentException('non-nullable position cannot be null');
-        }
-        $this->container['position'] = $position;
-
-        return $this;
-    }
-
-    /**
-     * Gets external_code
-     *
-     * @return string|null
-     */
-    public function getExternalCode()
-    {
-        return $this->container['external_code'];
-    }
-
-    /**
-     * Sets external_code
-     *
-     * @param string|null $external_code Внешний код контактного лица
-     *
-     * @return self
-     */
-    public function setExternalCode($external_code)
-    {
-        if (is_null($external_code)) {
-            throw new \InvalidArgumentException('non-nullable external_code cannot be null');
-        }
-        if ((mb_strlen($external_code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $external_code when calling Contactpersons., must be smaller than or equal to 255.');
-        }
-
-        $this->container['external_code'] = $external_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets agent
-     *
-     * @return \OpenAPI\Client\Model\ContactpersonsAgent|null
-     */
-    public function getAgent()
-    {
-        return $this->container['agent'];
-    }
-
-    /**
-     * Sets agent
-     *
-     * @param \OpenAPI\Client\Model\ContactpersonsAgent|null $agent agent
-     *
-     * @return self
-     */
-    public function setAgent($agent)
-    {
-        if (is_null($agent)) {
-            throw new \InvalidArgumentException('non-nullable agent cannot be null');
-        }
-        $this->container['agent'] = $agent;
+        $this->container['value'] = $value;
 
         return $this;
     }

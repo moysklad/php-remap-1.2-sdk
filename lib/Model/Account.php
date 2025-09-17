@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductBuyPrice
+ * Account
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ProductBuyPrice Class Doc Comment
+ * Account Class Doc Comment
  *
  * @category Class
- * @description Закупочная цена
+ * @description Счета Контрагентов
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductBuyPrice implements ModelInterface, ArrayAccess, \JsonSerializable
+class Account implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ProductBuyPrice implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product_buyPrice';
+    protected static $openAPIModelName = 'Account';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,16 @@ class ProductBuyPrice implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'value' => 'float',
-        'currency' => '\OpenAPI\Client\Model\ProductBuyPriceCurrency'
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'id' => 'string',
+        'account_id' => 'string',
+        'updated' => '\DateTime',
+        'is_default' => 'bool',
+        'account_number' => 'string',
+        'bank_name' => 'string',
+        'bank_location' => 'string',
+        'correspondent_account' => 'string',
+        'bic' => 'string'
     ];
 
     /**
@@ -70,8 +78,16 @@ class ProductBuyPrice implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'value' => 'float',
-        'currency' => null
+        'meta' => null,
+        'id' => 'uuid',
+        'account_id' => 'uuid',
+        'updated' => 'date-time',
+        'is_default' => null,
+        'account_number' => null,
+        'bank_name' => null,
+        'bank_location' => null,
+        'correspondent_account' => null,
+        'bic' => null
     ];
 
     /**
@@ -80,8 +96,16 @@ class ProductBuyPrice implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'value' => false,
-        'currency' => false
+        'meta' => false,
+        'id' => false,
+        'account_id' => false,
+        'updated' => false,
+        'is_default' => false,
+        'account_number' => false,
+        'bank_name' => false,
+        'bank_location' => false,
+        'correspondent_account' => false,
+        'bic' => false
     ];
 
     /**
@@ -170,8 +194,16 @@ class ProductBuyPrice implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'value' => 'value',
-        'currency' => 'currency'
+        'meta' => 'meta',
+        'id' => 'id',
+        'account_id' => 'accountId',
+        'updated' => 'updated',
+        'is_default' => 'isDefault',
+        'account_number' => 'accountNumber',
+        'bank_name' => 'bankName',
+        'bank_location' => 'bankLocation',
+        'correspondent_account' => 'correspondentAccount',
+        'bic' => 'bic'
     ];
 
     /**
@@ -180,8 +212,16 @@ class ProductBuyPrice implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'value' => 'setValue',
-        'currency' => 'setCurrency'
+        'meta' => 'setMeta',
+        'id' => 'setId',
+        'account_id' => 'setAccountId',
+        'updated' => 'setUpdated',
+        'is_default' => 'setIsDefault',
+        'account_number' => 'setAccountNumber',
+        'bank_name' => 'setBankName',
+        'bank_location' => 'setBankLocation',
+        'correspondent_account' => 'setCorrespondentAccount',
+        'bic' => 'setBic'
     ];
 
     /**
@@ -190,8 +230,16 @@ class ProductBuyPrice implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'value' => 'getValue',
-        'currency' => 'getCurrency'
+        'meta' => 'getMeta',
+        'id' => 'getId',
+        'account_id' => 'getAccountId',
+        'updated' => 'getUpdated',
+        'is_default' => 'getIsDefault',
+        'account_number' => 'getAccountNumber',
+        'bank_name' => 'getBankName',
+        'bank_location' => 'getBankLocation',
+        'correspondent_account' => 'getCorrespondentAccount',
+        'bic' => 'getBic'
     ];
 
     /**
@@ -251,8 +299,16 @@ class ProductBuyPrice implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('value', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('updated', $data ?? [], null);
+        $this->setIfExists('is_default', $data ?? [], null);
+        $this->setIfExists('account_number', $data ?? [], null);
+        $this->setIfExists('bank_name', $data ?? [], null);
+        $this->setIfExists('bank_location', $data ?? [], null);
+        $this->setIfExists('correspondent_account', $data ?? [], null);
+        $this->setIfExists('bic', $data ?? [], null);
     }
 
     /**
@@ -298,55 +354,271 @@ class ProductBuyPrice implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets value
+     * Gets meta
      *
-     * @return float|null
+     * @return \OpenAPI\Client\Model\Meta|null
      */
-    public function getValue()
+    public function getMeta()
     {
-        return $this->container['value'];
+        return $this->container['meta'];
     }
 
     /**
-     * Sets value
+     * Sets meta
      *
-     * @param float|null $value Значение цены
+     * @param \OpenAPI\Client\Model\Meta|null $meta meta
      *
      * @return self
      */
-    public function setValue($value)
+    public function setMeta($meta)
     {
-        if (is_null($value)) {
-            throw new \InvalidArgumentException('non-nullable value cannot be null');
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
         }
-        $this->container['value'] = $value;
+        $this->container['meta'] = $meta;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets id
      *
-     * @return \OpenAPI\Client\Model\ProductBuyPriceCurrency|null
+     * @return string|null
      */
-    public function getCurrency()
+    public function getId()
     {
-        return $this->container['currency'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets currency
+     * Sets id
      *
-     * @param \OpenAPI\Client\Model\ProductBuyPriceCurrency|null $currency currency
+     * @param string|null $id ID счета
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setId($id)
     {
-        if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['currency'] = $currency;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id ID учетной записи
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdated()
+    {
+        return $this->container['updated'];
+    }
+
+    /**
+     * Sets updated
+     *
+     * @param \DateTime|null $updated Время последнего изменения
+     *
+     * @return self
+     */
+    public function setUpdated($updated)
+    {
+        if (is_null($updated)) {
+            throw new \InvalidArgumentException('non-nullable updated cannot be null');
+        }
+        $this->container['updated'] = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_default
+     *
+     * @return bool|null
+     */
+    public function getIsDefault()
+    {
+        return $this->container['is_default'];
+    }
+
+    /**
+     * Sets is_default
+     *
+     * @param bool|null $is_default Основной счет
+     *
+     * @return self
+     */
+    public function setIsDefault($is_default)
+    {
+        if (is_null($is_default)) {
+            throw new \InvalidArgumentException('non-nullable is_default cannot be null');
+        }
+        $this->container['is_default'] = $is_default;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_number
+     *
+     * @return string|null
+     */
+    public function getAccountNumber()
+    {
+        return $this->container['account_number'];
+    }
+
+    /**
+     * Sets account_number
+     *
+     * @param string|null $account_number Номер счета
+     *
+     * @return self
+     */
+    public function setAccountNumber($account_number)
+    {
+        if (is_null($account_number)) {
+            throw new \InvalidArgumentException('non-nullable account_number cannot be null');
+        }
+        $this->container['account_number'] = $account_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets bank_name
+     *
+     * @return string|null
+     */
+    public function getBankName()
+    {
+        return $this->container['bank_name'];
+    }
+
+    /**
+     * Sets bank_name
+     *
+     * @param string|null $bank_name Наименование банка
+     *
+     * @return self
+     */
+    public function setBankName($bank_name)
+    {
+        if (is_null($bank_name)) {
+            throw new \InvalidArgumentException('non-nullable bank_name cannot be null');
+        }
+        $this->container['bank_name'] = $bank_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets bank_location
+     *
+     * @return string|null
+     */
+    public function getBankLocation()
+    {
+        return $this->container['bank_location'];
+    }
+
+    /**
+     * Sets bank_location
+     *
+     * @param string|null $bank_location Адрес банка
+     *
+     * @return self
+     */
+    public function setBankLocation($bank_location)
+    {
+        if (is_null($bank_location)) {
+            throw new \InvalidArgumentException('non-nullable bank_location cannot be null');
+        }
+        $this->container['bank_location'] = $bank_location;
+
+        return $this;
+    }
+
+    /**
+     * Gets correspondent_account
+     *
+     * @return string|null
+     */
+    public function getCorrespondentAccount()
+    {
+        return $this->container['correspondent_account'];
+    }
+
+    /**
+     * Sets correspondent_account
+     *
+     * @param string|null $correspondent_account Корр. счет
+     *
+     * @return self
+     */
+    public function setCorrespondentAccount($correspondent_account)
+    {
+        if (is_null($correspondent_account)) {
+            throw new \InvalidArgumentException('non-nullable correspondent_account cannot be null');
+        }
+        $this->container['correspondent_account'] = $correspondent_account;
+
+        return $this;
+    }
+
+    /**
+     * Gets bic
+     *
+     * @return string|null
+     */
+    public function getBic()
+    {
+        return $this->container['bic'];
+    }
+
+    /**
+     * Sets bic
+     *
+     * @param string|null $bic БИК
+     *
+     * @return self
+     */
+    public function setBic($bic)
+    {
+        if (is_null($bic)) {
+            throw new \InvalidArgumentException('non-nullable bic cannot be null');
+        }
+        $this->container['bic'] = $bic;
 
         return $this;
     }

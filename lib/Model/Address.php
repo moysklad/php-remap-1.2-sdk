@@ -1,6 +1,6 @@
 <?php
 /**
- * EmployeeCashiersInner
+ * Address
  *
  * PHP version 7.4
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * EmployeeCashiersInner Class Doc Comment
+ * Address Class Doc Comment
  *
  * @category Class
+ * @description Адрес
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EmployeeCashiersInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class Address implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class EmployeeCashiersInner implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'employee_cashiers_inner';
+    protected static $openAPIModelName = 'Address';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +58,15 @@ class EmployeeCashiersInner implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\Meta',
-        'id' => 'string',
-        'account_id' => 'string',
-        'employee' => '\OpenAPI\Client\Model\CashierEmployee',
-        'retail_store' => '\OpenAPI\Client\Model\CashierRetailStore'
+        'add_info' => 'string',
+        'apartment' => 'string',
+        'city' => 'string',
+        'comment' => 'string',
+        'country' => '\OpenAPI\Client\Model\Country',
+        'house' => 'string',
+        'postal_code' => 'string',
+        'region' => '\OpenAPI\Client\Model\Region',
+        'street' => 'string'
     ];
 
     /**
@@ -72,11 +77,15 @@ class EmployeeCashiersInner implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'meta' => null,
-        'id' => 'uuid',
-        'account_id' => 'uuid',
-        'employee' => null,
-        'retail_store' => null
+        'add_info' => null,
+        'apartment' => null,
+        'city' => null,
+        'comment' => null,
+        'country' => null,
+        'house' => null,
+        'postal_code' => null,
+        'region' => null,
+        'street' => null
     ];
 
     /**
@@ -85,11 +94,15 @@ class EmployeeCashiersInner implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'meta' => false,
-        'id' => false,
-        'account_id' => false,
-        'employee' => false,
-        'retail_store' => false
+        'add_info' => false,
+        'apartment' => false,
+        'city' => false,
+        'comment' => false,
+        'country' => false,
+        'house' => false,
+        'postal_code' => false,
+        'region' => false,
+        'street' => false
     ];
 
     /**
@@ -178,11 +191,15 @@ class EmployeeCashiersInner implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'meta' => 'meta',
-        'id' => 'id',
-        'account_id' => 'accountId',
-        'employee' => 'employee',
-        'retail_store' => 'retailStore'
+        'add_info' => 'addInfo',
+        'apartment' => 'apartment',
+        'city' => 'city',
+        'comment' => 'comment',
+        'country' => 'country',
+        'house' => 'house',
+        'postal_code' => 'postalCode',
+        'region' => 'region',
+        'street' => 'street'
     ];
 
     /**
@@ -191,11 +208,15 @@ class EmployeeCashiersInner implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'meta' => 'setMeta',
-        'id' => 'setId',
-        'account_id' => 'setAccountId',
-        'employee' => 'setEmployee',
-        'retail_store' => 'setRetailStore'
+        'add_info' => 'setAddInfo',
+        'apartment' => 'setApartment',
+        'city' => 'setCity',
+        'comment' => 'setComment',
+        'country' => 'setCountry',
+        'house' => 'setHouse',
+        'postal_code' => 'setPostalCode',
+        'region' => 'setRegion',
+        'street' => 'setStreet'
     ];
 
     /**
@@ -204,11 +225,15 @@ class EmployeeCashiersInner implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'meta' => 'getMeta',
-        'id' => 'getId',
-        'account_id' => 'getAccountId',
-        'employee' => 'getEmployee',
-        'retail_store' => 'getRetailStore'
+        'add_info' => 'getAddInfo',
+        'apartment' => 'getApartment',
+        'city' => 'getCity',
+        'comment' => 'getComment',
+        'country' => 'getCountry',
+        'house' => 'getHouse',
+        'postal_code' => 'getPostalCode',
+        'region' => 'getRegion',
+        'street' => 'getStreet'
     ];
 
     /**
@@ -268,11 +293,15 @@ class EmployeeCashiersInner implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('employee', $data ?? [], null);
-        $this->setIfExists('retail_store', $data ?? [], null);
+        $this->setIfExists('add_info', $data ?? [], null);
+        $this->setIfExists('apartment', $data ?? [], null);
+        $this->setIfExists('city', $data ?? [], null);
+        $this->setIfExists('comment', $data ?? [], null);
+        $this->setIfExists('country', $data ?? [], null);
+        $this->setIfExists('house', $data ?? [], null);
+        $this->setIfExists('postal_code', $data ?? [], null);
+        $this->setIfExists('region', $data ?? [], null);
+        $this->setIfExists('street', $data ?? [], null);
     }
 
     /**
@@ -302,6 +331,34 @@ class EmployeeCashiersInner implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['add_info']) && (mb_strlen($this->container['add_info']) > 255)) {
+            $invalidProperties[] = "invalid value for 'add_info', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['apartment']) && (mb_strlen($this->container['apartment']) > 30)) {
+            $invalidProperties[] = "invalid value for 'apartment', the character length must be smaller than or equal to 30.";
+        }
+
+        if (!is_null($this->container['city']) && (mb_strlen($this->container['city']) > 255)) {
+            $invalidProperties[] = "invalid value for 'city', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['comment']) && (mb_strlen($this->container['comment']) > 255)) {
+            $invalidProperties[] = "invalid value for 'comment', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['house']) && (mb_strlen($this->container['house']) > 30)) {
+            $invalidProperties[] = "invalid value for 'house', the character length must be smaller than or equal to 30.";
+        }
+
+        if (!is_null($this->container['postal_code']) && (mb_strlen($this->container['postal_code']) > 6)) {
+            $invalidProperties[] = "invalid value for 'postal_code', the character length must be smaller than or equal to 6.";
+        }
+
+        if (!is_null($this->container['street']) && (mb_strlen($this->container['street']) > 255)) {
+            $invalidProperties[] = "invalid value for 'street', the character length must be smaller than or equal to 255.";
+        }
+
         return $invalidProperties;
     }
 
@@ -318,136 +375,272 @@ class EmployeeCashiersInner implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets meta
-     *
-     * @return \OpenAPI\Client\Model\Meta|null
-     */
-    public function getMeta()
-    {
-        return $this->container['meta'];
-    }
-
-    /**
-     * Sets meta
-     *
-     * @param \OpenAPI\Client\Model\Meta|null $meta meta
-     *
-     * @return self
-     */
-    public function setMeta($meta)
-    {
-        if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
-        }
-        $this->container['meta'] = $meta;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
+     * Gets add_info
      *
      * @return string|null
      */
-    public function getId()
+    public function getAddInfo()
     {
-        return $this->container['id'];
+        return $this->container['add_info'];
     }
 
     /**
-     * Sets id
+     * Sets add_info
      *
-     * @param string|null $id ID Кассира
+     * @param string|null $add_info Другое
      *
      * @return self
      */
-    public function setId($id)
+    public function setAddInfo($add_info)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($add_info)) {
+            throw new \InvalidArgumentException('non-nullable add_info cannot be null');
         }
-        $this->container['id'] = $id;
+        if ((mb_strlen($add_info) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $add_info when calling Address., must be smaller than or equal to 255.');
+        }
+
+        $this->container['add_info'] = $add_info;
 
         return $this;
     }
 
     /**
-     * Gets account_id
+     * Gets apartment
      *
      * @return string|null
      */
-    public function getAccountId()
+    public function getApartment()
     {
-        return $this->container['account_id'];
+        return $this->container['apartment'];
     }
 
     /**
-     * Sets account_id
+     * Sets apartment
      *
-     * @param string|null $account_id ID учетной записи
+     * @param string|null $apartment Квартира
      *
      * @return self
      */
-    public function setAccountId($account_id)
+    public function setApartment($apartment)
     {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        if (is_null($apartment)) {
+            throw new \InvalidArgumentException('non-nullable apartment cannot be null');
         }
-        $this->container['account_id'] = $account_id;
+        if ((mb_strlen($apartment) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $apartment when calling Address., must be smaller than or equal to 30.');
+        }
+
+        $this->container['apartment'] = $apartment;
 
         return $this;
     }
 
     /**
-     * Gets employee
+     * Gets city
      *
-     * @return \OpenAPI\Client\Model\CashierEmployee|null
+     * @return string|null
      */
-    public function getEmployee()
+    public function getCity()
     {
-        return $this->container['employee'];
+        return $this->container['city'];
     }
 
     /**
-     * Sets employee
+     * Sets city
      *
-     * @param \OpenAPI\Client\Model\CashierEmployee|null $employee employee
+     * @param string|null $city Город
      *
      * @return self
      */
-    public function setEmployee($employee)
+    public function setCity($city)
     {
-        if (is_null($employee)) {
-            throw new \InvalidArgumentException('non-nullable employee cannot be null');
+        if (is_null($city)) {
+            throw new \InvalidArgumentException('non-nullable city cannot be null');
         }
-        $this->container['employee'] = $employee;
+        if ((mb_strlen($city) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $city when calling Address., must be smaller than or equal to 255.');
+        }
+
+        $this->container['city'] = $city;
 
         return $this;
     }
 
     /**
-     * Gets retail_store
+     * Gets comment
      *
-     * @return \OpenAPI\Client\Model\CashierRetailStore|null
+     * @return string|null
      */
-    public function getRetailStore()
+    public function getComment()
     {
-        return $this->container['retail_store'];
+        return $this->container['comment'];
     }
 
     /**
-     * Sets retail_store
+     * Sets comment
      *
-     * @param \OpenAPI\Client\Model\CashierRetailStore|null $retail_store retail_store
+     * @param string|null $comment Комментарий
      *
      * @return self
      */
-    public function setRetailStore($retail_store)
+    public function setComment($comment)
     {
-        if (is_null($retail_store)) {
-            throw new \InvalidArgumentException('non-nullable retail_store cannot be null');
+        if (is_null($comment)) {
+            throw new \InvalidArgumentException('non-nullable comment cannot be null');
         }
-        $this->container['retail_store'] = $retail_store;
+        if ((mb_strlen($comment) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $comment when calling Address., must be smaller than or equal to 255.');
+        }
+
+        $this->container['comment'] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Gets country
+     *
+     * @return \OpenAPI\Client\Model\Country|null
+     */
+    public function getCountry()
+    {
+        return $this->container['country'];
+    }
+
+    /**
+     * Sets country
+     *
+     * @param \OpenAPI\Client\Model\Country|null $country country
+     *
+     * @return self
+     */
+    public function setCountry($country)
+    {
+        if (is_null($country)) {
+            throw new \InvalidArgumentException('non-nullable country cannot be null');
+        }
+        $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets house
+     *
+     * @return string|null
+     */
+    public function getHouse()
+    {
+        return $this->container['house'];
+    }
+
+    /**
+     * Sets house
+     *
+     * @param string|null $house Дом
+     *
+     * @return self
+     */
+    public function setHouse($house)
+    {
+        if (is_null($house)) {
+            throw new \InvalidArgumentException('non-nullable house cannot be null');
+        }
+        if ((mb_strlen($house) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $house when calling Address., must be smaller than or equal to 30.');
+        }
+
+        $this->container['house'] = $house;
+
+        return $this;
+    }
+
+    /**
+     * Gets postal_code
+     *
+     * @return string|null
+     */
+    public function getPostalCode()
+    {
+        return $this->container['postal_code'];
+    }
+
+    /**
+     * Sets postal_code
+     *
+     * @param string|null $postal_code Почтовый индекс
+     *
+     * @return self
+     */
+    public function setPostalCode($postal_code)
+    {
+        if (is_null($postal_code)) {
+            throw new \InvalidArgumentException('non-nullable postal_code cannot be null');
+        }
+        if ((mb_strlen($postal_code) > 6)) {
+            throw new \InvalidArgumentException('invalid length for $postal_code when calling Address., must be smaller than or equal to 6.');
+        }
+
+        $this->container['postal_code'] = $postal_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets region
+     *
+     * @return \OpenAPI\Client\Model\Region|null
+     */
+    public function getRegion()
+    {
+        return $this->container['region'];
+    }
+
+    /**
+     * Sets region
+     *
+     * @param \OpenAPI\Client\Model\Region|null $region region
+     *
+     * @return self
+     */
+    public function setRegion($region)
+    {
+        if (is_null($region)) {
+            throw new \InvalidArgumentException('non-nullable region cannot be null');
+        }
+        $this->container['region'] = $region;
+
+        return $this;
+    }
+
+    /**
+     * Gets street
+     *
+     * @return string|null
+     */
+    public function getStreet()
+    {
+        return $this->container['street'];
+    }
+
+    /**
+     * Sets street
+     *
+     * @param string|null $street Улица
+     *
+     * @return self
+     */
+    public function setStreet($street)
+    {
+        if (is_null($street)) {
+            throw new \InvalidArgumentException('non-nullable street cannot be null');
+        }
+        if ((mb_strlen($street) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $street when calling Address., must be smaller than or equal to 255.');
+        }
+
+        $this->container['street'] = $street;
 
         return $this;
     }

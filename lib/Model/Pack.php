@@ -59,7 +59,7 @@ class Pack implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'uom' => '\OpenAPI\Client\Model\ProductUom',
+        'uom' => '\OpenAPI\Client\Model\Uom',
         'quantity' => 'float',
         'barcodes' => '\OpenAPI\Client\Model\Barcode[]'
     ];
@@ -341,7 +341,7 @@ class Pack implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets uom
      *
-     * @return \OpenAPI\Client\Model\ProductUom|null
+     * @return \OpenAPI\Client\Model\Uom|null
      */
     public function getUom()
     {
@@ -351,7 +351,7 @@ class Pack implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets uom
      *
-     * @param \OpenAPI\Client\Model\ProductUom|null $uom uom
+     * @param \OpenAPI\Client\Model\Uom|null $uom uom
      *
      * @return self
      */

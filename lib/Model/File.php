@@ -50,7 +50,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'file';
+    protected static $openAPIModelName = 'File';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -63,7 +63,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
         'filename' => 'string',
         'size' => 'int',
         'created' => '\DateTime',
-        'created_by' => '\OpenAPI\Client\Model\FileCreatedBy',
+        'created_by' => '\OpenAPI\Client\Model\Employee',
         'tiny' => '\OpenAPI\Client\Model\Meta',
         'miniature' => '\OpenAPI\Client\Model\Meta'
     ];
@@ -493,7 +493,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created_by
      *
-     * @return \OpenAPI\Client\Model\FileCreatedBy|null
+     * @return \OpenAPI\Client\Model\Employee|null
      */
     public function getCreatedBy()
     {
@@ -503,7 +503,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_by
      *
-     * @param \OpenAPI\Client\Model\FileCreatedBy|null $created_by created_by
+     * @param \OpenAPI\Client\Model\Employee|null $created_by created_by
      *
      * @return self
      */
@@ -530,7 +530,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tiny
      *
-     * @param \OpenAPI\Client\Model\Meta|null $tiny Метаданные уменьшенного изображения (поле передается только для Файлов изображений)
+     * @param \OpenAPI\Client\Model\Meta|null $tiny tiny
      *
      * @return self
      */
@@ -557,7 +557,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets miniature
      *
-     * @param \OpenAPI\Client\Model\Meta|null $miniature Метаданные миниатюры изображения (поле передается только для Файлов изображений)
+     * @param \OpenAPI\Client\Model\Meta|null $miniature miniature
      *
      * @return self
      */

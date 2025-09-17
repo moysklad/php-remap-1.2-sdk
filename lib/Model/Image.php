@@ -50,7 +50,7 @@ class Image implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'image';
+    protected static $openAPIModelName = 'Image';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -496,7 +496,7 @@ class Image implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tiny
      *
-     * @param \OpenAPI\Client\Model\Meta|null $tiny Метаданные уменьшенного изображения
+     * @param \OpenAPI\Client\Model\Meta|null $tiny tiny
      *
      * @return self
      */
@@ -523,7 +523,7 @@ class Image implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets miniature
      *
-     * @param \OpenAPI\Client\Model\Meta|null $miniature Миниатюра изображения
+     * @param \OpenAPI\Client\Model\Meta|null $miniature miniature
      *
      * @return self
      */

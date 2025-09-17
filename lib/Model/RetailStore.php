@@ -50,7 +50,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'retail-store';
+    protected static $openAPIModelName = 'RetailStore';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -66,14 +66,14 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'archived' => 'bool',
         'shared' => 'bool',
         'address' => 'string',
-        'address_full' => '\OpenAPI\Client\Model\AddressFull',
+        'address_full' => '\OpenAPI\Client\Model\Address',
         'external_code' => 'string',
         'updated' => '\DateTime',
         'meta' => '\OpenAPI\Client\Model\Meta',
         'organization' => '\OpenAPI\Client\Model\RetailStoreOrganization',
-        'store' => '\OpenAPI\Client\Model\RetailStoreStore',
-        'group' => '\OpenAPI\Client\Model\RetailStoreGroup',
-        'owner' => '\OpenAPI\Client\Model\RetailStoreOwner',
+        'store' => '\OpenAPI\Client\Model\Store',
+        'group' => '\OpenAPI\Client\Model\Group',
+        'owner' => '\OpenAPI\Client\Model\Owner',
         'price_type' => '\OpenAPI\Client\Model\PriceType',
         'environment' => '\OpenAPI\Client\Model\Environment',
         'state' => '\OpenAPI\Client\Model\Status',
@@ -96,13 +96,13 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_payment_in_on_retail_shift_closing' => 'bool',
         'create_agents_tags' => 'string[]',
         'create_order_with_state' => '\OpenAPI\Client\Model\RetailStoreCreateOrderWithState',
-        'customer_order_states' => '\OpenAPI\Client\Model\ProductListContextEmployee[]',
+        'customer_order_states' => '\OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner[]',
         'discount_enable' => 'bool',
         'discount_max_percent' => 'int',
         'enable_returns_with_no_reason' => 'bool',
         'issue_orders' => 'bool',
         'last_operation_names' => '\OpenAPI\Client\Model\LastOperationNames[]',
-        'master_retail_stores' => '\OpenAPI\Client\Model\ProductListContextEmployee[]',
+        'master_retail_stores' => '\OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner[]',
         'ofd_enabled' => 'bool',
         'only_in_stock' => 'bool',
         'order_to_state' => '\OpenAPI\Client\Model\RetailStoreOrderToState',
@@ -1053,7 +1053,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets address_full
      *
-     * @return \OpenAPI\Client\Model\AddressFull|null
+     * @return \OpenAPI\Client\Model\Address|null
      */
     public function getAddressFull()
     {
@@ -1063,7 +1063,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets address_full
      *
-     * @param \OpenAPI\Client\Model\AddressFull|null $address_full address_full
+     * @param \OpenAPI\Client\Model\Address|null $address_full address_full
      *
      * @return self
      */
@@ -1192,7 +1192,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets store
      *
-     * @return \OpenAPI\Client\Model\RetailStoreStore|null
+     * @return \OpenAPI\Client\Model\Store|null
      */
     public function getStore()
     {
@@ -1202,7 +1202,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets store
      *
-     * @param \OpenAPI\Client\Model\RetailStoreStore|null $store store
+     * @param \OpenAPI\Client\Model\Store|null $store store
      *
      * @return self
      */
@@ -1219,7 +1219,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets group
      *
-     * @return \OpenAPI\Client\Model\RetailStoreGroup|null
+     * @return \OpenAPI\Client\Model\Group|null
      */
     public function getGroup()
     {
@@ -1229,7 +1229,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets group
      *
-     * @param \OpenAPI\Client\Model\RetailStoreGroup|null $group group
+     * @param \OpenAPI\Client\Model\Group|null $group group
      *
      * @return self
      */
@@ -1246,7 +1246,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\RetailStoreOwner|null
+     * @return \OpenAPI\Client\Model\Owner|null
      */
     public function getOwner()
     {
@@ -1256,7 +1256,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\RetailStoreOwner|null $owner owner
+     * @param \OpenAPI\Client\Model\Owner|null $owner owner
      *
      * @return self
      */
@@ -1283,7 +1283,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets price_type
      *
-     * @param \OpenAPI\Client\Model\PriceType|null $price_type Тип цены, используемый в Точке продаж
+     * @param \OpenAPI\Client\Model\PriceType|null $price_type price_type
      *
      * @return self
      */
@@ -1867,7 +1867,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets customer_order_states
      *
-     * @return \OpenAPI\Client\Model\ProductListContextEmployee[]|null
+     * @return \OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner[]|null
      */
     public function getCustomerOrderStates()
     {
@@ -1877,7 +1877,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets customer_order_states
      *
-     * @param \OpenAPI\Client\Model\ProductListContextEmployee[]|null $customer_order_states Возможные состояния заказов покупателей
+     * @param \OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner[]|null $customer_order_states Возможные состояния заказов покупателей
      *
      * @return self
      */
@@ -2029,7 +2029,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets master_retail_stores
      *
-     * @return \OpenAPI\Client\Model\ProductListContextEmployee[]|null
+     * @return \OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner[]|null
      */
     public function getMasterRetailStores()
     {
@@ -2039,7 +2039,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets master_retail_stores
      *
-     * @param \OpenAPI\Client\Model\ProductListContextEmployee[]|null $master_retail_stores Список касс-мастеров
+     * @param \OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner[]|null $master_retail_stores Список касс-мастеров
      *
      * @return self
      */

@@ -50,7 +50,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product-folder';
+    protected static $openAPIModelName = 'ProductFolder';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -73,10 +73,10 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'effective_vat_enabled' => 'bool',
         'use_parent_vat' => 'bool',
         'shared' => 'bool',
-        'group' => '\OpenAPI\Client\Model\ProductFolderGroup',
-        'owner' => '\OpenAPI\Client\Model\ProductFolderOwner',
+        'group' => '\OpenAPI\Client\Model\Group',
+        'owner' => '\OpenAPI\Client\Model\Owner',
         'updated' => '\DateTime',
-        'product_folder' => '\OpenAPI\Client\Model\ProductFolderProductFolder',
+        'product_folder' => '\OpenAPI\Client\Model\ProductFolder',
         'tax_system' => 'string'
     ];
 
@@ -897,7 +897,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets group
      *
-     * @return \OpenAPI\Client\Model\ProductFolderGroup|null
+     * @return \OpenAPI\Client\Model\Group|null
      */
     public function getGroup()
     {
@@ -907,7 +907,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets group
      *
-     * @param \OpenAPI\Client\Model\ProductFolderGroup|null $group group
+     * @param \OpenAPI\Client\Model\Group|null $group group
      *
      * @return self
      */
@@ -924,7 +924,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\ProductFolderOwner|null
+     * @return \OpenAPI\Client\Model\Owner|null
      */
     public function getOwner()
     {
@@ -934,7 +934,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\ProductFolderOwner|null $owner owner
+     * @param \OpenAPI\Client\Model\Owner|null $owner owner
      *
      * @return self
      */
@@ -978,7 +978,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets product_folder
      *
-     * @return \OpenAPI\Client\Model\ProductFolderProductFolder|null
+     * @return \OpenAPI\Client\Model\ProductFolder|null
      */
     public function getProductFolder()
     {
@@ -988,7 +988,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets product_folder
      *
-     * @param \OpenAPI\Client\Model\ProductFolderProductFolder|null $product_folder product_folder
+     * @param \OpenAPI\Client\Model\ProductFolder|null $product_folder product_folder
      *
      * @return self
      */

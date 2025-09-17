@@ -50,7 +50,7 @@ class CurrencyMajorUnit implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'currency_majorUnit';
+    protected static $openAPIModelName = 'Currency_majorUnit';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

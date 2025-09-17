@@ -50,7 +50,7 @@ class Cashier implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'cashier';
+    protected static $openAPIModelName = 'Cashier';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,8 +61,8 @@ class Cashier implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => '\OpenAPI\Client\Model\Meta',
         'id' => 'string',
         'account_id' => 'string',
-        'employee' => '\OpenAPI\Client\Model\CashierEmployee',
-        'retail_store' => '\OpenAPI\Client\Model\CashierRetailStore'
+        'employee' => '\OpenAPI\Client\Model\Employee',
+        'retail_store' => '\OpenAPI\Client\Model\RetailStore'
     ];
 
     /**
@@ -402,7 +402,7 @@ class Cashier implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets employee
      *
-     * @return \OpenAPI\Client\Model\CashierEmployee|null
+     * @return \OpenAPI\Client\Model\Employee|null
      */
     public function getEmployee()
     {
@@ -412,7 +412,7 @@ class Cashier implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets employee
      *
-     * @param \OpenAPI\Client\Model\CashierEmployee|null $employee employee
+     * @param \OpenAPI\Client\Model\Employee|null $employee employee
      *
      * @return self
      */
@@ -429,7 +429,7 @@ class Cashier implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets retail_store
      *
-     * @return \OpenAPI\Client\Model\CashierRetailStore|null
+     * @return \OpenAPI\Client\Model\RetailStore|null
      */
     public function getRetailStore()
     {
@@ -439,7 +439,7 @@ class Cashier implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets retail_store
      *
-     * @param \OpenAPI\Client\Model\CashierRetailStore|null $retail_store retail_store
+     * @param \OpenAPI\Client\Model\RetailStore|null $retail_store retail_store
      *
      * @return self
      */

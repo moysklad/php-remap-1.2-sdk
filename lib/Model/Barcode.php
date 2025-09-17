@@ -50,7 +50,7 @@ class Barcode implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'barcode';
+    protected static $openAPIModelName = 'Barcode';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

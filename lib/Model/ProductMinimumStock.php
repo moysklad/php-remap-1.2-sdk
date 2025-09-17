@@ -50,7 +50,7 @@ class ProductMinimumStock implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product_minimumStock';
+    protected static $openAPIModelName = 'Product_minimumStock';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

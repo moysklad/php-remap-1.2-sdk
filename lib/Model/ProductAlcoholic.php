@@ -50,7 +50,7 @@ class ProductAlcoholic implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product_alcoholic';
+    protected static $openAPIModelName = 'Product_alcoholic';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

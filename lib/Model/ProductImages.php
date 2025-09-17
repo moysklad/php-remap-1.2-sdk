@@ -50,7 +50,7 @@ class ProductImages implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product_images';
+    protected static $openAPIModelName = 'Product_images';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,7 @@ class ProductImages implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\MetaList',
-        'rows' => '\OpenAPI\Client\Model\ProductImagesRowsInner[]'
+        'rows' => '\OpenAPI\Client\Model\Image[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class ProductImages implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rows
      *
-     * @return \OpenAPI\Client\Model\ProductImagesRowsInner[]|null
+     * @return \OpenAPI\Client\Model\Image[]|null
      */
     public function getRows()
     {
@@ -337,7 +337,7 @@ class ProductImages implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\ProductImagesRowsInner[]|null $rows rows
+     * @param \OpenAPI\Client\Model\Image[]|null $rows rows
      *
      * @return self
      */

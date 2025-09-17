@@ -50,7 +50,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'counterparty';
+    protected static $openAPIModelName = 'Counterparty';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -89,17 +89,17 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'sex' => 'string',
         'discount_card_number' => 'string',
         'shared' => 'bool',
-        'group' => '\OpenAPI\Client\Model\ProductGroup',
-        'owner' => '\OpenAPI\Client\Model\ProductOwner',
+        'group' => '\OpenAPI\Client\Model\Group',
+        'owner' => '\OpenAPI\Client\Model\Owner',
         'sales_amount' => 'int',
         'bonus_points' => 'int',
         'bonus_program' => '\OpenAPI\Client\Model\Meta',
         'price_type' => '\OpenAPI\Client\Model\Meta',
-        'state' => '\OpenAPI\Client\Model\CounterpartyState',
+        'state' => '\OpenAPI\Client\Model\State',
         'accounts' => '\OpenAPI\Client\Model\CounterpartyAccounts',
         'contactpersons' => '\OpenAPI\Client\Model\CounterpartyContactpersons',
         'notes' => '\OpenAPI\Client\Model\CounterpartyNotes',
-        'files' => '\OpenAPI\Client\Model\ProductFiles',
+        'files' => '\OpenAPI\Client\Model\CounterpartyFiles',
         'tags' => 'string[]',
         'attributes' => '\OpenAPI\Client\Model\Attribute[]'
     ];
@@ -1637,7 +1637,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets group
      *
-     * @return \OpenAPI\Client\Model\ProductGroup|null
+     * @return \OpenAPI\Client\Model\Group|null
      */
     public function getGroup()
     {
@@ -1647,7 +1647,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets group
      *
-     * @param \OpenAPI\Client\Model\ProductGroup|null $group group
+     * @param \OpenAPI\Client\Model\Group|null $group group
      *
      * @return self
      */
@@ -1664,7 +1664,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\ProductOwner|null
+     * @return \OpenAPI\Client\Model\Owner|null
      */
     public function getOwner()
     {
@@ -1674,7 +1674,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\ProductOwner|null $owner owner
+     * @param \OpenAPI\Client\Model\Owner|null $owner owner
      *
      * @return self
      */
@@ -1799,7 +1799,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets state
      *
-     * @return \OpenAPI\Client\Model\CounterpartyState|null
+     * @return \OpenAPI\Client\Model\State|null
      */
     public function getState()
     {
@@ -1809,7 +1809,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets state
      *
-     * @param \OpenAPI\Client\Model\CounterpartyState|null $state state
+     * @param \OpenAPI\Client\Model\State|null $state state
      *
      * @return self
      */
@@ -1907,7 +1907,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets files
      *
-     * @return \OpenAPI\Client\Model\ProductFiles|null
+     * @return \OpenAPI\Client\Model\CounterpartyFiles|null
      */
     public function getFiles()
     {
@@ -1917,7 +1917,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets files
      *
-     * @param \OpenAPI\Client\Model\ProductFiles|null $files files
+     * @param \OpenAPI\Client\Model\CounterpartyFiles|null $files files
      *
      * @return self
      */

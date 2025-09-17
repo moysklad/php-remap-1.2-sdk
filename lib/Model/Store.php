@@ -50,7 +50,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'store';
+    protected static $openAPIModelName = 'Store';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,9 +61,9 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => '\OpenAPI\Client\Model\Meta',
         'id' => 'string',
         'account_id' => 'string',
-        'owner' => '\OpenAPI\Client\Model\StoreOwner',
+        'owner' => '\OpenAPI\Client\Model\Owner',
         'shared' => 'bool',
-        'group' => '\OpenAPI\Client\Model\StoreGroup',
+        'group' => '\OpenAPI\Client\Model\Group',
         'updated' => '\DateTime',
         'name' => 'string',
         'description' => 'string',
@@ -71,9 +71,9 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_code' => 'string',
         'archived' => 'bool',
         'address' => 'string',
-        'address_full' => '\OpenAPI\Client\Model\AddressFull',
+        'address_full' => '\OpenAPI\Client\Model\Address',
         'path_name' => 'string',
-        'parent' => '\OpenAPI\Client\Model\StoreParent',
+        'parent' => '\OpenAPI\Client\Model\Store',
         'attributes' => '\OpenAPI\Client\Model\Attribute[]',
         'zones' => '\OpenAPI\Client\Model\StoreZones',
         'slots' => '\OpenAPI\Client\Model\StoreSlots'
@@ -520,7 +520,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\StoreOwner|null
+     * @return \OpenAPI\Client\Model\Owner|null
      */
     public function getOwner()
     {
@@ -530,7 +530,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\StoreOwner|null $owner owner
+     * @param \OpenAPI\Client\Model\Owner|null $owner owner
      *
      * @return self
      */
@@ -574,7 +574,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets group
      *
-     * @return \OpenAPI\Client\Model\StoreGroup|null
+     * @return \OpenAPI\Client\Model\Group|null
      */
     public function getGroup()
     {
@@ -584,7 +584,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets group
      *
-     * @param \OpenAPI\Client\Model\StoreGroup|null $group group
+     * @param \OpenAPI\Client\Model\Group|null $group group
      *
      * @return self
      */
@@ -810,7 +810,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets address_full
      *
-     * @return \OpenAPI\Client\Model\AddressFull|null
+     * @return \OpenAPI\Client\Model\Address|null
      */
     public function getAddressFull()
     {
@@ -820,7 +820,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets address_full
      *
-     * @param \OpenAPI\Client\Model\AddressFull|null $address_full address_full
+     * @param \OpenAPI\Client\Model\Address|null $address_full address_full
      *
      * @return self
      */
@@ -864,7 +864,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets parent
      *
-     * @return \OpenAPI\Client\Model\StoreParent|null
+     * @return \OpenAPI\Client\Model\Store|null
      */
     public function getParent()
     {
@@ -874,7 +874,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets parent
      *
-     * @param \OpenAPI\Client\Model\StoreParent|null $parent parent
+     * @param \OpenAPI\Client\Model\Store|null $parent parent
      *
      * @return self
      */

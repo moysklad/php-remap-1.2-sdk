@@ -50,7 +50,7 @@ class StoreZones implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'store_zones';
+    protected static $openAPIModelName = 'Store_zones';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

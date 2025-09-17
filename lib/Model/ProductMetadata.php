@@ -58,7 +58,7 @@ class ProductMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\Meta',
-        'attributes' => '\OpenAPI\Client\Model\Attribute[]',
+        'attributes' => '\OpenAPI\Client\Model\Currency[]',
         'create_shared' => 'bool'
     ];
 
@@ -333,7 +333,7 @@ class ProductMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets attributes
      *
-     * @return \OpenAPI\Client\Model\Attribute[]|null
+     * @return \OpenAPI\Client\Model\Currency[]|null
      */
     public function getAttributes()
     {
@@ -343,7 +343,7 @@ class ProductMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attributes
      *
-     * @param \OpenAPI\Client\Model\Attribute[]|null $attributes Массив дополнительных полей
+     * @param \OpenAPI\Client\Model\Currency[]|null $attributes Массив дополнительных полей
      *
      * @return self
      */

@@ -50,7 +50,7 @@ class CounterpartyNotes implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'counterparty_notes';
+    protected static $openAPIModelName = 'Counterparty_notes';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,7 @@ class CounterpartyNotes implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\MetaList',
-        'rows' => '\OpenAPI\Client\Model\Notes[]'
+        'rows' => '\OpenAPI\Client\Model\Note[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CounterpartyNotes implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets rows
      *
-     * @return \OpenAPI\Client\Model\Notes[]|null
+     * @return \OpenAPI\Client\Model\Note[]|null
      */
     public function getRows()
     {
@@ -337,7 +337,7 @@ class CounterpartyNotes implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\Notes[]|null $rows rows
+     * @param \OpenAPI\Client\Model\Note[]|null $rows rows
      *
      * @return self
      */

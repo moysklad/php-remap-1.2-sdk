@@ -50,7 +50,7 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product_files';
+    protected static $openAPIModelName = 'Product_files';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,7 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\MetaList',
-        'rows' => '\OpenAPI\Client\Model\ProductFilesRowsInner[]'
+        'rows' => '\OpenAPI\Client\Model\File[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rows
      *
-     * @return \OpenAPI\Client\Model\ProductFilesRowsInner[]|null
+     * @return \OpenAPI\Client\Model\File[]|null
      */
     public function getRows()
     {
@@ -337,7 +337,7 @@ class ProductFiles implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\ProductFilesRowsInner[]|null $rows rows
+     * @param \OpenAPI\Client\Model\File[]|null $rows rows
      *
      * @return self
      */

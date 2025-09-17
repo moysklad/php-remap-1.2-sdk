@@ -58,7 +58,7 @@ class ProductListContext implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'employee' => '\OpenAPI\Client\Model\ProductListContextEmployee'
+        'employee' => '\OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner'
     ];
 
     /**
@@ -293,7 +293,7 @@ class ProductListContext implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets employee
      *
-     * @return \OpenAPI\Client\Model\ProductListContextEmployee|null
+     * @return \OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner|null
      */
     public function getEmployee()
     {
@@ -303,7 +303,7 @@ class ProductListContext implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets employee
      *
-     * @param \OpenAPI\Client\Model\ProductListContextEmployee|null $employee employee
+     * @param \OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner|null $employee employee
      *
      * @return self
      */

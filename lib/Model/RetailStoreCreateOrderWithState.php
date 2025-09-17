@@ -50,7 +50,7 @@ class RetailStoreCreateOrderWithState implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'retail_store_createOrderWithState';
+    protected static $openAPIModelName = 'RetailStore_createOrderWithState';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

@@ -50,7 +50,7 @@ class StoreSlots implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'store_slots';
+    protected static $openAPIModelName = 'Store_slots';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

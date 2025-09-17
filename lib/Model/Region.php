@@ -1,6 +1,6 @@
 <?php
 /**
- * StoreBalanceStore
+ * Region
  *
  * PHP version 7.4
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * StoreBalanceStore Class Doc Comment
+ * Region Class Doc Comment
  *
  * @category Class
+ * @description Регион
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializable
+class Region implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'store_balance_store';
+    protected static $openAPIModelName = 'Region';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,22 +61,11 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
         'meta' => '\OpenAPI\Client\Model\Meta',
         'id' => 'string',
         'account_id' => 'string',
-        'owner' => '\OpenAPI\Client\Model\StoreOwner',
-        'shared' => 'bool',
-        'group' => '\OpenAPI\Client\Model\StoreGroup',
-        'updated' => '\DateTime',
         'name' => 'string',
-        'description' => 'string',
         'code' => 'string',
         'external_code' => 'string',
-        'archived' => 'bool',
-        'address' => 'string',
-        'address_full' => '\OpenAPI\Client\Model\AddressFull',
-        'path_name' => 'string',
-        'parent' => '\OpenAPI\Client\Model\StoreParent',
-        'attributes' => '\OpenAPI\Client\Model\Attribute[]',
-        'zones' => '\OpenAPI\Client\Model\StoreZones',
-        'slots' => '\OpenAPI\Client\Model\StoreSlots'
+        'updated' => '\DateTime',
+        'version' => 'int'
     ];
 
     /**
@@ -89,22 +79,11 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
         'meta' => null,
         'id' => 'uuid',
         'account_id' => 'uuid',
-        'owner' => null,
-        'shared' => null,
-        'group' => null,
-        'updated' => 'date-time',
         'name' => null,
-        'description' => null,
         'code' => null,
         'external_code' => null,
-        'archived' => null,
-        'address' => null,
-        'address_full' => null,
-        'path_name' => null,
-        'parent' => null,
-        'attributes' => null,
-        'zones' => null,
-        'slots' => null
+        'updated' => 'date-time',
+        'version' => null
     ];
 
     /**
@@ -116,22 +95,11 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
         'meta' => false,
         'id' => false,
         'account_id' => false,
-        'owner' => false,
-        'shared' => false,
-        'group' => false,
-        'updated' => false,
         'name' => false,
-        'description' => false,
         'code' => false,
         'external_code' => false,
-        'archived' => false,
-        'address' => false,
-        'address_full' => false,
-        'path_name' => false,
-        'parent' => false,
-        'attributes' => false,
-        'zones' => false,
-        'slots' => false
+        'updated' => false,
+        'version' => false
     ];
 
     /**
@@ -223,22 +191,11 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
         'meta' => 'meta',
         'id' => 'id',
         'account_id' => 'accountId',
-        'owner' => 'owner',
-        'shared' => 'shared',
-        'group' => 'group',
-        'updated' => 'updated',
         'name' => 'name',
-        'description' => 'description',
         'code' => 'code',
         'external_code' => 'externalCode',
-        'archived' => 'archived',
-        'address' => 'address',
-        'address_full' => 'addressFull',
-        'path_name' => 'pathName',
-        'parent' => 'parent',
-        'attributes' => 'attributes',
-        'zones' => 'zones',
-        'slots' => 'slots'
+        'updated' => 'updated',
+        'version' => 'version'
     ];
 
     /**
@@ -250,22 +207,11 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
         'meta' => 'setMeta',
         'id' => 'setId',
         'account_id' => 'setAccountId',
-        'owner' => 'setOwner',
-        'shared' => 'setShared',
-        'group' => 'setGroup',
-        'updated' => 'setUpdated',
         'name' => 'setName',
-        'description' => 'setDescription',
         'code' => 'setCode',
         'external_code' => 'setExternalCode',
-        'archived' => 'setArchived',
-        'address' => 'setAddress',
-        'address_full' => 'setAddressFull',
-        'path_name' => 'setPathName',
-        'parent' => 'setParent',
-        'attributes' => 'setAttributes',
-        'zones' => 'setZones',
-        'slots' => 'setSlots'
+        'updated' => 'setUpdated',
+        'version' => 'setVersion'
     ];
 
     /**
@@ -277,22 +223,11 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
         'meta' => 'getMeta',
         'id' => 'getId',
         'account_id' => 'getAccountId',
-        'owner' => 'getOwner',
-        'shared' => 'getShared',
-        'group' => 'getGroup',
-        'updated' => 'getUpdated',
         'name' => 'getName',
-        'description' => 'getDescription',
         'code' => 'getCode',
         'external_code' => 'getExternalCode',
-        'archived' => 'getArchived',
-        'address' => 'getAddress',
-        'address_full' => 'getAddressFull',
-        'path_name' => 'getPathName',
-        'parent' => 'getParent',
-        'attributes' => 'getAttributes',
-        'zones' => 'getZones',
-        'slots' => 'getSlots'
+        'updated' => 'getUpdated',
+        'version' => 'getVersion'
     ];
 
     /**
@@ -355,22 +290,11 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('owner', $data ?? [], null);
-        $this->setIfExists('shared', $data ?? [], null);
-        $this->setIfExists('group', $data ?? [], null);
-        $this->setIfExists('updated', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('external_code', $data ?? [], null);
-        $this->setIfExists('archived', $data ?? [], null);
-        $this->setIfExists('address', $data ?? [], null);
-        $this->setIfExists('address_full', $data ?? [], null);
-        $this->setIfExists('path_name', $data ?? [], null);
-        $this->setIfExists('parent', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('zones', $data ?? [], null);
-        $this->setIfExists('slots', $data ?? [], null);
+        $this->setIfExists('updated', $data ?? [], null);
+        $this->setIfExists('version', $data ?? [], null);
     }
 
     /**
@@ -399,26 +323,6 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4096)) {
-            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
-        }
-
-        if (!is_null($this->container['code']) && (mb_strlen($this->container['code']) > 255)) {
-            $invalidProperties[] = "invalid value for 'code', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['external_code']) && (mb_strlen($this->container['external_code']) > 255)) {
-            $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['address']) && (mb_strlen($this->container['address']) > 255)) {
-            $invalidProperties[] = "invalid value for 'address', the character length must be smaller than or equal to 255.";
-        }
 
         return $invalidProperties;
     }
@@ -475,7 +379,7 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets id
      *
-     * @param string|null $id ID Склада
+     * @param string|null $id ID Региона
      *
      * @return self
      */
@@ -517,114 +421,6 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets owner
-     *
-     * @return \OpenAPI\Client\Model\StoreOwner|null
-     */
-    public function getOwner()
-    {
-        return $this->container['owner'];
-    }
-
-    /**
-     * Sets owner
-     *
-     * @param \OpenAPI\Client\Model\StoreOwner|null $owner owner
-     *
-     * @return self
-     */
-    public function setOwner($owner)
-    {
-        if (is_null($owner)) {
-            throw new \InvalidArgumentException('non-nullable owner cannot be null');
-        }
-        $this->container['owner'] = $owner;
-
-        return $this;
-    }
-
-    /**
-     * Gets shared
-     *
-     * @return bool|null
-     */
-    public function getShared()
-    {
-        return $this->container['shared'];
-    }
-
-    /**
-     * Sets shared
-     *
-     * @param bool|null $shared Общий доступ
-     *
-     * @return self
-     */
-    public function setShared($shared)
-    {
-        if (is_null($shared)) {
-            throw new \InvalidArgumentException('non-nullable shared cannot be null');
-        }
-        $this->container['shared'] = $shared;
-
-        return $this;
-    }
-
-    /**
-     * Gets group
-     *
-     * @return \OpenAPI\Client\Model\StoreGroup|null
-     */
-    public function getGroup()
-    {
-        return $this->container['group'];
-    }
-
-    /**
-     * Sets group
-     *
-     * @param \OpenAPI\Client\Model\StoreGroup|null $group group
-     *
-     * @return self
-     */
-    public function setGroup($group)
-    {
-        if (is_null($group)) {
-            throw new \InvalidArgumentException('non-nullable group cannot be null');
-        }
-        $this->container['group'] = $group;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdated()
-    {
-        return $this->container['updated'];
-    }
-
-    /**
-     * Sets updated
-     *
-     * @param \DateTime|null $updated Момент последнего обновления
-     *
-     * @return self
-     */
-    public function setUpdated($updated)
-    {
-        if (is_null($updated)) {
-            throw new \InvalidArgumentException('non-nullable updated cannot be null');
-        }
-        $this->container['updated'] = $updated;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string|null
@@ -637,7 +433,7 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets name
      *
-     * @param string|null $name Наименование Склада
+     * @param string|null $name Наименование Региона
      *
      * @return self
      */
@@ -646,42 +442,7 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling StoreBalanceStore., must be smaller than or equal to 255.');
-        }
-
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description Комментарий к Складу
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        if ((mb_strlen($description) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling StoreBalanceStore., must be smaller than or equal to 4096.');
-        }
-
-        $this->container['description'] = $description;
 
         return $this;
     }
@@ -699,7 +460,7 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets code
      *
-     * @param string|null $code Код Склада
+     * @param string|null $code Код Региона
      *
      * @return self
      */
@@ -708,10 +469,6 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
         if (is_null($code)) {
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        if ((mb_strlen($code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $code when calling StoreBalanceStore., must be smaller than or equal to 255.');
-        }
-
         $this->container['code'] = $code;
 
         return $this;
@@ -730,7 +487,7 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets external_code
      *
-     * @param string|null $external_code Внешний код Склада
+     * @param string|null $external_code Внешний код Региона
      *
      * @return self
      */
@@ -739,231 +496,61 @@ class StoreBalanceStore implements ModelInterface, ArrayAccess, \JsonSerializabl
         if (is_null($external_code)) {
             throw new \InvalidArgumentException('non-nullable external_code cannot be null');
         }
-        if ((mb_strlen($external_code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $external_code when calling StoreBalanceStore., must be smaller than or equal to 255.');
-        }
-
         $this->container['external_code'] = $external_code;
 
         return $this;
     }
 
     /**
-     * Gets archived
+     * Gets updated
      *
-     * @return bool|null
+     * @return \DateTime|null
      */
-    public function getArchived()
+    public function getUpdated()
     {
-        return $this->container['archived'];
+        return $this->container['updated'];
     }
 
     /**
-     * Sets archived
+     * Sets updated
      *
-     * @param bool|null $archived Добавлен ли в архив
+     * @param \DateTime|null $updated Время последнего изменения
      *
      * @return self
      */
-    public function setArchived($archived)
+    public function setUpdated($updated)
     {
-        if (is_null($archived)) {
-            throw new \InvalidArgumentException('non-nullable archived cannot be null');
+        if (is_null($updated)) {
+            throw new \InvalidArgumentException('non-nullable updated cannot be null');
         }
-        $this->container['archived'] = $archived;
+        $this->container['updated'] = $updated;
 
         return $this;
     }
 
     /**
-     * Gets address
+     * Gets version
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getAddress()
+    public function getVersion()
     {
-        return $this->container['address'];
+        return $this->container['version'];
     }
 
     /**
-     * Sets address
+     * Sets version
      *
-     * @param string|null $address Адрес склада
+     * @param int|null $version Версия сущности
      *
      * @return self
      */
-    public function setAddress($address)
+    public function setVersion($version)
     {
-        if (is_null($address)) {
-            throw new \InvalidArgumentException('non-nullable address cannot be null');
+        if (is_null($version)) {
+            throw new \InvalidArgumentException('non-nullable version cannot be null');
         }
-        if ((mb_strlen($address) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $address when calling StoreBalanceStore., must be smaller than or equal to 255.');
-        }
-
-        $this->container['address'] = $address;
-
-        return $this;
-    }
-
-    /**
-     * Gets address_full
-     *
-     * @return \OpenAPI\Client\Model\AddressFull|null
-     */
-    public function getAddressFull()
-    {
-        return $this->container['address_full'];
-    }
-
-    /**
-     * Sets address_full
-     *
-     * @param \OpenAPI\Client\Model\AddressFull|null $address_full address_full
-     *
-     * @return self
-     */
-    public function setAddressFull($address_full)
-    {
-        if (is_null($address_full)) {
-            throw new \InvalidArgumentException('non-nullable address_full cannot be null');
-        }
-        $this->container['address_full'] = $address_full;
-
-        return $this;
-    }
-
-    /**
-     * Gets path_name
-     *
-     * @return string|null
-     */
-    public function getPathName()
-    {
-        return $this->container['path_name'];
-    }
-
-    /**
-     * Sets path_name
-     *
-     * @param string|null $path_name Группа Склада
-     *
-     * @return self
-     */
-    public function setPathName($path_name)
-    {
-        if (is_null($path_name)) {
-            throw new \InvalidArgumentException('non-nullable path_name cannot be null');
-        }
-        $this->container['path_name'] = $path_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets parent
-     *
-     * @return \OpenAPI\Client\Model\StoreParent|null
-     */
-    public function getParent()
-    {
-        return $this->container['parent'];
-    }
-
-    /**
-     * Sets parent
-     *
-     * @param \OpenAPI\Client\Model\StoreParent|null $parent parent
-     *
-     * @return self
-     */
-    public function setParent($parent)
-    {
-        if (is_null($parent)) {
-            throw new \InvalidArgumentException('non-nullable parent cannot be null');
-        }
-        $this->container['parent'] = $parent;
-
-        return $this;
-    }
-
-    /**
-     * Gets attributes
-     *
-     * @return \OpenAPI\Client\Model\Attribute[]|null
-     */
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * Sets attributes
-     *
-     * @param \OpenAPI\Client\Model\Attribute[]|null $attributes Дополнительные поля
-     *
-     * @return self
-     */
-    public function setAttributes($attributes)
-    {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
-        }
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * Gets zones
-     *
-     * @return \OpenAPI\Client\Model\StoreZones|null
-     */
-    public function getZones()
-    {
-        return $this->container['zones'];
-    }
-
-    /**
-     * Sets zones
-     *
-     * @param \OpenAPI\Client\Model\StoreZones|null $zones zones
-     *
-     * @return self
-     */
-    public function setZones($zones)
-    {
-        if (is_null($zones)) {
-            throw new \InvalidArgumentException('non-nullable zones cannot be null');
-        }
-        $this->container['zones'] = $zones;
-
-        return $this;
-    }
-
-    /**
-     * Gets slots
-     *
-     * @return \OpenAPI\Client\Model\StoreSlots|null
-     */
-    public function getSlots()
-    {
-        return $this->container['slots'];
-    }
-
-    /**
-     * Sets slots
-     *
-     * @param \OpenAPI\Client\Model\StoreSlots|null $slots slots
-     *
-     * @return self
-     */
-    public function setSlots($slots)
-    {
-        if (is_null($slots)) {
-            throw new \InvalidArgumentException('non-nullable slots cannot be null');
-        }
-        $this->container['slots'] = $slots;
+        $this->container['version'] = $version;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * FileCreatedBy
+ * Owner
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * FileCreatedBy Class Doc Comment
+ * Owner Class Doc Comment
  *
  * @category Class
- * @description Метаданные сотрудника, загрузившего Файл
+ * @description Сотрудник
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
+class Owner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'file_createdBy';
+    protected static $openAPIModelName = 'Owner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -75,13 +75,13 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
         'full_name' => 'string',
         'short_fio' => 'string',
         'shared' => 'bool',
-        'group' => '\OpenAPI\Client\Model\ProductGroup',
-        'owner' => '\OpenAPI\Client\Model\ProductOwner',
+        'group' => '\OpenAPI\Client\Model\Group',
+        'owner' => '\OpenAPI\Client\Model\Owner',
         'inn' => 'string',
         'position' => 'string',
         'uid' => 'string',
-        'salary' => '\OpenAPI\Client\Model\EmployeeSalary',
-        'cashiers' => '\OpenAPI\Client\Model\EmployeeCashiersInner[]',
+        'salary' => '\OpenAPI\Client\Model\OwnerSalary',
+        'cashiers' => '\OpenAPI\Client\Model\Cashier[]',
         'image' => '\OpenAPI\Client\Model\Image',
         'attributes' => '\OpenAPI\Client\Model\Attribute[]'
     ];
@@ -605,7 +605,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling Owner., must be smaller than or equal to 255.');
         }
 
         $this->container['name'] = $name;
@@ -636,7 +636,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable external_code cannot be null');
         }
         if ((mb_strlen($external_code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $external_code when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $external_code when calling Owner., must be smaller than or equal to 255.');
         }
 
         $this->container['external_code'] = $external_code;
@@ -748,7 +748,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
         if ((mb_strlen($description) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling FileCreatedBy., must be smaller than or equal to 4096.');
+            throw new \InvalidArgumentException('invalid length for $description when calling Owner., must be smaller than or equal to 4096.');
         }
 
         $this->container['description'] = $description;
@@ -833,7 +833,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable first_name cannot be null');
         }
         if ((mb_strlen($first_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $first_name when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $first_name when calling Owner., must be smaller than or equal to 255.');
         }
 
         $this->container['first_name'] = $first_name;
@@ -864,7 +864,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable middle_name cannot be null');
         }
         if ((mb_strlen($middle_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $middle_name when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $middle_name when calling Owner., must be smaller than or equal to 255.');
         }
 
         $this->container['middle_name'] = $middle_name;
@@ -895,7 +895,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable last_name cannot be null');
         }
         if ((mb_strlen($last_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $last_name when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $last_name when calling Owner., must be smaller than or equal to 255.');
         }
 
         $this->container['last_name'] = $last_name;
@@ -987,7 +987,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets group
      *
-     * @return \OpenAPI\Client\Model\ProductGroup|null
+     * @return \OpenAPI\Client\Model\Group|null
      */
     public function getGroup()
     {
@@ -997,7 +997,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets group
      *
-     * @param \OpenAPI\Client\Model\ProductGroup|null $group group
+     * @param \OpenAPI\Client\Model\Group|null $group group
      *
      * @return self
      */
@@ -1014,7 +1014,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\ProductOwner|null
+     * @return \OpenAPI\Client\Model\Owner|null
      */
     public function getOwner()
     {
@@ -1024,7 +1024,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\ProductOwner|null $owner owner
+     * @param \OpenAPI\Client\Model\Owner|null $owner owner
      *
      * @return self
      */
@@ -1061,7 +1061,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable inn cannot be null');
         }
         if ((mb_strlen($inn) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $inn when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $inn when calling Owner., must be smaller than or equal to 255.');
         }
 
         $this->container['inn'] = $inn;
@@ -1092,7 +1092,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable position cannot be null');
         }
         if ((mb_strlen($position) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $position when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $position when calling Owner., must be smaller than or equal to 255.');
         }
 
         $this->container['position'] = $position;
@@ -1123,7 +1123,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable uid cannot be null');
         }
         if ((mb_strlen($uid) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $uid when calling FileCreatedBy., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $uid when calling Owner., must be smaller than or equal to 255.');
         }
 
         $this->container['uid'] = $uid;
@@ -1134,7 +1134,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets salary
      *
-     * @return \OpenAPI\Client\Model\EmployeeSalary|null
+     * @return \OpenAPI\Client\Model\OwnerSalary|null
      */
     public function getSalary()
     {
@@ -1144,7 +1144,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets salary
      *
-     * @param \OpenAPI\Client\Model\EmployeeSalary|null $salary salary
+     * @param \OpenAPI\Client\Model\OwnerSalary|null $salary salary
      *
      * @return self
      */
@@ -1161,7 +1161,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cashiers
      *
-     * @return \OpenAPI\Client\Model\EmployeeCashiersInner[]|null
+     * @return \OpenAPI\Client\Model\Cashier[]|null
      */
     public function getCashiers()
     {
@@ -1171,7 +1171,7 @@ class FileCreatedBy implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cashiers
      *
-     * @param \OpenAPI\Client\Model\EmployeeCashiersInner[]|null $cashiers Массив кассиров
+     * @param \OpenAPI\Client\Model\Cashier[]|null $cashiers Массив кассиров
      *
      * @return self
      */

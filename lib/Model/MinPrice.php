@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailStoreStore
+ * MinPrice
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * RetailStoreStore Class Doc Comment
+ * MinPrice Class Doc Comment
  *
  * @category Class
- * @description Метаданные склада, с которым связана Точка продаж
+ * @description Минимальная цена
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RetailStoreStore implements ModelInterface, ArrayAccess, \JsonSerializable
+class MinPrice implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RetailStoreStore implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'retail_store_store';
+    protected static $openAPIModelName = 'MinPrice';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,8 @@ class RetailStoreStore implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\Meta'
+        'value' => 'float',
+        'currency' => '\OpenAPI\Client\Model\Currency'
     ];
 
     /**
@@ -69,7 +70,8 @@ class RetailStoreStore implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'meta' => null
+        'value' => 'float',
+        'currency' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class RetailStoreStore implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'meta' => false
+        'value' => false,
+        'currency' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class RetailStoreStore implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'meta' => 'meta'
+        'value' => 'value',
+        'currency' => 'currency'
     ];
 
     /**
@@ -176,7 +180,8 @@ class RetailStoreStore implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'meta' => 'setMeta'
+        'value' => 'setValue',
+        'currency' => 'setCurrency'
     ];
 
     /**
@@ -185,7 +190,8 @@ class RetailStoreStore implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'meta' => 'getMeta'
+        'value' => 'getValue',
+        'currency' => 'getCurrency'
     ];
 
     /**
@@ -245,7 +251,8 @@ class RetailStoreStore implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
     }
 
     /**
@@ -291,28 +298,55 @@ class RetailStoreStore implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets meta
+     * Gets value
      *
-     * @return \OpenAPI\Client\Model\Meta|null
+     * @return float|null
      */
-    public function getMeta()
+    public function getValue()
     {
-        return $this->container['meta'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets meta
+     * Sets value
      *
-     * @param \OpenAPI\Client\Model\Meta|null $meta meta
+     * @param float|null $value Значение цены
      *
      * @return self
      */
-    public function setMeta($meta)
+    public function setValue($value)
     {
-        if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        if (is_null($value)) {
+            throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
-        $this->container['meta'] = $meta;
+        $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return \OpenAPI\Client\Model\Currency|null
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param \OpenAPI\Client\Model\Currency|null $currency currency
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        if (is_null($currency)) {
+            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        }
+        $this->container['currency'] = $currency;
 
         return $this;
     }

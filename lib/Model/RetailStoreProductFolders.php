@@ -50,7 +50,7 @@ class RetailStoreProductFolders implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'retail_store_productFolders';
+    protected static $openAPIModelName = 'RetailStore_productFolders';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,7 @@ class RetailStoreProductFolders implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\MetaList',
-        'rows' => '\OpenAPI\Client\Model\RetailStoreProductFoldersRowsInner[]'
+        'rows' => '\OpenAPI\Client\Model\ProductFolder[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class RetailStoreProductFolders implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets rows
      *
-     * @return \OpenAPI\Client\Model\RetailStoreProductFoldersRowsInner[]|null
+     * @return \OpenAPI\Client\Model\ProductFolder[]|null
      */
     public function getRows()
     {
@@ -337,7 +337,7 @@ class RetailStoreProductFolders implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\RetailStoreProductFoldersRowsInner[]|null $rows rows
+     * @param \OpenAPI\Client\Model\ProductFolder[]|null $rows rows
      *
      * @return self
      */

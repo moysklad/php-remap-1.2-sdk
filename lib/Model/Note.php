@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductListContextEmployee
+ * Note
  *
  * PHP version 7.4
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ProductListContextEmployee Class Doc Comment
+ * Note Class Doc Comment
  *
  * @category Class
+ * @description Событие Контрагента
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductListContextEmployee implements ModelInterface, ArrayAccess, \JsonSerializable
+class Note implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class ProductListContextEmployee implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product_list_context_employee';
+    protected static $openAPIModelName = 'Note';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +58,14 @@ class ProductListContextEmployee implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\Meta'
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'id' => 'string',
+        'account_id' => 'string',
+        'agent' => '\OpenAPI\Client\Model\Counterparty',
+        'author' => '\OpenAPI\Client\Model\Employee',
+        'author_application' => '\OpenAPI\Client\Model\Application',
+        'created' => '\DateTime',
+        'description' => 'string'
     ];
 
     /**
@@ -68,7 +76,14 @@ class ProductListContextEmployee implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'meta' => null
+        'meta' => null,
+        'id' => 'uuid',
+        'account_id' => 'uuid',
+        'agent' => null,
+        'author' => null,
+        'author_application' => null,
+        'created' => 'date-time',
+        'description' => null
     ];
 
     /**
@@ -77,7 +92,14 @@ class ProductListContextEmployee implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'meta' => false
+        'meta' => false,
+        'id' => false,
+        'account_id' => false,
+        'agent' => false,
+        'author' => false,
+        'author_application' => false,
+        'created' => false,
+        'description' => false
     ];
 
     /**
@@ -166,7 +188,14 @@ class ProductListContextEmployee implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'meta' => 'meta'
+        'meta' => 'meta',
+        'id' => 'id',
+        'account_id' => 'accountId',
+        'agent' => 'agent',
+        'author' => 'author',
+        'author_application' => 'authorApplication',
+        'created' => 'created',
+        'description' => 'description'
     ];
 
     /**
@@ -175,7 +204,14 @@ class ProductListContextEmployee implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'meta' => 'setMeta'
+        'meta' => 'setMeta',
+        'id' => 'setId',
+        'account_id' => 'setAccountId',
+        'agent' => 'setAgent',
+        'author' => 'setAuthor',
+        'author_application' => 'setAuthorApplication',
+        'created' => 'setCreated',
+        'description' => 'setDescription'
     ];
 
     /**
@@ -184,7 +220,14 @@ class ProductListContextEmployee implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'meta' => 'getMeta'
+        'meta' => 'getMeta',
+        'id' => 'getId',
+        'account_id' => 'getAccountId',
+        'agent' => 'getAgent',
+        'author' => 'getAuthor',
+        'author_application' => 'getAuthorApplication',
+        'created' => 'getCreated',
+        'description' => 'getDescription'
     ];
 
     /**
@@ -245,6 +288,13 @@ class ProductListContextEmployee implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(?array $data = null)
     {
         $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('agent', $data ?? [], null);
+        $this->setIfExists('author', $data ?? [], null);
+        $this->setIfExists('author_application', $data ?? [], null);
+        $this->setIfExists('created', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
     }
 
     /**
@@ -273,6 +323,10 @@ class ProductListContextEmployee implements ModelInterface, ArrayAccess, \JsonSe
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4096)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
+        }
 
         return $invalidProperties;
     }
@@ -312,6 +366,199 @@ class ProductListContextEmployee implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable meta cannot be null');
         }
         $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id ID События
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id ID учетной записи
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets agent
+     *
+     * @return \OpenAPI\Client\Model\Counterparty|null
+     */
+    public function getAgent()
+    {
+        return $this->container['agent'];
+    }
+
+    /**
+     * Sets agent
+     *
+     * @param \OpenAPI\Client\Model\Counterparty|null $agent agent
+     *
+     * @return self
+     */
+    public function setAgent($agent)
+    {
+        if (is_null($agent)) {
+            throw new \InvalidArgumentException('non-nullable agent cannot be null');
+        }
+        $this->container['agent'] = $agent;
+
+        return $this;
+    }
+
+    /**
+     * Gets author
+     *
+     * @return \OpenAPI\Client\Model\Employee|null
+     */
+    public function getAuthor()
+    {
+        return $this->container['author'];
+    }
+
+    /**
+     * Sets author
+     *
+     * @param \OpenAPI\Client\Model\Employee|null $author author
+     *
+     * @return self
+     */
+    public function setAuthor($author)
+    {
+        if (is_null($author)) {
+            throw new \InvalidArgumentException('non-nullable author cannot be null');
+        }
+        $this->container['author'] = $author;
+
+        return $this;
+    }
+
+    /**
+     * Gets author_application
+     *
+     * @return \OpenAPI\Client\Model\Application|null
+     */
+    public function getAuthorApplication()
+    {
+        return $this->container['author_application'];
+    }
+
+    /**
+     * Sets author_application
+     *
+     * @param \OpenAPI\Client\Model\Application|null $author_application author_application
+     *
+     * @return self
+     */
+    public function setAuthorApplication($author_application)
+    {
+        if (is_null($author_application)) {
+            throw new \InvalidArgumentException('non-nullable author_application cannot be null');
+        }
+        $this->container['author_application'] = $author_application;
+
+        return $this;
+    }
+
+    /**
+     * Gets created
+     *
+     * @return \DateTime|null
+     */
+    public function getCreated()
+    {
+        return $this->container['created'];
+    }
+
+    /**
+     * Sets created
+     *
+     * @param \DateTime|null $created Время создания объекта
+     *
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        if (is_null($created)) {
+            throw new \InvalidArgumentException('non-nullable created cannot be null');
+        }
+        $this->container['created'] = $created;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description Текст события Контрагента
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        if ((mb_strlen($description) > 4096)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling Note., must be smaller than or equal to 4096.');
+        }
+
+        $this->container['description'] = $description;
 
         return $this;
     }

@@ -50,7 +50,7 @@ class RetailStoreOrderToState implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'retail_store_orderToState';
+    protected static $openAPIModelName = 'RetailStore_orderToState';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

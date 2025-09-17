@@ -50,7 +50,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'employee';
+    protected static $openAPIModelName = 'Employee';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -75,13 +75,13 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
         'full_name' => 'string',
         'short_fio' => 'string',
         'shared' => 'bool',
-        'group' => '\OpenAPI\Client\Model\ProductGroup',
-        'owner' => '\OpenAPI\Client\Model\ProductOwner',
+        'group' => '\OpenAPI\Client\Model\Group',
+        'owner' => '\OpenAPI\Client\Model\Owner',
         'inn' => 'string',
         'position' => 'string',
         'uid' => 'string',
-        'salary' => '\OpenAPI\Client\Model\EmployeeSalary',
-        'cashiers' => '\OpenAPI\Client\Model\EmployeeCashiersInner[]',
+        'salary' => '\OpenAPI\Client\Model\OwnerSalary',
+        'cashiers' => '\OpenAPI\Client\Model\Cashier[]',
         'image' => '\OpenAPI\Client\Model\Image',
         'attributes' => '\OpenAPI\Client\Model\Attribute[]'
     ];
@@ -987,7 +987,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets group
      *
-     * @return \OpenAPI\Client\Model\ProductGroup|null
+     * @return \OpenAPI\Client\Model\Group|null
      */
     public function getGroup()
     {
@@ -997,7 +997,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets group
      *
-     * @param \OpenAPI\Client\Model\ProductGroup|null $group group
+     * @param \OpenAPI\Client\Model\Group|null $group group
      *
      * @return self
      */
@@ -1014,7 +1014,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\ProductOwner|null
+     * @return \OpenAPI\Client\Model\Owner|null
      */
     public function getOwner()
     {
@@ -1024,7 +1024,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\ProductOwner|null $owner owner
+     * @param \OpenAPI\Client\Model\Owner|null $owner owner
      *
      * @return self
      */
@@ -1134,7 +1134,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets salary
      *
-     * @return \OpenAPI\Client\Model\EmployeeSalary|null
+     * @return \OpenAPI\Client\Model\OwnerSalary|null
      */
     public function getSalary()
     {
@@ -1144,7 +1144,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets salary
      *
-     * @param \OpenAPI\Client\Model\EmployeeSalary|null $salary salary
+     * @param \OpenAPI\Client\Model\OwnerSalary|null $salary salary
      *
      * @return self
      */
@@ -1161,7 +1161,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cashiers
      *
-     * @return \OpenAPI\Client\Model\EmployeeCashiersInner[]|null
+     * @return \OpenAPI\Client\Model\Cashier[]|null
      */
     public function getCashiers()
     {
@@ -1171,7 +1171,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cashiers
      *
-     * @param \OpenAPI\Client\Model\EmployeeCashiersInner[]|null $cashiers Массив кассиров
+     * @param \OpenAPI\Client\Model\Cashier[]|null $cashiers Массив кассиров
      *
      * @return self
      */
@@ -1198,7 +1198,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image
      *
-     * @param \OpenAPI\Client\Model\Image|null $image Фотография сотрудника
+     * @param \OpenAPI\Client\Model\Image|null $image image
      *
      * @return self
      */

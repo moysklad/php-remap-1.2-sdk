@@ -50,7 +50,7 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product_minimumStock_storeBalances';
+    protected static $openAPIModelName = 'Product_minimumStock_storeBalances';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

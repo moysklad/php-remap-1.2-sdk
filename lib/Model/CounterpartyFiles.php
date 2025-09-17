@@ -50,7 +50,7 @@ class CounterpartyFiles implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'counterparty_files';
+    protected static $openAPIModelName = 'Counterparty_files';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,7 @@ class CounterpartyFiles implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\MetaList',
-        'rows' => '\OpenAPI\Client\Model\CounterpartyFilesRowsInner[]'
+        'rows' => '\OpenAPI\Client\Model\File[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CounterpartyFiles implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets rows
      *
-     * @return \OpenAPI\Client\Model\CounterpartyFilesRowsInner[]|null
+     * @return \OpenAPI\Client\Model\File[]|null
      */
     public function getRows()
     {
@@ -337,7 +337,7 @@ class CounterpartyFiles implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\CounterpartyFilesRowsInner[]|null $rows rows
+     * @param \OpenAPI\Client\Model\File[]|null $rows rows
      *
      * @return self
      */

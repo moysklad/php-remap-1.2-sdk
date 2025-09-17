@@ -50,7 +50,7 @@ class RetailStoreQrAcquire implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'retail_store_qrAcquire';
+    protected static $openAPIModelName = 'RetailStore_qrAcquire';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

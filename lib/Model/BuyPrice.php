@@ -1,6 +1,6 @@
 <?php
 /**
- * CounterpartyGroup
+ * BuyPrice
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * CounterpartyGroup Class Doc Comment
+ * BuyPrice Class Doc Comment
  *
  * @category Class
- * @description Метаданные отдела сотрудника
+ * @description Закупочная цена
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CounterpartyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
+class BuyPrice implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CounterpartyGroup implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'counterparty_group';
+    protected static $openAPIModelName = 'BuyPrice';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,8 @@ class CounterpartyGroup implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\Meta',
-        'id' => 'string',
-        'account_id' => 'string',
-        'name' => 'string',
-        'index' => 'int'
+        'value' => 'float',
+        'currency' => '\OpenAPI\Client\Model\Currency'
     ];
 
     /**
@@ -73,11 +70,8 @@ class CounterpartyGroup implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'meta' => null,
-        'id' => 'uuid',
-        'account_id' => 'uuid',
-        'name' => null,
-        'index' => null
+        'value' => 'float',
+        'currency' => null
     ];
 
     /**
@@ -86,11 +80,8 @@ class CounterpartyGroup implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'meta' => false,
-        'id' => false,
-        'account_id' => false,
-        'name' => false,
-        'index' => false
+        'value' => false,
+        'currency' => false
     ];
 
     /**
@@ -179,11 +170,8 @@ class CounterpartyGroup implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'meta' => 'meta',
-        'id' => 'id',
-        'account_id' => 'accountId',
-        'name' => 'name',
-        'index' => 'index'
+        'value' => 'value',
+        'currency' => 'currency'
     ];
 
     /**
@@ -192,11 +180,8 @@ class CounterpartyGroup implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'meta' => 'setMeta',
-        'id' => 'setId',
-        'account_id' => 'setAccountId',
-        'name' => 'setName',
-        'index' => 'setIndex'
+        'value' => 'setValue',
+        'currency' => 'setCurrency'
     ];
 
     /**
@@ -205,11 +190,8 @@ class CounterpartyGroup implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'meta' => 'getMeta',
-        'id' => 'getId',
-        'account_id' => 'getAccountId',
-        'name' => 'getName',
-        'index' => 'getIndex'
+        'value' => 'getValue',
+        'currency' => 'getCurrency'
     ];
 
     /**
@@ -269,11 +251,8 @@ class CounterpartyGroup implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('index', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
     }
 
     /**
@@ -303,10 +282,6 @@ class CounterpartyGroup implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
-        }
-
         return $invalidProperties;
     }
 
@@ -323,140 +298,55 @@ class CounterpartyGroup implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets meta
+     * Gets value
      *
-     * @return \OpenAPI\Client\Model\Meta|null
+     * @return float|null
      */
-    public function getMeta()
+    public function getValue()
     {
-        return $this->container['meta'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets meta
+     * Sets value
      *
-     * @param \OpenAPI\Client\Model\Meta|null $meta meta
+     * @param float|null $value Значение цены
      *
      * @return self
      */
-    public function setMeta($meta)
+    public function setValue($value)
     {
-        if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        if (is_null($value)) {
+            throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
-        $this->container['meta'] = $meta;
+        $this->container['value'] = $value;
 
         return $this;
     }
 
     /**
-     * Gets id
+     * Gets currency
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\Currency|null
      */
-    public function getId()
+    public function getCurrency()
     {
-        return $this->container['id'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets id
+     * Sets currency
      *
-     * @param string|null $id ID группы
+     * @param \OpenAPI\Client\Model\Currency|null $currency currency
      *
      * @return self
      */
-    public function setId($id)
+    public function setCurrency($currency)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($currency)) {
+            throw new \InvalidArgumentException('non-nullable currency cannot be null');
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets account_id
-     *
-     * @return string|null
-     */
-    public function getAccountId()
-    {
-        return $this->container['account_id'];
-    }
-
-    /**
-     * Sets account_id
-     *
-     * @param string|null $account_id ID учетной записи
-     *
-     * @return self
-     */
-    public function setAccountId($account_id)
-    {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
-        }
-        $this->container['account_id'] = $account_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Наименование группы
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CounterpartyGroup., must be smaller than or equal to 255.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets index
-     *
-     * @return int|null
-     */
-    public function getIndex()
-    {
-        return $this->container['index'];
-    }
-
-    /**
-     * Sets index
-     *
-     * @param int|null $index Порядковый номер в списке групп
-     *
-     * @return self
-     */
-    public function setIndex($index)
-    {
-        if (is_null($index)) {
-            throw new \InvalidArgumentException('non-nullable index cannot be null');
-        }
-        $this->container['index'] = $index;
+        $this->container['currency'] = $currency;
 
         return $this;
     }

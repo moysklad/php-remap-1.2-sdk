@@ -50,7 +50,7 @@ class RetailStoreOrganization implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'retail_store_organization';
+    protected static $openAPIModelName = 'RetailStore_organization';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
