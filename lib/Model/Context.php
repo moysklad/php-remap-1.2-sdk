@@ -1,6 +1,6 @@
 <?php
 /**
- * MetaList
+ * Context
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * MetaList Class Doc Comment
+ * Context Class Doc Comment
  *
  * @category Class
- * @description Метаданные списка
+ * @description Метаданные о сотруднике, выполнившем запрос
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MetaList implements ModelInterface, ArrayAccess, \JsonSerializable
+class Context implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class MetaList implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'metaList';
+    protected static $openAPIModelName = 'context';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,7 @@ class MetaList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'href' => 'string',
-        'type' => 'string',
-        'media_type' => 'string',
-        'size' => 'int',
-        'limit' => 'int',
-        'offset' => 'int',
-        'next_href' => 'string',
-        'previous_href' => 'string'
+        'employee' => '\OpenAPI\Client\Model\Employee'
     ];
 
     /**
@@ -76,14 +69,7 @@ class MetaList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'href' => 'uri',
-        'type' => null,
-        'media_type' => null,
-        'size' => null,
-        'limit' => null,
-        'offset' => null,
-        'next_href' => 'uri',
-        'previous_href' => 'uri'
+        'employee' => null
     ];
 
     /**
@@ -92,14 +78,7 @@ class MetaList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'href' => false,
-        'type' => false,
-        'media_type' => false,
-        'size' => false,
-        'limit' => false,
-        'offset' => false,
-        'next_href' => false,
-        'previous_href' => false
+        'employee' => false
     ];
 
     /**
@@ -188,14 +167,7 @@ class MetaList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'href' => 'href',
-        'type' => 'type',
-        'media_type' => 'mediaType',
-        'size' => 'size',
-        'limit' => 'limit',
-        'offset' => 'offset',
-        'next_href' => 'nextHref',
-        'previous_href' => 'previousHref'
+        'employee' => 'employee'
     ];
 
     /**
@@ -204,14 +176,7 @@ class MetaList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'href' => 'setHref',
-        'type' => 'setType',
-        'media_type' => 'setMediaType',
-        'size' => 'setSize',
-        'limit' => 'setLimit',
-        'offset' => 'setOffset',
-        'next_href' => 'setNextHref',
-        'previous_href' => 'setPreviousHref'
+        'employee' => 'setEmployee'
     ];
 
     /**
@@ -220,14 +185,7 @@ class MetaList implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'href' => 'getHref',
-        'type' => 'getType',
-        'media_type' => 'getMediaType',
-        'size' => 'getSize',
-        'limit' => 'getLimit',
-        'offset' => 'getOffset',
-        'next_href' => 'getNextHref',
-        'previous_href' => 'getPreviousHref'
+        'employee' => 'getEmployee'
     ];
 
     /**
@@ -287,14 +245,7 @@ class MetaList implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('href', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('media_type', $data ?? [], null);
-        $this->setIfExists('size', $data ?? [], null);
-        $this->setIfExists('limit', $data ?? [], null);
-        $this->setIfExists('offset', $data ?? [], null);
-        $this->setIfExists('next_href', $data ?? [], null);
-        $this->setIfExists('previous_href', $data ?? [], null);
+        $this->setIfExists('employee', $data ?? [], null);
     }
 
     /**
@@ -324,15 +275,6 @@ class MetaList implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['href'] === null) {
-            $invalidProperties[] = "'href' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        if ($this->container['media_type'] === null) {
-            $invalidProperties[] = "'media_type' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -349,217 +291,28 @@ class MetaList implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets href
+     * Gets employee
      *
-     * @return string
+     * @return \OpenAPI\Client\Model\Employee|null
      */
-    public function getHref()
+    public function getEmployee()
     {
-        return $this->container['href'];
+        return $this->container['employee'];
     }
 
     /**
-     * Sets href
+     * Sets employee
      *
-     * @param string $href Ссылка на объект
+     * @param \OpenAPI\Client\Model\Employee|null $employee employee
      *
      * @return self
      */
-    public function setHref($href)
+    public function setEmployee($employee)
     {
-        if (is_null($href)) {
-            throw new \InvalidArgumentException('non-nullable href cannot be null');
+        if (is_null($employee)) {
+            throw new \InvalidArgumentException('non-nullable employee cannot be null');
         }
-        $this->container['href'] = $href;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type Тип объекта
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets media_type
-     *
-     * @return string
-     */
-    public function getMediaType()
-    {
-        return $this->container['media_type'];
-    }
-
-    /**
-     * Sets media_type
-     *
-     * @param string $media_type Тип данных
-     *
-     * @return self
-     */
-    public function setMediaType($media_type)
-    {
-        if (is_null($media_type)) {
-            throw new \InvalidArgumentException('non-nullable media_type cannot be null');
-        }
-        $this->container['media_type'] = $media_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets size
-     *
-     * @return int|null
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param int|null $size Размер выданного списка
-     *
-     * @return self
-     */
-    public function setSize($size)
-    {
-        if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
-        }
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /**
-     * Gets limit
-     *
-     * @return int|null
-     */
-    public function getLimit()
-    {
-        return $this->container['limit'];
-    }
-
-    /**
-     * Sets limit
-     *
-     * @param int|null $limit Максимальное количество элементов в выданном списке
-     *
-     * @return self
-     */
-    public function setLimit($limit)
-    {
-        if (is_null($limit)) {
-            throw new \InvalidArgumentException('non-nullable limit cannot be null');
-        }
-        $this->container['limit'] = $limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets offset
-     *
-     * @return int|null
-     */
-    public function getOffset()
-    {
-        return $this->container['offset'];
-    }
-
-    /**
-     * Sets offset
-     *
-     * @param int|null $offset Отступ в выданном списке
-     *
-     * @return self
-     */
-    public function setOffset($offset)
-    {
-        if (is_null($offset)) {
-            throw new \InvalidArgumentException('non-nullable offset cannot be null');
-        }
-        $this->container['offset'] = $offset;
-
-        return $this;
-    }
-
-    /**
-     * Gets next_href
-     *
-     * @return string|null
-     */
-    public function getNextHref()
-    {
-        return $this->container['next_href'];
-    }
-
-    /**
-     * Sets next_href
-     *
-     * @param string|null $next_href Ссылка на следующую страницу
-     *
-     * @return self
-     */
-    public function setNextHref($next_href)
-    {
-        if (is_null($next_href)) {
-            throw new \InvalidArgumentException('non-nullable next_href cannot be null');
-        }
-        $this->container['next_href'] = $next_href;
-
-        return $this;
-    }
-
-    /**
-     * Gets previous_href
-     *
-     * @return string|null
-     */
-    public function getPreviousHref()
-    {
-        return $this->container['previous_href'];
-    }
-
-    /**
-     * Sets previous_href
-     *
-     * @param string|null $previous_href Ссылка на предыдущую страницу
-     *
-     * @return self
-     */
-    public function setPreviousHref($previous_href)
-    {
-        if (is_null($previous_href)) {
-            throw new \InvalidArgumentException('non-nullable previous_href cannot be null');
-        }
-        $this->container['previous_href'] = $previous_href;
+        $this->container['employee'] = $employee;
 
         return $this;
     }

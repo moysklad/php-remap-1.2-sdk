@@ -50,7 +50,7 @@ class ProductListContext implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product_list_context';
+    protected static $openAPIModelName = 'productList_context';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

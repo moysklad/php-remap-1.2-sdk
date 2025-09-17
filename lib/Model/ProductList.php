@@ -49,7 +49,7 @@ class ProductList implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'product-list';
+    protected static $openAPIModelName = 'productList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,7 @@ class ProductList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'context' => '\OpenAPI\Client\Model\ProductListContext',
+        'context' => '\OpenAPI\Client\Model\Context',
         'meta' => '\OpenAPI\Client\Model\MetaList',
         'rows' => '\OpenAPI\Client\Model\Product[]'
     ];
@@ -315,7 +315,7 @@ class ProductList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets context
      *
-     * @return \OpenAPI\Client\Model\ProductListContext
+     * @return \OpenAPI\Client\Model\Context
      */
     public function getContext()
     {
@@ -325,7 +325,7 @@ class ProductList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets context
      *
-     * @param \OpenAPI\Client\Model\ProductListContext $context context
+     * @param \OpenAPI\Client\Model\Context $context context
      *
      * @return self
      */

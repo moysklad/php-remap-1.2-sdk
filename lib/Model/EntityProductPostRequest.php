@@ -89,8 +89,8 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'country' => '\OpenAPI\Client\Model\Country',
         'uom' => '\OpenAPI\Client\Model\Uom',
         'product_folder' => '\OpenAPI\Client\Model\ProductFolder',
-        'images' => '\OpenAPI\Client\Model\ProductImages',
-        'files' => '\OpenAPI\Client\Model\ProductFiles',
+        'images' => '\OpenAPI\Client\Model\ImageList',
+        'files' => '\OpenAPI\Client\Model\FileList',
         'barcodes' => '\OpenAPI\Client\Model\Barcode[]',
         'packs' => '\OpenAPI\Client\Model\Pack[]',
         'tracking_type' => 'string',
@@ -1783,7 +1783,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets images
      *
-     * @return \OpenAPI\Client\Model\ProductImages|null
+     * @return \OpenAPI\Client\Model\ImageList|null
      */
     public function getImages()
     {
@@ -1793,7 +1793,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets images
      *
-     * @param \OpenAPI\Client\Model\ProductImages|null $images images
+     * @param \OpenAPI\Client\Model\ImageList|null $images images
      *
      * @return self
      */
@@ -1810,7 +1810,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets files
      *
-     * @return \OpenAPI\Client\Model\ProductFiles|null
+     * @return \OpenAPI\Client\Model\FileList|null
      */
     public function getFiles()
     {
@@ -1820,7 +1820,7 @@ class EntityProductPostRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets files
      *
-     * @param \OpenAPI\Client\Model\ProductFiles|null $files files
+     * @param \OpenAPI\Client\Model\FileList|null $files files
      *
      * @return self
      */

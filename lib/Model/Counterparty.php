@@ -99,7 +99,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'accounts' => '\OpenAPI\Client\Model\CounterpartyAccounts',
         'contactpersons' => '\OpenAPI\Client\Model\CounterpartyContactpersons',
         'notes' => '\OpenAPI\Client\Model\CounterpartyNotes',
-        'files' => '\OpenAPI\Client\Model\CounterpartyFiles',
+        'files' => '\OpenAPI\Client\Model\FileList',
         'tags' => 'string[]',
         'attributes' => '\OpenAPI\Client\Model\Attribute[]'
     ];
@@ -1907,7 +1907,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets files
      *
-     * @return \OpenAPI\Client\Model\CounterpartyFiles|null
+     * @return \OpenAPI\Client\Model\FileList|null
      */
     public function getFiles()
     {
@@ -1917,7 +1917,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets files
      *
-     * @param \OpenAPI\Client\Model\CounterpartyFiles|null $files files
+     * @param \OpenAPI\Client\Model\FileList|null $files files
      *
      * @return self
      */
