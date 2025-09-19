@@ -1,6 +1,6 @@
 <?php
 /**
- * UomTest
+ * ContactPersonTest
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace OpenAPI\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * UomTest Class Doc Comment
+ * ContactPersonTest Class Doc Comment
  *
  * @category    Class
- * @description Единица измерения
+ * @description Контактные лица Контрагентов
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class UomTest extends TestCase
+class ContactPersonTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test "Uom"
+     * Test "ContactPerson"
      */
-    public function testUom()
+    public function testContactPerson()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -107,6 +107,15 @@ class UomTest extends TestCase
     }
 
     /**
+     * Test attribute "updated"
+     */
+    public function testPropertyUpdated()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "name"
      */
     public function testPropertyName()
@@ -125,45 +134,27 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test attribute "code"
+     * Test attribute "email"
      */
-    public function testPropertyCode()
+    public function testPropertyEmail()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "group"
+     * Test attribute "phone"
      */
-    public function testPropertyGroup()
+    public function testPropertyPhone()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "owner"
+     * Test attribute "position"
      */
-    public function testPropertyOwner()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "updated"
-     */
-    public function testPropertyUpdated()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "shared"
-     */
-    public function testPropertyShared()
+    public function testPropertyPosition()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -173,6 +164,15 @@ class UomTest extends TestCase
      * Test attribute "external_code"
      */
     public function testPropertyExternalCode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "agent"
+     */
+    public function testPropertyAgent()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

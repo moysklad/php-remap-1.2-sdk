@@ -197,6 +197,15 @@ class ProductFolderTest extends TestCase
     }
 
     /**
+     * Test attribute "use_parent_vat"
+     */
+    public function testPropertyUseParentVat()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "shared"
      */
     public function testPropertyShared()

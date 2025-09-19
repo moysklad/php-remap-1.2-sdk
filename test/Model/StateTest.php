@@ -1,6 +1,6 @@
 <?php
 /**
- * UomTest
+ * StateTest
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace OpenAPI\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * UomTest Class Doc Comment
+ * StateTest Class Doc Comment
  *
  * @category    Class
- * @description Единица измерения
+ * @description Статус
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class UomTest extends TestCase
+class StateTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test "Uom"
+     * Test "State"
      */
-    public function testUom()
+    public function testState()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -98,15 +98,6 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test attribute "account_id"
-     */
-    public function testPropertyAccountId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "name"
      */
     public function testPropertyName()
@@ -116,63 +107,36 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test attribute "description"
+     * Test attribute "account_id"
      */
-    public function testPropertyDescription()
+    public function testPropertyAccountId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "code"
+     * Test attribute "color"
      */
-    public function testPropertyCode()
+    public function testPropertyColor()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "group"
+     * Test attribute "entity_type"
      */
-    public function testPropertyGroup()
+    public function testPropertyEntityType()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "owner"
+     * Test attribute "state_type"
      */
-    public function testPropertyOwner()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "updated"
-     */
-    public function testPropertyUpdated()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "shared"
-     */
-    public function testPropertyShared()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "external_code"
-     */
-    public function testPropertyExternalCode()
+    public function testPropertyStateType()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -89,15 +89,6 @@ class FileTest extends TestCase
     }
 
     /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "title"
      */
     public function testPropertyTitle()
@@ -125,18 +116,36 @@ class FileTest extends TestCase
     }
 
     /**
-     * Test attribute "updated"
+     * Test attribute "created"
      */
-    public function testPropertyUpdated()
+    public function testPropertyCreated()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "extension"
+     * Test attribute "created_by"
      */
-    public function testPropertyExtension()
+    public function testPropertyCreatedBy()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "tiny"
+     */
+    public function testPropertyTiny()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "miniature"
+     */
+    public function testPropertyMiniature()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

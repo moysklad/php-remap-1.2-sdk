@@ -1,6 +1,6 @@
 <?php
 /**
- * UomTest
+ * OwnerTest
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace OpenAPI\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * UomTest Class Doc Comment
+ * OwnerTest Class Doc Comment
  *
  * @category    Class
- * @description Единица измерения
+ * @description Сотрудник
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class UomTest extends TestCase
+class OwnerTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test "Uom"
+     * Test "Owner"
      */
-    public function testUom()
+    public function testOwner()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -116,6 +116,42 @@ class UomTest extends TestCase
     }
 
     /**
+     * Test attribute "external_code"
+     */
+    public function testPropertyExternalCode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "archived"
+     */
+    public function testPropertyArchived()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "created"
+     */
+    public function testPropertyCreated()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "updated"
+     */
+    public function testPropertyUpdated()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "description"
      */
     public function testPropertyDescription()
@@ -125,9 +161,72 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test attribute "code"
+     * Test attribute "email"
      */
-    public function testPropertyCode()
+    public function testPropertyEmail()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "phone"
+     */
+    public function testPropertyPhone()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "first_name"
+     */
+    public function testPropertyFirstName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "middle_name"
+     */
+    public function testPropertyMiddleName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "last_name"
+     */
+    public function testPropertyLastName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "full_name"
+     */
+    public function testPropertyFullName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "short_fio"
+     */
+    public function testPropertyShortFio()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "shared"
+     */
+    public function testPropertyShared()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -152,27 +251,63 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test attribute "updated"
+     * Test attribute "inn"
      */
-    public function testPropertyUpdated()
+    public function testPropertyInn()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "shared"
+     * Test attribute "position"
      */
-    public function testPropertyShared()
+    public function testPropertyPosition()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "external_code"
+     * Test attribute "uid"
      */
-    public function testPropertyExternalCode()
+    public function testPropertyUid()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "salary"
+     */
+    public function testPropertySalary()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cashiers"
+     */
+    public function testPropertyCashiers()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "image"
+     */
+    public function testPropertyImage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "attributes"
+     */
+    public function testPropertyAttributes()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

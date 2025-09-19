@@ -1,6 +1,6 @@
 <?php
 /**
- * UomTest
+ * RegionTest
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace OpenAPI\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * UomTest Class Doc Comment
+ * RegionTest Class Doc Comment
  *
  * @category    Class
- * @description Единица измерения
+ * @description Регион
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class UomTest extends TestCase
+class RegionTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test "Uom"
+     * Test "Region"
      */
-    public function testUom()
+    public function testRegion()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -116,15 +116,6 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test attribute "description"
-     */
-    public function testPropertyDescription()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "code"
      */
     public function testPropertyCode()
@@ -134,18 +125,9 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test attribute "group"
+     * Test attribute "external_code"
      */
-    public function testPropertyGroup()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "owner"
-     */
-    public function testPropertyOwner()
+    public function testPropertyExternalCode()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -161,18 +143,9 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test attribute "shared"
+     * Test attribute "version"
      */
-    public function testPropertyShared()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "external_code"
-     */
-    public function testPropertyExternalCode()
+    public function testPropertyVersion()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

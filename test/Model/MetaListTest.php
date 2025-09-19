@@ -98,6 +98,15 @@ class MetaListTest extends TestCase
     }
 
     /**
+     * Test attribute "media_type"
+     */
+    public function testPropertyMediaType()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "size"
      */
     public function testPropertySize()

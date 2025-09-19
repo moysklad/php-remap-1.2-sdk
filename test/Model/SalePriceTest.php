@@ -1,6 +1,6 @@
 <?php
 /**
- * UomTest
+ * SalePriceTest
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace OpenAPI\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * UomTest Class Doc Comment
+ * SalePriceTest Class Doc Comment
  *
  * @category    Class
- * @description Единица измерения
+ * @description Цена продажи
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class UomTest extends TestCase
+class SalePriceTest extends TestCase
 {
 
     /**
@@ -71,108 +71,36 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test "Uom"
+     * Test "SalePrice"
      */
-    public function testUom()
+    public function testSalePrice()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "meta"
+     * Test attribute "value"
      */
-    public function testPropertyMeta()
+    public function testPropertyValue()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "id"
+     * Test attribute "currency"
      */
-    public function testPropertyId()
+    public function testPropertyCurrency()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "account_id"
+     * Test attribute "price_type"
      */
-    public function testPropertyAccountId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "description"
-     */
-    public function testPropertyDescription()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "code"
-     */
-    public function testPropertyCode()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "group"
-     */
-    public function testPropertyGroup()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "owner"
-     */
-    public function testPropertyOwner()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "updated"
-     */
-    public function testPropertyUpdated()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "shared"
-     */
-    public function testPropertyShared()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "external_code"
-     */
-    public function testPropertyExternalCode()
+    public function testPropertyPriceType()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

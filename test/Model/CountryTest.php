@@ -132,4 +132,13 @@ class CountryTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "updated"
+     */
+    public function testPropertyUpdated()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

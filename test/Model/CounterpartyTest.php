@@ -440,6 +440,24 @@ class CounterpartyTest extends TestCase
     }
 
     /**
+     * Test attribute "notes"
+     */
+    public function testPropertyNotes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "files"
+     */
+    public function testPropertyFiles()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "tags"
      */
     public function testPropertyTags()

@@ -28,7 +28,13 @@
 
 namespace OpenAPI\Client\Test\Model;
 
+use OpenAPI\Client\Api\ProductsApi;
+use OpenAPI\Client\Configuration;
+use OpenAPI\Client\Test\Utils\Asserter;
+use OpenAPI\Client\Model\Product;
+use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Assert;
 
 /**
  * ProductTest Class Doc Comment
@@ -42,11 +48,22 @@ use PHPUnit\Framework\TestCase;
 class ProductTest extends TestCase
 {
 
+    private static ProductsApi $api;
+    private Product $setUpProduct;
+    private string $setUpProductId;
     /**
      * Setup before running any test case
      */
     public static function setUpBeforeClass(): void
     {
+        // Конфигурация SDK — адрес сервиса, куда стучимся
+        $config = Configuration::getDefaultConfiguration()
+            ->setHost('http://localhost/api/remap/1.2')
+            ->setUsername('admin@qwe3')
+            ->setPassword('123123')
+        ;
+
+        ProductTest::$api = new ProductsApi(null, $config);
     }
 
     /**
@@ -54,6 +71,11 @@ class ProductTest extends TestCase
      */
     public function setUp(): void
     {
+        $product = new Product();
+        $product->setName('ProductName');
+        $product = ProductTest::$api->entityProductPost($product);
+        $this->setUpProduct = $product;
+        $this->setUpProductId = $product->getId();
     }
 
     /**
@@ -61,6 +83,7 @@ class ProductTest extends TestCase
      */
     public function tearDown(): void
     {
+        ProductTest::$api->entityProductIdDelete($this->setUpProductId);
     }
 
     /**
@@ -70,55 +93,65 @@ class ProductTest extends TestCase
     {
     }
 
-    /**
-     * Test "Product"
-     */
     public function testProduct()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
-    /**
-     * Test attribute "meta"
-     */
     public function testPropertyMeta()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = ProductTest::$api->entityProductIdGet($this->setUpProductId);
+        $meta = $product->getMeta();
+        Asserter::assertMeta($meta, $this->setUpProductId, 'product');
+
+        $randomId = StringUtil::randomUuid();
+        $changedHref = substr_replace($meta->getHref(), $randomId, -strlen($randomId));
+        $meta->setHref($changedHref);
+        Assert::assertEquals($changedHref, $meta->getHref());
+        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'meta', $meta);
+        Asserter::assertMeta($changedProduct->getMeta(), $this->setUpProductId, 'product');
+        Assert::assertNotEquals($changedHref, $changedProduct->getMeta()->getHref());
     }
 
-    /**
-     * Test attribute "id"
-     */
     public function testPropertyId()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = ProductTest::$api->entityProductIdGet($this->setUpProductId);
+        Assert::assertEquals($this->setUpProductId, $product->getId());
+
+        $randomId = StringUtil::randomUuid();
+        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'id', $randomId);
+        Asserter::assertMeta($changedProduct->getMeta(), $this->setUpProductId, 'product');
+        Assert::assertNotEquals($changedProduct->getId(), $randomId);
+        Assert::assertEquals($product->getId(), $changedProduct->getId());
     }
 
-    /**
-     * Test attribute "account_id"
-     */
     public function testPropertyAccountId()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
+        $product = ProductTest::$api->entityProductIdGet($this->setUpProductId);
+        $accountId = $product->getAccountId();
+        Assert::assertNotNull($accountId);
 
-    /**
-     * Test attribute "alcoholic"
-     */
+        $randomId = StringUtil::randomUuid();
+        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'account_id', $randomId);
+        Asserter::assertMeta($changedProduct->getMeta(), $changedProduct->getId(), 'product');
+        Assert::assertNotEquals($randomId, $changedProduct->getAccountId());
+        Assert::assertEquals($accountId, $changedProduct->getAccountId());
+    }
     public function testPropertyAlcoholic()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
-    /**
-     * Test attribute "archived"
-     */
     public function testPropertyArchived()
+    {
+        $newArchivedValue = !($this->setUpProduct->getArchived());
+        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'archived', $newArchivedValue);
+        Assert::assertEquals($newArchivedValue, $changedProduct->getArchived());
+    }
+
+    public function testPropertyTobacco()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -129,26 +162,23 @@ class ProductTest extends TestCase
      */
     public function testPropertyName()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $newValue = 'new name';
+        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'name', $newValue);
+        Assert::assertEquals($newValue, $changedProduct->getName());
     }
 
-    /**
-     * Test attribute "code"
-     */
     public function testPropertyCode()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $newValue = 'new code';
+        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'code', $newValue);
+        Assert::assertEquals($newValue, $changedProduct->getCode());
     }
 
-    /**
-     * Test attribute "external_code"
-     */
     public function testPropertyExternalCode()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $newValue = 'new code';
+        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'external_code', $newValue);
+        Assert::assertEquals($newValue, $changedProduct->getExternalCode());
     }
 
     /**
@@ -160,31 +190,29 @@ class ProductTest extends TestCase
         self::markTestIncomplete('Not implemented');
     }
 
-    /**
-     * Test attribute "article"
-     */
     public function testPropertyArticle()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $newValue = 'new article';
+        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'article', $newValue);
+        Assert::assertEquals($newValue, $changedProduct->getArticle());
     }
 
-    /**
-     * Test attribute "description"
-     */
     public function testPropertyDescription()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $newValue = 'new description';
+        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'description', $newValue);
+        Assert::assertEquals($newValue, $changedProduct->getDescription());
     }
 
-    /**
-     * Test attribute "vat"
-     */
     public function testPropertyVat()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $newValue = 15;
+        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'vat', $newValue);
+        Assert::assertEquals($newValue, $changedProduct->getVat());
+        Assert::assertEquals(true, $changedProduct->getVatEnabled());
+        Assert::assertEquals($newValue, $changedProduct->getEffectiveVat());
+        Assert::assertEquals(true, $changedProduct->getEffectiveVatEnabled());
+        Assert::assertEquals(false, $changedProduct->getUseParentVat());
     }
 
     /**
@@ -255,8 +283,9 @@ class ProductTest extends TestCase
      */
     public function testPropertyShared()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $newValue = !($this->setUpProduct->getShared());
+        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'shared', $newValue);
+        Assert::assertEquals($newValue, $changedProduct->getShared());
     }
 
     /**
@@ -518,5 +547,12 @@ class ProductTest extends TestCase
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
+    }
+
+    private function updateProductProperty(string $productId, string $propertyName, $propertyValue): Product
+    {
+        $product = new Product();
+        $product[$propertyName] = $propertyValue;
+        return ProductTest::$api->entityProductIdPut($productId, $product);
     }
 }

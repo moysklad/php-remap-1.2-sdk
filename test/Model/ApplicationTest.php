@@ -1,6 +1,6 @@
 <?php
 /**
- * UomTest
+ * ApplicationTest
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace OpenAPI\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * UomTest Class Doc Comment
+ * ApplicationTest Class Doc Comment
  *
  * @category    Class
- * @description Единица измерения
+ * @description Решение
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class UomTest extends TestCase
+class ApplicationTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test "Uom"
+     * Test "Application"
      */
-    public function testUom()
+    public function testApplication()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -116,63 +116,9 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test attribute "description"
+     * Test attribute "app_uid"
      */
-    public function testPropertyDescription()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "code"
-     */
-    public function testPropertyCode()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "group"
-     */
-    public function testPropertyGroup()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "owner"
-     */
-    public function testPropertyOwner()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "updated"
-     */
-    public function testPropertyUpdated()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "shared"
-     */
-    public function testPropertyShared()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "external_code"
-     */
-    public function testPropertyExternalCode()
+    public function testPropertyAppUid()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -1,6 +1,6 @@
 <?php
 /**
- * UomTest
+ * AddressTest
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace OpenAPI\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * UomTest Class Doc Comment
+ * AddressTest Class Doc Comment
  *
  * @category    Class
- * @description Единица измерения
+ * @description Адрес
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class UomTest extends TestCase
+class AddressTest extends TestCase
 {
 
     /**
@@ -71,108 +71,90 @@ class UomTest extends TestCase
     }
 
     /**
-     * Test "Uom"
+     * Test "Address"
      */
-    public function testUom()
+    public function testAddress()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "meta"
+     * Test attribute "add_info"
      */
-    public function testPropertyMeta()
+    public function testPropertyAddInfo()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "id"
+     * Test attribute "apartment"
      */
-    public function testPropertyId()
+    public function testPropertyApartment()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "account_id"
+     * Test attribute "city"
      */
-    public function testPropertyAccountId()
+    public function testPropertyCity()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "name"
+     * Test attribute "comment"
      */
-    public function testPropertyName()
+    public function testPropertyComment()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "description"
+     * Test attribute "country"
      */
-    public function testPropertyDescription()
+    public function testPropertyCountry()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "code"
+     * Test attribute "house"
      */
-    public function testPropertyCode()
+    public function testPropertyHouse()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "group"
+     * Test attribute "postal_code"
      */
-    public function testPropertyGroup()
+    public function testPropertyPostalCode()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "owner"
+     * Test attribute "region"
      */
-    public function testPropertyOwner()
+    public function testPropertyRegion()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "updated"
+     * Test attribute "street"
      */
-    public function testPropertyUpdated()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "shared"
-     */
-    public function testPropertyShared()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "external_code"
-     */
-    public function testPropertyExternalCode()
+    public function testPropertyStreet()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
