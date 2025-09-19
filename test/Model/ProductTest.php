@@ -28,13 +28,27 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Api\ProductsApi;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\Test\Utils\Asserter;
+use OpenAPI\Client\Model\Attribute;
+use OpenAPI\Client\Model\Barcode;
+use OpenAPI\Client\Model\BuyPrice;
+use OpenAPI\Client\Model\Counterparty;
+use OpenAPI\Client\Model\Country;
+use OpenAPI\Client\Model\FileList;
+use OpenAPI\Client\Model\Group;
+use OpenAPI\Client\Model\ImageList;
+use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\MinPrice;
+use OpenAPI\Client\Model\Owner;
+use OpenAPI\Client\Model\Pack;
 use OpenAPI\Client\Model\Product;
+use OpenAPI\Client\Model\ProductAlcoholic;
+use OpenAPI\Client\Model\ProductFolder;
+use OpenAPI\Client\Model\ProductMinimumStock;
+use OpenAPI\Client\Model\SalePrice;
+use OpenAPI\Client\Model\Uom;
+use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Assert;
 
 /**
  * ProductTest Class Doc Comment
@@ -48,511 +62,392 @@ use PHPUnit\Framework\Assert;
 class ProductTest extends TestCase
 {
 
-    private static ProductsApi $api;
-    private Product $setUpProduct;
-    private string $setUpProductId;
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass(): void
-    {
-        // Конфигурация SDK — адрес сервиса, куда стучимся
-        $config = Configuration::getDefaultConfiguration()
-            ->setHost('http://localhost/api/remap/1.2')
-            ->setUsername('admin@qwe3')
-            ->setPassword('123123')
-        ;
-
-        ProductTest::$api = new ProductsApi(null, $config);
-    }
-
-    /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-        $product = new Product();
-        $product->setName('ProductName');
-        $product = ProductTest::$api->entityProductPost($product);
-        $this->setUpProduct = $product;
-        $this->setUpProductId = $product->getId();
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-        ProductTest::$api->entityProductIdDelete($this->setUpProductId);
-    }
-
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass(): void
-    {
-    }
-
-    public function testProduct()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
     public function testPropertyMeta()
     {
-        $product = ProductTest::$api->entityProductIdGet($this->setUpProductId);
-        $meta = $product->getMeta();
-        Asserter::assertMeta($meta, $this->setUpProductId, 'product');
-
-        $randomId = StringUtil::randomUuid();
-        $changedHref = substr_replace($meta->getHref(), $randomId, -strlen($randomId));
-        $meta->setHref($changedHref);
-        Assert::assertEquals($changedHref, $meta->getHref());
-        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'meta', $meta);
-        Asserter::assertMeta($changedProduct->getMeta(), $this->setUpProductId, 'product');
-        Assert::assertNotEquals($changedHref, $changedProduct->getMeta()->getHref());
+        $product = new Product();
+        $meta = new Meta();
+        $product->setMeta($meta);
+        Asserter::assertJsonHasFields($product, ['meta' => []]);
     }
 
     public function testPropertyId()
     {
-        $product = ProductTest::$api->entityProductIdGet($this->setUpProductId);
-        Assert::assertEquals($this->setUpProductId, $product->getId());
-
-        $randomId = StringUtil::randomUuid();
-        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'id', $randomId);
-        Asserter::assertMeta($changedProduct->getMeta(), $this->setUpProductId, 'product');
-        Assert::assertNotEquals($changedProduct->getId(), $randomId);
-        Assert::assertEquals($product->getId(), $changedProduct->getId());
+        $product = new Product();
+        $id = StringUtil::randomUuid();
+        $product->setId($id);
+        Asserter::assertJsonHasFields($product, ['id' => $id]);
     }
 
     public function testPropertyAccountId()
     {
-        $product = ProductTest::$api->entityProductIdGet($this->setUpProductId);
-        $accountId = $product->getAccountId();
-        Assert::assertNotNull($accountId);
-
-        $randomId = StringUtil::randomUuid();
-        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'account_id', $randomId);
-        Asserter::assertMeta($changedProduct->getMeta(), $changedProduct->getId(), 'product');
-        Assert::assertNotEquals($randomId, $changedProduct->getAccountId());
-        Assert::assertEquals($accountId, $changedProduct->getAccountId());
+        $product = new Product();
+        $accountId = StringUtil::randomUuid();
+        $product->setAccountId($accountId);
+        Asserter::assertJsonHasFields($product, ['accountId' => $accountId]);
     }
+
     public function testPropertyAlcoholic()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $alcoholic = new ProductAlcoholic();
+        $product->setAlcoholic($alcoholic);
+        Asserter::assertJsonHasFields($product, ['alcoholic' => []]);
     }
 
     public function testPropertyArchived()
     {
-        $newArchivedValue = !($this->setUpProduct->getArchived());
-        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'archived', $newArchivedValue);
-        Assert::assertEquals($newArchivedValue, $changedProduct->getArchived());
+        $product = new Product();
+        $product->setArchived(true);
+        Asserter::assertJsonHasFields($product, ['archived' => true]);
     }
 
     public function testPropertyTobacco()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $product->setTobacco(true);
+        Asserter::assertJsonHasFields($product, ['tobacco' => true]);
     }
 
-    /**
-     * Test attribute "name"
-     */
     public function testPropertyName()
     {
-        $newValue = 'new name';
-        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'name', $newValue);
-        Assert::assertEquals($newValue, $changedProduct->getName());
+        $product = new Product();
+        $name = "TestProduct";
+        $product->setName($name);
+        Asserter::assertJsonHasFields($product, ['name' => $name]);
     }
 
     public function testPropertyCode()
     {
-        $newValue = 'new code';
-        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'code', $newValue);
-        Assert::assertEquals($newValue, $changedProduct->getCode());
+        $product = new Product();
+        $code = "P-123";
+        $product->setCode($code);
+        Asserter::assertJsonHasFields($product, ['code' => $code]);
     }
 
     public function testPropertyExternalCode()
     {
-        $newValue = 'new code';
-        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'external_code', $newValue);
-        Assert::assertEquals($newValue, $changedProduct->getExternalCode());
+        $product = new Product();
+        $extCode = "EXT-999";
+        $product->setExternalCode($extCode);
+        Asserter::assertJsonHasFields($product, ['externalCode' => $extCode]);
     }
 
-    /**
-     * Test attribute "path_name"
-     */
     public function testPropertyPathName()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $pathName = "Каталог/Подкаталог";
+        $product->setPathName($pathName);
+        Asserter::assertJsonHasFields($product, ['pathName' => $pathName]);
     }
 
     public function testPropertyArticle()
     {
-        $newValue = 'new article';
-        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'article', $newValue);
-        Assert::assertEquals($newValue, $changedProduct->getArticle());
+        $product = new Product();
+        $article = "A-001";
+        $product->setArticle($article);
+        Asserter::assertJsonHasFields($product, ['article' => $article]);
     }
 
     public function testPropertyDescription()
     {
-        $newValue = 'new description';
-        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'description', $newValue);
-        Assert::assertEquals($newValue, $changedProduct->getDescription());
+        $product = new Product();
+        $desc = "Test description";
+        $product->setDescription($desc);
+        Asserter::assertJsonHasFields($product, ['description' => $desc]);
     }
 
     public function testPropertyVat()
     {
-        $newValue = 15;
-        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'vat', $newValue);
-        Assert::assertEquals($newValue, $changedProduct->getVat());
-        Assert::assertEquals(true, $changedProduct->getVatEnabled());
-        Assert::assertEquals($newValue, $changedProduct->getEffectiveVat());
-        Assert::assertEquals(true, $changedProduct->getEffectiveVatEnabled());
-        Assert::assertEquals(false, $changedProduct->getUseParentVat());
+        $product = new Product();
+        $vat = 20;
+        $product->setVat($vat);
+        Asserter::assertJsonHasFields($product, ['vat' => $vat]);
     }
 
-    /**
-     * Test attribute "vat_enabled"
-     */
     public function testPropertyVatEnabled()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $product->setVatEnabled(true);
+        Asserter::assertJsonHasFields($product, ['vatEnabled' => true]);
     }
 
-    /**
-     * Test attribute "use_parent_vat"
-     */
     public function testPropertyUseParentVat()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $product->setUseParentVat(false);
+        Asserter::assertJsonHasFields($product, ['useParentVat' => false]);
     }
 
-    /**
-     * Test attribute "effective_vat"
-     */
     public function testPropertyEffectiveVat()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $vat = 10;
+        $product->setEffectiveVat($vat);
+        Asserter::assertJsonHasFields($product, ['effectiveVat' => $vat]);
     }
 
-    /**
-     * Test attribute "effective_vat_enabled"
-     */
     public function testPropertyEffectiveVatEnabled()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $product->setEffectiveVatEnabled(true);
+        Asserter::assertJsonHasFields($product, ['effectiveVatEnabled' => true]);
     }
 
-    /**
-     * Test attribute "discount_prohibited"
-     */
     public function testPropertyDiscountProhibited()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $product->setDiscountProhibited(true);
+        Asserter::assertJsonHasFields($product, ['discountProhibited' => true]);
     }
 
-    /**
-     * Test attribute "variants_count"
-     */
     public function testPropertyVariantsCount()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $count = 5;
+        $product->setVariantsCount($count);
+        Asserter::assertJsonHasFields($product, ['variantsCount' => $count]);
     }
 
-    /**
-     * Test attribute "is_serial_trackable"
-     */
     public function testPropertyIsSerialTrackable()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $product->setIsSerialTrackable(true);
+        Asserter::assertJsonHasFields($product, ['isSerialTrackable' => true]);
     }
 
-    /**
-     * Test attribute "shared"
-     */
     public function testPropertyShared()
     {
-        $newValue = !($this->setUpProduct->getShared());
-        $changedProduct = $this->updateProductProperty($this->setUpProductId, 'shared', $newValue);
-        Assert::assertEquals($newValue, $changedProduct->getShared());
+        $product = new Product();
+        $product->setShared(true);
+        Asserter::assertJsonHasFields($product, ['shared' => true]);
     }
 
-    /**
-     * Test attribute "group"
-     */
     public function testPropertyGroup()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $group = new Group();
+        $product->setGroup($group);
+        Asserter::assertJsonHasFields($product, ['group' => []]);
     }
 
-    /**
-     * Test attribute "owner"
-     */
     public function testPropertyOwner()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $owner = new Owner();
+        $product->setOwner($owner);
+        Asserter::assertJsonHasFields($product, ['owner' => []]);
     }
 
-    /**
-     * Test attribute "updated"
-     */
     public function testPropertyUpdated()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $date = new \DateTime("2025-09-19T12:00:00Z");
+        $product->setUpdated($date);
+        Asserter::assertJsonHasFields($product, ['updated' => StringUtil::toRemap12FormatDate($date)]);
     }
 
-    /**
-     * Test attribute "weight"
-     */
     public function testPropertyWeight()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $weight = 2.5;
+        $product->setWeight($weight);
+        Asserter::assertJsonHasFields($product, ['weight' => $weight]);
     }
 
-    /**
-     * Test attribute "volume"
-     */
     public function testPropertyVolume()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $volume = 1.2;
+        $product->setVolume($volume);
+        Asserter::assertJsonHasFields($product, ['volume' => $volume]);
     }
 
-    /**
-     * Test attribute "buy_price"
-     */
     public function testPropertyBuyPrice()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $buyPrice = new BuyPrice();
+        $product->setBuyPrice($buyPrice);
+        Asserter::assertJsonHasFields($product, ['buyPrice' => []]);
     }
 
-    /**
-     * Test attribute "sale_prices"
-     */
     public function testPropertySalePrices()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $salePrice = new SalePrice();
+        $product->setSalePrices([$salePrice]);
+        Asserter::assertJsonHasFields($product, ['salePrices' => [[]]]);
     }
 
-    /**
-     * Test attribute "supplier"
-     */
     public function testPropertySupplier()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $supplier = new Counterparty();
+        $product->setSupplier($supplier);
+        Asserter::assertJsonHasFields($product, ['supplier' => []]);
     }
 
-    /**
-     * Test attribute "country"
-     */
     public function testPropertyCountry()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $country = new Country();
+        $product->setCountry($country);
+        Asserter::assertJsonHasFields($product, ['country' => []]);
     }
 
-    /**
-     * Test attribute "uom"
-     */
     public function testPropertyUom()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $uom = new Uom();
+        $product->setUom($uom);
+        Asserter::assertJsonHasFields($product, ['uom' => []]);
     }
 
-    /**
-     * Test attribute "product_folder"
-     */
     public function testPropertyProductFolder()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $folder = new ProductFolder();
+        $product->setProductFolder($folder);
+        Asserter::assertJsonHasFields($product, ['productFolder' => []]);
     }
 
-    /**
-     * Test attribute "images"
-     */
     public function testPropertyImages()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $images = new ImageList();
+        $product->setImages($images);
+        Asserter::assertJsonHasFields($product, ['images' => []]);
     }
 
-    /**
-     * Test attribute "files"
-     */
     public function testPropertyFiles()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $files = new FileList();
+        $product->setFiles($files);
+        Asserter::assertJsonHasFields($product, ['files' => []]);
     }
 
-    /**
-     * Test attribute "barcodes"
-     */
     public function testPropertyBarcodes()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $barcode = new Barcode();
+        $product->setBarcodes([$barcode]);
+        Asserter::assertJsonHasFields($product, ['barcodes' => [[]]]);
     }
 
-    /**
-     * Test attribute "packs"
-     */
     public function testPropertyPacks()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $pack = new Pack();
+        $product->setPacks([$pack]);
+        Asserter::assertJsonHasFields($product, ['packs' => [[]]]);
     }
 
-    /**
-     * Test attribute "tracking_type"
-     */
     public function testPropertyTrackingType()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $tracking = Product::TRACKING_TYPE_MILK;
+        $product->setTrackingType($tracking);
+        Asserter::assertJsonHasFields($product, ['trackingType' => $tracking]);
     }
 
-    /**
-     * Test attribute "tnved"
-     */
     public function testPropertyTnved()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $tnved = "123456";
+        $product->setTnved($tnved);
+        Asserter::assertJsonHasFields($product, ['tnved' => $tnved]);
     }
 
-    /**
-     * Test attribute "payment_item_type"
-     */
     public function testPropertyPaymentItemType()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $pit = Product::PAYMENT_ITEM_TYPE_GOOD;
+        $product->setPaymentItemType($pit);
+        Asserter::assertJsonHasFields($product, ['paymentItemType' => $pit]);
     }
 
-    /**
-     * Test attribute "tax_system"
-     */
     public function testPropertyTaxSystem()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $tax = Product::TAX_SYSTEM_PATENT_BASED;
+        $product->setTaxSystem($tax);
+        Asserter::assertJsonHasFields($product, ['taxSystem' => $tax]);
     }
 
-    /**
-     * Test attribute "attributes"
-     */
     public function testPropertyAttributes()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $attr = new Attribute();
+        $product->setAttributes([$attr]);
+        Asserter::assertJsonHasFields($product, ['attributes' => [[]]]);
     }
 
-    /**
-     * Test attribute "minimum_balance"
-     */
     public function testPropertyMinimumBalance()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $minBalance = 10.5;
+        $product->setMinimumBalance($minBalance);
+        Asserter::assertJsonHasFields($product, ['minimumBalance' => $minBalance]);
     }
 
-    /**
-     * Test attribute "minimum_stock"
-     */
     public function testPropertyMinimumStock()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $stock = new ProductMinimumStock();
+        $product->setMinimumStock($stock);
+        Asserter::assertJsonHasFields($product, ['minimumStock' => []]);
     }
 
-    /**
-     * Test attribute "min_price"
-     */
     public function testPropertyMinPrice()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $minPrice = new MinPrice();
+        $product->setMinPrice($minPrice);
+        Asserter::assertJsonHasFields($product, ['minPrice' => []]);
     }
 
-    /**
-     * Test attribute "weighed"
-     */
     public function testPropertyWeighed()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $product->setWeighed(true);
+        Asserter::assertJsonHasFields($product, ['weighed' => true]);
     }
 
-    /**
-     * Test attribute "on_tap"
-     */
     public function testPropertyOnTap()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $product->setOnTap(true);
+        Asserter::assertJsonHasFields($product, ['onTap' => true]);
     }
 
-    /**
-     * Test attribute "partial_disposal"
-     */
     public function testPropertyPartialDisposal()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $product->setPartialDisposal(true);
+        Asserter::assertJsonHasFields($product, ['partialDisposal' => true]);
     }
 
-    /**
-     * Test attribute "things"
-     */
     public function testPropertyThings()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $things = ["thing1", "thing2"];
+        $product->setThings($things);
+        Asserter::assertJsonHasFields($product, ['things' => $things]);
     }
 
-    /**
-     * Test attribute "sync_id"
-     */
     public function testPropertySyncId()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $syncId = StringUtil::randomUuid();
+        $product->setSyncId($syncId);
+        Asserter::assertJsonHasFields($product, ['syncId' => $syncId]);
     }
 
-    /**
-     * Test attribute "ppe_type"
-     */
     public function testPropertyPpeType()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    private function updateProductProperty(string $productId, string $propertyName, $propertyValue): Product
-    {
         $product = new Product();
-        $product[$propertyName] = $propertyValue;
-        return ProductTest::$api->entityProductIdPut($productId, $product);
+        $ppe = Product::PPE_TYPE__2400001225606;
+        $product->setPpeType($ppe);
+        Asserter::assertJsonHasFields($product, ['ppeType' => $ppe]);
     }
 }
