@@ -28,6 +28,9 @@
 
 namespace OpenAPI\Client\Test\Model;
 
+use OpenAPI\Client\Model\Context;
+use OpenAPI\Client\Model\Employee;
+use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -42,49 +45,12 @@ use PHPUnit\Framework\TestCase;
 class ContextTest extends TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass(): void
-    {
-    }
-
-    /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass(): void
-    {
-    }
-
-    /**
-     * Test "Context"
-     */
-    public function testContext()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "employee"
-     */
     public function testPropertyEmployee()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $ctx = new Context();
+        $employee = new Employee();
+        $employee->setName("Alice");
+        $ctx->setEmployee($employee);
+        Asserter::assertJsonHasFields($ctx, ['employee' => ['name' => "Alice"]]);
     }
 }

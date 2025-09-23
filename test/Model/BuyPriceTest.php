@@ -28,6 +28,9 @@
 
 namespace OpenAPI\Client\Test\Model;
 
+use OpenAPI\Client\Model\BuyPrice;
+use OpenAPI\Client\Model\Currency;
+use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -41,59 +44,20 @@ use PHPUnit\Framework\TestCase;
  */
 class BuyPriceTest extends TestCase
 {
-
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass(): void
-    {
-    }
-
-    /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass(): void
-    {
-    }
-
-    /**
-     * Test "BuyPrice"
-     */
-    public function testBuyPrice()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "value"
-     */
     public function testPropertyValue()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $buyPrice = new BuyPrice();
+        $value = 123.45;
+        $buyPrice->setValue($value);
+        Asserter::assertJsonHasFields($buyPrice, ['value' => $value]);
     }
 
-    /**
-     * Test attribute "currency"
-     */
     public function testPropertyCurrency()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $buyPrice = new BuyPrice();
+        $currency = new Currency();
+        $currency->setName("USD");
+        $buyPrice->setCurrency($currency);
+        Asserter::assertJsonHasFields($buyPrice, ['currency' => ['name' => "USD"]]);
     }
 }

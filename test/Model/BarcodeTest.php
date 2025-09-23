@@ -28,6 +28,8 @@
 
 namespace OpenAPI\Client\Test\Model;
 
+use OpenAPI\Client\Model\Barcode;
+use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -42,85 +44,43 @@ use PHPUnit\Framework\TestCase;
 class BarcodeTest extends TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass(): void
-    {
-    }
-
-    /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass(): void
-    {
-    }
-
-    /**
-     * Test "Barcode"
-     */
-    public function testBarcode()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "ean13"
-     */
     public function testPropertyEan13()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $barcode = new Barcode();
+        $ean13 = "1234567890123";
+        $barcode->setEan13($ean13);
+        Asserter::assertJsonHasFields($barcode, ['ean13' => $ean13]);
     }
 
-    /**
-     * Test attribute "ean8"
-     */
     public function testPropertyEan8()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $barcode = new Barcode();
+        $ean8 = "12345678";
+        $barcode->setEan8($ean8);
+        Asserter::assertJsonHasFields($barcode, ['ean8' => $ean8]);
     }
 
-    /**
-     * Test attribute "code128"
-     */
     public function testPropertyCode128()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $barcode = new Barcode();
+        $code128 = "CODE128VALUE";
+        $barcode->setCode128($code128);
+        Asserter::assertJsonHasFields($barcode, ['code128' => $code128]);
     }
 
-    /**
-     * Test attribute "gtin"
-     */
     public function testPropertyGtin()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $barcode = new Barcode();
+        $gtin = "9876543210987";
+        $barcode->setGtin($gtin);
+        Asserter::assertJsonHasFields($barcode, ['gtin' => $gtin]);
     }
 
-    /**
-     * Test attribute "upc"
-     */
     public function testPropertyUpc()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $barcode = new Barcode();
+        $upc = "12345678901";
+        $barcode->setUpc($upc);
+        Asserter::assertJsonHasFields($barcode, ['upc' => $upc]);
     }
 }

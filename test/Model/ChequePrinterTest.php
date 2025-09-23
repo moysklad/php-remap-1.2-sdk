@@ -28,6 +28,10 @@
 
 namespace OpenAPI\Client\Test\Model;
 
+use OpenAPI\Client\Model\ChequePrinter;
+use OpenAPI\Client\Model\Driver;
+use OpenAPI\Client\Model\FiscalMemory;
+use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -41,104 +45,61 @@ use PHPUnit\Framework\TestCase;
  */
 class ChequePrinterTest extends TestCase
 {
-
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass(): void
-    {
-    }
-
-    /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass(): void
-    {
-    }
-
-    /**
-     * Test "ChequePrinter"
-     */
-    public function testChequePrinter()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "driver"
-     */
     public function testPropertyDriver()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $printer = new ChequePrinter();
+        $driver = new Driver();
+        $driver->setName("DriverName");
+        $printer->setDriver($driver);
+        Asserter::assertJsonHasFields($printer, ['driver' => ['name' => "DriverName"]]);
     }
 
-    /**
-     * Test attribute "firmware_version"
-     */
     public function testPropertyFirmwareVersion()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $printer = new ChequePrinter();
+        $fw = "1.0.0";
+        $printer->setFirmwareVersion($fw);
+        Asserter::assertJsonHasFields($printer, ['firmwareVersion' => $fw]);
     }
 
-    /**
-     * Test attribute "fiscal_data_version"
-     */
     public function testPropertyFiscalDataVersion()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $printer = new ChequePrinter();
+        $fdv = "2.1.3";
+        $printer->setFiscalDataVersion($fdv);
+        Asserter::assertJsonHasFields($printer, ['fiscalDataVersion' => $fdv]);
     }
 
-    /**
-     * Test attribute "fiscal_memory"
-     */
     public function testPropertyFiscalMemory()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $printer = new ChequePrinter();
+        $fm = new FiscalMemory();
+        $fm->setFiscalDataVersion("FM123456");
+        $printer->setFiscalMemory($fm);
+        Asserter::assertJsonHasFields($printer, ['fiscalMemory' => ['fiscalDataVersion' => "FM123456"]]);
     }
 
-    /**
-     * Test attribute "name"
-     */
     public function testPropertyName()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $printer = new ChequePrinter();
+        $name = "PrinterName";
+        $printer->setName($name);
+        Asserter::assertJsonHasFields($printer, ['name' => $name]);
     }
 
-    /**
-     * Test attribute "serial"
-     */
     public function testPropertySerial()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $printer = new ChequePrinter();
+        $serial = "SER12345";
+        $printer->setSerial($serial);
+        Asserter::assertJsonHasFields($printer, ['serial' => $serial]);
     }
 
-    /**
-     * Test attribute "vendor"
-     */
     public function testPropertyVendor()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $printer = new ChequePrinter();
+        $vendor = "Epson";
+        $printer->setVendor($vendor);
+        Asserter::assertJsonHasFields($printer, ['vendor' => $vendor]);
     }
 }

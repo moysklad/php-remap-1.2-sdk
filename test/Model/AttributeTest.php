@@ -28,6 +28,10 @@
 
 namespace OpenAPI\Client\Test\Model;
 
+use OpenAPI\Client\Model\Attribute;
+use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Test\Utils\Asserter;
+use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -42,112 +46,65 @@ use PHPUnit\Framework\TestCase;
 class AttributeTest extends TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass(): void
-    {
-    }
-
-    /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass(): void
-    {
-    }
-
-    /**
-     * Test "Attribute"
-     */
-    public function testAttribute()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "id"
-     */
     public function testPropertyId()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $attr = new Attribute();
+        $id = StringUtil::randomUuid();
+        $attr->setId($id);
+        Asserter::assertJsonHasFields($attr, ['id' => $id]);
     }
 
-    /**
-     * Test attribute "name"
-     */
     public function testPropertyName()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $attr = new Attribute();
+        $name = "Color";
+        $attr->setName($name);
+        Asserter::assertJsonHasFields($attr, ['name' => $name]);
     }
 
-    /**
-     * Test attribute "type"
-     */
     public function testPropertyType()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $attr = new Attribute();
+        $type = "string";
+        $attr->setType($type);
+        Asserter::assertJsonHasFields($attr, ['type' => $type]);
     }
 
-    /**
-     * Test attribute "required"
-     */
     public function testPropertyRequired()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $attr = new Attribute();
+        $attr->setRequired(true);
+        Asserter::assertJsonHasFields($attr, ['required' => true]);
     }
 
-    /**
-     * Test attribute "show"
-     */
     public function testPropertyShow()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $attr = new Attribute();
+        $attr->setShow(false);
+        Asserter::assertJsonHasFields($attr, ['show' => false]);
     }
 
-    /**
-     * Test attribute "description"
-     */
     public function testPropertyDescription()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $attr = new Attribute();
+        $desc = "Attribute description";
+        $attr->setDescription($desc);
+        Asserter::assertJsonHasFields($attr, ['description' => $desc]);
     }
 
-    /**
-     * Test attribute "meta"
-     */
     public function testPropertyMeta()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $attr = new Attribute();
+        $meta = new Meta();
+        $attr->setMeta($meta);
+        Asserter::assertJsonHasFields($attr, ['meta' => []]);
     }
 
-    /**
-     * Test attribute "custom_entity_meta"
-     */
     public function testPropertyCustomEntityMeta()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $attr = new Attribute();
+        $meta = new Meta();
+        $attr->setCustomEntityMeta($meta);
+        Asserter::assertJsonHasFields($attr, ['customEntityMeta' => []]);
     }
 }

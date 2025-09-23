@@ -27,13 +27,22 @@
 
 namespace OpenAPI\Client\Test\Api;
 
-use http\Client;
 use OpenAPI\Client\Api\ProductsApi;
-use OpenAPI\Client\Configuration;
 use OpenAPI\Client\ApiException;
+use OpenAPI\Client\Configuration;
+use OpenAPI\Client\Model\Barcode;
+use OpenAPI\Client\Model\BuyPrice;
 use OpenAPI\Client\Model\EntityProductPostRequest;
+use OpenAPI\Client\Model\FileList;
+use OpenAPI\Client\Model\ImageList;
+use OpenAPI\Client\Model\MinPrice;
 use OpenAPI\Client\Model\Product;
-use OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\Model\ProductAlcoholic;
+use OpenAPI\Client\Model\ProductList;
+use OpenAPI\Client\Model\ProductMinimumStock;
+use OpenAPI\Client\Test\Utils\Asserter;
+use OpenAPI\Client\Test\Utils\StringUtil;
+use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,107 +56,294 @@ use PHPUnit\Framework\TestCase;
 class ProductsApiTest extends TestCase
 {
 
-    /**
-     * Setup before running any test cases
-     */
+    private static ProductsApi $api;
+
     public static function setUpBeforeClass(): void
     {
-    }
-
-    /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-        // Конфигурация SDK — адрес сервиса, куда стучимся
+//        TODO заменить ссылку на спейс
         $config = Configuration::getDefaultConfiguration()
             ->setHost('http://localhost/api/remap/1.2')
             ->setUsername('admin@qwe3')
-            ->setPassword('123123')
-        ;
+            ->setPassword('123123');
 
-        $this->api = new ProductsApi(null, $config);
+        ProductsApiTest::$api = new ProductsApi(null, $config);
     }
 
     /**
-     * Clean up after running each test case
+     *  Проверка успешной обработки ответа сервера на получение товаров
      */
-    public function tearDown(): void
+    public function testEntityProductGet(): void
     {
+        $prefix = StringUtil::randomUuid();
+        $product1 = new Product();
+        $product1->setName("${prefix} Product 1");
+        $product1 = ProductsApiTest::$api->entityProductPost($product1);
+
+        $product2 = new Product();
+        $product2->setName("${prefix} Product 2");
+        $product2 = ProductsApiTest::$api->entityProductPost($product2);
+
+        $product3 = new Product();
+        $product3->setName("${prefix} Product 3");
+        $product3 = ProductsApiTest::$api->entityProductPost($product3);
+
+        Assert::assertNotSame($product1->getId(), $product2->getId());
+        Assert::assertNotSame($product2->getId(), $product3->getId());
+
+        $productList_12 = ProductsApiTest::$api->entityProductGet(2, 0, null, "name~=${prefix}", null, 'name');
+        Assert::assertInstanceOf(ProductList::class, $productList_12);
+        Asserter::assertMetaCollection($productList_12->getMeta(), 'product', 3, 2, 'product');
+        Asserter::assertJsonHasFields($productList_12, ['meta' => []], false, 'context.employee');
+        Asserter::assertJsonHasFields($productList_12, [
+            'rows' => [
+                ['id' => $product1->getId()],
+                ['id' => $product2->getId()]
+            ]], false);
+
+        $productList_23 = ProductsApiTest::$api->entityProductGet(3, 1, null, "name~=${prefix}", null, 'name');
+        Assert::assertInstanceOf(ProductList::class, $productList_23);
+        Asserter::assertMetaCollection($productList_23->getMeta(), 'product', 3, 3, 'product');
+        Asserter::assertJsonHasFields($productList_23, ['meta' => []], false, 'context.employee');
+        Asserter::assertJsonHasFields($productList_23, [
+            'rows' => [
+                ['id' => $product2->getId()],
+                ['id' => $product3->getId()]
+            ]], false);
     }
 
     /**
-     * Clean up after running all test cases
+     *  Проверка обработки ответа сервера на получение товаров сопровождаемое ошибкой
      */
-    public static function tearDownAfterClass(): void
+    public function testEntityProductGetWithError(): void
     {
-    }
-
-    public function testGetProducts(): void
-    {
-        // вызов API
-        $products = $this->api->entityProductGet(100, 0, null, null, 'packs.uom,country,files.createdBy.owner,files.createdBy.group,files.createdBy.cashiers,group,images,owner.owner.owner,owner.group,owner.owner.cashiers,owner.cashiers.employee,owner.cashiers.retailStore,productFolder.productFolder,productFolder.owner.cashiers,productFolder.group,uom,buyPrice.currency,salePrices.currency,images.miniature,minPrice.currency,productFolder.productFolder.productFolder,supplier.notes.agent,supplier.accounts,supplier.notes.agent,supplier.notes.author,supplier.notes.authorApplication,supplier.group,supplier.owner.group,supplier.state,supplier.contactpersons,supplier.files.createdBy');
-
-        // проверим, что ответ не пустой
-        $value = $products->__toString();
-        $products = $products->getRows();
-        foreach ($products as $p) {
-            $productJsonFromListGet = $p->__toString();
-            $mixed = $p->jsonSerialize();
-            $a = ObjectSerializer::deserialize($mixed, '\OpenAPI\Client\Model\EntityProductPostRequest');
-            $productJsonAfterDeserializeSerializeFromListGet = $a->__toString();
-            $fromPost = $this->api->entityProductPost(new EntityProductPostRequest());
-            $productJsonFromPost = $fromPost->__toString();
-            $this->assertNotNull($products, 'Ответ от API пустой');
+        try {
+            ProductsApiTest::$api->entityProductGet(1, 1, null, "name>123");
+            Assert::fail();
+        } catch (ApiException $e) {
+            Assert::assertEquals(412, $e->getCode());
+            Assert::assertNotNull($e->getResponseBody());
         }
-        $this->assertNotNull($products, 'Ответ от API пустой');
-
-        // если SDK возвращает массив — проверим тип
-//         $this->assertIsArray($products);
     }
 
-    public function testEntityCreateUpdateDeleteProduct()
-    {
-        $product = new EntityProductPostRequest();
-        $product->setName('123');
-        $createdProduct = $this->api->entityProductPost($product);
-        $this->assertEquals('123', $createdProduct->getName());
-        $this->assertNotNull($createdProduct->getId());
-    }
-
-    public function testEntityProductGet()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    public function testEntityProductIdDelete()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
+    /**
+     *  Проверка успешной обработки ответа сервера в случае ошибки
+     */
     public function testEntityProductIdGet()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $productReq = new Product();
+
+        // alcoholic
+        $alcoholic = new ProductAlcoholic();
+        $alcoholic->setExcise(true);
+        $alcoholic->setType(123);
+        $alcoholic->setStrength(40.0);
+        $alcoholic->setVolume(0.5);
+        $productReq->setAlcoholic($alcoholic);
+
+        // простые флаги и строки
+        $productReq->setArchived(true);
+        $productReq->setTobacco(false);
+        $productReq->setName("Тестовый товар " . StringUtil::randomUuid());
+        $productReq->setCode(StringUtil::randomUuid());
+        $productReq->setExternalCode(StringUtil::randomUuid());
+        $productReq->setArticle(StringUtil::randomUuid());
+        $productReq->setDescription("Описание тестового товара");
+        $productReq->setTrackingType("BEER_ALCOHOL");
+        $productReq->setPaymentItemType("GOOD");
+        $productReq->setTaxSystem("GENERAL_TAX_SYSTEM");
+        $productReq->setWeighed(false);
+        $productReq->setOnTap(false);
+        $productReq->setPartialDisposal(false);
+        $productReq->setSyncId(StringUtil::randomUuid());
+
+        $minStock = new ProductMinimumStock();
+        $minStock->setType("ALL_WAREHOUSE_SUM");
+        $minStock->setQuantity(10.0);
+        $productReq->setMinimumStock($minStock);
+
+        // налоги
+        $productReq->setVat(20);
+        $productReq->setVatEnabled(true);
+        $productReq->setUseParentVat(false);
+        $productReq->setEffectiveVat(20);
+        $productReq->setEffectiveVatEnabled(true);
+
+        $productReq->setDiscountProhibited(true);
+        $productReq->setIsSerialTrackable(false);
+        $productReq->setShared(false);
+
+        // размеры
+        $productReq->setVolume(0.75);
+
+        // Price
+        $buyPrice = new BuyPrice();
+        $buyPrice->setValue(9999.0);
+        $productReq->setBuyPrice($buyPrice);
+
+        $minPrice = new MinPrice();
+        $minPrice->setValue(1111.0);
+        $productReq->setMinPrice($minPrice);
+
+        // images, files
+        $productReq->setImages(new ImageList());
+        $productReq->setFiles(new FileList());
+
+        // barcodes
+        $barcode = new Barcode();
+        $barcode->setEan13("123123");
+        $productReq->setBarcodes([$barcode]);
+
+
+        $productResp = ProductsApiTest::$api->entityProductPost($productReq);
+        $productId = $productResp->getId();
+        Assert::assertNotNull($productId);
+        Asserter::assertMeta($productResp->getMeta(), $productId, 'product');
+
+        Assert::assertSame($productReq->getName(), $productResp->getName());
+        Assert::assertSame($productReq->getCode(), $productResp->getCode());
+        Assert::assertSame($productReq->getExternalCode(), $productResp->getExternalCode());
+        Assert::assertSame($productReq->getArticle(), $productResp->getArticle());
+        Assert::assertSame($productReq->getDescription(), $productResp->getDescription());
+        Assert::assertSame($productReq->getTrackingType(), $productResp->getTrackingType());
+        Assert::assertSame($productReq->getPaymentItemType(), $productResp->getPaymentItemType());
+        Assert::assertSame($productReq->getTaxSystem(), $productResp->getTaxSystem());
+        Assert::assertSame($productReq->getPartialDisposal(), $productResp->getPartialDisposal());
+        Assert::assertSame($productReq->getSyncId(), $productResp->getSyncId());
+        Assert::assertSame($productReq->getVolume(), $productResp->getVolume());
+
+        Asserter::assertMetaCollection($productResp->getFiles()->getMeta(), "product/${productId}/files", 0, 1000, 'files');
+        Asserter::assertMetaCollection($productResp->getImages()->getMeta(), "product/${productId}/images", 0, 1000, 'image');
+        Asserter::assertJsonHasFields($productResp, ['owner' => ['meta' => ['type' => 'employee']]], false);
+        Asserter::assertJsonHasFields($productResp, ['group' => ['meta' => ['type' => 'group']]], false);
+        Assert::assertNotNull($productResp->getUpdated());
+        Assert::assertNotNull($productResp->getAccountId());
+
+        Assert::assertSame($productReq->getVat(), $productResp->getVat());
+        Assert::assertSame($productReq->getVatEnabled(), $productResp->getVatEnabled());
+        Assert::assertSame($productReq->getUseParentVat(), $productResp->getUseParentVat());
+        Assert::assertSame($productReq->getEffectiveVat(), $productResp->getEffectiveVat());
+        Assert::assertSame($productReq->getEffectiveVatEnabled(), $productResp->getEffectiveVatEnabled());
+
+        Assert::assertSame($productReq->getDiscountProhibited(), $productResp->getDiscountProhibited());
+        Assert::assertSame($productReq->getIsSerialTrackable(), $productResp->getIsSerialTrackable());
+        Assert::assertSame($productReq->getShared(), $productResp->getShared());
+        Assert::assertSame($productReq->getArchived(), $productResp->getArchived());
+
+        Assert::assertSame($productReq->getBuyPrice()->getValue(), $productResp->getBuyPrice()->getValue());
+        Assert::assertSame($productReq->getMinPrice()->getValue(), $productResp->getMinPrice()->getValue());
+        Asserter::assertJsonHasFields($productResp, ['salePrices' => [['priceType' => [], 'currency' => []]]], false);
+
+        Assert::assertSame($productReq->getBarcodes()[0]->getEan13(), $productResp->getBarcodes()[0]->getEan13());
+        Assert::assertSame($productReq->getMinimumStock()->getQuantity(), $productResp->getMinimumStock()->getQuantity());
+        Assert::assertSame($productReq->getMinimumStock()->getType(), $productResp->getMinimumStock()->getType());
+
+        $productAlcoholicReq = $productReq->getAlcoholic();
+        $productAlcoholicResp = $productResp->getAlcoholic();
+        Assert::assertSame($productAlcoholicReq->getType(), $productAlcoholicResp->getType());
+        Assert::assertSame($productAlcoholicReq->getExcise(), $productAlcoholicResp->getExcise());
+        Assert::assertSame($productAlcoholicReq->getStrength(), $productAlcoholicResp->getStrength());
+        Assert::assertSame($productAlcoholicReq->getVolume(), $productAlcoholicResp->getVolume());
     }
 
+    /**
+     *  Проверка обработки ответа сервера на получение товара сопровождаемое ошибкой
+     */
+    public function testEntityProductIdGetWithError()
+    {
+        try {
+            ProductsApiTest::$api->entityProductIdGet(StringUtil::randomUuid());
+            Assert::fail();
+        } catch (ApiException $e) {
+            Assert::assertEquals(404, $e->getCode());
+            Assert::assertNotNull($e->getResponseBody());
+        }
+    }
+
+    /**
+     *  Проверка обработки ответа сервера на создание товара сопровождаемое ошибкой
+     */
+    public function testEntityProductPostWithError()
+    {
+        try {
+            $product1 = new Product();
+            ProductsApiTest::$api->entityProductPost($product1);
+            Assert::fail();
+        } catch (ApiException $e) {
+            Assert::assertEquals(412, $e->getCode());
+            Assert::assertNotNull($e->getResponseBody());
+        }
+    }
+
+    /**
+     *  Проверка успешной обработки ответа сервера на обновление товара
+     */
     public function testEntityProductIdPut()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $createProduct = new Product();
+        $createProduct->setName("Product Old");
+        $createProduct = ProductsApiTest::$api->entityProductPost($createProduct);
+
+        $updateProduct = new Product();
+        $updateProduct->setName("Product New");
+        $updateProduct = ProductsApiTest::$api->entityProductIdPut($createProduct->getId(), $updateProduct);
+
+        Assert::assertSame($createProduct->getId(), $updateProduct->getId());
+        Assert::assertSame("Product New", $updateProduct->getName());
     }
 
+    /**
+     *  Проверка обработки ответа сервера на обновление товара сопровождаемое ошибкой
+     */
+    public function testEntityProductIdPutWithError()
+    {
+        $product1 = new Product();
+        $product1->setName("Product");
+        $product1 = ProductsApiTest::$api->entityProductPost($product1);
+        try {
+            $updateProduct = new Product();
+            $updateProduct->setVat(-10);
+            ProductsApiTest::$api->entityProductIdPut($product1->getId(), $updateProduct);
+            Assert::fail();
+        } catch (ApiException $e) {
+            Assert::assertEquals(412, $e->getCode());
+            Assert::assertNotNull($e->getResponseBody());
+        }
+    }
+
+    /**
+     *  Проверка успешной обработки ответа сервера на получение метадаты товара
+     */
     public function testEntityProductMetadataGet()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $metadata = ProductsApiTest::$api->entityProductMetadataGet();
+        Asserter::assertMeta($metadata->getMeta(), 'entity/product/metadata');
+        Assert::assertNotNull($metadata->getCreateShared());
+        Asserter::assertJsonHasFields($metadata, ['attributes' => ['meta' => []]], false);
     }
 
-    public function testEntityProductPost()
+    /**
+     *  Проверка успешной обработки ответа сервера удаления товара
+     */
+    public function testEntityProductIdDelete()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $product = new Product();
+        $product->setName("Product");
+        $product = ProductsApiTest::$api->entityProductPost($product);
+        $resp = ProductsApiTest::$api->entityProductIdDeleteWithHttpInfo($product->getId());
+        Assert::assertEquals(200, $resp[1]);
+    }
+
+    /**
+     *  Проверка обработки ответа сервера удаления товара сопровождаемое ошибкой
+     */
+    public function testEntityProductIdDeleteWithError()
+    {
+        try {
+            ProductsApiTest::$api->entityProductIdDelete(StringUtil::randomUuid());
+            Assert::fail();
+        } catch (ApiException $e) {
+            Assert::assertEquals(404, $e->getCode());
+            Assert::assertNotNull($e->getResponseBody());
+        }
     }
 }

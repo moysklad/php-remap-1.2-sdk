@@ -28,6 +28,11 @@
 
 namespace OpenAPI\Client\Test\Model;
 
+use OpenAPI\Client\Model\ContactPerson;
+use OpenAPI\Client\Model\Counterparty;
+use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Test\Utils\Asserter;
+use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -41,140 +46,93 @@ use PHPUnit\Framework\TestCase;
  */
 class ContactPersonTest extends TestCase
 {
-
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass(): void
-    {
-    }
-
-    /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass(): void
-    {
-    }
-
-    /**
-     * Test "ContactPerson"
-     */
-    public function testContactPerson()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "meta"
-     */
     public function testPropertyMeta()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $entity = new ContactPerson();
+        $meta = new Meta();
+        $meta->setHref("http://example.com/meta");
+        $entity->setMeta($meta);
+        Asserter::assertJsonHasFields($entity, ['meta' => ['href' => "http://example.com/meta"]]);
     }
 
-    /**
-     * Test attribute "id"
-     */
     public function testPropertyId()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $entity = new ContactPerson();
+        $id = StringUtil::randomUuid();
+        $entity->setId($id);
+        Asserter::assertJsonHasFields($entity, ['id' => $id]);
     }
 
-    /**
-     * Test attribute "account_id"
-     */
     public function testPropertyAccountId()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $entity = new ContactPerson();
+        $accountId = StringUtil::randomUuid();
+        $entity->setAccountId($accountId);
+        Asserter::assertJsonHasFields($entity, ['accountId' => $accountId]);
     }
 
-    /**
-     * Test attribute "updated"
-     */
     public function testPropertyUpdated()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $entity = new ContactPerson();
+        $date = new \DateTime("2024-01-01T12:00:00Z");
+        $entity->setUpdated($date);
+        Asserter::assertJsonHasFields($entity, ['updated' => StringUtil::toRemap12FormatDate($date)]);
     }
 
-    /**
-     * Test attribute "name"
-     */
     public function testPropertyName()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $entity = new ContactPerson();
+        $name = "John Doe";
+        $entity->setName($name);
+        Asserter::assertJsonHasFields($entity, ['name' => $name]);
     }
 
-    /**
-     * Test attribute "description"
-     */
     public function testPropertyDescription()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $entity = new ContactPerson();
+        $description = "Some description";
+        $entity->setDescription($description);
+        Asserter::assertJsonHasFields($entity, ['description' => $description]);
     }
 
-    /**
-     * Test attribute "email"
-     */
     public function testPropertyEmail()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $entity = new ContactPerson();
+        $email = "test@example.com";
+        $entity->setEmail($email);
+        Asserter::assertJsonHasFields($entity, ['email' => $email]);
     }
 
-    /**
-     * Test attribute "phone"
-     */
     public function testPropertyPhone()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $entity = new ContactPerson();
+        $phone = "+1234567890";
+        $entity->setPhone($phone);
+        Asserter::assertJsonHasFields($entity, ['phone' => $phone]);
     }
 
-    /**
-     * Test attribute "position"
-     */
     public function testPropertyPosition()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $entity = new ContactPerson();
+        $position = "Manager";
+        $entity->setPosition($position);
+        Asserter::assertJsonHasFields($entity, ['position' => $position]);
     }
 
-    /**
-     * Test attribute "external_code"
-     */
     public function testPropertyExternalCode()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $entity = new ContactPerson();
+        $externalCode = "EXT123";
+        $entity->setExternalCode($externalCode);
+        Asserter::assertJsonHasFields($entity, ['externalCode' => $externalCode]);
     }
 
-    /**
-     * Test attribute "agent"
-     */
     public function testPropertyAgent()
     {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
+        $entity = new ContactPerson();
+        $agent = new Counterparty();
+        $agent->setName("Company A");
+        $entity->setAgent($agent);
+        Asserter::assertJsonHasFields($entity, ['agent' => ['name' => "Company A"]]);
     }
 }
