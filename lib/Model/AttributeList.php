@@ -1,6 +1,6 @@
 <?php
 /**
- * EntityProductDeletePostRequestInner
+ * AttributeList
  *
  * PHP version 7.4
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * EntityProductDeletePostRequestInner Class Doc Comment
+ * AttributeList Class Doc Comment
  *
  * @category Class
+ * @description Доп.поля
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EntityProductDeletePostRequestInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class AttributeList implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class EntityProductDeletePostRequestInner implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = '_entity_product_delete_post_request_inner';
+    protected static $openAPIModelName = 'AttributeList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +58,8 @@ class EntityProductDeletePostRequestInner implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\Meta'
+        'meta' => '\OpenAPI\Client\Model\MetaList',
+        'rows' => '\OpenAPI\Client\Model\Attribute[]'
     ];
 
     /**
@@ -68,7 +70,8 @@ class EntityProductDeletePostRequestInner implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'meta' => null
+        'meta' => null,
+        'rows' => null
     ];
 
     /**
@@ -77,7 +80,8 @@ class EntityProductDeletePostRequestInner implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'meta' => false
+        'meta' => false,
+        'rows' => false
     ];
 
     /**
@@ -166,7 +170,8 @@ class EntityProductDeletePostRequestInner implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'meta' => 'meta'
+        'meta' => 'meta',
+        'rows' => 'rows'
     ];
 
     /**
@@ -175,7 +180,8 @@ class EntityProductDeletePostRequestInner implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'meta' => 'setMeta'
+        'meta' => 'setMeta',
+        'rows' => 'setRows'
     ];
 
     /**
@@ -184,7 +190,8 @@ class EntityProductDeletePostRequestInner implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'meta' => 'getMeta'
+        'meta' => 'getMeta',
+        'rows' => 'getRows'
     ];
 
     /**
@@ -245,6 +252,7 @@ class EntityProductDeletePostRequestInner implements ModelInterface, ArrayAccess
     public function __construct(?array $data = null)
     {
         $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('rows', $data ?? [], null);
     }
 
     /**
@@ -274,9 +282,6 @@ class EntityProductDeletePostRequestInner implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['meta'] === null) {
-            $invalidProperties[] = "'meta' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -295,7 +300,7 @@ class EntityProductDeletePostRequestInner implements ModelInterface, ArrayAccess
     /**
      * Gets meta
      *
-     * @return \OpenAPI\Client\Model\Meta
+     * @return \OpenAPI\Client\Model\MetaList|null
      */
     public function getMeta()
     {
@@ -305,7 +310,7 @@ class EntityProductDeletePostRequestInner implements ModelInterface, ArrayAccess
     /**
      * Sets meta
      *
-     * @param \OpenAPI\Client\Model\Meta $meta meta
+     * @param \OpenAPI\Client\Model\MetaList|null $meta meta
      *
      * @return self
      */
@@ -315,6 +320,33 @@ class EntityProductDeletePostRequestInner implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable meta cannot be null');
         }
         $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets rows
+     *
+     * @return \OpenAPI\Client\Model\Attribute[]|null
+     */
+    public function getRows()
+    {
+        return $this->container['rows'];
+    }
+
+    /**
+     * Sets rows
+     *
+     * @param \OpenAPI\Client\Model\Attribute[]|null $rows rows
+     *
+     * @return self
+     */
+    public function setRows($rows)
+    {
+        if (is_null($rows)) {
+            throw new \InvalidArgumentException('non-nullable rows cannot be null');
+        }
+        $this->container['rows'] = $rows;
 
         return $this;
     }

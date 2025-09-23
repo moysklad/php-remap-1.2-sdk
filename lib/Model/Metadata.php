@@ -59,7 +59,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\Meta',
-        'attributes' => '\OpenAPI\Client\Model\Attribute[]',
+        'attributes' => '\OpenAPI\Client\Model\AttributeList',
         'create_shared' => 'bool'
     ];
 
@@ -334,7 +334,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets attributes
      *
-     * @return \OpenAPI\Client\Model\Attribute[]|null
+     * @return \OpenAPI\Client\Model\AttributeList|null
      */
     public function getAttributes()
     {
@@ -344,7 +344,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attributes
      *
-     * @param \OpenAPI\Client\Model\Attribute[]|null $attributes Массив дополнительных полей
+     * @param \OpenAPI\Client\Model\AttributeList|null $attributes attributes
      *
      * @return self
      */
