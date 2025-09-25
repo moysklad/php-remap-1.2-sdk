@@ -51,13 +51,20 @@ $apiInstance = new OpenAPI\Client\Api\ProductsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$entity_product_delete_post_request_inner = array(new \OpenAPI\Client\Model\EntityProductDeletePostRequestInner()); // \OpenAPI\Client\Model\EntityProductDeletePostRequestInner[]
+$limit = 1000; // int | Максимальное количество элементов в выданном списке (максимум 1000)
+$offset = 0; // int | Отступ в выданном списке
+$search = name=123; // string | Контекстный поиск по строковым полям сущностей
+$filter = archived=false; // string | Фильтрация выборки
+$expand = agent,organization; // string | Замена ссылок объектами с помощью expand
+$order = name; // string | Сортировка
+$accept = 'application/json;charset=utf-8'; // string
+$accept_encoding = 'gzip'; // string
 
 try {
-    $result = $apiInstance->entityProductDeletePost($entity_product_delete_post_request_inner);
+    $result = $apiInstance->entityProductGet($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->entityProductDeletePost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProductsApi->entityProductGet: ', $e->getMessage(), PHP_EOL;
 }
 
 ```
