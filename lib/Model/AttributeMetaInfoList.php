@@ -1,6 +1,6 @@
 <?php
 /**
- * Metadata
+ * AttributeMetaInfoList
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Metadata Class Doc Comment
+ * AttributeMetaInfoList Class Doc Comment
  *
  * @category Class
- * @description Метаданные объекта
+ * @description Доп.поля
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
+class AttributeMetaInfoList implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'metadata';
+    protected static $openAPIModelName = 'AttributeMetaInfoList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\Meta',
-        'attributes' => '\OpenAPI\Client\Model\AttributeMetaInfoList',
-        'create_shared' => 'bool'
+        'meta' => '\OpenAPI\Client\Model\MetaList',
+        'rows' => '\OpenAPI\Client\Model\AttributeMetaInfo[]'
     ];
 
     /**
@@ -72,8 +71,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'meta' => null,
-        'attributes' => null,
-        'create_shared' => null
+        'rows' => null
     ];
 
     /**
@@ -83,8 +81,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'meta' => false,
-        'attributes' => false,
-        'create_shared' => false
+        'rows' => false
     ];
 
     /**
@@ -174,8 +171,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'meta' => 'meta',
-        'attributes' => 'attributes',
-        'create_shared' => 'createShared'
+        'rows' => 'rows'
     ];
 
     /**
@@ -185,8 +181,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'meta' => 'setMeta',
-        'attributes' => 'setAttributes',
-        'create_shared' => 'setCreateShared'
+        'rows' => 'setRows'
     ];
 
     /**
@@ -196,8 +191,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'meta' => 'getMeta',
-        'attributes' => 'getAttributes',
-        'create_shared' => 'getCreateShared'
+        'rows' => 'getRows'
     ];
 
     /**
@@ -258,8 +252,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('create_shared', $data ?? [], null);
+        $this->setIfExists('rows', $data ?? [], null);
     }
 
     /**
@@ -307,7 +300,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets meta
      *
-     * @return \OpenAPI\Client\Model\Meta|null
+     * @return \OpenAPI\Client\Model\MetaList|null
      */
     public function getMeta()
     {
@@ -317,7 +310,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets meta
      *
-     * @param \OpenAPI\Client\Model\Meta|null $meta meta
+     * @param \OpenAPI\Client\Model\MetaList|null $meta meta
      *
      * @return self
      */
@@ -332,55 +325,28 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets attributes
+     * Gets rows
      *
-     * @return \OpenAPI\Client\Model\AttributeMetaInfoList|null
+     * @return \OpenAPI\Client\Model\AttributeMetaInfo[]|null
      */
-    public function getAttributes()
+    public function getRows()
     {
-        return $this->container['attributes'];
+        return $this->container['rows'];
     }
 
     /**
-     * Sets attributes
+     * Sets rows
      *
-     * @param \OpenAPI\Client\Model\AttributeMetaInfoList|null $attributes attributes
+     * @param \OpenAPI\Client\Model\AttributeMetaInfo[]|null $rows rows
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setRows($rows)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($rows)) {
+            throw new \InvalidArgumentException('non-nullable rows cannot be null');
         }
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * Gets create_shared
-     *
-     * @return bool|null
-     */
-    public function getCreateShared()
-    {
-        return $this->container['create_shared'];
-    }
-
-    /**
-     * Sets create_shared
-     *
-     * @param bool|null $create_shared Создавать новые документы с общим доступом
-     *
-     * @return self
-     */
-    public function setCreateShared($create_shared)
-    {
-        if (is_null($create_shared)) {
-            throw new \InvalidArgumentException('non-nullable create_shared cannot be null');
-        }
-        $this->container['create_shared'] = $create_shared;
+        $this->container['rows'] = $rows;
 
         return $this;
     }

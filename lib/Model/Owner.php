@@ -83,7 +83,7 @@ class Owner implements ModelInterface, ArrayAccess, \JsonSerializable
         'salary' => '\OpenAPI\Client\Model\OwnerSalary',
         'cashiers' => '\OpenAPI\Client\Model\Cashier[]',
         'image' => '\OpenAPI\Client\Model\Image',
-        'attributes' => '\OpenAPI\Client\Model\Attribute[]'
+        'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]'
     ];
 
     /**
@@ -1215,7 +1215,7 @@ class Owner implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets attributes
      *
-     * @return \OpenAPI\Client\Model\Attribute[]|null
+     * @return \OpenAPI\Client\Model\AttributeAbstract[]|null
      */
     public function getAttributes()
     {
@@ -1225,7 +1225,7 @@ class Owner implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attributes
      *
-     * @param \OpenAPI\Client\Model\Attribute[]|null $attributes Дополнительные поля сотрудника
+     * @param \OpenAPI\Client\Model\AttributeAbstract[]|null $attributes Дополнительные поля
      *
      * @return self
      */

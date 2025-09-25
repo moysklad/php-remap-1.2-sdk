@@ -1,6 +1,6 @@
 <?php
 /**
- * Metadata
+ * AttributeMetaInfo
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Metadata Class Doc Comment
+ * AttributeMetaInfo Class Doc Comment
  *
  * @category Class
- * @description Метаданные объекта
+ * @description Метаописание дополнительного поля
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
+class AttributeMetaInfo implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'metadata';
+    protected static $openAPIModelName = 'AttributeMetaInfo';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,14 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
+        'name' => 'string',
+        'type' => 'string',
+        'required' => 'bool',
+        'show' => 'bool',
+        'description' => 'string',
         'meta' => '\OpenAPI\Client\Model\Meta',
-        'attributes' => '\OpenAPI\Client\Model\AttributeMetaInfoList',
-        'create_shared' => 'bool'
+        'custom_entity_meta' => '\OpenAPI\Client\Model\Meta'
     ];
 
     /**
@@ -71,9 +76,14 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => 'uuid',
+        'name' => null,
+        'type' => null,
+        'required' => null,
+        'show' => null,
+        'description' => null,
         'meta' => null,
-        'attributes' => null,
-        'create_shared' => null
+        'custom_entity_meta' => null
     ];
 
     /**
@@ -82,9 +92,14 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
+        'name' => false,
+        'type' => false,
+        'required' => false,
+        'show' => false,
+        'description' => false,
         'meta' => false,
-        'attributes' => false,
-        'create_shared' => false
+        'custom_entity_meta' => false
     ];
 
     /**
@@ -173,9 +188,14 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
+        'name' => 'name',
+        'type' => 'type',
+        'required' => 'required',
+        'show' => 'show',
+        'description' => 'description',
         'meta' => 'meta',
-        'attributes' => 'attributes',
-        'create_shared' => 'createShared'
+        'custom_entity_meta' => 'customEntityMeta'
     ];
 
     /**
@@ -184,9 +204,14 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
+        'name' => 'setName',
+        'type' => 'setType',
+        'required' => 'setRequired',
+        'show' => 'setShow',
+        'description' => 'setDescription',
         'meta' => 'setMeta',
-        'attributes' => 'setAttributes',
-        'create_shared' => 'setCreateShared'
+        'custom_entity_meta' => 'setCustomEntityMeta'
     ];
 
     /**
@@ -195,9 +220,14 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
+        'name' => 'getName',
+        'type' => 'getType',
+        'required' => 'getRequired',
+        'show' => 'getShow',
+        'description' => 'getDescription',
         'meta' => 'getMeta',
-        'attributes' => 'getAttributes',
-        'create_shared' => 'getCreateShared'
+        'custom_entity_meta' => 'getCustomEntityMeta'
     ];
 
     /**
@@ -241,6 +271,35 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const TYPE_STRING = 'string';
+    public const TYPE_LONG = 'long';
+    public const TYPE_TIME = 'time';
+    public const TYPE_DOUBLE = 'double';
+    public const TYPE_BOOLEAN = 'boolean';
+    public const TYPE_TEXT = 'text';
+    public const TYPE_LINK = 'link';
+    public const TYPE_FILE = 'file';
+    public const TYPE_CUSTOMENTITY = 'customentity';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_STRING,
+            self::TYPE_LONG,
+            self::TYPE_TIME,
+            self::TYPE_DOUBLE,
+            self::TYPE_BOOLEAN,
+            self::TYPE_TEXT,
+            self::TYPE_LINK,
+            self::TYPE_FILE,
+            self::TYPE_CUSTOMENTITY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +316,14 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('required', $data ?? [], null);
+        $this->setIfExists('show', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('create_shared', $data ?? [], null);
+        $this->setIfExists('custom_entity_meta', $data ?? [], null);
     }
 
     /**
@@ -289,6 +353,15 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -303,6 +376,178 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id ID дополнительного поля
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Наименование дополнительного поля
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Тип дополнительного поля
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets required
+     *
+     * @return bool|null
+     */
+    public function getRequired()
+    {
+        return $this->container['required'];
+    }
+
+    /**
+     * Sets required
+     *
+     * @param bool|null $required Является ли поле обязательным
+     *
+     * @return self
+     */
+    public function setRequired($required)
+    {
+        if (is_null($required)) {
+            throw new \InvalidArgumentException('non-nullable required cannot be null');
+        }
+        $this->container['required'] = $required;
+
+        return $this;
+    }
+
+    /**
+     * Gets show
+     *
+     * @return bool|null
+     */
+    public function getShow()
+    {
+        return $this->container['show'];
+    }
+
+    /**
+     * Sets show
+     *
+     * @param bool|null $show Показывать ли поле на UI
+     *
+     * @return self
+     */
+    public function setShow($show)
+    {
+        if (is_null($show)) {
+            throw new \InvalidArgumentException('non-nullable show cannot be null');
+        }
+        $this->container['show'] = $show;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description Описание дополнительного поля
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
 
     /**
      * Gets meta
@@ -332,55 +577,28 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets attributes
+     * Gets custom_entity_meta
      *
-     * @return \OpenAPI\Client\Model\AttributeMetaInfoList|null
+     * @return \OpenAPI\Client\Model\Meta|null
      */
-    public function getAttributes()
+    public function getCustomEntityMeta()
     {
-        return $this->container['attributes'];
+        return $this->container['custom_entity_meta'];
     }
 
     /**
-     * Sets attributes
+     * Sets custom_entity_meta
      *
-     * @param \OpenAPI\Client\Model\AttributeMetaInfoList|null $attributes attributes
+     * @param \OpenAPI\Client\Model\Meta|null $custom_entity_meta custom_entity_meta
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setCustomEntityMeta($custom_entity_meta)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($custom_entity_meta)) {
+            throw new \InvalidArgumentException('non-nullable custom_entity_meta cannot be null');
         }
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * Gets create_shared
-     *
-     * @return bool|null
-     */
-    public function getCreateShared()
-    {
-        return $this->container['create_shared'];
-    }
-
-    /**
-     * Sets create_shared
-     *
-     * @param bool|null $create_shared Создавать новые документы с общим доступом
-     *
-     * @return self
-     */
-    public function setCreateShared($create_shared)
-    {
-        if (is_null($create_shared)) {
-            throw new \InvalidArgumentException('non-nullable create_shared cannot be null');
-        }
-        $this->container['create_shared'] = $create_shared;
+        $this->container['custom_entity_meta'] = $custom_entity_meta;
 
         return $this;
     }

@@ -101,7 +101,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'notes' => '\OpenAPI\Client\Model\CounterpartyNotes',
         'files' => '\OpenAPI\Client\Model\FileList',
         'tags' => 'string[]',
-        'attributes' => '\OpenAPI\Client\Model\Attribute[]'
+        'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]'
     ];
 
     /**
@@ -1961,7 +1961,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets attributes
      *
-     * @return \OpenAPI\Client\Model\Attribute[]|null
+     * @return \OpenAPI\Client\Model\AttributeAbstract[]|null
      */
     public function getAttributes()
     {
@@ -1971,7 +1971,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attributes
      *
-     * @param \OpenAPI\Client\Model\Attribute[]|null $attributes Дополнительные поля
+     * @param \OpenAPI\Client\Model\AttributeAbstract[]|null $attributes Дополнительные поля
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * Metadata
+ * AttributeAbstract
  *
  * PHP version 7.4
  *
@@ -32,25 +32,24 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Metadata Class Doc Comment
+ * AttributeAbstract Class Doc Comment
  *
  * @category Class
- * @description Метаданные объекта
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
+class AttributeAbstract implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = 'type';
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'metadata';
+    protected static $openAPIModelName = 'AttributeAbstract';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,12 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'meta' => '\OpenAPI\Client\Model\Meta',
-        'attributes' => '\OpenAPI\Client\Model\AttributeMetaInfoList',
-        'create_shared' => 'bool'
+        'name' => 'string',
+        'type' => 'string',
+        'value' => 'object',
+        'download' => 'object'
     ];
 
     /**
@@ -71,9 +73,12 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => 'uuid',
         'meta' => null,
-        'attributes' => null,
-        'create_shared' => null
+        'name' => null,
+        'type' => null,
+        'value' => null,
+        'download' => null
     ];
 
     /**
@@ -82,9 +87,12 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
         'meta' => false,
-        'attributes' => false,
-        'create_shared' => false
+        'name' => false,
+        'type' => false,
+        'value' => false,
+        'download' => false
     ];
 
     /**
@@ -173,9 +181,12 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'meta' => 'meta',
-        'attributes' => 'attributes',
-        'create_shared' => 'createShared'
+        'name' => 'name',
+        'type' => 'type',
+        'value' => 'value',
+        'download' => 'download'
     ];
 
     /**
@@ -184,9 +195,12 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'meta' => 'setMeta',
-        'attributes' => 'setAttributes',
-        'create_shared' => 'setCreateShared'
+        'name' => 'setName',
+        'type' => 'setType',
+        'value' => 'setValue',
+        'download' => 'setDownload'
     ];
 
     /**
@@ -195,9 +209,12 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'meta' => 'getMeta',
-        'attributes' => 'getAttributes',
-        'create_shared' => 'getCreateShared'
+        'name' => 'getName',
+        'type' => 'getType',
+        'value' => 'getValue',
+        'download' => 'getDownload'
     ];
 
     /**
@@ -257,9 +274,15 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('create_shared', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('download', $data ?? [], null);
+
+        // Initialize discriminator property with the model name.
+        $this->container['type'] = static::$openAPIModelName;
     }
 
     /**
@@ -289,6 +312,9 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -303,6 +329,33 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id ID дополнительного поля
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets meta
@@ -332,55 +385,109 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets attributes
+     * Gets name
      *
-     * @return \OpenAPI\Client\Model\AttributeMetaInfoList|null
+     * @return string|null
      */
-    public function getAttributes()
+    public function getName()
     {
-        return $this->container['attributes'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets attributes
+     * Sets name
      *
-     * @param \OpenAPI\Client\Model\AttributeMetaInfoList|null $attributes attributes
+     * @param string|null $name Наименование дополнительного поля
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setName($name)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['attributes'] = $attributes;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets create_shared
+     * Gets type
      *
-     * @return bool|null
+     * @return string
      */
-    public function getCreateShared()
+    public function getType()
     {
-        return $this->container['create_shared'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets create_shared
+     * Sets type
      *
-     * @param bool|null $create_shared Создавать новые документы с общим доступом
+     * @param string $type type
      *
      * @return self
      */
-    public function setCreateShared($create_shared)
+    public function setType($type)
     {
-        if (is_null($create_shared)) {
-            throw new \InvalidArgumentException('non-nullable create_shared cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['create_shared'] = $create_shared;
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return object|null
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param object|null $value value
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        if (is_null($value)) {
+            throw new \InvalidArgumentException('non-nullable value cannot be null');
+        }
+        $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets download
+     *
+     * @return object|null
+     */
+    public function getDownload()
+    {
+        return $this->container['download'];
+    }
+
+    /**
+     * Sets download
+     *
+     * @param object|null $download download
+     *
+     * @return self
+     */
+    public function setDownload($download)
+    {
+        if (is_null($download)) {
+            throw new \InvalidArgumentException('non-nullable download cannot be null');
+        }
+        $this->container['download'] = $download;
 
         return $this;
     }
@@ -472,6 +579,33 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
     public function toHeaderValue()
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
+    }
+    /**
+      * Array of mapping. Used for (de)serialization
+      *
+      * @var string[]
+      */
+    protected static $openAPIMappings = [
+        'boolean' => 'AttributeBool',
+        'customentity' => 'AttributeCustomEntity',
+        'double' => 'AttributeDouble',
+        'file' => 'AttributeFile',
+        'link' => 'AttributeLink',
+        'long' => 'AttributeLong',
+        'string' => 'AttributeString',
+        'text' => 'AttributeText',
+        'time' => 'AttributeDateTime',
+        'undefined' => 'AttributeObject'
+    ];
+
+    /**
+     * Array of discriminator mappings. Used for (de)serialization
+     *
+     * @return array
+     */
+    public static function openAPIMappings()
+    {
+        return self::$openAPIMappings;
     }
 }
 

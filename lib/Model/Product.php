@@ -97,7 +97,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'tnved' => 'string',
         'payment_item_type' => 'string',
         'tax_system' => 'string',
-        'attributes' => '\OpenAPI\Client\Model\Attribute[]',
+        'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]',
         'minimum_balance' => 'float',
         'minimum_stock' => '\OpenAPI\Client\Model\ProductMinimumStock',
         'min_price' => '\OpenAPI\Client\Model\MinPrice',
@@ -2033,7 +2033,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets attributes
      *
-     * @return \OpenAPI\Client\Model\Attribute[]|null
+     * @return \OpenAPI\Client\Model\AttributeAbstract[]|null
      */
     public function getAttributes()
     {
@@ -2043,7 +2043,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attributes
      *
-     * @param \OpenAPI\Client\Model\Attribute[]|null $attributes Дополнительные поля
+     * @param \OpenAPI\Client\Model\AttributeAbstract[]|null $attributes Дополнительные поля
      *
      * @return self
      */

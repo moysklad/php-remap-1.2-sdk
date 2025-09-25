@@ -29,6 +29,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use OpenAPI\Client\Model\Attribute;
+use OpenAPI\Client\Model\AttributeDouble;
 use OpenAPI\Client\Model\Barcode;
 use OpenAPI\Client\Model\BuyPrice;
 use OpenAPI\Client\Model\Counterparty;
@@ -377,9 +378,11 @@ class ProductTest extends TestCase
     public function testPropertyAttributes()
     {
         $product = new Product();
-        $attr = new Attribute();
+        $attr = new AttributeDouble();
+        $attr->setName("Level");
+        $attr->setValue(12.1);
         $product->setAttributes([$attr]);
-        Asserter::assertJsonHasFields($product, ['attributes' => [[]]]);
+        Asserter::assertJsonHasFields($product, ['attributes' => [['name' => "Level", 'value' => 12.1]]]);
     }
 
     public function testPropertyMinimumBalance()

@@ -29,6 +29,7 @@
 namespace OpenAPI\Client\Test\Model;
 
 use OpenAPI\Client\Model\Attribute;
+use OpenAPI\Client\Model\AttributeDouble;
 use OpenAPI\Client\Model\Counterparty;
 use OpenAPI\Client\Model\CounterpartyAccounts;
 use OpenAPI\Client\Model\CounterpartyContactpersons;
@@ -405,9 +406,10 @@ class CounterpartyTest extends TestCase
     public function testPropertyAttributes()
     {
         $entity = new Counterparty();
-        $attr = new Attribute();
+        $attr = new AttributeDouble();
         $attr->setName("Level");
+        $attr->setValue(12.1);
         $entity->setAttributes([$attr]);
-        Asserter::assertJsonHasFields($entity, ['attributes' => [['name' => "Level"]]]);
+        Asserter::assertJsonHasFields($entity, ['attributes' => [['name' => "Level", 'value' => 12.1]]]);
     }
 }

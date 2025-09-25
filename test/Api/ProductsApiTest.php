@@ -30,6 +30,8 @@ namespace OpenAPI\Client\Test\Api;
 use OpenAPI\Client\Api\ProductsApi;
 use OpenAPI\Client\ApiException;
 use OpenAPI\Client\Configuration;
+use OpenAPI\Client\Model\Attribute;
+use OpenAPI\Client\Model\AttributeValue;
 use OpenAPI\Client\Model\Barcode;
 use OpenAPI\Client\Model\BuyPrice;
 use OpenAPI\Client\Model\EntityProductPostRequest;
