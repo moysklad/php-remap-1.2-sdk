@@ -1,6 +1,6 @@
 <?php
 /**
- * OwnerSalary
+ * EmployeeSalary
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * OwnerSalary Class Doc Comment
+ * EmployeeSalary Class Doc Comment
  *
  * @category Class
  * @description Оклад сотрудника
@@ -41,7 +41,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OwnerSalary implements ModelInterface, ArrayAccess, \JsonSerializable
+class EmployeeSalary implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class OwnerSalary implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Owner_salary';
+    protected static $openAPIModelName = 'Employee_salary';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

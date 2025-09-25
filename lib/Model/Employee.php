@@ -80,7 +80,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
         'inn' => 'string',
         'position' => 'string',
         'uid' => 'string',
-        'salary' => '\OpenAPI\Client\Model\OwnerSalary',
+        'salary' => '\OpenAPI\Client\Model\EmployeeSalary',
         'cashiers' => '\OpenAPI\Client\Model\Cashier[]',
         'image' => '\OpenAPI\Client\Model\Image',
         'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]'
@@ -1134,7 +1134,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets salary
      *
-     * @return \OpenAPI\Client\Model\OwnerSalary|null
+     * @return \OpenAPI\Client\Model\EmployeeSalary|null
      */
     public function getSalary()
     {
@@ -1144,7 +1144,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets salary
      *
-     * @param \OpenAPI\Client\Model\OwnerSalary|null $salary salary
+     * @param \OpenAPI\Client\Model\EmployeeSalary|null $salary salary
      *
      * @return self
      */
