@@ -237,7 +237,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'organization' => false,
         'store' => false,
         'group' => false,
-        'owner' => false,
+        'owner' => true,
         'price_type' => false,
         'environment' => false,
         'state' => false,
@@ -1263,7 +1263,14 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOwner($owner)
     {
         if (is_null($owner)) {
-            throw new \InvalidArgumentException('non-nullable owner cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'owner');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('owner', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['owner'] = $owner;
 

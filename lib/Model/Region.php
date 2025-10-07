@@ -324,6 +324,18 @@ class Region implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['code']) && (mb_strlen($this->container['code']) > 255)) {
+            $invalidProperties[] = "invalid value for 'code', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['external_code']) && (mb_strlen($this->container['external_code']) > 255)) {
+            $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
+        }
+
         return $invalidProperties;
     }
 
@@ -442,6 +454,10 @@ class Region implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling Region., must be smaller than or equal to 255.');
+        }
+
         $this->container['name'] = $name;
 
         return $this;
@@ -469,6 +485,10 @@ class Region implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($code)) {
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
+        if ((mb_strlen($code) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $code when calling Region., must be smaller than or equal to 255.');
+        }
+
         $this->container['code'] = $code;
 
         return $this;
@@ -496,6 +516,10 @@ class Region implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($external_code)) {
             throw new \InvalidArgumentException('non-nullable external_code cannot be null');
         }
+        if ((mb_strlen($external_code) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $external_code when calling Region., must be smaller than or equal to 255.');
+        }
+
         $this->container['external_code'] = $external_code;
 
         return $this;

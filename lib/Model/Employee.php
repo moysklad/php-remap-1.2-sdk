@@ -146,13 +146,13 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
         'short_fio' => false,
         'shared' => false,
         'group' => false,
-        'owner' => false,
+        'owner' => true,
         'inn' => false,
         'position' => false,
         'uid' => false,
         'salary' => false,
         'cashiers' => false,
-        'image' => false,
+        'image' => true,
         'attributes' => false
     ];
 
@@ -1031,7 +1031,14 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOwner($owner)
     {
         if (is_null($owner)) {
-            throw new \InvalidArgumentException('non-nullable owner cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'owner');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('owner', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['owner'] = $owner;
 
@@ -1205,7 +1212,14 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setImage($image)
     {
         if (is_null($image)) {
-            throw new \InvalidArgumentException('non-nullable image cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'image');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('image', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['image'] = $image;
 

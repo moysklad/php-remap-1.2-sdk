@@ -117,19 +117,19 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => false,
         'id' => false,
         'account_id' => false,
-        'owner' => false,
+        'owner' => true,
         'shared' => false,
         'group' => false,
         'updated' => false,
         'name' => false,
-        'description' => false,
+        'description' => true,
         'code' => false,
         'external_code' => false,
         'archived' => false,
         'address' => false,
         'address_full' => false,
         'path_name' => false,
-        'parent' => false,
+        'parent' => true,
         'attributes' => false,
         'zones' => false,
         'slots' => false
@@ -537,7 +537,14 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOwner($owner)
     {
         if (is_null($owner)) {
-            throw new \InvalidArgumentException('non-nullable owner cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'owner');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('owner', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['owner'] = $owner;
 
@@ -676,9 +683,16 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDescription($description)
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($description) > 4096)) {
+        if (!is_null($description) && (mb_strlen($description) > 4096)) {
             throw new \InvalidArgumentException('invalid length for $description when calling Store., must be smaller than or equal to 4096.');
         }
 
@@ -881,7 +895,14 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setParent($parent)
     {
         if (is_null($parent)) {
-            throw new \InvalidArgumentException('non-nullable parent cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parent'] = $parent;
 

@@ -38,6 +38,7 @@ use OpenAPI\Client\Model\FileList;
 use OpenAPI\Client\Model\Group;
 use OpenAPI\Client\Model\ImageList;
 use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\MinimumStockAllWarehouseSum;
 use OpenAPI\Client\Model\MinPrice;
 use OpenAPI\Client\Model\Owner;
 use OpenAPI\Client\Model\Pack;
@@ -396,9 +397,9 @@ class ProductTest extends TestCase
     public function testPropertyMinimumStock()
     {
         $product = new Product();
-        $stock = new ProductMinimumStock();
+        $stock = new MinimumStockAllWarehouseSum();
         $product->setMinimumStock($stock);
-        Asserter::assertJsonHasFields($product, ['minimumStock' => []]);
+        Asserter::assertJsonHasFields($product, ['minimumStock' => ['type' => 'ALL_WAREHOUSE_SUM']]);
     }
 
     public function testPropertyMinPrice()

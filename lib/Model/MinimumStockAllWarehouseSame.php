@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductMinimumStockStoreBalances
+ * MinimumStockAllWarehouseSame
  *
  * PHP version 7.4
  *
@@ -27,21 +27,18 @@
  */
 
 namespace OpenAPI\Client\Model;
-
-use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ProductMinimumStockStoreBalances Class Doc Comment
+ * MinimumStockAllWarehouseSame Class Doc Comment
  *
  * @category Class
- * @description Неснижаемые остатки по складам
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \JsonSerializable
+class MinimumStockAllWarehouseSame extends MinimumStockAbstract
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +47,7 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Product_minimumStock_storeBalances';
+    protected static $openAPIModelName = 'MinimumStockAllWarehouseSame';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +55,8 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\MetaList',
-        'rows' => '\OpenAPI\Client\Model\StoreBalance[]'
+        'type' => 'string',
+        'quantity' => 'float'
     ];
 
     /**
@@ -70,8 +67,8 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'meta' => null,
-        'rows' => null
+        'type' => null,
+        'quantity' => 'float'
     ];
 
     /**
@@ -80,8 +77,8 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'meta' => false,
-        'rows' => false
+        'type' => false,
+        'quantity' => false
     ];
 
     /**
@@ -98,7 +95,7 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes;
+        return self::$openAPITypes + parent::openAPITypes();
     }
 
     /**
@@ -108,7 +105,7 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats;
+        return self::$openAPIFormats + parent::openAPIFormats();
     }
 
     /**
@@ -118,7 +115,7 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
      */
     protected static function openAPINullables(): array
     {
-        return self::$openAPINullables;
+        return self::$openAPINullables + parent::openAPINullables();
     }
 
     /**
@@ -170,8 +167,8 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'meta' => 'meta',
-        'rows' => 'rows'
+        'type' => 'type',
+        'quantity' => 'quantity'
     ];
 
     /**
@@ -180,8 +177,8 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'meta' => 'setMeta',
-        'rows' => 'setRows'
+        'type' => 'setType',
+        'quantity' => 'setQuantity'
     ];
 
     /**
@@ -190,8 +187,8 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'meta' => 'getMeta',
-        'rows' => 'getRows'
+        'type' => 'getType',
+        'quantity' => 'getQuantity'
     ];
 
     /**
@@ -202,7 +199,7 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
      */
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /**
@@ -212,7 +209,7 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
      */
     public static function setters()
     {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /**
@@ -222,7 +219,7 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
      */
     public static function getters()
     {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     /**
@@ -235,13 +232,20 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
+    public const TYPE_ALL_WAREHOUSE_SAME = 'ALL_WAREHOUSE_SAME';
 
     /**
-     * Associative array for storing property values
+     * Gets allowable values of the enum
      *
-     * @var mixed[]
+     * @return string[]
      */
-    protected $container = [];
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_ALL_WAREHOUSE_SAME,
+        ];
+    }
+
 
     /**
      * Constructor
@@ -251,8 +255,10 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('meta', $data ?? [], null);
-        $this->setIfExists('rows', $data ?? [], null);
+        parent::__construct($data);
+
+        $this->setIfExists('type', $data ?? [], 'ALL_WAREHOUSE_SAME');
+        $this->setIfExists('quantity', $data ?? [], null);
     }
 
     /**
@@ -280,7 +286,20 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
+
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['quantity']) && ($this->container['quantity'] < 0)) {
+            $invalidProperties[] = "invalid value for 'quantity', must be bigger than or equal to 0.";
+        }
 
         return $invalidProperties;
     }
@@ -298,55 +317,70 @@ class ProductMinimumStockStoreBalances implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets meta
+     * Gets type
      *
-     * @return \OpenAPI\Client\Model\MetaList|null
+     * @return string|null
      */
-    public function getMeta()
+    public function getType()
     {
-        return $this->container['meta'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets meta
+     * Sets type
      *
-     * @param \OpenAPI\Client\Model\MetaList|null $meta meta
+     * @param string|null $type type
      *
      * @return self
      */
-    public function setMeta($meta)
+    public function setType($type)
     {
-        if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['meta'] = $meta;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets rows
+     * Gets quantity
      *
-     * @return \OpenAPI\Client\Model\StoreBalance[]|null
+     * @return float|null
      */
-    public function getRows()
+    public function getQuantity()
     {
-        return $this->container['rows'];
+        return $this->container['quantity'];
     }
 
     /**
-     * Sets rows
+     * Sets quantity
      *
-     * @param \OpenAPI\Client\Model\StoreBalance[]|null $rows rows
+     * @param float|null $quantity Количество неснижаемого остатка
      *
      * @return self
      */
-    public function setRows($rows)
+    public function setQuantity($quantity)
     {
-        if (is_null($rows)) {
-            throw new \InvalidArgumentException('non-nullable rows cannot be null');
+        if (is_null($quantity)) {
+            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
-        $this->container['rows'] = $rows;
+
+        if (($quantity < 0)) {
+            throw new \InvalidArgumentException('invalid value for $quantity when calling MinimumStockAllWarehouseSame., must be bigger than or equal to 0.');
+        }
+
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }

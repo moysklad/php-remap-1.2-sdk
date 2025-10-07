@@ -124,7 +124,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_code' => false,
         'archived' => false,
         'path_name' => false,
-        'description' => false,
+        'description' => true,
         'vat' => false,
         'vat_enabled' => false,
         'effective_vat' => false,
@@ -132,7 +132,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'use_parent_vat' => false,
         'shared' => false,
         'group' => false,
-        'owner' => false,
+        'owner' => true,
         'updated' => false,
         'product_folder' => false,
         'tax_system' => false
@@ -449,6 +449,14 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
         }
 
+        if (!is_null($this->container['vat']) && ($this->container['vat'] > 99)) {
+            $invalidProperties[] = "invalid value for 'vat', must be smaller than or equal to 99.";
+        }
+
+        if (!is_null($this->container['vat']) && ($this->container['vat'] < 0)) {
+            $invalidProperties[] = "invalid value for 'vat', must be bigger than or equal to 0.";
+        }
+
         $allowedValues = $this->getTaxSystemAllowableValues();
         if (!is_null($this->container['tax_system']) && !in_array($this->container['tax_system'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -721,9 +729,16 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDescription($description)
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($description) > 4096)) {
+        if (!is_null($description) && (mb_strlen($description) > 4096)) {
             throw new \InvalidArgumentException('invalid length for $description when calling ProductFolder., must be smaller than or equal to 4096.');
         }
 
@@ -754,6 +769,14 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($vat)) {
             throw new \InvalidArgumentException('non-nullable vat cannot be null');
         }
+
+        if (($vat > 99)) {
+            throw new \InvalidArgumentException('invalid value for $vat when calling ProductFolder., must be smaller than or equal to 99.');
+        }
+        if (($vat < 0)) {
+            throw new \InvalidArgumentException('invalid value for $vat when calling ProductFolder., must be bigger than or equal to 0.');
+        }
+
         $this->container['vat'] = $vat;
 
         return $this;
@@ -941,7 +964,14 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOwner($owner)
     {
         if (is_null($owner)) {
-            throw new \InvalidArgumentException('non-nullable owner cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'owner');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('owner', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['owner'] = $owner;
 

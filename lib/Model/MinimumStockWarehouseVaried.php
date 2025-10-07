@@ -1,6 +1,6 @@
 <?php
 /**
- * SalePrice
+ * MinimumStockWarehouseVaried
  *
  * PHP version 7.4
  *
@@ -27,21 +27,18 @@
  */
 
 namespace OpenAPI\Client\Model;
-
-use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * SalePrice Class Doc Comment
+ * MinimumStockWarehouseVaried Class Doc Comment
  *
  * @category Class
- * @description Цена продажи
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
+class MinimumStockWarehouseVaried extends MinimumStockAbstract
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +47,7 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SalePrice';
+    protected static $openAPIModelName = 'MinimumStockWarehouseVaried';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +55,8 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'value' => 'float',
-        'currency' => '\OpenAPI\Client\Model\Currency',
-        'price_type' => '\OpenAPI\Client\Model\PriceType'
+        'type' => 'string',
+        'store_balances' => '\OpenAPI\Client\Model\StoreBalanceList'
     ];
 
     /**
@@ -71,9 +67,8 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'value' => 'float',
-        'currency' => null,
-        'price_type' => null
+        'type' => null,
+        'store_balances' => null
     ];
 
     /**
@@ -82,9 +77,8 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'value' => false,
-        'currency' => false,
-        'price_type' => false
+        'type' => false,
+        'store_balances' => false
     ];
 
     /**
@@ -101,7 +95,7 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes;
+        return self::$openAPITypes + parent::openAPITypes();
     }
 
     /**
@@ -111,7 +105,7 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats;
+        return self::$openAPIFormats + parent::openAPIFormats();
     }
 
     /**
@@ -121,7 +115,7 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static function openAPINullables(): array
     {
-        return self::$openAPINullables;
+        return self::$openAPINullables + parent::openAPINullables();
     }
 
     /**
@@ -173,9 +167,8 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'value' => 'value',
-        'currency' => 'currency',
-        'price_type' => 'priceType'
+        'type' => 'type',
+        'store_balances' => 'storeBalances'
     ];
 
     /**
@@ -184,9 +177,8 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'value' => 'setValue',
-        'currency' => 'setCurrency',
-        'price_type' => 'setPriceType'
+        'type' => 'setType',
+        'store_balances' => 'setStoreBalances'
     ];
 
     /**
@@ -195,9 +187,8 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'value' => 'getValue',
-        'currency' => 'getCurrency',
-        'price_type' => 'getPriceType'
+        'type' => 'getType',
+        'store_balances' => 'getStoreBalances'
     ];
 
     /**
@@ -208,7 +199,7 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /**
@@ -218,7 +209,7 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function setters()
     {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /**
@@ -228,7 +219,7 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function getters()
     {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     /**
@@ -241,13 +232,20 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const TYPE_WAREHOUSE_VARIED = 'WAREHOUSE_VARIED';
 
     /**
-     * Associative array for storing property values
+     * Gets allowable values of the enum
      *
-     * @var mixed[]
+     * @return string[]
      */
-    protected $container = [];
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_WAREHOUSE_VARIED,
+        ];
+    }
+
 
     /**
      * Constructor
@@ -257,9 +255,10 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('value', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('price_type', $data ?? [], null);
+        parent::__construct($data);
+
+        $this->setIfExists('type', $data ?? [], 'WAREHOUSE_VARIED');
+        $this->setIfExists('store_balances', $data ?? [], null);
     }
 
     /**
@@ -287,15 +286,17 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
 
-        if (!is_null($this->container['value']) && ($this->container['value'] < 0)) {
-            $invalidProperties[] = "invalid value for 'value', must be bigger than or equal to 0.";
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
         }
 
-        if ($this->container['price_type'] === null) {
-            $invalidProperties[] = "'price_type' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -312,87 +313,65 @@ class SalePrice implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets value
+     * Gets type
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getValue()
+    public function getType()
     {
-        return $this->container['value'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets value
+     * Sets type
      *
-     * @param float|null $value Значение цены
+     * @param string|null $type type
      *
      * @return self
      */
-    public function setValue($value)
+    public function setType($type)
     {
-        if (is_null($value)) {
-            throw new \InvalidArgumentException('non-nullable value cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-
-        if (($value < 0)) {
-            throw new \InvalidArgumentException('invalid value for $value when calling SalePrice., must be bigger than or equal to 0.');
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-
-        $this->container['value'] = $value;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets store_balances
      *
-     * @return \OpenAPI\Client\Model\Currency|null
+     * @return \OpenAPI\Client\Model\StoreBalanceList|null
      */
-    public function getCurrency()
+    public function getStoreBalances()
     {
-        return $this->container['currency'];
+        return $this->container['store_balances'];
     }
 
     /**
-     * Sets currency
+     * Sets store_balances
      *
-     * @param \OpenAPI\Client\Model\Currency|null $currency currency
+     * @param \OpenAPI\Client\Model\StoreBalanceList|null $store_balances Неснижаемые остатки по складам
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setStoreBalances($store_balances)
     {
-        if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        if (is_null($store_balances)) {
+            throw new \InvalidArgumentException('non-nullable store_balances cannot be null');
         }
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets price_type
-     *
-     * @return \OpenAPI\Client\Model\PriceType
-     */
-    public function getPriceType()
-    {
-        return $this->container['price_type'];
-    }
-
-    /**
-     * Sets price_type
-     *
-     * @param \OpenAPI\Client\Model\PriceType $price_type price_type
-     *
-     * @return self
-     */
-    public function setPriceType($price_type)
-    {
-        if (is_null($price_type)) {
-            throw new \InvalidArgumentException('non-nullable price_type cannot be null');
-        }
-        $this->container['price_type'] = $price_type;
+        $this->container['store_balances'] = $store_balances;
 
         return $this;
     }

@@ -275,6 +275,10 @@ class EmployeeSalary implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['value']) && ($this->container['value'] < 0)) {
+            $invalidProperties[] = "invalid value for 'value', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -312,6 +316,11 @@ class EmployeeSalary implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($value)) {
             throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
+
+        if (($value < 0)) {
+            throw new \InvalidArgumentException('invalid value for $value when calling EmployeeSalary., must be bigger than or equal to 0.');
+        }
+
         $this->container['value'] = $value;
 
         return $this;

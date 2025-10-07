@@ -303,6 +303,10 @@ class StoreBalance implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['quantity']) && ($this->container['quantity'] < 0)) {
+            $invalidProperties[] = "invalid value for 'quantity', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -448,6 +452,11 @@ class StoreBalance implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($quantity)) {
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
+
+        if (($quantity < 0)) {
+            throw new \InvalidArgumentException('invalid value for $quantity when calling StoreBalance., must be bigger than or equal to 0.');
+        }
+
         $this->container['quantity'] = $quantity;
 
         return $this;
