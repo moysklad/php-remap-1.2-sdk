@@ -44,6 +44,77 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
+    public const TRACKING_TYPE_BEER_ALCOHOL = 'BEER_ALCOHOL';
+    public const TRACKING_TYPE_BICYCLE = 'BICYCLE';
+    public const TRACKING_TYPE_ELECTRONICS = 'ELECTRONICS';
+    public const TRACKING_TYPE_FOOD_SUPPLEMENT = 'FOOD_SUPPLEMENT';
+    public const TRACKING_TYPE_LP_CLOTHES = 'LP_CLOTHES';
+    public const TRACKING_TYPE_LP_LINENS = 'LP_LINENS';
+    public const TRACKING_TYPE_MEDICAL_DEVICES = 'MEDICAL_DEVICES';
+    public const TRACKING_TYPE_MILK = 'MILK';
+    public const TRACKING_TYPE_NABEER = 'NABEER';
+    public const TRACKING_TYPE_NCP = 'NCP';
+    public const TRACKING_TYPE_NOT_TRACKED = 'NOT_TRACKED';
+    public const TRACKING_TYPE_OTP = 'OTP';
+    public const TRACKING_TYPE_PERFUMERY = 'PERFUMERY';
+    public const TRACKING_TYPE_PET_FOOD = 'PET_FOOD';
+    public const TRACKING_TYPE_SANITIZER = 'SANITIZER';
+    public const TRACKING_TYPE_SEAFOOD = 'SEAFOOD';
+    public const TRACKING_TYPE_SHOES = 'SHOES';
+    public const TRACKING_TYPE_SOFT_DRINKS = 'SOFT_DRINKS';
+    public const TRACKING_TYPE_TIRES = 'TIRES';
+    public const TRACKING_TYPE_TOBACCO = 'TOBACCO';
+    public const TRACKING_TYPE_VEGETABLE_OIL = 'VEGETABLE_OIL';
+    public const TRACKING_TYPE_VETPHARMA = 'VETPHARMA';
+    public const TRACKING_TYPE_WATER = 'WATER';
+
+    public const PPE_TYPE__2400001225408 = '2400001225408';
+    public const PPE_TYPE__2400001225606 = '2400001225606';
+    public const PPE_TYPE__2400001226108 = '2400001226108';
+    public const PPE_TYPE__2400001226306 = '2400001226306';
+    public const PPE_TYPE__2400001226405 = '2400001226405';
+    public const PPE_TYPE__2400001323807 = '2400001323807';
+    public const PPE_TYPE__2400001368105 = '2400001368105';
+    public const PPE_TYPE__2400001393107 = '2400001393107';
+    public const PPE_TYPE__2400001393503 = '2400001393503';
+    public const PPE_TYPE__2400001393602 = '2400001393602';
+    public const PPE_TYPE__2400001565306 = '2400001565306';
+    public const PPE_TYPE__2400001807703 = '2400001807703';
+    public const PPE_TYPE__2400001818303 = '2400001818303';
+    public const PPE_TYPE__2400001857005 = '2400001857005';
+    public const PPE_TYPE__2400001857203 = '2400001857203';
+    public const PPE_TYPE__2400001858309 = '2400001858309';
+    public const PPE_TYPE__2400001858507 = '2400001858507';
+    public const PPE_TYPE__2400002015909 = '2400002015909';
+    public const PPE_TYPE__2400002016005 = '2400002016005';
+    public const PPE_TYPE__2400002016104 = '2400002016104';
+    public const PPE_TYPE__2400002052805 = '2400002052805';
+    public const PPE_TYPE__2400002052904 = '2400002052904';
+    public const PPE_TYPE__2400002186203 = '2400002186203';
+    public const PPE_TYPE__2400002886707 = '2400002886707';
+    public const PPE_TYPE__2400002886806 = '2400002886806';
+    public const PPE_TYPE__2400002984502 = '2400002984502';
+    public const PPE_TYPE__2400003117107 = '2400003117107';
+    public const PPE_TYPE__2400003117206 = '2400003117206';
+    public const PPE_TYPE__2400003161209 = '2400003161209';
+    public const PPE_TYPE__2400003207907 = '2400003207907';
+    public const PPE_TYPE__2400003215308 = '2400003215308';
+    public const PPE_TYPE__2400003227806 = '2400003227806';
+    public const PPE_TYPE__2400003237409 = '2400003237409';
+    public const PPE_TYPE__2400003263408 = '2400003263408';
+    public const PPE_TYPE__2400003297700 = '2400003297700';
+    public const PPE_TYPE__2400003356704 = '2400003356704';
+    public const PPE_TYPE__2400003356803 = '2400003356803';
+    public const PPE_TYPE__2400003356902 = '2400003356902';
+    public const PPE_TYPE__2400003433108 = '2400003433108';
+    public const PPE_TYPE__2400003492303 = '2400003492303';
+    public const PPE_TYPE__2400003495700 = '2400003495700';
+    public const PPE_TYPE__2400003495809 = '2400003495809';
+    public const PPE_TYPE__2400003495908 = '2400003495908';
+    public const PPE_TYPE__2400003496004 = '2400003496004';
+    public const PPE_TYPE__2400003496103 = '2400003496103';
+    public const PPE_TYPE__2400003675805 = '2400003675805';
+
     /**
       * The original name of the model.
       *
@@ -99,7 +170,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'tax_system' => 'string',
         'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]',
         'minimum_balance' => 'float',
-        'minimum_stock' => '\OpenAPI\Client\Model\ProductMinimumStock',
+        'minimum_stock' => '\OpenAPI\Client\Model\MinimumStockAbstract',
         'min_price' => '\OpenAPI\Client\Model\MinPrice',
         'weighed' => 'bool',
         'on_tap' => 'bool',
@@ -186,7 +257,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_code' => false,
         'path_name' => false,
         'article' => false,
-        'description' => false,
+        'description' => true,
         'vat' => false,
         'vat_enabled' => false,
         'use_parent_vat' => false,
@@ -197,18 +268,18 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_serial_trackable' => false,
         'shared' => false,
         'group' => false,
-        'owner' => false,
+        'owner' => true,
         'updated' => false,
         'weight' => false,
         'volume' => false,
         'buy_price' => false,
         'sale_prices' => false,
-        'supplier' => false,
-        'country' => false,
-        'uom' => false,
-        'product_folder' => false,
-        'images' => false,
-        'files' => false,
+        'supplier' => true,
+        'country' => true,
+        'uom' => true,
+        'product_folder' => true,
+        'images' => true,
+        'files' => true,
         'barcodes' => false,
         'packs' => false,
         'tracking_type' => false,
@@ -217,7 +288,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'tax_system' => false,
         'attributes' => false,
         'minimum_balance' => false,
-        'minimum_stock' => false,
+        'minimum_stock' => true,
         'min_price' => false,
         'weighed' => false,
         'on_tap' => false,
@@ -522,29 +593,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const TRACKING_TYPE_BEER_ALCOHOL = 'BEER_ALCOHOL';
-    public const TRACKING_TYPE_BICYCLE = 'BICYCLE';
-    public const TRACKING_TYPE_ELECTRONICS = 'ELECTRONICS';
-    public const TRACKING_TYPE_FOOD_SUPPLEMENT = 'FOOD_SUPPLEMENT';
-    public const TRACKING_TYPE_LP_CLOTHES = 'LP_CLOTHES';
-    public const TRACKING_TYPE_LP_LINENS = 'LP_LINENS';
-    public const TRACKING_TYPE_MEDICAL_DEVICES = 'MEDICAL_DEVICES';
-    public const TRACKING_TYPE_MILK = 'MILK';
-    public const TRACKING_TYPE_NABEER = 'NABEER';
-    public const TRACKING_TYPE_NCP = 'NCP';
-    public const TRACKING_TYPE_NOT_TRACKED = 'NOT_TRACKED';
-    public const TRACKING_TYPE_OTP = 'OTP';
-    public const TRACKING_TYPE_PERFUMERY = 'PERFUMERY';
-    public const TRACKING_TYPE_PET_FOOD = 'PET_FOOD';
-    public const TRACKING_TYPE_SANITIZER = 'SANITIZER';
-    public const TRACKING_TYPE_SEAFOOD = 'SEAFOOD';
-    public const TRACKING_TYPE_SHOES = 'SHOES';
-    public const TRACKING_TYPE_SOFT_DRINKS = 'SOFT_DRINKS';
-    public const TRACKING_TYPE_TIRES = 'TIRES';
-    public const TRACKING_TYPE_TOBACCO = 'TOBACCO';
-    public const TRACKING_TYPE_VEGETABLE_OIL = 'VEGETABLE_OIL';
-    public const TRACKING_TYPE_VETPHARMA = 'VETPHARMA';
-    public const TRACKING_TYPE_WATER = 'WATER';
     public const PAYMENT_ITEM_TYPE_GOOD = 'GOOD';
     public const PAYMENT_ITEM_TYPE_EXCISABLE_GOOD = 'EXCISABLE_GOOD';
     public const PAYMENT_ITEM_TYPE_COMPOUND_PAYMENT_ITEM = 'COMPOUND_PAYMENT_ITEM';
@@ -556,86 +604,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public const TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM = 'PRESUMPTIVE_TAX_SYSTEM';
     public const TAX_SYSTEM_PATENT_BASED = 'PATENT_BASED';
     public const TAX_SYSTEM_TAX_SYSTEM_SAME_AS_GROUP = 'TAX_SYSTEM_SAME_AS_GROUP';
-    public const PPE_TYPE__2400001225408 = '2400001225408';
-    public const PPE_TYPE__2400001225606 = '2400001225606';
-    public const PPE_TYPE__2400001226108 = '2400001226108';
-    public const PPE_TYPE__2400001226306 = '2400001226306';
-    public const PPE_TYPE__2400001226405 = '2400001226405';
-    public const PPE_TYPE__2400001323807 = '2400001323807';
-    public const PPE_TYPE__2400001368105 = '2400001368105';
-    public const PPE_TYPE__2400001393107 = '2400001393107';
-    public const PPE_TYPE__2400001393503 = '2400001393503';
-    public const PPE_TYPE__2400001393602 = '2400001393602';
-    public const PPE_TYPE__2400001565306 = '2400001565306';
-    public const PPE_TYPE__2400001807703 = '2400001807703';
-    public const PPE_TYPE__2400001818303 = '2400001818303';
-    public const PPE_TYPE__2400001857005 = '2400001857005';
-    public const PPE_TYPE__2400001857203 = '2400001857203';
-    public const PPE_TYPE__2400001858309 = '2400001858309';
-    public const PPE_TYPE__2400001858507 = '2400001858507';
-    public const PPE_TYPE__2400002015909 = '2400002015909';
-    public const PPE_TYPE__2400002016005 = '2400002016005';
-    public const PPE_TYPE__2400002016104 = '2400002016104';
-    public const PPE_TYPE__2400002052805 = '2400002052805';
-    public const PPE_TYPE__2400002052904 = '2400002052904';
-    public const PPE_TYPE__2400002186203 = '2400002186203';
-    public const PPE_TYPE__2400002886707 = '2400002886707';
-    public const PPE_TYPE__2400002886806 = '2400002886806';
-    public const PPE_TYPE__2400002984502 = '2400002984502';
-    public const PPE_TYPE__2400003117107 = '2400003117107';
-    public const PPE_TYPE__2400003117206 = '2400003117206';
-    public const PPE_TYPE__2400003161209 = '2400003161209';
-    public const PPE_TYPE__2400003207907 = '2400003207907';
-    public const PPE_TYPE__2400003215308 = '2400003215308';
-    public const PPE_TYPE__2400003227806 = '2400003227806';
-    public const PPE_TYPE__2400003237409 = '2400003237409';
-    public const PPE_TYPE__2400003263408 = '2400003263408';
-    public const PPE_TYPE__2400003297700 = '2400003297700';
-    public const PPE_TYPE__2400003356704 = '2400003356704';
-    public const PPE_TYPE__2400003356803 = '2400003356803';
-    public const PPE_TYPE__2400003356902 = '2400003356902';
-    public const PPE_TYPE__2400003433108 = '2400003433108';
-    public const PPE_TYPE__2400003492303 = '2400003492303';
-    public const PPE_TYPE__2400003495700 = '2400003495700';
-    public const PPE_TYPE__2400003495809 = '2400003495809';
-    public const PPE_TYPE__2400003495908 = '2400003495908';
-    public const PPE_TYPE__2400003496004 = '2400003496004';
-    public const PPE_TYPE__2400003496103 = '2400003496103';
-    public const PPE_TYPE__2400003675805 = '2400003675805';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTrackingTypeAllowableValues()
-    {
-        return [
-            self::TRACKING_TYPE_BEER_ALCOHOL,
-            self::TRACKING_TYPE_BICYCLE,
-            self::TRACKING_TYPE_ELECTRONICS,
-            self::TRACKING_TYPE_FOOD_SUPPLEMENT,
-            self::TRACKING_TYPE_LP_CLOTHES,
-            self::TRACKING_TYPE_LP_LINENS,
-            self::TRACKING_TYPE_MEDICAL_DEVICES,
-            self::TRACKING_TYPE_MILK,
-            self::TRACKING_TYPE_NABEER,
-            self::TRACKING_TYPE_NCP,
-            self::TRACKING_TYPE_NOT_TRACKED,
-            self::TRACKING_TYPE_OTP,
-            self::TRACKING_TYPE_PERFUMERY,
-            self::TRACKING_TYPE_PET_FOOD,
-            self::TRACKING_TYPE_SANITIZER,
-            self::TRACKING_TYPE_SEAFOOD,
-            self::TRACKING_TYPE_SHOES,
-            self::TRACKING_TYPE_SOFT_DRINKS,
-            self::TRACKING_TYPE_TIRES,
-            self::TRACKING_TYPE_TOBACCO,
-            self::TRACKING_TYPE_VEGETABLE_OIL,
-            self::TRACKING_TYPE_VETPHARMA,
-            self::TRACKING_TYPE_WATER,
-        ];
-    }
 
     /**
      * Gets allowable values of the enum
@@ -667,63 +635,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             self::TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM,
             self::TAX_SYSTEM_PATENT_BASED,
             self::TAX_SYSTEM_TAX_SYSTEM_SAME_AS_GROUP,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPpeTypeAllowableValues()
-    {
-        return [
-            self::PPE_TYPE__2400001225408,
-            self::PPE_TYPE__2400001225606,
-            self::PPE_TYPE__2400001226108,
-            self::PPE_TYPE__2400001226306,
-            self::PPE_TYPE__2400001226405,
-            self::PPE_TYPE__2400001323807,
-            self::PPE_TYPE__2400001368105,
-            self::PPE_TYPE__2400001393107,
-            self::PPE_TYPE__2400001393503,
-            self::PPE_TYPE__2400001393602,
-            self::PPE_TYPE__2400001565306,
-            self::PPE_TYPE__2400001807703,
-            self::PPE_TYPE__2400001818303,
-            self::PPE_TYPE__2400001857005,
-            self::PPE_TYPE__2400001857203,
-            self::PPE_TYPE__2400001858309,
-            self::PPE_TYPE__2400001858507,
-            self::PPE_TYPE__2400002015909,
-            self::PPE_TYPE__2400002016005,
-            self::PPE_TYPE__2400002016104,
-            self::PPE_TYPE__2400002052805,
-            self::PPE_TYPE__2400002052904,
-            self::PPE_TYPE__2400002186203,
-            self::PPE_TYPE__2400002886707,
-            self::PPE_TYPE__2400002886806,
-            self::PPE_TYPE__2400002984502,
-            self::PPE_TYPE__2400003117107,
-            self::PPE_TYPE__2400003117206,
-            self::PPE_TYPE__2400003161209,
-            self::PPE_TYPE__2400003207907,
-            self::PPE_TYPE__2400003215308,
-            self::PPE_TYPE__2400003227806,
-            self::PPE_TYPE__2400003237409,
-            self::PPE_TYPE__2400003263408,
-            self::PPE_TYPE__2400003297700,
-            self::PPE_TYPE__2400003356704,
-            self::PPE_TYPE__2400003356803,
-            self::PPE_TYPE__2400003356902,
-            self::PPE_TYPE__2400003433108,
-            self::PPE_TYPE__2400003492303,
-            self::PPE_TYPE__2400003495700,
-            self::PPE_TYPE__2400003495809,
-            self::PPE_TYPE__2400003495908,
-            self::PPE_TYPE__2400003496004,
-            self::PPE_TYPE__2400003496103,
-            self::PPE_TYPE__2400003675805,
         ];
     }
 
@@ -841,13 +752,20 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
         }
 
-        $allowedValues = $this->getTrackingTypeAllowableValues();
-        if (!is_null($this->container['tracking_type']) && !in_array($this->container['tracking_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'tracking_type', must be one of '%s'",
-                $this->container['tracking_type'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['vat']) && ($this->container['vat'] > 99)) {
+            $invalidProperties[] = "invalid value for 'vat', must be smaller than or equal to 99.";
+        }
+
+        if (!is_null($this->container['vat']) && ($this->container['vat'] < 0)) {
+            $invalidProperties[] = "invalid value for 'vat', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['weight']) && ($this->container['weight'] < 0)) {
+            $invalidProperties[] = "invalid value for 'weight', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['volume']) && ($this->container['volume'] < 0)) {
+            $invalidProperties[] = "invalid value for 'volume', must be bigger than or equal to 0.";
         }
 
         if (!is_null($this->container['tnved']) && (mb_strlen($this->container['tnved']) > 255)) {
@@ -868,15 +786,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'tax_system', must be one of '%s'",
                 $this->container['tax_system'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getPpeTypeAllowableValues();
-        if (!is_null($this->container['ppe_type']) && !in_array($this->container['ppe_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'ppe_type', must be one of '%s'",
-                $this->container['ppe_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1229,9 +1138,16 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDescription($description)
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($description) > 4096)) {
+        if (!is_null($description) && (mb_strlen($description) > 4096)) {
             throw new \InvalidArgumentException('invalid length for $description when calling Product., must be smaller than or equal to 4096.');
         }
 
@@ -1262,6 +1178,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($vat)) {
             throw new \InvalidArgumentException('non-nullable vat cannot be null');
         }
+
+        if (($vat > 99)) {
+            throw new \InvalidArgumentException('invalid value for $vat when calling Product., must be smaller than or equal to 99.');
+        }
+        if (($vat < 0)) {
+            throw new \InvalidArgumentException('invalid value for $vat when calling Product., must be bigger than or equal to 0.');
+        }
+
         $this->container['vat'] = $vat;
 
         return $this;
@@ -1530,7 +1454,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOwner($owner)
     {
         if (is_null($owner)) {
-            throw new \InvalidArgumentException('non-nullable owner cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'owner');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('owner', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['owner'] = $owner;
 
@@ -1586,6 +1517,11 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($weight)) {
             throw new \InvalidArgumentException('non-nullable weight cannot be null');
         }
+
+        if (($weight < 0)) {
+            throw new \InvalidArgumentException('invalid value for $weight when calling Product., must be bigger than or equal to 0.');
+        }
+
         $this->container['weight'] = $weight;
 
         return $this;
@@ -1613,6 +1549,11 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($volume)) {
             throw new \InvalidArgumentException('non-nullable volume cannot be null');
         }
+
+        if (($volume < 0)) {
+            throw new \InvalidArgumentException('invalid value for $volume when calling Product., must be bigger than or equal to 0.');
+        }
+
         $this->container['volume'] = $volume;
 
         return $this;
@@ -1692,7 +1633,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSupplier($supplier)
     {
         if (is_null($supplier)) {
-            throw new \InvalidArgumentException('non-nullable supplier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'supplier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('supplier', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['supplier'] = $supplier;
 
@@ -1719,7 +1667,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCountry($country)
     {
         if (is_null($country)) {
-            throw new \InvalidArgumentException('non-nullable country cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'country');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('country', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['country'] = $country;
 
@@ -1746,7 +1701,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUom($uom)
     {
         if (is_null($uom)) {
-            throw new \InvalidArgumentException('non-nullable uom cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'uom');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uom', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['uom'] = $uom;
 
@@ -1773,7 +1735,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProductFolder($product_folder)
     {
         if (is_null($product_folder)) {
-            throw new \InvalidArgumentException('non-nullable product_folder cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_folder');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_folder', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product_folder'] = $product_folder;
 
@@ -1800,7 +1769,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setImages($images)
     {
         if (is_null($images)) {
-            throw new \InvalidArgumentException('non-nullable images cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'images');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('images', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['images'] = $images;
 
@@ -1827,7 +1803,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFiles($files)
     {
         if (is_null($files)) {
-            throw new \InvalidArgumentException('non-nullable files cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'files');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('files', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['files'] = $files;
 
@@ -1901,7 +1884,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tracking_type
      *
-     * @param string|null $tracking_type Тип маркируемой продукции
+     * @param string|null $tracking_type Тип маркируемой продукции. Допустимые значения перечислены в константах класса
      *
      * @return self
      */
@@ -1909,16 +1892,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($tracking_type)) {
             throw new \InvalidArgumentException('non-nullable tracking_type cannot be null');
-        }
-        $allowedValues = $this->getTrackingTypeAllowableValues();
-        if (!in_array($tracking_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'tracking_type', must be one of '%s'",
-                    $tracking_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['tracking_type'] = $tracking_type;
 
@@ -2089,7 +2062,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets minimum_stock
      *
-     * @return \OpenAPI\Client\Model\ProductMinimumStock|null
+     * @return \OpenAPI\Client\Model\MinimumStockAbstract|null
      */
     public function getMinimumStock()
     {
@@ -2099,14 +2072,21 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets minimum_stock
      *
-     * @param \OpenAPI\Client\Model\ProductMinimumStock|null $minimum_stock minimum_stock
+     * @param \OpenAPI\Client\Model\MinimumStockAbstract|null $minimum_stock minimum_stock
      *
      * @return self
      */
     public function setMinimumStock($minimum_stock)
     {
         if (is_null($minimum_stock)) {
-            throw new \InvalidArgumentException('non-nullable minimum_stock cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'minimum_stock');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('minimum_stock', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['minimum_stock'] = $minimum_stock;
 
@@ -2288,7 +2268,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ppe_type
      *
-     * @param string|null $ppe_type Код вида номенклатурной классификации медицинских средств индивидуальной защиты
+     * @param string|null $ppe_type Код вида номенклатурной классификации медицинских средств индивидуальной защиты. Допустимые значения перечислены в константах класса
      *
      * @return self
      */
@@ -2296,16 +2276,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($ppe_type)) {
             throw new \InvalidArgumentException('non-nullable ppe_type cannot be null');
-        }
-        $allowedValues = $this->getPpeTypeAllowableValues();
-        if (!in_array($ppe_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ppe_type', must be one of '%s'",
-                    $ppe_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['ppe_type'] = $ppe_type;
 

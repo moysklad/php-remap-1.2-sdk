@@ -196,7 +196,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'discount_card_number' => false,
         'shared' => false,
         'group' => false,
-        'owner' => false,
+        'owner' => true,
         'sales_amount' => false,
         'bonus_points' => false,
         'bonus_program' => false,
@@ -1681,7 +1681,14 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOwner($owner)
     {
         if (is_null($owner)) {
-            throw new \InvalidArgumentException('non-nullable owner cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'owner');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('owner', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['owner'] = $owner;
 

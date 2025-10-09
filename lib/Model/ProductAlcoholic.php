@@ -84,10 +84,10 @@ class ProductAlcoholic implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'excise' => false,
-        'type' => false,
-        'strength' => false,
-        'volume' => false
+        'excise' => true,
+        'type' => true,
+        'strength' => true,
+        'volume' => true
     ];
 
     /**
@@ -296,6 +296,18 @@ class ProductAlcoholic implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['type']) && ($this->container['type'] < 0)) {
+            $invalidProperties[] = "invalid value for 'type', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['strength']) && ($this->container['strength'] < 0)) {
+            $invalidProperties[] = "invalid value for 'strength', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['volume']) && ($this->container['volume'] < 0)) {
+            $invalidProperties[] = "invalid value for 'volume', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -331,7 +343,14 @@ class ProductAlcoholic implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExcise($excise)
     {
         if (is_null($excise)) {
-            throw new \InvalidArgumentException('non-nullable excise cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'excise');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('excise', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['excise'] = $excise;
 
@@ -358,8 +377,20 @@ class ProductAlcoholic implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setType($type)
     {
         if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
+
+        if (!is_null($type) && ($type < 0)) {
+            throw new \InvalidArgumentException('invalid value for $type when calling ProductAlcoholic., must be bigger than or equal to 0.');
+        }
+
         $this->container['type'] = $type;
 
         return $this;
@@ -385,8 +416,20 @@ class ProductAlcoholic implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStrength($strength)
     {
         if (is_null($strength)) {
-            throw new \InvalidArgumentException('non-nullable strength cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'strength');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('strength', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
+
+        if (!is_null($strength) && ($strength < 0)) {
+            throw new \InvalidArgumentException('invalid value for $strength when calling ProductAlcoholic., must be bigger than or equal to 0.');
+        }
+
         $this->container['strength'] = $strength;
 
         return $this;
@@ -412,8 +455,20 @@ class ProductAlcoholic implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVolume($volume)
     {
         if (is_null($volume)) {
-            throw new \InvalidArgumentException('non-nullable volume cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'volume');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('volume', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
+
+        if (!is_null($volume) && ($volume < 0)) {
+            throw new \InvalidArgumentException('invalid value for $volume when calling ProductAlcoholic., must be bigger than or equal to 0.');
+        }
+
         $this->container['volume'] = $volume;
 
         return $this;

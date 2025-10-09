@@ -37,6 +37,7 @@ use OpenAPI\Client\Model\BuyPrice;
 use OpenAPI\Client\Model\EntityProductPostRequest;
 use OpenAPI\Client\Model\FileList;
 use OpenAPI\Client\Model\ImageList;
+use OpenAPI\Client\Model\MinimumStockAllWarehouseSum;
 use OpenAPI\Client\Model\MinPrice;
 use OpenAPI\Client\Model\Product;
 use OpenAPI\Client\Model\ProductAlcoholic;
@@ -65,7 +66,7 @@ class ProductsApiTest extends TestCase
 //        TODO заменить ссылку на спейс
         $config = Configuration::getDefaultConfiguration()
             ->setHost('http://localhost/api/remap/1.2')
-            ->setUsername('admin@qwe3')
+            ->setUsername('admin@qwe2')
             ->setPassword('123123');
 
         ProductsApiTest::$api = new ProductsApi(null, $config);
@@ -158,7 +159,7 @@ class ProductsApiTest extends TestCase
         $productReq->setPartialDisposal(false);
         $productReq->setSyncId(StringUtil::randomUuid());
 
-        $minStock = new ProductMinimumStock();
+        $minStock = new MinimumStockAllWarehouseSum();
         $minStock->setType("ALL_WAREHOUSE_SUM");
         $minStock->setQuantity(10.0);
         $productReq->setMinimumStock($minStock);
@@ -303,7 +304,7 @@ class ProductsApiTest extends TestCase
         $product1 = ProductsApiTest::$api->entityProductPost($product1);
         try {
             $updateProduct = new Product();
-            $updateProduct->setVat(-10);
+            $updateProduct->setTrackingType('Undefined tracking type');
             ProductsApiTest::$api->entityProductIdPut($product1->getId(), $updateProduct);
             Assert::fail();
         } catch (ApiException $e) {

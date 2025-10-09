@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductMinimumStock
+ * StoreBalanceList
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ProductMinimumStock Class Doc Comment
+ * StoreBalanceList Class Doc Comment
  *
  * @category Class
- * @description Неснижаемый остаток
+ * @description Неснижаемые остатки по складам
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductMinimumStock implements ModelInterface, ArrayAccess, \JsonSerializable
+class StoreBalanceList implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ProductMinimumStock implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Product_minimumStock';
+    protected static $openAPIModelName = 'StoreBalanceList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class ProductMinimumStock implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'quantity' => 'float',
-        'store_balances' => '\OpenAPI\Client\Model\ProductMinimumStockStoreBalances'
+        'meta' => '\OpenAPI\Client\Model\MetaList',
+        'rows' => '\OpenAPI\Client\Model\StoreBalance[]'
     ];
 
     /**
@@ -71,9 +70,8 @@ class ProductMinimumStock implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'quantity' => 'float',
-        'store_balances' => null
+        'meta' => null,
+        'rows' => null
     ];
 
     /**
@@ -82,9 +80,8 @@ class ProductMinimumStock implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-        'quantity' => false,
-        'store_balances' => false
+        'meta' => false,
+        'rows' => false
     ];
 
     /**
@@ -173,9 +170,8 @@ class ProductMinimumStock implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'quantity' => 'quantity',
-        'store_balances' => 'storeBalances'
+        'meta' => 'meta',
+        'rows' => 'rows'
     ];
 
     /**
@@ -184,9 +180,8 @@ class ProductMinimumStock implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'quantity' => 'setQuantity',
-        'store_balances' => 'setStoreBalances'
+        'meta' => 'setMeta',
+        'rows' => 'setRows'
     ];
 
     /**
@@ -195,9 +190,8 @@ class ProductMinimumStock implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'quantity' => 'getQuantity',
-        'store_balances' => 'getStoreBalances'
+        'meta' => 'getMeta',
+        'rows' => 'getRows'
     ];
 
     /**
@@ -241,23 +235,6 @@ class ProductMinimumStock implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const TYPE_ALL_WAREHOUSE_SUM = 'ALL_WAREHOUSE_SUM';
-    public const TYPE_ALL_WAREHOUSE_SAME = 'ALL_WAREHOUSE_SAME';
-    public const TYPE_WAREHOUSE_VARIED = 'WAREHOUSE_VARIED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_ALL_WAREHOUSE_SUM,
-            self::TYPE_ALL_WAREHOUSE_SAME,
-            self::TYPE_WAREHOUSE_VARIED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -274,9 +251,8 @@ class ProductMinimumStock implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('quantity', $data ?? [], null);
-        $this->setIfExists('store_balances', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('rows', $data ?? [], null);
     }
 
     /**
@@ -306,15 +282,12 @@ class ProductMinimumStock implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['meta'] === null) {
+            $invalidProperties[] = "'meta' can't be null";
         }
-
+        if ($this->container['rows'] === null) {
+            $invalidProperties[] = "'rows' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -331,92 +304,55 @@ class ProductMinimumStock implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets type
+     * Gets meta
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\MetaList
      */
-    public function getType()
+    public function getMeta()
     {
-        return $this->container['type'];
+        return $this->container['meta'];
     }
 
     /**
-     * Sets type
+     * Sets meta
      *
-     * @param string|null $type Тип неснижаемого остатка
+     * @param \OpenAPI\Client\Model\MetaList $meta meta
      *
      * @return self
      */
-    public function setType($type)
+    public function setMeta($meta)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['meta'] = $meta;
 
         return $this;
     }
 
     /**
-     * Gets quantity
+     * Gets rows
      *
-     * @return float|null
+     * @return \OpenAPI\Client\Model\StoreBalance[]
      */
-    public function getQuantity()
+    public function getRows()
     {
-        return $this->container['quantity'];
+        return $this->container['rows'];
     }
 
     /**
-     * Sets quantity
+     * Sets rows
      *
-     * @param float|null $quantity Количество неснижаемого остатка
+     * @param \OpenAPI\Client\Model\StoreBalance[] $rows rows
      *
      * @return self
      */
-    public function setQuantity($quantity)
+    public function setRows($rows)
     {
-        if (is_null($quantity)) {
-            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+        if (is_null($rows)) {
+            throw new \InvalidArgumentException('non-nullable rows cannot be null');
         }
-        $this->container['quantity'] = $quantity;
-
-        return $this;
-    }
-
-    /**
-     * Gets store_balances
-     *
-     * @return \OpenAPI\Client\Model\ProductMinimumStockStoreBalances|null
-     */
-    public function getStoreBalances()
-    {
-        return $this->container['store_balances'];
-    }
-
-    /**
-     * Sets store_balances
-     *
-     * @param \OpenAPI\Client\Model\ProductMinimumStockStoreBalances|null $store_balances store_balances
-     *
-     * @return self
-     */
-    public function setStoreBalances($store_balances)
-    {
-        if (is_null($store_balances)) {
-            throw new \InvalidArgumentException('non-nullable store_balances cannot be null');
-        }
-        $this->container['store_balances'] = $store_balances;
+        $this->container['rows'] = $rows;
 
         return $this;
     }

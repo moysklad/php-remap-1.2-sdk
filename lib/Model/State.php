@@ -334,6 +334,10 @@ class State implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        }
+
         $allowedValues = $this->getStateTypeAllowableValues();
         if (!is_null($this->container['state_type']) && !in_array($this->container['state_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -434,6 +438,10 @@ class State implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling State., must be smaller than or equal to 255.');
+        }
+
         $this->container['name'] = $name;
 
         return $this;

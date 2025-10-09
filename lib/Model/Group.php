@@ -307,6 +307,10 @@ class Group implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
         }
 
+        if (!is_null($this->container['index']) && ($this->container['index'] < 0)) {
+            $invalidProperties[] = "invalid value for 'index', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -456,6 +460,11 @@ class Group implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($index)) {
             throw new \InvalidArgumentException('non-nullable index cannot be null');
         }
+
+        if (($index < 0)) {
+            throw new \InvalidArgumentException('invalid value for $index when calling Group., must be bigger than or equal to 0.');
+        }
+
         $this->container['index'] = $index;
 
         return $this;
