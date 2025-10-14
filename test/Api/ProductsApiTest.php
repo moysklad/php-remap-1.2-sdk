@@ -34,9 +34,11 @@ use OpenAPI\Client\Model\Attribute;
 use OpenAPI\Client\Model\AttributeValue;
 use OpenAPI\Client\Model\Barcode;
 use OpenAPI\Client\Model\BuyPrice;
+use OpenAPI\Client\Model\DeleteResponseInner;
 use OpenAPI\Client\Model\EntityProductPostRequest;
 use OpenAPI\Client\Model\FileList;
 use OpenAPI\Client\Model\ImageList;
+use OpenAPI\Client\Model\MetaArrayInner;
 use OpenAPI\Client\Model\MinimumStockAllWarehouseSum;
 use OpenAPI\Client\Model\MinPrice;
 use OpenAPI\Client\Model\Product;
@@ -347,6 +349,174 @@ class ProductsApiTest extends TestCase
         } catch (ApiException $e) {
             Assert::assertEquals(404, $e->getCode());
             Assert::assertNotNull($e->getResponseBody());
+        }
+    }
+
+    /**
+     * Тест массового создания продуктов
+     */
+    public function testBulkCreateProducts(): void
+    {
+        $prefix = StringUtil::randomUuid();
+        $products = [];
+
+        for ($i = 1; $i <= 3; $i++) {
+            $product = new EntityProductPostRequest();
+            $product->setName("${prefix} Bulk Product ${i}");
+            $product->setCode("BULK-${i}-${prefix}");
+            $product->setDescription("Описание массового продукта ${i}");
+            $product->setVat(20);
+            $product->setVatEnabled(true);
+            $product->setPaymentItemType(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD);
+            $product->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+            $products[] = $product;
+        }
+
+        $response = ProductsApiTest::$api->entityProductPost($products);
+
+        Assert::assertIsArray($response);
+        Assert::assertCount(3, $response);
+
+        foreach ($response as $index => $createdProduct) {
+            Assert::assertInstanceOf(EntityProductPostRequest::class, $createdProduct);
+            Assert::assertNotNull($createdProduct->getId());
+            Assert::assertStringContainsString("${prefix} Bulk Product " . ($index + 1), $createdProduct->getName());
+            Assert::assertStringContainsString("BULK-" . ($index + 1) . "-${prefix}", $createdProduct->getCode());
+            Assert::assertStringContainsString("Описание массового продукта " . ($index + 1), $createdProduct->getDescription());
+            Assert::assertEquals(20, $createdProduct->getVat());
+            Assert::assertTrue($createdProduct->getVatEnabled());
+            Assert::assertEquals(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD, $createdProduct->getPaymentItemType());
+            Assert::assertEquals(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM, $createdProduct->getTaxSystem());
+
+            Asserter::assertMeta($createdProduct->getMeta(), $createdProduct->getId(), 'product');
+        }
+    }
+
+    /**
+     * Тест массового создания продуктов с превышением лимита
+     */
+    public function testBulkCreateProductsExceedingLimit(): void
+    {
+        $prefix = StringUtil::randomUuid();
+        $products = [];
+
+        for ($i = 1; $i <= 1001; $i++) {
+            $product = new EntityProductPostRequest();
+            $product->setName("${prefix} Exceed Product ${i}");
+            $product->setCode("EXCEED-${i}-${prefix}");
+            $product->setVat(20);
+            $product->setVatEnabled(true);
+            $product->setPaymentItemType(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD);
+            $product->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+            $products[] = $product;
+        }
+
+        try {
+            ProductsApiTest::$api->entityProductPost($products);
+            Assert::fail('Ожидалось исключение ApiException');
+        } catch (ApiException $e) {
+            Assert::assertTrue(in_array($e->getCode(), [400, 413]));
+            Assert::assertNotNull($e->getResponseBody());
+        }
+    }
+
+
+    /**
+     * Тест массового обновления продуктов
+     */
+    public function testBulkUpdateProducts(): void
+    {
+        $prefix = StringUtil::randomUuid();
+        $createdProducts = [];
+
+        for ($i = 1; $i <= 3; $i++) {
+            $product = new EntityProductPostRequest();
+            $product->setName("${prefix} Original Product ${i}");
+            $product->setCode("ORIG-${i}-${prefix}");
+            $product->setVat(20);
+            $product->setVatEnabled(true);
+            $product->setPaymentItemType(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD);
+            $product->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+            $createdProducts[] = $product;
+        }
+
+        $response = ProductsApiTest::$api->entityProductPost($createdProducts);
+        Assert::assertCount(3, $response);
+
+        $updatedProducts = [];
+        foreach ($response as $index => $createdProduct) {
+            $updateProduct = new EntityProductPostRequest();
+            $updateProduct->setName("${prefix} Updated Product " . ($index + 1));
+            $updateProduct->setCode("UPD-" . ($index + 1) . "-${prefix}");
+            $updateProduct->setDescription("Обновленное описание продукта " . ($index + 1));
+            $updateProduct->setVat(10); // Изменяем НДС
+            $updateProduct->setVatEnabled(true);
+            $updateProduct->setPaymentItemType(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD);
+            $updateProduct->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+            $updatedProducts[] = $updateProduct;
+        }
+
+        $updateResponse = ProductsApiTest::$api->entityProductPost($updatedProducts);
+
+        Assert::assertIsArray($updateResponse);
+        Assert::assertCount(3, $updateResponse);
+
+        foreach ($updateResponse as $index => $updatedProduct) {
+            Assert::assertInstanceOf(EntityProductPostRequest::class, $updatedProduct);
+            Assert::assertStringContainsString("${prefix} Updated Product " . ($index + 1), $updatedProduct->getName());
+            Assert::assertStringContainsString("UPD-" . ($index + 1) . "-${prefix}", $updatedProduct->getCode());
+            Assert::assertStringContainsString("Обновленное описание продукта " . ($index + 1), $updatedProduct->getDescription());
+            Assert::assertEquals(10, $updatedProduct->getVat()); // Проверяем измененный НДС
+        }
+    }
+
+    /**
+     * Тест массового удаления продуктов
+     */
+    public function testBulkDeleteProducts(): void
+    {
+        $prefix = StringUtil::randomUuid();
+        $createdProducts = [];
+
+        for ($i = 1; $i <= 3; $i++) {
+            $product = new EntityProductPostRequest();
+            $product->setName("${prefix} Delete Product ${i}");
+            $product->setCode("DEL-${i}-${prefix}");
+            $product->setVat(20);
+            $product->setVatEnabled(true);
+            $product->setPaymentItemType(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD);
+            $product->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+            $createdProducts[] = $product;
+        }
+
+        $response = ProductsApiTest::$api->entityProductPost($createdProducts);
+        Assert::assertCount(3, $response);
+
+        $metaArray = [];
+        foreach ($response as $createdProduct) {
+            $meta = new MetaArrayInner();
+            $meta->setMeta($createdProduct->getMeta());
+            $metaArray[] = $meta;
+        }
+
+        $deleteResponse = ProductsApiTest::$api->entityProductDeletePost($metaArray);
+
+        Assert::assertIsArray($deleteResponse);
+        Assert::assertCount(3, $deleteResponse);
+
+        foreach ($deleteResponse as $deleteResult) {
+            Assert::assertInstanceOf(DeleteResponseInner::class, $deleteResult);
+            Assert::assertNotNull($deleteResult->getInfo());
+            Assert::assertStringContainsString('удален', $deleteResult->getInfo());
+        }
+
+        foreach ($response as $createdProduct) {
+            try {
+                ProductsApiTest::$api->entityProductIdGet($createdProduct->getId());
+                Assert::fail('Продукт должен был быть удален');
+            } catch (ApiException $e) {
+                Assert::assertEquals(404, $e->getCode());
+            }
         }
     }
 }
