@@ -17,7 +17,7 @@ class Asserter
     public static function assertMeta(Meta $meta, string $expectedHrefContains, string $expectedType = null)
     {
         Assert::assertNotNull($meta);
-        Assert::assertContains($expectedHrefContains, $meta->getHref());
+        Assert::assertStringContainsString($expectedHrefContains, $meta->getHref());
         if ($expectedType != null) {
             Assert::assertSame($expectedType, $meta->getType());
         }

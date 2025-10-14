@@ -66,7 +66,7 @@ class ProductsApiTest extends TestCase
 //        TODO заменить ссылку на спейс
         $config = Configuration::getDefaultConfiguration()
             ->setHost('http://localhost/api/remap/1.2')
-            ->setUsername('admin@qwe2')
+            ->setUsername('admin@10')
             ->setPassword('123123');
 
         ProductsApiTest::$api = new ProductsApi(null, $config);
