@@ -519,4 +519,226 @@ class ProductsApiTest extends TestCase
             }
         }
     }
+
+    /**
+     * Тест массового создания продуктов с пустым массивом
+     */
+    public function testBulkCreateProductsWithEmptyArray(): void
+    {
+        try {
+            ProductsApiTest::$api->entityProductPost([]);
+            Assert::fail('Ожидалось исключение InvalidArgumentException для пустого массива');
+        } catch (\InvalidArgumentException $e) {
+            Assert::assertStringContainsString('Missing the required parameter', $e->getMessage());
+        }
+    }
+
+    /**
+     * Тест массового создания продуктов с дублирующимися кодами
+     */
+    public function testBulkCreateProductsWithDuplicateCodes(): void
+    {
+        $prefix = StringUtil::randomUuid();
+        $duplicateCode = "DUPLICATE-${prefix}";
+        $products = [];
+
+        for ($i = 1; $i <= 3; $i++) {
+            $product = new EntityProductPostRequest();
+            $product->setName("${prefix} Duplicate Product ${i}");
+            $product->setCode($duplicateCode); // Одинаковый код для всех продуктов
+            $product->setVat(20);
+            $product->setVatEnabled(true);
+            $product->setPaymentItemType(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD);
+            $product->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+            $products[] = $product;
+        }
+
+        try {
+            ProductsApiTest::$api->entityProductPost($products);
+            Assert::fail('Ожидалось исключение ApiException из-за дублирующихся кодов');
+        } catch (ApiException $e) {
+            Assert::assertTrue(in_array($e->getCode(), [400, 412]));
+            Assert::assertNotNull($e->getResponseBody());
+        }
+    }
+
+    /**
+     * Тест массового создания продуктов с некорректными enum значениями
+     */
+    public function testBulkCreateProductsWithInvalidEnumValues(): void
+    {
+        $product1 = new EntityProductPostRequest();
+        try {
+            $product1->setPaymentItemType('INVALID_PAYMENT_TYPE'); // Некорректное значение
+            Assert::fail('Ожидалось исключение InvalidArgumentException для некорректного типа предмета расчета');
+        } catch (\InvalidArgumentException $e) {
+            Assert::assertStringContainsString('Invalid value', $e->getMessage());
+        }
+
+        $product2 = new EntityProductPostRequest();
+        try {
+            $product2->setTaxSystem('INVALID_TAX_SYSTEM'); // Некорректное значение
+            Assert::fail('Ожидалось исключение InvalidArgumentException для некорректной системы налогообложения');
+        } catch (\InvalidArgumentException $e) {
+            Assert::assertStringContainsString('Invalid value', $e->getMessage());
+        }
+    }
+
+    /**
+     * Тест массового создания продуктов с некорректными длинами полей
+     */
+    public function testBulkCreateProductsWithInvalidFieldLengths(): void
+    {
+        $product1 = new EntityProductPostRequest();
+        try {
+            $product1->setName(str_repeat('A', 300)); // 300 символов
+            Assert::fail('Ожидалось исключение InvalidArgumentException для слишком длинного названия');
+        } catch (\InvalidArgumentException $e) {
+            Assert::assertStringContainsString('invalid length', $e->getMessage());
+        }
+
+        $product2 = new EntityProductPostRequest();
+        try {
+            $product2->setDescription(str_repeat('B', 5000)); // 5000 символов
+            Assert::fail('Ожидалось исключение InvalidArgumentException для слишком длинного описания');
+        } catch (\InvalidArgumentException $e) {
+            Assert::assertStringContainsString('invalid length', $e->getMessage());
+        }
+    }
+
+    /**
+     * Тест массового создания продуктов с отрицательными значениями
+     */
+    public function testBulkCreateProductsWithNegativeValues(): void
+    {
+        $product1 = new EntityProductPostRequest();
+        try {
+            $product1->setVat(-10); // Отрицательное значение
+            Assert::fail('Ожидалось исключение InvalidArgumentException для отрицательного НДС');
+        } catch (\InvalidArgumentException $e) {
+            Assert::assertStringContainsString('must be bigger than or equal to 0', $e->getMessage());
+        }
+
+        $product2 = new EntityProductPostRequest();
+        try {
+            $product2->setWeight(-5.0); // Отрицательное значение
+            Assert::fail('Ожидалось исключение InvalidArgumentException для отрицательного веса');
+        } catch (\InvalidArgumentException $e) {
+            Assert::assertStringContainsString('must be bigger than or equal to 0', $e->getMessage());
+        }
+    }
+
+    /**
+     * Тест массового удаления продуктов с некорректными мета-данными
+     */
+    public function testBulkDeleteProductsWithInvalidMeta(): void
+    {
+        $metaArray = [];
+
+        // Мета-данные с некорректным ID
+        $meta1 = new MetaArrayInner();
+        $meta1->setMeta((object)['href' => 'https://api.moysklad.ru/api/remap/1.2/entity/product/invalid-uuid']);
+        $metaArray[] = $meta1;
+
+        // Мета-данные с некорректным типом
+        $meta2 = new MetaArrayInner();
+        $meta2->setMeta((object)['href' => 'https://api.moysklad.ru/api/remap/1.2/entity/counterparty/invalid-uuid']);
+        $metaArray[] = $meta2;
+
+        try {
+            ProductsApiTest::$api->entityProductDeletePost($metaArray);
+            Assert::fail('Ожидалось исключение ApiException из-за некорректных мета-данных');
+        } catch (ApiException $e) {
+            Assert::assertTrue(in_array($e->getCode(), [400, 404, 412]));
+            Assert::assertNotNull($e->getResponseBody());
+        }
+    }
+
+    /**
+     * Тест массового удаления продуктов с пустым массивом
+     */
+    public function testBulkDeleteProductsWithEmptyArray(): void
+    {
+        try {
+            ProductsApiTest::$api->entityProductDeletePost([]);
+            Assert::fail('Ожидалось исключение InvalidArgumentException для пустого массива');
+        } catch (\InvalidArgumentException $e) {
+            Assert::assertStringContainsString('Missing the required parameter', $e->getMessage());
+        }
+    }
+
+    /**
+     * Тест массового удаления несуществующих продуктов
+     */
+    public function testBulkDeleteNonExistentProducts(): void
+    {
+        $metaArray = [];
+
+        for ($i = 1; $i <= 3; $i++) {
+            $meta = new MetaArrayInner();
+            $meta->setMeta((object)[
+                'href' => 'https://api.moysklad.ru/api/remap/1.2/entity/product/' . StringUtil::randomUuid(),
+                'type' => 'product'
+            ]);
+            $metaArray[] = $meta;
+        }
+
+        try {
+            ProductsApiTest::$api->entityProductDeletePost($metaArray);
+            Assert::fail('Ожидалось исключение ApiException для несуществующих продуктов');
+        } catch (ApiException $e) {
+            Assert::assertTrue(in_array($e->getCode(), [400, 404, 412]));
+            Assert::assertNotNull($e->getResponseBody());
+        }
+    }
+
+    /**
+     * Тест массового обновления продуктов с ошибками валидации
+     */
+    public function testBulkUpdateProductsWithValidationErrors(): void
+    {
+        $prefix = StringUtil::randomUuid();
+        $createdProducts = [];
+
+        for ($i = 1; $i <= 2; $i++) {
+            $product = new EntityProductPostRequest();
+            $product->setName("${prefix} Original Product ${i}");
+            $product->setCode("ORIG-${i}-${prefix}");
+            $product->setVat(20);
+            $product->setVatEnabled(true);
+            $product->setPaymentItemType(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD);
+            $product->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+            $createdProducts[] = $product;
+        }
+
+        $response = ProductsApiTest::$api->entityProductPost($createdProducts);
+        Assert::assertCount(2, $response);
+
+        $updatedProducts = [];
+        foreach ($response as $index => $createdProduct) {
+            $updateProduct = new EntityProductPostRequest();
+            $updateProduct->setName("${prefix} Updated Product " . ($index + 1));
+            $updateProduct->setCode("UPD-" . ($index + 1) . "-${prefix}");
+            
+            if ($index === 0) {
+                try {
+                    $updateProduct->setVat(150); // Некорректный НДС
+                    Assert::fail('Ожидалось исключение InvalidArgumentException для некорректного НДС');
+                } catch (\InvalidArgumentException $e) {
+                    Assert::assertStringContainsString('must be smaller than or equal to 99', $e->getMessage());
+                }
+            } else {
+                $updateProduct->setVat(20);
+                try {
+                    $updateProduct->setPaymentItemType('INVALID_TYPE'); // Некорректный тип
+                    Assert::fail('Ожидалось исключение InvalidArgumentException для некорректного типа');
+                } catch (\InvalidArgumentException $e) {
+                    Assert::assertStringContainsString('Invalid value', $e->getMessage());
+                }
+            }
+            
+            $updateProduct->setVatEnabled(true);
+            $updateProduct->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+        }
+    }
 }
