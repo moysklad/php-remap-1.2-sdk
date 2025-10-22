@@ -1,8 +1,8 @@
 <?php
 /**
- * MetaArrayInner
+ * DeleteInfo
  *
- * PHP version 8.1
+ * PHP version 7.4
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * MetaArrayInner Class Doc Comment
+ * DeleteInfo Class Doc Comment
  *
  * @category Class
+ * @description Результат удаления сущности
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MetaArrayInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class DeleteInfo implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class MetaArrayInner implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MetaArray_inner';
+    protected static $openAPIModelName = 'DeleteInfo';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +58,7 @@ class MetaArrayInner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\Meta'
+        'info' => 'string'
     ];
 
     /**
@@ -68,7 +69,7 @@ class MetaArrayInner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'meta' => null
+        'info' => null
     ];
 
     /**
@@ -77,7 +78,7 @@ class MetaArrayInner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'meta' => false
+        'info' => false
     ];
 
     /**
@@ -166,7 +167,7 @@ class MetaArrayInner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'meta' => 'meta'
+        'info' => 'info'
     ];
 
     /**
@@ -175,7 +176,7 @@ class MetaArrayInner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'meta' => 'setMeta'
+        'info' => 'setInfo'
     ];
 
     /**
@@ -184,7 +185,7 @@ class MetaArrayInner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'meta' => 'getMeta'
+        'info' => 'getInfo'
     ];
 
     /**
@@ -244,7 +245,7 @@ class MetaArrayInner implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('info', $data ?? [], null);
     }
 
     /**
@@ -274,9 +275,6 @@ class MetaArrayInner implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['meta'] === null) {
-            $invalidProperties[] = "'meta' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -293,28 +291,28 @@ class MetaArrayInner implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets meta
+     * Gets info
      *
-     * @return \OpenAPI\Client\Model\Meta
+     * @return string|null
      */
-    public function getMeta()
+    public function getInfo()
     {
-        return $this->container['meta'];
+        return $this->container['info'];
     }
 
     /**
-     * Sets meta
+     * Sets info
      *
-     * @param \OpenAPI\Client\Model\Meta $meta meta
+     * @param string|null $info Информационное сообщение об удалении сущности
      *
      * @return self
      */
-    public function setMeta($meta)
+    public function setInfo($info)
     {
-        if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        if (is_null($info)) {
+            throw new \InvalidArgumentException('non-nullable info cannot be null');
         }
-        $this->container['meta'] = $meta;
+        $this->container['info'] = $info;
 
         return $this;
     }

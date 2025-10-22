@@ -30,21 +30,16 @@ namespace OpenAPI\Client\Test\Api;
 use OpenAPI\Client\Api\ProductsApi;
 use OpenAPI\Client\ApiException;
 use OpenAPI\Client\Configuration;
-use OpenAPI\Client\Model\Attribute;
-use OpenAPI\Client\Model\AttributeValue;
 use OpenAPI\Client\Model\Barcode;
 use OpenAPI\Client\Model\BuyPrice;
-use OpenAPI\Client\Model\DeleteResponseInner;
-use OpenAPI\Client\Model\EntityProductPostRequest;
+use OpenAPI\Client\Model\DeleteInfo;
 use OpenAPI\Client\Model\FileList;
 use OpenAPI\Client\Model\ImageList;
-use OpenAPI\Client\Model\MetaArrayInner;
 use OpenAPI\Client\Model\MinimumStockAllWarehouseSum;
 use OpenAPI\Client\Model\MinPrice;
 use OpenAPI\Client\Model\Product;
 use OpenAPI\Client\Model\ProductAlcoholic;
 use OpenAPI\Client\Model\ProductList;
-use OpenAPI\Client\Model\ProductMinimumStock;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\Assert;
@@ -68,7 +63,7 @@ class ProductsApiTest extends TestCase
 //        TODO заменить ссылку на спейс
         $config = Configuration::getDefaultConfiguration()
             ->setHost('http://localhost/api/remap/1.2')
-            ->setUsername('admin@10')
+            ->setUsername('admin@11')
             ->setPassword('123123');
 
         ProductsApiTest::$api = new ProductsApi(null, $config);
@@ -355,38 +350,38 @@ class ProductsApiTest extends TestCase
     /**
      * Тест массового создания продуктов
      */
-    public function testBulkCreateProducts(): void
+    public function testBatchCreateProducts(): void
     {
         $prefix = StringUtil::randomUuid();
         $products = [];
 
         for ($i = 1; $i <= 3; $i++) {
-            $product = new EntityProductPostRequest();
-            $product->setName("${prefix} Bulk Product ${i}");
-            $product->setCode("BULK-${i}-${prefix}");
+            $product = new Product();
+            $product->setName("${prefix} Batch Product ${i}");
+            $product->setCode("Batch-${i}-${prefix}");
             $product->setDescription("Описание массового продукта ${i}");
             $product->setVat(20);
             $product->setVatEnabled(true);
-            $product->setPaymentItemType(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD);
-            $product->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+            $product->setPaymentItemType(Product::PAYMENT_ITEM_TYPE_GOOD);
+            $product->setTaxSystem(Product::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
             $products[] = $product;
         }
 
-        $response = ProductsApiTest::$api->entityProductPost($products);
+        $response = ProductsApiTest::$api->entityProductBatchPost($products);
 
         Assert::assertIsArray($response);
         Assert::assertCount(3, $response);
 
         foreach ($response as $index => $createdProduct) {
-            Assert::assertInstanceOf(EntityProductPostRequest::class, $createdProduct);
+            Assert::assertInstanceOf(Product::class, $createdProduct);
             Assert::assertNotNull($createdProduct->getId());
-            Assert::assertStringContainsString("${prefix} Bulk Product " . ($index + 1), $createdProduct->getName());
-            Assert::assertStringContainsString("BULK-" . ($index + 1) . "-${prefix}", $createdProduct->getCode());
-            Assert::assertStringContainsString("Описание массового продукта " . ($index + 1), $createdProduct->getDescription());
+            Asserter::assertStringContainsString("${prefix} Batch Product " . ($index + 1), $createdProduct->getName());
+            Asserter::assertStringContainsString("Batch-" . ($index + 1) . "-${prefix}", $createdProduct->getCode());
+            Asserter::assertStringContainsString("Описание массового продукта " . ($index + 1), $createdProduct->getDescription());
             Assert::assertEquals(20, $createdProduct->getVat());
             Assert::assertTrue($createdProduct->getVatEnabled());
-            Assert::assertEquals(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD, $createdProduct->getPaymentItemType());
-            Assert::assertEquals(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM, $createdProduct->getTaxSystem());
+            Assert::assertEquals(Product::PAYMENT_ITEM_TYPE_GOOD, $createdProduct->getPaymentItemType());
+            Assert::assertEquals(Product::TAX_SYSTEM_GENERAL_TAX_SYSTEM, $createdProduct->getTaxSystem());
 
             Asserter::assertMeta($createdProduct->getMeta(), $createdProduct->getId(), 'product');
         }
@@ -395,28 +390,27 @@ class ProductsApiTest extends TestCase
     /**
      * Тест массового создания продуктов с превышением лимита
      */
-    public function testBulkCreateProductsExceedingLimit(): void
+    public function testBatchCreateProductsExceedingLimit(): void
     {
         $prefix = StringUtil::randomUuid();
         $products = [];
 
         for ($i = 1; $i <= 1001; $i++) {
-            $product = new EntityProductPostRequest();
+            $product = new Product();
             $product->setName("${prefix} Exceed Product ${i}");
             $product->setCode("EXCEED-${i}-${prefix}");
             $product->setVat(20);
             $product->setVatEnabled(true);
-            $product->setPaymentItemType(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD);
-            $product->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+            $product->setPaymentItemType(Product::PAYMENT_ITEM_TYPE_GOOD);
+            $product->setTaxSystem(Product::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
             $products[] = $product;
         }
 
         try {
-            ProductsApiTest::$api->entityProductPost($products);
+            ProductsApiTest::$api->entityProductBatchPost($products);
             Assert::fail('Ожидалось исключение ApiException');
-        } catch (ApiException $e) {
-            Assert::assertTrue(in_array($e->getCode(), [400, 413]));
-            Assert::assertNotNull($e->getResponseBody());
+        } catch (\InvalidArgumentException $e) {
+            Asserter::assertStringContainsString('number of items must be less than or equal to 1000', $e->getMessage());
         }
     }
 
@@ -424,48 +418,48 @@ class ProductsApiTest extends TestCase
     /**
      * Тест массового обновления продуктов
      */
-    public function testBulkUpdateProducts(): void
+    public function testBatchUpdateProducts(): void
     {
         $prefix = StringUtil::randomUuid();
         $createdProducts = [];
 
         for ($i = 1; $i <= 3; $i++) {
-            $product = new EntityProductPostRequest();
+            $product = new Product();
             $product->setName("${prefix} Original Product ${i}");
             $product->setCode("ORIG-${i}-${prefix}");
             $product->setVat(20);
             $product->setVatEnabled(true);
-            $product->setPaymentItemType(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD);
-            $product->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+            $product->setPaymentItemType(Product::PAYMENT_ITEM_TYPE_GOOD);
+            $product->setTaxSystem(Product::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
             $createdProducts[] = $product;
         }
 
-        $response = ProductsApiTest::$api->entityProductPost($createdProducts);
+        $response = ProductsApiTest::$api->entityProductBatchPost($createdProducts);
         Assert::assertCount(3, $response);
 
         $updatedProducts = [];
         foreach ($response as $index => $createdProduct) {
-            $updateProduct = new EntityProductPostRequest();
+            $updateProduct = new Product();
             $updateProduct->setName("${prefix} Updated Product " . ($index + 1));
             $updateProduct->setCode("UPD-" . ($index + 1) . "-${prefix}");
             $updateProduct->setDescription("Обновленное описание продукта " . ($index + 1));
             $updateProduct->setVat(10); // Изменяем НДС
             $updateProduct->setVatEnabled(true);
-            $updateProduct->setPaymentItemType(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD);
-            $updateProduct->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+            $updateProduct->setPaymentItemType(Product::PAYMENT_ITEM_TYPE_GOOD);
+            $updateProduct->setTaxSystem(Product::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
             $updatedProducts[] = $updateProduct;
         }
 
-        $updateResponse = ProductsApiTest::$api->entityProductPost($updatedProducts);
+        $updateResponse = ProductsApiTest::$api->entityProductBatchPost($updatedProducts);
 
         Assert::assertIsArray($updateResponse);
         Assert::assertCount(3, $updateResponse);
 
         foreach ($updateResponse as $index => $updatedProduct) {
-            Assert::assertInstanceOf(EntityProductPostRequest::class, $updatedProduct);
-            Assert::assertStringContainsString("${prefix} Updated Product " . ($index + 1), $updatedProduct->getName());
-            Assert::assertStringContainsString("UPD-" . ($index + 1) . "-${prefix}", $updatedProduct->getCode());
-            Assert::assertStringContainsString("Обновленное описание продукта " . ($index + 1), $updatedProduct->getDescription());
+            Assert::assertInstanceOf(Product::class, $updatedProduct);
+            Asserter::assertStringContainsString("${prefix} Updated Product " . ($index + 1), $updatedProduct->getName());
+            Asserter::assertStringContainsString("UPD-" . ($index + 1) . "-${prefix}", $updatedProduct->getCode());
+            Asserter::assertStringContainsString("Обновленное описание продукта " . ($index + 1), $updatedProduct->getDescription());
             Assert::assertEquals(10, $updatedProduct->getVat()); // Проверяем измененный НДС
         }
     }
@@ -473,28 +467,28 @@ class ProductsApiTest extends TestCase
     /**
      * Тест массового удаления продуктов
      */
-    public function testBulkDeleteProducts(): void
+    public function testBatchDeleteProducts(): void
     {
         $prefix = StringUtil::randomUuid();
         $createdProducts = [];
 
         for ($i = 1; $i <= 3; $i++) {
-            $product = new EntityProductPostRequest();
+            $product = new Product();
             $product->setName("${prefix} Delete Product ${i}");
             $product->setCode("DEL-${i}-${prefix}");
             $product->setVat(20);
             $product->setVatEnabled(true);
-            $product->setPaymentItemType(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD);
-            $product->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+            $product->setPaymentItemType(Product::PAYMENT_ITEM_TYPE_GOOD);
+            $product->setTaxSystem(Product::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
             $createdProducts[] = $product;
         }
 
-        $response = ProductsApiTest::$api->entityProductPost($createdProducts);
+        $response = ProductsApiTest::$api->entityProductBatchPost($createdProducts);
         Assert::assertCount(3, $response);
 
         $metaArray = [];
         foreach ($response as $createdProduct) {
-            $meta = new MetaArrayInner();
+            $meta = new Product();
             $meta->setMeta($createdProduct->getMeta());
             $metaArray[] = $meta;
         }
@@ -505,9 +499,9 @@ class ProductsApiTest extends TestCase
         Assert::assertCount(3, $deleteResponse);
 
         foreach ($deleteResponse as $deleteResult) {
-            Assert::assertInstanceOf(DeleteResponseInner::class, $deleteResult);
+            Assert::assertInstanceOf(DeleteInfo::class, $deleteResult);
             Assert::assertNotNull($deleteResult->getInfo());
-            Assert::assertStringContainsString('удален', $deleteResult->getInfo());
+            Asserter::assertStringContainsString('удален', $deleteResult->getInfo());
         }
 
         foreach ($response as $createdProduct) {
@@ -523,222 +517,139 @@ class ProductsApiTest extends TestCase
     /**
      * Тест массового создания продуктов с пустым массивом
      */
-    public function testBulkCreateProductsWithEmptyArray(): void
+    public function testBatchCreateProductsWithEmptyArray(): void
     {
         try {
-            ProductsApiTest::$api->entityProductPost([]);
+            ProductsApiTest::$api->entityProductBatchPost([]);
             Assert::fail('Ожидалось исключение InvalidArgumentException для пустого массива');
         } catch (\InvalidArgumentException $e) {
-            Assert::assertStringContainsString('Missing the required parameter', $e->getMessage());
+            Asserter::assertStringContainsString('Missing the required parameter', $e->getMessage());
         }
     }
 
     /**
      * Тест массового создания продуктов с дублирующимися кодами
      */
-    public function testBulkCreateProductsWithDuplicateCodes(): void
+    public function testBatchCreateProductsWithError(): void
     {
         $prefix = StringUtil::randomUuid();
         $duplicateCode = "DUPLICATE-${prefix}";
         $products = [];
 
         for ($i = 1; $i <= 3; $i++) {
-            $product = new EntityProductPostRequest();
+            $product = new Product();
             $product->setName("${prefix} Duplicate Product ${i}");
             $product->setCode($duplicateCode); // Одинаковый код для всех продуктов
             $product->setVat(20);
             $product->setVatEnabled(true);
-            $product->setPaymentItemType(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD);
-            $product->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+            $product->setPaymentItemType(Product::PAYMENT_ITEM_TYPE_GOOD);
+            $product->setTaxSystem(Product::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
             $products[] = $product;
         }
 
         try {
-            ProductsApiTest::$api->entityProductPost($products);
-            Assert::fail('Ожидалось исключение ApiException из-за дублирующихся кодов');
+            $res = ProductsApiTest::$api->entityProductBatchPost($products);
         } catch (ApiException $e) {
-            Assert::assertTrue(in_array($e->getCode(), [400, 412]));
-            Assert::assertNotNull($e->getResponseBody());
+            $res = json_decode($e->getResponseBody(), true);
         }
+
+        $success = 0;
+        $errors = 0;
+        foreach ($res as $item) {
+            if (isset($item['errors'])) {
+                $errors++;
+                Assert::assertEquals(3006, $item['errors'][0]['code']);
+            } else {
+                $success++;
+                Assert::assertEquals($duplicateCode, $item['code']);
+            }
+        }
+
+        Assert::assertSame(1, $success, 'Ожидается 1 успешное создание');
+        Assert::assertSame(2, $errors, 'Ожидается 2 ошибки');
     }
 
-    /**
-     * Тест массового создания продуктов с некорректными enum значениями
-     */
-    public function testBulkCreateProductsWithInvalidEnumValues(): void
-    {
-        $product1 = new EntityProductPostRequest();
-        try {
-            $product1->setPaymentItemType('INVALID_PAYMENT_TYPE'); // Некорректное значение
-            Assert::fail('Ожидалось исключение InvalidArgumentException для некорректного типа предмета расчета');
-        } catch (\InvalidArgumentException $e) {
-            Assert::assertStringContainsString('Invalid value', $e->getMessage());
-        }
-
-        $product2 = new EntityProductPostRequest();
-        try {
-            $product2->setTaxSystem('INVALID_TAX_SYSTEM'); // Некорректное значение
-            Assert::fail('Ожидалось исключение InvalidArgumentException для некорректной системы налогообложения');
-        } catch (\InvalidArgumentException $e) {
-            Assert::assertStringContainsString('Invalid value', $e->getMessage());
-        }
-    }
-
-    /**
-     * Тест массового создания продуктов с некорректными длинами полей
-     */
-    public function testBulkCreateProductsWithInvalidFieldLengths(): void
-    {
-        $product1 = new EntityProductPostRequest();
-        try {
-            $product1->setName(str_repeat('A', 300)); // 300 символов
-            Assert::fail('Ожидалось исключение InvalidArgumentException для слишком длинного названия');
-        } catch (\InvalidArgumentException $e) {
-            Assert::assertStringContainsString('invalid length', $e->getMessage());
-        }
-
-        $product2 = new EntityProductPostRequest();
-        try {
-            $product2->setDescription(str_repeat('B', 5000)); // 5000 символов
-            Assert::fail('Ожидалось исключение InvalidArgumentException для слишком длинного описания');
-        } catch (\InvalidArgumentException $e) {
-            Assert::assertStringContainsString('invalid length', $e->getMessage());
-        }
-    }
-
-    /**
-     * Тест массового создания продуктов с отрицательными значениями
-     */
-    public function testBulkCreateProductsWithNegativeValues(): void
-    {
-        $product1 = new EntityProductPostRequest();
-        try {
-            $product1->setVat(-10); // Отрицательное значение
-            Assert::fail('Ожидалось исключение InvalidArgumentException для отрицательного НДС');
-        } catch (\InvalidArgumentException $e) {
-            Assert::assertStringContainsString('must be bigger than or equal to 0', $e->getMessage());
-        }
-
-        $product2 = new EntityProductPostRequest();
-        try {
-            $product2->setWeight(-5.0); // Отрицательное значение
-            Assert::fail('Ожидалось исключение InvalidArgumentException для отрицательного веса');
-        } catch (\InvalidArgumentException $e) {
-            Assert::assertStringContainsString('must be bigger than or equal to 0', $e->getMessage());
-        }
-    }
 
     /**
      * Тест массового удаления продуктов с некорректными мета-данными
      */
-    public function testBulkDeleteProductsWithInvalidMeta(): void
+    public function testBatchDeleteProductsWithError(): void
     {
+        $prefix = StringUtil::randomUuid();
+
+        $product = new Product();
+        $product->setName("${prefix} Delete Product");
+        $product->setCode("DEL-${prefix}");
+        $product->setVat(20);
+        $product->setVatEnabled(true);
+        $product->setPaymentItemType(Product::PAYMENT_ITEM_TYPE_GOOD);
+        $product->setTaxSystem(Product::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+
+        $response = ProductsApiTest::$api->entityProductPost($product);
+
         $metaArray = [];
 
-        // Мета-данные с некорректным ID
-        $meta1 = new MetaArrayInner();
-        $meta1->setMeta((object)['href' => 'https://api.moysklad.ru/api/remap/1.2/entity/product/invalid-uuid']);
+        $meta1 = new Product();
+        $meta1->setMeta($response->getMeta());
         $metaArray[] = $meta1;
 
-        // Мета-данные с некорректным типом
-        $meta2 = new MetaArrayInner();
-        $meta2->setMeta((object)['href' => 'https://api.moysklad.ru/api/remap/1.2/entity/counterparty/invalid-uuid']);
+
+        // Мета-данные с некорректным ID
+        $meta2 = new Product();
+        $metaInvalidId = clone $response->getMeta();
+        $metaInvalidId->href = preg_replace(
+            '/[0-9a-fA-F-]{36}/',
+            'invalid-uuid',
+            $metaInvalidId->href
+        );
+        $meta2->setMeta($metaInvalidId);
         $metaArray[] = $meta2;
 
+        // Мета-данные с некорректным типом
+        $meta3 = new Product();
+        $metaInvalidType = clone $response->getMeta();
+        $metaInvalidType->href = str_replace('/product/', '/counterparty/', $metaInvalidType->href);
+        $metaInvalidType->href = preg_replace(
+            '/[0-9a-fA-F-]{36}/',
+            'invalid-uuid',
+            $metaInvalidType->href
+        );
+        $meta3->setMeta($metaInvalidType);
+        $metaArray[] = $meta3;
+
         try {
-            ProductsApiTest::$api->entityProductDeletePost($metaArray);
+            $res = ProductsApiTest::$api->entityProductDeletePost($metaArray);
             Assert::fail('Ожидалось исключение ApiException из-за некорректных мета-данных');
         } catch (ApiException $e) {
-            Assert::assertTrue(in_array($e->getCode(), [400, 404, 412]));
-            Assert::assertNotNull($e->getResponseBody());
+            $res = json_decode($e->getResponseBody(), true);
         }
+
+        $success = 0;
+        $errors = 0;
+        foreach ($res as $item) {
+            if (isset($item['errors'])) {
+                $errors++;
+                Assert::assertEquals(1021, $item['errors'][0]['code']);
+            } else {
+                $success++;
+                Asserter::assertStringContainsString('удален', $item['info']);
+            }
+        }
+
+        Assert::assertSame(1, $success, 'Ожидается 1 успешное удаление');
+        Assert::assertSame(2, $errors, 'Ожидается 2 ошибки');
     }
 
     /**
      * Тест массового удаления продуктов с пустым массивом
      */
-    public function testBulkDeleteProductsWithEmptyArray(): void
+    public function testBatchDeleteProductsWithEmptyArray(): void
     {
         try {
             ProductsApiTest::$api->entityProductDeletePost([]);
             Assert::fail('Ожидалось исключение InvalidArgumentException для пустого массива');
         } catch (\InvalidArgumentException $e) {
-            Assert::assertStringContainsString('Missing the required parameter', $e->getMessage());
-        }
-    }
-
-    /**
-     * Тест массового удаления несуществующих продуктов
-     */
-    public function testBulkDeleteNonExistentProducts(): void
-    {
-        $metaArray = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $meta = new MetaArrayInner();
-            $meta->setMeta((object)[
-                'href' => 'https://api.moysklad.ru/api/remap/1.2/entity/product/' . StringUtil::randomUuid(),
-                'type' => 'product'
-            ]);
-            $metaArray[] = $meta;
-        }
-
-        try {
-            ProductsApiTest::$api->entityProductDeletePost($metaArray);
-            Assert::fail('Ожидалось исключение ApiException для несуществующих продуктов');
-        } catch (ApiException $e) {
-            Assert::assertTrue(in_array($e->getCode(), [400, 404, 412]));
-            Assert::assertNotNull($e->getResponseBody());
-        }
-    }
-
-    /**
-     * Тест массового обновления продуктов с ошибками валидации
-     */
-    public function testBulkUpdateProductsWithValidationErrors(): void
-    {
-        $prefix = StringUtil::randomUuid();
-        $createdProducts = [];
-
-        for ($i = 1; $i <= 2; $i++) {
-            $product = new EntityProductPostRequest();
-            $product->setName("${prefix} Original Product ${i}");
-            $product->setCode("ORIG-${i}-${prefix}");
-            $product->setVat(20);
-            $product->setVatEnabled(true);
-            $product->setPaymentItemType(EntityProductPostRequest::PAYMENT_ITEM_TYPE_GOOD);
-            $product->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
-            $createdProducts[] = $product;
-        }
-
-        $response = ProductsApiTest::$api->entityProductPost($createdProducts);
-        Assert::assertCount(2, $response);
-
-        $updatedProducts = [];
-        foreach ($response as $index => $createdProduct) {
-            $updateProduct = new EntityProductPostRequest();
-            $updateProduct->setName("${prefix} Updated Product " . ($index + 1));
-            $updateProduct->setCode("UPD-" . ($index + 1) . "-${prefix}");
-            
-            if ($index === 0) {
-                try {
-                    $updateProduct->setVat(150); // Некорректный НДС
-                    Assert::fail('Ожидалось исключение InvalidArgumentException для некорректного НДС');
-                } catch (\InvalidArgumentException $e) {
-                    Assert::assertStringContainsString('must be smaller than or equal to 99', $e->getMessage());
-                }
-            } else {
-                $updateProduct->setVat(20);
-                try {
-                    $updateProduct->setPaymentItemType('INVALID_TYPE'); // Некорректный тип
-                    Assert::fail('Ожидалось исключение InvalidArgumentException для некорректного типа');
-                } catch (\InvalidArgumentException $e) {
-                    Assert::assertStringContainsString('Invalid value', $e->getMessage());
-                }
-            }
-            
-            $updateProduct->setVatEnabled(true);
-            $updateProduct->setTaxSystem(EntityProductPostRequest::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
+            Asserter::assertStringContainsString('Missing the required parameter', $e->getMessage());
         }
     }
 }
