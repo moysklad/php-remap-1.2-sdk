@@ -149,7 +149,7 @@ class ProductsApi
     /**
      * Operation entityProductBatchPost
      *
-     * Создать товар(ы)
+     * Создать или изменить товары
      *
      * @param  \OpenAPI\Client\Model\Product[] $product product (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
@@ -170,7 +170,7 @@ class ProductsApi
     /**
      * Operation entityProductBatchPostWithHttpInfo
      *
-     * Создать товар(ы)
+     * Создать или изменить товары
      *
      * @param  \OpenAPI\Client\Model\Product[] $product (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
@@ -300,7 +300,7 @@ class ProductsApi
     /**
      * Operation entityProductBatchPostAsync
      *
-     * Создать товар(ы)
+     * Создать или изменить товары
      *
      * @param  \OpenAPI\Client\Model\Product[] $product (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
@@ -324,7 +324,7 @@ class ProductsApi
     /**
      * Operation entityProductBatchPostAsyncWithHttpInfo
      *
-     * Создать товар(ы)
+     * Создать или изменить товары
      *
      * @param  \OpenAPI\Client\Model\Product[] $product (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
@@ -778,7 +778,13 @@ class ProductsApi
                 'Missing the required parameter $product when calling entityProductDeletePost'
             );
         }
-
+        if (count($product) > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$product" when calling ProductsApi.entityProductDeletePost, number of items must be less than or equal to 1000.');
+        }
+        if (count($product) < 1) {
+            throw new \InvalidArgumentException('invalid value for "$product" when calling ProductsApi.entityProductDeletePost, number of items must be greater than or equal to 1.');
+        }
+        
 
 
 
@@ -2538,7 +2544,7 @@ class ProductsApi
     /**
      * Operation entityProductPost
      *
-     * Создать товар(ы)
+     * Создать товар
      *
      * @param  \OpenAPI\Client\Model\Product $product product (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
@@ -2559,7 +2565,7 @@ class ProductsApi
     /**
      * Operation entityProductPostWithHttpInfo
      *
-     * Создать товар(ы)
+     * Создать товар
      *
      * @param  \OpenAPI\Client\Model\Product $product (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
@@ -2689,7 +2695,7 @@ class ProductsApi
     /**
      * Operation entityProductPostAsync
      *
-     * Создать товар(ы)
+     * Создать товар
      *
      * @param  \OpenAPI\Client\Model\Product $product (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
@@ -2713,7 +2719,7 @@ class ProductsApi
     /**
      * Operation entityProductPostAsyncWithHttpInfo
      *
-     * Создать товар(ы)
+     * Создать товар
      *
      * @param  \OpenAPI\Client\Model\Product $product (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)

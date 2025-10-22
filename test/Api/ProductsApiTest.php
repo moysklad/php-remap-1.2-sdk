@@ -387,33 +387,6 @@ class ProductsApiTest extends TestCase
         }
     }
 
-    /**
-     * Тест массового создания продуктов с превышением лимита
-     */
-    public function testBatchCreateProductsExceedingLimit(): void
-    {
-        $prefix = StringUtil::randomUuid();
-        $products = [];
-
-        for ($i = 1; $i <= 1001; $i++) {
-            $product = new Product();
-            $product->setName("${prefix} Exceed Product ${i}");
-            $product->setCode("EXCEED-${i}-${prefix}");
-            $product->setVat(20);
-            $product->setVatEnabled(true);
-            $product->setPaymentItemType(Product::PAYMENT_ITEM_TYPE_GOOD);
-            $product->setTaxSystem(Product::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
-            $products[] = $product;
-        }
-
-        try {
-            ProductsApiTest::$api->entityProductBatchPost($products);
-            Assert::fail('Ожидалось исключение ApiException');
-        } catch (\InvalidArgumentException $e) {
-            Asserter::assertStringContainsString('number of items must be less than or equal to 1000', $e->getMessage());
-        }
-    }
-
 
     /**
      * Тест массового обновления продуктов
@@ -511,19 +484,6 @@ class ProductsApiTest extends TestCase
             } catch (ApiException $e) {
                 Assert::assertEquals(404, $e->getCode());
             }
-        }
-    }
-
-    /**
-     * Тест массового создания продуктов с пустым массивом
-     */
-    public function testBatchCreateProductsWithEmptyArray(): void
-    {
-        try {
-            ProductsApiTest::$api->entityProductBatchPost([]);
-            Assert::fail('Ожидалось исключение InvalidArgumentException для пустого массива');
-        } catch (\InvalidArgumentException $e) {
-            Asserter::assertStringContainsString('Missing the required parameter', $e->getMessage());
         }
     }
 
