@@ -61,7 +61,7 @@ class ProductsApiTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         $config = Configuration::getDefaultConfiguration()
-            ->setHost(getenv('API_HOST'))
+            ->setHost(getenv('API_HOST') . '/api/remap/1.2')
             ->setUsername(getenv('API_LOGIN'))
             ->setPassword(getenv('API_PASSWORD'));
 
@@ -210,8 +210,8 @@ class ProductsApiTest extends TestCase
         Assert::assertSame($productReq->getSyncId(), $productResp->getSyncId());
         Assert::assertSame($productReq->getVolume(), $productResp->getVolume());
 
-        Asserter::assertMetaCollection($productResp->getFiles()->getMeta(), "product/${productId}/files", 0, 1000, 'files');
-        Asserter::assertMetaCollection($productResp->getImages()->getMeta(), "product/${productId}/images", 0, 1000, 'image');
+        Asserter::assertMetaCollection($productResp->getFiles()->getMeta(), "product/$productId/files", 0, 1000, 'files');
+        Asserter::assertMetaCollection($productResp->getImages()->getMeta(), "product/$productId/images", 0, 1000, 'image');
         Asserter::assertJsonHasFields($productResp, ['owner' => ['meta' => ['type' => 'employee']]], false);
         Asserter::assertJsonHasFields($productResp, ['group' => ['meta' => ['type' => 'group']]], false);
         Assert::assertNotNull($productResp->getUpdated());
