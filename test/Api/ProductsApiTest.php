@@ -60,7 +60,6 @@ class ProductsApiTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-//        TODO заменить ссылку на спейс
         $config = Configuration::getDefaultConfiguration()
             ->setHost(getenv('API_HOST'))
             ->setUsername(getenv('API_LOGIN'))
