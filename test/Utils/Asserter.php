@@ -5,6 +5,7 @@ namespace OpenAPI\Client\Test\Utils;
 use OpenAPI\Client\Model\Meta;
 use OpenAPI\Client\Model\MetaList;
 use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\Constraint\StringContains;
 
 class Asserter
 {
@@ -17,11 +18,19 @@ class Asserter
     public static function assertMeta(Meta $meta, string $expectedHrefContains, string $expectedType = null)
     {
         Assert::assertNotNull($meta);
-        Assert::assertContains($expectedHrefContains, $meta->getHref());
         if ($expectedType != null) {
             Assert::assertSame($expectedType, $meta->getType());
         }
+        $constraint = new StringContains($expectedHrefContains);
+        Assert::assertThat($meta->getHref(), $constraint, '');
 //        TODO метод проверки неполный
+    }
+
+    public static function assertStringContainsString(string $needle, string $haystack, string $message = '')
+    {
+        $constraint = new StringContains($needle);
+
+        Assert::assertThat($haystack, $constraint, $message);
     }
 
     public static function assertMetaCollection(MetaList $meta, string $expectedHrefAfterPathRemap12Entity, int $expectedSize = 0, int $expectedLimit = 1000, string $expectedType = null)
