@@ -34,6 +34,15 @@ use OpenAPI\Client\Model\Region;
 use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * AddressTest Class Doc Comment
+ *
+ * @category    Class
+ * @description Адрес
+ * @package     OpenAPI\Client
+ * @author      OpenAPI Generator team
+ * @link        https://openapi-generator.tech
+ */
 class AddressTest extends TestCase
 {
     public function testPropertyAddInfo()

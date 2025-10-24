@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * CountryTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,77 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
+use OpenAPI\Client\Model\Country;
 use OpenAPI\Client\Model\Meta;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * CountryTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Страна
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class CountryTest extends TestCase
 {
+
     public function testPropertyMeta()
     {
-        $app = new Application();
+        $country = new Country();
         $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $country->setMeta($meta);
+        Asserter::assertJsonHasFields($country, ['meta' => []]);
     }
 
     public function testPropertyId()
     {
-        $app = new Application();
+        $country = new Country();
         $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
-    }
-
-    public function testPropertyAccountId()
-    {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $country->setId($id);
+        Asserter::assertJsonHasFields($country, ['id' => $id]);
     }
 
     public function testPropertyName()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
+        $country = new Country();
+        $name = "Russia";
+        $country->setName($name);
+        Asserter::assertJsonHasFields($country, ['name' => $name]);
     }
 
-    public function testPropertyAppUid()
+    public function testPropertyDescription()
     {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $country = new Country();
+        $description = "Russian Federation";
+        $country->setDescription($description);
+        Asserter::assertJsonHasFields($country, ['description' => $description]);
+    }
+
+    public function testPropertyCode()
+    {
+        $country = new Country();
+        $code = "RU";
+        $country->setCode($code);
+        Asserter::assertJsonHasFields($country, ['code' => $code]);
+    }
+
+    public function testPropertyExternalCode()
+    {
+        $country = new Country();
+        $externalCode = "EXT-RU";
+        $country->setExternalCode($externalCode);
+        Asserter::assertJsonHasFields($country, ['externalCode' => $externalCode]);
+    }
+
+    public function testPropertyUpdated()
+    {
+        $country = new Country();
+        $date = new \DateTime("2025-09-19T12:00:00Z");
+        $country->setUpdated($date);
+        Asserter::assertJsonHasFields($country, ['updated' => StringUtil::toRemap12FormatDate($date)]);
     }
 }

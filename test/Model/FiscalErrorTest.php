@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * FiscalErrorTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,35 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\FiscalError;
 use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * FiscalErrorTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Ошибка фискальной памяти
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class FiscalErrorTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testPropertyCode()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $fiscalError = new FiscalError();
+        $code = "ERR001";
+        $fiscalError->setCode($code);
+        Asserter::assertJsonHasFields($fiscalError, ['code' => $code]);
     }
 
-    public function testPropertyId()
+    public function testPropertyMessage()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
-    }
-
-    public function testPropertyAccountId()
-    {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
-    }
-
-    public function testPropertyName()
-    {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $fiscalError = new FiscalError();
+        $message = "Fiscal memory error occurred";
+        $fiscalError->setMessage($message);
+        Asserter::assertJsonHasFields($fiscalError, ['message' => $message]);
     }
 }

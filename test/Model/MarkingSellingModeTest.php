@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * MarkingSellingModeTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,39 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
+use OpenAPI\Client\Model\MarkingSellingMode;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * MarkingSellingModeTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Режим продажи маркированных товаров
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class MarkingSellingModeTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testMarkingSellingModeCorrectMarksOnly()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $this->assertEquals('CORRECT_MARKS_ONLY', MarkingSellingMode::CORRECT_MARKS_ONLY);
     }
 
-    public function testPropertyId()
+    public function testMarkingSellingModeWithoutErrors()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $this->assertEquals('WITHOUT_ERRORS', MarkingSellingMode::WITHOUT_ERRORS);
     }
 
-    public function testPropertyAccountId()
+    public function testMarkingSellingModeAll()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $this->assertEquals('ALL', MarkingSellingMode::ALL);
     }
 
-    public function testPropertyName()
+    public function testGetAllowableEnumValues()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $expected = ['CORRECT_MARKS_ONLY', 'WITHOUT_ERRORS', 'ALL'];
+        $this->assertEquals($expected, MarkingSellingMode::getAllowableEnumValues());
     }
 }

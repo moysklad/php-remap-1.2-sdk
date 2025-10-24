@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * EnvironmentTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,61 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\ChequePrinter;
+use OpenAPI\Client\Model\Environment;
+use OpenAPI\Client\Model\Software;
 use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * EnvironmentTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Среда точки продаж
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class EnvironmentTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testPropertyDevice()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $environment = new Environment();
+        $device = "iPad";
+        $environment->setDevice($device);
+        Asserter::assertJsonHasFields($environment, ['device' => $device]);
     }
 
-    public function testPropertyId()
+    public function testPropertyOs()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $environment = new Environment();
+        $os = "iOS 15.0";
+        $environment->setOs($os);
+        Asserter::assertJsonHasFields($environment, ['os' => $os]);
     }
 
-    public function testPropertyAccountId()
+    public function testPropertySoftware()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $environment = new Environment();
+        $software = new Software();
+        $environment->setSoftware($software);
+        Asserter::assertJsonHasFields($environment, ['software' => []]);
     }
 
-    public function testPropertyName()
+    public function testPropertyChequePrinter()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
+        $environment = new Environment();
+        $chequePrinter = new ChequePrinter();
+        $environment->setChequePrinter($chequePrinter);
+        Asserter::assertJsonHasFields($environment, ['chequePrinter' => []]);
     }
 
-    public function testPropertyAppUid()
+    public function testPropertyPaymentTerminal()
     {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $environment = new Environment();
+        $paymentTerminal = "Terminal123";
+        $environment->setPaymentTerminal($paymentTerminal);
+        Asserter::assertJsonHasFields($environment, ['paymentTerminal' => $paymentTerminal]);
     }
 }

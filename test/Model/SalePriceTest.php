@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * SalePriceTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,45 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\Currency;
+use OpenAPI\Client\Model\PriceType;
+use OpenAPI\Client\Model\SalePrice;
 use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * SalePriceTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Цена продажи
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class SalePriceTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testPropertyValue()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $salePrice = new SalePrice();
+        $value = 100.50;
+        $salePrice->setValue($value);
+        Asserter::assertJsonHasFields($salePrice, ['value' => $value]);
     }
 
-    public function testPropertyId()
+    public function testPropertyCurrency()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $salePrice = new SalePrice();
+        $currency = new Currency();
+        $salePrice->setCurrency($currency);
+        Asserter::assertJsonHasFields($salePrice, ['currency' => []]);
     }
 
-    public function testPropertyAccountId()
+    public function testPropertyPriceType()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
-    }
-
-    public function testPropertyName()
-    {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $salePrice = new SalePrice();
+        $priceType = new PriceType();
+        $salePrice->setPriceType($priceType);
+        Asserter::assertJsonHasFields($salePrice, ['priceType' => []]);
     }
 }

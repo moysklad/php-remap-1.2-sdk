@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * TobaccoMrcControlTypeTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,25 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
+use OpenAPI\Client\Model\TobaccoMrcControlType;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * TobaccoMrcControlTypeTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Режим контроля минимальных розничных цен на табак
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class TobaccoMrcControlTypeTest extends TestCase
 {
-    public function testPropertyMeta()
-    {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
-    }
 
-    public function testPropertyId()
+    public function testTobaccoMrcControlType()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
-    }
-
-    public function testPropertyAccountId()
-    {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
-    }
-
-    public function testPropertyName()
-    {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $this->assertEquals(TobaccoMrcControlType::USER_PRICE, 'USER_PRICE');
+        $this->assertEquals(TobaccoMrcControlType::MRC_PRICE, 'MRC_PRICE');
+        $this->assertEquals(TobaccoMrcControlType::SAME_PRICE, 'SAME_PRICE');
     }
 }

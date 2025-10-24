@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * MinimumStockAllWarehouseSameTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,35 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\MinimumStockAllWarehouseSame;
 use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * MinimumStockAllWarehouseSameTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description MinimumStockAllWarehouseSame
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class MinimumStockAllWarehouseSameTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testPropertyType()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $minimumStockAllWarehouseSame = new MinimumStockAllWarehouseSame();
+        $type = 'ALL_WAREHOUSE_SAME';
+        $minimumStockAllWarehouseSame->setType($type);
+        Asserter::assertJsonHasFields($minimumStockAllWarehouseSame, ['type' => $type]);
     }
 
-    public function testPropertyId()
+    public function testPropertyQuantity()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
-    }
-
-    public function testPropertyAccountId()
-    {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
-    }
-
-    public function testPropertyName()
-    {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $minimumStockAllWarehouseSame = new MinimumStockAllWarehouseSame();
+        $quantity = 10.0;
+        $minimumStockAllWarehouseSame->setQuantity($quantity);
+        Asserter::assertJsonHasFields($minimumStockAllWarehouseSame, ['quantity' => $quantity, 'type' => 'ALL_WAREHOUSE_SAME']);
     }
 }

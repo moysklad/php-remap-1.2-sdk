@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * UomTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,110 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
+use OpenAPI\Client\Model\Group;
 use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\Owner;
+use OpenAPI\Client\Model\Uom;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * UomTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Единица измерения
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class UomTest extends TestCase
 {
+
     public function testPropertyMeta()
     {
-        $app = new Application();
+        $uom = new Uom();
         $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $uom->setMeta($meta);
+        Asserter::assertJsonHasFields($uom, ['meta' => []]);
     }
 
     public function testPropertyId()
     {
-        $app = new Application();
+        $uom = new Uom();
         $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $uom->setId($id);
+        Asserter::assertJsonHasFields($uom, ['id' => $id]);
     }
 
     public function testPropertyAccountId()
     {
-        $app = new Application();
+        $uom = new Uom();
         $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $uom->setAccountId($accountId);
+        Asserter::assertJsonHasFields($uom, ['accountId' => $accountId]);
     }
 
     public function testPropertyName()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
+        $uom = new Uom();
+        $name = "Kilogram";
+        $uom->setName($name);
+        Asserter::assertJsonHasFields($uom, ['name' => $name]);
     }
 
-    public function testPropertyAppUid()
+    public function testPropertyDescription()
     {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $uom = new Uom();
+        $description = "Unit of mass";
+        $uom->setDescription($description);
+        Asserter::assertJsonHasFields($uom, ['description' => $description]);
+    }
+
+    public function testPropertyCode()
+    {
+        $uom = new Uom();
+        $code = "KG";
+        $uom->setCode($code);
+        Asserter::assertJsonHasFields($uom, ['code' => $code]);
+    }
+
+    public function testPropertyGroup()
+    {
+        $uom = new Uom();
+        $group = new Group();
+        $uom->setGroup($group);
+        Asserter::assertJsonHasFields($uom, ['group' => []]);
+    }
+
+    public function testPropertyOwner()
+    {
+        $uom = new Uom();
+        $owner = new Owner();
+        $uom->setOwner($owner);
+        Asserter::assertJsonHasFields($uom, ['owner' => []]);
+    }
+
+    public function testPropertyUpdated()
+    {
+        $uom = new Uom();
+        $date = new \DateTime("2025-09-19T12:00:00Z");
+        $uom->setUpdated($date);
+        Asserter::assertJsonHasFields($uom, ['updated' => StringUtil::toRemap12FormatDate($date)]);
+    }
+
+    public function testPropertyShared()
+    {
+        $uom = new Uom();
+        $uom->setShared(true);
+        Asserter::assertJsonHasFields($uom, ['shared' => true]);
+    }
+
+    public function testPropertyExternalCode()
+    {
+        $uom = new Uom();
+        $externalCode = "EXT-KG";
+        $uom->setExternalCode($externalCode);
+        Asserter::assertJsonHasFields($uom, ['externalCode' => $externalCode]);
     }
 }

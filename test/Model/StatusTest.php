@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * StatusTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,55 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\FiscalStatusMemory;
+use OpenAPI\Client\Model\PaymentTerminal;
+use OpenAPI\Client\Model\Status;
+use OpenAPI\Client\Model\Sync;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * StatusTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Статус точки продаж
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class StatusTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testPropertySync()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $status = new Status();
+        $sync = new Sync();
+        $status->setSync($sync);
+        Asserter::assertJsonHasFields($status, ['sync' => []]);
     }
 
-    public function testPropertyId()
+    public function testPropertyLastCheckMoment()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $status = new Status();
+        $date = new \DateTime("2025-09-19T12:00:00Z");
+        $status->setLastCheckMoment($date);
+        Asserter::assertJsonHasFields($status, ['lastCheckMoment' => StringUtil::toRemap12FormatDate($date)]);
     }
 
-    public function testPropertyAccountId()
+    public function testPropertyFiscalMemory()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $status = new Status();
+        $fiscalMemory = new FiscalStatusMemory();
+        $status->setFiscalMemory($fiscalMemory);
+        Asserter::assertJsonHasFields($status, ['fiscalMemory' => []]);
     }
 
-    public function testPropertyName()
+    public function testPropertyPaymentTerminal()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $status = new Status();
+        $paymentTerminal = new PaymentTerminal();
+        $status->setPaymentTerminal($paymentTerminal);
+        Asserter::assertJsonHasFields($status, ['paymentTerminal' => []]);
     }
 }

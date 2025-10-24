@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * CounterpartyNotesTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,36 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\CounterpartyNotes;
+use OpenAPI\Client\Model\MetaList;
 use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * CounterpartyNotesTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Массив контактных лиц
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class CounterpartyNotesTest extends TestCase
 {
+
     public function testPropertyMeta()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $counterpartyNotes = new CounterpartyNotes();
+        $meta = new MetaList();
+        $counterpartyNotes->setMeta($meta);
+        Asserter::assertJsonHasFields($counterpartyNotes, ['meta' => []]);
     }
 
-    public function testPropertyId()
+    public function testPropertyRows()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
-    }
-
-    public function testPropertyAccountId()
-    {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
-    }
-
-    public function testPropertyName()
-    {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $counterpartyNotes = new CounterpartyNotes();
+        $rows = [];
+        $counterpartyNotes->setRows($rows);
+        Asserter::assertJsonHasFields($counterpartyNotes, ['rows' => []]);
     }
 }

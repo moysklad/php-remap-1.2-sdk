@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * CurrencyMinorUnitTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,51 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\CurrencyMinorUnit;
 use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * CurrencyMinorUnitTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Форма разменной единицы
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class CurrencyMinorUnitTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testPropertyGender()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $currencyMinorUnit = new CurrencyMinorUnit();
+        $gender = 'masculine';
+        $currencyMinorUnit->setGender($gender);
+        Asserter::assertJsonHasFields($currencyMinorUnit, ['gender' => $gender]);
     }
 
-    public function testPropertyId()
+    public function testPropertyS1()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $currencyMinorUnit = new CurrencyMinorUnit();
+        $s1 = 'test';
+        $currencyMinorUnit->setS1($s1);
+        Asserter::assertJsonHasFields($currencyMinorUnit, ['s1' => $s1]);
     }
 
-    public function testPropertyAccountId()
+    public function testPropertyS2()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $currencyMinorUnit = new CurrencyMinorUnit();
+        $s2 = 'test';
+        $currencyMinorUnit->setS2($s2);
+        Asserter::assertJsonHasFields($currencyMinorUnit, ['s2' => $s2]);
     }
 
-    public function testPropertyName()
+    public function testPropertyS5()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $currencyMinorUnit = new CurrencyMinorUnit();
+        $s5 = 'test';
+        $currencyMinorUnit->setS5($s5);
+        Asserter::assertJsonHasFields($currencyMinorUnit, ['s5' => $s5]);
     }
 }

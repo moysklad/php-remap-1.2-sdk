@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * PackTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,54 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\Barcode;
+use OpenAPI\Client\Model\Pack;
+use OpenAPI\Client\Model\Uom;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * PackTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Упаковка
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class PackTest extends TestCase
 {
-    public function testPropertyMeta()
-    {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
-    }
 
     public function testPropertyId()
     {
-        $app = new Application();
+        $pack = new Pack();
         $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $pack->setId($id);
+        Asserter::assertJsonHasFields($pack, ['id' => $id]);
     }
 
-    public function testPropertyAccountId()
+    public function testPropertyUom()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $pack = new Pack();
+        $uom = new Uom();
+        $pack->setUom($uom);
+        Asserter::assertJsonHasFields($pack, ['uom' => []]);
     }
 
-    public function testPropertyName()
+    public function testPropertyQuantity()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
+        $pack = new Pack();
+        $quantity = 10.0;
+        $pack->setQuantity($quantity);
+        Asserter::assertJsonHasFields($pack, ['quantity' => $quantity]);
     }
 
-    public function testPropertyAppUid()
+    public function testPropertyBarcodes()
     {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $pack = new Pack();
+        $barcode = new Barcode();
+        $pack->setBarcodes([$barcode]);
+        Asserter::assertJsonHasFields($pack, ['barcodes' => [[]]]);
     }
 }

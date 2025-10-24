@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * AttributeAbstractTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,69 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
+use OpenAPI\Client\Model\AttributeAbstract;
 use OpenAPI\Client\Model\Meta;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * AttributeAbstractTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description AttributeAbstract
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class AttributeAbstractTest extends TestCase
 {
-    public function testPropertyMeta()
-    {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
-    }
 
     public function testPropertyId()
     {
-        $app = new Application();
+        $attribute = new AttributeAbstract();
         $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $attribute->setId($id);
+        Asserter::assertJsonHasFields($attribute, ['id' => $id, 'type' => 'AttributeAbstract']);
     }
 
-    public function testPropertyAccountId()
+    public function testPropertyMeta()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $attribute = new AttributeAbstract();
+        $meta = new Meta();
+        $attribute->setMeta($meta);
+        Asserter::assertJsonHasFields($attribute, ['meta' => [], 'type' => 'AttributeAbstract']);
     }
 
     public function testPropertyName()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
+        $attribute = new AttributeAbstract();
+        $name = "Test Attribute";
+        $attribute->setName($name);
+        Asserter::assertJsonHasFields($attribute, ['name' => $name, 'type' => 'AttributeAbstract']);
     }
 
-    public function testPropertyAppUid()
+    public function testPropertyType()
     {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $attribute = new AttributeAbstract();
+        $type = "string";
+        $attribute->setType($type);
+        Asserter::assertJsonHasFields($attribute, ['type' => $type]);
+    }
+
+    public function testPropertyValue()
+    {
+        $attribute = new AttributeAbstract();
+        $value = "test value";
+        $attribute->setValue($value);
+        Asserter::assertJsonHasFields($attribute, ['value' => $value, 'type' => 'AttributeAbstract']);
+    }
+
+    public function testPropertyDownload()
+    {
+        $attribute = new AttributeAbstract();
+        $download = new \stdClass();
+        $attribute->setDownload($download);
+        Asserter::assertJsonHasFields($attribute, ['download' => [], 'type' => 'AttributeAbstract']);
     }
 }

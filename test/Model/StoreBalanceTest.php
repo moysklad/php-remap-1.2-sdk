@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * StoreBalanceTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,62 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
 use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\Store;
+use OpenAPI\Client\Model\StoreBalance;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * StoreBalanceTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Неснижаемый остаток по складу
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class StoreBalanceTest extends TestCase
 {
-    public function testPropertyMeta()
-    {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
-    }
 
     public function testPropertyId()
     {
-        $app = new Application();
+        $storeBalance = new StoreBalance();
         $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $storeBalance->setId($id);
+        Asserter::assertJsonHasFields($storeBalance, ['id' => $id]);
     }
 
     public function testPropertyAccountId()
     {
-        $app = new Application();
+        $storeBalance = new StoreBalance();
         $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $storeBalance->setAccountId($accountId);
+        Asserter::assertJsonHasFields($storeBalance, ['accountId' => $accountId]);
     }
 
-    public function testPropertyName()
+    public function testPropertyMeta()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
+        $storeBalance = new StoreBalance();
+        $meta = new Meta();
+        $storeBalance->setMeta($meta);
+        Asserter::assertJsonHasFields($storeBalance, ['meta' => []]);
     }
 
-    public function testPropertyAppUid()
+    public function testPropertyStore()
     {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $storeBalance = new StoreBalance();
+        $store = new Store();
+        $storeBalance->setStore($store);
+        Asserter::assertJsonHasFields($storeBalance, ['store' => []]);
+    }
+
+    public function testPropertyQuantity()
+    {
+        $storeBalance = new StoreBalance();
+        $quantity = 100.5;
+        $storeBalance->setQuantity($quantity);
+        Asserter::assertJsonHasFields($storeBalance, ['quantity' => $quantity]);
     }
 }

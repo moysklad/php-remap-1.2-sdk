@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * SyncTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,36 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\Sync;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * SyncTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Состояние синхронизации
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class SyncTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testPropertyMessage()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $sync = new Sync();
+        $message = "Sync successful";
+        $sync->setMessage($message);
+        Asserter::assertJsonHasFields($sync, ['message' => $message]);
     }
 
-    public function testPropertyId()
+    public function testPropertyLastAttempMoment()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
-    }
-
-    public function testPropertyAccountId()
-    {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
-    }
-
-    public function testPropertyName()
-    {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $sync = new Sync();
+        $date = new \DateTime("2025-09-19T12:00:00Z");
+        $sync->setLastAttempMoment($date);
+        Asserter::assertJsonHasFields($sync, ['lastAttempMoment' => StringUtil::toRemap12FormatDate($date)]);
     }
 }

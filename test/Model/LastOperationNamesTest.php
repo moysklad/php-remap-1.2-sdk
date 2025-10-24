@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * LastOperationNamesTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,35 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\LastOperationNames;
 use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * LastOperationNamesTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Последние операции
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class LastOperationNamesTest extends TestCase
 {
-    public function testPropertyMeta()
-    {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
-    }
 
-    public function testPropertyId()
+    public function testPropertyEntity()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
-    }
-
-    public function testPropertyAccountId()
-    {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $lastOperationNames = new LastOperationNames();
+        $entity = "product";
+        $lastOperationNames->setEntity($entity);
+        Asserter::assertJsonHasFields($lastOperationNames, ['entity' => $entity]);
     }
 
     public function testPropertyName()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $lastOperationNames = new LastOperationNames();
+        $name = "Last Sale";
+        $lastOperationNames->setName($name);
+        Asserter::assertJsonHasFields($lastOperationNames, ['name' => $name]);
     }
 }

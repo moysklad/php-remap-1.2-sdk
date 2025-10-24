@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * MetaTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,67 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
 use OpenAPI\Client\Model\Meta;
 use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * MetaTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Метаданные объекта
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class MetaTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testPropertyHref()
     {
-        $app = new Application();
         $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $href = "https://api.moysklad.ru/api/remap/1.2/entity/product/123";
+        $meta->setHref($href);
+        Asserter::assertJsonHasFields($meta, ['href' => $href]);
     }
 
-    public function testPropertyId()
+    public function testPropertyMetadataHref()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $meta = new Meta();
+        $metadataHref = "https://api.moysklad.ru/api/remap/1.2/entity/product/metadata";
+        $meta->setMetadataHref($metadataHref);
+        Asserter::assertJsonHasFields($meta, ['metadataHref' => $metadataHref]);
     }
 
-    public function testPropertyAccountId()
+    public function testPropertyType()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $meta = new Meta();
+        $type = "product";
+        $meta->setType($type);
+        Asserter::assertJsonHasFields($meta, ['type' => $type]);
     }
 
-    public function testPropertyName()
+    public function testPropertyMediaType()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
+        $meta = new Meta();
+        $mediaType = "application/json";
+        $meta->setMediaType($mediaType);
+        Asserter::assertJsonHasFields($meta, ['mediaType' => $mediaType]);
     }
 
-    public function testPropertyAppUid()
+    public function testPropertyUuidHref()
     {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $meta = new Meta();
+        $uuidHref = "https://app.moysklad.ru/app/#product/edit?id=123";
+        $meta->setUuidHref($uuidHref);
+        Asserter::assertJsonHasFields($meta, ['uuidHref' => $uuidHref]);
+    }
+
+    public function testPropertyDownloadHref()
+    {
+        $meta = new Meta();
+        $downloadHref = "https://api.moysklad.ru/api/remap/1.2/download/123";
+        $meta->setDownloadHref($downloadHref);
+        Asserter::assertJsonHasFields($meta, ['downloadHref' => $downloadHref]);
     }
 }

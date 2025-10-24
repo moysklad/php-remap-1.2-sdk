@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * MetadataTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,45 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
+use OpenAPI\Client\Model\AttributeMetaInfoList;
 use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\Metadata;
 use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * MetadataTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Метаданные объекта
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class MetadataTest extends TestCase
 {
+
     public function testPropertyMeta()
     {
-        $app = new Application();
+        $metadata = new Metadata();
         $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $metadata->setMeta($meta);
+        Asserter::assertJsonHasFields($metadata, ['meta' => []]);
     }
 
-    public function testPropertyId()
+    public function testPropertyAttributes()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $metadata = new Metadata();
+        $attributes = new AttributeMetaInfoList();
+        $metadata->setAttributes($attributes);
+        Asserter::assertJsonHasFields($metadata, ['attributes' => []]);
     }
 
-    public function testPropertyAccountId()
+    public function testPropertyCreateShared()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
-    }
-
-    public function testPropertyName()
-    {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $metadata = new Metadata();
+        $createShared = true;
+        $metadata->setCreateShared($createShared);
+        Asserter::assertJsonHasFields($metadata, ['createShared' => $createShared]);
     }
 }
