@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * AttributeFileTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,42 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\AttributeFile;
 use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * AttributeFileTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description AttributeFile
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class AttributeFileTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testPropertyType()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $attribute = new AttributeFile();
+        $attribute->setType(AttributeFile::TYPE_FILE);
+        Asserter::assertJsonHasFields($attribute, ['type' => AttributeFile::TYPE_FILE]);
     }
 
-    public function testPropertyId()
+    public function testPropertyValue()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $attribute = new AttributeFile();
+        $value = "file-content";
+        $attribute->setValue($value);
+        Asserter::assertJsonHasFields($attribute, ['value' => $value]);
     }
 
-    public function testPropertyAccountId()
+    public function testPropertyDownload()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
-    }
-
-    public function testPropertyName()
-    {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $attribute = new AttributeFile();
+        $download = new \stdClass();
+        $attribute->setDownload($download);
+        Asserter::assertJsonHasFields($attribute, ['download' => []]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * AttributeTextTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,34 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\AttributeText;
 use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * AttributeTextTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description AttributeText
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class AttributeTextTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testPropertyType()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $attribute = new AttributeText();
+        $attribute->setType(AttributeText::TYPE_TEXT);
+        Asserter::assertJsonHasFields($attribute, ['type' => AttributeText::TYPE_TEXT]);
     }
 
-    public function testPropertyId()
+    public function testPropertyValue()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
-    }
-
-    public function testPropertyAccountId()
-    {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
-    }
-
-    public function testPropertyName()
-    {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $attribute = new AttributeText();
+        $value = "This is a longer text value for testing purposes.";
+        $attribute->setValue($value);
+        Asserter::assertJsonHasFields($attribute, ['value' => $value]);
     }
 }

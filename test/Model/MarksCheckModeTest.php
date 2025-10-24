@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * MarksCheckModeTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,44 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
+use OpenAPI\Client\Model\MarksCheckMode;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * MarksCheckModeTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Режим проверки кодов маркировки
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class MarksCheckModeTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testMarksCheckModeCorrectMarksOnly()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $this->assertEquals('CORRECT_MARKS_ONLY', MarksCheckMode::CORRECT_MARKS_ONLY);
     }
 
-    public function testPropertyId()
+    public function testMarksCheckModeWithoutErrors()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $this->assertEquals('WITHOUT_ERRORS', MarksCheckMode::WITHOUT_ERRORS);
     }
 
-    public function testPropertyAccountId()
+    public function testMarksCheckModeAll()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $this->assertEquals('ALL', MarksCheckMode::ALL);
     }
 
-    public function testPropertyName()
+    public function testMarksCheckModeAllChecked()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
+        $this->assertEquals('ALL_CHECKED', MarksCheckMode::ALL_CHECKED);
     }
 
-    public function testPropertyAppUid()
+    public function testGetAllowableEnumValues()
     {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $expected = ['CORRECT_MARKS_ONLY', 'WITHOUT_ERRORS', 'ALL', 'ALL_CHECKED'];
+        $this->assertEquals($expected, MarksCheckMode::getAllowableEnumValues());
     }
 }

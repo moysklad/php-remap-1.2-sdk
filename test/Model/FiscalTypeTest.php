@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * FiscalTypeTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,39 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
+use OpenAPI\Client\Model\FiscalType;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * FiscalTypeTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Фискальный режим работы
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class FiscalTypeTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testFiscalTypeStandard()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $this->assertEquals('STANDARD', FiscalType::STANDARD);
     }
 
-    public function testPropertyId()
+    public function testFiscalTypeMaster()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $this->assertEquals('MASTER', FiscalType::MASTER);
     }
 
-    public function testPropertyAccountId()
+    public function testFiscalTypeCloud()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $this->assertEquals('CLOUD', FiscalType::CLOUD);
     }
 
-    public function testPropertyName()
+    public function testGetAllowableEnumValues()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $expected = ['STANDARD', 'MASTER', 'CLOUD'];
+        $this->assertEquals($expected, FiscalType::getAllowableEnumValues());
     }
 }

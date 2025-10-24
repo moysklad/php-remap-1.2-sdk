@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * ImageTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,77 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
+use OpenAPI\Client\Model\Image;
 use OpenAPI\Client\Model\Meta;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * ImageTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Изображение
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class ImageTest extends TestCase
 {
+
     public function testPropertyMeta()
     {
-        $app = new Application();
+        $image = new Image();
         $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $image->setMeta($meta);
+        Asserter::assertJsonHasFields($image, ['meta' => []]);
     }
 
-    public function testPropertyId()
+    public function testPropertyTitle()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $image = new Image();
+        $title = "Test Image";
+        $image->setTitle($title);
+        Asserter::assertJsonHasFields($image, ['title' => $title]);
     }
 
-    public function testPropertyAccountId()
+    public function testPropertyFilename()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $image = new Image();
+        $filename = "test.jpg";
+        $image->setFilename($filename);
+        Asserter::assertJsonHasFields($image, ['filename' => $filename]);
     }
 
-    public function testPropertyName()
+    public function testPropertySize()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
+        $image = new Image();
+        $size = 1024;
+        $image->setSize($size);
+        Asserter::assertJsonHasFields($image, ['size' => $size]);
     }
 
-    public function testPropertyAppUid()
+    public function testPropertyUpdated()
     {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $image = new Image();
+        $date = new \DateTime("2025-09-19T12:00:00Z");
+        $image->setUpdated($date);
+        Asserter::assertJsonHasFields($image, ['updated' => StringUtil::toRemap12FormatDate($date)]);
+    }
+
+    public function testPropertyTiny()
+    {
+        $image = new Image();
+        $tiny = new Meta();
+        $image->setTiny($tiny);
+        Asserter::assertJsonHasFields($image, ['tiny' => []]);
+    }
+
+    public function testPropertyMiniature()
+    {
+        $image = new Image();
+        $miniature = new Meta();
+        $image->setMiniature($miniature);
+        Asserter::assertJsonHasFields($image, ['miniature' => []]);
     }
 }

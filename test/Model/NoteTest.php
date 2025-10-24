@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * NoteTest
  *
  * PHP version 7.4
  *
@@ -29,59 +29,87 @@
 namespace OpenAPI\Client\Test\Model;
 
 use OpenAPI\Client\Model\Application;
+use OpenAPI\Client\Model\Counterparty;
+use OpenAPI\Client\Model\Employee;
 use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\Note;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * NoteTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Событие Контрагента
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class NoteTest extends TestCase
 {
+
     public function testPropertyMeta()
     {
-        $app = new Application();
+        $note = new Note();
         $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $note->setMeta($meta);
+        Asserter::assertJsonHasFields($note, ['meta' => []]);
     }
 
     public function testPropertyId()
     {
-        $app = new Application();
+        $note = new Note();
         $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $note->setId($id);
+        Asserter::assertJsonHasFields($note, ['id' => $id]);
     }
 
     public function testPropertyAccountId()
     {
-        $app = new Application();
+        $note = new Note();
         $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $note->setAccountId($accountId);
+        Asserter::assertJsonHasFields($note, ['accountId' => $accountId]);
     }
 
-    public function testPropertyName()
+    public function testPropertyAgent()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
+        $note = new Note();
+        $agent = new Counterparty();
+        $note->setAgent($agent);
+        Asserter::assertJsonHasFields($note, ['agent' => []]);
     }
 
-    public function testPropertyAppUid()
+    public function testPropertyAuthor()
     {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $note = new Note();
+        $author = new Employee();
+        $note->setAuthor($author);
+        Asserter::assertJsonHasFields($note, ['author' => []]);
+    }
+
+    public function testPropertyAuthorApplication()
+    {
+        $note = new Note();
+        $authorApplication = new Application();
+        $note->setAuthorApplication($authorApplication);
+        Asserter::assertJsonHasFields($note, ['authorApplication' => []]);
+    }
+
+    public function testPropertyCreated()
+    {
+        $note = new Note();
+        $date = new \DateTime("2025-09-19T12:00:00Z");
+        $note->setCreated($date);
+        Asserter::assertJsonHasFields($note, ['created' => StringUtil::toRemap12FormatDate($date)]);
+    }
+
+    public function testPropertyDescription()
+    {
+        $note = new Note();
+        $description = "Note description";
+        $note->setDescription($description);
+        Asserter::assertJsonHasFields($note, ['description' => $description]);
     }
 }

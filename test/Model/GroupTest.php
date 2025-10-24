@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * GroupTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,61 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
+use OpenAPI\Client\Model\Group;
 use OpenAPI\Client\Model\Meta;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * GroupTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Группа/отдел
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class GroupTest extends TestCase
 {
+
     public function testPropertyMeta()
     {
-        $app = new Application();
+        $group = new Group();
         $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $group->setMeta($meta);
+        Asserter::assertJsonHasFields($group, ['meta' => []]);
     }
 
     public function testPropertyId()
     {
-        $app = new Application();
+        $group = new Group();
         $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $group->setId($id);
+        Asserter::assertJsonHasFields($group, ['id' => $id]);
     }
 
     public function testPropertyAccountId()
     {
-        $app = new Application();
+        $group = new Group();
         $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $group->setAccountId($accountId);
+        Asserter::assertJsonHasFields($group, ['accountId' => $accountId]);
     }
 
     public function testPropertyName()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
+        $group = new Group();
+        $name = "Test Group";
+        $group->setName($name);
+        Asserter::assertJsonHasFields($group, ['name' => $name]);
     }
 
-    public function testPropertyAppUid()
+    public function testPropertyIndex()
     {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $group = new Group();
+        $index = 1;
+        $group->setIndex($index);
+        Asserter::assertJsonHasFields($group, ['index' => $index]);
     }
 }

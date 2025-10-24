@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * StateTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,77 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
 use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\State;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * StateTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Статус
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class StateTest extends TestCase
 {
+
     public function testPropertyMeta()
     {
-        $app = new Application();
+        $state = new State();
         $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $state->setMeta($meta);
+        Asserter::assertJsonHasFields($state, ['meta' => []]);
     }
 
     public function testPropertyId()
     {
-        $app = new Application();
+        $state = new State();
         $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
-    }
-
-    public function testPropertyAccountId()
-    {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $state->setId($id);
+        Asserter::assertJsonHasFields($state, ['id' => $id]);
     }
 
     public function testPropertyName()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
+        $state = new State();
+        $name = "New State";
+        $state->setName($name);
+        Asserter::assertJsonHasFields($state, ['name' => $name]);
     }
 
-    public function testPropertyAppUid()
+    public function testPropertyAccountId()
     {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $state = new State();
+        $accountId = StringUtil::randomUuid();
+        $state->setAccountId($accountId);
+        Asserter::assertJsonHasFields($state, ['accountId' => $accountId]);
+    }
+
+    public function testPropertyColor()
+    {
+        $state = new State();
+        $color = 16711680;
+        $state->setColor($color);
+        Asserter::assertJsonHasFields($state, ['color' => $color]);
+    }
+
+    public function testPropertyEntityType()
+    {
+        $state = new State();
+        $entityType = "demand";
+        $state->setEntityType($entityType);
+        Asserter::assertJsonHasFields($state, ['entityType' => $entityType]);
+    }
+
+    public function testPropertyStateType()
+    {
+        $state = new State();
+        $stateType = State::STATE_TYPE_REGULAR;
+        $state->setStateType($stateType);
+        Asserter::assertJsonHasFields($state, ['stateType' => $stateType]);
     }
 }

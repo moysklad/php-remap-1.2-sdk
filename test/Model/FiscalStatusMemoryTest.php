@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * FiscalStatusMemoryTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,45 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\FiscalError;
+use OpenAPI\Client\Model\FiscalStatusMemory;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * FiscalStatusMemoryTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Статус фискальной памяти
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class FiscalStatusMemoryTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testPropertyError()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $fiscalStatusMemory = new FiscalStatusMemory();
+        $error = new FiscalError();
+        $fiscalStatusMemory->setError($error);
+        Asserter::assertJsonHasFields($fiscalStatusMemory, ['error' => []]);
     }
 
-    public function testPropertyId()
+    public function testPropertyNotSendDocCount()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $fiscalStatusMemory = new FiscalStatusMemory();
+        $notSendDocCount = 5;
+        $fiscalStatusMemory->setNotSendDocCount($notSendDocCount);
+        Asserter::assertJsonHasFields($fiscalStatusMemory, ['notSendDocCount' => $notSendDocCount]);
     }
 
-    public function testPropertyAccountId()
+    public function testPropertyNotSendFirstDocMoment()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
-    }
-
-    public function testPropertyName()
-    {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $fiscalStatusMemory = new FiscalStatusMemory();
+        $date = new \DateTime("2025-09-19T12:00:00Z");
+        $fiscalStatusMemory->setNotSendFirstDocMoment($date);
+        Asserter::assertJsonHasFields($fiscalStatusMemory, ['notSendFirstDocMoment' => StringUtil::toRemap12FormatDate($date)]);
     }
 }

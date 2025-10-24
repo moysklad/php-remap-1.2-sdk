@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * ProductListTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,46 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\Context;
+use OpenAPI\Client\Model\MetaList;
+use OpenAPI\Client\Model\Product;
+use OpenAPI\Client\Model\ProductList;
 use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * ProductListTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description ProductList
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class ProductListTest extends TestCase
 {
+
+    public function testPropertyContext()
+    {
+        $productList = new ProductList();
+        $context = new Context();
+        $productList->setContext($context);
+        Asserter::assertJsonHasFields($productList, ['context' => []]);
+    }
+
     public function testPropertyMeta()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $productList = new ProductList();
+        $meta = new MetaList();
+        $productList->setMeta($meta);
+        Asserter::assertJsonHasFields($productList, ['meta' => []]);
     }
 
-    public function testPropertyId()
+    public function testPropertyRows()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
-    }
-
-    public function testPropertyAccountId()
-    {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
-    }
-
-    public function testPropertyName()
-    {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $productList = new ProductList();
+        $product = new Product();
+        $productList->setRows([$product]);
+        Asserter::assertJsonHasFields($productList, ['rows' => [[]]]);
     }
 }

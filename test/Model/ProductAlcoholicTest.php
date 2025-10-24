@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * ProductAlcoholicTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,51 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\ProductAlcoholic;
 use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * ProductAlcoholicTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Объект, содержащий поля алкогольной продукции
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class ProductAlcoholicTest extends TestCase
 {
-    public function testPropertyMeta()
+
+    public function testPropertyExcise()
     {
-        $app = new Application();
-        $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $productAlcoholic = new ProductAlcoholic();
+        $excise = true;
+        $productAlcoholic->setExcise($excise);
+        Asserter::assertJsonHasFields($productAlcoholic, ['excise' => $excise]);
     }
 
-    public function testPropertyId()
+    public function testPropertyType()
     {
-        $app = new Application();
-        $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $productAlcoholic = new ProductAlcoholic();
+        $type = 1;
+        $productAlcoholic->setType($type);
+        Asserter::assertJsonHasFields($productAlcoholic, ['type' => $type]);
     }
 
-    public function testPropertyAccountId()
+    public function testPropertyStrength()
     {
-        $app = new Application();
-        $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $productAlcoholic = new ProductAlcoholic();
+        $strength = 40.0;
+        $productAlcoholic->setStrength($strength);
+        Asserter::assertJsonHasFields($productAlcoholic, ['strength' => $strength]);
     }
 
-    public function testPropertyName()
+    public function testPropertyVolume()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
-    }
-
-    public function testPropertyAppUid()
-    {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $productAlcoholic = new ProductAlcoholic();
+        $volume = 0.5;
+        $productAlcoholic->setVolume($volume);
+        Asserter::assertJsonHasFields($productAlcoholic, ['volume' => $volume]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * ApplicationTest
+ * RegionTest
  *
  * PHP version 7.4
  *
@@ -28,60 +28,85 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
 use OpenAPI\Client\Model\Meta;
+use OpenAPI\Client\Model\Region;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ApplicationTest Class Doc Comment
+ * RegionTest Class Doc Comment
  *
  * @category    Class
- * @description Решение
+ * @description Регион
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ApplicationTest extends TestCase
+class RegionTest extends TestCase
 {
+
     public function testPropertyMeta()
     {
-        $app = new Application();
+        $region = new Region();
         $meta = new Meta();
-        $app->setMeta($meta);
-        Asserter::assertJsonHasFields($app, ['meta' => []]);
+        $region->setMeta($meta);
+        Asserter::assertJsonHasFields($region, ['meta' => []]);
     }
 
     public function testPropertyId()
     {
-        $app = new Application();
+        $region = new Region();
         $id = StringUtil::randomUuid();
-        $app->setId($id);
-        Asserter::assertJsonHasFields($app, ['id' => $id]);
+        $region->setId($id);
+        Asserter::assertJsonHasFields($region, ['id' => $id]);
     }
 
     public function testPropertyAccountId()
     {
-        $app = new Application();
+        $region = new Region();
         $accountId = StringUtil::randomUuid();
-        $app->setAccountId($accountId);
-        Asserter::assertJsonHasFields($app, ['account_id' => $accountId]);
+        $region->setAccountId($accountId);
+        Asserter::assertJsonHasFields($region, ['accountId' => $accountId]);
     }
 
     public function testPropertyName()
     {
-        $app = new Application();
-        $name = "TestApplication";
-        $app->setName($name);
-        Asserter::assertJsonHasFields($app, ['name' => $name]);
+        $region = new Region();
+        $name = "Moscow Region";
+        $region->setName($name);
+        Asserter::assertJsonHasFields($region, ['name' => $name]);
     }
 
-    public function testPropertyAppUid()
+    public function testPropertyCode()
     {
-        $app = new Application();
-        $uid = "APP-123456";
-        $app->setAppUid($uid);
-        Asserter::assertJsonHasFields($app, ['appUid' => $uid]);
+        $region = new Region();
+        $code = "RU-MOW";
+        $region->setCode($code);
+        Asserter::assertJsonHasFields($region, ['code' => $code]);
+    }
+
+    public function testPropertyExternalCode()
+    {
+        $region = new Region();
+        $externalCode = "EXT-MOW";
+        $region->setExternalCode($externalCode);
+        Asserter::assertJsonHasFields($region, ['externalCode' => $externalCode]);
+    }
+
+    public function testPropertyUpdated()
+    {
+        $region = new Region();
+        $date = new \DateTime("2025-09-19T12:00:00Z");
+        $region->setUpdated($date);
+        Asserter::assertJsonHasFields($region, ['updated' => StringUtil::toRemap12FormatDate($date)]);
+    }
+
+    public function testPropertyVersion()
+    {
+        $region = new Region();
+        $version = 1;
+        $region->setVersion($version);
+        Asserter::assertJsonHasFields($region, ['version' => $version]);
     }
 }
