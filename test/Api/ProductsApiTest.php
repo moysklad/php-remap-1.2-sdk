@@ -60,11 +60,10 @@ class ProductsApiTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-//        TODO заменить ссылку на спейс
         $config = Configuration::getDefaultConfiguration()
-            ->setHost('http://localhost/api/remap/1.2')
-            ->setUsername('admin@11')
-            ->setPassword('123123');
+            ->setHost(getenv('API_HOST') . '/api/remap/1.2')
+            ->setUsername(getenv('API_LOGIN'))
+            ->setPassword(getenv('API_PASSWORD'));
 
         ProductsApiTest::$api = new ProductsApi(null, $config);
     }
@@ -76,21 +75,21 @@ class ProductsApiTest extends TestCase
     {
         $prefix = StringUtil::randomUuid();
         $product1 = new Product();
-        $product1->setName("${prefix} Product 1");
+        $product1->setName("$prefix Product 1");
         $product1 = ProductsApiTest::$api->entityProductPost($product1);
 
         $product2 = new Product();
-        $product2->setName("${prefix} Product 2");
+        $product2->setName("$prefix Product 2");
         $product2 = ProductsApiTest::$api->entityProductPost($product2);
 
         $product3 = new Product();
-        $product3->setName("${prefix} Product 3");
+        $product3->setName("$prefix Product 3");
         $product3 = ProductsApiTest::$api->entityProductPost($product3);
 
         Assert::assertNotSame($product1->getId(), $product2->getId());
         Assert::assertNotSame($product2->getId(), $product3->getId());
 
-        $productList_12 = ProductsApiTest::$api->entityProductGet(2, 0, null, "name~=${prefix}", null, 'name');
+        $productList_12 = ProductsApiTest::$api->entityProductGet(2, 0, null, "name~=$prefix", null, 'name');
         Assert::assertInstanceOf(ProductList::class, $productList_12);
         Asserter::assertMetaCollection($productList_12->getMeta(), 'product', 3, 2, 'product');
         Asserter::assertJsonHasFields($productList_12, ['meta' => []], false, 'context.employee');
@@ -100,7 +99,7 @@ class ProductsApiTest extends TestCase
                 ['id' => $product2->getId()]
             ]], false);
 
-        $productList_23 = ProductsApiTest::$api->entityProductGet(3, 1, null, "name~=${prefix}", null, 'name');
+        $productList_23 = ProductsApiTest::$api->entityProductGet(3, 1, null, "name~=$prefix", null, 'name');
         Assert::assertInstanceOf(ProductList::class, $productList_23);
         Asserter::assertMetaCollection($productList_23->getMeta(), 'product', 3, 3, 'product');
         Asserter::assertJsonHasFields($productList_23, ['meta' => []], false, 'context.employee');
@@ -211,8 +210,8 @@ class ProductsApiTest extends TestCase
         Assert::assertSame($productReq->getSyncId(), $productResp->getSyncId());
         Assert::assertSame($productReq->getVolume(), $productResp->getVolume());
 
-        Asserter::assertMetaCollection($productResp->getFiles()->getMeta(), "product/${productId}/files", 0, 1000, 'files');
-        Asserter::assertMetaCollection($productResp->getImages()->getMeta(), "product/${productId}/images", 0, 1000, 'image');
+        Asserter::assertMetaCollection($productResp->getFiles()->getMeta(), "product/$productId/files", 0, 1000, 'files');
+        Asserter::assertMetaCollection($productResp->getImages()->getMeta(), "product/$productId/images", 0, 1000, 'image');
         Asserter::assertJsonHasFields($productResp, ['owner' => ['meta' => ['type' => 'employee']]], false);
         Asserter::assertJsonHasFields($productResp, ['group' => ['meta' => ['type' => 'group']]], false);
         Assert::assertNotNull($productResp->getUpdated());
@@ -357,9 +356,9 @@ class ProductsApiTest extends TestCase
 
         for ($i = 1; $i <= 3; $i++) {
             $product = new Product();
-            $product->setName("${prefix} Batch Product ${i}");
-            $product->setCode("Batch-${i}-${prefix}");
-            $product->setDescription("Описание массового продукта ${i}");
+            $product->setName("$prefix Batch Product $i");
+            $product->setCode("Batch-$i-$prefix");
+            $product->setDescription("Описание массового продукта $i");
             $product->setVat(20);
             $product->setVatEnabled(true);
             $product->setPaymentItemType(Product::PAYMENT_ITEM_TYPE_GOOD);
@@ -375,8 +374,8 @@ class ProductsApiTest extends TestCase
         foreach ($response as $index => $createdProduct) {
             Assert::assertInstanceOf(Product::class, $createdProduct);
             Assert::assertNotNull($createdProduct->getId());
-            Asserter::assertStringContainsString("${prefix} Batch Product " . ($index + 1), $createdProduct->getName());
-            Asserter::assertStringContainsString("Batch-" . ($index + 1) . "-${prefix}", $createdProduct->getCode());
+            Asserter::assertStringContainsString("$prefix Batch Product " . ($index + 1), $createdProduct->getName());
+            Asserter::assertStringContainsString("Batch-" . ($index + 1) . "-$prefix", $createdProduct->getCode());
             Asserter::assertStringContainsString("Описание массового продукта " . ($index + 1), $createdProduct->getDescription());
             Assert::assertEquals(20, $createdProduct->getVat());
             Assert::assertTrue($createdProduct->getVatEnabled());
@@ -398,8 +397,8 @@ class ProductsApiTest extends TestCase
 
         for ($i = 1; $i <= 3; $i++) {
             $product = new Product();
-            $product->setName("${prefix} Original Product ${i}");
-            $product->setCode("ORIG-${i}-${prefix}");
+            $product->setName("$prefix Original Product $i");
+            $product->setCode("ORIG-$i-$prefix");
             $product->setVat(20);
             $product->setVatEnabled(true);
             $product->setPaymentItemType(Product::PAYMENT_ITEM_TYPE_GOOD);
@@ -413,8 +412,8 @@ class ProductsApiTest extends TestCase
         $updatedProducts = [];
         foreach ($response as $index => $createdProduct) {
             $updateProduct = new Product();
-            $updateProduct->setName("${prefix} Updated Product " . ($index + 1));
-            $updateProduct->setCode("UPD-" . ($index + 1) . "-${prefix}");
+            $updateProduct->setName("$prefix Updated Product " . ($index + 1));
+            $updateProduct->setCode("UPD-" . ($index + 1) . "-$prefix");
             $updateProduct->setDescription("Обновленное описание продукта " . ($index + 1));
             $updateProduct->setVat(10); // Изменяем НДС
             $updateProduct->setVatEnabled(true);
@@ -430,8 +429,8 @@ class ProductsApiTest extends TestCase
 
         foreach ($updateResponse as $index => $updatedProduct) {
             Assert::assertInstanceOf(Product::class, $updatedProduct);
-            Asserter::assertStringContainsString("${prefix} Updated Product " . ($index + 1), $updatedProduct->getName());
-            Asserter::assertStringContainsString("UPD-" . ($index + 1) . "-${prefix}", $updatedProduct->getCode());
+            Asserter::assertStringContainsString("$prefix Updated Product " . ($index + 1), $updatedProduct->getName());
+            Asserter::assertStringContainsString("UPD-" . ($index + 1) . "-$prefix", $updatedProduct->getCode());
             Asserter::assertStringContainsString("Обновленное описание продукта " . ($index + 1), $updatedProduct->getDescription());
             Assert::assertEquals(10, $updatedProduct->getVat()); // Проверяем измененный НДС
         }
@@ -447,8 +446,8 @@ class ProductsApiTest extends TestCase
 
         for ($i = 1; $i <= 3; $i++) {
             $product = new Product();
-            $product->setName("${prefix} Delete Product ${i}");
-            $product->setCode("DEL-${i}-${prefix}");
+            $product->setName("$prefix Delete Product $i");
+            $product->setCode("DEL-$i-$prefix");
             $product->setVat(20);
             $product->setVatEnabled(true);
             $product->setPaymentItemType(Product::PAYMENT_ITEM_TYPE_GOOD);
@@ -493,12 +492,12 @@ class ProductsApiTest extends TestCase
     public function testBatchCreateProductsWithError(): void
     {
         $prefix = StringUtil::randomUuid();
-        $duplicateCode = "DUPLICATE-${prefix}";
+        $duplicateCode = "DUPLICATE-$prefix";
         $products = [];
 
         for ($i = 1; $i <= 3; $i++) {
             $product = new Product();
-            $product->setName("${prefix} Duplicate Product ${i}");
+            $product->setName("$prefix Duplicate Product $i");
             $product->setCode($duplicateCode); // Одинаковый код для всех продуктов
             $product->setVat(20);
             $product->setVatEnabled(true);
@@ -538,8 +537,8 @@ class ProductsApiTest extends TestCase
         $prefix = StringUtil::randomUuid();
 
         $product = new Product();
-        $product->setName("${prefix} Delete Product");
-        $product->setCode("DEL-${prefix}");
+        $product->setName("$prefix Delete Product");
+        $product->setCode("DEL-$prefix");
         $product->setVat(20);
         $product->setVatEnabled(true);
         $product->setPaymentItemType(Product::PAYMENT_ITEM_TYPE_GOOD);
