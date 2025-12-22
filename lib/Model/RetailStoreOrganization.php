@@ -2,7 +2,7 @@
 /**
  * RetailStoreOrganization
  *
- * PHP version 8.1
+ * PHP version 7.4
  *
  * @category Class
  * @package  OpenAPI\Client
