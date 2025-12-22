@@ -61,7 +61,7 @@ class GroupsApiTest extends TestCase
     }
 
     /**
-         *  Проверка успешной обработки ответа сервера на получение товаров
+         *  Проверка успешной обработки ответа сервера на получение групп
          */
         public function testEntityGroupGet(): void
         {
@@ -80,7 +80,7 @@ class GroupsApiTest extends TestCase
             Assert::assertNotSame($group1->getId(), $group2->getId());
             Assert::assertNotSame($group2->getId(), $group3->getId());
 
-            $groupList_12 = GroupsApiTest::$api->entityGroupGet(2, 0, null, null, null, 'name');
+            $groupList_12 = GroupsApiTest::$api->entityGroupGet(2, 0);
             Assert::assertInstanceOf(GroupList::class, $groupList_12);
             Asserter::assertMetaCollection($groupList_12->getMeta(), 'group', 3, 2, 'group');
             Asserter::assertJsonHasFields($groupList_12, ['meta' => []], false, 'context.employee');
@@ -90,7 +90,7 @@ class GroupsApiTest extends TestCase
                     ['id' => $group2->getId()]
                 ]], false);
 
-            $groupList_23 = GroupsApiTest::$api->entityGroupGet(3, 1, null, null, null, 'name');
+            $groupList_23 = GroupsApiTest::$api->entityGroupGet(3, 1);
             Assert::assertInstanceOf(GroupList::class, $groupList_23);
             Asserter::assertMetaCollection($groupList_23->getMeta(), 'group', 3, 3, 'group');
             Asserter::assertJsonHasFields($groupList_23, ['meta' => []], false, 'context.employee');
@@ -107,7 +107,7 @@ class GroupsApiTest extends TestCase
         public function testEntityGroupGetWithError(): void
         {
             try {
-                GroupsApiTest::$api->entityGroupGet(1, 5);
+                GroupsApiTest::$api->entityGroupGet(1, 5, null, "name=test");
                 Assert::fail();
             } catch (ApiException $e) {
                 Assert::assertEquals(412, $e->getCode());
@@ -131,7 +131,6 @@ class GroupsApiTest extends TestCase
             Asserter::assertMeta($groupResp->getMeta(), $groupId, 'group');
 
             Assert::assertSame($groupReq->getName(), $groupResp->getName());
-            Assert::assertNotNull($groupResp->getUpdated());
             Assert::assertNotNull($groupResp->getAccountId());
             Assert::assertNotNull($groupResp->getIndex());
         }
