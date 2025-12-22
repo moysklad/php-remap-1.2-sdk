@@ -1,19 +1,12 @@
-# Используйте официальный образ PHP 7.4
 FROM php:7.4-cli
 
-# Установите системные зависимости и расширения PHP
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
     libzip-dev \
-    # Добавьте другие необходимые библиотеки
     && docker-php-ext-install zip \
-    # Установите другие необходимые расширения, например: intl, pdo_mysql
-    # && docker-php-ext-install intl pdo_mysql
     && rm -rf /var/lib/apt/lists/*
 
-# Установите Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Установите рабочую директорию
 WORKDIR /app
