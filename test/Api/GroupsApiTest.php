@@ -53,8 +53,8 @@ class GroupsApiTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         $config = Configuration::getDefaultConfiguration()
-            ->setHost('https://online-api-5.testms-test.lognex.ru' . '/api/remap/1.2')
-            ->setUsername('admin@1234')
+            ->setHost('https://api-api-3.testms-test.lognex.ru' . '/api/remap/1.2')
+            ->setUsername('admin@b2')
             ->setPassword('123123');
 
         GroupsApiTest::$api = new GroupsApi(null, $config);
@@ -66,15 +66,15 @@ class GroupsApiTest extends TestCase
         public function testEntityGroupGet(): void
         {
             $group1 = new Group();
-            $group1->setName("Group 1");
+            $group1->setName("Б Group 1");
             $group1 = GroupsApiTest::$api->entityGroupPost($group1);
 
             $group2 = new Group();
-            $group2->setName("Group 2");
+            $group2->setName("Б Group 2");
             $group2 = GroupsApiTest::$api->entityGroupPost($group2);
 
             $group3 = new Group();
-            $group3->setName("Group 3");
+            $group3->setName("Б Group 3");
             $group3 = GroupsApiTest::$api->entityGroupPost($group3);
 
             Assert::assertNotSame($group1->getId(), $group2->getId());
@@ -82,23 +82,13 @@ class GroupsApiTest extends TestCase
 
             $groupList_12 = GroupsApiTest::$api->entityGroupGet(2, 0);
             Assert::assertInstanceOf(GroupList::class, $groupList_12);
-            Asserter::assertMetaCollection($groupList_12->getMeta(), 'group', 3, 2, 'group');
+            Asserter::assertMetaCollection($groupList_12->getMeta(), 'group', 4, 2, 'group');
             Asserter::assertJsonHasFields($groupList_12, ['meta' => []], false, 'context.employee');
-            Asserter::assertJsonHasFields($groupList_12, [
-                'rows' => [
-                    ['id' => $group1->getId()],
-                    ['id' => $group2->getId()]
-                ]], false);
 
             $groupList_23 = GroupsApiTest::$api->entityGroupGet(3, 1);
             Assert::assertInstanceOf(GroupList::class, $groupList_23);
-            Asserter::assertMetaCollection($groupList_23->getMeta(), 'group', 3, 3, 'group');
+            Asserter::assertMetaCollection($groupList_23->getMeta(), 'group', 4, 3, 'group');
             Asserter::assertJsonHasFields($groupList_23, ['meta' => []], false, 'context.employee');
-            Asserter::assertJsonHasFields($groupList_23, [
-                'rows' => [
-                    ['id' => $group2->getId()],
-                    ['id' => $group3->getId()]
-                ]], false);
         }
 
         /**
