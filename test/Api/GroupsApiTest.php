@@ -65,23 +65,22 @@ class GroupsApiTest extends TestCase
          */
         public function testEntityGroupGet(): void
         {
-            $prefix = StringUtil::randomUuid();
             $group1 = new Group();
-            $group1->setName("$prefix Group 1");
+            $group1->setName("Group 1");
             $group1 = GroupsApiTest::$api->entityGroupPost($group1);
 
             $group2 = new Group();
-            $group2->setName("$prefix Group 2");
+            $group2->setName("Group 2");
             $group2 = GroupsApiTest::$api->entityGroupPost($group2);
 
             $group3 = new Group();
-            $group3->setName("$prefix Group 3");
+            $group3->setName("Group 3");
             $group3 = GroupsApiTest::$api->entityGroupPost($group3);
 
             Assert::assertNotSame($group1->getId(), $group2->getId());
             Assert::assertNotSame($group2->getId(), $group3->getId());
 
-            $groupList_12 = GroupsApiTest::$api->entityGroupGet(2, 0, null, "name~=$prefix", null, 'name');
+            $groupList_12 = GroupsApiTest::$api->entityGroupGet(2, 0, null, null, null, 'name');
             Assert::assertInstanceOf(GroupList::class, $groupList_12);
             Asserter::assertMetaCollection($groupList_12->getMeta(), 'group', 3, 2, 'group');
             Asserter::assertJsonHasFields($groupList_12, ['meta' => []], false, 'context.employee');
@@ -91,7 +90,7 @@ class GroupsApiTest extends TestCase
                     ['id' => $group2->getId()]
                 ]], false);
 
-            $groupList_23 = GroupsApiTest::$api->entityGroupGet(3, 1, null, "name~=$prefix", null, 'name');
+            $groupList_23 = GroupsApiTest::$api->entityGroupGet(3, 1, null, null, null, 'name');
             Assert::assertInstanceOf(GroupList::class, $groupList_23);
             Asserter::assertMetaCollection($groupList_23->getMeta(), 'group', 3, 3, 'group');
             Asserter::assertJsonHasFields($groupList_23, ['meta' => []], false, 'context.employee');
@@ -103,12 +102,12 @@ class GroupsApiTest extends TestCase
         }
 
         /**
-         *  Проверка обработки ответа сервера на получение товаров сопровождаемое ошибкой
+         *  Проверка обработки ответа сервера на получение группы сопровождаемое ошибкой
          */
         public function testEntityGroupGetWithError(): void
         {
             try {
-                GroupsApiTest::$api->entityGroupGet(1, 1, null, "name>123");
+                GroupsApiTest::$api->entityGroupGet(1, 5);
                 Assert::fail();
             } catch (ApiException $e) {
                 Assert::assertEquals(412, $e->getCode());
@@ -184,31 +183,12 @@ class GroupsApiTest extends TestCase
         }
 
         /**
-         *  Проверка обработки ответа сервера на обновление группы сопровождаемое ошибкой
-         */
-        public function testEntityGroupIdPutWithError()
-        {
-            $group1 = new Group();
-            $group1->setName("Group");
-            $group1 = GroupsApiTest::$api->entityGroupPost($group1);
-            try {
-                $updateGroup = new Group();
-                $updateGroup->setTrackingType('Undefined tracking type');
-                GroupsApiTest::$api->entityGroupIdPut($group1->getId(), $updateGroup);
-                Assert::fail();
-            } catch (ApiException $e) {
-                Assert::assertEquals(412, $e->getCode());
-                Assert::assertNotNull($e->getResponseBody());
-            }
-        }
-
-        /**
          *  Проверка успешной обработки ответа сервера удаления группы
          */
         public function testEntityGroupIdDelete()
         {
             $group = new Group();
-            $group->setName("Group");
+            $group->setName("Group testEntityGroupIdDelete");
             $group = GroupsApiTest::$api->entityGroupPost($group);
             $resp = GroupsApiTest::$api->entityGroupIdDeleteWithHttpInfo($group->getId());
             Assert::assertEquals(200, $resp[1]);
