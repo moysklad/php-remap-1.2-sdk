@@ -53,9 +53,9 @@ class GroupsApiTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         $config = Configuration::getDefaultConfiguration()
-            ->setHost(getenv('API_HOST') . '/api/remap/1.2')
-            ->setUsername(getenv('API_LOGIN'))
-            ->setPassword(getenv('API_PASSWORD'));
+            ->setHost('https://online-api-5.testms-test.lognex.ru' . '/api/remap/1.2')
+            ->setUsername('admin@1234')
+            ->setPassword('123123');
 
         GroupsApiTest::$api = new GroupsApi(null, $config);
     }
