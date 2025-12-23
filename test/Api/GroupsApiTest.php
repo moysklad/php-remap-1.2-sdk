@@ -60,9 +60,9 @@ class GroupsApiTest extends TestCase
         GroupsApiTest::$api = new GroupsApi(null, $config);
     }
 
-    /**
-         *  Проверка успешной обработки ответа сервера на получение групп
-         */
+         /**
+          *  Проверка успешной обработки ответа сервера на получение групп
+          */
         public function testEntityGroupGet(): void
         {
             $group1 = new Group();
