@@ -2,7 +2,7 @@
 /**
  * Country
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -64,7 +64,8 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'string',
         'code' => 'string',
         'external_code' => 'string',
-        'updated' => '\DateTime'
+        'updated' => '\DateTime',
+        'owner' => '\OpenAPI\Client\Model\Owner'
     ];
 
     /**
@@ -81,7 +82,8 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => null,
         'code' => null,
         'external_code' => null,
-        'updated' => 'date-time'
+        'updated' => 'date-time',
+        'owner' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => false,
         'code' => false,
         'external_code' => false,
-        'updated' => false
+        'updated' => false,
+        'owner' => true
     ];
 
     /**
@@ -191,7 +194,8 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'description',
         'code' => 'code',
         'external_code' => 'externalCode',
-        'updated' => 'updated'
+        'updated' => 'updated',
+        'owner' => 'owner'
     ];
 
     /**
@@ -206,7 +210,8 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'setDescription',
         'code' => 'setCode',
         'external_code' => 'setExternalCode',
-        'updated' => 'setUpdated'
+        'updated' => 'setUpdated',
+        'owner' => 'setOwner'
     ];
 
     /**
@@ -221,7 +226,8 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'getDescription',
         'code' => 'getCode',
         'external_code' => 'getExternalCode',
-        'updated' => 'getUpdated'
+        'updated' => 'getUpdated',
+        'owner' => 'getOwner'
     ];
 
     /**
@@ -288,6 +294,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('external_code', $data ?? [], null);
         $this->setIfExists('updated', $data ?? [], null);
+        $this->setIfExists('owner', $data ?? [], null);
     }
 
     /**
@@ -517,6 +524,40 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable updated cannot be null');
         }
         $this->container['updated'] = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Gets owner
+     *
+     * @return \OpenAPI\Client\Model\Owner|null
+     */
+    public function getOwner()
+    {
+        return $this->container['owner'];
+    }
+
+    /**
+     * Sets owner
+     *
+     * @param \OpenAPI\Client\Model\Owner|null $owner Метаданные владельца (Сотрудника)
+     *
+     * @return self
+     */
+    public function setOwner($owner)
+    {
+        if (is_null($owner)) {
+            array_push($this->openAPINullablesSetToNull, 'owner');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('owner', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['owner'] = $owner;
 
         return $this;
     }

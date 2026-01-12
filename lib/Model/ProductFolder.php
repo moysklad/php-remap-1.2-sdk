@@ -2,7 +2,7 @@
 /**
  * ProductFolder
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -957,7 +957,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\Owner|null $owner owner
+     * @param \OpenAPI\Client\Model\Owner|null $owner Владелец группы товаров. Может быть Meta объектом или полным объектом в зависимости от expand параметра
      *
      * @return self
      */
