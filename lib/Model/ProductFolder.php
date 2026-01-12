@@ -2,7 +2,7 @@
 /**
  * ProductFolder
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -74,7 +74,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'use_parent_vat' => 'bool',
         'shared' => 'bool',
         'group' => '\OpenAPI\Client\Model\Group',
-        'owner' => '\OpenAPI\Client\Model\Owner',
+        'owner' => '\OpenAPI\Client\Model\Employee',
         'updated' => '\DateTime',
         'product_folder' => '\OpenAPI\Client\Model\ProductFolder',
         'tax_system' => 'string'
@@ -132,7 +132,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'use_parent_vat' => false,
         'shared' => false,
         'group' => false,
-        'owner' => true,
+        'owner' => false,
         'updated' => false,
         'product_folder' => false,
         'tax_system' => false
@@ -947,7 +947,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\Owner|null
+     * @return \OpenAPI\Client\Model\Employee|null
      */
     public function getOwner()
     {
@@ -957,21 +957,14 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\Owner|null $owner owner
+     * @param \OpenAPI\Client\Model\Employee|null $owner owner
      *
      * @return self
      */
     public function setOwner($owner)
     {
         if (is_null($owner)) {
-            array_push($this->openAPINullablesSetToNull, 'owner');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('owner', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable owner cannot be null');
         }
         $this->container['owner'] = $owner;
 
