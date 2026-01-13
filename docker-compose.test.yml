@@ -5,9 +5,14 @@ services:
       context: .
       dockerfile: Dockerfile.test
     container_name: php-sdk-tests
+    environment:
+      # Проброс переменных из .env на хосте внутрь контейнера
+      API_HOST: '1'
+      API_LOGIN: '1'
+      API_PASSWORD: '1'
     # Монтируем локальную директорию с кодом в /app контейнера
     volumes:
       - .:/app
     command: sh -c "composer install --no-interaction && composer test"
 
-    # тесты запускать командой docker compose -f docker-compose.test.yml up --build и не забыть поменять в файлах {Entity}ApiTest сервер и логин/пароль или задавать их через env в консоли
+    # тесты запускать командой docker compose -f docker-compose.test.yml up --build и не забыть поменять в файле API_HOST, API_LOGIN, API_PASSWORD на актуальные

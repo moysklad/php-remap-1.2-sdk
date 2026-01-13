@@ -32,7 +32,7 @@ use OpenAPI\Client\Model\Address;
 use OpenAPI\Client\Model\AttributeDouble;
 use OpenAPI\Client\Model\Group;
 use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\Owner;
+use OpenAPI\Client\Model\Employee;
 use OpenAPI\Client\Model\Store;
 use OpenAPI\Client\Model\StoreSlots;
 use OpenAPI\Client\Model\StoreZones;
@@ -79,7 +79,7 @@ class StoreTest extends TestCase
     public function testPropertyOwner()
     {
         $store = new Store();
-        $owner = new Owner();
+        $owner = new Employee();
         $store->setOwner($owner);
         Asserter::assertJsonHasFields($store, ['owner' => []]);
     }

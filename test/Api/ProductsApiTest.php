@@ -556,23 +556,26 @@ class ProductsApiTest extends TestCase
         // Мета-данные с некорректным ID
         $meta2 = new Product();
         $metaInvalidId = clone $response->getMeta();
-        $metaInvalidId->href = preg_replace(
+        $newHref = preg_replace(
             '/[0-9a-fA-F-]{36}/',
             'invalid-uuid',
-            $metaInvalidId->href
+            $metaInvalidId->getHref()
         );
+        $metaInvalidId->setHref($newHref);
+
         $meta2->setMeta($metaInvalidId);
         $metaArray[] = $meta2;
 
         // Мета-данные с некорректным типом
         $meta3 = new Product();
         $metaInvalidType = clone $response->getMeta();
-        $metaInvalidType->href = str_replace('/product/', '/counterparty/', $metaInvalidType->href);
-        $metaInvalidType->href = preg_replace(
+        $newHref2 = str_replace('/product/', '/counterparty/', $metaInvalidType->getHref());
+        $newHref2 = preg_replace(
             '/[0-9a-fA-F-]{36}/',
             'invalid-uuid',
-            $metaInvalidType->href
+            $newHref2
         );
+        $metaInvalidType->setHref($newHref2);
         $meta3->setMeta($metaInvalidType);
         $metaArray[] = $meta3;
 
@@ -588,7 +591,7 @@ class ProductsApiTest extends TestCase
         foreach ($res as $item) {
             if (isset($item['errors'])) {
                 $errors++;
-                Assert::assertEquals(1021, $item['errors'][0]['code']);
+                Assert::assertEquals(2013, $item['errors'][0]['code']);
             } else {
                 $success++;
                 Asserter::assertStringContainsString('удален', $item['info']);

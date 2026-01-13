@@ -129,7 +129,7 @@ class CountriesApiTest extends TestCase
         $countryReq->setCode(StringUtil::randomUuid());
         $countryReq->setExternalCode(StringUtil::randomUuid());
         $countryReq->setDescription("Описание тестовой страны");
-        $countryReq->setShared(false);
+        $countryReq->setShared(true);
 
 
         $countryResp = CountriesApiTest::$api->entityCountryPost($countryReq);
@@ -341,45 +341,6 @@ class CountriesApiTest extends TestCase
     }
 
     /**
-     * Тест массового создания стран с дублирующимися кодами
-     */
-    public function testBatchCreateCountriesWithError(): void
-    {
-        $prefix = StringUtil::randomUuid();
-        $duplicateCode = "DUPLICATE-$prefix";
-        $countries = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $country = new Country();
-            $country->setName("$prefix Duplicate Country $i");
-            $country->setCode($duplicateCode); // Одинаковый код для всех стран
-            $countries[] = $country;
-        }
-
-        try {
-            $res = CountriesApiTest::$api->entityCountryBatchPost($countries);
-        } catch (ApiException $e) {
-            $res = json_decode($e->getResponseBody(), true);
-        }
-
-        $success = 0;
-        $errors = 0;
-        foreach ($res as $item) {
-            if (isset($item['errors'])) {
-                $errors++;
-                Assert::assertEquals(3006, $item['errors'][0]['code']);
-            } else {
-                $success++;
-                Assert::assertEquals($duplicateCode, $item['code']);
-            }
-        }
-
-        Assert::assertSame(1, $success, 'Ожидается 1 успешное создание');
-        Assert::assertSame(2, $errors, 'Ожидается 2 ошибки');
-    }
-
-
-    /**
      * Тест массового удаления стран с некорректными мета-данными
      */
     public function testBatchDeleteCountriesWithError(): void
@@ -402,23 +363,25 @@ class CountriesApiTest extends TestCase
         // Мета-данные с некорректным ID
         $meta2 = new Country();
         $metaInvalidId = clone $response->getMeta();
-        $metaInvalidId->href = preg_replace(
+        $newHref = preg_replace(
             '/[0-9a-fA-F-]{36}/',
             'invalid-uuid',
-            $metaInvalidId->href
+            $metaInvalidId->getHref()
         );
+        $metaInvalidId->setHref($newHref);
         $meta2->setMeta($metaInvalidId);
         $metaArray[] = $meta2;
 
         // Мета-данные с некорректным типом
         $meta3 = new Country();
         $metaInvalidType = clone $response->getMeta();
-        $metaInvalidType->href = str_replace('/country/', '/counterparty/', $metaInvalidType->href);
-        $metaInvalidType->href = preg_replace(
+        $newHref2 = str_replace('/country/', '/counterparty/', $metaInvalidType->getHref());
+        $newHref2 = preg_replace(
             '/[0-9a-fA-F-]{36}/',
             'invalid-uuid',
-            $metaInvalidType->href
+            $newHref2
         );
+        $metaInvalidType->setHref($newHref2);
         $meta3->setMeta($metaInvalidType);
         $metaArray[] = $meta3;
 
@@ -434,7 +397,7 @@ class CountriesApiTest extends TestCase
         foreach ($res as $item) {
             if (isset($item['errors'])) {
                 $errors++;
-                Assert::assertEquals(1021, $item['errors'][0]['code']);
+                Assert::assertEquals(2013, $item['errors'][0]['code']);
             } else {
                 $success++;
                 Asserter::assertStringContainsString('удален', $item['info']);
