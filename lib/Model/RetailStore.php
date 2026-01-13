@@ -2,7 +2,7 @@
 /**
  * RetailStore
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -1256,7 +1256,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\Employee|null $owner owner
+     * @param \OpenAPI\Client\Model\Employee|null $owner Метаданные владельца (сотрудника)
      *
      * @return self
      */

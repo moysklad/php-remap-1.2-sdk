@@ -2,7 +2,7 @@
 /**
  * Product
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -1447,7 +1447,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\Employee|null $owner owner
+     * @param \OpenAPI\Client\Model\Employee|null $owner Метаданные владельца (Сотрудника)
      *
      * @return self
      */
@@ -1619,7 +1619,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets supplier
      *
-     * @param \OpenAPI\Client\Model\Counterparty|null $supplier supplier
+     * @param \OpenAPI\Client\Model\Counterparty|null $supplier Метаданные контрагента-поставщика
      *
      * @return self
      */
@@ -1653,7 +1653,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country
      *
-     * @param \OpenAPI\Client\Model\Country|null $country country
+     * @param \OpenAPI\Client\Model\Country|null $country Метаданные Страны
      *
      * @return self
      */
@@ -1687,7 +1687,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets uom
      *
-     * @param \OpenAPI\Client\Model\Uom|null $uom uom
+     * @param \OpenAPI\Client\Model\Uom|null $uom Метаданные единиц измерения
      *
      * @return self
      */
@@ -1721,7 +1721,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets product_folder
      *
-     * @param \OpenAPI\Client\Model\ProductFolder|null $product_folder product_folder
+     * @param \OpenAPI\Client\Model\ProductFolder|null $product_folder Метаданные группы Товара
      *
      * @return self
      */
@@ -1755,7 +1755,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets images
      *
-     * @param \OpenAPI\Client\Model\ImageList|null $images images
+     * @param \OpenAPI\Client\Model\ImageList|null $images Массив изображений
      *
      * @return self
      */
@@ -1789,7 +1789,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets files
      *
-     * @param \OpenAPI\Client\Model\FileList|null $files files
+     * @param \OpenAPI\Client\Model\FileList|null $files Метаданные массива Файлов
      *
      * @return self
      */
@@ -2065,7 +2065,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets minimum_stock
      *
-     * @param \OpenAPI\Client\Model\MinimumStockAbstract|null $minimum_stock minimum_stock
+     * @param \OpenAPI\Client\Model\MinimumStockAbstract|null $minimum_stock Неснижаемый остаток
      *
      * @return self
      */
