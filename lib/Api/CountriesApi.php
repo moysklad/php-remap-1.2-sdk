@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductsApi
+ * CountriesApi
  * PHP version 8.1
  *
  * @category Class
@@ -43,14 +43,14 @@ use OpenAPI\Client\HeaderSelector;
 use OpenAPI\Client\ObjectSerializer;
 
 /**
- * ProductsApi Class Doc Comment
+ * CountriesApi Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ProductsApi
+class CountriesApi
 {
     /**
      * @var ClientInterface
@@ -74,28 +74,25 @@ class ProductsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'entityProductBatchPost' => [
+        'entityCountryBatchPost' => [
             'application/json',
         ],
-        'entityProductDeletePost' => [
+        'entityCountryDeletePost' => [
             'application/json',
         ],
-        'entityProductGet' => [
+        'entityCountryGet' => [
             'application/json',
         ],
-        'entityProductIdDelete' => [
+        'entityCountryIdDelete' => [
             'application/json',
         ],
-        'entityProductIdGet' => [
+        'entityCountryIdGet' => [
             'application/json',
         ],
-        'entityProductIdPut' => [
+        'entityCountryIdPut' => [
             'application/json',
         ],
-        'entityProductMetadataGet' => [
-            'application/json',
-        ],
-        'entityProductPost' => [
+        'entityCountryPost' => [
             'application/json',
         ],
     ];
@@ -147,44 +144,44 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductBatchPost
+     * Operation entityCountryBatchPost
      *
-     * Создать или изменить товары
+     * Создать или изменить страны
      *
-     * @param  \OpenAPI\Client\Model\Product[] $product product (required)
+     * @param  \OpenAPI\Client\Model\Country[] $country country (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductBatchPost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryBatchPost'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Product[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
+     * @return \OpenAPI\Client\Model\Country[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
-    public function entityProductBatchPost($product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductBatchPost'][0])
+    public function entityCountryBatchPost($country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryBatchPost'][0])
     {
-        list($response) = $this->entityProductBatchPostWithHttpInfo($product, $expand, $accept, $accept_encoding, $contentType);
+        list($response) = $this->entityCountryBatchPostWithHttpInfo($country, $expand, $accept, $accept_encoding, $contentType);
         return $response;
     }
 
     /**
-     * Operation entityProductBatchPostWithHttpInfo
+     * Operation entityCountryBatchPostWithHttpInfo
      *
-     * Создать или изменить товары
+     * Создать или изменить страны
      *
-     * @param  \OpenAPI\Client\Model\Product[] $product (required)
+     * @param  \OpenAPI\Client\Model\Country[] $country (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductBatchPost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryBatchPost'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Product[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Country[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function entityProductBatchPostWithHttpInfo($product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductBatchPost'][0])
+    public function entityCountryBatchPostWithHttpInfo($country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryBatchPost'][0])
     {
-        $request = $this->entityProductBatchPostRequest($product, $expand, $accept, $accept_encoding, $contentType);
+        $request = $this->entityCountryBatchPostRequest($country, $expand, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -212,7 +209,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Product[]',
+                        '\OpenAPI\Client\Model\Country[]',
                         $request,
                         $response,
                     );
@@ -252,7 +249,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\Product[]',
+                '\OpenAPI\Client\Model\Country[]',
                 $request,
                 $response,
             );
@@ -261,7 +258,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Product[]',
+                        '\OpenAPI\Client\Model\Country[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -298,22 +295,22 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductBatchPostAsync
+     * Operation entityCountryBatchPostAsync
      *
-     * Создать или изменить товары
+     * Создать или изменить страны
      *
-     * @param  \OpenAPI\Client\Model\Product[] $product (required)
+     * @param  \OpenAPI\Client\Model\Country[] $country (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductBatchPost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryBatchPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityProductBatchPostAsync($product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductBatchPost'][0])
+    public function entityCountryBatchPostAsync($country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryBatchPost'][0])
     {
-        return $this->entityProductBatchPostAsyncWithHttpInfo($product, $expand, $accept, $accept_encoding, $contentType)
+        return $this->entityCountryBatchPostAsyncWithHttpInfo($country, $expand, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -322,23 +319,23 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductBatchPostAsyncWithHttpInfo
+     * Operation entityCountryBatchPostAsyncWithHttpInfo
      *
-     * Создать или изменить товары
+     * Создать или изменить страны
      *
-     * @param  \OpenAPI\Client\Model\Product[] $product (required)
+     * @param  \OpenAPI\Client\Model\Country[] $country (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductBatchPost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryBatchPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityProductBatchPostAsyncWithHttpInfo($product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductBatchPost'][0])
+    public function entityCountryBatchPostAsyncWithHttpInfo($country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryBatchPost'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\Product[]';
-        $request = $this->entityProductBatchPostRequest($product, $expand, $accept, $accept_encoding, $contentType);
+        $returnType = '\OpenAPI\Client\Model\Country[]';
+        $request = $this->entityCountryBatchPostRequest($country, $expand, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -377,38 +374,38 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'entityProductBatchPost'
+     * Create request for operation 'entityCountryBatchPost'
      *
-     * @param  \OpenAPI\Client\Model\Product[] $product (required)
+     * @param  \OpenAPI\Client\Model\Country[] $country (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductBatchPost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryBatchPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function entityProductBatchPostRequest($product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductBatchPost'][0])
+    public function entityCountryBatchPostRequest($country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryBatchPost'][0])
     {
 
-        // verify the required parameter 'product' is set
-        if ($product === null || (is_array($product) && count($product) === 0)) {
+        // verify the required parameter 'country' is set
+        if ($country === null || (is_array($country) && count($country) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $product when calling entityProductBatchPost'
+                'Missing the required parameter $country when calling entityCountryBatchPost'
             );
         }
-        if (count($product) > 1000) {
-            throw new \InvalidArgumentException('invalid value for "$product" when calling ProductsApi.entityProductBatchPost, number of items must be less than or equal to 1000.');
+        if (count($country) > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$country" when calling CountriesApi.entityCountryBatchPost, number of items must be less than or equal to 1000.');
         }
-        if (count($product) < 1) {
-            throw new \InvalidArgumentException('invalid value for "$product" when calling ProductsApi.entityProductBatchPost, number of items must be greater than or equal to 1.');
+        if (count($country) < 1) {
+            throw new \InvalidArgumentException('invalid value for "$country" when calling CountriesApi.entityCountryBatchPost, number of items must be greater than or equal to 1.');
         }
         
 
 
 
 
-        $resourcePath = '/entity/product/batch';
+        $resourcePath = '/entity/country/batch';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -443,12 +440,12 @@ class ProductsApi
         );
 
         // for model (json/xml)
-        if (isset($product)) {
+        if (isset($country)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($country));
             } else {
-                $httpBody = $product;
+                $httpBody = $country;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -505,42 +502,42 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductDeletePost
+     * Operation entityCountryDeletePost
      *
-     * Удалить товары
+     * Удалить страны
      *
-     * @param  \OpenAPI\Client\Model\Product[] $product product (required)
+     * @param  \OpenAPI\Client\Model\Country[] $country country (required)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductDeletePost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryDeletePost'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\DeleteInfo[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
-    public function entityProductDeletePost($product, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductDeletePost'][0])
+    public function entityCountryDeletePost($country, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryDeletePost'][0])
     {
-        list($response) = $this->entityProductDeletePostWithHttpInfo($product, $accept, $accept_encoding, $contentType);
+        list($response) = $this->entityCountryDeletePostWithHttpInfo($country, $accept, $accept_encoding, $contentType);
         return $response;
     }
 
     /**
-     * Operation entityProductDeletePostWithHttpInfo
+     * Operation entityCountryDeletePostWithHttpInfo
      *
-     * Удалить товары
+     * Удалить страны
      *
-     * @param  \OpenAPI\Client\Model\Product[] $product (required)
+     * @param  \OpenAPI\Client\Model\Country[] $country (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductDeletePost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryDeletePost'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\DeleteInfo[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function entityProductDeletePostWithHttpInfo($product, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductDeletePost'][0])
+    public function entityCountryDeletePostWithHttpInfo($country, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryDeletePost'][0])
     {
-        $request = $this->entityProductDeletePostRequest($product, $accept, $accept_encoding, $contentType);
+        $request = $this->entityCountryDeletePostRequest($country, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -682,21 +679,21 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductDeletePostAsync
+     * Operation entityCountryDeletePostAsync
      *
-     * Удалить товары
+     * Удалить страны
      *
-     * @param  \OpenAPI\Client\Model\Product[] $product (required)
+     * @param  \OpenAPI\Client\Model\Country[] $country (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductDeletePost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryDeletePost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityProductDeletePostAsync($product, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductDeletePost'][0])
+    public function entityCountryDeletePostAsync($country, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryDeletePost'][0])
     {
-        return $this->entityProductDeletePostAsyncWithHttpInfo($product, $accept, $accept_encoding, $contentType)
+        return $this->entityCountryDeletePostAsyncWithHttpInfo($country, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -705,22 +702,22 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductDeletePostAsyncWithHttpInfo
+     * Operation entityCountryDeletePostAsyncWithHttpInfo
      *
-     * Удалить товары
+     * Удалить страны
      *
-     * @param  \OpenAPI\Client\Model\Product[] $product (required)
+     * @param  \OpenAPI\Client\Model\Country[] $country (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductDeletePost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryDeletePost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityProductDeletePostAsyncWithHttpInfo($product, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductDeletePost'][0])
+    public function entityCountryDeletePostAsyncWithHttpInfo($country, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryDeletePost'][0])
     {
         $returnType = '\OpenAPI\Client\Model\DeleteInfo[]';
-        $request = $this->entityProductDeletePostRequest($product, $accept, $accept_encoding, $contentType);
+        $request = $this->entityCountryDeletePostRequest($country, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -759,36 +756,36 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'entityProductDeletePost'
+     * Create request for operation 'entityCountryDeletePost'
      *
-     * @param  \OpenAPI\Client\Model\Product[] $product (required)
+     * @param  \OpenAPI\Client\Model\Country[] $country (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductDeletePost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryDeletePost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function entityProductDeletePostRequest($product, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductDeletePost'][0])
+    public function entityCountryDeletePostRequest($country, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryDeletePost'][0])
     {
 
-        // verify the required parameter 'product' is set
-        if ($product === null || (is_array($product) && count($product) === 0)) {
+        // verify the required parameter 'country' is set
+        if ($country === null || (is_array($country) && count($country) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $product when calling entityProductDeletePost'
+                'Missing the required parameter $country when calling entityCountryDeletePost'
             );
         }
-        if (count($product) > 1000) {
-            throw new \InvalidArgumentException('invalid value for "$product" when calling ProductsApi.entityProductDeletePost, number of items must be less than or equal to 1000.');
+        if (count($country) > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$country" when calling CountriesApi.entityCountryDeletePost, number of items must be less than or equal to 1000.');
         }
-        if (count($product) < 1) {
-            throw new \InvalidArgumentException('invalid value for "$product" when calling ProductsApi.entityProductDeletePost, number of items must be greater than or equal to 1.');
+        if (count($country) < 1) {
+            throw new \InvalidArgumentException('invalid value for "$country" when calling CountriesApi.entityCountryDeletePost, number of items must be greater than or equal to 1.');
         }
         
 
 
 
-        $resourcePath = '/entity/product/delete';
+        $resourcePath = '/entity/country/delete';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -814,12 +811,12 @@ class ProductsApi
         );
 
         // for model (json/xml)
-        if (isset($product)) {
+        if (isset($country)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($country));
             } else {
-                $httpBody = $product;
+                $httpBody = $country;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -876,9 +873,9 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductGet
+     * Operation entityCountryGet
      *
-     * Получить список товаров
+     * Получить список стран
      *
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
@@ -888,22 +885,22 @@ class ProductsApi
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ProductList|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
+     * @return \OpenAPI\Client\Model\CountryList|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
-    public function entityProductGet($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductGet'][0])
+    public function entityCountryGet($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryGet'][0])
     {
-        list($response) = $this->entityProductGetWithHttpInfo($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
+        list($response) = $this->entityCountryGetWithHttpInfo($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
         return $response;
     }
 
     /**
-     * Operation entityProductGetWithHttpInfo
+     * Operation entityCountryGetWithHttpInfo
      *
-     * Получить список товаров
+     * Получить список стран
      *
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
@@ -913,15 +910,15 @@ class ProductsApi
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ProductList|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\CountryList|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function entityProductGetWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductGet'][0])
+    public function entityCountryGetWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryGet'][0])
     {
-        $request = $this->entityProductGetRequest($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
+        $request = $this->entityCountryGetRequest($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -949,7 +946,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProductList',
+                        '\OpenAPI\Client\Model\CountryList',
                         $request,
                         $response,
                     );
@@ -989,7 +986,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ProductList',
+                '\OpenAPI\Client\Model\CountryList',
                 $request,
                 $response,
             );
@@ -998,7 +995,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ProductList',
+                        '\OpenAPI\Client\Model\CountryList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1035,9 +1032,9 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductGetAsync
+     * Operation entityCountryGetAsync
      *
-     * Получить список товаров
+     * Получить список стран
      *
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
@@ -1047,14 +1044,14 @@ class ProductsApi
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityProductGetAsync($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductGet'][0])
+    public function entityCountryGetAsync($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryGet'][0])
     {
-        return $this->entityProductGetAsyncWithHttpInfo($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType)
+        return $this->entityCountryGetAsyncWithHttpInfo($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1063,9 +1060,9 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductGetAsyncWithHttpInfo
+     * Operation entityCountryGetAsyncWithHttpInfo
      *
-     * Получить список товаров
+     * Получить список стран
      *
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
@@ -1075,15 +1072,15 @@ class ProductsApi
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityProductGetAsyncWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductGet'][0])
+    public function entityCountryGetAsyncWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryGet'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ProductList';
-        $request = $this->entityProductGetRequest($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
+        $returnType = '\OpenAPI\Client\Model\CountryList';
+        $request = $this->entityCountryGetRequest($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1122,7 +1119,7 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'entityProductGet'
+     * Create request for operation 'entityCountryGet'
      *
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
@@ -1132,23 +1129,23 @@ class ProductsApi
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function entityProductGetRequest($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductGet'][0])
+    public function entityCountryGetRequest($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryGet'][0])
     {
 
         if ($limit !== null && $limit > 1000) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling ProductsApi.entityProductGet, must be smaller than or equal to 1000.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CountriesApi.entityCountryGet, must be smaller than or equal to 1000.');
         }
         if ($limit !== null && $limit < 1) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling ProductsApi.entityProductGet, must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CountriesApi.entityCountryGet, must be bigger than or equal to 1.');
         }
         
         if ($offset !== null && $offset < 0) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling ProductsApi.entityProductGet, must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CountriesApi.entityCountryGet, must be bigger than or equal to 0.');
         }
         
 
@@ -1158,7 +1155,7 @@ class ProductsApi
 
 
 
-        $resourcePath = '/entity/product';
+        $resourcePath = '/entity/country';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1293,41 +1290,41 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductIdDelete
+     * Operation entityCountryIdDelete
      *
-     * Удалить товар
+     * Удалить страну
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdDelete'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function entityProductIdDelete($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdDelete'][0])
+    public function entityCountryIdDelete($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdDelete'][0])
     {
-        $this->entityProductIdDeleteWithHttpInfo($id, $accept, $accept_encoding, $contentType);
+        $this->entityCountryIdDeleteWithHttpInfo($id, $accept, $accept_encoding, $contentType);
     }
 
     /**
-     * Operation entityProductIdDeleteWithHttpInfo
+     * Operation entityCountryIdDeleteWithHttpInfo
      *
-     * Удалить товар
+     * Удалить страну
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdDelete'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function entityProductIdDeleteWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdDelete'][0])
+    public function entityCountryIdDeleteWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdDelete'][0])
     {
-        $request = $this->entityProductIdDeleteRequest($id, $accept, $accept_encoding, $contentType);
+        $request = $this->entityCountryIdDeleteRequest($id, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1379,21 +1376,21 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductIdDeleteAsync
+     * Operation entityCountryIdDeleteAsync
      *
-     * Удалить товар
+     * Удалить страну
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdDelete'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityProductIdDeleteAsync($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdDelete'][0])
+    public function entityCountryIdDeleteAsync($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdDelete'][0])
     {
-        return $this->entityProductIdDeleteAsyncWithHttpInfo($id, $accept, $accept_encoding, $contentType)
+        return $this->entityCountryIdDeleteAsyncWithHttpInfo($id, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1402,22 +1399,22 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductIdDeleteAsyncWithHttpInfo
+     * Operation entityCountryIdDeleteAsyncWithHttpInfo
      *
-     * Удалить товар
+     * Удалить страну
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdDelete'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityProductIdDeleteAsyncWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdDelete'][0])
+    public function entityCountryIdDeleteAsyncWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdDelete'][0])
     {
         $returnType = '';
-        $request = $this->entityProductIdDeleteRequest($id, $accept, $accept_encoding, $contentType);
+        $request = $this->entityCountryIdDeleteRequest($id, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1443,30 +1440,30 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'entityProductIdDelete'
+     * Create request for operation 'entityCountryIdDelete'
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdDelete'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function entityProductIdDeleteRequest($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdDelete'][0])
+    public function entityCountryIdDeleteRequest($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdDelete'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling entityProductIdDelete'
+                'Missing the required parameter $id when calling entityCountryIdDelete'
             );
         }
 
 
 
 
-        $resourcePath = '/entity/product/{id}';
+        $resourcePath = '/entity/country/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1555,44 +1552,44 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductIdGet
+     * Operation entityCountryIdGet
      *
-     * Получить товар по ID
+     * Получить страну по id
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Product|\OpenAPI\Client\Model\Error
+     * @return \OpenAPI\Client\Model\Country|\OpenAPI\Client\Model\Error
      */
-    public function entityProductIdGet($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdGet'][0])
+    public function entityCountryIdGet($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdGet'][0])
     {
-        list($response) = $this->entityProductIdGetWithHttpInfo($id, $expand, $accept, $accept_encoding, $contentType);
+        list($response) = $this->entityCountryIdGetWithHttpInfo($id, $expand, $accept, $accept_encoding, $contentType);
         return $response;
     }
 
     /**
-     * Operation entityProductIdGetWithHttpInfo
+     * Operation entityCountryIdGetWithHttpInfo
      *
-     * Получить товар по ID
+     * Получить страну по id
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Product|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Country|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function entityProductIdGetWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdGet'][0])
+    public function entityCountryIdGetWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdGet'][0])
     {
-        $request = $this->entityProductIdGetRequest($id, $expand, $accept, $accept_encoding, $contentType);
+        $request = $this->entityCountryIdGetRequest($id, $expand, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1620,7 +1617,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Product',
+                        '\OpenAPI\Client\Model\Country',
                         $request,
                         $response,
                     );
@@ -1648,7 +1645,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\Product',
+                '\OpenAPI\Client\Model\Country',
                 $request,
                 $response,
             );
@@ -1657,7 +1654,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Product',
+                        '\OpenAPI\Client\Model\Country',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1678,22 +1675,22 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductIdGetAsync
+     * Operation entityCountryIdGetAsync
      *
-     * Получить товар по ID
+     * Получить страну по id
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityProductIdGetAsync($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdGet'][0])
+    public function entityCountryIdGetAsync($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdGet'][0])
     {
-        return $this->entityProductIdGetAsyncWithHttpInfo($id, $expand, $accept, $accept_encoding, $contentType)
+        return $this->entityCountryIdGetAsyncWithHttpInfo($id, $expand, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1702,23 +1699,23 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductIdGetAsyncWithHttpInfo
+     * Operation entityCountryIdGetAsyncWithHttpInfo
      *
-     * Получить товар по ID
+     * Получить страну по id
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityProductIdGetAsyncWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdGet'][0])
+    public function entityCountryIdGetAsyncWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdGet'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\Product';
-        $request = $this->entityProductIdGetRequest($id, $expand, $accept, $accept_encoding, $contentType);
+        $returnType = '\OpenAPI\Client\Model\Country';
+        $request = $this->entityCountryIdGetRequest($id, $expand, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1757,24 +1754,24 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'entityProductIdGet'
+     * Create request for operation 'entityCountryIdGet'
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function entityProductIdGetRequest($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdGet'][0])
+    public function entityCountryIdGetRequest($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdGet'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling entityProductIdGet'
+                'Missing the required parameter $id when calling entityCountryIdGet'
             );
         }
 
@@ -1782,7 +1779,7 @@ class ProductsApi
 
 
 
-        $resourcePath = '/entity/product/{id}';
+        $resourcePath = '/entity/country/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1880,46 +1877,46 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductIdPut
+     * Operation entityCountryIdPut
      *
-     * Обновить товар
+     * Обновить страну
      *
      * @param  string $id ID сущности (required)
-     * @param  \OpenAPI\Client\Model\Product $product product (required)
+     * @param  \OpenAPI\Client\Model\Country $country country (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdPut'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdPut'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Product|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
+     * @return \OpenAPI\Client\Model\Country|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
-    public function entityProductIdPut($id, $product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdPut'][0])
+    public function entityCountryIdPut($id, $country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdPut'][0])
     {
-        list($response) = $this->entityProductIdPutWithHttpInfo($id, $product, $expand, $accept, $accept_encoding, $contentType);
+        list($response) = $this->entityCountryIdPutWithHttpInfo($id, $country, $expand, $accept, $accept_encoding, $contentType);
         return $response;
     }
 
     /**
-     * Operation entityProductIdPutWithHttpInfo
+     * Operation entityCountryIdPutWithHttpInfo
      *
-     * Обновить товар
+     * Обновить страну
      *
      * @param  string $id ID сущности (required)
-     * @param  \OpenAPI\Client\Model\Product $product (required)
+     * @param  \OpenAPI\Client\Model\Country $country (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdPut'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdPut'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Product|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Country|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function entityProductIdPutWithHttpInfo($id, $product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdPut'][0])
+    public function entityCountryIdPutWithHttpInfo($id, $country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdPut'][0])
     {
-        $request = $this->entityProductIdPutRequest($id, $product, $expand, $accept, $accept_encoding, $contentType);
+        $request = $this->entityCountryIdPutRequest($id, $country, $expand, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1947,7 +1944,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Product',
+                        '\OpenAPI\Client\Model\Country',
                         $request,
                         $response,
                     );
@@ -1981,7 +1978,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\Product',
+                '\OpenAPI\Client\Model\Country',
                 $request,
                 $response,
             );
@@ -1990,7 +1987,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Product',
+                        '\OpenAPI\Client\Model\Country',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2019,23 +2016,23 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductIdPutAsync
+     * Operation entityCountryIdPutAsync
      *
-     * Обновить товар
+     * Обновить страну
      *
      * @param  string $id ID сущности (required)
-     * @param  \OpenAPI\Client\Model\Product $product (required)
+     * @param  \OpenAPI\Client\Model\Country $country (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdPut'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityProductIdPutAsync($id, $product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdPut'][0])
+    public function entityCountryIdPutAsync($id, $country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdPut'][0])
     {
-        return $this->entityProductIdPutAsyncWithHttpInfo($id, $product, $expand, $accept, $accept_encoding, $contentType)
+        return $this->entityCountryIdPutAsyncWithHttpInfo($id, $country, $expand, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2044,24 +2041,24 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductIdPutAsyncWithHttpInfo
+     * Operation entityCountryIdPutAsyncWithHttpInfo
      *
-     * Обновить товар
+     * Обновить страну
      *
      * @param  string $id ID сущности (required)
-     * @param  \OpenAPI\Client\Model\Product $product (required)
+     * @param  \OpenAPI\Client\Model\Country $country (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdPut'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityProductIdPutAsyncWithHttpInfo($id, $product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdPut'][0])
+    public function entityCountryIdPutAsyncWithHttpInfo($id, $country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdPut'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\Product';
-        $request = $this->entityProductIdPutRequest($id, $product, $expand, $accept, $accept_encoding, $contentType);
+        $returnType = '\OpenAPI\Client\Model\Country';
+        $request = $this->entityCountryIdPutRequest($id, $country, $expand, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2100,32 +2097,32 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'entityProductIdPut'
+     * Create request for operation 'entityCountryIdPut'
      *
      * @param  string $id ID сущности (required)
-     * @param  \OpenAPI\Client\Model\Product $product (required)
+     * @param  \OpenAPI\Client\Model\Country $country (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductIdPut'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryIdPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function entityProductIdPutRequest($id, $product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductIdPut'][0])
+    public function entityCountryIdPutRequest($id, $country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryIdPut'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling entityProductIdPut'
+                'Missing the required parameter $id when calling entityCountryIdPut'
             );
         }
 
-        // verify the required parameter 'product' is set
-        if ($product === null || (is_array($product) && count($product) === 0)) {
+        // verify the required parameter 'country' is set
+        if ($country === null || (is_array($country) && count($country) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $product when calling entityProductIdPut'
+                'Missing the required parameter $country when calling entityCountryIdPut'
             );
         }
 
@@ -2133,7 +2130,7 @@ class ProductsApi
 
 
 
-        $resourcePath = '/entity/product/{id}';
+        $resourcePath = '/entity/country/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2176,12 +2173,12 @@ class ProductsApi
         );
 
         // for model (json/xml)
-        if (isset($product)) {
+        if (isset($country)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($country));
             } else {
-                $httpBody = $product;
+                $httpBody = $country;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2238,40 +2235,44 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductMetadataGet
+     * Operation entityCountryPost
      *
-     * Получить метаданные товаров
+     * Создать страну
      *
+     * @param  \OpenAPI\Client\Model\Country $country country (required)
+     * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductMetadataGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryPost'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Metadata|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
+     * @return \OpenAPI\Client\Model\Country|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
-    public function entityProductMetadataGet($accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductMetadataGet'][0])
+    public function entityCountryPost($country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryPost'][0])
     {
-        list($response) = $this->entityProductMetadataGetWithHttpInfo($accept, $accept_encoding, $contentType);
+        list($response) = $this->entityCountryPostWithHttpInfo($country, $expand, $accept, $accept_encoding, $contentType);
         return $response;
     }
 
     /**
-     * Operation entityProductMetadataGetWithHttpInfo
+     * Operation entityCountryPostWithHttpInfo
      *
-     * Получить метаданные товаров
+     * Создать страну
      *
+     * @param  \OpenAPI\Client\Model\Country $country (required)
+     * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductMetadataGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryPost'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Metadata|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Country|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function entityProductMetadataGetWithHttpInfo($accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductMetadataGet'][0])
+    public function entityCountryPostWithHttpInfo($country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryPost'][0])
     {
-        $request = $this->entityProductMetadataGetRequest($accept, $accept_encoding, $contentType);
+        $request = $this->entityCountryPostRequest($country, $expand, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2299,315 +2300,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Metadata',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\Metadata',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Metadata',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation entityProductMetadataGetAsync
-     *
-     * Получить метаданные товаров
-     *
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductMetadataGet'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function entityProductMetadataGetAsync($accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductMetadataGet'][0])
-    {
-        return $this->entityProductMetadataGetAsyncWithHttpInfo($accept, $accept_encoding, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation entityProductMetadataGetAsyncWithHttpInfo
-     *
-     * Получить метаданные товаров
-     *
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductMetadataGet'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function entityProductMetadataGetAsyncWithHttpInfo($accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductMetadataGet'][0])
-    {
-        $returnType = '\OpenAPI\Client\Model\Metadata';
-        $request = $this->entityProductMetadataGetRequest($accept, $accept_encoding, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'entityProductMetadataGet'
-     *
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductMetadataGet'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function entityProductMetadataGetRequest($accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductMetadataGet'][0])
-    {
-
-
-
-
-        $resourcePath = '/entity/product/metadata';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // header params
-        if ($accept !== null) {
-            $headerParams['accept'] = ObjectSerializer::toHeaderValue($accept);
-        }
-        // header params
-        if ($accept_encoding !== null) {
-            $headerParams['Accept-Encoding'] = ObjectSerializer::toHeaderValue($accept_encoding);
-        }
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
-            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
-        }
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation entityProductPost
-     *
-     * Создать товар
-     *
-     * @param  \OpenAPI\Client\Model\Product $product product (required)
-     * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
-     * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductPost'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Product|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
-     */
-    public function entityProductPost($product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductPost'][0])
-    {
-        list($response) = $this->entityProductPostWithHttpInfo($product, $expand, $accept, $accept_encoding, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation entityProductPostWithHttpInfo
-     *
-     * Создать товар
-     *
-     * @param  \OpenAPI\Client\Model\Product $product (required)
-     * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductPost'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Product|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function entityProductPostWithHttpInfo($product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductPost'][0])
-    {
-        $request = $this->entityProductPostRequest($product, $expand, $accept, $accept_encoding, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Product',
+                        '\OpenAPI\Client\Model\Country',
                         $request,
                         $response,
                     );
@@ -2647,7 +2340,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\Product',
+                '\OpenAPI\Client\Model\Country',
                 $request,
                 $response,
             );
@@ -2656,7 +2349,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Product',
+                        '\OpenAPI\Client\Model\Country',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2693,22 +2386,22 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductPostAsync
+     * Operation entityCountryPostAsync
      *
-     * Создать товар
+     * Создать страну
      *
-     * @param  \OpenAPI\Client\Model\Product $product (required)
+     * @param  \OpenAPI\Client\Model\Country $country (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductPost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityProductPostAsync($product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductPost'][0])
+    public function entityCountryPostAsync($country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryPost'][0])
     {
-        return $this->entityProductPostAsyncWithHttpInfo($product, $expand, $accept, $accept_encoding, $contentType)
+        return $this->entityCountryPostAsyncWithHttpInfo($country, $expand, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2717,23 +2410,23 @@ class ProductsApi
     }
 
     /**
-     * Operation entityProductPostAsyncWithHttpInfo
+     * Operation entityCountryPostAsyncWithHttpInfo
      *
-     * Создать товар
+     * Создать страну
      *
-     * @param  \OpenAPI\Client\Model\Product $product (required)
+     * @param  \OpenAPI\Client\Model\Country $country (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductPost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityProductPostAsyncWithHttpInfo($product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductPost'][0])
+    public function entityCountryPostAsyncWithHttpInfo($country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryPost'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\Product';
-        $request = $this->entityProductPostRequest($product, $expand, $accept, $accept_encoding, $contentType);
+        $returnType = '\OpenAPI\Client\Model\Country';
+        $request = $this->entityCountryPostRequest($country, $expand, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2772,24 +2465,24 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'entityProductPost'
+     * Create request for operation 'entityCountryPost'
      *
-     * @param  \OpenAPI\Client\Model\Product $product (required)
+     * @param  \OpenAPI\Client\Model\Country $country (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityProductPost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCountryPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function entityProductPostRequest($product, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityProductPost'][0])
+    public function entityCountryPostRequest($country, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCountryPost'][0])
     {
 
-        // verify the required parameter 'product' is set
-        if ($product === null || (is_array($product) && count($product) === 0)) {
+        // verify the required parameter 'country' is set
+        if ($country === null || (is_array($country) && count($country) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $product when calling entityProductPost'
+                'Missing the required parameter $country when calling entityCountryPost'
             );
         }
 
@@ -2797,7 +2490,7 @@ class ProductsApi
 
 
 
-        $resourcePath = '/entity/product';
+        $resourcePath = '/entity/country';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2832,12 +2525,12 @@ class ProductsApi
         );
 
         // for model (json/xml)
-        if (isset($product)) {
+        if (isset($country)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($country));
             } else {
-                $httpBody = $product;
+                $httpBody = $country;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
