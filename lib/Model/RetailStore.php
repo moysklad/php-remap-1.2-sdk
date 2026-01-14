@@ -2,7 +2,7 @@
 /**
  * RetailStore
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -73,7 +73,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'organization' => '\OpenAPI\Client\Model\RetailStoreOrganization',
         'store' => '\OpenAPI\Client\Model\Store',
         'group' => '\OpenAPI\Client\Model\Group',
-        'owner' => '\OpenAPI\Client\Model\Owner',
+        'owner' => '\OpenAPI\Client\Model\Employee',
         'price_type' => '\OpenAPI\Client\Model\PriceType',
         'environment' => '\OpenAPI\Client\Model\Environment',
         'state' => '\OpenAPI\Client\Model\Status',
@@ -1246,7 +1246,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\Owner|null
+     * @return \OpenAPI\Client\Model\Employee|null
      */
     public function getOwner()
     {
@@ -1256,7 +1256,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\Owner|null $owner owner
+     * @param \OpenAPI\Client\Model\Employee|null $owner Метаданные владельца (сотрудника)
      *
      * @return self
      */

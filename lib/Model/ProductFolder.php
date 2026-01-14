@@ -2,7 +2,7 @@
 /**
  * ProductFolder
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -74,7 +74,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'use_parent_vat' => 'bool',
         'shared' => 'bool',
         'group' => '\OpenAPI\Client\Model\Group',
-        'owner' => '\OpenAPI\Client\Model\Owner',
+        'owner' => '\OpenAPI\Client\Model\Employee',
         'updated' => '\DateTime',
         'product_folder' => '\OpenAPI\Client\Model\ProductFolder',
         'tax_system' => 'string'
@@ -134,7 +134,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'group' => false,
         'owner' => true,
         'updated' => false,
-        'product_folder' => false,
+        'product_folder' => true,
         'tax_system' => false
     ];
 
@@ -947,7 +947,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\Owner|null
+     * @return \OpenAPI\Client\Model\Employee|null
      */
     public function getOwner()
     {
@@ -957,7 +957,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\Owner|null $owner owner
+     * @param \OpenAPI\Client\Model\Employee|null $owner Владелец группы товаров. Может быть Meta объектом или полным объектом в зависимости от expand параметра
      *
      * @return self
      */
@@ -1018,14 +1018,21 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets product_folder
      *
-     * @param \OpenAPI\Client\Model\ProductFolder|null $product_folder product_folder
+     * @param \OpenAPI\Client\Model\ProductFolder|null $product_folder Родительская группа товаров
      *
      * @return self
      */
     public function setProductFolder($product_folder)
     {
         if (is_null($product_folder)) {
-            throw new \InvalidArgumentException('non-nullable product_folder cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_folder');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_folder', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product_folder'] = $product_folder;
 
