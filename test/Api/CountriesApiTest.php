@@ -1,7 +1,7 @@
 <?php
 /**
  * CountriesApiTest
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -275,6 +275,7 @@ class CountriesApiTest extends TestCase
         $updatedCountries = [];
         foreach ($response as $index => $createdCountry) {
             $updateCountry = new Country();
+            $updateCountry->setMeta($createdCountry->getMeta());
             $updateCountry->setName("$prefix Updated Country1 " . ($index + 1));
             $updateCountry->setCode("UPD-" . ($index + 1) . "-$prefix");
             $updateCountry->setDescription("Обновленное описание продукта " . ($index + 1));

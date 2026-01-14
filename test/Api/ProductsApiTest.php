@@ -412,6 +412,7 @@ class ProductsApiTest extends TestCase
         $updatedProducts = [];
         foreach ($response as $index => $createdProduct) {
             $updateProduct = new Product();
+            $updateProduct->setMeta($createdProduct->getMeta());
             $updateProduct->setName("$prefix Updated Product " . ($index + 1));
             $updateProduct->setCode("UPD-" . ($index + 1) . "-$prefix");
             $updateProduct->setDescription("Обновленное описание продукта " . ($index + 1));

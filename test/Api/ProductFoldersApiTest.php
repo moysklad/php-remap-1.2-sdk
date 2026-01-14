@@ -1,7 +1,7 @@
 <?php
 /**
  * ProductFoldersApiTest
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -323,6 +323,7 @@ class ProductFoldersApiTest extends TestCase
         $updatedProductFolders = [];
         foreach ($response as $index => $createdProductFolder) {
             $updateProductFolder = new ProductFolder();
+            $updateProductFolder->setMeta($createdProductFolder->getMeta());
             $updateProductFolder->setName("$prefix Updated ProductFolder " . ($index + 1));
             $updateProductFolder->setCode("UPD-" . ($index + 1) . "-$prefix");
             $updateProductFolder->setDescription("Обновленное описание продукта " . ($index + 1));

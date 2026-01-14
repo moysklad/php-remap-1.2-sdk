@@ -1,7 +1,7 @@
 <?php
 /**
  * UomsApiTest
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -288,6 +288,7 @@ class UomsApiTest extends TestCase
         $updatedUoms = [];
         foreach ($response as $index => $createdUom) {
             $updateUom = new Uom();
+            $updateUom->setMeta($createdUom->getMeta());
             $updateUom->setName("$prefix Updated Uom " . ($index + 1));
             $updateUom->setCode("UPD-" . ($index + 1) . "-$prefix");
             $updateUom->setDescription("Обновленное описание единицы измерения " . ($index + 1));

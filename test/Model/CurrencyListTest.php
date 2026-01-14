@@ -1,6 +1,6 @@
 <?php
 /**
- * TaxSystemTest
+ * CurrencyListTest
  *
  * PHP version 8.1
  *
@@ -28,28 +28,46 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\TaxSystem;
+use OpenAPI\Client\Model\Context;
+use OpenAPI\Client\Model\MetaList;
+use OpenAPI\Client\Model\Currency;
+use OpenAPI\Client\Model\CurrencyList;
+use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
- * TaxSystemTest Class Doc Comment
+ * CurrencyListTest Class Doc Comment
  *
  * @category    Class
- * @description Система налогообложения
+ * @description CurrencyList
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class TaxSystemTest extends TestCase
+class CurrencyListTest extends TestCase
 {
 
-    public function testTaxSystem()
+    public function testPropertyContext()
     {
-        $this->assertEquals(TaxSystem::GENERAL_TAX_SYSTEM, 'GENERAL_TAX_SYSTEM');
-        $this->assertEquals(TaxSystem::SIMPLIFIED_TAX_SYSTEM_INCOME, 'SIMPLIFIED_TAX_SYSTEM_INCOME');
-        $this->assertEquals(TaxSystem::SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME, 'SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME');
-        $this->assertEquals(TaxSystem::UNIFIED_AGRICULTURAL_TAX, 'UNIFIED_AGRICULTURAL_TAX');
-        $this->assertEquals(TaxSystem::PRESUMPTIVE_TAX_SYSTEM, 'PRESUMPTIVE_TAX_SYSTEM');
-        $this->assertEquals(TaxSystem::PATENT_BASED, 'PATENT_BASED');
+        $currencyList = new CurrencyList();
+        $context = new Context();
+        $currencyList->setContext($context);
+        Asserter::assertJsonHasFields($currencyList, ['context' => []]);
+    }
+
+    public function testPropertyMeta()
+    {
+        $currencyList = new CurrencyList();
+        $meta = new MetaList();
+        $currencyList->setMeta($meta);
+        Asserter::assertJsonHasFields($currencyList, ['meta' => []]);
+    }
+
+    public function testPropertyRows()
+    {
+        $currencyList = new CurrencyList();
+        $currency = new Currency();
+        $currencyList->setRows([$currency]);
+        Asserter::assertJsonHasFields($currencyList, ['rows' => [[]]]);
     }
 }
