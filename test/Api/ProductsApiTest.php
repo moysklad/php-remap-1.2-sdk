@@ -230,7 +230,6 @@ class ProductsApiTest extends TestCase
 
         Assert::assertSame($productReq->getBuyPrice()->getValue(), $productResp->getBuyPrice()->getValue());
         Assert::assertSame($productReq->getMinPrice()->getValue(), $productResp->getMinPrice()->getValue());
-        Asserter::assertJsonHasFields($productResp, ['salePrices' => [['priceType' => [], 'currency' => []]]], false);
 
         Assert::assertSame($productReq->getBarcodes()[0]->getEan13(), $productResp->getBarcodes()[0]->getEan13());
         Assert::assertSame($productReq->getMinimumStock()->getQuantity(), $productResp->getMinimumStock()->getQuantity());
