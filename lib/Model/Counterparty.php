@@ -2,7 +2,7 @@
 /**
  * Counterparty
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -90,7 +90,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'discount_card_number' => 'string',
         'shared' => 'bool',
         'group' => '\OpenAPI\Client\Model\Group',
-        'owner' => '\OpenAPI\Client\Model\Owner',
+        'owner' => '\OpenAPI\Client\Model\Employee',
         'sales_amount' => 'int',
         'bonus_points' => 'int',
         'bonus_program' => '\OpenAPI\Client\Model\Meta',
@@ -1664,7 +1664,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\Owner|null
+     * @return \OpenAPI\Client\Model\Employee|null
      */
     public function getOwner()
     {
@@ -1674,7 +1674,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\Owner|null $owner owner
+     * @param \OpenAPI\Client\Model\Employee|null $owner Метаданные владельца (Сотрудника)
      *
      * @return self
      */
