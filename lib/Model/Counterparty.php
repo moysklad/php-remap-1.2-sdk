@@ -60,6 +60,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\Meta',
         'id' => 'string',
+        'sync_id' => 'string',
         'account_id' => 'string',
         'name' => 'string',
         'code' => 'string',
@@ -73,6 +74,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'phone' => 'string',
         'fax' => 'string',
         'actual_address' => 'string',
+        'actual_address_full' => '\OpenAPI\Client\Model\Address',
         'legal_address' => 'string',
         'inn' => 'string',
         'kpp' => 'string',
@@ -114,6 +116,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'meta' => null,
         'id' => 'uuid',
+        'sync_id' => 'uuid',
         'account_id' => 'uuid',
         'name' => null,
         'code' => null,
@@ -127,6 +130,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'phone' => null,
         'fax' => null,
         'actual_address' => null,
+        'actual_address_full' => null,
         'legal_address' => null,
         'inn' => null,
         'kpp' => null,
@@ -166,6 +170,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'meta' => false,
         'id' => false,
+        'sync_id' => false,
         'account_id' => false,
         'name' => false,
         'code' => false,
@@ -179,6 +184,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'phone' => false,
         'fax' => false,
         'actual_address' => false,
+        'actual_address_full' => true,
         'legal_address' => false,
         'inn' => false,
         'kpp' => false,
@@ -298,6 +304,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'meta' => 'meta',
         'id' => 'id',
+        'sync_id' => 'syncId',
         'account_id' => 'accountId',
         'name' => 'name',
         'code' => 'code',
@@ -311,6 +318,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'phone' => 'phone',
         'fax' => 'fax',
         'actual_address' => 'actualAddress',
+        'actual_address_full' => 'actualAddressFull',
         'legal_address' => 'legalAddress',
         'inn' => 'inn',
         'kpp' => 'kpp',
@@ -350,6 +358,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'meta' => 'setMeta',
         'id' => 'setId',
+        'sync_id' => 'setSyncId',
         'account_id' => 'setAccountId',
         'name' => 'setName',
         'code' => 'setCode',
@@ -363,6 +372,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'phone' => 'setPhone',
         'fax' => 'setFax',
         'actual_address' => 'setActualAddress',
+        'actual_address_full' => 'setActualAddressFull',
         'legal_address' => 'setLegalAddress',
         'inn' => 'setInn',
         'kpp' => 'setKpp',
@@ -402,6 +412,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'meta' => 'getMeta',
         'id' => 'getId',
+        'sync_id' => 'getSyncId',
         'account_id' => 'getAccountId',
         'name' => 'getName',
         'code' => 'getCode',
@@ -415,6 +426,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'phone' => 'getPhone',
         'fax' => 'getFax',
         'actual_address' => 'getActualAddress',
+        'actual_address_full' => 'getActualAddressFull',
         'legal_address' => 'getLegalAddress',
         'inn' => 'getInn',
         'kpp' => 'getKpp',
@@ -537,6 +549,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('sync_id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
@@ -550,6 +563,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('phone', $data ?? [], null);
         $this->setIfExists('fax', $data ?? [], null);
         $this->setIfExists('actual_address', $data ?? [], null);
+        $this->setIfExists('actual_address_full', $data ?? [], null);
         $this->setIfExists('legal_address', $data ?? [], null);
         $this->setIfExists('inn', $data ?? [], null);
         $this->setIfExists('kpp', $data ?? [], null);
@@ -759,6 +773,33 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets sync_id
+     *
+     * @return string|null
+     */
+    public function getSyncId()
+    {
+        return $this->container['sync_id'];
+    }
+
+    /**
+     * Sets sync_id
+     *
+     * @param string|null $sync_id ID синхронизации
+     *
+     * @return self
+     */
+    public function setSyncId($sync_id)
+    {
+        if (is_null($sync_id)) {
+            throw new \InvalidArgumentException('non-nullable sync_id cannot be null');
+        }
+        $this->container['sync_id'] = $sync_id;
 
         return $this;
     }
@@ -1140,6 +1181,40 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['actual_address'] = $actual_address;
+
+        return $this;
+    }
+
+    /**
+     * Gets actual_address_full
+     *
+     * @return \OpenAPI\Client\Model\Address|null
+     */
+    public function getActualAddressFull()
+    {
+        return $this->container['actual_address_full'];
+    }
+
+    /**
+     * Sets actual_address_full
+     *
+     * @param \OpenAPI\Client\Model\Address|null $actual_address_full Полный адрес
+     *
+     * @return self
+     */
+    public function setActualAddressFull($actual_address_full)
+    {
+        if (is_null($actual_address_full)) {
+            array_push($this->openAPINullablesSetToNull, 'actual_address_full');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('actual_address_full', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['actual_address_full'] = $actual_address_full;
 
         return $this;
     }
