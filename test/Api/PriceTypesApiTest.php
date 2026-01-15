@@ -131,16 +131,29 @@ class PriceTypesApiTest extends TestCase
             $response = PriceTypesApiTest::$api->contextCompanysettingsPricetypeGet();
             $priceType = new PriceType();
             $response[] = $priceType;
-            fwrite(STDERR, print_r($response, TRUE));
-            PriceTypesApiTest::$api->contextCompanysettingsPricetypeBatchPost($response);
+            PriceTypesApiTest::$api->contextCompanysettingsPricetypePost($response);
             Assert::fail();
         } catch (ApiException $e) {
-            fwrite(STDERR, "Error Message: " . $e->getMessage() . PHP_EOL);
-                fwrite(STDERR, "Error Code: " . $e->getCode() . PHP_EOL);
-                // Если в SDK есть метод для получения тела ответа (часто в Swagger-генераторах):
-                fwrite(STDERR, "Response Body: " . $e->getResponseBody() . PHP_EOL);
             Assert::assertEquals(412, $e->getCode());
             Assert::assertNotNull($e->getResponseBody());
         }
+    }
+
+    /**
+     *  Проверка обработки ответа сервера на создание списка цен
+     */
+    public function testEntityPriceTypePost()
+    {
+        $response = PriceTypesApiTest::$api->contextCompanysettingsPricetypeGet();
+        $copy = json_decode(json_encode($response), true);
+        $priceType = new PriceType();
+        $priceType->setName("test");
+        $copy[] = $priceType;
+        $newResponse = PriceTypesApiTest::$api->contextCompanysettingsPricetypePost($copy);
+        Assert::assertIsArray($newResponse);
+        Assert::assertCount(2, $newResponse);
+        $newResponse = PriceTypesApiTest::$api->contextCompanysettingsPricetypePost($response);
+        Assert::assertIsArray($newResponse);
+        Assert::assertCount(1, $newResponse);
     }
 }
