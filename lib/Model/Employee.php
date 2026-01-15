@@ -2,7 +2,7 @@
 /**
  * Employee
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -76,7 +76,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
         'short_fio' => 'string',
         'shared' => 'bool',
         'group' => '\OpenAPI\Client\Model\Group',
-        'owner' => '\OpenAPI\Client\Model\Owner',
+        'owner' => '\OpenAPI\Client\Model\Employee',
         'inn' => 'string',
         'position' => 'string',
         'uid' => 'string',
@@ -1014,7 +1014,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\Owner|null
+     * @return \OpenAPI\Client\Model\Employee|null
      */
     public function getOwner()
     {
@@ -1024,7 +1024,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\Owner|null $owner owner
+     * @param \OpenAPI\Client\Model\Employee|null $owner Метаданные владельца (Сотрудника)
      *
      * @return self
      */
@@ -1205,7 +1205,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image
      *
-     * @param \OpenAPI\Client\Model\Image|null $image image
+     * @param \OpenAPI\Client\Model\Image|null $image Фотография сотрудника
      *
      * @return self
      */

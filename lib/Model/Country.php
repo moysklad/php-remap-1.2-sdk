@@ -2,7 +2,7 @@
 /**
  * Country
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -60,11 +60,15 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\Meta',
         'id' => 'string',
+        'account_id' => 'string',
         'name' => 'string',
         'description' => 'string',
         'code' => 'string',
         'external_code' => 'string',
-        'updated' => '\DateTime'
+        'updated' => '\DateTime',
+        'group' => '\OpenAPI\Client\Model\Group',
+        'owner' => '\OpenAPI\Client\Model\Employee',
+        'shared' => 'bool'
     ];
 
     /**
@@ -77,11 +81,15 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'meta' => null,
         'id' => 'uuid',
+        'account_id' => 'uuid',
         'name' => null,
         'description' => null,
         'code' => null,
         'external_code' => null,
-        'updated' => 'date-time'
+        'updated' => 'date-time',
+        'group' => null,
+        'owner' => null,
+        'shared' => null
     ];
 
     /**
@@ -92,11 +100,15 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'meta' => false,
         'id' => false,
+        'account_id' => false,
         'name' => false,
         'description' => false,
         'code' => false,
         'external_code' => false,
-        'updated' => false
+        'updated' => false,
+        'group' => false,
+        'owner' => true,
+        'shared' => false
     ];
 
     /**
@@ -187,11 +199,15 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'meta' => 'meta',
         'id' => 'id',
+        'account_id' => 'accountId',
         'name' => 'name',
         'description' => 'description',
         'code' => 'code',
         'external_code' => 'externalCode',
-        'updated' => 'updated'
+        'updated' => 'updated',
+        'group' => 'group',
+        'owner' => 'owner',
+        'shared' => 'shared'
     ];
 
     /**
@@ -202,11 +218,15 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'meta' => 'setMeta',
         'id' => 'setId',
+        'account_id' => 'setAccountId',
         'name' => 'setName',
         'description' => 'setDescription',
         'code' => 'setCode',
         'external_code' => 'setExternalCode',
-        'updated' => 'setUpdated'
+        'updated' => 'setUpdated',
+        'group' => 'setGroup',
+        'owner' => 'setOwner',
+        'shared' => 'setShared'
     ];
 
     /**
@@ -217,11 +237,15 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'meta' => 'getMeta',
         'id' => 'getId',
+        'account_id' => 'getAccountId',
         'name' => 'getName',
         'description' => 'getDescription',
         'code' => 'getCode',
         'external_code' => 'getExternalCode',
-        'updated' => 'getUpdated'
+        'updated' => 'getUpdated',
+        'group' => 'getGroup',
+        'owner' => 'getOwner',
+        'shared' => 'getShared'
     ];
 
     /**
@@ -283,11 +307,15 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('external_code', $data ?? [], null);
         $this->setIfExists('updated', $data ?? [], null);
+        $this->setIfExists('group', $data ?? [], null);
+        $this->setIfExists('owner', $data ?? [], null);
+        $this->setIfExists('shared', $data ?? [], null);
     }
 
     /**
@@ -382,6 +410,33 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id ID учетной записи
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
@@ -517,6 +572,94 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable updated cannot be null');
         }
         $this->container['updated'] = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Gets group
+     *
+     * @return \OpenAPI\Client\Model\Group|null
+     */
+    public function getGroup()
+    {
+        return $this->container['group'];
+    }
+
+    /**
+     * Sets group
+     *
+     * @param \OpenAPI\Client\Model\Group|null $group group
+     *
+     * @return self
+     */
+    public function setGroup($group)
+    {
+        if (is_null($group)) {
+            throw new \InvalidArgumentException('non-nullable group cannot be null');
+        }
+        $this->container['group'] = $group;
+
+        return $this;
+    }
+
+    /**
+     * Gets owner
+     *
+     * @return \OpenAPI\Client\Model\Employee|null
+     */
+    public function getOwner()
+    {
+        return $this->container['owner'];
+    }
+
+    /**
+     * Sets owner
+     *
+     * @param \OpenAPI\Client\Model\Employee|null $owner Метаданные владельца (Сотрудника)
+     *
+     * @return self
+     */
+    public function setOwner($owner)
+    {
+        if (is_null($owner)) {
+            array_push($this->openAPINullablesSetToNull, 'owner');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('owner', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['owner'] = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Gets shared
+     *
+     * @return bool|null
+     */
+    public function getShared()
+    {
+        return $this->container['shared'];
+    }
+
+    /**
+     * Sets shared
+     *
+     * @param bool|null $shared Общий доступ
+     *
+     * @return self
+     */
+    public function setShared($shared)
+    {
+        if (is_null($shared)) {
+            throw new \InvalidArgumentException('non-nullable shared cannot be null');
+        }
+        $this->container['shared'] = $shared;
 
         return $this;
     }
