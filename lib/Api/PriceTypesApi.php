@@ -74,9 +74,6 @@ class PriceTypesApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'contextCompanysettingsPricetypeBatchPost' => [
-            'application/json',
-        ],
         'contextCompanysettingsPricetypeDefaultGet' => [
             'application/json',
         ],
@@ -84,6 +81,9 @@ class PriceTypesApi
             'application/json',
         ],
         'contextCompanysettingsPricetypeIdGet' => [
+            'application/json',
+        ],
+        'contextCompanysettingsPricetypePost' => [
             'application/json',
         ],
     ];
@@ -132,346 +132,6 @@ class PriceTypesApi
     public function getConfig()
     {
         return $this->config;
-    }
-
-    /**
-     * Operation contextCompanysettingsPricetypeBatchPost
-     *
-     * Создать или изменить типы цен
-     *
-     * @param  \OpenAPI\Client\Model\PriceType[] $price_type price_type (required)
-     * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contextCompanysettingsPricetypeBatchPost'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PriceType[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
-     */
-    public function contextCompanysettingsPricetypeBatchPost($price_type, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['contextCompanysettingsPricetypeBatchPost'][0])
-    {
-        list($response) = $this->contextCompanysettingsPricetypeBatchPostWithHttpInfo($price_type, $accept, $accept_encoding, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation contextCompanysettingsPricetypeBatchPostWithHttpInfo
-     *
-     * Создать или изменить типы цен
-     *
-     * @param  \OpenAPI\Client\Model\PriceType[] $price_type (required)
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contextCompanysettingsPricetypeBatchPost'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PriceType[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function contextCompanysettingsPricetypeBatchPostWithHttpInfo($price_type, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['contextCompanysettingsPricetypeBatchPost'][0])
-    {
-        $request = $this->contextCompanysettingsPricetypeBatchPostRequest($price_type, $accept, $accept_encoding, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\PriceType[]',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\PriceType[]',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PriceType[]',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation contextCompanysettingsPricetypeBatchPostAsync
-     *
-     * Создать или изменить типы цен
-     *
-     * @param  \OpenAPI\Client\Model\PriceType[] $price_type (required)
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contextCompanysettingsPricetypeBatchPost'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function contextCompanysettingsPricetypeBatchPostAsync($price_type, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['contextCompanysettingsPricetypeBatchPost'][0])
-    {
-        return $this->contextCompanysettingsPricetypeBatchPostAsyncWithHttpInfo($price_type, $accept, $accept_encoding, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation contextCompanysettingsPricetypeBatchPostAsyncWithHttpInfo
-     *
-     * Создать или изменить типы цен
-     *
-     * @param  \OpenAPI\Client\Model\PriceType[] $price_type (required)
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contextCompanysettingsPricetypeBatchPost'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function contextCompanysettingsPricetypeBatchPostAsyncWithHttpInfo($price_type, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['contextCompanysettingsPricetypeBatchPost'][0])
-    {
-        $returnType = '\OpenAPI\Client\Model\PriceType[]';
-        $request = $this->contextCompanysettingsPricetypeBatchPostRequest($price_type, $accept, $accept_encoding, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'contextCompanysettingsPricetypeBatchPost'
-     *
-     * @param  \OpenAPI\Client\Model\PriceType[] $price_type (required)
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contextCompanysettingsPricetypeBatchPost'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function contextCompanysettingsPricetypeBatchPostRequest($price_type, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['contextCompanysettingsPricetypeBatchPost'][0])
-    {
-
-        // verify the required parameter 'price_type' is set
-        if ($price_type === null || (is_array($price_type) && count($price_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $price_type when calling contextCompanysettingsPricetypeBatchPost'
-            );
-        }
-        if (count($price_type) < 1) {
-            throw new \InvalidArgumentException('invalid value for "$price_type" when calling PriceTypesApi.contextCompanysettingsPricetypeBatchPost, number of items must be greater than or equal to 1.');
-        }
-        
-
-
-
-        $resourcePath = '/context/companysettings/pricetype/batch';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // header params
-        if ($accept !== null) {
-            $headerParams['accept'] = ObjectSerializer::toHeaderValue($accept);
-        }
-        // header params
-        if ($accept_encoding !== null) {
-            $headerParams['Accept-Encoding'] = ObjectSerializer::toHeaderValue($accept_encoding);
-        }
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($price_type)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($price_type));
-            } else {
-                $httpBody = $price_type;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
-            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
-        }
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
     }
 
     /**
@@ -1386,6 +1046,346 @@ class PriceTypesApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation contextCompanysettingsPricetypePost
+     *
+     * Создать или изменить типы цен
+     *
+     * @param  \OpenAPI\Client\Model\PriceType[] $price_type price_type (required)
+     * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contextCompanysettingsPricetypePost'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\PriceType[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
+     */
+    public function contextCompanysettingsPricetypePost($price_type, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['contextCompanysettingsPricetypePost'][0])
+    {
+        list($response) = $this->contextCompanysettingsPricetypePostWithHttpInfo($price_type, $accept, $accept_encoding, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation contextCompanysettingsPricetypePostWithHttpInfo
+     *
+     * Создать или изменить типы цен
+     *
+     * @param  \OpenAPI\Client\Model\PriceType[] $price_type (required)
+     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding (optional, default to 'gzip')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contextCompanysettingsPricetypePost'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\PriceType[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function contextCompanysettingsPricetypePostWithHttpInfo($price_type, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['contextCompanysettingsPricetypePost'][0])
+    {
+        $request = $this->contextCompanysettingsPricetypePostRequest($price_type, $accept, $accept_encoding, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\PriceType[]',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\PriceType[]',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PriceType[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation contextCompanysettingsPricetypePostAsync
+     *
+     * Создать или изменить типы цен
+     *
+     * @param  \OpenAPI\Client\Model\PriceType[] $price_type (required)
+     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding (optional, default to 'gzip')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contextCompanysettingsPricetypePost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function contextCompanysettingsPricetypePostAsync($price_type, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['contextCompanysettingsPricetypePost'][0])
+    {
+        return $this->contextCompanysettingsPricetypePostAsyncWithHttpInfo($price_type, $accept, $accept_encoding, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation contextCompanysettingsPricetypePostAsyncWithHttpInfo
+     *
+     * Создать или изменить типы цен
+     *
+     * @param  \OpenAPI\Client\Model\PriceType[] $price_type (required)
+     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding (optional, default to 'gzip')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contextCompanysettingsPricetypePost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function contextCompanysettingsPricetypePostAsyncWithHttpInfo($price_type, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['contextCompanysettingsPricetypePost'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\PriceType[]';
+        $request = $this->contextCompanysettingsPricetypePostRequest($price_type, $accept, $accept_encoding, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'contextCompanysettingsPricetypePost'
+     *
+     * @param  \OpenAPI\Client\Model\PriceType[] $price_type (required)
+     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding (optional, default to 'gzip')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['contextCompanysettingsPricetypePost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function contextCompanysettingsPricetypePostRequest($price_type, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['contextCompanysettingsPricetypePost'][0])
+    {
+
+        // verify the required parameter 'price_type' is set
+        if ($price_type === null || (is_array($price_type) && count($price_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $price_type when calling contextCompanysettingsPricetypePost'
+            );
+        }
+        if (count($price_type) < 1) {
+            throw new \InvalidArgumentException('invalid value for "$price_type" when calling PriceTypesApi.contextCompanysettingsPricetypePost, number of items must be greater than or equal to 1.');
+        }
+        
+
+
+
+        $resourcePath = '/context/companysettings/pricetype';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // header params
+        if ($accept !== null) {
+            $headerParams['accept'] = ObjectSerializer::toHeaderValue($accept);
+        }
+        // header params
+        if ($accept_encoding !== null) {
+            $headerParams['Accept-Encoding'] = ObjectSerializer::toHeaderValue($accept_encoding);
+        }
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($price_type)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($price_type));
+            } else {
+                $httpBody = $price_type;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
