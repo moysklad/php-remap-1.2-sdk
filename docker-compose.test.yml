@@ -7,9 +7,9 @@ services:
     container_name: php-sdk-tests
     environment:
       # Проброс переменных из .env на хосте внутрь контейнера
-      API_HOST: 'https://api-api-1.testms-test.lognex.ru'
-      API_LOGIN: 'admin@123'
-      API_PASSWORD: '123123'
+      API_HOST: ''
+      API_LOGIN: ''
+      API_PASSWORD: ''
     # Монтируем локальную директорию с кодом в /app контейнера
     volumes:
       - .:/app
