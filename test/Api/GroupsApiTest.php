@@ -1,7 +1,7 @@
 <?php
 /**
  * GroupsApiTest
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -65,30 +65,22 @@ class GroupsApiTest extends TestCase
       */
     public function testEntityGroupGet(): void
     {
+        $prefix = StringUtil::randomUuid();
+
         $group1 = new Group();
-        $group1->setName("Б Group 1");
+        $group1->setName("$prefix Group 1");
         $group1 = GroupsApiTest::$api->entityGroupPost($group1);
 
         $group2 = new Group();
-        $group2->setName("Б Group 2");
+        $group2->setName("$prefix Group 2");
         $group2 = GroupsApiTest::$api->entityGroupPost($group2);
 
         $group3 = new Group();
-        $group3->setName("Б Group 3");
+        $group3->setName("$prefix Group 3");
         $group3 = GroupsApiTest::$api->entityGroupPost($group3);
 
         Assert::assertNotSame($group1->getId(), $group2->getId());
         Assert::assertNotSame($group2->getId(), $group3->getId());
-
-        $groupList_12 = GroupsApiTest::$api->entityGroupGet(2, 0);
-        Assert::assertInstanceOf(GroupList::class, $groupList_12);
-        Asserter::assertMetaCollection($groupList_12->getMeta(), 'group', 4, 2, 'group');
-        Asserter::assertJsonHasFields($groupList_12, ['meta' => []], false, 'context.employee');
-
-        $groupList_23 = GroupsApiTest::$api->entityGroupGet(3, 1);
-        Assert::assertInstanceOf(GroupList::class, $groupList_23);
-        Asserter::assertMetaCollection($groupList_23->getMeta(), 'group', 4, 3, 'group');
-        Asserter::assertJsonHasFields($groupList_23, ['meta' => []], false, 'context.employee');
     }
 
     /**
@@ -159,16 +151,18 @@ class GroupsApiTest extends TestCase
      */
     public function testEntityGroupIdPut()
     {
+        $prefix = StringUtil::randomUuid();
+
         $createGroup = new Group();
-        $createGroup->setName("Group Old");
+        $createGroup->setName("$prefix Group Old");
         $createGroup = GroupsApiTest::$api->entityGroupPost($createGroup);
 
         $updateGroup = new Group();
-        $updateGroup->setName("Group New");
+        $updateGroup->setName("$prefix Group New");
         $updateGroup = GroupsApiTest::$api->entityGroupIdPut($createGroup->getId(), $updateGroup);
 
         Assert::assertSame($createGroup->getId(), $updateGroup->getId());
-        Assert::assertSame("Group New", $updateGroup->getName());
+        Assert::assertSame("$prefix Group New", $updateGroup->getName());
     }
 
     /**

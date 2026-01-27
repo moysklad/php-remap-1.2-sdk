@@ -2,7 +2,7 @@
 /**
  * EmployeeTest
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -35,7 +35,6 @@ use OpenAPI\Client\Model\EmployeeSalary;
 use OpenAPI\Client\Model\Group;
 use OpenAPI\Client\Model\Image;
 use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\Owner;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
@@ -197,7 +196,7 @@ class EmployeeTest extends TestCase
     public function testPropertyOwner()
     {
         $employee = new Employee();
-        $owner = new Owner();
+        $owner = new Employee();
         $employee->setOwner($owner);
         Asserter::assertJsonHasFields($employee, ['owner' => []]);
     }

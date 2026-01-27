@@ -2,7 +2,7 @@
 /**
  * ProductTest
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use OpenAPI\Client\Model\ImageList;
 use OpenAPI\Client\Model\Meta;
 use OpenAPI\Client\Model\MinimumStockAllWarehouseSum;
 use OpenAPI\Client\Model\MinPrice;
-use OpenAPI\Client\Model\Owner;
+use OpenAPI\Client\Model\Employee;
 use OpenAPI\Client\Model\Pack;
 use OpenAPI\Client\Model\Product;
 use OpenAPI\Client\Model\ProductAlcoholic;
@@ -235,7 +235,7 @@ class ProductTest extends TestCase
     public function testPropertyOwner()
     {
         $product = new Product();
-        $owner = new Owner();
+        $owner = new Employee();
         $product->setOwner($owner);
         Asserter::assertJsonHasFields($product, ['owner' => []]);
     }

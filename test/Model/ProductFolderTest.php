@@ -2,7 +2,7 @@
 /**
  * ProductFolderTest
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -30,7 +30,7 @@ namespace OpenAPI\Client\Test\Model;
 
 use OpenAPI\Client\Model\Group;
 use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\Owner;
+use OpenAPI\Client\Model\Employee;
 use OpenAPI\Client\Model\ProductFolder;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
@@ -174,7 +174,7 @@ class ProductFolderTest extends TestCase
     public function testPropertyOwner()
     {
         $productFolder = new ProductFolder();
-        $owner = new Owner();
+        $owner = new Employee();
         $productFolder->setOwner($owner);
         Asserter::assertJsonHasFields($productFolder, ['owner' => []]);
     }

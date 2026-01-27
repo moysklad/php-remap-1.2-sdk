@@ -2,7 +2,7 @@
 /**
  * CounterpartyTest
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -37,7 +37,7 @@ use OpenAPI\Client\Model\CounterpartyNotes;
 use OpenAPI\Client\Model\FileList;
 use OpenAPI\Client\Model\Group;
 use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\Owner;
+use OpenAPI\Client\Model\Employee;
 use OpenAPI\Client\Model\State;
 use OpenAPI\Client\Test\Utils\Asserter;
 use OpenAPI\Client\Test\Utils\StringUtil;
@@ -314,7 +314,7 @@ class CounterpartyTest extends TestCase
     public function testPropertyOwner()
     {
         $entity = new Counterparty();
-        $owner = new Owner();
+        $owner = new Employee();
         $owner->setName("Owner A");
         $entity->setOwner($owner);
         Asserter::assertJsonHasFields($entity, ['owner' => ['name' => "Owner A"]]);

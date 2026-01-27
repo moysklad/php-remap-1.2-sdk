@@ -2,7 +2,7 @@
 /**
  * RetailStoreTest
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -37,7 +37,7 @@ use OpenAPI\Client\Model\MarkingSellingMode;
 use OpenAPI\Client\Model\MarksCheckMode;
 use OpenAPI\Client\Model\Meta;
 use OpenAPI\Client\Model\MinionToMasterType;
-use OpenAPI\Client\Model\Owner;
+use OpenAPI\Client\Model\Employee;
 use OpenAPI\Client\Model\PriceType;
 use OpenAPI\Client\Model\RetailStore;
 use OpenAPI\Client\Model\RetailStoreAcquire;
@@ -189,7 +189,7 @@ class RetailStoreTest extends TestCase
     public function testPropertyOwner()
     {
         $retailStore = new RetailStore();
-        $owner = new Owner();
+        $owner = new Employee();
         $retailStore->setOwner($owner);
         Asserter::assertJsonHasFields($retailStore, ['owner' => []]);
     }

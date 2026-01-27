@@ -2,7 +2,7 @@
 /**
  * Product
  *
- * PHP version 7.4
+ * PHP version 8.1
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -150,7 +150,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_serial_trackable' => 'bool',
         'shared' => 'bool',
         'group' => '\OpenAPI\Client\Model\Group',
-        'owner' => '\OpenAPI\Client\Model\Owner',
+        'owner' => '\OpenAPI\Client\Model\Employee',
         'updated' => '\DateTime',
         'weight' => 'float',
         'volume' => 'float',
@@ -268,7 +268,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_serial_trackable' => false,
         'shared' => false,
         'group' => false,
-        'owner' => true,
+        'owner' => false,
         'updated' => false,
         'weight' => false,
         'volume' => false,
@@ -1437,7 +1437,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner
      *
-     * @return \OpenAPI\Client\Model\Owner|null
+     * @return \OpenAPI\Client\Model\Employee|null
      */
     public function getOwner()
     {
@@ -1447,21 +1447,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\Owner|null $owner owner
+     * @param \OpenAPI\Client\Model\Employee|null $owner Метаданные владельца (Сотрудника)
      *
      * @return self
      */
     public function setOwner($owner)
     {
         if (is_null($owner)) {
-            array_push($this->openAPINullablesSetToNull, 'owner');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('owner', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable owner cannot be null');
         }
         $this->container['owner'] = $owner;
 
@@ -1626,7 +1619,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets supplier
      *
-     * @param \OpenAPI\Client\Model\Counterparty|null $supplier supplier
+     * @param \OpenAPI\Client\Model\Counterparty|null $supplier Метаданные контрагента-поставщика
      *
      * @return self
      */
@@ -1660,7 +1653,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country
      *
-     * @param \OpenAPI\Client\Model\Country|null $country country
+     * @param \OpenAPI\Client\Model\Country|null $country Метаданные Страны
      *
      * @return self
      */
@@ -1694,7 +1687,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets uom
      *
-     * @param \OpenAPI\Client\Model\Uom|null $uom uom
+     * @param \OpenAPI\Client\Model\Uom|null $uom Метаданные единиц измерения
      *
      * @return self
      */
@@ -1728,7 +1721,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets product_folder
      *
-     * @param \OpenAPI\Client\Model\ProductFolder|null $product_folder product_folder
+     * @param \OpenAPI\Client\Model\ProductFolder|null $product_folder Метаданные группы Товара
      *
      * @return self
      */
@@ -1762,7 +1755,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets images
      *
-     * @param \OpenAPI\Client\Model\ImageList|null $images images
+     * @param \OpenAPI\Client\Model\ImageList|null $images Массив изображений
      *
      * @return self
      */
@@ -1796,7 +1789,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets files
      *
-     * @param \OpenAPI\Client\Model\FileList|null $files files
+     * @param \OpenAPI\Client\Model\FileList|null $files Метаданные массива Файлов
      *
      * @return self
      */
@@ -2072,7 +2065,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets minimum_stock
      *
-     * @param \OpenAPI\Client\Model\MinimumStockAbstract|null $minimum_stock minimum_stock
+     * @param \OpenAPI\Client\Model\MinimumStockAbstract|null $minimum_stock Неснижаемый остаток
      *
      * @return self
      */
