@@ -132,7 +132,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'use_parent_vat' => false,
         'shared' => false,
         'group' => false,
-        'owner' => false,
+        'owner' => true,
         'updated' => false,
         'product_folder' => true,
         'tax_system' => false
@@ -964,7 +964,14 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOwner($owner)
     {
         if (is_null($owner)) {
-            throw new \InvalidArgumentException('non-nullable owner cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'owner');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('owner', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['owner'] = $owner;
 
