@@ -1,6 +1,6 @@
 <?php
 /**
- * Product
+ * CreateServicesBatch200ResponseInner
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Product Class Doc Comment
+ * CreateServicesBatch200ResponseInner Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,87 +40,16 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Product implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateServicesBatch200ResponseInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
-
-    public const TRACKING_TYPE_BEER_ALCOHOL = 'BEER_ALCOHOL';
-    public const TRACKING_TYPE_BICYCLE = 'BICYCLE';
-    public const TRACKING_TYPE_ELECTRONICS = 'ELECTRONICS';
-    public const TRACKING_TYPE_FOOD_SUPPLEMENT = 'FOOD_SUPPLEMENT';
-    public const TRACKING_TYPE_LP_CLOTHES = 'LP_CLOTHES';
-    public const TRACKING_TYPE_LP_LINENS = 'LP_LINENS';
-    public const TRACKING_TYPE_MEDICAL_DEVICES = 'MEDICAL_DEVICES';
-    public const TRACKING_TYPE_MILK = 'MILK';
-    public const TRACKING_TYPE_NABEER = 'NABEER';
-    public const TRACKING_TYPE_NCP = 'NCP';
-    public const TRACKING_TYPE_NOT_TRACKED = 'NOT_TRACKED';
-    public const TRACKING_TYPE_OTP = 'OTP';
-    public const TRACKING_TYPE_PERFUMERY = 'PERFUMERY';
-    public const TRACKING_TYPE_PET_FOOD = 'PET_FOOD';
-    public const TRACKING_TYPE_SANITIZER = 'SANITIZER';
-    public const TRACKING_TYPE_SEAFOOD = 'SEAFOOD';
-    public const TRACKING_TYPE_SHOES = 'SHOES';
-    public const TRACKING_TYPE_SOFT_DRINKS = 'SOFT_DRINKS';
-    public const TRACKING_TYPE_TIRES = 'TIRES';
-    public const TRACKING_TYPE_TOBACCO = 'TOBACCO';
-    public const TRACKING_TYPE_VEGETABLE_OIL = 'VEGETABLE_OIL';
-    public const TRACKING_TYPE_VETPHARMA = 'VETPHARMA';
-    public const TRACKING_TYPE_WATER = 'WATER';
-
-    public const PPE_TYPE__2400001225408 = '2400001225408';
-    public const PPE_TYPE__2400001225606 = '2400001225606';
-    public const PPE_TYPE__2400001226108 = '2400001226108';
-    public const PPE_TYPE__2400001226306 = '2400001226306';
-    public const PPE_TYPE__2400001226405 = '2400001226405';
-    public const PPE_TYPE__2400001323807 = '2400001323807';
-    public const PPE_TYPE__2400001368105 = '2400001368105';
-    public const PPE_TYPE__2400001393107 = '2400001393107';
-    public const PPE_TYPE__2400001393503 = '2400001393503';
-    public const PPE_TYPE__2400001393602 = '2400001393602';
-    public const PPE_TYPE__2400001565306 = '2400001565306';
-    public const PPE_TYPE__2400001807703 = '2400001807703';
-    public const PPE_TYPE__2400001818303 = '2400001818303';
-    public const PPE_TYPE__2400001857005 = '2400001857005';
-    public const PPE_TYPE__2400001857203 = '2400001857203';
-    public const PPE_TYPE__2400001858309 = '2400001858309';
-    public const PPE_TYPE__2400001858507 = '2400001858507';
-    public const PPE_TYPE__2400002015909 = '2400002015909';
-    public const PPE_TYPE__2400002016005 = '2400002016005';
-    public const PPE_TYPE__2400002016104 = '2400002016104';
-    public const PPE_TYPE__2400002052805 = '2400002052805';
-    public const PPE_TYPE__2400002052904 = '2400002052904';
-    public const PPE_TYPE__2400002186203 = '2400002186203';
-    public const PPE_TYPE__2400002886707 = '2400002886707';
-    public const PPE_TYPE__2400002886806 = '2400002886806';
-    public const PPE_TYPE__2400002984502 = '2400002984502';
-    public const PPE_TYPE__2400003117107 = '2400003117107';
-    public const PPE_TYPE__2400003117206 = '2400003117206';
-    public const PPE_TYPE__2400003161209 = '2400003161209';
-    public const PPE_TYPE__2400003207907 = '2400003207907';
-    public const PPE_TYPE__2400003215308 = '2400003215308';
-    public const PPE_TYPE__2400003227806 = '2400003227806';
-    public const PPE_TYPE__2400003237409 = '2400003237409';
-    public const PPE_TYPE__2400003263408 = '2400003263408';
-    public const PPE_TYPE__2400003297700 = '2400003297700';
-    public const PPE_TYPE__2400003356704 = '2400003356704';
-    public const PPE_TYPE__2400003356803 = '2400003356803';
-    public const PPE_TYPE__2400003356902 = '2400003356902';
-    public const PPE_TYPE__2400003433108 = '2400003433108';
-    public const PPE_TYPE__2400003492303 = '2400003492303';
-    public const PPE_TYPE__2400003495700 = '2400003495700';
-    public const PPE_TYPE__2400003495809 = '2400003495809';
-    public const PPE_TYPE__2400003495908 = '2400003495908';
-    public const PPE_TYPE__2400003496004 = '2400003496004';
-    public const PPE_TYPE__2400003496103 = '2400003496103';
-    public const PPE_TYPE__2400003675805 = '2400003675805';
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Product';
+    protected static $openAPIModelName = 'createServicesBatch_200_response_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -131,14 +60,11 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => '\OpenAPI\Client\Model\Meta',
         'id' => 'string',
         'account_id' => 'string',
-        'alcoholic' => '\OpenAPI\Client\Model\ProductAlcoholic',
         'archived' => 'bool',
-        'tobacco' => 'bool',
         'name' => 'string',
         'code' => 'string',
         'external_code' => 'string',
         'path_name' => 'string',
-        'article' => 'string',
         'description' => 'string',
         'vat' => 'int',
         'vat_enabled' => 'bool',
@@ -146,38 +72,22 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'effective_vat' => 'int',
         'effective_vat_enabled' => 'bool',
         'discount_prohibited' => 'bool',
-        'variants_count' => 'int',
-        'is_serial_trackable' => 'bool',
         'shared' => 'bool',
         'group' => '\OpenAPI\Client\Model\Group',
         'owner' => '\OpenAPI\Client\Model\Employee',
         'updated' => '\DateTime',
-        'weight' => 'float',
-        'volume' => 'float',
         'buy_price' => '\OpenAPI\Client\Model\BuyPrice',
         'sale_prices' => '\OpenAPI\Client\Model\SalePrice[]',
-        'supplier' => '\OpenAPI\Client\Model\Counterparty',
-        'country' => '\OpenAPI\Client\Model\Country',
         'uom' => '\OpenAPI\Client\Model\Uom',
         'product_folder' => '\OpenAPI\Client\Model\ProductFolder',
-        'images' => '\OpenAPI\Client\Model\ImageList',
         'files' => '\OpenAPI\Client\Model\FileList',
         'barcodes' => '\OpenAPI\Client\Model\Barcode[]',
-        'packs' => '\OpenAPI\Client\Model\Pack[]',
-        'tracking_type' => 'string',
-        'tnved' => 'string',
         'payment_item_type' => 'string',
         'tax_system' => 'string',
         'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]',
-        'minimum_balance' => 'float',
-        'minimum_stock' => '\OpenAPI\Client\Model\MinimumStockAbstract',
         'min_price' => '\OpenAPI\Client\Model\MinPrice',
-        'weighed' => 'bool',
-        'on_tap' => 'bool',
-        'partial_disposal' => 'bool',
-        'things' => 'string[]',
         'sync_id' => 'string',
-        'ppe_type' => 'string'
+        'errors' => '\OpenAPI\Client\Model\ErrorErrorsInner[]'
     ];
 
     /**
@@ -191,14 +101,11 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => null,
         'id' => 'uuid',
         'account_id' => 'uuid',
-        'alcoholic' => null,
         'archived' => null,
-        'tobacco' => null,
         'name' => null,
         'code' => null,
         'external_code' => null,
         'path_name' => null,
-        'article' => null,
         'description' => null,
         'vat' => null,
         'vat_enabled' => null,
@@ -206,38 +113,22 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'effective_vat' => null,
         'effective_vat_enabled' => null,
         'discount_prohibited' => null,
-        'variants_count' => null,
-        'is_serial_trackable' => null,
         'shared' => null,
         'group' => null,
         'owner' => null,
         'updated' => 'date-time',
-        'weight' => 'float',
-        'volume' => 'float',
         'buy_price' => null,
         'sale_prices' => null,
-        'supplier' => null,
-        'country' => null,
         'uom' => null,
         'product_folder' => null,
-        'images' => null,
         'files' => null,
         'barcodes' => null,
-        'packs' => null,
-        'tracking_type' => null,
-        'tnved' => null,
         'payment_item_type' => null,
         'tax_system' => null,
         'attributes' => null,
-        'minimum_balance' => 'float',
-        'minimum_stock' => null,
         'min_price' => null,
-        'weighed' => null,
-        'on_tap' => null,
-        'partial_disposal' => null,
-        'things' => null,
         'sync_id' => 'uuid',
-        'ppe_type' => null
+        'errors' => null
     ];
 
     /**
@@ -249,14 +140,11 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => false,
         'id' => false,
         'account_id' => false,
-        'alcoholic' => false,
         'archived' => false,
-        'tobacco' => false,
         'name' => false,
         'code' => false,
         'external_code' => false,
         'path_name' => false,
-        'article' => false,
         'description' => true,
         'vat' => false,
         'vat_enabled' => false,
@@ -264,38 +152,22 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'effective_vat' => false,
         'effective_vat_enabled' => false,
         'discount_prohibited' => false,
-        'variants_count' => false,
-        'is_serial_trackable' => false,
         'shared' => false,
         'group' => false,
         'owner' => true,
         'updated' => false,
-        'weight' => false,
-        'volume' => false,
         'buy_price' => false,
         'sale_prices' => false,
-        'supplier' => true,
-        'country' => true,
         'uom' => true,
         'product_folder' => true,
-        'images' => true,
         'files' => true,
         'barcodes' => false,
-        'packs' => false,
-        'tracking_type' => false,
-        'tnved' => false,
         'payment_item_type' => false,
         'tax_system' => false,
         'attributes' => false,
-        'minimum_balance' => false,
-        'minimum_stock' => true,
         'min_price' => false,
-        'weighed' => false,
-        'on_tap' => false,
-        'partial_disposal' => false,
-        'things' => false,
         'sync_id' => false,
-        'ppe_type' => false
+        'errors' => false
     ];
 
     /**
@@ -387,14 +259,11 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => 'meta',
         'id' => 'id',
         'account_id' => 'accountId',
-        'alcoholic' => 'alcoholic',
         'archived' => 'archived',
-        'tobacco' => 'tobacco',
         'name' => 'name',
         'code' => 'code',
         'external_code' => 'externalCode',
         'path_name' => 'pathName',
-        'article' => 'article',
         'description' => 'description',
         'vat' => 'vat',
         'vat_enabled' => 'vatEnabled',
@@ -402,38 +271,22 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'effective_vat' => 'effectiveVat',
         'effective_vat_enabled' => 'effectiveVatEnabled',
         'discount_prohibited' => 'discountProhibited',
-        'variants_count' => 'variantsCount',
-        'is_serial_trackable' => 'isSerialTrackable',
         'shared' => 'shared',
         'group' => 'group',
         'owner' => 'owner',
         'updated' => 'updated',
-        'weight' => 'weight',
-        'volume' => 'volume',
         'buy_price' => 'buyPrice',
         'sale_prices' => 'salePrices',
-        'supplier' => 'supplier',
-        'country' => 'country',
         'uom' => 'uom',
         'product_folder' => 'productFolder',
-        'images' => 'images',
         'files' => 'files',
         'barcodes' => 'barcodes',
-        'packs' => 'packs',
-        'tracking_type' => 'trackingType',
-        'tnved' => 'tnved',
         'payment_item_type' => 'paymentItemType',
         'tax_system' => 'taxSystem',
         'attributes' => 'attributes',
-        'minimum_balance' => 'minimumBalance',
-        'minimum_stock' => 'minimumStock',
         'min_price' => 'minPrice',
-        'weighed' => 'weighed',
-        'on_tap' => 'onTap',
-        'partial_disposal' => 'partialDisposal',
-        'things' => 'things',
         'sync_id' => 'syncId',
-        'ppe_type' => 'ppeType'
+        'errors' => 'errors'
     ];
 
     /**
@@ -445,14 +298,11 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => 'setMeta',
         'id' => 'setId',
         'account_id' => 'setAccountId',
-        'alcoholic' => 'setAlcoholic',
         'archived' => 'setArchived',
-        'tobacco' => 'setTobacco',
         'name' => 'setName',
         'code' => 'setCode',
         'external_code' => 'setExternalCode',
         'path_name' => 'setPathName',
-        'article' => 'setArticle',
         'description' => 'setDescription',
         'vat' => 'setVat',
         'vat_enabled' => 'setVatEnabled',
@@ -460,38 +310,22 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'effective_vat' => 'setEffectiveVat',
         'effective_vat_enabled' => 'setEffectiveVatEnabled',
         'discount_prohibited' => 'setDiscountProhibited',
-        'variants_count' => 'setVariantsCount',
-        'is_serial_trackable' => 'setIsSerialTrackable',
         'shared' => 'setShared',
         'group' => 'setGroup',
         'owner' => 'setOwner',
         'updated' => 'setUpdated',
-        'weight' => 'setWeight',
-        'volume' => 'setVolume',
         'buy_price' => 'setBuyPrice',
         'sale_prices' => 'setSalePrices',
-        'supplier' => 'setSupplier',
-        'country' => 'setCountry',
         'uom' => 'setUom',
         'product_folder' => 'setProductFolder',
-        'images' => 'setImages',
         'files' => 'setFiles',
         'barcodes' => 'setBarcodes',
-        'packs' => 'setPacks',
-        'tracking_type' => 'setTrackingType',
-        'tnved' => 'setTnved',
         'payment_item_type' => 'setPaymentItemType',
         'tax_system' => 'setTaxSystem',
         'attributes' => 'setAttributes',
-        'minimum_balance' => 'setMinimumBalance',
-        'minimum_stock' => 'setMinimumStock',
         'min_price' => 'setMinPrice',
-        'weighed' => 'setWeighed',
-        'on_tap' => 'setOnTap',
-        'partial_disposal' => 'setPartialDisposal',
-        'things' => 'setThings',
         'sync_id' => 'setSyncId',
-        'ppe_type' => 'setPpeType'
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -503,14 +337,11 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => 'getMeta',
         'id' => 'getId',
         'account_id' => 'getAccountId',
-        'alcoholic' => 'getAlcoholic',
         'archived' => 'getArchived',
-        'tobacco' => 'getTobacco',
         'name' => 'getName',
         'code' => 'getCode',
         'external_code' => 'getExternalCode',
         'path_name' => 'getPathName',
-        'article' => 'getArticle',
         'description' => 'getDescription',
         'vat' => 'getVat',
         'vat_enabled' => 'getVatEnabled',
@@ -518,38 +349,22 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'effective_vat' => 'getEffectiveVat',
         'effective_vat_enabled' => 'getEffectiveVatEnabled',
         'discount_prohibited' => 'getDiscountProhibited',
-        'variants_count' => 'getVariantsCount',
-        'is_serial_trackable' => 'getIsSerialTrackable',
         'shared' => 'getShared',
         'group' => 'getGroup',
         'owner' => 'getOwner',
         'updated' => 'getUpdated',
-        'weight' => 'getWeight',
-        'volume' => 'getVolume',
         'buy_price' => 'getBuyPrice',
         'sale_prices' => 'getSalePrices',
-        'supplier' => 'getSupplier',
-        'country' => 'getCountry',
         'uom' => 'getUom',
         'product_folder' => 'getProductFolder',
-        'images' => 'getImages',
         'files' => 'getFiles',
         'barcodes' => 'getBarcodes',
-        'packs' => 'getPacks',
-        'tracking_type' => 'getTrackingType',
-        'tnved' => 'getTnved',
         'payment_item_type' => 'getPaymentItemType',
         'tax_system' => 'getTaxSystem',
         'attributes' => 'getAttributes',
-        'minimum_balance' => 'getMinimumBalance',
-        'minimum_stock' => 'getMinimumStock',
         'min_price' => 'getMinPrice',
-        'weighed' => 'getWeighed',
-        'on_tap' => 'getOnTap',
-        'partial_disposal' => 'getPartialDisposal',
-        'things' => 'getThings',
         'sync_id' => 'getSyncId',
-        'ppe_type' => 'getPpeType'
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -593,9 +408,10 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const PAYMENT_ITEM_TYPE_GOOD = 'GOOD';
-    public const PAYMENT_ITEM_TYPE_EXCISABLE_GOOD = 'EXCISABLE_GOOD';
+    public const PAYMENT_ITEM_TYPE_WORK = 'WORK';
+    public const PAYMENT_ITEM_TYPE_SERVICE = 'SERVICE';
     public const PAYMENT_ITEM_TYPE_COMPOUND_PAYMENT_ITEM = 'COMPOUND_PAYMENT_ITEM';
+    public const PAYMENT_ITEM_TYPE_PROVIDING_RID = 'PROVIDING_RID';
     public const PAYMENT_ITEM_TYPE_ANOTHER_PAYMENT_ITEM = 'ANOTHER_PAYMENT_ITEM';
     public const TAX_SYSTEM_GENERAL_TAX_SYSTEM = 'GENERAL_TAX_SYSTEM';
     public const TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME';
@@ -613,9 +429,10 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getPaymentItemTypeAllowableValues()
     {
         return [
-            self::PAYMENT_ITEM_TYPE_GOOD,
-            self::PAYMENT_ITEM_TYPE_EXCISABLE_GOOD,
+            self::PAYMENT_ITEM_TYPE_WORK,
+            self::PAYMENT_ITEM_TYPE_SERVICE,
             self::PAYMENT_ITEM_TYPE_COMPOUND_PAYMENT_ITEM,
+            self::PAYMENT_ITEM_TYPE_PROVIDING_RID,
             self::PAYMENT_ITEM_TYPE_ANOTHER_PAYMENT_ITEM,
         ];
     }
@@ -656,14 +473,11 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('alcoholic', $data ?? [], null);
         $this->setIfExists('archived', $data ?? [], null);
-        $this->setIfExists('tobacco', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('external_code', $data ?? [], null);
         $this->setIfExists('path_name', $data ?? [], null);
-        $this->setIfExists('article', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('vat', $data ?? [], null);
         $this->setIfExists('vat_enabled', $data ?? [], null);
@@ -671,38 +485,22 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('effective_vat', $data ?? [], null);
         $this->setIfExists('effective_vat_enabled', $data ?? [], null);
         $this->setIfExists('discount_prohibited', $data ?? [], null);
-        $this->setIfExists('variants_count', $data ?? [], null);
-        $this->setIfExists('is_serial_trackable', $data ?? [], null);
         $this->setIfExists('shared', $data ?? [], null);
         $this->setIfExists('group', $data ?? [], null);
         $this->setIfExists('owner', $data ?? [], null);
         $this->setIfExists('updated', $data ?? [], null);
-        $this->setIfExists('weight', $data ?? [], null);
-        $this->setIfExists('volume', $data ?? [], null);
         $this->setIfExists('buy_price', $data ?? [], null);
         $this->setIfExists('sale_prices', $data ?? [], null);
-        $this->setIfExists('supplier', $data ?? [], null);
-        $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('uom', $data ?? [], null);
         $this->setIfExists('product_folder', $data ?? [], null);
-        $this->setIfExists('images', $data ?? [], null);
         $this->setIfExists('files', $data ?? [], null);
         $this->setIfExists('barcodes', $data ?? [], null);
-        $this->setIfExists('packs', $data ?? [], null);
-        $this->setIfExists('tracking_type', $data ?? [], null);
-        $this->setIfExists('tnved', $data ?? [], null);
         $this->setIfExists('payment_item_type', $data ?? [], null);
         $this->setIfExists('tax_system', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('minimum_balance', $data ?? [], null);
-        $this->setIfExists('minimum_stock', $data ?? [], null);
         $this->setIfExists('min_price', $data ?? [], null);
-        $this->setIfExists('weighed', $data ?? [], null);
-        $this->setIfExists('on_tap', $data ?? [], null);
-        $this->setIfExists('partial_disposal', $data ?? [], null);
-        $this->setIfExists('things', $data ?? [], null);
         $this->setIfExists('sync_id', $data ?? [], null);
-        $this->setIfExists('ppe_type', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -744,10 +542,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
         }
 
-        if (!is_null($this->container['article']) && (mb_strlen($this->container['article']) > 255)) {
-            $invalidProperties[] = "invalid value for 'article', the character length must be smaller than or equal to 255.";
-        }
-
         if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4096)) {
             $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
         }
@@ -758,18 +552,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['vat']) && ($this->container['vat'] < 0)) {
             $invalidProperties[] = "invalid value for 'vat', must be bigger than or equal to 0.";
-        }
-
-        if (!is_null($this->container['weight']) && ($this->container['weight'] < 0)) {
-            $invalidProperties[] = "invalid value for 'weight', must be bigger than or equal to 0.";
-        }
-
-        if (!is_null($this->container['volume']) && ($this->container['volume'] < 0)) {
-            $invalidProperties[] = "invalid value for 'volume', must be bigger than or equal to 0.";
-        }
-
-        if (!is_null($this->container['tnved']) && (mb_strlen($this->container['tnved']) > 255)) {
-            $invalidProperties[] = "invalid value for 'tnved', the character length must be smaller than or equal to 255.";
         }
 
         $allowedValues = $this->getPaymentItemTypeAllowableValues();
@@ -790,6 +572,9 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -845,7 +630,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id ID товара
+     * @param string|null $id ID услуги
      *
      * @return self
      */
@@ -887,33 +672,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets alcoholic
-     *
-     * @return \OpenAPI\Client\Model\ProductAlcoholic|null
-     */
-    public function getAlcoholic()
-    {
-        return $this->container['alcoholic'];
-    }
-
-    /**
-     * Sets alcoholic
-     *
-     * @param \OpenAPI\Client\Model\ProductAlcoholic|null $alcoholic alcoholic
-     *
-     * @return self
-     */
-    public function setAlcoholic($alcoholic)
-    {
-        if (is_null($alcoholic)) {
-            throw new \InvalidArgumentException('non-nullable alcoholic cannot be null');
-        }
-        $this->container['alcoholic'] = $alcoholic;
-
-        return $this;
-    }
-
-    /**
      * Gets archived
      *
      * @return bool|null
@@ -926,7 +684,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets archived
      *
-     * @param bool|null $archived Добавлен ли товар в архив
+     * @param bool|null $archived Добавлена ли услуга в архив
      *
      * @return self
      */
@@ -936,33 +694,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable archived cannot be null');
         }
         $this->container['archived'] = $archived;
-
-        return $this;
-    }
-
-    /**
-     * Gets tobacco
-     *
-     * @return bool|null
-     */
-    public function getTobacco()
-    {
-        return $this->container['tobacco'];
-    }
-
-    /**
-     * Sets tobacco
-     *
-     * @param bool|null $tobacco Признак товара, как табачной продукции
-     *
-     * @return self
-     */
-    public function setTobacco($tobacco)
-    {
-        if (is_null($tobacco)) {
-            throw new \InvalidArgumentException('non-nullable tobacco cannot be null');
-        }
-        $this->container['tobacco'] = $tobacco;
 
         return $this;
     }
@@ -980,7 +711,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name Наименование товара
+     * @param string|null $name Наименование услуги
      *
      * @return self
      */
@@ -990,7 +721,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Product., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling CreateServicesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['name'] = $name;
@@ -1011,7 +742,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets code
      *
-     * @param string|null $code Код товара
+     * @param string|null $code Код услуги
      *
      * @return self
      */
@@ -1021,7 +752,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
         if ((mb_strlen($code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $code when calling Product., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $code when calling CreateServicesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['code'] = $code;
@@ -1042,7 +773,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets external_code
      *
-     * @param string|null $external_code Внешний код товара
+     * @param string|null $external_code Внешний код услуги
      *
      * @return self
      */
@@ -1052,7 +783,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable external_code cannot be null');
         }
         if ((mb_strlen($external_code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $external_code when calling Product., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $external_code when calling CreateServicesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['external_code'] = $external_code;
@@ -1073,7 +804,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets path_name
      *
-     * @param string|null $path_name Наименование группы, в которую входит товар
+     * @param string|null $path_name Наименование группы, в которую входит услуга
      *
      * @return self
      */
@@ -1083,37 +814,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable path_name cannot be null');
         }
         $this->container['path_name'] = $path_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets article
-     *
-     * @return string|null
-     */
-    public function getArticle()
-    {
-        return $this->container['article'];
-    }
-
-    /**
-     * Sets article
-     *
-     * @param string|null $article Артикул
-     *
-     * @return self
-     */
-    public function setArticle($article)
-    {
-        if (is_null($article)) {
-            throw new \InvalidArgumentException('non-nullable article cannot be null');
-        }
-        if ((mb_strlen($article) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $article when calling Product., must be smaller than or equal to 255.');
-        }
-
-        $this->container['article'] = $article;
 
         return $this;
     }
@@ -1131,7 +831,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description Описание товара
+     * @param string|null $description Описание услуги
      *
      * @return self
      */
@@ -1148,7 +848,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         if (!is_null($description) && (mb_strlen($description) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling Product., must be smaller than or equal to 4096.');
+            throw new \InvalidArgumentException('invalid length for $description when calling CreateServicesBatch200ResponseInner., must be smaller than or equal to 4096.');
         }
 
         $this->container['description'] = $description;
@@ -1180,10 +880,10 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         if (($vat > 99)) {
-            throw new \InvalidArgumentException('invalid value for $vat when calling Product., must be smaller than or equal to 99.');
+            throw new \InvalidArgumentException('invalid value for $vat when calling CreateServicesBatch200ResponseInner., must be smaller than or equal to 99.');
         }
         if (($vat < 0)) {
-            throw new \InvalidArgumentException('invalid value for $vat when calling Product., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for $vat when calling CreateServicesBatch200ResponseInner., must be bigger than or equal to 0.');
         }
 
         $this->container['vat'] = $vat;
@@ -1204,7 +904,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets vat_enabled
      *
-     * @param bool|null $vat_enabled Включен ли НДС для товара
+     * @param bool|null $vat_enabled Включен ли НДС для услуги
      *
      * @return self
      */
@@ -1327,60 +1027,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets variants_count
-     *
-     * @return int|null
-     */
-    public function getVariantsCount()
-    {
-        return $this->container['variants_count'];
-    }
-
-    /**
-     * Sets variants_count
-     *
-     * @param int|null $variants_count Количество модификаций у данного товара
-     *
-     * @return self
-     */
-    public function setVariantsCount($variants_count)
-    {
-        if (is_null($variants_count)) {
-            throw new \InvalidArgumentException('non-nullable variants_count cannot be null');
-        }
-        $this->container['variants_count'] = $variants_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_serial_trackable
-     *
-     * @return bool|null
-     */
-    public function getIsSerialTrackable()
-    {
-        return $this->container['is_serial_trackable'];
-    }
-
-    /**
-     * Sets is_serial_trackable
-     *
-     * @param bool|null $is_serial_trackable Учет по серийным номерам
-     *
-     * @return self
-     */
-    public function setIsSerialTrackable($is_serial_trackable)
-    {
-        if (is_null($is_serial_trackable)) {
-            throw new \InvalidArgumentException('non-nullable is_serial_trackable cannot be null');
-        }
-        $this->container['is_serial_trackable'] = $is_serial_trackable;
-
-        return $this;
-    }
-
-    /**
      * Gets shared
      *
      * @return bool|null
@@ -1496,70 +1142,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets weight
-     *
-     * @return float|null
-     */
-    public function getWeight()
-    {
-        return $this->container['weight'];
-    }
-
-    /**
-     * Sets weight
-     *
-     * @param float|null $weight Вес
-     *
-     * @return self
-     */
-    public function setWeight($weight)
-    {
-        if (is_null($weight)) {
-            throw new \InvalidArgumentException('non-nullable weight cannot be null');
-        }
-
-        if (($weight < 0)) {
-            throw new \InvalidArgumentException('invalid value for $weight when calling Product., must be bigger than or equal to 0.');
-        }
-
-        $this->container['weight'] = $weight;
-
-        return $this;
-    }
-
-    /**
-     * Gets volume
-     *
-     * @return float|null
-     */
-    public function getVolume()
-    {
-        return $this->container['volume'];
-    }
-
-    /**
-     * Sets volume
-     *
-     * @param float|null $volume Объем
-     *
-     * @return self
-     */
-    public function setVolume($volume)
-    {
-        if (is_null($volume)) {
-            throw new \InvalidArgumentException('non-nullable volume cannot be null');
-        }
-
-        if (($volume < 0)) {
-            throw new \InvalidArgumentException('invalid value for $volume when calling Product., must be bigger than or equal to 0.');
-        }
-
-        $this->container['volume'] = $volume;
-
-        return $this;
-    }
-
-    /**
      * Gets buy_price
      *
      * @return \OpenAPI\Client\Model\BuyPrice|null
@@ -1614,74 +1196,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets supplier
-     *
-     * @return \OpenAPI\Client\Model\Counterparty|null
-     */
-    public function getSupplier()
-    {
-        return $this->container['supplier'];
-    }
-
-    /**
-     * Sets supplier
-     *
-     * @param \OpenAPI\Client\Model\Counterparty|null $supplier Метаданные контрагента-поставщика
-     *
-     * @return self
-     */
-    public function setSupplier($supplier)
-    {
-        if (is_null($supplier)) {
-            array_push($this->openAPINullablesSetToNull, 'supplier');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('supplier', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['supplier'] = $supplier;
-
-        return $this;
-    }
-
-    /**
-     * Gets country
-     *
-     * @return \OpenAPI\Client\Model\Country|null
-     */
-    public function getCountry()
-    {
-        return $this->container['country'];
-    }
-
-    /**
-     * Sets country
-     *
-     * @param \OpenAPI\Client\Model\Country|null $country Метаданные Страны
-     *
-     * @return self
-     */
-    public function setCountry($country)
-    {
-        if (is_null($country)) {
-            array_push($this->openAPINullablesSetToNull, 'country');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('country', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['country'] = $country;
-
-        return $this;
-    }
-
-    /**
      * Gets uom
      *
      * @return \OpenAPI\Client\Model\Uom|null
@@ -1728,7 +1242,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets product_folder
      *
-     * @param \OpenAPI\Client\Model\ProductFolder|null $product_folder Метаданные группы Товара
+     * @param \OpenAPI\Client\Model\ProductFolder|null $product_folder Метаданные группы Услуги
      *
      * @return self
      */
@@ -1745,40 +1259,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['product_folder'] = $product_folder;
-
-        return $this;
-    }
-
-    /**
-     * Gets images
-     *
-     * @return \OpenAPI\Client\Model\ImageList|null
-     */
-    public function getImages()
-    {
-        return $this->container['images'];
-    }
-
-    /**
-     * Sets images
-     *
-     * @param \OpenAPI\Client\Model\ImageList|null $images Массив изображений
-     *
-     * @return self
-     */
-    public function setImages($images)
-    {
-        if (is_null($images)) {
-            array_push($this->openAPINullablesSetToNull, 'images');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('images', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['images'] = $images;
 
         return $this;
     }
@@ -1830,7 +1310,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets barcodes
      *
-     * @param \OpenAPI\Client\Model\Barcode[]|null $barcodes Штрихкоды товара
+     * @param \OpenAPI\Client\Model\Barcode[]|null $barcodes Штрихкоды услуги
      *
      * @return self
      */
@@ -1840,91 +1320,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable barcodes cannot be null');
         }
         $this->container['barcodes'] = $barcodes;
-
-        return $this;
-    }
-
-    /**
-     * Gets packs
-     *
-     * @return \OpenAPI\Client\Model\Pack[]|null
-     */
-    public function getPacks()
-    {
-        return $this->container['packs'];
-    }
-
-    /**
-     * Sets packs
-     *
-     * @param \OpenAPI\Client\Model\Pack[]|null $packs Упаковки товара
-     *
-     * @return self
-     */
-    public function setPacks($packs)
-    {
-        if (is_null($packs)) {
-            throw new \InvalidArgumentException('non-nullable packs cannot be null');
-        }
-        $this->container['packs'] = $packs;
-
-        return $this;
-    }
-
-    /**
-     * Gets tracking_type
-     *
-     * @return string|null
-     */
-    public function getTrackingType()
-    {
-        return $this->container['tracking_type'];
-    }
-
-    /**
-     * Sets tracking_type
-     *
-     * @param string|null $tracking_type Тип маркируемой продукции. Допустимые значения перечислены в константах класса
-     *
-     * @return self
-     */
-    public function setTrackingType($tracking_type)
-    {
-        if (is_null($tracking_type)) {
-            throw new \InvalidArgumentException('non-nullable tracking_type cannot be null');
-        }
-        $this->container['tracking_type'] = $tracking_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets tnved
-     *
-     * @return string|null
-     */
-    public function getTnved()
-    {
-        return $this->container['tnved'];
-    }
-
-    /**
-     * Sets tnved
-     *
-     * @param string|null $tnved Код ТН ВЭД
-     *
-     * @return self
-     */
-    public function setTnved($tnved)
-    {
-        if (is_null($tnved)) {
-            throw new \InvalidArgumentException('non-nullable tnved cannot be null');
-        }
-        if ((mb_strlen($tnved) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $tnved when calling Product., must be smaller than or equal to 255.');
-        }
-
-        $this->container['tnved'] = $tnved;
 
         return $this;
     }
@@ -2031,69 +1426,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets minimum_balance
-     *
-     * @return float|null
-     * @deprecated
-     */
-    public function getMinimumBalance()
-    {
-        return $this->container['minimum_balance'];
-    }
-
-    /**
-     * Sets minimum_balance
-     *
-     * @param float|null $minimum_balance Неснижаемый остаток (устаревшее)
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setMinimumBalance($minimum_balance)
-    {
-        if (is_null($minimum_balance)) {
-            throw new \InvalidArgumentException('non-nullable minimum_balance cannot be null');
-        }
-        $this->container['minimum_balance'] = $minimum_balance;
-
-        return $this;
-    }
-
-    /**
-     * Gets minimum_stock
-     *
-     * @return \OpenAPI\Client\Model\MinimumStockAbstract|null
-     */
-    public function getMinimumStock()
-    {
-        return $this->container['minimum_stock'];
-    }
-
-    /**
-     * Sets minimum_stock
-     *
-     * @param \OpenAPI\Client\Model\MinimumStockAbstract|null $minimum_stock Неснижаемый остаток
-     *
-     * @return self
-     */
-    public function setMinimumStock($minimum_stock)
-    {
-        if (is_null($minimum_stock)) {
-            array_push($this->openAPINullablesSetToNull, 'minimum_stock');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('minimum_stock', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['minimum_stock'] = $minimum_stock;
-
-        return $this;
-    }
-
-    /**
      * Gets min_price
      *
      * @return \OpenAPI\Client\Model\MinPrice|null
@@ -2116,114 +1448,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable min_price cannot be null');
         }
         $this->container['min_price'] = $min_price;
-
-        return $this;
-    }
-
-    /**
-     * Gets weighed
-     *
-     * @return bool|null
-     */
-    public function getWeighed()
-    {
-        return $this->container['weighed'];
-    }
-
-    /**
-     * Sets weighed
-     *
-     * @param bool|null $weighed Поле, показывающее является ли товар весовым
-     *
-     * @return self
-     */
-    public function setWeighed($weighed)
-    {
-        if (is_null($weighed)) {
-            throw new \InvalidArgumentException('non-nullable weighed cannot be null');
-        }
-        $this->container['weighed'] = $weighed;
-
-        return $this;
-    }
-
-    /**
-     * Gets on_tap
-     *
-     * @return bool|null
-     */
-    public function getOnTap()
-    {
-        return $this->container['on_tap'];
-    }
-
-    /**
-     * Sets on_tap
-     *
-     * @param bool|null $on_tap Поле, показывающее является ли товар разливным
-     *
-     * @return self
-     */
-    public function setOnTap($on_tap)
-    {
-        if (is_null($on_tap)) {
-            throw new \InvalidArgumentException('non-nullable on_tap cannot be null');
-        }
-        $this->container['on_tap'] = $on_tap;
-
-        return $this;
-    }
-
-    /**
-     * Gets partial_disposal
-     *
-     * @return bool|null
-     */
-    public function getPartialDisposal()
-    {
-        return $this->container['partial_disposal'];
-    }
-
-    /**
-     * Sets partial_disposal
-     *
-     * @param bool|null $partial_disposal Управление состоянием частичного выбытия маркированного товара
-     *
-     * @return self
-     */
-    public function setPartialDisposal($partial_disposal)
-    {
-        if (is_null($partial_disposal)) {
-            throw new \InvalidArgumentException('non-nullable partial_disposal cannot be null');
-        }
-        $this->container['partial_disposal'] = $partial_disposal;
-
-        return $this;
-    }
-
-    /**
-     * Gets things
-     *
-     * @return string[]|null
-     */
-    public function getThings()
-    {
-        return $this->container['things'];
-    }
-
-    /**
-     * Sets things
-     *
-     * @param string[]|null $things Серийные номера
-     *
-     * @return self
-     */
-    public function setThings($things)
-    {
-        if (is_null($things)) {
-            throw new \InvalidArgumentException('non-nullable things cannot be null');
-        }
-        $this->container['things'] = $things;
 
         return $this;
     }
@@ -2256,28 +1480,28 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets ppe_type
+     * Gets errors
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\ErrorErrorsInner[]
      */
-    public function getPpeType()
+    public function getErrors()
     {
-        return $this->container['ppe_type'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets ppe_type
+     * Sets errors
      *
-     * @param string|null $ppe_type Код вида номенклатурной классификации медицинских средств индивидуальной защиты. Допустимые значения перечислены в константах класса
+     * @param \OpenAPI\Client\Model\ErrorErrorsInner[] $errors errors
      *
      * @return self
      */
-    public function setPpeType($ppe_type)
+    public function setErrors($errors)
     {
-        if (is_null($ppe_type)) {
-            throw new \InvalidArgumentException('non-nullable ppe_type cannot be null');
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
         }
-        $this->container['ppe_type'] = $ppe_type;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

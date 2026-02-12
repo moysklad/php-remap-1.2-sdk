@@ -1,6 +1,6 @@
 <?php
 /**
- * FiscalError
+ * DiscountBase
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * FiscalError Class Doc Comment
+ * DiscountBase Class Doc Comment
  *
  * @category Class
- * @description Ошибка фискальной памяти
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FiscalError implements ModelInterface, ArrayAccess, \JsonSerializable
+class DiscountBase implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class FiscalError implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FiscalError';
+    protected static $openAPIModelName = 'DiscountBase';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +57,13 @@ class FiscalError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string',
-        'message' => 'string'
+        'id' => 'string',
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'account_id' => 'string',
+        'name' => 'string',
+        'active' => 'bool',
+        'all_agents' => 'bool',
+        'agent_tags' => 'string[]'
     ];
 
     /**
@@ -70,8 +74,13 @@ class FiscalError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'message' => null
+        'id' => 'uuid',
+        'meta' => null,
+        'account_id' => 'uuid',
+        'name' => null,
+        'active' => null,
+        'all_agents' => null,
+        'agent_tags' => null
     ];
 
     /**
@@ -80,8 +89,13 @@ class FiscalError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-        'message' => false
+        'id' => false,
+        'meta' => false,
+        'account_id' => false,
+        'name' => false,
+        'active' => false,
+        'all_agents' => false,
+        'agent_tags' => false
     ];
 
     /**
@@ -170,8 +184,13 @@ class FiscalError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message'
+        'id' => 'id',
+        'meta' => 'meta',
+        'account_id' => 'accountId',
+        'name' => 'name',
+        'active' => 'active',
+        'all_agents' => 'allAgents',
+        'agent_tags' => 'agentTags'
     ];
 
     /**
@@ -180,8 +199,13 @@ class FiscalError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage'
+        'id' => 'setId',
+        'meta' => 'setMeta',
+        'account_id' => 'setAccountId',
+        'name' => 'setName',
+        'active' => 'setActive',
+        'all_agents' => 'setAllAgents',
+        'agent_tags' => 'setAgentTags'
     ];
 
     /**
@@ -190,8 +214,13 @@ class FiscalError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage'
+        'id' => 'getId',
+        'meta' => 'getMeta',
+        'account_id' => 'getAccountId',
+        'name' => 'getName',
+        'active' => 'getActive',
+        'all_agents' => 'getAllAgents',
+        'agent_tags' => 'getAgentTags'
     ];
 
     /**
@@ -251,8 +280,13 @@ class FiscalError implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('active', $data ?? [], null);
+        $this->setIfExists('all_agents', $data ?? [], null);
+        $this->setIfExists('agent_tags', $data ?? [], null);
     }
 
     /**
@@ -282,12 +316,8 @@ class FiscalError implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['code']) && (mb_strlen($this->container['code']) > 255)) {
-            $invalidProperties[] = "invalid value for 'code', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['message']) && (mb_strlen($this->container['message']) > 255)) {
-            $invalidProperties[] = "invalid value for 'message', the character length must be smaller than or equal to 255.";
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
         }
 
         return $invalidProperties;
@@ -306,63 +336,194 @@ class FiscalError implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets code
+     * Gets id
      *
      * @return string|null
      */
-    public function getCode()
+    public function getId()
     {
-        return $this->container['code'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets code
+     * Sets id
      *
-     * @param string|null $code Код ошибки
+     * @param string|null $id ID дополнительного поля
      *
      * @return self
      */
-    public function setCode($code)
+    public function setId($id)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        if ((mb_strlen($code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $code when calling FiscalError., must be smaller than or equal to 255.');
-        }
-
-        $this->container['code'] = $code;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets meta
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\Meta|null
      */
-    public function getMessage()
+    public function getMeta()
     {
-        return $this->container['message'];
+        return $this->container['meta'];
     }
 
     /**
-     * Sets message
+     * Sets meta
      *
-     * @param string|null $message Сообщение ошибки
+     * @param \OpenAPI\Client\Model\Meta|null $meta meta
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setMeta($meta)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
         }
-        if ((mb_strlen($message) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $message when calling FiscalError., must be smaller than or equal to 255.');
+        $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id ID учетной записи
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Наименование товара
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling DiscountBase., must be smaller than or equal to 255.');
         }
 
-        $this->container['message'] = $message;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets active
+     *
+     * @return bool|null
+     */
+    public function getActive()
+    {
+        return $this->container['active'];
+    }
+
+    /**
+     * Sets active
+     *
+     * @param bool|null $active Включена ли скидка
+     *
+     * @return self
+     */
+    public function setActive($active)
+    {
+        if (is_null($active)) {
+            throw new \InvalidArgumentException('non-nullable active cannot be null');
+        }
+        $this->container['active'] = $active;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_agents
+     *
+     * @return bool|null
+     */
+    public function getAllAgents()
+    {
+        return $this->container['all_agents'];
+    }
+
+    /**
+     * Sets all_agents
+     *
+     * @param bool|null $all_agents Для всех ли агентов скидка
+     *
+     * @return self
+     */
+    public function setAllAgents($all_agents)
+    {
+        if (is_null($all_agents)) {
+            throw new \InvalidArgumentException('non-nullable all_agents cannot be null');
+        }
+        $this->container['all_agents'] = $all_agents;
+
+        return $this;
+    }
+
+    /**
+     * Gets agent_tags
+     *
+     * @return string[]|null
+     */
+    public function getAgentTags()
+    {
+        return $this->container['agent_tags'];
+    }
+
+    /**
+     * Sets agent_tags
+     *
+     * @param string[]|null $agent_tags Тэги агентов
+     *
+     * @return self
+     */
+    public function setAgentTags($agent_tags)
+    {
+        if (is_null($agent_tags)) {
+            throw new \InvalidArgumentException('non-nullable agent_tags cannot be null');
+        }
+        $this->container['agent_tags'] = $agent_tags;
 
         return $this;
     }

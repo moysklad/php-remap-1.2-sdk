@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductFolder
+ * CreateEmployeesBatch200ResponseInner
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ProductFolder Class Doc Comment
+ * CreateEmployeesBatch200ResponseInner Class Doc Comment
  *
  * @category Class
- * @description Группа товаров
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateEmployeesBatch200ResponseInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ProductFolder';
+    protected static $openAPIModelName = 'createEmployeesBatch_200_response_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,22 +61,29 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'account_id' => 'string',
         'name' => 'string',
-        'code' => 'string',
         'external_code' => 'string',
         'archived' => 'bool',
-        'path_name' => 'string',
+        'created' => '\DateTime',
+        'updated' => '\DateTime',
         'description' => 'string',
-        'vat' => 'int',
-        'vat_enabled' => 'bool',
-        'effective_vat' => 'int',
-        'effective_vat_enabled' => 'bool',
-        'use_parent_vat' => 'bool',
+        'email' => 'string',
+        'phone' => 'string',
+        'first_name' => 'string',
+        'middle_name' => 'string',
+        'last_name' => 'string',
+        'full_name' => 'string',
+        'short_fio' => 'string',
         'shared' => 'bool',
         'group' => '\OpenAPI\Client\Model\Group',
         'owner' => '\OpenAPI\Client\Model\Employee',
-        'updated' => '\DateTime',
-        'product_folder' => '\OpenAPI\Client\Model\ProductFolder',
-        'tax_system' => 'string'
+        'inn' => 'string',
+        'position' => 'string',
+        'uid' => 'string',
+        'salary' => '\OpenAPI\Client\Model\EmployeeSalary',
+        'cashiers' => '\OpenAPI\Client\Model\Cashier[]',
+        'image' => '\OpenAPI\Client\Model\Image',
+        'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]',
+        'errors' => '\OpenAPI\Client\Model\ErrorErrorsInner[]'
     ];
 
     /**
@@ -92,22 +98,29 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'uuid',
         'account_id' => 'uuid',
         'name' => null,
-        'code' => null,
         'external_code' => null,
         'archived' => null,
-        'path_name' => null,
+        'created' => 'date-time',
+        'updated' => 'date-time',
         'description' => null,
-        'vat' => null,
-        'vat_enabled' => null,
-        'effective_vat' => null,
-        'effective_vat_enabled' => null,
-        'use_parent_vat' => null,
+        'email' => 'email',
+        'phone' => null,
+        'first_name' => null,
+        'middle_name' => null,
+        'last_name' => null,
+        'full_name' => null,
+        'short_fio' => null,
         'shared' => null,
         'group' => null,
         'owner' => null,
-        'updated' => 'date-time',
-        'product_folder' => null,
-        'tax_system' => null
+        'inn' => null,
+        'position' => null,
+        'uid' => null,
+        'salary' => null,
+        'cashiers' => null,
+        'image' => null,
+        'attributes' => null,
+        'errors' => null
     ];
 
     /**
@@ -120,22 +133,29 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'account_id' => false,
         'name' => false,
-        'code' => false,
         'external_code' => false,
         'archived' => false,
-        'path_name' => false,
-        'description' => true,
-        'vat' => false,
-        'vat_enabled' => false,
-        'effective_vat' => false,
-        'effective_vat_enabled' => false,
-        'use_parent_vat' => false,
+        'created' => false,
+        'updated' => false,
+        'description' => false,
+        'email' => false,
+        'phone' => false,
+        'first_name' => false,
+        'middle_name' => false,
+        'last_name' => false,
+        'full_name' => false,
+        'short_fio' => false,
         'shared' => false,
         'group' => false,
         'owner' => true,
-        'updated' => false,
-        'product_folder' => true,
-        'tax_system' => false
+        'inn' => false,
+        'position' => false,
+        'uid' => false,
+        'salary' => false,
+        'cashiers' => false,
+        'image' => true,
+        'attributes' => false,
+        'errors' => false
     ];
 
     /**
@@ -228,22 +248,29 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'account_id' => 'accountId',
         'name' => 'name',
-        'code' => 'code',
         'external_code' => 'externalCode',
         'archived' => 'archived',
-        'path_name' => 'pathName',
+        'created' => 'created',
+        'updated' => 'updated',
         'description' => 'description',
-        'vat' => 'vat',
-        'vat_enabled' => 'vatEnabled',
-        'effective_vat' => 'effectiveVat',
-        'effective_vat_enabled' => 'effectiveVatEnabled',
-        'use_parent_vat' => 'useParentVat',
+        'email' => 'email',
+        'phone' => 'phone',
+        'first_name' => 'firstName',
+        'middle_name' => 'middleName',
+        'last_name' => 'lastName',
+        'full_name' => 'fullName',
+        'short_fio' => 'shortFio',
         'shared' => 'shared',
         'group' => 'group',
         'owner' => 'owner',
-        'updated' => 'updated',
-        'product_folder' => 'productFolder',
-        'tax_system' => 'taxSystem'
+        'inn' => 'inn',
+        'position' => 'position',
+        'uid' => 'uid',
+        'salary' => 'salary',
+        'cashiers' => 'cashiers',
+        'image' => 'image',
+        'attributes' => 'attributes',
+        'errors' => 'errors'
     ];
 
     /**
@@ -256,22 +283,29 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'account_id' => 'setAccountId',
         'name' => 'setName',
-        'code' => 'setCode',
         'external_code' => 'setExternalCode',
         'archived' => 'setArchived',
-        'path_name' => 'setPathName',
+        'created' => 'setCreated',
+        'updated' => 'setUpdated',
         'description' => 'setDescription',
-        'vat' => 'setVat',
-        'vat_enabled' => 'setVatEnabled',
-        'effective_vat' => 'setEffectiveVat',
-        'effective_vat_enabled' => 'setEffectiveVatEnabled',
-        'use_parent_vat' => 'setUseParentVat',
+        'email' => 'setEmail',
+        'phone' => 'setPhone',
+        'first_name' => 'setFirstName',
+        'middle_name' => 'setMiddleName',
+        'last_name' => 'setLastName',
+        'full_name' => 'setFullName',
+        'short_fio' => 'setShortFio',
         'shared' => 'setShared',
         'group' => 'setGroup',
         'owner' => 'setOwner',
-        'updated' => 'setUpdated',
-        'product_folder' => 'setProductFolder',
-        'tax_system' => 'setTaxSystem'
+        'inn' => 'setInn',
+        'position' => 'setPosition',
+        'uid' => 'setUid',
+        'salary' => 'setSalary',
+        'cashiers' => 'setCashiers',
+        'image' => 'setImage',
+        'attributes' => 'setAttributes',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -284,22 +318,29 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'account_id' => 'getAccountId',
         'name' => 'getName',
-        'code' => 'getCode',
         'external_code' => 'getExternalCode',
         'archived' => 'getArchived',
-        'path_name' => 'getPathName',
+        'created' => 'getCreated',
+        'updated' => 'getUpdated',
         'description' => 'getDescription',
-        'vat' => 'getVat',
-        'vat_enabled' => 'getVatEnabled',
-        'effective_vat' => 'getEffectiveVat',
-        'effective_vat_enabled' => 'getEffectiveVatEnabled',
-        'use_parent_vat' => 'getUseParentVat',
+        'email' => 'getEmail',
+        'phone' => 'getPhone',
+        'first_name' => 'getFirstName',
+        'middle_name' => 'getMiddleName',
+        'last_name' => 'getLastName',
+        'full_name' => 'getFullName',
+        'short_fio' => 'getShortFio',
         'shared' => 'getShared',
         'group' => 'getGroup',
         'owner' => 'getOwner',
-        'updated' => 'getUpdated',
-        'product_folder' => 'getProductFolder',
-        'tax_system' => 'getTaxSystem'
+        'inn' => 'getInn',
+        'position' => 'getPosition',
+        'uid' => 'getUid',
+        'salary' => 'getSalary',
+        'cashiers' => 'getCashiers',
+        'image' => 'getImage',
+        'attributes' => 'getAttributes',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -343,31 +384,6 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const TAX_SYSTEM_GENERAL_TAX_SYSTEM = 'GENERAL_TAX_SYSTEM';
-    public const TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME';
-    public const TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME';
-    public const TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX = 'UNIFIED_AGRICULTURAL_TAX';
-    public const TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM = 'PRESUMPTIVE_TAX_SYSTEM';
-    public const TAX_SYSTEM_PATENT_BASED = 'PATENT_BASED';
-    public const TAX_SYSTEM_TAX_SYSTEM_SAME_AS_GROUP = 'TAX_SYSTEM_SAME_AS_GROUP';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTaxSystemAllowableValues()
-    {
-        return [
-            self::TAX_SYSTEM_GENERAL_TAX_SYSTEM,
-            self::TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME,
-            self::TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME,
-            self::TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX,
-            self::TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM,
-            self::TAX_SYSTEM_PATENT_BASED,
-            self::TAX_SYSTEM_TAX_SYSTEM_SAME_AS_GROUP,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -388,22 +404,29 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('external_code', $data ?? [], null);
         $this->setIfExists('archived', $data ?? [], null);
-        $this->setIfExists('path_name', $data ?? [], null);
+        $this->setIfExists('created', $data ?? [], null);
+        $this->setIfExists('updated', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('vat', $data ?? [], null);
-        $this->setIfExists('vat_enabled', $data ?? [], null);
-        $this->setIfExists('effective_vat', $data ?? [], null);
-        $this->setIfExists('effective_vat_enabled', $data ?? [], null);
-        $this->setIfExists('use_parent_vat', $data ?? [], null);
+        $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('phone', $data ?? [], null);
+        $this->setIfExists('first_name', $data ?? [], null);
+        $this->setIfExists('middle_name', $data ?? [], null);
+        $this->setIfExists('last_name', $data ?? [], null);
+        $this->setIfExists('full_name', $data ?? [], null);
+        $this->setIfExists('short_fio', $data ?? [], null);
         $this->setIfExists('shared', $data ?? [], null);
         $this->setIfExists('group', $data ?? [], null);
         $this->setIfExists('owner', $data ?? [], null);
-        $this->setIfExists('updated', $data ?? [], null);
-        $this->setIfExists('product_folder', $data ?? [], null);
-        $this->setIfExists('tax_system', $data ?? [], null);
+        $this->setIfExists('inn', $data ?? [], null);
+        $this->setIfExists('position', $data ?? [], null);
+        $this->setIfExists('uid', $data ?? [], null);
+        $this->setIfExists('salary', $data ?? [], null);
+        $this->setIfExists('cashiers', $data ?? [], null);
+        $this->setIfExists('image', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -437,10 +460,6 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
         }
 
-        if (!is_null($this->container['code']) && (mb_strlen($this->container['code']) > 255)) {
-            $invalidProperties[] = "invalid value for 'code', the character length must be smaller than or equal to 255.";
-        }
-
         if (!is_null($this->container['external_code']) && (mb_strlen($this->container['external_code']) > 255)) {
             $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
         }
@@ -449,23 +468,33 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
         }
 
-        if (!is_null($this->container['vat']) && ($this->container['vat'] > 99)) {
-            $invalidProperties[] = "invalid value for 'vat', must be smaller than or equal to 99.";
+        if (!is_null($this->container['first_name']) && (mb_strlen($this->container['first_name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'first_name', the character length must be smaller than or equal to 255.";
         }
 
-        if (!is_null($this->container['vat']) && ($this->container['vat'] < 0)) {
-            $invalidProperties[] = "invalid value for 'vat', must be bigger than or equal to 0.";
+        if (!is_null($this->container['middle_name']) && (mb_strlen($this->container['middle_name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'middle_name', the character length must be smaller than or equal to 255.";
         }
 
-        $allowedValues = $this->getTaxSystemAllowableValues();
-        if (!is_null($this->container['tax_system']) && !in_array($this->container['tax_system'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'tax_system', must be one of '%s'",
-                $this->container['tax_system'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['last_name']) && (mb_strlen($this->container['last_name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'last_name', the character length must be smaller than or equal to 255.";
         }
 
+        if (!is_null($this->container['inn']) && (mb_strlen($this->container['inn']) > 255)) {
+            $invalidProperties[] = "invalid value for 'inn', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['position']) && (mb_strlen($this->container['position']) > 255)) {
+            $invalidProperties[] = "invalid value for 'position', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['uid']) && (mb_strlen($this->container['uid']) > 255)) {
+            $invalidProperties[] = "invalid value for 'uid', the character length must be smaller than or equal to 255.";
+        }
+
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -521,7 +550,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id ID группы товаров
+     * @param string|null $id ID сотрудника
      *
      * @return self
      */
@@ -575,7 +604,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name Наименование группы товаров
+     * @param string|null $name Наименование сотрудника
      *
      * @return self
      */
@@ -585,41 +614,10 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ProductFolder., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling CreateEmployeesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string|null $code Код группы товаров
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        if ((mb_strlen($code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $code when calling ProductFolder., must be smaller than or equal to 255.');
-        }
-
-        $this->container['code'] = $code;
 
         return $this;
     }
@@ -637,7 +635,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets external_code
      *
-     * @param string|null $external_code Внешний код группы товаров
+     * @param string|null $external_code Внешний код сотрудника
      *
      * @return self
      */
@@ -647,7 +645,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable external_code cannot be null');
         }
         if ((mb_strlen($external_code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $external_code when calling ProductFolder., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $external_code when calling CreateEmployeesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['external_code'] = $external_code;
@@ -668,7 +666,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets archived
      *
-     * @param bool|null $archived Добавлена ли группа товаров в архив
+     * @param bool|null $archived Добавлен ли сотрудник в архив
      *
      * @return self
      */
@@ -683,28 +681,55 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets path_name
+     * Gets created
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getPathName()
+    public function getCreated()
     {
-        return $this->container['path_name'];
+        return $this->container['created'];
     }
 
     /**
-     * Sets path_name
+     * Sets created
      *
-     * @param string|null $path_name Наименование родительской группы
+     * @param \DateTime|null $created Момент создания
      *
      * @return self
      */
-    public function setPathName($path_name)
+    public function setCreated($created)
     {
-        if (is_null($path_name)) {
-            throw new \InvalidArgumentException('non-nullable path_name cannot be null');
+        if (is_null($created)) {
+            throw new \InvalidArgumentException('non-nullable created cannot be null');
         }
-        $this->container['path_name'] = $path_name;
+        $this->container['created'] = $created;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdated()
+    {
+        return $this->container['updated'];
+    }
+
+    /**
+     * Sets updated
+     *
+     * @param \DateTime|null $updated Момент последнего обновления
+     *
+     * @return self
+     */
+    public function setUpdated($updated)
+    {
+        if (is_null($updated)) {
+            throw new \InvalidArgumentException('non-nullable updated cannot be null');
+        }
+        $this->container['updated'] = $updated;
 
         return $this;
     }
@@ -722,24 +747,17 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description Описание группы товаров
+     * @param string|null $description Комментарий к сотруднику
      *
      * @return self
      */
     public function setDescription($description)
     {
         if (is_null($description)) {
-            array_push($this->openAPINullablesSetToNull, 'description');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        if (!is_null($description) && (mb_strlen($description) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling ProductFolder., must be smaller than or equal to 4096.');
+        if ((mb_strlen($description) > 4096)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling CreateEmployeesBatch200ResponseInner., must be smaller than or equal to 4096.');
         }
 
         $this->container['description'] = $description;
@@ -748,144 +766,202 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets vat
+     * Gets email
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getVat()
+    public function getEmail()
     {
-        return $this->container['vat'];
+        return $this->container['email'];
     }
 
     /**
-     * Sets vat
+     * Sets email
      *
-     * @param int|null $vat НДС %
+     * @param string|null $email Адрес электронной почты
      *
      * @return self
      */
-    public function setVat($vat)
+    public function setEmail($email)
     {
-        if (is_null($vat)) {
-            throw new \InvalidArgumentException('non-nullable vat cannot be null');
+        if (is_null($email)) {
+            throw new \InvalidArgumentException('non-nullable email cannot be null');
         }
-
-        if (($vat > 99)) {
-            throw new \InvalidArgumentException('invalid value for $vat when calling ProductFolder., must be smaller than or equal to 99.');
-        }
-        if (($vat < 0)) {
-            throw new \InvalidArgumentException('invalid value for $vat when calling ProductFolder., must be bigger than or equal to 0.');
-        }
-
-        $this->container['vat'] = $vat;
+        $this->container['email'] = $email;
 
         return $this;
     }
 
     /**
-     * Gets vat_enabled
+     * Gets phone
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getVatEnabled()
+    public function getPhone()
     {
-        return $this->container['vat_enabled'];
+        return $this->container['phone'];
     }
 
     /**
-     * Sets vat_enabled
+     * Sets phone
      *
-     * @param bool|null $vat_enabled Включен ли НДС для группы
+     * @param string|null $phone Номер телефона
      *
      * @return self
      */
-    public function setVatEnabled($vat_enabled)
+    public function setPhone($phone)
     {
-        if (is_null($vat_enabled)) {
-            throw new \InvalidArgumentException('non-nullable vat_enabled cannot be null');
+        if (is_null($phone)) {
+            throw new \InvalidArgumentException('non-nullable phone cannot be null');
         }
-        $this->container['vat_enabled'] = $vat_enabled;
+        $this->container['phone'] = $phone;
 
         return $this;
     }
 
     /**
-     * Gets effective_vat
+     * Gets first_name
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getEffectiveVat()
+    public function getFirstName()
     {
-        return $this->container['effective_vat'];
+        return $this->container['first_name'];
     }
 
     /**
-     * Sets effective_vat
+     * Sets first_name
      *
-     * @param int|null $effective_vat Реальный НДС %
+     * @param string|null $first_name Имя
      *
      * @return self
      */
-    public function setEffectiveVat($effective_vat)
+    public function setFirstName($first_name)
     {
-        if (is_null($effective_vat)) {
-            throw new \InvalidArgumentException('non-nullable effective_vat cannot be null');
+        if (is_null($first_name)) {
+            throw new \InvalidArgumentException('non-nullable first_name cannot be null');
         }
-        $this->container['effective_vat'] = $effective_vat;
+        if ((mb_strlen($first_name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $first_name when calling CreateEmployeesBatch200ResponseInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['first_name'] = $first_name;
 
         return $this;
     }
 
     /**
-     * Gets effective_vat_enabled
+     * Gets middle_name
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getEffectiveVatEnabled()
+    public function getMiddleName()
     {
-        return $this->container['effective_vat_enabled'];
+        return $this->container['middle_name'];
     }
 
     /**
-     * Sets effective_vat_enabled
+     * Sets middle_name
      *
-     * @param bool|null $effective_vat_enabled Дополнительный признак для определения разграничения реального НДС
+     * @param string|null $middle_name Отчество
      *
      * @return self
      */
-    public function setEffectiveVatEnabled($effective_vat_enabled)
+    public function setMiddleName($middle_name)
     {
-        if (is_null($effective_vat_enabled)) {
-            throw new \InvalidArgumentException('non-nullable effective_vat_enabled cannot be null');
+        if (is_null($middle_name)) {
+            throw new \InvalidArgumentException('non-nullable middle_name cannot be null');
         }
-        $this->container['effective_vat_enabled'] = $effective_vat_enabled;
+        if ((mb_strlen($middle_name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $middle_name when calling CreateEmployeesBatch200ResponseInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['middle_name'] = $middle_name;
 
         return $this;
     }
 
     /**
-     * Gets use_parent_vat
+     * Gets last_name
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getUseParentVat()
+    public function getLastName()
     {
-        return $this->container['use_parent_vat'];
+        return $this->container['last_name'];
     }
 
     /**
-     * Sets use_parent_vat
+     * Sets last_name
      *
-     * @param bool|null $use_parent_vat Используется ли ставка НДС родительской группы
+     * @param string|null $last_name Фамилия
      *
      * @return self
      */
-    public function setUseParentVat($use_parent_vat)
+    public function setLastName($last_name)
     {
-        if (is_null($use_parent_vat)) {
-            throw new \InvalidArgumentException('non-nullable use_parent_vat cannot be null');
+        if (is_null($last_name)) {
+            throw new \InvalidArgumentException('non-nullable last_name cannot be null');
         }
-        $this->container['use_parent_vat'] = $use_parent_vat;
+        if ((mb_strlen($last_name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $last_name when calling CreateEmployeesBatch200ResponseInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['last_name'] = $last_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets full_name
+     *
+     * @return string|null
+     */
+    public function getFullName()
+    {
+        return $this->container['full_name'];
+    }
+
+    /**
+     * Sets full_name
+     *
+     * @param string|null $full_name Полное имя сотрудника
+     *
+     * @return self
+     */
+    public function setFullName($full_name)
+    {
+        if (is_null($full_name)) {
+            throw new \InvalidArgumentException('non-nullable full_name cannot be null');
+        }
+        $this->container['full_name'] = $full_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets short_fio
+     *
+     * @return string|null
+     */
+    public function getShortFio()
+    {
+        return $this->container['short_fio'];
+    }
+
+    /**
+     * Sets short_fio
+     *
+     * @param string|null $short_fio Краткое ФИО сотрудника
+     *
+     * @return self
+     */
+    public function setShortFio($short_fio)
+    {
+        if (is_null($short_fio)) {
+            throw new \InvalidArgumentException('non-nullable short_fio cannot be null');
+        }
+        $this->container['short_fio'] = $short_fio;
 
         return $this;
     }
@@ -957,7 +1033,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param \OpenAPI\Client\Model\Employee|null $owner Владелец группы товаров. Может быть Meta объектом или полным объектом в зависимости от expand параметра
+     * @param \OpenAPI\Client\Model\Employee|null $owner Метаданные владельца (Сотрудника)
      *
      * @return self
      */
@@ -979,99 +1055,236 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets updated
+     * Gets inn
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getUpdated()
+    public function getInn()
     {
-        return $this->container['updated'];
+        return $this->container['inn'];
     }
 
     /**
-     * Sets updated
+     * Sets inn
      *
-     * @param \DateTime|null $updated Момент последнего обновления
+     * @param string|null $inn ИНН сотрудника (в формате ИНН физического лица)
      *
      * @return self
      */
-    public function setUpdated($updated)
+    public function setInn($inn)
     {
-        if (is_null($updated)) {
-            throw new \InvalidArgumentException('non-nullable updated cannot be null');
+        if (is_null($inn)) {
+            throw new \InvalidArgumentException('non-nullable inn cannot be null');
         }
-        $this->container['updated'] = $updated;
+        if ((mb_strlen($inn) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $inn when calling CreateEmployeesBatch200ResponseInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['inn'] = $inn;
 
         return $this;
     }
 
     /**
-     * Gets product_folder
+     * Gets position
      *
-     * @return \OpenAPI\Client\Model\ProductFolder|null
+     * @return string|null
      */
-    public function getProductFolder()
+    public function getPosition()
     {
-        return $this->container['product_folder'];
+        return $this->container['position'];
     }
 
     /**
-     * Sets product_folder
+     * Sets position
      *
-     * @param \OpenAPI\Client\Model\ProductFolder|null $product_folder Родительская группа товаров
+     * @param string|null $position Должность сотрудника
      *
      * @return self
      */
-    public function setProductFolder($product_folder)
+    public function setPosition($position)
     {
-        if (is_null($product_folder)) {
-            array_push($this->openAPINullablesSetToNull, 'product_folder');
+        if (is_null($position)) {
+            throw new \InvalidArgumentException('non-nullable position cannot be null');
+        }
+        if ((mb_strlen($position) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $position when calling CreateEmployeesBatch200ResponseInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['position'] = $position;
+
+        return $this;
+    }
+
+    /**
+     * Gets uid
+     *
+     * @return string|null
+     */
+    public function getUid()
+    {
+        return $this->container['uid'];
+    }
+
+    /**
+     * Sets uid
+     *
+     * @param string|null $uid Логин сотрудника
+     *
+     * @return self
+     */
+    public function setUid($uid)
+    {
+        if (is_null($uid)) {
+            throw new \InvalidArgumentException('non-nullable uid cannot be null');
+        }
+        if ((mb_strlen($uid) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $uid when calling CreateEmployeesBatch200ResponseInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['uid'] = $uid;
+
+        return $this;
+    }
+
+    /**
+     * Gets salary
+     *
+     * @return \OpenAPI\Client\Model\EmployeeSalary|null
+     */
+    public function getSalary()
+    {
+        return $this->container['salary'];
+    }
+
+    /**
+     * Sets salary
+     *
+     * @param \OpenAPI\Client\Model\EmployeeSalary|null $salary salary
+     *
+     * @return self
+     */
+    public function setSalary($salary)
+    {
+        if (is_null($salary)) {
+            throw new \InvalidArgumentException('non-nullable salary cannot be null');
+        }
+        $this->container['salary'] = $salary;
+
+        return $this;
+    }
+
+    /**
+     * Gets cashiers
+     *
+     * @return \OpenAPI\Client\Model\Cashier[]|null
+     */
+    public function getCashiers()
+    {
+        return $this->container['cashiers'];
+    }
+
+    /**
+     * Sets cashiers
+     *
+     * @param \OpenAPI\Client\Model\Cashier[]|null $cashiers Массив кассиров
+     *
+     * @return self
+     */
+    public function setCashiers($cashiers)
+    {
+        if (is_null($cashiers)) {
+            throw new \InvalidArgumentException('non-nullable cashiers cannot be null');
+        }
+        $this->container['cashiers'] = $cashiers;
+
+        return $this;
+    }
+
+    /**
+     * Gets image
+     *
+     * @return \OpenAPI\Client\Model\Image|null
+     */
+    public function getImage()
+    {
+        return $this->container['image'];
+    }
+
+    /**
+     * Sets image
+     *
+     * @param \OpenAPI\Client\Model\Image|null $image Фотография сотрудника
+     *
+     * @return self
+     */
+    public function setImage($image)
+    {
+        if (is_null($image)) {
+            array_push($this->openAPINullablesSetToNull, 'image');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('product_folder', $nullablesSetToNull);
+            $index = array_search('image', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['product_folder'] = $product_folder;
+        $this->container['image'] = $image;
 
         return $this;
     }
 
     /**
-     * Gets tax_system
+     * Gets attributes
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\AttributeAbstract[]|null
      */
-    public function getTaxSystem()
+    public function getAttributes()
     {
-        return $this->container['tax_system'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets tax_system
+     * Sets attributes
      *
-     * @param string|null $tax_system Код системы налогообложения
+     * @param \OpenAPI\Client\Model\AttributeAbstract[]|null $attributes Дополнительные поля
      *
      * @return self
      */
-    public function setTaxSystem($tax_system)
+    public function setAttributes($attributes)
     {
-        if (is_null($tax_system)) {
-            throw new \InvalidArgumentException('non-nullable tax_system cannot be null');
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
-        $allowedValues = $this->getTaxSystemAllowableValues();
-        if (!in_array($tax_system, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'tax_system', must be one of '%s'",
-                    $tax_system,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \OpenAPI\Client\Model\ErrorErrorsInner[]
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \OpenAPI\Client\Model\ErrorErrorsInner[] $errors errors
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
         }
-        $this->container['tax_system'] = $tax_system;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

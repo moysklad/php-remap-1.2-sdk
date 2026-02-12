@@ -1,6 +1,6 @@
 <?php
 /**
- * MinimumStockWarehouseVaried
+ * AccumulationDiscount
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * MinimumStockWarehouseVaried Class Doc Comment
+ * AccumulationDiscount Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonSerializable
+class AccumulationDiscount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MinimumStockWarehouseVaried';
+    protected static $openAPIModelName = 'AccumulationDiscount';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,17 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'store_balances' => '\OpenAPI\Client\Model\StoreBalanceList'
+        'assortment' => '\OpenAPI\Client\Model\Product[]',
+        'product_folders' => '\OpenAPI\Client\Model\ProductFolder[]',
+        'all_products' => 'bool',
+        'level' => 'object[]',
+        'id' => 'string',
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'account_id' => 'string',
+        'name' => 'string',
+        'active' => 'bool',
+        'all_agents' => 'bool',
+        'agent_tags' => 'string[]'
     ];
 
     /**
@@ -69,8 +78,17 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'store_balances' => null
+        'assortment' => null,
+        'product_folders' => null,
+        'all_products' => null,
+        'level' => null,
+        'id' => 'uuid',
+        'meta' => null,
+        'account_id' => 'uuid',
+        'name' => null,
+        'active' => null,
+        'all_agents' => null,
+        'agent_tags' => null
     ];
 
     /**
@@ -79,8 +97,17 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-        'store_balances' => false
+        'assortment' => false,
+        'product_folders' => false,
+        'all_products' => false,
+        'level' => false,
+        'id' => false,
+        'meta' => false,
+        'account_id' => false,
+        'name' => false,
+        'active' => false,
+        'all_agents' => false,
+        'agent_tags' => false
     ];
 
     /**
@@ -169,8 +196,17 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'store_balances' => 'storeBalances'
+        'assortment' => 'assortment',
+        'product_folders' => 'productFolders',
+        'all_products' => 'allProducts',
+        'level' => 'level',
+        'id' => 'id',
+        'meta' => 'meta',
+        'account_id' => 'accountId',
+        'name' => 'name',
+        'active' => 'active',
+        'all_agents' => 'allAgents',
+        'agent_tags' => 'agentTags'
     ];
 
     /**
@@ -179,8 +215,17 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'store_balances' => 'setStoreBalances'
+        'assortment' => 'setAssortment',
+        'product_folders' => 'setProductFolders',
+        'all_products' => 'setAllProducts',
+        'level' => 'setLevel',
+        'id' => 'setId',
+        'meta' => 'setMeta',
+        'account_id' => 'setAccountId',
+        'name' => 'setName',
+        'active' => 'setActive',
+        'all_agents' => 'setAllAgents',
+        'agent_tags' => 'setAgentTags'
     ];
 
     /**
@@ -189,8 +234,17 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'store_balances' => 'getStoreBalances'
+        'assortment' => 'getAssortment',
+        'product_folders' => 'getProductFolders',
+        'all_products' => 'getAllProducts',
+        'level' => 'getLevel',
+        'id' => 'getId',
+        'meta' => 'getMeta',
+        'account_id' => 'getAccountId',
+        'name' => 'getName',
+        'active' => 'getActive',
+        'all_agents' => 'getAllAgents',
+        'agent_tags' => 'getAgentTags'
     ];
 
     /**
@@ -234,19 +288,6 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
-    public const TYPE_WAREHOUSE_VARIED = 'WAREHOUSE_VARIED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_WAREHOUSE_VARIED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -263,8 +304,17 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], 'WAREHOUSE_VARIED');
-        $this->setIfExists('store_balances', $data ?? [], null);
+        $this->setIfExists('assortment', $data ?? [], null);
+        $this->setIfExists('product_folders', $data ?? [], null);
+        $this->setIfExists('all_products', $data ?? [], null);
+        $this->setIfExists('level', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('active', $data ?? [], null);
+        $this->setIfExists('all_agents', $data ?? [], null);
+        $this->setIfExists('agent_tags', $data ?? [], null);
     }
 
     /**
@@ -294,16 +344,8 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
         }
 
         return $invalidProperties;
@@ -322,65 +364,302 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets type
+     * Gets assortment
      *
-     * @return string
+     * @return \OpenAPI\Client\Model\Product[]|null
      */
-    public function getType()
+    public function getAssortment()
     {
-        return $this->container['type'];
+        return $this->container['assortment'];
     }
 
     /**
-     * Sets type
+     * Sets assortment
      *
-     * @param string $type type
+     * @param \OpenAPI\Client\Model\Product[]|null $assortment Товары со скидкой
      *
      * @return self
      */
-    public function setType($type)
+    public function setAssortment($assortment)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($assortment)) {
+            throw new \InvalidArgumentException('non-nullable assortment cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['assortment'] = $assortment;
 
         return $this;
     }
 
     /**
-     * Gets store_balances
+     * Gets product_folders
      *
-     * @return \OpenAPI\Client\Model\StoreBalanceList|null
+     * @return \OpenAPI\Client\Model\ProductFolder[]|null
      */
-    public function getStoreBalances()
+    public function getProductFolders()
     {
-        return $this->container['store_balances'];
+        return $this->container['product_folders'];
     }
 
     /**
-     * Sets store_balances
+     * Sets product_folders
      *
-     * @param \OpenAPI\Client\Model\StoreBalanceList|null $store_balances Неснижаемые остатки по складам
+     * @param \OpenAPI\Client\Model\ProductFolder[]|null $product_folders Группы товаров со скидкой
      *
      * @return self
      */
-    public function setStoreBalances($store_balances)
+    public function setProductFolders($product_folders)
     {
-        if (is_null($store_balances)) {
-            throw new \InvalidArgumentException('non-nullable store_balances cannot be null');
+        if (is_null($product_folders)) {
+            throw new \InvalidArgumentException('non-nullable product_folders cannot be null');
         }
-        $this->container['store_balances'] = $store_balances;
+        $this->container['product_folders'] = $product_folders;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_products
+     *
+     * @return bool|null
+     */
+    public function getAllProducts()
+    {
+        return $this->container['all_products'];
+    }
+
+    /**
+     * Sets all_products
+     *
+     * @param bool|null $all_products Для всех ли товаров скидка
+     *
+     * @return self
+     */
+    public function setAllProducts($all_products)
+    {
+        if (is_null($all_products)) {
+            throw new \InvalidArgumentException('non-nullable all_products cannot be null');
+        }
+        $this->container['all_products'] = $all_products;
+
+        return $this;
+    }
+
+    /**
+     * Gets level
+     *
+     * @return object[]|null
+     */
+    public function getLevel()
+    {
+        return $this->container['level'];
+    }
+
+    /**
+     * Sets level
+     *
+     * @param object[]|null $level Процент скидки при определенной сумме продаж
+     *
+     * @return self
+     */
+    public function setLevel($level)
+    {
+        if (is_null($level)) {
+            throw new \InvalidArgumentException('non-nullable level cannot be null');
+        }
+        $this->container['level'] = $level;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id ID дополнительного поля
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return \OpenAPI\Client\Model\Meta|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \OpenAPI\Client\Model\Meta|null $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        }
+        $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id ID учетной записи
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Наименование товара
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling AccumulationDiscount., must be smaller than or equal to 255.');
+        }
+
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets active
+     *
+     * @return bool|null
+     */
+    public function getActive()
+    {
+        return $this->container['active'];
+    }
+
+    /**
+     * Sets active
+     *
+     * @param bool|null $active Включена ли скидка
+     *
+     * @return self
+     */
+    public function setActive($active)
+    {
+        if (is_null($active)) {
+            throw new \InvalidArgumentException('non-nullable active cannot be null');
+        }
+        $this->container['active'] = $active;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_agents
+     *
+     * @return bool|null
+     */
+    public function getAllAgents()
+    {
+        return $this->container['all_agents'];
+    }
+
+    /**
+     * Sets all_agents
+     *
+     * @param bool|null $all_agents Для всех ли агентов скидка
+     *
+     * @return self
+     */
+    public function setAllAgents($all_agents)
+    {
+        if (is_null($all_agents)) {
+            throw new \InvalidArgumentException('non-nullable all_agents cannot be null');
+        }
+        $this->container['all_agents'] = $all_agents;
+
+        return $this;
+    }
+
+    /**
+     * Gets agent_tags
+     *
+     * @return string[]|null
+     */
+    public function getAgentTags()
+    {
+        return $this->container['agent_tags'];
+    }
+
+    /**
+     * Sets agent_tags
+     *
+     * @param string[]|null $agent_tags Тэги агентов
+     *
+     * @return self
+     */
+    public function setAgentTags($agent_tags)
+    {
+        if (is_null($agent_tags)) {
+            throw new \InvalidArgumentException('non-nullable agent_tags cannot be null');
+        }
+        $this->container['agent_tags'] = $agent_tags;
 
         return $this;
     }

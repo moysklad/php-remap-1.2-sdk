@@ -27,6 +27,8 @@
  */
 
 namespace OpenAPI\Client\Model;
+
+use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
@@ -38,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AttributeCustomEntity extends AttributeAbstract
+class AttributeCustomEntity implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -56,7 +58,10 @@ class AttributeCustomEntity extends AttributeAbstract
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'value' => 'object'
+        'value' => 'object',
+        'id' => 'string',
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'name' => 'string'
     ];
 
     /**
@@ -68,7 +73,10 @@ class AttributeCustomEntity extends AttributeAbstract
       */
     protected static $openAPIFormats = [
         'type' => null,
-        'value' => null
+        'value' => null,
+        'id' => 'uuid',
+        'meta' => null,
+        'name' => null
     ];
 
     /**
@@ -78,7 +86,10 @@ class AttributeCustomEntity extends AttributeAbstract
       */
     protected static array $openAPINullables = [
         'type' => false,
-        'value' => false
+        'value' => false,
+        'id' => false,
+        'meta' => false,
+        'name' => false
     ];
 
     /**
@@ -95,7 +106,7 @@ class AttributeCustomEntity extends AttributeAbstract
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes + parent::openAPITypes();
+        return self::$openAPITypes;
     }
 
     /**
@@ -105,7 +116,7 @@ class AttributeCustomEntity extends AttributeAbstract
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats + parent::openAPIFormats();
+        return self::$openAPIFormats;
     }
 
     /**
@@ -115,7 +126,7 @@ class AttributeCustomEntity extends AttributeAbstract
      */
     protected static function openAPINullables(): array
     {
-        return self::$openAPINullables + parent::openAPINullables();
+        return self::$openAPINullables;
     }
 
     /**
@@ -168,7 +179,10 @@ class AttributeCustomEntity extends AttributeAbstract
      */
     protected static $attributeMap = [
         'type' => 'type',
-        'value' => 'value'
+        'value' => 'value',
+        'id' => 'id',
+        'meta' => 'meta',
+        'name' => 'name'
     ];
 
     /**
@@ -178,7 +192,10 @@ class AttributeCustomEntity extends AttributeAbstract
      */
     protected static $setters = [
         'type' => 'setType',
-        'value' => 'setValue'
+        'value' => 'setValue',
+        'id' => 'setId',
+        'meta' => 'setMeta',
+        'name' => 'setName'
     ];
 
     /**
@@ -188,7 +205,10 @@ class AttributeCustomEntity extends AttributeAbstract
      */
     protected static $getters = [
         'type' => 'getType',
-        'value' => 'getValue'
+        'value' => 'getValue',
+        'id' => 'getId',
+        'meta' => 'getMeta',
+        'name' => 'getName'
     ];
 
     /**
@@ -199,7 +219,7 @@ class AttributeCustomEntity extends AttributeAbstract
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -209,7 +229,7 @@ class AttributeCustomEntity extends AttributeAbstract
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -219,7 +239,7 @@ class AttributeCustomEntity extends AttributeAbstract
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -246,6 +266,12 @@ class AttributeCustomEntity extends AttributeAbstract
         ];
     }
 
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -255,10 +281,11 @@ class AttributeCustomEntity extends AttributeAbstract
      */
     public function __construct(?array $data = null)
     {
-        parent::__construct($data);
-
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -286,7 +313,7 @@ class AttributeCustomEntity extends AttributeAbstract
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
@@ -372,6 +399,87 @@ class AttributeCustomEntity extends AttributeAbstract
             throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
         $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id ID дополнительного поля
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return \OpenAPI\Client\Model\Meta|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \OpenAPI\Client\Model\Meta|null $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        }
+        $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Наименование дополнительного поля
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }

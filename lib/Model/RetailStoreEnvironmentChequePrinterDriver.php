@@ -1,6 +1,6 @@
 <?php
 /**
- * MinimumStockWarehouseVaried
+ * RetailStoreEnvironmentChequePrinterDriver
  *
  * PHP version 8.1
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * MinimumStockWarehouseVaried Class Doc Comment
+ * RetailStoreEnvironmentChequePrinterDriver Class Doc Comment
  *
  * @category Class
+ * @description Информация о драйвере
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailStoreEnvironmentChequePrinterDriver implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MinimumStockWarehouseVaried';
+    protected static $openAPIModelName = 'RetailStore_environment_chequePrinter_driver';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +58,8 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'store_balances' => '\OpenAPI\Client\Model\StoreBalanceList'
+        'name' => 'string',
+        'version' => 'string'
     ];
 
     /**
@@ -69,8 +70,8 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'store_balances' => null
+        'name' => null,
+        'version' => null
     ];
 
     /**
@@ -79,8 +80,8 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-        'store_balances' => false
+        'name' => false,
+        'version' => false
     ];
 
     /**
@@ -169,8 +170,8 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'store_balances' => 'storeBalances'
+        'name' => 'name',
+        'version' => 'version'
     ];
 
     /**
@@ -179,8 +180,8 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'store_balances' => 'setStoreBalances'
+        'name' => 'setName',
+        'version' => 'setVersion'
     ];
 
     /**
@@ -189,8 +190,8 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'store_balances' => 'getStoreBalances'
+        'name' => 'getName',
+        'version' => 'getVersion'
     ];
 
     /**
@@ -234,19 +235,6 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
-    public const TYPE_WAREHOUSE_VARIED = 'WAREHOUSE_VARIED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_WAREHOUSE_VARIED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -263,8 +251,8 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], 'WAREHOUSE_VARIED');
-        $this->setIfExists('store_balances', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('version', $data ?? [], null);
     }
 
     /**
@@ -294,16 +282,12 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+
+        if (!is_null($this->container['version']) && (mb_strlen($this->container['version']) > 255)) {
+            $invalidProperties[] = "invalid value for 'version', the character length must be smaller than or equal to 255.";
         }
 
         return $invalidProperties;
@@ -322,65 +306,63 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets type
+     * Gets name
      *
-     * @return string
+     * @return string|null
      */
-    public function getType()
+    public function getName()
     {
-        return $this->container['type'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets type
+     * Sets name
      *
-     * @param string $type type
+     * @param string|null $name Наименование драйвера
      *
      * @return self
      */
-    public function setType($type)
+    public function setName($name)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling RetailStoreEnvironmentChequePrinterDriver., must be smaller than or equal to 255.');
         }
-        $this->container['type'] = $type;
+
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets store_balances
+     * Gets version
      *
-     * @return \OpenAPI\Client\Model\StoreBalanceList|null
+     * @return string|null
      */
-    public function getStoreBalances()
+    public function getVersion()
     {
-        return $this->container['store_balances'];
+        return $this->container['version'];
     }
 
     /**
-     * Sets store_balances
+     * Sets version
      *
-     * @param \OpenAPI\Client\Model\StoreBalanceList|null $store_balances Неснижаемые остатки по складам
+     * @param string|null $version Версия драйвера
      *
      * @return self
      */
-    public function setStoreBalances($store_balances)
+    public function setVersion($version)
     {
-        if (is_null($store_balances)) {
-            throw new \InvalidArgumentException('non-nullable store_balances cannot be null');
+        if (is_null($version)) {
+            throw new \InvalidArgumentException('non-nullable version cannot be null');
         }
-        $this->container['store_balances'] = $store_balances;
+        if ((mb_strlen($version) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $version when calling RetailStoreEnvironmentChequePrinterDriver., must be smaller than or equal to 255.');
+        }
+
+        $this->container['version'] = $version;
 
         return $this;
     }

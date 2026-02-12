@@ -1,6 +1,6 @@
 <?php
 /**
- * Sync
+ * CreatePriceTypesBatch200ResponseInner
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Sync Class Doc Comment
+ * CreatePriceTypesBatch200ResponseInner Class Doc Comment
  *
  * @category Class
- * @description Состояние синхронизации
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Sync implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreatePriceTypesBatch200ResponseInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class Sync implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Sync';
+    protected static $openAPIModelName = 'createPriceTypesBatch_200_response_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +57,11 @@ class Sync implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'message' => 'string',
-        'last_attemp_moment' => '\DateTime'
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'id' => 'string',
+        'name' => 'string',
+        'external_code' => 'string',
+        'errors' => '\OpenAPI\Client\Model\ErrorErrorsInner[]'
     ];
 
     /**
@@ -70,8 +72,11 @@ class Sync implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'message' => null,
-        'last_attemp_moment' => 'date-time'
+        'meta' => null,
+        'id' => 'uuid',
+        'name' => null,
+        'external_code' => null,
+        'errors' => null
     ];
 
     /**
@@ -80,8 +85,11 @@ class Sync implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'message' => false,
-        'last_attemp_moment' => false
+        'meta' => false,
+        'id' => false,
+        'name' => false,
+        'external_code' => false,
+        'errors' => false
     ];
 
     /**
@@ -170,8 +178,11 @@ class Sync implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message',
-        'last_attemp_moment' => 'lastAttempMoment'
+        'meta' => 'meta',
+        'id' => 'id',
+        'name' => 'name',
+        'external_code' => 'externalCode',
+        'errors' => 'errors'
     ];
 
     /**
@@ -180,8 +191,11 @@ class Sync implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage',
-        'last_attemp_moment' => 'setLastAttempMoment'
+        'meta' => 'setMeta',
+        'id' => 'setId',
+        'name' => 'setName',
+        'external_code' => 'setExternalCode',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -190,8 +204,11 @@ class Sync implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage',
-        'last_attemp_moment' => 'getLastAttempMoment'
+        'meta' => 'getMeta',
+        'id' => 'getId',
+        'name' => 'getName',
+        'external_code' => 'getExternalCode',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -251,8 +268,11 @@ class Sync implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('last_attemp_moment', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('external_code', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -282,10 +302,17 @@ class Sync implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['message']) && (mb_strlen($this->container['message']) > 255)) {
-            $invalidProperties[] = "invalid value for 'message', the character length must be smaller than or equal to 255.";
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
         }
 
+        if (!is_null($this->container['external_code']) && (mb_strlen($this->container['external_code']) > 255)) {
+            $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
+        }
+
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -302,59 +329,144 @@ class Sync implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets message
+     * Gets meta
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\Meta|null
      */
-    public function getMessage()
+    public function getMeta()
     {
-        return $this->container['message'];
+        return $this->container['meta'];
     }
 
     /**
-     * Sets message
+     * Sets meta
      *
-     * @param string|null $message Сообщение
+     * @param \OpenAPI\Client\Model\Meta|null $meta meta
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setMeta($meta)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
         }
-        if ((mb_strlen($message) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $message when calling Sync., must be smaller than or equal to 255.');
-        }
-
-        $this->container['message'] = $message;
+        $this->container['meta'] = $meta;
 
         return $this;
     }
 
     /**
-     * Gets last_attemp_moment
+     * Gets id
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getLastAttempMoment()
+    public function getId()
     {
-        return $this->container['last_attemp_moment'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets last_attemp_moment
+     * Sets id
      *
-     * @param \DateTime|null $last_attemp_moment Момент последней попытки
+     * @param string|null $id ID типа цены
      *
      * @return self
      */
-    public function setLastAttempMoment($last_attemp_moment)
+    public function setId($id)
     {
-        if (is_null($last_attemp_moment)) {
-            throw new \InvalidArgumentException('non-nullable last_attemp_moment cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['last_attemp_moment'] = $last_attemp_moment;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Наименование типа цены
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling CreatePriceTypesBatch200ResponseInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_code
+     *
+     * @return string|null
+     */
+    public function getExternalCode()
+    {
+        return $this->container['external_code'];
+    }
+
+    /**
+     * Sets external_code
+     *
+     * @param string|null $external_code Внешний код типа цены
+     *
+     * @return self
+     */
+    public function setExternalCode($external_code)
+    {
+        if (is_null($external_code)) {
+            throw new \InvalidArgumentException('non-nullable external_code cannot be null');
+        }
+        if ((mb_strlen($external_code) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $external_code when calling CreatePriceTypesBatch200ResponseInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['external_code'] = $external_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \OpenAPI\Client\Model\ErrorErrorsInner[]
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \OpenAPI\Client\Model\ErrorErrorsInner[] $errors errors
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        }
+        $this->container['errors'] = $errors;
 
         return $this;
     }

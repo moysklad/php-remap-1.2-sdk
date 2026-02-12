@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentTerminal
+ * RetailStoreEnvironment
  *
  * PHP version 8.1
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * PaymentTerminal Class Doc Comment
+ * RetailStoreEnvironment Class Doc Comment
  *
  * @category Class
- * @description Информация о платежном терминале
+ * @description Информация о среде (оборудование, ПО и т.д.)
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PaymentTerminal implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailStoreEnvironment implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PaymentTerminal implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PaymentTerminal';
+    protected static $openAPIModelName = 'RetailStore_environment';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,11 @@ class PaymentTerminal implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'acquiring_type' => 'string'
+        'device' => 'string',
+        'os' => 'string',
+        'software' => '\OpenAPI\Client\Model\RetailStoreEnvironmentSoftware',
+        'cheque_printer' => '\OpenAPI\Client\Model\RetailStoreEnvironmentChequePrinter',
+        'payment_terminal' => 'string'
     ];
 
     /**
@@ -69,7 +73,11 @@ class PaymentTerminal implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'acquiring_type' => null
+        'device' => null,
+        'os' => null,
+        'software' => null,
+        'cheque_printer' => null,
+        'payment_terminal' => null
     ];
 
     /**
@@ -78,7 +86,11 @@ class PaymentTerminal implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'acquiring_type' => false
+        'device' => false,
+        'os' => false,
+        'software' => false,
+        'cheque_printer' => false,
+        'payment_terminal' => false
     ];
 
     /**
@@ -167,7 +179,11 @@ class PaymentTerminal implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'acquiring_type' => 'acquiringType'
+        'device' => 'device',
+        'os' => 'os',
+        'software' => 'software',
+        'cheque_printer' => 'chequePrinter',
+        'payment_terminal' => 'paymentTerminal'
     ];
 
     /**
@@ -176,7 +192,11 @@ class PaymentTerminal implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'acquiring_type' => 'setAcquiringType'
+        'device' => 'setDevice',
+        'os' => 'setOs',
+        'software' => 'setSoftware',
+        'cheque_printer' => 'setChequePrinter',
+        'payment_terminal' => 'setPaymentTerminal'
     ];
 
     /**
@@ -185,7 +205,11 @@ class PaymentTerminal implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'acquiring_type' => 'getAcquiringType'
+        'device' => 'getDevice',
+        'os' => 'getOs',
+        'software' => 'getSoftware',
+        'cheque_printer' => 'getChequePrinter',
+        'payment_terminal' => 'getPaymentTerminal'
     ];
 
     /**
@@ -245,7 +269,11 @@ class PaymentTerminal implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('acquiring_type', $data ?? [], null);
+        $this->setIfExists('device', $data ?? [], null);
+        $this->setIfExists('os', $data ?? [], null);
+        $this->setIfExists('software', $data ?? [], null);
+        $this->setIfExists('cheque_printer', $data ?? [], null);
+        $this->setIfExists('payment_terminal', $data ?? [], null);
     }
 
     /**
@@ -275,8 +303,16 @@ class PaymentTerminal implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['acquiring_type']) && (mb_strlen($this->container['acquiring_type']) > 255)) {
-            $invalidProperties[] = "invalid value for 'acquiring_type', the character length must be smaller than or equal to 255.";
+        if (!is_null($this->container['device']) && (mb_strlen($this->container['device']) > 255)) {
+            $invalidProperties[] = "invalid value for 'device', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['os']) && (mb_strlen($this->container['os']) > 255)) {
+            $invalidProperties[] = "invalid value for 'os', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['payment_terminal']) && (mb_strlen($this->container['payment_terminal']) > 255)) {
+            $invalidProperties[] = "invalid value for 'payment_terminal', the character length must be smaller than or equal to 255.";
         }
 
         return $invalidProperties;
@@ -295,32 +331,148 @@ class PaymentTerminal implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets acquiring_type
+     * Gets device
      *
      * @return string|null
      */
-    public function getAcquiringType()
+    public function getDevice()
     {
-        return $this->container['acquiring_type'];
+        return $this->container['device'];
     }
 
     /**
-     * Sets acquiring_type
+     * Sets device
      *
-     * @param string|null $acquiring_type Тип эквайринга
+     * @param string|null $device Устройство
      *
      * @return self
      */
-    public function setAcquiringType($acquiring_type)
+    public function setDevice($device)
     {
-        if (is_null($acquiring_type)) {
-            throw new \InvalidArgumentException('non-nullable acquiring_type cannot be null');
+        if (is_null($device)) {
+            throw new \InvalidArgumentException('non-nullable device cannot be null');
         }
-        if ((mb_strlen($acquiring_type) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $acquiring_type when calling PaymentTerminal., must be smaller than or equal to 255.');
+        if ((mb_strlen($device) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $device when calling RetailStoreEnvironment., must be smaller than or equal to 255.');
         }
 
-        $this->container['acquiring_type'] = $acquiring_type;
+        $this->container['device'] = $device;
+
+        return $this;
+    }
+
+    /**
+     * Gets os
+     *
+     * @return string|null
+     */
+    public function getOs()
+    {
+        return $this->container['os'];
+    }
+
+    /**
+     * Sets os
+     *
+     * @param string|null $os Операционная система
+     *
+     * @return self
+     */
+    public function setOs($os)
+    {
+        if (is_null($os)) {
+            throw new \InvalidArgumentException('non-nullable os cannot be null');
+        }
+        if ((mb_strlen($os) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $os when calling RetailStoreEnvironment., must be smaller than or equal to 255.');
+        }
+
+        $this->container['os'] = $os;
+
+        return $this;
+    }
+
+    /**
+     * Gets software
+     *
+     * @return \OpenAPI\Client\Model\RetailStoreEnvironmentSoftware|null
+     */
+    public function getSoftware()
+    {
+        return $this->container['software'];
+    }
+
+    /**
+     * Sets software
+     *
+     * @param \OpenAPI\Client\Model\RetailStoreEnvironmentSoftware|null $software software
+     *
+     * @return self
+     */
+    public function setSoftware($software)
+    {
+        if (is_null($software)) {
+            throw new \InvalidArgumentException('non-nullable software cannot be null');
+        }
+        $this->container['software'] = $software;
+
+        return $this;
+    }
+
+    /**
+     * Gets cheque_printer
+     *
+     * @return \OpenAPI\Client\Model\RetailStoreEnvironmentChequePrinter|null
+     */
+    public function getChequePrinter()
+    {
+        return $this->container['cheque_printer'];
+    }
+
+    /**
+     * Sets cheque_printer
+     *
+     * @param \OpenAPI\Client\Model\RetailStoreEnvironmentChequePrinter|null $cheque_printer cheque_printer
+     *
+     * @return self
+     */
+    public function setChequePrinter($cheque_printer)
+    {
+        if (is_null($cheque_printer)) {
+            throw new \InvalidArgumentException('non-nullable cheque_printer cannot be null');
+        }
+        $this->container['cheque_printer'] = $cheque_printer;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_terminal
+     *
+     * @return string|null
+     */
+    public function getPaymentTerminal()
+    {
+        return $this->container['payment_terminal'];
+    }
+
+    /**
+     * Sets payment_terminal
+     *
+     * @param string|null $payment_terminal Терминал оплаты
+     *
+     * @return self
+     */
+    public function setPaymentTerminal($payment_terminal)
+    {
+        if (is_null($payment_terminal)) {
+            throw new \InvalidArgumentException('non-nullable payment_terminal cannot be null');
+        }
+        if ((mb_strlen($payment_terminal) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $payment_terminal when calling RetailStoreEnvironment., must be smaller than or equal to 255.');
+        }
+
+        $this->container['payment_terminal'] = $payment_terminal;
 
         return $this;
     }

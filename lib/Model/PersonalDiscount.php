@@ -1,6 +1,6 @@
 <?php
 /**
- * ChequePrinter
+ * PersonalDiscount
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ChequePrinter Class Doc Comment
+ * PersonalDiscount Class Doc Comment
  *
  * @category Class
- * @description Информация о чековом принтере
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
+class PersonalDiscount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class ChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ChequePrinter';
+    protected static $openAPIModelName = 'PersonalDiscount';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +57,16 @@ class ChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'driver' => '\OpenAPI\Client\Model\Driver',
-        'firmware_version' => 'string',
-        'fiscal_data_version' => 'string',
-        'fiscal_memory' => '\OpenAPI\Client\Model\FiscalMemory',
+        'assortment' => '\OpenAPI\Client\Model\Product[]',
+        'product_folders' => '\OpenAPI\Client\Model\ProductFolder[]',
+        'all_products' => 'bool',
+        'id' => 'string',
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'account_id' => 'string',
         'name' => 'string',
-        'serial' => 'string',
-        'vendor' => 'string'
+        'active' => 'bool',
+        'all_agents' => 'bool',
+        'agent_tags' => 'string[]'
     ];
 
     /**
@@ -75,13 +77,16 @@ class ChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'driver' => null,
-        'firmware_version' => null,
-        'fiscal_data_version' => null,
-        'fiscal_memory' => null,
+        'assortment' => null,
+        'product_folders' => null,
+        'all_products' => null,
+        'id' => 'uuid',
+        'meta' => null,
+        'account_id' => 'uuid',
         'name' => null,
-        'serial' => null,
-        'vendor' => null
+        'active' => null,
+        'all_agents' => null,
+        'agent_tags' => null
     ];
 
     /**
@@ -90,13 +95,16 @@ class ChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'driver' => false,
-        'firmware_version' => false,
-        'fiscal_data_version' => false,
-        'fiscal_memory' => false,
+        'assortment' => false,
+        'product_folders' => false,
+        'all_products' => false,
+        'id' => false,
+        'meta' => false,
+        'account_id' => false,
         'name' => false,
-        'serial' => false,
-        'vendor' => false
+        'active' => false,
+        'all_agents' => false,
+        'agent_tags' => false
     ];
 
     /**
@@ -185,13 +193,16 @@ class ChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'driver' => 'driver',
-        'firmware_version' => 'firmwareVersion',
-        'fiscal_data_version' => 'fiscalDataVersion',
-        'fiscal_memory' => 'fiscalMemory',
+        'assortment' => 'assortment',
+        'product_folders' => 'productFolders',
+        'all_products' => 'allProducts',
+        'id' => 'id',
+        'meta' => 'meta',
+        'account_id' => 'accountId',
         'name' => 'name',
-        'serial' => 'serial',
-        'vendor' => 'vendor'
+        'active' => 'active',
+        'all_agents' => 'allAgents',
+        'agent_tags' => 'agentTags'
     ];
 
     /**
@@ -200,13 +211,16 @@ class ChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'driver' => 'setDriver',
-        'firmware_version' => 'setFirmwareVersion',
-        'fiscal_data_version' => 'setFiscalDataVersion',
-        'fiscal_memory' => 'setFiscalMemory',
+        'assortment' => 'setAssortment',
+        'product_folders' => 'setProductFolders',
+        'all_products' => 'setAllProducts',
+        'id' => 'setId',
+        'meta' => 'setMeta',
+        'account_id' => 'setAccountId',
         'name' => 'setName',
-        'serial' => 'setSerial',
-        'vendor' => 'setVendor'
+        'active' => 'setActive',
+        'all_agents' => 'setAllAgents',
+        'agent_tags' => 'setAgentTags'
     ];
 
     /**
@@ -215,13 +229,16 @@ class ChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'driver' => 'getDriver',
-        'firmware_version' => 'getFirmwareVersion',
-        'fiscal_data_version' => 'getFiscalDataVersion',
-        'fiscal_memory' => 'getFiscalMemory',
+        'assortment' => 'getAssortment',
+        'product_folders' => 'getProductFolders',
+        'all_products' => 'getAllProducts',
+        'id' => 'getId',
+        'meta' => 'getMeta',
+        'account_id' => 'getAccountId',
         'name' => 'getName',
-        'serial' => 'getSerial',
-        'vendor' => 'getVendor'
+        'active' => 'getActive',
+        'all_agents' => 'getAllAgents',
+        'agent_tags' => 'getAgentTags'
     ];
 
     /**
@@ -281,13 +298,16 @@ class ChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('driver', $data ?? [], null);
-        $this->setIfExists('firmware_version', $data ?? [], null);
-        $this->setIfExists('fiscal_data_version', $data ?? [], null);
-        $this->setIfExists('fiscal_memory', $data ?? [], null);
+        $this->setIfExists('assortment', $data ?? [], null);
+        $this->setIfExists('product_folders', $data ?? [], null);
+        $this->setIfExists('all_products', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('serial', $data ?? [], null);
-        $this->setIfExists('vendor', $data ?? [], null);
+        $this->setIfExists('active', $data ?? [], null);
+        $this->setIfExists('all_agents', $data ?? [], null);
+        $this->setIfExists('agent_tags', $data ?? [], null);
     }
 
     /**
@@ -317,24 +337,8 @@ class ChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['firmware_version']) && (mb_strlen($this->container['firmware_version']) > 255)) {
-            $invalidProperties[] = "invalid value for 'firmware_version', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['fiscal_data_version']) && (mb_strlen($this->container['fiscal_data_version']) > 255)) {
-            $invalidProperties[] = "invalid value for 'fiscal_data_version', the character length must be smaller than or equal to 255.";
-        }
-
         if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['serial']) && (mb_strlen($this->container['serial']) > 255)) {
-            $invalidProperties[] = "invalid value for 'serial', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['vendor']) && (mb_strlen($this->container['vendor']) > 255)) {
-            $invalidProperties[] = "invalid value for 'vendor', the character length must be smaller than or equal to 255.";
         }
 
         return $invalidProperties;
@@ -353,117 +357,163 @@ class ChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets driver
+     * Gets assortment
      *
-     * @return \OpenAPI\Client\Model\Driver|null
+     * @return \OpenAPI\Client\Model\Product[]|null
      */
-    public function getDriver()
+    public function getAssortment()
     {
-        return $this->container['driver'];
+        return $this->container['assortment'];
     }
 
     /**
-     * Sets driver
+     * Sets assortment
      *
-     * @param \OpenAPI\Client\Model\Driver|null $driver driver
+     * @param \OpenAPI\Client\Model\Product[]|null $assortment Товары со скидкой
      *
      * @return self
      */
-    public function setDriver($driver)
+    public function setAssortment($assortment)
     {
-        if (is_null($driver)) {
-            throw new \InvalidArgumentException('non-nullable driver cannot be null');
+        if (is_null($assortment)) {
+            throw new \InvalidArgumentException('non-nullable assortment cannot be null');
         }
-        $this->container['driver'] = $driver;
+        $this->container['assortment'] = $assortment;
 
         return $this;
     }
 
     /**
-     * Gets firmware_version
+     * Gets product_folders
+     *
+     * @return \OpenAPI\Client\Model\ProductFolder[]|null
+     */
+    public function getProductFolders()
+    {
+        return $this->container['product_folders'];
+    }
+
+    /**
+     * Sets product_folders
+     *
+     * @param \OpenAPI\Client\Model\ProductFolder[]|null $product_folders Группы товаров со скидкой
+     *
+     * @return self
+     */
+    public function setProductFolders($product_folders)
+    {
+        if (is_null($product_folders)) {
+            throw new \InvalidArgumentException('non-nullable product_folders cannot be null');
+        }
+        $this->container['product_folders'] = $product_folders;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_products
+     *
+     * @return bool|null
+     */
+    public function getAllProducts()
+    {
+        return $this->container['all_products'];
+    }
+
+    /**
+     * Sets all_products
+     *
+     * @param bool|null $all_products Для всех ли товаров скидка
+     *
+     * @return self
+     */
+    public function setAllProducts($all_products)
+    {
+        if (is_null($all_products)) {
+            throw new \InvalidArgumentException('non-nullable all_products cannot be null');
+        }
+        $this->container['all_products'] = $all_products;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
      *
      * @return string|null
      */
-    public function getFirmwareVersion()
+    public function getId()
     {
-        return $this->container['firmware_version'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets firmware_version
+     * Sets id
      *
-     * @param string|null $firmware_version Версия прошивки
+     * @param string|null $id ID дополнительного поля
      *
      * @return self
      */
-    public function setFirmwareVersion($firmware_version)
+    public function setId($id)
     {
-        if (is_null($firmware_version)) {
-            throw new \InvalidArgumentException('non-nullable firmware_version cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        if ((mb_strlen($firmware_version) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $firmware_version when calling ChequePrinter., must be smaller than or equal to 255.');
-        }
-
-        $this->container['firmware_version'] = $firmware_version;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets fiscal_data_version
+     * Gets meta
+     *
+     * @return \OpenAPI\Client\Model\Meta|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \OpenAPI\Client\Model\Meta|null $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        }
+        $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
      *
      * @return string|null
      */
-    public function getFiscalDataVersion()
+    public function getAccountId()
     {
-        return $this->container['fiscal_data_version'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets fiscal_data_version
+     * Sets account_id
      *
-     * @param string|null $fiscal_data_version Версия фискальных данных
+     * @param string|null $account_id ID учетной записи
      *
      * @return self
      */
-    public function setFiscalDataVersion($fiscal_data_version)
+    public function setAccountId($account_id)
     {
-        if (is_null($fiscal_data_version)) {
-            throw new \InvalidArgumentException('non-nullable fiscal_data_version cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        if ((mb_strlen($fiscal_data_version) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $fiscal_data_version when calling ChequePrinter., must be smaller than or equal to 255.');
-        }
-
-        $this->container['fiscal_data_version'] = $fiscal_data_version;
-
-        return $this;
-    }
-
-    /**
-     * Gets fiscal_memory
-     *
-     * @return \OpenAPI\Client\Model\FiscalMemory|null
-     */
-    public function getFiscalMemory()
-    {
-        return $this->container['fiscal_memory'];
-    }
-
-    /**
-     * Sets fiscal_memory
-     *
-     * @param \OpenAPI\Client\Model\FiscalMemory|null $fiscal_memory fiscal_memory
-     *
-     * @return self
-     */
-    public function setFiscalMemory($fiscal_memory)
-    {
-        if (is_null($fiscal_memory)) {
-            throw new \InvalidArgumentException('non-nullable fiscal_memory cannot be null');
-        }
-        $this->container['fiscal_memory'] = $fiscal_memory;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
@@ -481,7 +531,7 @@ class ChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name Наименование чекового принтера
+     * @param string|null $name Наименование товара
      *
      * @return self
      */
@@ -491,7 +541,7 @@ class ChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ChequePrinter., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling PersonalDiscount., must be smaller than or equal to 255.');
         }
 
         $this->container['name'] = $name;
@@ -500,63 +550,82 @@ class ChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets serial
+     * Gets active
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getSerial()
+    public function getActive()
     {
-        return $this->container['serial'];
+        return $this->container['active'];
     }
 
     /**
-     * Sets serial
+     * Sets active
      *
-     * @param string|null $serial Серийный номер чекового принтера
+     * @param bool|null $active Включена ли скидка
      *
      * @return self
      */
-    public function setSerial($serial)
+    public function setActive($active)
     {
-        if (is_null($serial)) {
-            throw new \InvalidArgumentException('non-nullable serial cannot be null');
+        if (is_null($active)) {
+            throw new \InvalidArgumentException('non-nullable active cannot be null');
         }
-        if ((mb_strlen($serial) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $serial when calling ChequePrinter., must be smaller than or equal to 255.');
-        }
-
-        $this->container['serial'] = $serial;
+        $this->container['active'] = $active;
 
         return $this;
     }
 
     /**
-     * Gets vendor
+     * Gets all_agents
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getVendor()
+    public function getAllAgents()
     {
-        return $this->container['vendor'];
+        return $this->container['all_agents'];
     }
 
     /**
-     * Sets vendor
+     * Sets all_agents
      *
-     * @param string|null $vendor Производитель чекового принтера
+     * @param bool|null $all_agents Для всех ли агентов скидка
      *
      * @return self
      */
-    public function setVendor($vendor)
+    public function setAllAgents($all_agents)
     {
-        if (is_null($vendor)) {
-            throw new \InvalidArgumentException('non-nullable vendor cannot be null');
+        if (is_null($all_agents)) {
+            throw new \InvalidArgumentException('non-nullable all_agents cannot be null');
         }
-        if ((mb_strlen($vendor) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $vendor when calling ChequePrinter., must be smaller than or equal to 255.');
-        }
+        $this->container['all_agents'] = $all_agents;
 
-        $this->container['vendor'] = $vendor;
+        return $this;
+    }
+
+    /**
+     * Gets agent_tags
+     *
+     * @return string[]|null
+     */
+    public function getAgentTags()
+    {
+        return $this->container['agent_tags'];
+    }
+
+    /**
+     * Sets agent_tags
+     *
+     * @param string[]|null $agent_tags Тэги агентов
+     *
+     * @return self
+     */
+    public function setAgentTags($agent_tags)
+    {
+        if (is_null($agent_tags)) {
+            throw new \InvalidArgumentException('non-nullable agent_tags cannot be null');
+        }
+        $this->container['agent_tags'] = $agent_tags;
 
         return $this;
     }

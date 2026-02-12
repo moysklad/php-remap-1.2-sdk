@@ -1,6 +1,6 @@
 <?php
 /**
- * Driver
+ * ErrorOrArray
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Driver Class Doc Comment
+ * ErrorOrArray Class Doc Comment
  *
  * @category Class
- * @description Информация о драйвере
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Driver implements ModelInterface, ArrayAccess, \JsonSerializable
+class ErrorOrArray implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class Driver implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Driver';
+    protected static $openAPIModelName = 'errorOrArray';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +57,7 @@ class Driver implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'version' => 'string'
+        'errors' => '\OpenAPI\Client\Model\ErrorErrorsInner[]'
     ];
 
     /**
@@ -70,8 +68,7 @@ class Driver implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'version' => null
+        'errors' => null
     ];
 
     /**
@@ -80,8 +77,7 @@ class Driver implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'version' => false
+        'errors' => false
     ];
 
     /**
@@ -170,8 +166,7 @@ class Driver implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'version' => 'version'
+        'errors' => 'errors'
     ];
 
     /**
@@ -180,8 +175,7 @@ class Driver implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'version' => 'setVersion'
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -190,8 +184,7 @@ class Driver implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'version' => 'getVersion'
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -251,8 +244,7 @@ class Driver implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('version', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -282,14 +274,9 @@ class Driver implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
         }
-
-        if (!is_null($this->container['version']) && (mb_strlen($this->container['version']) > 255)) {
-            $invalidProperties[] = "invalid value for 'version', the character length must be smaller than or equal to 255.";
-        }
-
         return $invalidProperties;
     }
 
@@ -306,63 +293,28 @@ class Driver implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets errors
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\ErrorErrorsInner[]
      */
-    public function getName()
+    public function getErrors()
     {
-        return $this->container['name'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets name
+     * Sets errors
      *
-     * @param string|null $name Наименование драйвера
+     * @param \OpenAPI\Client\Model\ErrorErrorsInner[] $errors errors
      *
      * @return self
      */
-    public function setName($name)
+    public function setErrors($errors)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
         }
-        if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Driver., must be smaller than or equal to 255.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets version
-     *
-     * @return string|null
-     */
-    public function getVersion()
-    {
-        return $this->container['version'];
-    }
-
-    /**
-     * Sets version
-     *
-     * @param string|null $version Версия драйвера
-     *
-     * @return self
-     */
-    public function setVersion($version)
-    {
-        if (is_null($version)) {
-            throw new \InvalidArgumentException('non-nullable version cannot be null');
-        }
-        if ((mb_strlen($version) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $version when calling Driver., must be smaller than or equal to 255.');
-        }
-
-        $this->container['version'] = $version;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

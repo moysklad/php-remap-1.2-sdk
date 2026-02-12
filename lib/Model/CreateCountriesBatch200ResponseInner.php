@@ -1,6 +1,6 @@
 <?php
 /**
- * Software
+ * CreateCountriesBatch200ResponseInner
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Software Class Doc Comment
+ * CreateCountriesBatch200ResponseInner Class Doc Comment
  *
  * @category Class
- * @description Информация о ПО
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Software implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateCountriesBatch200ResponseInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class Software implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Software';
+    protected static $openAPIModelName = 'createCountriesBatch_200_response_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,18 @@ class Software implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'id' => 'string',
+        'account_id' => 'string',
         'name' => 'string',
-        'vendor' => 'string',
-        'version' => 'string'
+        'description' => 'string',
+        'code' => 'string',
+        'external_code' => 'string',
+        'updated' => '\DateTime',
+        'group' => '\OpenAPI\Client\Model\Group',
+        'owner' => '\OpenAPI\Client\Model\Employee',
+        'shared' => 'bool',
+        'errors' => '\OpenAPI\Client\Model\ErrorErrorsInner[]'
     ];
 
     /**
@@ -71,9 +79,18 @@ class Software implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'meta' => null,
+        'id' => 'uuid',
+        'account_id' => 'uuid',
         'name' => null,
-        'vendor' => null,
-        'version' => null
+        'description' => null,
+        'code' => null,
+        'external_code' => null,
+        'updated' => 'date-time',
+        'group' => null,
+        'owner' => null,
+        'shared' => null,
+        'errors' => null
     ];
 
     /**
@@ -82,9 +99,18 @@ class Software implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'meta' => false,
+        'id' => false,
+        'account_id' => false,
         'name' => false,
-        'vendor' => false,
-        'version' => false
+        'description' => false,
+        'code' => false,
+        'external_code' => false,
+        'updated' => false,
+        'group' => false,
+        'owner' => true,
+        'shared' => false,
+        'errors' => false
     ];
 
     /**
@@ -173,9 +199,18 @@ class Software implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'meta' => 'meta',
+        'id' => 'id',
+        'account_id' => 'accountId',
         'name' => 'name',
-        'vendor' => 'vendor',
-        'version' => 'version'
+        'description' => 'description',
+        'code' => 'code',
+        'external_code' => 'externalCode',
+        'updated' => 'updated',
+        'group' => 'group',
+        'owner' => 'owner',
+        'shared' => 'shared',
+        'errors' => 'errors'
     ];
 
     /**
@@ -184,9 +219,18 @@ class Software implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'meta' => 'setMeta',
+        'id' => 'setId',
+        'account_id' => 'setAccountId',
         'name' => 'setName',
-        'vendor' => 'setVendor',
-        'version' => 'setVersion'
+        'description' => 'setDescription',
+        'code' => 'setCode',
+        'external_code' => 'setExternalCode',
+        'updated' => 'setUpdated',
+        'group' => 'setGroup',
+        'owner' => 'setOwner',
+        'shared' => 'setShared',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -195,9 +239,18 @@ class Software implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'meta' => 'getMeta',
+        'id' => 'getId',
+        'account_id' => 'getAccountId',
         'name' => 'getName',
-        'vendor' => 'getVendor',
-        'version' => 'getVersion'
+        'description' => 'getDescription',
+        'code' => 'getCode',
+        'external_code' => 'getExternalCode',
+        'updated' => 'getUpdated',
+        'group' => 'getGroup',
+        'owner' => 'getOwner',
+        'shared' => 'getShared',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -257,9 +310,18 @@ class Software implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('vendor', $data ?? [], null);
-        $this->setIfExists('version', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('external_code', $data ?? [], null);
+        $this->setIfExists('updated', $data ?? [], null);
+        $this->setIfExists('group', $data ?? [], null);
+        $this->setIfExists('owner', $data ?? [], null);
+        $this->setIfExists('shared', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -289,18 +351,9 @@ class Software implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
         }
-
-        if (!is_null($this->container['vendor']) && (mb_strlen($this->container['vendor']) > 255)) {
-            $invalidProperties[] = "invalid value for 'vendor', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['version']) && (mb_strlen($this->container['version']) > 255)) {
-            $invalidProperties[] = "invalid value for 'version', the character length must be smaller than or equal to 255.";
-        }
-
         return $invalidProperties;
     }
 
@@ -317,6 +370,87 @@ class Software implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets meta
+     *
+     * @return \OpenAPI\Client\Model\Meta|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \OpenAPI\Client\Model\Meta|null $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        }
+        $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id ID страны
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id ID учетной записи
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string|null
@@ -329,7 +463,7 @@ class Software implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name Наименование ПО
+     * @param string|null $name Наименование страны
      *
      * @return self
      */
@@ -338,73 +472,230 @@ class Software implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Software., must be smaller than or equal to 255.');
-        }
-
         $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets vendor
+     * Gets description
      *
      * @return string|null
      */
-    public function getVendor()
+    public function getDescription()
     {
-        return $this->container['vendor'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets vendor
+     * Sets description
      *
-     * @param string|null $vendor Производитель ПО
+     * @param string|null $description Описание страны
      *
      * @return self
      */
-    public function setVendor($vendor)
+    public function setDescription($description)
     {
-        if (is_null($vendor)) {
-            throw new \InvalidArgumentException('non-nullable vendor cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        if ((mb_strlen($vendor) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $vendor when calling Software., must be smaller than or equal to 255.');
-        }
-
-        $this->container['vendor'] = $vendor;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets version
+     * Gets code
      *
      * @return string|null
      */
-    public function getVersion()
+    public function getCode()
     {
-        return $this->container['version'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets version
+     * Sets code
      *
-     * @param string|null $version Версия ПО
+     * @param string|null $code Код страны
      *
      * @return self
      */
-    public function setVersion($version)
+    public function setCode($code)
     {
-        if (is_null($version)) {
-            throw new \InvalidArgumentException('non-nullable version cannot be null');
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        if ((mb_strlen($version) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $version when calling Software., must be smaller than or equal to 255.');
-        }
+        $this->container['code'] = $code;
 
-        $this->container['version'] = $version;
+        return $this;
+    }
+
+    /**
+     * Gets external_code
+     *
+     * @return string|null
+     */
+    public function getExternalCode()
+    {
+        return $this->container['external_code'];
+    }
+
+    /**
+     * Sets external_code
+     *
+     * @param string|null $external_code Внешний код страны
+     *
+     * @return self
+     */
+    public function setExternalCode($external_code)
+    {
+        if (is_null($external_code)) {
+            throw new \InvalidArgumentException('non-nullable external_code cannot be null');
+        }
+        $this->container['external_code'] = $external_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdated()
+    {
+        return $this->container['updated'];
+    }
+
+    /**
+     * Sets updated
+     *
+     * @param \DateTime|null $updated Момент последнего обновления сущности
+     *
+     * @return self
+     */
+    public function setUpdated($updated)
+    {
+        if (is_null($updated)) {
+            throw new \InvalidArgumentException('non-nullable updated cannot be null');
+        }
+        $this->container['updated'] = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Gets group
+     *
+     * @return \OpenAPI\Client\Model\Group|null
+     */
+    public function getGroup()
+    {
+        return $this->container['group'];
+    }
+
+    /**
+     * Sets group
+     *
+     * @param \OpenAPI\Client\Model\Group|null $group group
+     *
+     * @return self
+     */
+    public function setGroup($group)
+    {
+        if (is_null($group)) {
+            throw new \InvalidArgumentException('non-nullable group cannot be null');
+        }
+        $this->container['group'] = $group;
+
+        return $this;
+    }
+
+    /**
+     * Gets owner
+     *
+     * @return \OpenAPI\Client\Model\Employee|null
+     */
+    public function getOwner()
+    {
+        return $this->container['owner'];
+    }
+
+    /**
+     * Sets owner
+     *
+     * @param \OpenAPI\Client\Model\Employee|null $owner Метаданные владельца (Сотрудника)
+     *
+     * @return self
+     */
+    public function setOwner($owner)
+    {
+        if (is_null($owner)) {
+            array_push($this->openAPINullablesSetToNull, 'owner');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('owner', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['owner'] = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Gets shared
+     *
+     * @return bool|null
+     */
+    public function getShared()
+    {
+        return $this->container['shared'];
+    }
+
+    /**
+     * Sets shared
+     *
+     * @param bool|null $shared Общий доступ
+     *
+     * @return self
+     */
+    public function setShared($shared)
+    {
+        if (is_null($shared)) {
+            throw new \InvalidArgumentException('non-nullable shared cannot be null');
+        }
+        $this->container['shared'] = $shared;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \OpenAPI\Client\Model\ErrorErrorsInner[]
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \OpenAPI\Client\Model\ErrorErrorsInner[] $errors errors
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        }
+        $this->container['errors'] = $errors;
 
         return $this;
     }

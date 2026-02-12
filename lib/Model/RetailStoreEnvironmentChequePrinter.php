@@ -1,6 +1,6 @@
 <?php
 /**
- * MinimumStockWarehouseVaried
+ * RetailStoreEnvironmentChequePrinter
  *
  * PHP version 8.1
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * MinimumStockWarehouseVaried Class Doc Comment
+ * RetailStoreEnvironmentChequePrinter Class Doc Comment
  *
  * @category Class
+ * @description Информация о чековом принтере
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailStoreEnvironmentChequePrinter implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MinimumStockWarehouseVaried';
+    protected static $openAPIModelName = 'RetailStore_environment_chequePrinter';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +58,13 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'store_balances' => '\OpenAPI\Client\Model\StoreBalanceList'
+        'driver' => '\OpenAPI\Client\Model\RetailStoreEnvironmentChequePrinterDriver',
+        'firmware_version' => 'string',
+        'fiscal_data_version' => 'string',
+        'fiscal_memory' => '\OpenAPI\Client\Model\RetailStoreEnvironmentChequePrinterFiscalMemory',
+        'name' => 'string',
+        'serial' => 'string',
+        'vendor' => 'string'
     ];
 
     /**
@@ -69,8 +75,13 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'store_balances' => null
+        'driver' => null,
+        'firmware_version' => null,
+        'fiscal_data_version' => null,
+        'fiscal_memory' => null,
+        'name' => null,
+        'serial' => null,
+        'vendor' => null
     ];
 
     /**
@@ -79,8 +90,13 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-        'store_balances' => false
+        'driver' => false,
+        'firmware_version' => false,
+        'fiscal_data_version' => false,
+        'fiscal_memory' => false,
+        'name' => false,
+        'serial' => false,
+        'vendor' => false
     ];
 
     /**
@@ -169,8 +185,13 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'store_balances' => 'storeBalances'
+        'driver' => 'driver',
+        'firmware_version' => 'firmwareVersion',
+        'fiscal_data_version' => 'fiscalDataVersion',
+        'fiscal_memory' => 'fiscalMemory',
+        'name' => 'name',
+        'serial' => 'serial',
+        'vendor' => 'vendor'
     ];
 
     /**
@@ -179,8 +200,13 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'store_balances' => 'setStoreBalances'
+        'driver' => 'setDriver',
+        'firmware_version' => 'setFirmwareVersion',
+        'fiscal_data_version' => 'setFiscalDataVersion',
+        'fiscal_memory' => 'setFiscalMemory',
+        'name' => 'setName',
+        'serial' => 'setSerial',
+        'vendor' => 'setVendor'
     ];
 
     /**
@@ -189,8 +215,13 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'store_balances' => 'getStoreBalances'
+        'driver' => 'getDriver',
+        'firmware_version' => 'getFirmwareVersion',
+        'fiscal_data_version' => 'getFiscalDataVersion',
+        'fiscal_memory' => 'getFiscalMemory',
+        'name' => 'getName',
+        'serial' => 'getSerial',
+        'vendor' => 'getVendor'
     ];
 
     /**
@@ -234,19 +265,6 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
-    public const TYPE_WAREHOUSE_VARIED = 'WAREHOUSE_VARIED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_WAREHOUSE_VARIED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -263,8 +281,13 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], 'WAREHOUSE_VARIED');
-        $this->setIfExists('store_balances', $data ?? [], null);
+        $this->setIfExists('driver', $data ?? [], null);
+        $this->setIfExists('firmware_version', $data ?? [], null);
+        $this->setIfExists('fiscal_data_version', $data ?? [], null);
+        $this->setIfExists('fiscal_memory', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('serial', $data ?? [], null);
+        $this->setIfExists('vendor', $data ?? [], null);
     }
 
     /**
@@ -294,16 +317,24 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if (!is_null($this->container['firmware_version']) && (mb_strlen($this->container['firmware_version']) > 255)) {
+            $invalidProperties[] = "invalid value for 'firmware_version', the character length must be smaller than or equal to 255.";
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+
+        if (!is_null($this->container['fiscal_data_version']) && (mb_strlen($this->container['fiscal_data_version']) > 255)) {
+            $invalidProperties[] = "invalid value for 'fiscal_data_version', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['serial']) && (mb_strlen($this->container['serial']) > 255)) {
+            $invalidProperties[] = "invalid value for 'serial', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['vendor']) && (mb_strlen($this->container['vendor']) > 255)) {
+            $invalidProperties[] = "invalid value for 'vendor', the character length must be smaller than or equal to 255.";
         }
 
         return $invalidProperties;
@@ -322,65 +353,210 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets type
+     * Gets driver
      *
-     * @return string
+     * @return \OpenAPI\Client\Model\RetailStoreEnvironmentChequePrinterDriver|null
      */
-    public function getType()
+    public function getDriver()
     {
-        return $this->container['type'];
+        return $this->container['driver'];
     }
 
     /**
-     * Sets type
+     * Sets driver
      *
-     * @param string $type type
+     * @param \OpenAPI\Client\Model\RetailStoreEnvironmentChequePrinterDriver|null $driver driver
      *
      * @return self
      */
-    public function setType($type)
+    public function setDriver($driver)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($driver)) {
+            throw new \InvalidArgumentException('non-nullable driver cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['driver'] = $driver;
 
         return $this;
     }
 
     /**
-     * Gets store_balances
+     * Gets firmware_version
      *
-     * @return \OpenAPI\Client\Model\StoreBalanceList|null
+     * @return string|null
      */
-    public function getStoreBalances()
+    public function getFirmwareVersion()
     {
-        return $this->container['store_balances'];
+        return $this->container['firmware_version'];
     }
 
     /**
-     * Sets store_balances
+     * Sets firmware_version
      *
-     * @param \OpenAPI\Client\Model\StoreBalanceList|null $store_balances Неснижаемые остатки по складам
+     * @param string|null $firmware_version Версия прошивки
      *
      * @return self
      */
-    public function setStoreBalances($store_balances)
+    public function setFirmwareVersion($firmware_version)
     {
-        if (is_null($store_balances)) {
-            throw new \InvalidArgumentException('non-nullable store_balances cannot be null');
+        if (is_null($firmware_version)) {
+            throw new \InvalidArgumentException('non-nullable firmware_version cannot be null');
         }
-        $this->container['store_balances'] = $store_balances;
+        if ((mb_strlen($firmware_version) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $firmware_version when calling RetailStoreEnvironmentChequePrinter., must be smaller than or equal to 255.');
+        }
+
+        $this->container['firmware_version'] = $firmware_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiscal_data_version
+     *
+     * @return string|null
+     */
+    public function getFiscalDataVersion()
+    {
+        return $this->container['fiscal_data_version'];
+    }
+
+    /**
+     * Sets fiscal_data_version
+     *
+     * @param string|null $fiscal_data_version Версия фискальных данных
+     *
+     * @return self
+     */
+    public function setFiscalDataVersion($fiscal_data_version)
+    {
+        if (is_null($fiscal_data_version)) {
+            throw new \InvalidArgumentException('non-nullable fiscal_data_version cannot be null');
+        }
+        if ((mb_strlen($fiscal_data_version) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $fiscal_data_version when calling RetailStoreEnvironmentChequePrinter., must be smaller than or equal to 255.');
+        }
+
+        $this->container['fiscal_data_version'] = $fiscal_data_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiscal_memory
+     *
+     * @return \OpenAPI\Client\Model\RetailStoreEnvironmentChequePrinterFiscalMemory|null
+     */
+    public function getFiscalMemory()
+    {
+        return $this->container['fiscal_memory'];
+    }
+
+    /**
+     * Sets fiscal_memory
+     *
+     * @param \OpenAPI\Client\Model\RetailStoreEnvironmentChequePrinterFiscalMemory|null $fiscal_memory fiscal_memory
+     *
+     * @return self
+     */
+    public function setFiscalMemory($fiscal_memory)
+    {
+        if (is_null($fiscal_memory)) {
+            throw new \InvalidArgumentException('non-nullable fiscal_memory cannot be null');
+        }
+        $this->container['fiscal_memory'] = $fiscal_memory;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Наименование чекового принтера
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling RetailStoreEnvironmentChequePrinter., must be smaller than or equal to 255.');
+        }
+
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets serial
+     *
+     * @return string|null
+     */
+    public function getSerial()
+    {
+        return $this->container['serial'];
+    }
+
+    /**
+     * Sets serial
+     *
+     * @param string|null $serial Серийный номер чекового принтера
+     *
+     * @return self
+     */
+    public function setSerial($serial)
+    {
+        if (is_null($serial)) {
+            throw new \InvalidArgumentException('non-nullable serial cannot be null');
+        }
+        if ((mb_strlen($serial) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $serial when calling RetailStoreEnvironmentChequePrinter., must be smaller than or equal to 255.');
+        }
+
+        $this->container['serial'] = $serial;
+
+        return $this;
+    }
+
+    /**
+     * Gets vendor
+     *
+     * @return string|null
+     */
+    public function getVendor()
+    {
+        return $this->container['vendor'];
+    }
+
+    /**
+     * Sets vendor
+     *
+     * @param string|null $vendor Производитель чекового принтера
+     *
+     * @return self
+     */
+    public function setVendor($vendor)
+    {
+        if (is_null($vendor)) {
+            throw new \InvalidArgumentException('non-nullable vendor cannot be null');
+        }
+        if ((mb_strlen($vendor) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $vendor when calling RetailStoreEnvironmentChequePrinter., must be smaller than or equal to 255.');
+        }
+
+        $this->container['vendor'] = $vendor;
 
         return $this;
     }
