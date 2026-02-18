@@ -27,6 +27,8 @@
  */
 
 namespace OpenAPI\Client\Model;
+
+use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
@@ -38,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MinimumStockAllWarehouseSum extends MinimumStockAbstract
+class MinimumStockAllWarehouseSum implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -95,7 +97,7 @@ class MinimumStockAllWarehouseSum extends MinimumStockAbstract
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes + parent::openAPITypes();
+        return self::$openAPITypes;
     }
 
     /**
@@ -105,7 +107,7 @@ class MinimumStockAllWarehouseSum extends MinimumStockAbstract
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats + parent::openAPIFormats();
+        return self::$openAPIFormats;
     }
 
     /**
@@ -115,7 +117,7 @@ class MinimumStockAllWarehouseSum extends MinimumStockAbstract
      */
     protected static function openAPINullables(): array
     {
-        return self::$openAPINullables + parent::openAPINullables();
+        return self::$openAPINullables;
     }
 
     /**
@@ -199,7 +201,7 @@ class MinimumStockAllWarehouseSum extends MinimumStockAbstract
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -209,7 +211,7 @@ class MinimumStockAllWarehouseSum extends MinimumStockAbstract
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -219,7 +221,7 @@ class MinimumStockAllWarehouseSum extends MinimumStockAbstract
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -246,6 +248,12 @@ class MinimumStockAllWarehouseSum extends MinimumStockAbstract
         ];
     }
 
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -255,8 +263,6 @@ class MinimumStockAllWarehouseSum extends MinimumStockAbstract
      */
     public function __construct(?array $data = null)
     {
-        parent::__construct($data);
-
         $this->setIfExists('type', $data ?? [], 'ALL_WAREHOUSE_SUM');
         $this->setIfExists('quantity', $data ?? [], null);
     }
@@ -286,8 +292,11 @@ class MinimumStockAllWarehouseSum extends MinimumStockAbstract
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -319,7 +328,7 @@ class MinimumStockAllWarehouseSum extends MinimumStockAbstract
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -329,7 +338,7 @@ class MinimumStockAllWarehouseSum extends MinimumStockAbstract
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string $type type
      *
      * @return self
      */

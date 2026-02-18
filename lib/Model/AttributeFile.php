@@ -27,6 +27,8 @@
  */
 
 namespace OpenAPI\Client\Model;
+
+use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
@@ -38,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AttributeFile extends AttributeAbstract
+class AttributeFile implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -57,7 +59,10 @@ class AttributeFile extends AttributeAbstract
     protected static $openAPITypes = [
         'type' => 'string',
         'value' => 'string',
-        'download' => 'object'
+        'download' => 'object',
+        'id' => 'string',
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'name' => 'string'
     ];
 
     /**
@@ -70,7 +75,10 @@ class AttributeFile extends AttributeAbstract
     protected static $openAPIFormats = [
         'type' => null,
         'value' => null,
-        'download' => null
+        'download' => null,
+        'id' => 'uuid',
+        'meta' => null,
+        'name' => null
     ];
 
     /**
@@ -81,7 +89,10 @@ class AttributeFile extends AttributeAbstract
     protected static array $openAPINullables = [
         'type' => false,
         'value' => false,
-        'download' => false
+        'download' => false,
+        'id' => false,
+        'meta' => false,
+        'name' => false
     ];
 
     /**
@@ -98,7 +109,7 @@ class AttributeFile extends AttributeAbstract
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes + parent::openAPITypes();
+        return self::$openAPITypes;
     }
 
     /**
@@ -108,7 +119,7 @@ class AttributeFile extends AttributeAbstract
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats + parent::openAPIFormats();
+        return self::$openAPIFormats;
     }
 
     /**
@@ -118,7 +129,7 @@ class AttributeFile extends AttributeAbstract
      */
     protected static function openAPINullables(): array
     {
-        return self::$openAPINullables + parent::openAPINullables();
+        return self::$openAPINullables;
     }
 
     /**
@@ -172,7 +183,10 @@ class AttributeFile extends AttributeAbstract
     protected static $attributeMap = [
         'type' => 'type',
         'value' => 'value',
-        'download' => 'download'
+        'download' => 'download',
+        'id' => 'id',
+        'meta' => 'meta',
+        'name' => 'name'
     ];
 
     /**
@@ -183,7 +197,10 @@ class AttributeFile extends AttributeAbstract
     protected static $setters = [
         'type' => 'setType',
         'value' => 'setValue',
-        'download' => 'setDownload'
+        'download' => 'setDownload',
+        'id' => 'setId',
+        'meta' => 'setMeta',
+        'name' => 'setName'
     ];
 
     /**
@@ -194,7 +211,10 @@ class AttributeFile extends AttributeAbstract
     protected static $getters = [
         'type' => 'getType',
         'value' => 'getValue',
-        'download' => 'getDownload'
+        'download' => 'getDownload',
+        'id' => 'getId',
+        'meta' => 'getMeta',
+        'name' => 'getName'
     ];
 
     /**
@@ -205,7 +225,7 @@ class AttributeFile extends AttributeAbstract
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -215,7 +235,7 @@ class AttributeFile extends AttributeAbstract
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -225,7 +245,7 @@ class AttributeFile extends AttributeAbstract
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -252,6 +272,12 @@ class AttributeFile extends AttributeAbstract
         ];
     }
 
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -261,11 +287,12 @@ class AttributeFile extends AttributeAbstract
      */
     public function __construct(?array $data = null)
     {
-        parent::__construct($data);
-
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('download', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -293,7 +320,7 @@ class AttributeFile extends AttributeAbstract
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
@@ -406,6 +433,87 @@ class AttributeFile extends AttributeAbstract
             throw new \InvalidArgumentException('non-nullable download cannot be null');
         }
         $this->container['download'] = $download;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id ID дополнительного поля
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return \OpenAPI\Client\Model\Meta|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \OpenAPI\Client\Model\Meta|null $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        }
+        $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Наименование дополнительного поля
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }

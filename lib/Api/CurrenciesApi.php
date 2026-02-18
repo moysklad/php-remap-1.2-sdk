@@ -74,25 +74,25 @@ class CurrenciesApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'entityCurrencyBatchPost' => [
+        'createCurrenciesBatch' => [
             'application/json',
         ],
-        'entityCurrencyDeletePost' => [
+        'createCurrency' => [
             'application/json',
         ],
-        'entityCurrencyGet' => [
+        'deleteCurrenciesBatch' => [
             'application/json',
         ],
-        'entityCurrencyIdDelete' => [
+        'deleteCurrency' => [
             'application/json',
         ],
-        'entityCurrencyIdGet' => [
+        'getCurrencies' => [
             'application/json',
         ],
-        'entityCurrencyIdPut' => [
+        'getCurrencyById' => [
             'application/json',
         ],
-        'entityCurrencyPost' => [
+        'updateCurrency' => [
             'application/json',
         ],
     ];
@@ -144,44 +144,46 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyBatchPost
+     * Operation createCurrenciesBatch
      *
      * Создать или изменить валюту
      *
      * @param  \OpenAPI\Client\Model\Currency[] $currency currency (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyBatchPost'] to see the possible values for this operation
+     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCurrenciesBatch'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Currency[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
+     * @return \OpenAPI\Client\Model\CreateCurrenciesBatch200ResponseInner[]|\OpenAPI\Client\Model\ErrorOrArray|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
-    public function entityCurrencyBatchPost($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyBatchPost'][0])
+    public function createCurrenciesBatch($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['createCurrenciesBatch'][0])
     {
-        list($response) = $this->entityCurrencyBatchPostWithHttpInfo($currency, $expand, $accept, $accept_encoding, $contentType);
+        list($response) = $this->createCurrenciesBatchWithHttpInfo($currency, $expand, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
     /**
-     * Operation entityCurrencyBatchPostWithHttpInfo
+     * Operation createCurrenciesBatchWithHttpInfo
      *
      * Создать или изменить валюту
      *
      * @param  \OpenAPI\Client\Model\Currency[] $currency (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyBatchPost'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCurrenciesBatch'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Currency[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\CreateCurrenciesBatch200ResponseInner[]|\OpenAPI\Client\Model\ErrorOrArray|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function entityCurrencyBatchPostWithHttpInfo($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyBatchPost'][0])
+    public function createCurrenciesBatchWithHttpInfo($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['createCurrenciesBatch'][0])
     {
-        $request = $this->entityCurrencyBatchPostRequest($currency, $expand, $accept, $accept_encoding, $contentType);
+        $request = $this->createCurrenciesBatchRequest($currency, $expand, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -209,13 +211,13 @@ class CurrenciesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Currency[]',
+                        '\OpenAPI\Client\Model\CreateCurrenciesBatch200ResponseInner[]',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Error',
+                        '\OpenAPI\Client\Model\ErrorOrArray',
                         $request,
                         $response,
                     );
@@ -226,6 +228,12 @@ class CurrenciesApi
                         $response,
                     );
                 case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 412:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\Error',
                         $request,
@@ -249,7 +257,7 @@ class CurrenciesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\Currency[]',
+                '\OpenAPI\Client\Model\CreateCurrenciesBatch200ResponseInner[]',
                 $request,
                 $response,
             );
@@ -258,7 +266,7 @@ class CurrenciesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Currency[]',
+                        '\OpenAPI\Client\Model\CreateCurrenciesBatch200ResponseInner[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -266,7 +274,7 @@ class CurrenciesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Error',
+                        '\OpenAPI\Client\Model\ErrorOrArray',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -287,6 +295,14 @@ class CurrenciesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 412:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -295,22 +311,23 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyBatchPostAsync
+     * Operation createCurrenciesBatchAsync
      *
      * Создать или изменить валюту
      *
      * @param  \OpenAPI\Client\Model\Currency[] $currency (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyBatchPost'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCurrenciesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityCurrencyBatchPostAsync($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyBatchPost'][0])
+    public function createCurrenciesBatchAsync($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['createCurrenciesBatch'][0])
     {
-        return $this->entityCurrencyBatchPostAsyncWithHttpInfo($currency, $expand, $accept, $accept_encoding, $contentType)
+        return $this->createCurrenciesBatchAsyncWithHttpInfo($currency, $expand, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -319,23 +336,24 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyBatchPostAsyncWithHttpInfo
+     * Operation createCurrenciesBatchAsyncWithHttpInfo
      *
      * Создать или изменить валюту
      *
      * @param  \OpenAPI\Client\Model\Currency[] $currency (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyBatchPost'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCurrenciesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityCurrencyBatchPostAsyncWithHttpInfo($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyBatchPost'][0])
+    public function createCurrenciesBatchAsyncWithHttpInfo($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['createCurrenciesBatch'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\Currency[]';
-        $request = $this->entityCurrencyBatchPostRequest($currency, $expand, $accept, $accept_encoding, $contentType);
+        $returnType = '\OpenAPI\Client\Model\CreateCurrenciesBatch200ResponseInner[]';
+        $request = $this->createCurrenciesBatchRequest($currency, $expand, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -374,33 +392,35 @@ class CurrenciesApi
     }
 
     /**
-     * Create request for operation 'entityCurrencyBatchPost'
+     * Create request for operation 'createCurrenciesBatch'
      *
      * @param  \OpenAPI\Client\Model\Currency[] $currency (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyBatchPost'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCurrenciesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function entityCurrencyBatchPostRequest($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyBatchPost'][0])
+    public function createCurrenciesBatchRequest($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['createCurrenciesBatch'][0])
     {
 
         // verify the required parameter 'currency' is set
         if ($currency === null || (is_array($currency) && count($currency) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $currency when calling entityCurrencyBatchPost'
+                'Missing the required parameter $currency when calling createCurrenciesBatch'
             );
         }
         if (count($currency) > 1000) {
-            throw new \InvalidArgumentException('invalid value for "$currency" when calling CurrenciesApi.entityCurrencyBatchPost, number of items must be less than or equal to 1000.');
+            throw new \InvalidArgumentException('invalid value for "$currency" when calling CurrenciesApi.createCurrenciesBatch, number of items must be less than or equal to 1000.');
         }
         if (count($currency) < 1) {
-            throw new \InvalidArgumentException('invalid value for "$currency" when calling CurrenciesApi.entityCurrencyBatchPost, number of items must be greater than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$currency" when calling CurrenciesApi.createCurrenciesBatch, number of items must be greater than or equal to 1.');
         }
         
+
 
 
 
@@ -430,6 +450,10 @@ class CurrenciesApi
         if ($accept_encoding !== null) {
             $headerParams['Accept-Encoding'] = ObjectSerializer::toHeaderValue($accept_encoding);
         }
+        // header params
+        if ($content_type !== null) {
+            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
+        }
 
 
 
@@ -502,42 +526,46 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyDeletePost
+     * Operation createCurrency
      *
-     * Удалить валюту
+     * Создать валюту
      *
-     * @param  \OpenAPI\Client\Model\Currency[] $currency currency (required)
+     * @param  \OpenAPI\Client\Model\Currency $currency currency (required)
+     * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyDeletePost'] to see the possible values for this operation
+     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCurrency'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DeleteInfo[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
+     * @return \OpenAPI\Client\Model\Currency|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
-    public function entityCurrencyDeletePost($currency, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyDeletePost'][0])
+    public function createCurrency($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['createCurrency'][0])
     {
-        list($response) = $this->entityCurrencyDeletePostWithHttpInfo($currency, $accept, $accept_encoding, $contentType);
+        list($response) = $this->createCurrencyWithHttpInfo($currency, $expand, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
     /**
-     * Operation entityCurrencyDeletePostWithHttpInfo
+     * Operation createCurrencyWithHttpInfo
      *
-     * Удалить валюту
+     * Создать валюту
      *
-     * @param  \OpenAPI\Client\Model\Currency[] $currency (required)
+     * @param  \OpenAPI\Client\Model\Currency $currency (required)
+     * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyDeletePost'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCurrency'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DeleteInfo[]|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Currency|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function entityCurrencyDeletePostWithHttpInfo($currency, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyDeletePost'][0])
+    public function createCurrencyWithHttpInfo($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['createCurrency'][0])
     {
-        $request = $this->entityCurrencyDeletePostRequest($currency, $accept, $accept_encoding, $contentType);
+        $request = $this->createCurrencyRequest($currency, $expand, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -565,7 +593,7 @@ class CurrenciesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\DeleteInfo[]',
+                        '\OpenAPI\Client\Model\Currency',
                         $request,
                         $response,
                     );
@@ -587,13 +615,7 @@ class CurrenciesApi
                         $request,
                         $response,
                     );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 409:
+                case 412:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\Error',
                         $request,
@@ -617,7 +639,7 @@ class CurrenciesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\DeleteInfo[]',
+                '\OpenAPI\Client\Model\Currency',
                 $request,
                 $response,
             );
@@ -626,7 +648,7 @@ class CurrenciesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\DeleteInfo[]',
+                        '\OpenAPI\Client\Model\Currency',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -655,15 +677,7 @@ class CurrenciesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 409:
+                case 412:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\Error',
@@ -679,21 +693,23 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyDeletePostAsync
+     * Operation createCurrencyAsync
      *
-     * Удалить валюту
+     * Создать валюту
      *
-     * @param  \OpenAPI\Client\Model\Currency[] $currency (required)
+     * @param  \OpenAPI\Client\Model\Currency $currency (required)
+     * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyDeletePost'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCurrency'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityCurrencyDeletePostAsync($currency, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyDeletePost'][0])
+    public function createCurrencyAsync($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['createCurrency'][0])
     {
-        return $this->entityCurrencyDeletePostAsyncWithHttpInfo($currency, $accept, $accept_encoding, $contentType)
+        return $this->createCurrencyAsyncWithHttpInfo($currency, $expand, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -702,22 +718,24 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyDeletePostAsyncWithHttpInfo
+     * Operation createCurrencyAsyncWithHttpInfo
      *
-     * Удалить валюту
+     * Создать валюту
      *
-     * @param  \OpenAPI\Client\Model\Currency[] $currency (required)
+     * @param  \OpenAPI\Client\Model\Currency $currency (required)
+     * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyDeletePost'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCurrency'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityCurrencyDeletePostAsyncWithHttpInfo($currency, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyDeletePost'][0])
+    public function createCurrencyAsyncWithHttpInfo($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['createCurrency'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\DeleteInfo[]';
-        $request = $this->entityCurrencyDeletePostRequest($currency, $accept, $accept_encoding, $contentType);
+        $returnType = '\OpenAPI\Client\Model\Currency';
+        $request = $this->createCurrencyRequest($currency, $expand, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -756,42 +774,49 @@ class CurrenciesApi
     }
 
     /**
-     * Create request for operation 'entityCurrencyDeletePost'
+     * Create request for operation 'createCurrency'
      *
-     * @param  \OpenAPI\Client\Model\Currency[] $currency (required)
+     * @param  \OpenAPI\Client\Model\Currency $currency (required)
+     * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyDeletePost'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCurrency'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function entityCurrencyDeletePostRequest($currency, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyDeletePost'][0])
+    public function createCurrencyRequest($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['createCurrency'][0])
     {
 
         // verify the required parameter 'currency' is set
         if ($currency === null || (is_array($currency) && count($currency) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $currency when calling entityCurrencyDeletePost'
+                'Missing the required parameter $currency when calling createCurrency'
             );
         }
-        if (count($currency) > 1000) {
-            throw new \InvalidArgumentException('invalid value for "$currency" when calling CurrenciesApi.entityCurrencyDeletePost, number of items must be less than or equal to 1000.');
-        }
-        if (count($currency) < 1) {
-            throw new \InvalidArgumentException('invalid value for "$currency" when calling CurrenciesApi.entityCurrencyDeletePost, number of items must be greater than or equal to 1.');
-        }
-        
 
 
 
-        $resourcePath = '/entity/currency/delete';
+
+
+
+        $resourcePath = '/entity/currency';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $expand,
+            'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
 
         // header params
         if ($accept !== null) {
@@ -800,6 +825,10 @@ class CurrenciesApi
         // header params
         if ($accept_encoding !== null) {
             $headerParams['Accept-Encoding'] = ObjectSerializer::toHeaderValue($accept_encoding);
+        }
+        // header params
+        if ($content_type !== null) {
+            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
         }
 
 
@@ -873,7 +902,680 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyGet
+     * Operation deleteCurrenciesBatch
+     *
+     * Удалить валюту
+     *
+     * @param  \OpenAPI\Client\Model\Currency[] $currency currency (required)
+     * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCurrenciesBatch'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]|\OpenAPI\Client\Model\ErrorOrArray|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
+     */
+    public function deleteCurrenciesBatch($currency, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['deleteCurrenciesBatch'][0])
+    {
+        list($response) = $this->deleteCurrenciesBatchWithHttpInfo($currency, $accept, $accept_encoding, $content_type, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation deleteCurrenciesBatchWithHttpInfo
+     *
+     * Удалить валюту
+     *
+     * @param  \OpenAPI\Client\Model\Currency[] $currency (required)
+     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCurrenciesBatch'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]|\OpenAPI\Client\Model\ErrorOrArray|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteCurrenciesBatchWithHttpInfo($currency, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['deleteCurrenciesBatch'][0])
+    {
+        $request = $this->deleteCurrenciesBatchRequest($currency, $accept, $accept_encoding, $content_type, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorOrArray',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 412:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorOrArray',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 412:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteCurrenciesBatchAsync
+     *
+     * Удалить валюту
+     *
+     * @param  \OpenAPI\Client\Model\Currency[] $currency (required)
+     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCurrenciesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteCurrenciesBatchAsync($currency, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['deleteCurrenciesBatch'][0])
+    {
+        return $this->deleteCurrenciesBatchAsyncWithHttpInfo($currency, $accept, $accept_encoding, $content_type, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteCurrenciesBatchAsyncWithHttpInfo
+     *
+     * Удалить валюту
+     *
+     * @param  \OpenAPI\Client\Model\Currency[] $currency (required)
+     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCurrenciesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteCurrenciesBatchAsyncWithHttpInfo($currency, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['deleteCurrenciesBatch'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]';
+        $request = $this->deleteCurrenciesBatchRequest($currency, $accept, $accept_encoding, $content_type, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteCurrenciesBatch'
+     *
+     * @param  \OpenAPI\Client\Model\Currency[] $currency (required)
+     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCurrenciesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteCurrenciesBatchRequest($currency, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['deleteCurrenciesBatch'][0])
+    {
+
+        // verify the required parameter 'currency' is set
+        if ($currency === null || (is_array($currency) && count($currency) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $currency when calling deleteCurrenciesBatch'
+            );
+        }
+        if (count($currency) > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$currency" when calling CurrenciesApi.deleteCurrenciesBatch, number of items must be less than or equal to 1000.');
+        }
+        if (count($currency) < 1) {
+            throw new \InvalidArgumentException('invalid value for "$currency" when calling CurrenciesApi.deleteCurrenciesBatch, number of items must be greater than or equal to 1.');
+        }
+        
+
+
+
+
+        $resourcePath = '/entity/currency/delete';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // header params
+        if ($accept !== null) {
+            $headerParams['accept'] = ObjectSerializer::toHeaderValue($accept);
+        }
+        // header params
+        if ($accept_encoding !== null) {
+            $headerParams['Accept-Encoding'] = ObjectSerializer::toHeaderValue($accept_encoding);
+        }
+        // header params
+        if ($content_type !== null) {
+            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
+        }
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($currency)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($currency));
+            } else {
+                $httpBody = $currency;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteCurrency
+     *
+     * Удалить валюту
+     *
+     * @param  string $id ID сущности (required)
+     * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCurrency'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteCurrency($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['deleteCurrency'][0])
+    {
+        $this->deleteCurrencyWithHttpInfo($id, $accept, $accept_encoding, $contentType);
+    }
+
+    /**
+     * Operation deleteCurrencyWithHttpInfo
+     *
+     * Удалить валюту
+     *
+     * @param  string $id ID сущности (required)
+     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCurrency'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteCurrencyWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['deleteCurrency'][0])
+    {
+        $request = $this->deleteCurrencyRequest($id, $accept, $accept_encoding, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 412:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteCurrencyAsync
+     *
+     * Удалить валюту
+     *
+     * @param  string $id ID сущности (required)
+     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCurrency'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteCurrencyAsync($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['deleteCurrency'][0])
+    {
+        return $this->deleteCurrencyAsyncWithHttpInfo($id, $accept, $accept_encoding, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteCurrencyAsyncWithHttpInfo
+     *
+     * Удалить валюту
+     *
+     * @param  string $id ID сущности (required)
+     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCurrency'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteCurrencyAsyncWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['deleteCurrency'][0])
+    {
+        $returnType = '';
+        $request = $this->deleteCurrencyRequest($id, $accept, $accept_encoding, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteCurrency'
+     *
+     * @param  string $id ID сущности (required)
+     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCurrency'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteCurrencyRequest($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['deleteCurrency'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling deleteCurrency'
+            );
+        }
+
+
+
+
+        $resourcePath = '/entity/currency/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // header params
+        if ($accept !== null) {
+            $headerParams['accept'] = ObjectSerializer::toHeaderValue($accept);
+        }
+        // header params
+        if ($accept_encoding !== null) {
+            $headerParams['Accept-Encoding'] = ObjectSerializer::toHeaderValue($accept_encoding);
+        }
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCurrencies
      *
      * Получить список валют
      *
@@ -884,21 +1586,21 @@ class CurrenciesApi
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyGet'] to see the possible values for this operation
+     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrencies'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CurrencyList|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
+     * @return \OpenAPI\Client\Model\CurrencyList|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
-    public function entityCurrencyGet($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyGet'][0])
+    public function getCurrencies($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCurrencies'][0])
     {
-        list($response) = $this->entityCurrencyGetWithHttpInfo($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
+        list($response) = $this->getCurrenciesWithHttpInfo($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
         return $response;
     }
 
     /**
-     * Operation entityCurrencyGetWithHttpInfo
+     * Operation getCurrenciesWithHttpInfo
      *
      * Получить список валют
      *
@@ -909,16 +1611,16 @@ class CurrenciesApi
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyGet'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrencies'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CurrencyList|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\CurrencyList|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function entityCurrencyGetWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyGet'][0])
+    public function getCurrenciesWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCurrencies'][0])
     {
-        $request = $this->entityCurrencyGetRequest($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
+        $request = $this->getCurrenciesRequest($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -963,6 +1665,12 @@ class CurrenciesApi
                         $response,
                     );
                 case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 412:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\Error',
                         $request,
@@ -1024,6 +1732,14 @@ class CurrenciesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 412:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -1032,7 +1748,7 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyGetAsync
+     * Operation getCurrenciesAsync
      *
      * Получить список валют
      *
@@ -1043,15 +1759,15 @@ class CurrenciesApi
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyGet'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrencies'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityCurrencyGetAsync($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyGet'][0])
+    public function getCurrenciesAsync($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCurrencies'][0])
     {
-        return $this->entityCurrencyGetAsyncWithHttpInfo($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType)
+        return $this->getCurrenciesAsyncWithHttpInfo($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1060,7 +1776,7 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyGetAsyncWithHttpInfo
+     * Operation getCurrenciesAsyncWithHttpInfo
      *
      * Получить список валют
      *
@@ -1071,16 +1787,16 @@ class CurrenciesApi
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyGet'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrencies'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityCurrencyGetAsyncWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyGet'][0])
+    public function getCurrenciesAsyncWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCurrencies'][0])
     {
         $returnType = '\OpenAPI\Client\Model\CurrencyList';
-        $request = $this->entityCurrencyGetRequest($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
+        $request = $this->getCurrenciesRequest($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1119,7 +1835,7 @@ class CurrenciesApi
     }
 
     /**
-     * Create request for operation 'entityCurrencyGet'
+     * Create request for operation 'getCurrencies'
      *
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
@@ -1128,24 +1844,24 @@ class CurrenciesApi
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyGet'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrencies'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function entityCurrencyGetRequest($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyGet'][0])
+    public function getCurrenciesRequest($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCurrencies'][0])
     {
 
         if ($limit !== null && $limit > 1000) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling CurrenciesApi.entityCurrencyGet, must be smaller than or equal to 1000.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CurrenciesApi.getCurrencies, must be smaller than or equal to 1000.');
         }
         if ($limit !== null && $limit < 1) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling CurrenciesApi.entityCurrencyGet, must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CurrenciesApi.getCurrencies, must be bigger than or equal to 1.');
         }
         
         if ($offset !== null && $offset < 0) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling CurrenciesApi.entityCurrencyGet, must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CurrenciesApi.getCurrencies, must be bigger than or equal to 0.');
         }
         
 
@@ -1290,306 +2006,44 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyIdDelete
-     *
-     * Удалить валюту
-     *
-     * @param  string $id ID сущности (required)
-     * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdDelete'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function entityCurrencyIdDelete($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdDelete'][0])
-    {
-        $this->entityCurrencyIdDeleteWithHttpInfo($id, $accept, $accept_encoding, $contentType);
-    }
-
-    /**
-     * Operation entityCurrencyIdDeleteWithHttpInfo
-     *
-     * Удалить валюту
-     *
-     * @param  string $id ID сущности (required)
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdDelete'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function entityCurrencyIdDeleteWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdDelete'][0])
-    {
-        $request = $this->entityCurrencyIdDeleteRequest($id, $accept, $accept_encoding, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 409:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation entityCurrencyIdDeleteAsync
-     *
-     * Удалить валюту
-     *
-     * @param  string $id ID сущности (required)
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdDelete'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function entityCurrencyIdDeleteAsync($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdDelete'][0])
-    {
-        return $this->entityCurrencyIdDeleteAsyncWithHttpInfo($id, $accept, $accept_encoding, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation entityCurrencyIdDeleteAsyncWithHttpInfo
-     *
-     * Удалить валюту
-     *
-     * @param  string $id ID сущности (required)
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdDelete'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function entityCurrencyIdDeleteAsyncWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdDelete'][0])
-    {
-        $returnType = '';
-        $request = $this->entityCurrencyIdDeleteRequest($id, $accept, $accept_encoding, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'entityCurrencyIdDelete'
-     *
-     * @param  string $id ID сущности (required)
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdDelete'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function entityCurrencyIdDeleteRequest($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdDelete'][0])
-    {
-
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling entityCurrencyIdDelete'
-            );
-        }
-
-
-
-
-        $resourcePath = '/entity/currency/{id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // header params
-        if ($accept !== null) {
-            $headerParams['accept'] = ObjectSerializer::toHeaderValue($accept);
-        }
-        // header params
-        if ($accept_encoding !== null) {
-            $headerParams['Accept-Encoding'] = ObjectSerializer::toHeaderValue($accept_encoding);
-        }
-
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
-            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
-        }
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation entityCurrencyIdGet
+     * Operation getCurrencyById
      *
      * Получить валюту по ID
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdGet'] to see the possible values for this operation
+     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrencyById'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Currency|\OpenAPI\Client\Model\Error
+     * @return \OpenAPI\Client\Model\Currency|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
-    public function entityCurrencyIdGet($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdGet'][0])
+    public function getCurrencyById($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCurrencyById'][0])
     {
-        list($response) = $this->entityCurrencyIdGetWithHttpInfo($id, $expand, $accept, $accept_encoding, $contentType);
+        list($response) = $this->getCurrencyByIdWithHttpInfo($id, $expand, $accept, $accept_encoding, $contentType);
         return $response;
     }
 
     /**
-     * Operation entityCurrencyIdGetWithHttpInfo
+     * Operation getCurrencyByIdWithHttpInfo
      *
      * Получить валюту по ID
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdGet'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrencyById'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Currency|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Currency|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function entityCurrencyIdGetWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdGet'][0])
+    public function getCurrencyByIdWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCurrencyById'][0])
     {
-        $request = $this->entityCurrencyIdGetRequest($id, $expand, $accept, $accept_encoding, $contentType);
+        $request = $this->getCurrencyByIdRequest($id, $expand, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1618,6 +2072,12 @@ class CurrenciesApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\Currency',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\Error',
                         $request,
                         $response,
                     );
@@ -1659,6 +2119,14 @@ class CurrenciesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1675,22 +2143,22 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyIdGetAsync
+     * Operation getCurrencyByIdAsync
      *
      * Получить валюту по ID
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdGet'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrencyById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityCurrencyIdGetAsync($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdGet'][0])
+    public function getCurrencyByIdAsync($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCurrencyById'][0])
     {
-        return $this->entityCurrencyIdGetAsyncWithHttpInfo($id, $expand, $accept, $accept_encoding, $contentType)
+        return $this->getCurrencyByIdAsyncWithHttpInfo($id, $expand, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1699,23 +2167,23 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyIdGetAsyncWithHttpInfo
+     * Operation getCurrencyByIdAsyncWithHttpInfo
      *
      * Получить валюту по ID
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdGet'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrencyById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityCurrencyIdGetAsyncWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdGet'][0])
+    public function getCurrencyByIdAsyncWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCurrencyById'][0])
     {
         $returnType = '\OpenAPI\Client\Model\Currency';
-        $request = $this->entityCurrencyIdGetRequest($id, $expand, $accept, $accept_encoding, $contentType);
+        $request = $this->getCurrencyByIdRequest($id, $expand, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1754,24 +2222,24 @@ class CurrenciesApi
     }
 
     /**
-     * Create request for operation 'entityCurrencyIdGet'
+     * Create request for operation 'getCurrencyById'
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdGet'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCurrencyById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function entityCurrencyIdGetRequest($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdGet'][0])
+    public function getCurrencyByIdRequest($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCurrencyById'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling entityCurrencyIdGet'
+                'Missing the required parameter $id when calling getCurrencyById'
             );
         }
 
@@ -1877,7 +2345,7 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyIdPut
+     * Operation updateCurrency
      *
      * Обновить валюту
      *
@@ -1885,21 +2353,22 @@ class CurrenciesApi
      * @param  \OpenAPI\Client\Model\Currency $currency currency (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdPut'] to see the possible values for this operation
+     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCurrency'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\Currency|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
-    public function entityCurrencyIdPut($id, $currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdPut'][0])
+    public function updateCurrency($id, $currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCurrency'][0])
     {
-        list($response) = $this->entityCurrencyIdPutWithHttpInfo($id, $currency, $expand, $accept, $accept_encoding, $contentType);
+        list($response) = $this->updateCurrencyWithHttpInfo($id, $currency, $expand, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
     /**
-     * Operation entityCurrencyIdPutWithHttpInfo
+     * Operation updateCurrencyWithHttpInfo
      *
      * Обновить валюту
      *
@@ -1907,16 +2376,17 @@ class CurrenciesApi
      * @param  \OpenAPI\Client\Model\Currency $currency (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdPut'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCurrency'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\Currency|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function entityCurrencyIdPutWithHttpInfo($id, $currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdPut'][0])
+    public function updateCurrencyWithHttpInfo($id, $currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCurrency'][0])
     {
-        $request = $this->entityCurrencyIdPutRequest($id, $currency, $expand, $accept, $accept_encoding, $contentType);
+        $request = $this->updateCurrencyRequest($id, $currency, $expand, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2016,7 +2486,7 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyIdPutAsync
+     * Operation updateCurrencyAsync
      *
      * Обновить валюту
      *
@@ -2024,15 +2494,16 @@ class CurrenciesApi
      * @param  \OpenAPI\Client\Model\Currency $currency (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdPut'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCurrency'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityCurrencyIdPutAsync($id, $currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdPut'][0])
+    public function updateCurrencyAsync($id, $currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCurrency'][0])
     {
-        return $this->entityCurrencyIdPutAsyncWithHttpInfo($id, $currency, $expand, $accept, $accept_encoding, $contentType)
+        return $this->updateCurrencyAsyncWithHttpInfo($id, $currency, $expand, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2041,7 +2512,7 @@ class CurrenciesApi
     }
 
     /**
-     * Operation entityCurrencyIdPutAsyncWithHttpInfo
+     * Operation updateCurrencyAsyncWithHttpInfo
      *
      * Обновить валюту
      *
@@ -2049,16 +2520,17 @@ class CurrenciesApi
      * @param  \OpenAPI\Client\Model\Currency $currency (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdPut'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCurrency'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function entityCurrencyIdPutAsyncWithHttpInfo($id, $currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdPut'][0])
+    public function updateCurrencyAsyncWithHttpInfo($id, $currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCurrency'][0])
     {
         $returnType = '\OpenAPI\Client\Model\Currency';
-        $request = $this->entityCurrencyIdPutRequest($id, $currency, $expand, $accept, $accept_encoding, $contentType);
+        $request = $this->updateCurrencyRequest($id, $currency, $expand, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2097,34 +2569,36 @@ class CurrenciesApi
     }
 
     /**
-     * Create request for operation 'entityCurrencyIdPut'
+     * Create request for operation 'updateCurrency'
      *
      * @param  string $id ID сущности (required)
      * @param  \OpenAPI\Client\Model\Currency $currency (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyIdPut'] to see the possible values for this operation
+     * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
+     * @param  string|null $content_type (optional, default to 'application/json')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCurrency'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function entityCurrencyIdPutRequest($id, $currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyIdPut'][0])
+    public function updateCurrencyRequest($id, $currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCurrency'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling entityCurrencyIdPut'
+                'Missing the required parameter $id when calling updateCurrency'
             );
         }
 
         // verify the required parameter 'currency' is set
         if ($currency === null || (is_array($currency) && count($currency) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $currency when calling entityCurrencyIdPut'
+                'Missing the required parameter $currency when calling updateCurrency'
             );
         }
+
 
 
 
@@ -2154,6 +2628,10 @@ class CurrenciesApi
         // header params
         if ($accept_encoding !== null) {
             $headerParams['Accept-Encoding'] = ObjectSerializer::toHeaderValue($accept_encoding);
+        }
+        // header params
+        if ($content_type !== null) {
+            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
         }
 
         // path params
@@ -2228,358 +2706,6 @@ class CurrenciesApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation entityCurrencyPost
-     *
-     * Создать валюту
-     *
-     * @param  \OpenAPI\Client\Model\Currency $currency currency (required)
-     * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
-     * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyPost'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Currency|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
-     */
-    public function entityCurrencyPost($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyPost'][0])
-    {
-        list($response) = $this->entityCurrencyPostWithHttpInfo($currency, $expand, $accept, $accept_encoding, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation entityCurrencyPostWithHttpInfo
-     *
-     * Создать валюту
-     *
-     * @param  \OpenAPI\Client\Model\Currency $currency (required)
-     * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyPost'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Currency|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function entityCurrencyPostWithHttpInfo($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyPost'][0])
-    {
-        $request = $this->entityCurrencyPostRequest($currency, $expand, $accept, $accept_encoding, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Currency',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\Currency',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Currency',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation entityCurrencyPostAsync
-     *
-     * Создать валюту
-     *
-     * @param  \OpenAPI\Client\Model\Currency $currency (required)
-     * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyPost'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function entityCurrencyPostAsync($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyPost'][0])
-    {
-        return $this->entityCurrencyPostAsyncWithHttpInfo($currency, $expand, $accept, $accept_encoding, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation entityCurrencyPostAsyncWithHttpInfo
-     *
-     * Создать валюту
-     *
-     * @param  \OpenAPI\Client\Model\Currency $currency (required)
-     * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyPost'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function entityCurrencyPostAsyncWithHttpInfo($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyPost'][0])
-    {
-        $returnType = '\OpenAPI\Client\Model\Currency';
-        $request = $this->entityCurrencyPostRequest($currency, $expand, $accept, $accept_encoding, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'entityCurrencyPost'
-     *
-     * @param  \OpenAPI\Client\Model\Currency $currency (required)
-     * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
-     * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
-     * @param  string|null $accept_encoding (optional, default to 'gzip')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['entityCurrencyPost'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function entityCurrencyPostRequest($currency, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip', string $contentType = self::contentTypes['entityCurrencyPost'][0])
-    {
-
-        // verify the required parameter 'currency' is set
-        if ($currency === null || (is_array($currency) && count($currency) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $currency when calling entityCurrencyPost'
-            );
-        }
-
-
-
-
-
-        $resourcePath = '/entity/currency';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $expand,
-            'expand', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-
-        // header params
-        if ($accept !== null) {
-            $headerParams['accept'] = ObjectSerializer::toHeaderValue($accept);
-        }
-        // header params
-        if ($accept_encoding !== null) {
-            $headerParams['Accept-Encoding'] = ObjectSerializer::toHeaderValue($accept_encoding);
-        }
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($currency)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($currency));
-            } else {
-                $httpBody = $currency;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
-            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
-        }
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

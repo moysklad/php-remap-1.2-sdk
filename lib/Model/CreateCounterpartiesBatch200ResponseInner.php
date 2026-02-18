@@ -1,6 +1,6 @@
 <?php
 /**
- * Counterparty
+ * CreateCounterpartiesBatch200ResponseInner
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Counterparty Class Doc Comment
+ * CreateCounterpartiesBatch200ResponseInner Class Doc Comment
  *
  * @category Class
- * @description Контрагент
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Counterparty';
+    protected static $openAPIModelName = 'createCounterpartiesBatch_200_response_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -105,7 +104,8 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'notes' => '\OpenAPI\Client\Model\CounterpartyNotes',
         'files' => '\OpenAPI\Client\Model\FileList',
         'tags' => 'string[]',
-        'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]'
+        'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]',
+        'errors' => '\OpenAPI\Client\Model\ErrorErrorsInner[]'
     ];
 
     /**
@@ -163,7 +163,8 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'notes' => null,
         'files' => null,
         'tags' => null,
-        'attributes' => null
+        'attributes' => null,
+        'errors' => null
     ];
 
     /**
@@ -219,7 +220,8 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'notes' => false,
         'files' => false,
         'tags' => false,
-        'attributes' => false
+        'attributes' => false,
+        'errors' => false
     ];
 
     /**
@@ -355,7 +357,8 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'notes' => 'notes',
         'files' => 'files',
         'tags' => 'tags',
-        'attributes' => 'attributes'
+        'attributes' => 'attributes',
+        'errors' => 'errors'
     ];
 
     /**
@@ -411,7 +414,8 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'notes' => 'setNotes',
         'files' => 'setFiles',
         'tags' => 'setTags',
-        'attributes' => 'setAttributes'
+        'attributes' => 'setAttributes',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -467,7 +471,8 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         'notes' => 'getNotes',
         'files' => 'getFiles',
         'tags' => 'getTags',
-        'attributes' => 'getAttributes'
+        'attributes' => 'getAttributes',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -607,6 +612,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('files', $data ?? [], null);
         $this->setIfExists('tags', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -722,6 +728,9 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'discount_card_number', the character length must be smaller than or equal to 255.";
         }
 
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -868,7 +877,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['name'] = $name;
@@ -899,7 +908,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
         if ((mb_strlen($code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $code when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $code when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['code'] = $code;
@@ -930,7 +939,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable external_code cannot be null');
         }
         if ((mb_strlen($external_code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $external_code when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $external_code when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['external_code'] = $external_code;
@@ -1042,7 +1051,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
         if ((mb_strlen($description) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling Counterparty., must be smaller than or equal to 4096.');
+            throw new \InvalidArgumentException('invalid length for $description when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 4096.');
         }
 
         $this->container['description'] = $description;
@@ -1191,7 +1200,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable actual_address cannot be null');
         }
         if ((mb_strlen($actual_address) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $actual_address when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $actual_address when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['actual_address'] = $actual_address;
@@ -1256,7 +1265,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable legal_address cannot be null');
         }
         if ((mb_strlen($legal_address) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $legal_address when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $legal_address when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['legal_address'] = $legal_address;
@@ -1321,7 +1330,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable inn cannot be null');
         }
         if ((mb_strlen($inn) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $inn when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $inn when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['inn'] = $inn;
@@ -1352,7 +1361,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable kpp cannot be null');
         }
         if ((mb_strlen($kpp) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $kpp when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $kpp when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['kpp'] = $kpp;
@@ -1383,7 +1392,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable ogrn cannot be null');
         }
         if ((mb_strlen($ogrn) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $ogrn when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $ogrn when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['ogrn'] = $ogrn;
@@ -1414,7 +1423,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable ogrnip cannot be null');
         }
         if ((mb_strlen($ogrnip) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $ogrnip when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $ogrnip when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['ogrnip'] = $ogrnip;
@@ -1445,7 +1454,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable okpo cannot be null');
         }
         if ((mb_strlen($okpo) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $okpo when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $okpo when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['okpo'] = $okpo;
@@ -1476,7 +1485,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable certificate_number cannot be null');
         }
         if ((mb_strlen($certificate_number) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $certificate_number when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $certificate_number when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['certificate_number'] = $certificate_number;
@@ -1534,7 +1543,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable legal_title cannot be null');
         }
         if ((mb_strlen($legal_title) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $legal_title when calling Counterparty., must be smaller than or equal to 4096.');
+            throw new \InvalidArgumentException('invalid length for $legal_title when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 4096.');
         }
 
         $this->container['legal_title'] = $legal_title;
@@ -1565,7 +1574,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable legal_first_name cannot be null');
         }
         if ((mb_strlen($legal_first_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $legal_first_name when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $legal_first_name when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['legal_first_name'] = $legal_first_name;
@@ -1596,7 +1605,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable legal_last_name cannot be null');
         }
         if ((mb_strlen($legal_last_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $legal_last_name when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $legal_last_name when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['legal_last_name'] = $legal_last_name;
@@ -1627,7 +1636,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable legal_middle_name cannot be null');
         }
         if ((mb_strlen($legal_middle_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $legal_middle_name when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $legal_middle_name when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['legal_middle_name'] = $legal_middle_name;
@@ -1722,7 +1731,7 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable discount_card_number cannot be null');
         }
         if ((mb_strlen($discount_card_number) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $discount_card_number when calling Counterparty., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $discount_card_number when calling CreateCounterpartiesBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['discount_card_number'] = $discount_card_number;
@@ -2152,6 +2161,33 @@ class Counterparty implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
         $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \OpenAPI\Client\Model\ErrorErrorsInner[]
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \OpenAPI\Client\Model\ErrorErrorsInner[] $errors errors
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        }
+        $this->container['errors'] = $errors;
 
         return $this;
     }

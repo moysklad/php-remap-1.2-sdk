@@ -1,6 +1,6 @@
 <?php
 /**
- * LastOperationNames
+ * RetailStoreEnvironmentChequePrinterFiscalMemory
  *
  * PHP version 8.1
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * LastOperationNames Class Doc Comment
+ * RetailStoreEnvironmentChequePrinterFiscalMemory Class Doc Comment
  *
  * @category Class
- * @description Последние операции
+ * @description Фискальная память
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LastOperationNames implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailStoreEnvironmentChequePrinterFiscalMemory implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LastOperationNames implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LastOperationNames';
+    protected static $openAPIModelName = 'RetailStore_environment_chequePrinter_fiscalMemory';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class LastOperationNames implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'entity' => 'string',
-        'name' => 'string'
+        'fiscal_data_version' => 'string',
+        'fiscal_validity_date' => '\DateTime'
     ];
 
     /**
@@ -70,8 +70,8 @@ class LastOperationNames implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'entity' => null,
-        'name' => null
+        'fiscal_data_version' => null,
+        'fiscal_validity_date' => 'date-time'
     ];
 
     /**
@@ -80,8 +80,8 @@ class LastOperationNames implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'entity' => false,
-        'name' => false
+        'fiscal_data_version' => false,
+        'fiscal_validity_date' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class LastOperationNames implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'entity' => 'entity',
-        'name' => 'name'
+        'fiscal_data_version' => 'fiscalDataVersion',
+        'fiscal_validity_date' => 'fiscalValidityDate'
     ];
 
     /**
@@ -180,8 +180,8 @@ class LastOperationNames implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'entity' => 'setEntity',
-        'name' => 'setName'
+        'fiscal_data_version' => 'setFiscalDataVersion',
+        'fiscal_validity_date' => 'setFiscalValidityDate'
     ];
 
     /**
@@ -190,8 +190,8 @@ class LastOperationNames implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'entity' => 'getEntity',
-        'name' => 'getName'
+        'fiscal_data_version' => 'getFiscalDataVersion',
+        'fiscal_validity_date' => 'getFiscalValidityDate'
     ];
 
     /**
@@ -251,8 +251,8 @@ class LastOperationNames implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('entity', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('fiscal_data_version', $data ?? [], null);
+        $this->setIfExists('fiscal_validity_date', $data ?? [], null);
     }
 
     /**
@@ -282,12 +282,8 @@ class LastOperationNames implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['entity']) && (mb_strlen($this->container['entity']) > 255)) {
-            $invalidProperties[] = "invalid value for 'entity', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        if (!is_null($this->container['fiscal_data_version']) && (mb_strlen($this->container['fiscal_data_version']) > 255)) {
+            $invalidProperties[] = "invalid value for 'fiscal_data_version', the character length must be smaller than or equal to 255.";
         }
 
         return $invalidProperties;
@@ -306,63 +302,59 @@ class LastOperationNames implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets entity
+     * Gets fiscal_data_version
      *
      * @return string|null
      */
-    public function getEntity()
+    public function getFiscalDataVersion()
     {
-        return $this->container['entity'];
+        return $this->container['fiscal_data_version'];
     }
 
     /**
-     * Sets entity
+     * Sets fiscal_data_version
      *
-     * @param string|null $entity Ключевое слово
+     * @param string|null $fiscal_data_version Версия фискальных данных
      *
      * @return self
      */
-    public function setEntity($entity)
+    public function setFiscalDataVersion($fiscal_data_version)
     {
-        if (is_null($entity)) {
-            throw new \InvalidArgumentException('non-nullable entity cannot be null');
+        if (is_null($fiscal_data_version)) {
+            throw new \InvalidArgumentException('non-nullable fiscal_data_version cannot be null');
         }
-        if ((mb_strlen($entity) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $entity when calling LastOperationNames., must be smaller than or equal to 255.');
+        if ((mb_strlen($fiscal_data_version) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $fiscal_data_version when calling RetailStoreEnvironmentChequePrinterFiscalMemory., must be smaller than or equal to 255.');
         }
 
-        $this->container['entity'] = $entity;
+        $this->container['fiscal_data_version'] = $fiscal_data_version;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets fiscal_validity_date
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getName()
+    public function getFiscalValidityDate()
     {
-        return $this->container['name'];
+        return $this->container['fiscal_validity_date'];
     }
 
     /**
-     * Sets name
+     * Sets fiscal_validity_date
      *
-     * @param string|null $name Наименование (номер) последней операции
+     * @param \DateTime|null $fiscal_validity_date Дата окончания действия фискальной памяти
      *
      * @return self
      */
-    public function setName($name)
+    public function setFiscalValidityDate($fiscal_validity_date)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($fiscal_validity_date)) {
+            throw new \InvalidArgumentException('non-nullable fiscal_validity_date cannot be null');
         }
-        if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling LastOperationNames., must be smaller than or equal to 255.');
-        }
-
-        $this->container['name'] = $name;
+        $this->container['fiscal_validity_date'] = $fiscal_validity_date;
 
         return $this;
     }

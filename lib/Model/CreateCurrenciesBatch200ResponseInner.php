@@ -1,6 +1,6 @@
 <?php
 /**
- * Uom
+ * CreateCurrenciesBatch200ResponseInner
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Uom Class Doc Comment
+ * CreateCurrenciesBatch200ResponseInner Class Doc Comment
  *
  * @category Class
- * @description Единица измерения
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateCurrenciesBatch200ResponseInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Uom';
+    protected static $openAPIModelName = 'createCurrenciesBatch_200_response_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,15 +59,21 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\Meta',
         'id' => 'string',
-        'account_id' => 'string',
+        'system' => 'bool',
         'name' => 'string',
-        'description' => 'string',
+        'full_name' => 'string',
         'code' => 'string',
-        'group' => '\OpenAPI\Client\Model\Group',
-        'owner' => '\OpenAPI\Client\Model\Employee',
-        'updated' => '\DateTime',
-        'shared' => 'bool',
-        'external_code' => 'string'
+        'iso_code' => 'string',
+        'multiplicity' => 'int',
+        'rate' => 'float',
+        'margin' => 'float',
+        'indirect' => 'bool',
+        'rate_update_type' => 'string',
+        'archived' => 'bool',
+        'default' => 'bool',
+        'major_unit' => '\OpenAPI\Client\Model\CurrencyMajorUnit',
+        'minor_unit' => '\OpenAPI\Client\Model\CurrencyMinorUnit',
+        'errors' => '\OpenAPI\Client\Model\ErrorErrorsInner[]'
     ];
 
     /**
@@ -81,15 +86,21 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'meta' => null,
         'id' => 'uuid',
-        'account_id' => 'uuid',
+        'system' => null,
         'name' => null,
-        'description' => null,
+        'full_name' => null,
         'code' => null,
-        'group' => null,
-        'owner' => null,
-        'updated' => 'date-time',
-        'shared' => null,
-        'external_code' => null
+        'iso_code' => null,
+        'multiplicity' => null,
+        'rate' => 'float',
+        'margin' => 'float',
+        'indirect' => null,
+        'rate_update_type' => null,
+        'archived' => null,
+        'default' => null,
+        'major_unit' => null,
+        'minor_unit' => null,
+        'errors' => null
     ];
 
     /**
@@ -100,15 +111,21 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'meta' => false,
         'id' => false,
-        'account_id' => false,
+        'system' => false,
         'name' => false,
-        'description' => true,
+        'full_name' => false,
         'code' => false,
-        'group' => false,
-        'owner' => true,
-        'updated' => false,
-        'shared' => false,
-        'external_code' => false
+        'iso_code' => false,
+        'multiplicity' => false,
+        'rate' => false,
+        'margin' => false,
+        'indirect' => false,
+        'rate_update_type' => false,
+        'archived' => false,
+        'default' => false,
+        'major_unit' => false,
+        'minor_unit' => false,
+        'errors' => false
     ];
 
     /**
@@ -199,15 +216,21 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'meta' => 'meta',
         'id' => 'id',
-        'account_id' => 'accountId',
+        'system' => 'system',
         'name' => 'name',
-        'description' => 'description',
+        'full_name' => 'fullName',
         'code' => 'code',
-        'group' => 'group',
-        'owner' => 'owner',
-        'updated' => 'updated',
-        'shared' => 'shared',
-        'external_code' => 'externalCode'
+        'iso_code' => 'isoCode',
+        'multiplicity' => 'multiplicity',
+        'rate' => 'rate',
+        'margin' => 'margin',
+        'indirect' => 'indirect',
+        'rate_update_type' => 'rateUpdateType',
+        'archived' => 'archived',
+        'default' => 'default',
+        'major_unit' => 'majorUnit',
+        'minor_unit' => 'minorUnit',
+        'errors' => 'errors'
     ];
 
     /**
@@ -218,15 +241,21 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'meta' => 'setMeta',
         'id' => 'setId',
-        'account_id' => 'setAccountId',
+        'system' => 'setSystem',
         'name' => 'setName',
-        'description' => 'setDescription',
+        'full_name' => 'setFullName',
         'code' => 'setCode',
-        'group' => 'setGroup',
-        'owner' => 'setOwner',
-        'updated' => 'setUpdated',
-        'shared' => 'setShared',
-        'external_code' => 'setExternalCode'
+        'iso_code' => 'setIsoCode',
+        'multiplicity' => 'setMultiplicity',
+        'rate' => 'setRate',
+        'margin' => 'setMargin',
+        'indirect' => 'setIndirect',
+        'rate_update_type' => 'setRateUpdateType',
+        'archived' => 'setArchived',
+        'default' => 'setDefault',
+        'major_unit' => 'setMajorUnit',
+        'minor_unit' => 'setMinorUnit',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -237,15 +266,21 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'meta' => 'getMeta',
         'id' => 'getId',
-        'account_id' => 'getAccountId',
+        'system' => 'getSystem',
         'name' => 'getName',
-        'description' => 'getDescription',
+        'full_name' => 'getFullName',
         'code' => 'getCode',
-        'group' => 'getGroup',
-        'owner' => 'getOwner',
-        'updated' => 'getUpdated',
-        'shared' => 'getShared',
-        'external_code' => 'getExternalCode'
+        'iso_code' => 'getIsoCode',
+        'multiplicity' => 'getMultiplicity',
+        'rate' => 'getRate',
+        'margin' => 'getMargin',
+        'indirect' => 'getIndirect',
+        'rate_update_type' => 'getRateUpdateType',
+        'archived' => 'getArchived',
+        'default' => 'getDefault',
+        'major_unit' => 'getMajorUnit',
+        'minor_unit' => 'getMinorUnit',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -289,6 +324,21 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const RATE_UPDATE_TYPE_MANUAL = 'manual';
+    public const RATE_UPDATE_TYPE_AUTO = 'auto';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRateUpdateTypeAllowableValues()
+    {
+        return [
+            self::RATE_UPDATE_TYPE_MANUAL,
+            self::RATE_UPDATE_TYPE_AUTO,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -307,15 +357,21 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('system', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('full_name', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('group', $data ?? [], null);
-        $this->setIfExists('owner', $data ?? [], null);
-        $this->setIfExists('updated', $data ?? [], null);
-        $this->setIfExists('shared', $data ?? [], null);
-        $this->setIfExists('external_code', $data ?? [], null);
+        $this->setIfExists('iso_code', $data ?? [], null);
+        $this->setIfExists('multiplicity', $data ?? [], null);
+        $this->setIfExists('rate', $data ?? [], null);
+        $this->setIfExists('margin', $data ?? [], null);
+        $this->setIfExists('indirect', $data ?? [], null);
+        $this->setIfExists('rate_update_type', $data ?? [], null);
+        $this->setIfExists('archived', $data ?? [], null);
+        $this->setIfExists('default', $data ?? [], null);
+        $this->setIfExists('major_unit', $data ?? [], null);
+        $this->setIfExists('minor_unit', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -345,22 +401,18 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        $allowedValues = $this->getRateUpdateTypeAllowableValues();
+        if (!is_null($this->container['rate_update_type']) && !in_array($this->container['rate_update_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'rate_update_type', must be one of '%s'",
+                $this->container['rate_update_type'],
+                implode("', '", $allowedValues)
+            );
         }
 
-        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4096)) {
-            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
         }
-
-        if (!is_null($this->container['code']) && (mb_strlen($this->container['code']) > 255)) {
-            $invalidProperties[] = "invalid value for 'code', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['external_code']) && (mb_strlen($this->container['external_code']) > 255)) {
-            $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
-        }
-
         return $invalidProperties;
     }
 
@@ -416,7 +468,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id ID единицы измерения
+     * @param string|null $id ID валюты
      *
      * @return self
      */
@@ -431,28 +483,28 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets account_id
+     * Gets system
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getAccountId()
+    public function getSystem()
     {
-        return $this->container['account_id'];
+        return $this->container['system'];
     }
 
     /**
-     * Sets account_id
+     * Sets system
      *
-     * @param string|null $account_id ID учетной записи
+     * @param bool|null $system Системная валюта
      *
      * @return self
      */
-    public function setAccountId($account_id)
+    public function setSystem($system)
     {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        if (is_null($system)) {
+            throw new \InvalidArgumentException('non-nullable system cannot be null');
         }
-        $this->container['account_id'] = $account_id;
+        $this->container['system'] = $system;
 
         return $this;
     }
@@ -470,7 +522,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name Наименование единицы измерения
+     * @param string|null $name Краткое наименование валюты
      *
      * @return self
      */
@@ -479,49 +531,34 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Uom., must be smaller than or equal to 255.');
-        }
-
         $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets full_name
      *
      * @return string|null
      */
-    public function getDescription()
+    public function getFullName()
     {
-        return $this->container['description'];
+        return $this->container['full_name'];
     }
 
     /**
-     * Sets description
+     * Sets full_name
      *
-     * @param string|null $description Описание единицы измерения
+     * @param string|null $full_name Полное наименование валюты
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setFullName($full_name)
     {
-        if (is_null($description)) {
-            array_push($this->openAPINullablesSetToNull, 'description');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($full_name)) {
+            throw new \InvalidArgumentException('non-nullable full_name cannot be null');
         }
-        if (!is_null($description) && (mb_strlen($description) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling Uom., must be smaller than or equal to 4096.');
-        }
-
-        $this->container['description'] = $description;
+        $this->container['full_name'] = $full_name;
 
         return $this;
     }
@@ -539,7 +576,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets code
      *
-     * @param string|null $code Код единицы измерения
+     * @param string|null $code Цифровой код валюты
      *
      * @return self
      */
@@ -548,157 +585,314 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($code)) {
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        if ((mb_strlen($code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $code when calling Uom., must be smaller than or equal to 255.');
-        }
-
         $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets group
-     *
-     * @return \OpenAPI\Client\Model\Group|null
-     */
-    public function getGroup()
-    {
-        return $this->container['group'];
-    }
-
-    /**
-     * Sets group
-     *
-     * @param \OpenAPI\Client\Model\Group|null $group group
-     *
-     * @return self
-     */
-    public function setGroup($group)
-    {
-        if (is_null($group)) {
-            throw new \InvalidArgumentException('non-nullable group cannot be null');
-        }
-        $this->container['group'] = $group;
-
-        return $this;
-    }
-
-    /**
-     * Gets owner
-     *
-     * @return \OpenAPI\Client\Model\Employee|null
-     */
-    public function getOwner()
-    {
-        return $this->container['owner'];
-    }
-
-    /**
-     * Sets owner
-     *
-     * @param \OpenAPI\Client\Model\Employee|null $owner Метаданные владельца (Сотрудника)
-     *
-     * @return self
-     */
-    public function setOwner($owner)
-    {
-        if (is_null($owner)) {
-            array_push($this->openAPINullablesSetToNull, 'owner');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('owner', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['owner'] = $owner;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdated()
-    {
-        return $this->container['updated'];
-    }
-
-    /**
-     * Sets updated
-     *
-     * @param \DateTime|null $updated Момент последнего обновления сущности
-     *
-     * @return self
-     */
-    public function setUpdated($updated)
-    {
-        if (is_null($updated)) {
-            throw new \InvalidArgumentException('non-nullable updated cannot be null');
-        }
-        $this->container['updated'] = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Gets shared
-     *
-     * @return bool|null
-     */
-    public function getShared()
-    {
-        return $this->container['shared'];
-    }
-
-    /**
-     * Sets shared
-     *
-     * @param bool|null $shared Общий доступ
-     *
-     * @return self
-     */
-    public function setShared($shared)
-    {
-        if (is_null($shared)) {
-            throw new \InvalidArgumentException('non-nullable shared cannot be null');
-        }
-        $this->container['shared'] = $shared;
-
-        return $this;
-    }
-
-    /**
-     * Gets external_code
+     * Gets iso_code
      *
      * @return string|null
      */
-    public function getExternalCode()
+    public function getIsoCode()
     {
-        return $this->container['external_code'];
+        return $this->container['iso_code'];
     }
 
     /**
-     * Sets external_code
+     * Sets iso_code
      *
-     * @param string|null $external_code Внешний код единицы измерения
+     * @param string|null $iso_code Буквенный код валюты
      *
      * @return self
      */
-    public function setExternalCode($external_code)
+    public function setIsoCode($iso_code)
     {
-        if (is_null($external_code)) {
-            throw new \InvalidArgumentException('non-nullable external_code cannot be null');
+        if (is_null($iso_code)) {
+            throw new \InvalidArgumentException('non-nullable iso_code cannot be null');
         }
-        if ((mb_strlen($external_code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $external_code when calling Uom., must be smaller than or equal to 255.');
-        }
+        $this->container['iso_code'] = $iso_code;
 
-        $this->container['external_code'] = $external_code;
+        return $this;
+    }
+
+    /**
+     * Gets multiplicity
+     *
+     * @return int|null
+     */
+    public function getMultiplicity()
+    {
+        return $this->container['multiplicity'];
+    }
+
+    /**
+     * Sets multiplicity
+     *
+     * @param int|null $multiplicity Кратность курса валюты
+     *
+     * @return self
+     */
+    public function setMultiplicity($multiplicity)
+    {
+        if (is_null($multiplicity)) {
+            throw new \InvalidArgumentException('non-nullable multiplicity cannot be null');
+        }
+        $this->container['multiplicity'] = $multiplicity;
+
+        return $this;
+    }
+
+    /**
+     * Gets rate
+     *
+     * @return float|null
+     */
+    public function getRate()
+    {
+        return $this->container['rate'];
+    }
+
+    /**
+     * Sets rate
+     *
+     * @param float|null $rate Курс валюты
+     *
+     * @return self
+     */
+    public function setRate($rate)
+    {
+        if (is_null($rate)) {
+            throw new \InvalidArgumentException('non-nullable rate cannot be null');
+        }
+        $this->container['rate'] = $rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets margin
+     *
+     * @return float|null
+     */
+    public function getMargin()
+    {
+        return $this->container['margin'];
+    }
+
+    /**
+     * Sets margin
+     *
+     * @param float|null $margin Наценка при автоматическом обновлении курса
+     *
+     * @return self
+     */
+    public function setMargin($margin)
+    {
+        if (is_null($margin)) {
+            throw new \InvalidArgumentException('non-nullable margin cannot be null');
+        }
+        $this->container['margin'] = $margin;
+
+        return $this;
+    }
+
+    /**
+     * Gets indirect
+     *
+     * @return bool|null
+     */
+    public function getIndirect()
+    {
+        return $this->container['indirect'];
+    }
+
+    /**
+     * Sets indirect
+     *
+     * @param bool|null $indirect Признак обратного курса валюты
+     *
+     * @return self
+     */
+    public function setIndirect($indirect)
+    {
+        if (is_null($indirect)) {
+            throw new \InvalidArgumentException('non-nullable indirect cannot be null');
+        }
+        $this->container['indirect'] = $indirect;
+
+        return $this;
+    }
+
+    /**
+     * Gets rate_update_type
+     *
+     * @return string|null
+     */
+    public function getRateUpdateType()
+    {
+        return $this->container['rate_update_type'];
+    }
+
+    /**
+     * Sets rate_update_type
+     *
+     * @param string|null $rate_update_type Способ обновления курса валюты
+     *
+     * @return self
+     */
+    public function setRateUpdateType($rate_update_type)
+    {
+        if (is_null($rate_update_type)) {
+            throw new \InvalidArgumentException('non-nullable rate_update_type cannot be null');
+        }
+        $allowedValues = $this->getRateUpdateTypeAllowableValues();
+        if (!in_array($rate_update_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'rate_update_type', must be one of '%s'",
+                    $rate_update_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['rate_update_type'] = $rate_update_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived
+     *
+     * @return bool|null
+     */
+    public function getArchived()
+    {
+        return $this->container['archived'];
+    }
+
+    /**
+     * Sets archived
+     *
+     * @param bool|null $archived Добавлена ли валюта в архив
+     *
+     * @return self
+     */
+    public function setArchived($archived)
+    {
+        if (is_null($archived)) {
+            throw new \InvalidArgumentException('non-nullable archived cannot be null');
+        }
+        $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets default
+     *
+     * @return bool|null
+     */
+    public function getDefault()
+    {
+        return $this->container['default'];
+    }
+
+    /**
+     * Sets default
+     *
+     * @param bool|null $default Валюта учета по умолчанию
+     *
+     * @return self
+     */
+    public function setDefault($default)
+    {
+        if (is_null($default)) {
+            throw new \InvalidArgumentException('non-nullable default cannot be null');
+        }
+        $this->container['default'] = $default;
+
+        return $this;
+    }
+
+    /**
+     * Gets major_unit
+     *
+     * @return \OpenAPI\Client\Model\CurrencyMajorUnit|null
+     */
+    public function getMajorUnit()
+    {
+        return $this->container['major_unit'];
+    }
+
+    /**
+     * Sets major_unit
+     *
+     * @param \OpenAPI\Client\Model\CurrencyMajorUnit|null $major_unit major_unit
+     *
+     * @return self
+     */
+    public function setMajorUnit($major_unit)
+    {
+        if (is_null($major_unit)) {
+            throw new \InvalidArgumentException('non-nullable major_unit cannot be null');
+        }
+        $this->container['major_unit'] = $major_unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets minor_unit
+     *
+     * @return \OpenAPI\Client\Model\CurrencyMinorUnit|null
+     */
+    public function getMinorUnit()
+    {
+        return $this->container['minor_unit'];
+    }
+
+    /**
+     * Sets minor_unit
+     *
+     * @param \OpenAPI\Client\Model\CurrencyMinorUnit|null $minor_unit minor_unit
+     *
+     * @return self
+     */
+    public function setMinorUnit($minor_unit)
+    {
+        if (is_null($minor_unit)) {
+            throw new \InvalidArgumentException('non-nullable minor_unit cannot be null');
+        }
+        $this->container['minor_unit'] = $minor_unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \OpenAPI\Client\Model\ErrorErrorsInner[]
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \OpenAPI\Client\Model\ErrorErrorsInner[] $errors errors
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        }
+        $this->container['errors'] = $errors;
 
         return $this;
     }

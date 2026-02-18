@@ -117,7 +117,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => false,
         'id' => false,
         'account_id' => false,
-        'owner' => false,
+        'owner' => true,
         'shared' => false,
         'group' => false,
         'updated' => false,
@@ -537,7 +537,14 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOwner($owner)
     {
         if (is_null($owner)) {
-            throw new \InvalidArgumentException('non-nullable owner cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'owner');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('owner', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['owner'] = $owner;
 

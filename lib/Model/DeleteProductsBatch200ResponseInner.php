@@ -1,6 +1,6 @@
 <?php
 /**
- * FiscalStatusMemory
+ * DeleteProductsBatch200ResponseInner
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * FiscalStatusMemory Class Doc Comment
+ * DeleteProductsBatch200ResponseInner Class Doc Comment
  *
  * @category Class
- * @description Статус фискальной памяти
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FiscalStatusMemory implements ModelInterface, ArrayAccess, \JsonSerializable
+class DeleteProductsBatch200ResponseInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class FiscalStatusMemory implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FiscalStatusMemory';
+    protected static $openAPIModelName = 'deleteProductsBatch_200_response_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,8 @@ class FiscalStatusMemory implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'error' => '\OpenAPI\Client\Model\FiscalError',
-        'not_send_doc_count' => 'int',
-        'not_send_first_doc_moment' => '\DateTime'
+        'info' => 'string',
+        'errors' => '\OpenAPI\Client\Model\ErrorErrorsInner[]'
     ];
 
     /**
@@ -71,9 +69,8 @@ class FiscalStatusMemory implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'error' => null,
-        'not_send_doc_count' => null,
-        'not_send_first_doc_moment' => 'date-time'
+        'info' => null,
+        'errors' => null
     ];
 
     /**
@@ -82,9 +79,8 @@ class FiscalStatusMemory implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'error' => false,
-        'not_send_doc_count' => false,
-        'not_send_first_doc_moment' => false
+        'info' => false,
+        'errors' => false
     ];
 
     /**
@@ -173,9 +169,8 @@ class FiscalStatusMemory implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'error' => 'error',
-        'not_send_doc_count' => 'notSendDocCount',
-        'not_send_first_doc_moment' => 'notSendFirstDocMoment'
+        'info' => 'info',
+        'errors' => 'errors'
     ];
 
     /**
@@ -184,9 +179,8 @@ class FiscalStatusMemory implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'error' => 'setError',
-        'not_send_doc_count' => 'setNotSendDocCount',
-        'not_send_first_doc_moment' => 'setNotSendFirstDocMoment'
+        'info' => 'setInfo',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -195,9 +189,8 @@ class FiscalStatusMemory implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'error' => 'getError',
-        'not_send_doc_count' => 'getNotSendDocCount',
-        'not_send_first_doc_moment' => 'getNotSendFirstDocMoment'
+        'info' => 'getInfo',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -257,9 +250,8 @@ class FiscalStatusMemory implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('error', $data ?? [], null);
-        $this->setIfExists('not_send_doc_count', $data ?? [], null);
-        $this->setIfExists('not_send_first_doc_moment', $data ?? [], null);
+        $this->setIfExists('info', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -289,6 +281,9 @@ class FiscalStatusMemory implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -305,82 +300,55 @@ class FiscalStatusMemory implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets error
+     * Gets info
      *
-     * @return \OpenAPI\Client\Model\FiscalError|null
+     * @return string|null
      */
-    public function getError()
+    public function getInfo()
     {
-        return $this->container['error'];
+        return $this->container['info'];
     }
 
     /**
-     * Sets error
+     * Sets info
      *
-     * @param \OpenAPI\Client\Model\FiscalError|null $error error
+     * @param string|null $info Информационное сообщение об удалении сущности
      *
      * @return self
      */
-    public function setError($error)
+    public function setInfo($info)
     {
-        if (is_null($error)) {
-            throw new \InvalidArgumentException('non-nullable error cannot be null');
+        if (is_null($info)) {
+            throw new \InvalidArgumentException('non-nullable info cannot be null');
         }
-        $this->container['error'] = $error;
+        $this->container['info'] = $info;
 
         return $this;
     }
 
     /**
-     * Gets not_send_doc_count
+     * Gets errors
      *
-     * @return int|null
+     * @return \OpenAPI\Client\Model\ErrorErrorsInner[]
      */
-    public function getNotSendDocCount()
+    public function getErrors()
     {
-        return $this->container['not_send_doc_count'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets not_send_doc_count
+     * Sets errors
      *
-     * @param int|null $not_send_doc_count Количество неотправленных документов
+     * @param \OpenAPI\Client\Model\ErrorErrorsInner[] $errors errors
      *
      * @return self
      */
-    public function setNotSendDocCount($not_send_doc_count)
+    public function setErrors($errors)
     {
-        if (is_null($not_send_doc_count)) {
-            throw new \InvalidArgumentException('non-nullable not_send_doc_count cannot be null');
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
         }
-        $this->container['not_send_doc_count'] = $not_send_doc_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets not_send_first_doc_moment
-     *
-     * @return \DateTime|null
-     */
-    public function getNotSendFirstDocMoment()
-    {
-        return $this->container['not_send_first_doc_moment'];
-    }
-
-    /**
-     * Sets not_send_first_doc_moment
-     *
-     * @param \DateTime|null $not_send_first_doc_moment Момент первого неотправленного документа
-     *
-     * @return self
-     */
-    public function setNotSendFirstDocMoment($not_send_first_doc_moment)
-    {
-        if (is_null($not_send_first_doc_moment)) {
-            throw new \InvalidArgumentException('non-nullable not_send_first_doc_moment cannot be null');
-        }
-        $this->container['not_send_first_doc_moment'] = $not_send_first_doc_moment;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

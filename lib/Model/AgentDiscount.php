@@ -1,6 +1,6 @@
 <?php
 /**
- * FiscalMemory
+ * AgentDiscount
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * FiscalMemory Class Doc Comment
+ * AgentDiscount Class Doc Comment
  *
  * @category Class
- * @description Фискальная память
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FiscalMemory implements ModelInterface, ArrayAccess, \JsonSerializable
+class AgentDiscount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class FiscalMemory implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FiscalMemory';
+    protected static $openAPIModelName = 'AgentDiscount';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +57,9 @@ class FiscalMemory implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'fiscal_data_version' => 'string',
-        'fiscal_validity_date' => '\DateTime'
+        'discount' => '\OpenAPI\Client\Model\DiscountBase',
+        'personal_discount' => 'float',
+        'demand_sum_correction' => 'float'
     ];
 
     /**
@@ -70,8 +70,9 @@ class FiscalMemory implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'fiscal_data_version' => null,
-        'fiscal_validity_date' => 'date-time'
+        'discount' => null,
+        'personal_discount' => 'double',
+        'demand_sum_correction' => 'double'
     ];
 
     /**
@@ -80,8 +81,9 @@ class FiscalMemory implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fiscal_data_version' => false,
-        'fiscal_validity_date' => false
+        'discount' => false,
+        'personal_discount' => false,
+        'demand_sum_correction' => false
     ];
 
     /**
@@ -170,8 +172,9 @@ class FiscalMemory implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'fiscal_data_version' => 'fiscalDataVersion',
-        'fiscal_validity_date' => 'fiscalValidityDate'
+        'discount' => 'discount',
+        'personal_discount' => 'personalDiscount',
+        'demand_sum_correction' => 'demandSumCorrection'
     ];
 
     /**
@@ -180,8 +183,9 @@ class FiscalMemory implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'fiscal_data_version' => 'setFiscalDataVersion',
-        'fiscal_validity_date' => 'setFiscalValidityDate'
+        'discount' => 'setDiscount',
+        'personal_discount' => 'setPersonalDiscount',
+        'demand_sum_correction' => 'setDemandSumCorrection'
     ];
 
     /**
@@ -190,8 +194,9 @@ class FiscalMemory implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'fiscal_data_version' => 'getFiscalDataVersion',
-        'fiscal_validity_date' => 'getFiscalValidityDate'
+        'discount' => 'getDiscount',
+        'personal_discount' => 'getPersonalDiscount',
+        'demand_sum_correction' => 'getDemandSumCorrection'
     ];
 
     /**
@@ -251,8 +256,9 @@ class FiscalMemory implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('fiscal_data_version', $data ?? [], null);
-        $this->setIfExists('fiscal_validity_date', $data ?? [], null);
+        $this->setIfExists('discount', $data ?? [], null);
+        $this->setIfExists('personal_discount', $data ?? [], null);
+        $this->setIfExists('demand_sum_correction', $data ?? [], null);
     }
 
     /**
@@ -282,10 +288,6 @@ class FiscalMemory implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['fiscal_data_version']) && (mb_strlen($this->container['fiscal_data_version']) > 255)) {
-            $invalidProperties[] = "invalid value for 'fiscal_data_version', the character length must be smaller than or equal to 255.";
-        }
-
         return $invalidProperties;
     }
 
@@ -302,59 +304,82 @@ class FiscalMemory implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets fiscal_data_version
+     * Gets discount
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\DiscountBase|null
      */
-    public function getFiscalDataVersion()
+    public function getDiscount()
     {
-        return $this->container['fiscal_data_version'];
+        return $this->container['discount'];
     }
 
     /**
-     * Sets fiscal_data_version
+     * Sets discount
      *
-     * @param string|null $fiscal_data_version Версия фискальных данных
+     * @param \OpenAPI\Client\Model\DiscountBase|null $discount Метаданные скидки
      *
      * @return self
      */
-    public function setFiscalDataVersion($fiscal_data_version)
+    public function setDiscount($discount)
     {
-        if (is_null($fiscal_data_version)) {
-            throw new \InvalidArgumentException('non-nullable fiscal_data_version cannot be null');
+        if (is_null($discount)) {
+            throw new \InvalidArgumentException('non-nullable discount cannot be null');
         }
-        if ((mb_strlen($fiscal_data_version) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $fiscal_data_version when calling FiscalMemory., must be smaller than or equal to 255.');
-        }
-
-        $this->container['fiscal_data_version'] = $fiscal_data_version;
+        $this->container['discount'] = $discount;
 
         return $this;
     }
 
     /**
-     * Gets fiscal_validity_date
+     * Gets personal_discount
      *
-     * @return \DateTime|null
+     * @return float|null
      */
-    public function getFiscalValidityDate()
+    public function getPersonalDiscount()
     {
-        return $this->container['fiscal_validity_date'];
+        return $this->container['personal_discount'];
     }
 
     /**
-     * Sets fiscal_validity_date
+     * Sets personal_discount
      *
-     * @param \DateTime|null $fiscal_validity_date Дата окончания действия фискальной памяти
+     * @param float|null $personal_discount Процент персональной скидки
      *
      * @return self
      */
-    public function setFiscalValidityDate($fiscal_validity_date)
+    public function setPersonalDiscount($personal_discount)
     {
-        if (is_null($fiscal_validity_date)) {
-            throw new \InvalidArgumentException('non-nullable fiscal_validity_date cannot be null');
+        if (is_null($personal_discount)) {
+            throw new \InvalidArgumentException('non-nullable personal_discount cannot be null');
         }
-        $this->container['fiscal_validity_date'] = $fiscal_validity_date;
+        $this->container['personal_discount'] = $personal_discount;
+
+        return $this;
+    }
+
+    /**
+     * Gets demand_sum_correction
+     *
+     * @return float|null
+     */
+    public function getDemandSumCorrection()
+    {
+        return $this->container['demand_sum_correction'];
+    }
+
+    /**
+     * Sets demand_sum_correction
+     *
+     * @param float|null $demand_sum_correction Коррекция суммы накоплений по скидке
+     *
+     * @return self
+     */
+    public function setDemandSumCorrection($demand_sum_correction)
+    {
+        if (is_null($demand_sum_correction)) {
+            throw new \InvalidArgumentException('non-nullable demand_sum_correction cannot be null');
+        }
+        $this->container['demand_sum_correction'] = $demand_sum_correction;
 
         return $this;
     }

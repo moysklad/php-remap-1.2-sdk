@@ -1,6 +1,6 @@
 <?php
 /**
- * Status
+ * RetailStoreState
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Status Class Doc Comment
+ * RetailStoreState Class Doc Comment
  *
  * @category Class
  * @description Статус точки продаж
@@ -41,7 +41,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Status implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailStoreState implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Status';
+    protected static $openAPIModelName = 'RetailStore_state';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,10 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sync' => '\OpenAPI\Client\Model\Sync',
+        'sync' => '\OpenAPI\Client\Model\RetailStoreStateSync',
         'last_check_moment' => '\DateTime',
-        'fiscal_memory' => '\OpenAPI\Client\Model\FiscalStatusMemory',
-        'payment_terminal' => '\OpenAPI\Client\Model\PaymentTerminal'
+        'fiscal_memory' => '\OpenAPI\Client\Model\RetailStoreStateFiscalMemory',
+        'payment_terminal' => '\OpenAPI\Client\Model\RetailStoreStatePaymentTerminal'
     ];
 
     /**
@@ -314,7 +314,7 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sync
      *
-     * @return \OpenAPI\Client\Model\Sync|null
+     * @return \OpenAPI\Client\Model\RetailStoreStateSync|null
      */
     public function getSync()
     {
@@ -324,7 +324,7 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sync
      *
-     * @param \OpenAPI\Client\Model\Sync|null $sync sync
+     * @param \OpenAPI\Client\Model\RetailStoreStateSync|null $sync sync
      *
      * @return self
      */
@@ -368,7 +368,7 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fiscal_memory
      *
-     * @return \OpenAPI\Client\Model\FiscalStatusMemory|null
+     * @return \OpenAPI\Client\Model\RetailStoreStateFiscalMemory|null
      */
     public function getFiscalMemory()
     {
@@ -378,7 +378,7 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fiscal_memory
      *
-     * @param \OpenAPI\Client\Model\FiscalStatusMemory|null $fiscal_memory fiscal_memory
+     * @param \OpenAPI\Client\Model\RetailStoreStateFiscalMemory|null $fiscal_memory fiscal_memory
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payment_terminal
      *
-     * @return \OpenAPI\Client\Model\PaymentTerminal|null
+     * @return \OpenAPI\Client\Model\RetailStoreStatePaymentTerminal|null
      */
     public function getPaymentTerminal()
     {
@@ -405,7 +405,7 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_terminal
      *
-     * @param \OpenAPI\Client\Model\PaymentTerminal|null $payment_terminal payment_terminal
+     * @param \OpenAPI\Client\Model\RetailStoreStatePaymentTerminal|null $payment_terminal payment_terminal
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * MinimumStockWarehouseVaried
+ * RetailStoreStatePaymentTerminal
  *
  * PHP version 8.1
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * MinimumStockWarehouseVaried Class Doc Comment
+ * RetailStoreStatePaymentTerminal Class Doc Comment
  *
  * @category Class
+ * @description Информация о платежном терминале
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailStoreStatePaymentTerminal implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MinimumStockWarehouseVaried';
+    protected static $openAPIModelName = 'RetailStore_state_paymentTerminal';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +58,7 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'store_balances' => '\OpenAPI\Client\Model\StoreBalanceList'
+        'acquiring_type' => 'string'
     ];
 
     /**
@@ -69,8 +69,7 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'store_balances' => null
+        'acquiring_type' => null
     ];
 
     /**
@@ -79,8 +78,7 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-        'store_balances' => false
+        'acquiring_type' => false
     ];
 
     /**
@@ -169,8 +167,7 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'store_balances' => 'storeBalances'
+        'acquiring_type' => 'acquiringType'
     ];
 
     /**
@@ -179,8 +176,7 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'store_balances' => 'setStoreBalances'
+        'acquiring_type' => 'setAcquiringType'
     ];
 
     /**
@@ -189,8 +185,7 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'store_balances' => 'getStoreBalances'
+        'acquiring_type' => 'getAcquiringType'
     ];
 
     /**
@@ -234,19 +229,6 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
-    public const TYPE_WAREHOUSE_VARIED = 'WAREHOUSE_VARIED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_WAREHOUSE_VARIED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -263,8 +245,7 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], 'WAREHOUSE_VARIED');
-        $this->setIfExists('store_balances', $data ?? [], null);
+        $this->setIfExists('acquiring_type', $data ?? [], null);
     }
 
     /**
@@ -294,16 +275,8 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['acquiring_type']) && (mb_strlen($this->container['acquiring_type']) > 255)) {
+            $invalidProperties[] = "invalid value for 'acquiring_type', the character length must be smaller than or equal to 255.";
         }
 
         return $invalidProperties;
@@ -322,65 +295,32 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets type
+     * Gets acquiring_type
      *
-     * @return string
+     * @return string|null
      */
-    public function getType()
+    public function getAcquiringType()
     {
-        return $this->container['type'];
+        return $this->container['acquiring_type'];
     }
 
     /**
-     * Sets type
+     * Sets acquiring_type
      *
-     * @param string $type type
+     * @param string|null $acquiring_type Тип эквайринга
      *
      * @return self
      */
-    public function setType($type)
+    public function setAcquiringType($acquiring_type)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($acquiring_type)) {
+            throw new \InvalidArgumentException('non-nullable acquiring_type cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if ((mb_strlen($acquiring_type) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $acquiring_type when calling RetailStoreStatePaymentTerminal., must be smaller than or equal to 255.');
         }
-        $this->container['type'] = $type;
 
-        return $this;
-    }
-
-    /**
-     * Gets store_balances
-     *
-     * @return \OpenAPI\Client\Model\StoreBalanceList|null
-     */
-    public function getStoreBalances()
-    {
-        return $this->container['store_balances'];
-    }
-
-    /**
-     * Sets store_balances
-     *
-     * @param \OpenAPI\Client\Model\StoreBalanceList|null $store_balances Неснижаемые остатки по складам
-     *
-     * @return self
-     */
-    public function setStoreBalances($store_balances)
-    {
-        if (is_null($store_balances)) {
-            throw new \InvalidArgumentException('non-nullable store_balances cannot be null');
-        }
-        $this->container['store_balances'] = $store_balances;
+        $this->container['acquiring_type'] = $acquiring_type;
 
         return $this;
     }

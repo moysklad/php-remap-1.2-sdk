@@ -1,6 +1,6 @@
 <?php
 /**
- * Product
+ * CreateProductsBatch200ResponseInner
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Product Class Doc Comment
+ * CreateProductsBatch200ResponseInner Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,87 +40,16 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Product implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateProductsBatch200ResponseInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
-
-    public const TRACKING_TYPE_BEER_ALCOHOL = 'BEER_ALCOHOL';
-    public const TRACKING_TYPE_BICYCLE = 'BICYCLE';
-    public const TRACKING_TYPE_ELECTRONICS = 'ELECTRONICS';
-    public const TRACKING_TYPE_FOOD_SUPPLEMENT = 'FOOD_SUPPLEMENT';
-    public const TRACKING_TYPE_LP_CLOTHES = 'LP_CLOTHES';
-    public const TRACKING_TYPE_LP_LINENS = 'LP_LINENS';
-    public const TRACKING_TYPE_MEDICAL_DEVICES = 'MEDICAL_DEVICES';
-    public const TRACKING_TYPE_MILK = 'MILK';
-    public const TRACKING_TYPE_NABEER = 'NABEER';
-    public const TRACKING_TYPE_NCP = 'NCP';
-    public const TRACKING_TYPE_NOT_TRACKED = 'NOT_TRACKED';
-    public const TRACKING_TYPE_OTP = 'OTP';
-    public const TRACKING_TYPE_PERFUMERY = 'PERFUMERY';
-    public const TRACKING_TYPE_PET_FOOD = 'PET_FOOD';
-    public const TRACKING_TYPE_SANITIZER = 'SANITIZER';
-    public const TRACKING_TYPE_SEAFOOD = 'SEAFOOD';
-    public const TRACKING_TYPE_SHOES = 'SHOES';
-    public const TRACKING_TYPE_SOFT_DRINKS = 'SOFT_DRINKS';
-    public const TRACKING_TYPE_TIRES = 'TIRES';
-    public const TRACKING_TYPE_TOBACCO = 'TOBACCO';
-    public const TRACKING_TYPE_VEGETABLE_OIL = 'VEGETABLE_OIL';
-    public const TRACKING_TYPE_VETPHARMA = 'VETPHARMA';
-    public const TRACKING_TYPE_WATER = 'WATER';
-
-    public const PPE_TYPE__2400001225408 = '2400001225408';
-    public const PPE_TYPE__2400001225606 = '2400001225606';
-    public const PPE_TYPE__2400001226108 = '2400001226108';
-    public const PPE_TYPE__2400001226306 = '2400001226306';
-    public const PPE_TYPE__2400001226405 = '2400001226405';
-    public const PPE_TYPE__2400001323807 = '2400001323807';
-    public const PPE_TYPE__2400001368105 = '2400001368105';
-    public const PPE_TYPE__2400001393107 = '2400001393107';
-    public const PPE_TYPE__2400001393503 = '2400001393503';
-    public const PPE_TYPE__2400001393602 = '2400001393602';
-    public const PPE_TYPE__2400001565306 = '2400001565306';
-    public const PPE_TYPE__2400001807703 = '2400001807703';
-    public const PPE_TYPE__2400001818303 = '2400001818303';
-    public const PPE_TYPE__2400001857005 = '2400001857005';
-    public const PPE_TYPE__2400001857203 = '2400001857203';
-    public const PPE_TYPE__2400001858309 = '2400001858309';
-    public const PPE_TYPE__2400001858507 = '2400001858507';
-    public const PPE_TYPE__2400002015909 = '2400002015909';
-    public const PPE_TYPE__2400002016005 = '2400002016005';
-    public const PPE_TYPE__2400002016104 = '2400002016104';
-    public const PPE_TYPE__2400002052805 = '2400002052805';
-    public const PPE_TYPE__2400002052904 = '2400002052904';
-    public const PPE_TYPE__2400002186203 = '2400002186203';
-    public const PPE_TYPE__2400002886707 = '2400002886707';
-    public const PPE_TYPE__2400002886806 = '2400002886806';
-    public const PPE_TYPE__2400002984502 = '2400002984502';
-    public const PPE_TYPE__2400003117107 = '2400003117107';
-    public const PPE_TYPE__2400003117206 = '2400003117206';
-    public const PPE_TYPE__2400003161209 = '2400003161209';
-    public const PPE_TYPE__2400003207907 = '2400003207907';
-    public const PPE_TYPE__2400003215308 = '2400003215308';
-    public const PPE_TYPE__2400003227806 = '2400003227806';
-    public const PPE_TYPE__2400003237409 = '2400003237409';
-    public const PPE_TYPE__2400003263408 = '2400003263408';
-    public const PPE_TYPE__2400003297700 = '2400003297700';
-    public const PPE_TYPE__2400003356704 = '2400003356704';
-    public const PPE_TYPE__2400003356803 = '2400003356803';
-    public const PPE_TYPE__2400003356902 = '2400003356902';
-    public const PPE_TYPE__2400003433108 = '2400003433108';
-    public const PPE_TYPE__2400003492303 = '2400003492303';
-    public const PPE_TYPE__2400003495700 = '2400003495700';
-    public const PPE_TYPE__2400003495809 = '2400003495809';
-    public const PPE_TYPE__2400003495908 = '2400003495908';
-    public const PPE_TYPE__2400003496004 = '2400003496004';
-    public const PPE_TYPE__2400003496103 = '2400003496103';
-    public const PPE_TYPE__2400003675805 = '2400003675805';
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Product';
+    protected static $openAPIModelName = 'createProductsBatch_200_response_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -177,7 +106,8 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'partial_disposal' => 'bool',
         'things' => 'string[]',
         'sync_id' => 'string',
-        'ppe_type' => 'string'
+        'ppe_type' => 'string',
+        'errors' => '\OpenAPI\Client\Model\ErrorErrorsInner[]'
     ];
 
     /**
@@ -237,7 +167,8 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'partial_disposal' => null,
         'things' => null,
         'sync_id' => 'uuid',
-        'ppe_type' => null
+        'ppe_type' => null,
+        'errors' => null
     ];
 
     /**
@@ -295,7 +226,8 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'partial_disposal' => false,
         'things' => false,
         'sync_id' => false,
-        'ppe_type' => false
+        'ppe_type' => false,
+        'errors' => false
     ];
 
     /**
@@ -433,7 +365,8 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'partial_disposal' => 'partialDisposal',
         'things' => 'things',
         'sync_id' => 'syncId',
-        'ppe_type' => 'ppeType'
+        'ppe_type' => 'ppeType',
+        'errors' => 'errors'
     ];
 
     /**
@@ -491,7 +424,8 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'partial_disposal' => 'setPartialDisposal',
         'things' => 'setThings',
         'sync_id' => 'setSyncId',
-        'ppe_type' => 'setPpeType'
+        'ppe_type' => 'setPpeType',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -549,7 +483,8 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         'partial_disposal' => 'getPartialDisposal',
         'things' => 'getThings',
         'sync_id' => 'getSyncId',
-        'ppe_type' => 'getPpeType'
+        'ppe_type' => 'getPpeType',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -703,6 +638,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('things', $data ?? [], null);
         $this->setIfExists('sync_id', $data ?? [], null);
         $this->setIfExists('ppe_type', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -790,6 +726,9 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -990,7 +929,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Product., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling CreateProductsBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['name'] = $name;
@@ -1021,7 +960,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
         if ((mb_strlen($code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $code when calling Product., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $code when calling CreateProductsBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['code'] = $code;
@@ -1052,7 +991,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable external_code cannot be null');
         }
         if ((mb_strlen($external_code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $external_code when calling Product., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $external_code when calling CreateProductsBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['external_code'] = $external_code;
@@ -1110,7 +1049,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable article cannot be null');
         }
         if ((mb_strlen($article) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $article when calling Product., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $article when calling CreateProductsBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['article'] = $article;
@@ -1148,7 +1087,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         if (!is_null($description) && (mb_strlen($description) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling Product., must be smaller than or equal to 4096.');
+            throw new \InvalidArgumentException('invalid length for $description when calling CreateProductsBatch200ResponseInner., must be smaller than or equal to 4096.');
         }
 
         $this->container['description'] = $description;
@@ -1180,10 +1119,10 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         if (($vat > 99)) {
-            throw new \InvalidArgumentException('invalid value for $vat when calling Product., must be smaller than or equal to 99.');
+            throw new \InvalidArgumentException('invalid value for $vat when calling CreateProductsBatch200ResponseInner., must be smaller than or equal to 99.');
         }
         if (($vat < 0)) {
-            throw new \InvalidArgumentException('invalid value for $vat when calling Product., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for $vat when calling CreateProductsBatch200ResponseInner., must be bigger than or equal to 0.');
         }
 
         $this->container['vat'] = $vat;
@@ -1519,7 +1458,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         if (($weight < 0)) {
-            throw new \InvalidArgumentException('invalid value for $weight when calling Product., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for $weight when calling CreateProductsBatch200ResponseInner., must be bigger than or equal to 0.');
         }
 
         $this->container['weight'] = $weight;
@@ -1551,7 +1490,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         if (($volume < 0)) {
-            throw new \InvalidArgumentException('invalid value for $volume when calling Product., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for $volume when calling CreateProductsBatch200ResponseInner., must be bigger than or equal to 0.');
         }
 
         $this->container['volume'] = $volume;
@@ -1921,7 +1860,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable tnved cannot be null');
         }
         if ((mb_strlen($tnved) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $tnved when calling Product., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $tnved when calling CreateProductsBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['tnved'] = $tnved;
@@ -2278,6 +2217,33 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable ppe_type cannot be null');
         }
         $this->container['ppe_type'] = $ppe_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \OpenAPI\Client\Model\ErrorErrorsInner[]
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \OpenAPI\Client\Model\ErrorErrorsInner[] $errors errors
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        }
+        $this->container['errors'] = $errors;
 
         return $this;
     }

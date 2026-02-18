@@ -1,6 +1,6 @@
 <?php
 /**
- * Environment
+ * RetailStoreStateFiscalMemory
  *
  * PHP version 8.1
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Environment Class Doc Comment
+ * RetailStoreStateFiscalMemory Class Doc Comment
  *
  * @category Class
- * @description Среда точки продаж
+ * @description Статус фискальной памяти
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailStoreStateFiscalMemory implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Environment';
+    protected static $openAPIModelName = 'RetailStore_state_fiscalMemory';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,9 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'device' => 'string',
-        'os' => 'string',
-        'software' => '\OpenAPI\Client\Model\Software',
-        'cheque_printer' => '\OpenAPI\Client\Model\ChequePrinter',
-        'payment_terminal' => 'string'
+        'error' => '\OpenAPI\Client\Model\RetailStoreStateFiscalMemoryError',
+        'not_send_doc_count' => 'int',
+        'not_send_first_doc_moment' => '\DateTime'
     ];
 
     /**
@@ -73,11 +71,9 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'device' => null,
-        'os' => null,
-        'software' => null,
-        'cheque_printer' => null,
-        'payment_terminal' => null
+        'error' => null,
+        'not_send_doc_count' => null,
+        'not_send_first_doc_moment' => 'date-time'
     ];
 
     /**
@@ -86,11 +82,9 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'device' => false,
-        'os' => false,
-        'software' => false,
-        'cheque_printer' => false,
-        'payment_terminal' => false
+        'error' => false,
+        'not_send_doc_count' => false,
+        'not_send_first_doc_moment' => false
     ];
 
     /**
@@ -179,11 +173,9 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'device' => 'device',
-        'os' => 'os',
-        'software' => 'software',
-        'cheque_printer' => 'chequePrinter',
-        'payment_terminal' => 'paymentTerminal'
+        'error' => 'error',
+        'not_send_doc_count' => 'notSendDocCount',
+        'not_send_first_doc_moment' => 'notSendFirstDocMoment'
     ];
 
     /**
@@ -192,11 +184,9 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'device' => 'setDevice',
-        'os' => 'setOs',
-        'software' => 'setSoftware',
-        'cheque_printer' => 'setChequePrinter',
-        'payment_terminal' => 'setPaymentTerminal'
+        'error' => 'setError',
+        'not_send_doc_count' => 'setNotSendDocCount',
+        'not_send_first_doc_moment' => 'setNotSendFirstDocMoment'
     ];
 
     /**
@@ -205,11 +195,9 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'device' => 'getDevice',
-        'os' => 'getOs',
-        'software' => 'getSoftware',
-        'cheque_printer' => 'getChequePrinter',
-        'payment_terminal' => 'getPaymentTerminal'
+        'error' => 'getError',
+        'not_send_doc_count' => 'getNotSendDocCount',
+        'not_send_first_doc_moment' => 'getNotSendFirstDocMoment'
     ];
 
     /**
@@ -269,11 +257,9 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('device', $data ?? [], null);
-        $this->setIfExists('os', $data ?? [], null);
-        $this->setIfExists('software', $data ?? [], null);
-        $this->setIfExists('cheque_printer', $data ?? [], null);
-        $this->setIfExists('payment_terminal', $data ?? [], null);
+        $this->setIfExists('error', $data ?? [], null);
+        $this->setIfExists('not_send_doc_count', $data ?? [], null);
+        $this->setIfExists('not_send_first_doc_moment', $data ?? [], null);
     }
 
     /**
@@ -303,18 +289,6 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['device']) && (mb_strlen($this->container['device']) > 255)) {
-            $invalidProperties[] = "invalid value for 'device', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['os']) && (mb_strlen($this->container['os']) > 255)) {
-            $invalidProperties[] = "invalid value for 'os', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['payment_terminal']) && (mb_strlen($this->container['payment_terminal']) > 255)) {
-            $invalidProperties[] = "invalid value for 'payment_terminal', the character length must be smaller than or equal to 255.";
-        }
-
         return $invalidProperties;
     }
 
@@ -331,148 +305,82 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets device
+     * Gets error
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\RetailStoreStateFiscalMemoryError|null
      */
-    public function getDevice()
+    public function getError()
     {
-        return $this->container['device'];
+        return $this->container['error'];
     }
 
     /**
-     * Sets device
+     * Sets error
      *
-     * @param string|null $device Устройство
+     * @param \OpenAPI\Client\Model\RetailStoreStateFiscalMemoryError|null $error error
      *
      * @return self
      */
-    public function setDevice($device)
+    public function setError($error)
     {
-        if (is_null($device)) {
-            throw new \InvalidArgumentException('non-nullable device cannot be null');
+        if (is_null($error)) {
+            throw new \InvalidArgumentException('non-nullable error cannot be null');
         }
-        if ((mb_strlen($device) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $device when calling Environment., must be smaller than or equal to 255.');
-        }
-
-        $this->container['device'] = $device;
+        $this->container['error'] = $error;
 
         return $this;
     }
 
     /**
-     * Gets os
+     * Gets not_send_doc_count
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getOs()
+    public function getNotSendDocCount()
     {
-        return $this->container['os'];
+        return $this->container['not_send_doc_count'];
     }
 
     /**
-     * Sets os
+     * Sets not_send_doc_count
      *
-     * @param string|null $os Операционная система
+     * @param int|null $not_send_doc_count Количество неотправленных документов
      *
      * @return self
      */
-    public function setOs($os)
+    public function setNotSendDocCount($not_send_doc_count)
     {
-        if (is_null($os)) {
-            throw new \InvalidArgumentException('non-nullable os cannot be null');
+        if (is_null($not_send_doc_count)) {
+            throw new \InvalidArgumentException('non-nullable not_send_doc_count cannot be null');
         }
-        if ((mb_strlen($os) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $os when calling Environment., must be smaller than or equal to 255.');
-        }
-
-        $this->container['os'] = $os;
+        $this->container['not_send_doc_count'] = $not_send_doc_count;
 
         return $this;
     }
 
     /**
-     * Gets software
+     * Gets not_send_first_doc_moment
      *
-     * @return \OpenAPI\Client\Model\Software|null
+     * @return \DateTime|null
      */
-    public function getSoftware()
+    public function getNotSendFirstDocMoment()
     {
-        return $this->container['software'];
+        return $this->container['not_send_first_doc_moment'];
     }
 
     /**
-     * Sets software
+     * Sets not_send_first_doc_moment
      *
-     * @param \OpenAPI\Client\Model\Software|null $software software
+     * @param \DateTime|null $not_send_first_doc_moment Момент первого неотправленного документа
      *
      * @return self
      */
-    public function setSoftware($software)
+    public function setNotSendFirstDocMoment($not_send_first_doc_moment)
     {
-        if (is_null($software)) {
-            throw new \InvalidArgumentException('non-nullable software cannot be null');
+        if (is_null($not_send_first_doc_moment)) {
+            throw new \InvalidArgumentException('non-nullable not_send_first_doc_moment cannot be null');
         }
-        $this->container['software'] = $software;
-
-        return $this;
-    }
-
-    /**
-     * Gets cheque_printer
-     *
-     * @return \OpenAPI\Client\Model\ChequePrinter|null
-     */
-    public function getChequePrinter()
-    {
-        return $this->container['cheque_printer'];
-    }
-
-    /**
-     * Sets cheque_printer
-     *
-     * @param \OpenAPI\Client\Model\ChequePrinter|null $cheque_printer cheque_printer
-     *
-     * @return self
-     */
-    public function setChequePrinter($cheque_printer)
-    {
-        if (is_null($cheque_printer)) {
-            throw new \InvalidArgumentException('non-nullable cheque_printer cannot be null');
-        }
-        $this->container['cheque_printer'] = $cheque_printer;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_terminal
-     *
-     * @return string|null
-     */
-    public function getPaymentTerminal()
-    {
-        return $this->container['payment_terminal'];
-    }
-
-    /**
-     * Sets payment_terminal
-     *
-     * @param string|null $payment_terminal Терминал оплаты
-     *
-     * @return self
-     */
-    public function setPaymentTerminal($payment_terminal)
-    {
-        if (is_null($payment_terminal)) {
-            throw new \InvalidArgumentException('non-nullable payment_terminal cannot be null');
-        }
-        if ((mb_strlen($payment_terminal) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $payment_terminal when calling Environment., must be smaller than or equal to 255.');
-        }
-
-        $this->container['payment_terminal'] = $payment_terminal;
+        $this->container['not_send_first_doc_moment'] = $not_send_first_doc_moment;
 
         return $this;
     }

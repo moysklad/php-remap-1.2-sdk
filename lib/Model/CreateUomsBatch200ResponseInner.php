@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorErrorsInner
+ * CreateUomsBatch200ResponseInner
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ErrorErrorsInner Class Doc Comment
+ * CreateUomsBatch200ResponseInner Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ErrorErrorsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateUomsBatch200ResponseInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ErrorErrorsInner implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'error_errors_inner';
+    protected static $openAPIModelName = 'createUomsBatch_200_response_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,15 +57,18 @@ class ErrorErrorsInner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'error' => 'string',
-        'parameter' => 'string',
-        'code' => 'int',
-        'error_message' => 'string',
-        'more_info' => 'string',
-        'line' => 'int',
-        'column' => 'int',
-        'dependencies' => '\OpenAPI\Client\Model\Meta[]',
-        'meta' => '\OpenAPI\Client\Model\Meta'
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'id' => 'string',
+        'account_id' => 'string',
+        'name' => 'string',
+        'description' => 'string',
+        'code' => 'string',
+        'group' => '\OpenAPI\Client\Model\Group',
+        'owner' => '\OpenAPI\Client\Model\Employee',
+        'updated' => '\DateTime',
+        'shared' => 'bool',
+        'external_code' => 'string',
+        'errors' => '\OpenAPI\Client\Model\ErrorErrorsInner[]'
     ];
 
     /**
@@ -76,15 +79,18 @@ class ErrorErrorsInner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'error' => null,
-        'parameter' => null,
+        'meta' => null,
+        'id' => 'uuid',
+        'account_id' => 'uuid',
+        'name' => null,
+        'description' => null,
         'code' => null,
-        'error_message' => null,
-        'more_info' => 'uri-reference',
-        'line' => null,
-        'column' => null,
-        'dependencies' => null,
-        'meta' => null
+        'group' => null,
+        'owner' => null,
+        'updated' => 'date-time',
+        'shared' => null,
+        'external_code' => null,
+        'errors' => null
     ];
 
     /**
@@ -93,15 +99,18 @@ class ErrorErrorsInner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'error' => false,
-        'parameter' => false,
+        'meta' => false,
+        'id' => false,
+        'account_id' => false,
+        'name' => false,
+        'description' => true,
         'code' => false,
-        'error_message' => false,
-        'more_info' => false,
-        'line' => false,
-        'column' => false,
-        'dependencies' => false,
-        'meta' => false
+        'group' => false,
+        'owner' => true,
+        'updated' => false,
+        'shared' => false,
+        'external_code' => false,
+        'errors' => false
     ];
 
     /**
@@ -190,15 +199,18 @@ class ErrorErrorsInner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'error' => 'error',
-        'parameter' => 'parameter',
+        'meta' => 'meta',
+        'id' => 'id',
+        'account_id' => 'accountId',
+        'name' => 'name',
+        'description' => 'description',
         'code' => 'code',
-        'error_message' => 'error_message',
-        'more_info' => 'moreInfo',
-        'line' => 'line',
-        'column' => 'column',
-        'dependencies' => 'dependencies',
-        'meta' => 'meta'
+        'group' => 'group',
+        'owner' => 'owner',
+        'updated' => 'updated',
+        'shared' => 'shared',
+        'external_code' => 'externalCode',
+        'errors' => 'errors'
     ];
 
     /**
@@ -207,15 +219,18 @@ class ErrorErrorsInner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'error' => 'setError',
-        'parameter' => 'setParameter',
+        'meta' => 'setMeta',
+        'id' => 'setId',
+        'account_id' => 'setAccountId',
+        'name' => 'setName',
+        'description' => 'setDescription',
         'code' => 'setCode',
-        'error_message' => 'setErrorMessage',
-        'more_info' => 'setMoreInfo',
-        'line' => 'setLine',
-        'column' => 'setColumn',
-        'dependencies' => 'setDependencies',
-        'meta' => 'setMeta'
+        'group' => 'setGroup',
+        'owner' => 'setOwner',
+        'updated' => 'setUpdated',
+        'shared' => 'setShared',
+        'external_code' => 'setExternalCode',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -224,15 +239,18 @@ class ErrorErrorsInner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'error' => 'getError',
-        'parameter' => 'getParameter',
+        'meta' => 'getMeta',
+        'id' => 'getId',
+        'account_id' => 'getAccountId',
+        'name' => 'getName',
+        'description' => 'getDescription',
         'code' => 'getCode',
-        'error_message' => 'getErrorMessage',
-        'more_info' => 'getMoreInfo',
-        'line' => 'getLine',
-        'column' => 'getColumn',
-        'dependencies' => 'getDependencies',
-        'meta' => 'getMeta'
+        'group' => 'getGroup',
+        'owner' => 'getOwner',
+        'updated' => 'getUpdated',
+        'shared' => 'getShared',
+        'external_code' => 'getExternalCode',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -292,15 +310,18 @@ class ErrorErrorsInner implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('error', $data ?? [], null);
-        $this->setIfExists('parameter', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('error_message', $data ?? [], null);
-        $this->setIfExists('more_info', $data ?? [], null);
-        $this->setIfExists('line', $data ?? [], null);
-        $this->setIfExists('column', $data ?? [], null);
-        $this->setIfExists('dependencies', $data ?? [], null);
         $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('group', $data ?? [], null);
+        $this->setIfExists('owner', $data ?? [], null);
+        $this->setIfExists('updated', $data ?? [], null);
+        $this->setIfExists('shared', $data ?? [], null);
+        $this->setIfExists('external_code', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -330,8 +351,24 @@ class ErrorErrorsInner implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['error'] === null) {
-            $invalidProperties[] = "'error' can't be null";
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4096)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
+        }
+
+        if (!is_null($this->container['code']) && (mb_strlen($this->container['code']) > 255)) {
+            $invalidProperties[] = "invalid value for 'code', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['external_code']) && (mb_strlen($this->container['external_code']) > 255)) {
+            $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
+        }
+
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
         }
         return $invalidProperties;
     }
@@ -347,222 +384,6 @@ class ErrorErrorsInner implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets error
-     *
-     * @return string
-     */
-    public function getError()
-    {
-        return $this->container['error'];
-    }
-
-    /**
-     * Sets error
-     *
-     * @param string $error Заголовок ошибки
-     *
-     * @return self
-     */
-    public function setError($error)
-    {
-        if (is_null($error)) {
-            throw new \InvalidArgumentException('non-nullable error cannot be null');
-        }
-        $this->container['error'] = $error;
-
-        return $this;
-    }
-
-    /**
-     * Gets parameter
-     *
-     * @return string|null
-     */
-    public function getParameter()
-    {
-        return $this->container['parameter'];
-    }
-
-    /**
-     * Sets parameter
-     *
-     * @param string|null $parameter Параметр, на котором произошла ошибка
-     *
-     * @return self
-     */
-    public function setParameter($parameter)
-    {
-        if (is_null($parameter)) {
-            throw new \InvalidArgumentException('non-nullable parameter cannot be null');
-        }
-        $this->container['parameter'] = $parameter;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code Код ошибки
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets error_message
-     *
-     * @return string|null
-     */
-    public function getErrorMessage()
-    {
-        return $this->container['error_message'];
-    }
-
-    /**
-     * Sets error_message
-     *
-     * @param string|null $error_message Сообщение, прилагаемое к ошибке
-     *
-     * @return self
-     */
-    public function setErrorMessage($error_message)
-    {
-        if (is_null($error_message)) {
-            throw new \InvalidArgumentException('non-nullable error_message cannot be null');
-        }
-        $this->container['error_message'] = $error_message;
-
-        return $this;
-    }
-
-    /**
-     * Gets more_info
-     *
-     * @return string|null
-     */
-    public function getMoreInfo()
-    {
-        return $this->container['more_info'];
-    }
-
-    /**
-     * Sets more_info
-     *
-     * @param string|null $more_info Ссылка на документацию с описанием ошибки
-     *
-     * @return self
-     */
-    public function setMoreInfo($more_info)
-    {
-        if (is_null($more_info)) {
-            throw new \InvalidArgumentException('non-nullable more_info cannot be null');
-        }
-        $this->container['more_info'] = $more_info;
-
-        return $this;
-    }
-
-    /**
-     * Gets line
-     *
-     * @return int|null
-     */
-    public function getLine()
-    {
-        return $this->container['line'];
-    }
-
-    /**
-     * Sets line
-     *
-     * @param int|null $line Строка JSON, на которой произошла ошибка
-     *
-     * @return self
-     */
-    public function setLine($line)
-    {
-        if (is_null($line)) {
-            throw new \InvalidArgumentException('non-nullable line cannot be null');
-        }
-        $this->container['line'] = $line;
-
-        return $this;
-    }
-
-    /**
-     * Gets column
-     *
-     * @return int|null
-     */
-    public function getColumn()
-    {
-        return $this->container['column'];
-    }
-
-    /**
-     * Sets column
-     *
-     * @param int|null $column Координата элемента в строке, на котором произошла ошибка
-     *
-     * @return self
-     */
-    public function setColumn($column)
-    {
-        if (is_null($column)) {
-            throw new \InvalidArgumentException('non-nullable column cannot be null');
-        }
-        $this->container['column'] = $column;
-
-        return $this;
-    }
-
-    /**
-     * Gets dependencies
-     *
-     * @return \OpenAPI\Client\Model\Meta[]|null
-     */
-    public function getDependencies()
-    {
-        return $this->container['dependencies'];
-    }
-
-    /**
-     * Sets dependencies
-     *
-     * @param \OpenAPI\Client\Model\Meta[]|null $dependencies Список метаданных зависимых сущностей
-     *
-     * @return self
-     */
-    public function setDependencies($dependencies)
-    {
-        if (is_null($dependencies)) {
-            throw new \InvalidArgumentException('non-nullable dependencies cannot be null');
-        }
-        $this->container['dependencies'] = $dependencies;
-
-        return $this;
-    }
 
     /**
      * Gets meta
@@ -587,6 +408,333 @@ class ErrorErrorsInner implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable meta cannot be null');
         }
         $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id ID единицы измерения
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id ID учетной записи
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Наименование единицы измерения
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling CreateUomsBatch200ResponseInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description Описание единицы измерения
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($description) && (mb_strlen($description) > 4096)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling CreateUomsBatch200ResponseInner., must be smaller than or equal to 4096.');
+        }
+
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets code
+     *
+     * @return string|null
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string|null $code Код единицы измерения
+     *
+     * @return self
+     */
+    public function setCode($code)
+    {
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        }
+        if ((mb_strlen($code) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $code when calling CreateUomsBatch200ResponseInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets group
+     *
+     * @return \OpenAPI\Client\Model\Group|null
+     */
+    public function getGroup()
+    {
+        return $this->container['group'];
+    }
+
+    /**
+     * Sets group
+     *
+     * @param \OpenAPI\Client\Model\Group|null $group group
+     *
+     * @return self
+     */
+    public function setGroup($group)
+    {
+        if (is_null($group)) {
+            throw new \InvalidArgumentException('non-nullable group cannot be null');
+        }
+        $this->container['group'] = $group;
+
+        return $this;
+    }
+
+    /**
+     * Gets owner
+     *
+     * @return \OpenAPI\Client\Model\Employee|null
+     */
+    public function getOwner()
+    {
+        return $this->container['owner'];
+    }
+
+    /**
+     * Sets owner
+     *
+     * @param \OpenAPI\Client\Model\Employee|null $owner Метаданные владельца (Сотрудника)
+     *
+     * @return self
+     */
+    public function setOwner($owner)
+    {
+        if (is_null($owner)) {
+            array_push($this->openAPINullablesSetToNull, 'owner');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('owner', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['owner'] = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdated()
+    {
+        return $this->container['updated'];
+    }
+
+    /**
+     * Sets updated
+     *
+     * @param \DateTime|null $updated Момент последнего обновления сущности
+     *
+     * @return self
+     */
+    public function setUpdated($updated)
+    {
+        if (is_null($updated)) {
+            throw new \InvalidArgumentException('non-nullable updated cannot be null');
+        }
+        $this->container['updated'] = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Gets shared
+     *
+     * @return bool|null
+     */
+    public function getShared()
+    {
+        return $this->container['shared'];
+    }
+
+    /**
+     * Sets shared
+     *
+     * @param bool|null $shared Общий доступ
+     *
+     * @return self
+     */
+    public function setShared($shared)
+    {
+        if (is_null($shared)) {
+            throw new \InvalidArgumentException('non-nullable shared cannot be null');
+        }
+        $this->container['shared'] = $shared;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_code
+     *
+     * @return string|null
+     */
+    public function getExternalCode()
+    {
+        return $this->container['external_code'];
+    }
+
+    /**
+     * Sets external_code
+     *
+     * @param string|null $external_code Внешний код единицы измерения
+     *
+     * @return self
+     */
+    public function setExternalCode($external_code)
+    {
+        if (is_null($external_code)) {
+            throw new \InvalidArgumentException('non-nullable external_code cannot be null');
+        }
+        if ((mb_strlen($external_code) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $external_code when calling CreateUomsBatch200ResponseInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['external_code'] = $external_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \OpenAPI\Client\Model\ErrorErrorsInner[]
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \OpenAPI\Client\Model\ErrorErrorsInner[] $errors errors
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        }
+        $this->container['errors'] = $errors;
 
         return $this;
     }

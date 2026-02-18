@@ -1,6 +1,6 @@
 <?php
 /**
- * MinimumStockWarehouseVaried
+ * AttributeBase
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * MinimumStockWarehouseVaried Class Doc Comment
+ * AttributeBase Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonSerializable
+class AttributeBase implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MinimumStockWarehouseVaried';
+    protected static $openAPIModelName = 'AttributeBase';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,11 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'name' => 'string',
         'type' => 'string',
-        'store_balances' => '\OpenAPI\Client\Model\StoreBalanceList'
+        'value' => 'object'
     ];
 
     /**
@@ -69,8 +72,11 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => 'uuid',
+        'meta' => null,
+        'name' => null,
         'type' => null,
-        'store_balances' => null
+        'value' => null
     ];
 
     /**
@@ -79,8 +85,11 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
+        'meta' => false,
+        'name' => false,
         'type' => false,
-        'store_balances' => false
+        'value' => false
     ];
 
     /**
@@ -169,8 +178,11 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
+        'meta' => 'meta',
+        'name' => 'name',
         'type' => 'type',
-        'store_balances' => 'storeBalances'
+        'value' => 'value'
     ];
 
     /**
@@ -179,8 +191,11 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
+        'meta' => 'setMeta',
+        'name' => 'setName',
         'type' => 'setType',
-        'store_balances' => 'setStoreBalances'
+        'value' => 'setValue'
     ];
 
     /**
@@ -189,8 +204,11 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
+        'meta' => 'getMeta',
+        'name' => 'getName',
         'type' => 'getType',
-        'store_balances' => 'getStoreBalances'
+        'value' => 'getValue'
     ];
 
     /**
@@ -234,19 +252,6 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
-    public const TYPE_WAREHOUSE_VARIED = 'WAREHOUSE_VARIED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_WAREHOUSE_VARIED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -263,8 +268,11 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], 'WAREHOUSE_VARIED');
-        $this->setIfExists('store_balances', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
     }
 
     /**
@@ -294,18 +302,6 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -322,9 +318,90 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id ID дополнительного поля
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return \OpenAPI\Client\Model\Meta|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \OpenAPI\Client\Model\Meta|null $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        }
+        $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Наименование дополнительного поля
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
      * Gets type
      *
-     * @return string
+     * @return string|null
      */
     public function getType()
     {
@@ -334,7 +411,7 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets type
      *
-     * @param string $type type
+     * @param string|null $type Тип дополнительного поля (дискриминатор)
      *
      * @return self
      */
@@ -343,44 +420,34 @@ class MinimumStockWarehouseVaried implements ModelInterface, ArrayAccess, \JsonS
         if (is_null($type)) {
             throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets store_balances
+     * Gets value
      *
-     * @return \OpenAPI\Client\Model\StoreBalanceList|null
+     * @return object|null
      */
-    public function getStoreBalances()
+    public function getValue()
     {
-        return $this->container['store_balances'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets store_balances
+     * Sets value
      *
-     * @param \OpenAPI\Client\Model\StoreBalanceList|null $store_balances Неснижаемые остатки по складам
+     * @param object|null $value value
      *
      * @return self
      */
-    public function setStoreBalances($store_balances)
+    public function setValue($value)
     {
-        if (is_null($store_balances)) {
-            throw new \InvalidArgumentException('non-nullable store_balances cannot be null');
+        if (is_null($value)) {
+            throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
-        $this->container['store_balances'] = $store_balances;
+        $this->container['value'] = $value;
 
         return $this;
     }

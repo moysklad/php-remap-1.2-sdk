@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductFolder
+ * CreateProductFoldersBatch200ResponseInner
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ProductFolder Class Doc Comment
+ * CreateProductFoldersBatch200ResponseInner Class Doc Comment
  *
  * @category Class
- * @description Группа товаров
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateProductFoldersBatch200ResponseInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ProductFolder';
+    protected static $openAPIModelName = 'createProductFoldersBatch_200_response_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -77,7 +76,8 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'owner' => '\OpenAPI\Client\Model\Employee',
         'updated' => '\DateTime',
         'product_folder' => '\OpenAPI\Client\Model\ProductFolder',
-        'tax_system' => 'string'
+        'tax_system' => 'string',
+        'errors' => '\OpenAPI\Client\Model\ErrorErrorsInner[]'
     ];
 
     /**
@@ -107,7 +107,8 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'owner' => null,
         'updated' => 'date-time',
         'product_folder' => null,
-        'tax_system' => null
+        'tax_system' => null,
+        'errors' => null
     ];
 
     /**
@@ -135,7 +136,8 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'owner' => true,
         'updated' => false,
         'product_folder' => true,
-        'tax_system' => false
+        'tax_system' => false,
+        'errors' => false
     ];
 
     /**
@@ -243,7 +245,8 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'owner' => 'owner',
         'updated' => 'updated',
         'product_folder' => 'productFolder',
-        'tax_system' => 'taxSystem'
+        'tax_system' => 'taxSystem',
+        'errors' => 'errors'
     ];
 
     /**
@@ -271,7 +274,8 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'owner' => 'setOwner',
         'updated' => 'setUpdated',
         'product_folder' => 'setProductFolder',
-        'tax_system' => 'setTaxSystem'
+        'tax_system' => 'setTaxSystem',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -299,7 +303,8 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'owner' => 'getOwner',
         'updated' => 'getUpdated',
         'product_folder' => 'getProductFolder',
-        'tax_system' => 'getTaxSystem'
+        'tax_system' => 'getTaxSystem',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -404,6 +409,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('updated', $data ?? [], null);
         $this->setIfExists('product_folder', $data ?? [], null);
         $this->setIfExists('tax_system', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -466,6 +472,9 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -585,7 +594,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ProductFolder., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling CreateProductFoldersBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['name'] = $name;
@@ -616,7 +625,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
         if ((mb_strlen($code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $code when calling ProductFolder., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $code when calling CreateProductFoldersBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['code'] = $code;
@@ -647,7 +656,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable external_code cannot be null');
         }
         if ((mb_strlen($external_code) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $external_code when calling ProductFolder., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $external_code when calling CreateProductFoldersBatch200ResponseInner., must be smaller than or equal to 255.');
         }
 
         $this->container['external_code'] = $external_code;
@@ -739,7 +748,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         if (!is_null($description) && (mb_strlen($description) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling ProductFolder., must be smaller than or equal to 4096.');
+            throw new \InvalidArgumentException('invalid length for $description when calling CreateProductFoldersBatch200ResponseInner., must be smaller than or equal to 4096.');
         }
 
         $this->container['description'] = $description;
@@ -771,10 +780,10 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         if (($vat > 99)) {
-            throw new \InvalidArgumentException('invalid value for $vat when calling ProductFolder., must be smaller than or equal to 99.');
+            throw new \InvalidArgumentException('invalid value for $vat when calling CreateProductFoldersBatch200ResponseInner., must be smaller than or equal to 99.');
         }
         if (($vat < 0)) {
-            throw new \InvalidArgumentException('invalid value for $vat when calling ProductFolder., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for $vat when calling CreateProductFoldersBatch200ResponseInner., must be bigger than or equal to 0.');
         }
 
         $this->container['vat'] = $vat;
@@ -1072,6 +1081,33 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['tax_system'] = $tax_system;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \OpenAPI\Client\Model\ErrorErrorsInner[]
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \OpenAPI\Client\Model\ErrorErrorsInner[] $errors errors
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        }
+        $this->container['errors'] = $errors;
 
         return $this;
     }
