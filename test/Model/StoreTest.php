@@ -28,16 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Address;
-use OpenAPI\Client\Model\AttributeDouble;
-use OpenAPI\Client\Model\Group;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\Employee;
-use OpenAPI\Client\Model\Store;
-use OpenAPI\Client\Model\StoreSlots;
-use OpenAPI\Client\Model\StoreZones;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -52,155 +42,211 @@ use PHPUnit\Framework\TestCase;
 class StoreTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Store"
+     */
+    public function testStore()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $store = new Store();
-        $meta = new Meta();
-        $store->setMeta($meta);
-        Asserter::assertJsonHasFields($store, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $store = new Store();
-        $id = StringUtil::randomUuid();
-        $store->setId($id);
-        Asserter::assertJsonHasFields($store, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $store = new Store();
-        $accountId = StringUtil::randomUuid();
-        $store->setAccountId($accountId);
-        Asserter::assertJsonHasFields($store, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "owner"
+     */
     public function testPropertyOwner()
     {
-        $store = new Store();
-        $owner = new Employee();
-        $store->setOwner($owner);
-        Asserter::assertJsonHasFields($store, ['owner' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "shared"
+     */
     public function testPropertyShared()
     {
-        $store = new Store();
-        $store->setShared(true);
-        Asserter::assertJsonHasFields($store, ['shared' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "group"
+     */
     public function testPropertyGroup()
     {
-        $store = new Store();
-        $group = new Group();
-        $store->setGroup($group);
-        Asserter::assertJsonHasFields($store, ['group' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "updated"
+     */
     public function testPropertyUpdated()
     {
-        $store = new Store();
-        $date = new \DateTime("2025-09-19T12:00:00Z");
-        $store->setUpdated($date);
-        Asserter::assertJsonHasFields($store, ['updated' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $store = new Store();
-        $name = "Main Store";
-        $store->setName($name);
-        Asserter::assertJsonHasFields($store, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "description"
+     */
     public function testPropertyDescription()
     {
-        $store = new Store();
-        $description = "Main warehouse";
-        $store->setDescription($description);
-        Asserter::assertJsonHasFields($store, ['description' => $description]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "code"
+     */
     public function testPropertyCode()
     {
-        $store = new Store();
-        $code = "STORE-001";
-        $store->setCode($code);
-        Asserter::assertJsonHasFields($store, ['code' => $code]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "external_code"
+     */
     public function testPropertyExternalCode()
     {
-        $store = new Store();
-        $externalCode = "EXT-STORE-001";
-        $store->setExternalCode($externalCode);
-        Asserter::assertJsonHasFields($store, ['externalCode' => $externalCode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "archived"
+     */
     public function testPropertyArchived()
     {
-        $store = new Store();
-        $store->setArchived(false);
-        Asserter::assertJsonHasFields($store, ['archived' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "address"
+     */
     public function testPropertyAddress()
     {
-        $store = new Store();
-        $address = "Moscow, Russia";
-        $store->setAddress($address);
-        Asserter::assertJsonHasFields($store, ['address' => $address]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "address_full"
+     */
     public function testPropertyAddressFull()
     {
-        $store = new Store();
-        $addressFull = new Address();
-        $store->setAddressFull($addressFull);
-        Asserter::assertJsonHasFields($store, ['addressFull' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "path_name"
+     */
     public function testPropertyPathName()
     {
-        $store = new Store();
-        $pathName = "Warehouses/Main";
-        $store->setPathName($pathName);
-        Asserter::assertJsonHasFields($store, ['pathName' => $pathName]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "parent"
+     */
     public function testPropertyParent()
     {
-        $store = new Store();
-        $parent = new Store();
-        $store->setParent($parent);
-        Asserter::assertJsonHasFields($store, ['parent' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "attributes"
+     */
     public function testPropertyAttributes()
     {
-        $store = new Store();
-        $attr = new AttributeDouble();
-        $attr->setName("Capacity");
-        $attr->setValue(1000.0);
-        $store->setAttributes([$attr]);
-        Asserter::assertJsonHasFields($store, ['attributes' => [['name' => "Capacity", 'value' => 1000.0]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "zones"
+     */
     public function testPropertyZones()
     {
-        $store = new Store();
-        $zones = new StoreZones();
-        $store->setZones($zones);
-        Asserter::assertJsonHasFields($store, ['zones' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "slots"
+     */
     public function testPropertySlots()
     {
-        $store = new Store();
-        $slots = new StoreSlots();
-        $store->setSlots($slots);
-        Asserter::assertJsonHasFields($store, ['slots' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

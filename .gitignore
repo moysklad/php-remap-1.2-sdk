@@ -1,39 +1,15 @@
-# Composer dependencies
+# ref: https://github.com/github/gitignore/blob/master/Composer.gitignore
+
+composer.phar
 /vendor/
-composer.lock
 
-# PHPUnit
+# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+# composer.lock
+
+# php-cs-fixer cache
+.php_cs.cache
+.php-cs-fixer.cache
+
+# PHPUnit cache
 .phpunit.result.cache
-coverage/
-junit.xml
-phpunit.xml
-phpunit.xml.dist
-
-# PHPStan / Psalm / Phan (статический анализ)
-phpstan.neon
-phpstan.neon.dist
-phpstan-baseline.neon
-psalm.xml
-psalm.xml.dist
-phan.config.php
-
-# Cache and logs
-.cache/
-*.cache
-*.log
-
-# IDE / Editor configs
-.idea/
-.vscode/
-*.iml
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# OpenAPI Generator artifacts
-.openapi-generator/
-
-# Other
-*.swp
-*.swo

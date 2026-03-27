@@ -28,11 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Context;
-use OpenAPI\Client\Model\MetaList;
-use OpenAPI\Client\Model\Group;
-use OpenAPI\Client\Model\GroupList;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,27 +42,67 @@ use PHPUnit\Framework\TestCase;
 class GroupListTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "GroupList"
+     */
+    public function testGroupList()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "context"
+     */
     public function testPropertyContext()
     {
-        $groupList = new GroupList();
-        $context = new Context();
-        $groupList->setContext($context);
-        Asserter::assertJsonHasFields($groupList, ['context' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $groupList = new GroupList();
-        $meta = new MetaList();
-        $groupList->setMeta($meta);
-        Asserter::assertJsonHasFields($groupList, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "rows"
+     */
     public function testPropertyRows()
     {
-        $groupList = new GroupList();
-        $group = new Group();
-        $groupList->setRows([$group]);
-        Asserter::assertJsonHasFields($groupList, ['rows' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

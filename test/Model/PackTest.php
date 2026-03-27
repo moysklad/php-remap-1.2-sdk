@@ -28,11 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Barcode;
-use OpenAPI\Client\Model\Pack;
-use OpenAPI\Client\Model\Uom;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,35 +42,76 @@ use PHPUnit\Framework\TestCase;
 class PackTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Pack"
+     */
+    public function testPack()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $pack = new Pack();
-        $id = StringUtil::randomUuid();
-        $pack->setId($id);
-        Asserter::assertJsonHasFields($pack, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "uom"
+     */
     public function testPropertyUom()
     {
-        $pack = new Pack();
-        $uom = new Uom();
-        $pack->setUom($uom);
-        Asserter::assertJsonHasFields($pack, ['uom' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "quantity"
+     */
     public function testPropertyQuantity()
     {
-        $pack = new Pack();
-        $quantity = 10.0;
-        $pack->setQuantity($quantity);
-        Asserter::assertJsonHasFields($pack, ['quantity' => $quantity]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "barcodes"
+     */
     public function testPropertyBarcodes()
     {
-        $pack = new Pack();
-        $barcode = new Barcode();
-        $pack->setBarcodes([$barcode]);
-        Asserter::assertJsonHasFields($pack, ['barcodes' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

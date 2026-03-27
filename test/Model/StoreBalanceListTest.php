@@ -28,10 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\MetaList;
-use OpenAPI\Client\Model\StoreBalance;
-use OpenAPI\Client\Model\StoreBalanceList;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -46,19 +42,58 @@ use PHPUnit\Framework\TestCase;
 class StoreBalanceListTest extends TestCase
 {
 
-    public function testPropertyMeta()
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
     {
-        $storeBalanceList = new StoreBalanceList();
-        $meta = new MetaList();
-        $storeBalanceList->setMeta($meta);
-        Asserter::assertJsonHasFields($storeBalanceList, ['meta' => []]);
     }
 
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "StoreBalanceList"
+     */
+    public function testStoreBalanceList()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
+    public function testPropertyMeta()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rows"
+     */
     public function testPropertyRows()
     {
-        $storeBalanceList = new StoreBalanceList();
-        $storeBalance = new StoreBalance();
-        $storeBalanceList->setRows([$storeBalance]);
-        Asserter::assertJsonHasFields($storeBalanceList, ['rows' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

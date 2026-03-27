@@ -28,12 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Currency;
-use OpenAPI\Client\Model\CurrencyMajorUnit;
-use OpenAPI\Client\Model\CurrencyMinorUnit;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -48,127 +42,184 @@ use PHPUnit\Framework\TestCase;
 class CurrencyTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Currency"
+     */
+    public function testCurrency()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $currency = new Currency();
-        $meta = new Meta();
-        $currency->setMeta($meta);
-        Asserter::assertJsonHasFields($currency, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $currency = new Currency();
-        $id = StringUtil::randomUuid();
-        $currency->setId($id);
-        Asserter::assertJsonHasFields($currency, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "system"
+     */
     public function testPropertySystem()
     {
-        $currency = new Currency();
-        $currency->setSystem(true);
-        Asserter::assertJsonHasFields($currency, ['system' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $currency = new Currency();
-        $name = "US Dollar";
-        $currency->setName($name);
-        Asserter::assertJsonHasFields($currency, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "full_name"
+     */
     public function testPropertyFullName()
     {
-        $currency = new Currency();
-        $fullName = "United States Dollar";
-        $currency->setFullName($fullName);
-        Asserter::assertJsonHasFields($currency, ['fullName' => $fullName]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "code"
+     */
     public function testPropertyCode()
     {
-        $currency = new Currency();
-        $code = "840";
-        $currency->setCode($code);
-        Asserter::assertJsonHasFields($currency, ['code' => $code]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "iso_code"
+     */
     public function testPropertyIsoCode()
     {
-        $currency = new Currency();
-        $isoCode = "USD";
-        $currency->setIsoCode($isoCode);
-        Asserter::assertJsonHasFields($currency, ['isoCode' => $isoCode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "multiplicity"
+     */
     public function testPropertyMultiplicity()
     {
-        $currency = new Currency();
-        $multiplicity = 100;
-        $currency->setMultiplicity($multiplicity);
-        Asserter::assertJsonHasFields($currency, ['multiplicity' => $multiplicity]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "rate"
+     */
     public function testPropertyRate()
     {
-        $currency = new Currency();
-        $rate = 1.0;
-        $currency->setRate($rate);
-        Asserter::assertJsonHasFields($currency, ['rate' => $rate]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "margin"
+     */
     public function testPropertyMargin()
     {
-        $currency = new Currency();
-        $margin = 0.05;
-        $currency->setMargin($margin);
-        Asserter::assertJsonHasFields($currency, ['margin' => $margin]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "indirect"
+     */
     public function testPropertyIndirect()
     {
-        $currency = new Currency();
-        $currency->setIndirect(false);
-        Asserter::assertJsonHasFields($currency, ['indirect' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "rate_update_type"
+     */
     public function testPropertyRateUpdateType()
     {
-        $currency = new Currency();
-        $rateUpdateType = Currency::RATE_UPDATE_TYPE_MANUAL;
-        $currency->setRateUpdateType($rateUpdateType);
-        Asserter::assertJsonHasFields($currency, ['rateUpdateType' => $rateUpdateType]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "archived"
+     */
     public function testPropertyArchived()
     {
-        $currency = new Currency();
-        $currency->setArchived(false);
-        Asserter::assertJsonHasFields($currency, ['archived' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "default"
+     */
     public function testPropertyDefault()
     {
-        $currency = new Currency();
-        $currency->setDefault(true);
-        Asserter::assertJsonHasFields($currency, ['default' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "major_unit"
+     */
     public function testPropertyMajorUnit()
     {
-        $currency = new Currency();
-        $majorUnit = new CurrencyMajorUnit();
-        $currency->setMajorUnit($majorUnit);
-        Asserter::assertJsonHasFields($currency, ['majorUnit' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "minor_unit"
+     */
     public function testPropertyMinorUnit()
     {
-        $currency = new Currency();
-        $minorUnit = new CurrencyMinorUnit();
-        $currency->setMinorUnit($minorUnit);
-        Asserter::assertJsonHasFields($currency, ['minorUnit' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

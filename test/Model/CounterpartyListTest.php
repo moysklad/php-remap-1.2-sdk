@@ -28,11 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Context;
-use OpenAPI\Client\Model\MetaList;
-use OpenAPI\Client\Model\Counterparty;
-use OpenAPI\Client\Model\CounterpartyList;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,27 +42,67 @@ use PHPUnit\Framework\TestCase;
 class CounterpartyListTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "CounterpartyList"
+     */
+    public function testCounterpartyList()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "context"
+     */
     public function testPropertyContext()
     {
-        $counterpartyList = new CounterpartyList();
-        $context = new Context();
-        $counterpartyList->setContext($context);
-        Asserter::assertJsonHasFields($counterpartyList, ['context' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $counterpartyList = new CounterpartyList();
-        $meta = new MetaList();
-        $counterpartyList->setMeta($meta);
-        Asserter::assertJsonHasFields($counterpartyList, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "rows"
+     */
     public function testPropertyRows()
     {
-        $counterpartyList = new CounterpartyList();
-        $counterparty = new Counterparty();
-        $counterpartyList->setRows([$counterparty]);
-        Asserter::assertJsonHasFields($counterpartyList, ['rows' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

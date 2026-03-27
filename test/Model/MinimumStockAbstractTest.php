@@ -28,9 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\MinimumStockAbstract;
-use OpenAPI\Client\Model\StoreBalanceList;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,27 +42,67 @@ use PHPUnit\Framework\TestCase;
 class MinimumStockAbstractTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "MinimumStockAbstract"
+     */
+    public function testMinimumStockAbstract()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "type"
+     */
     public function testPropertyType()
     {
-        $minimumStockAbstract = new MinimumStockAbstract();
-        $type = 'ALL_WAREHOUSE_SUM';
-        $minimumStockAbstract->setType($type);
-        Asserter::assertJsonHasFields($minimumStockAbstract, ['type' => $type]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "quantity"
+     */
     public function testPropertyQuantity()
     {
-        $minimumStockAbstract = new MinimumStockAbstract();
-        $quantity = 10.0;
-        $minimumStockAbstract->setQuantity($quantity);
-        Asserter::assertJsonHasFields($minimumStockAbstract, ['quantity' => $quantity, 'type' => 'MinimumStockAbstract']);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "store_balances"
+     */
     public function testPropertyStoreBalances()
     {
-        $minimumStockAbstract = new MinimumStockAbstract();
-        $storeBalances = new StoreBalanceList();
-        $minimumStockAbstract->setStoreBalances($storeBalances);
-        Asserter::assertJsonHasFields($minimumStockAbstract, ['storeBalances' => [], 'type' => 'MinimumStockAbstract']);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

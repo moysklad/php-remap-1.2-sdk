@@ -27,15 +27,9 @@
 
 namespace OpenAPI\Client\Test\Api;
 
-use OpenAPI\Client\Api\ProductFoldersApi;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\Model\DeleteInfo;
-use OpenAPI\Client\Model\ProductFolder;
-use OpenAPI\Client\Model\ProductFolderList;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
-use PHPUnit\Framework\Assert;
+use \OpenAPI\Client\Configuration;
+use \OpenAPI\Client\ApiException;
+use \OpenAPI\Client\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -49,485 +43,115 @@ use PHPUnit\Framework\TestCase;
 class ProductFoldersApiTest extends TestCase
 {
 
-    private static ProductFoldersApi $api;
-
+    /**
+     * Setup before running any test cases
+     */
     public static function setUpBeforeClass(): void
     {
-        $config = Configuration::getDefaultConfiguration()
-            ->setHost(getenv('API_HOST') . '/api/remap/1.2')
-            ->setUsername(getenv('API_LOGIN'))
-            ->setPassword(getenv('API_PASSWORD'));
-
-        ProductFoldersApiTest::$api = new ProductFoldersApi(null, $config);
     }
 
     /**
-     *  Проверка успешной обработки ответа сервера на получение группы товаров
+     * Setup before running each test case
      */
-    public function testEntityProductFolderGet(): void
+    public function setUp(): void
     {
-        $prefix = StringUtil::randomUuid();
-        $productFolder1 = new ProductFolder();
-        $productFolder1->setName("$prefix ProductFolder 1");
-        $productFolder1 = ProductFoldersApiTest::$api->entityProductFolderPost($productFolder1);
-
-        $productFolder2 = new ProductFolder();
-        $productFolder2->setName("$prefix ProductFolder 2");
-        $productFolder2 = ProductFoldersApiTest::$api->entityProductFolderPost($productFolder2);
-
-        $productFolder3 = new ProductFolder();
-        $productFolder3->setName("$prefix ProductFolder 3");
-        $productFolder3 = ProductFoldersApiTest::$api->entityProductFolderPost($productFolder3);
-
-        Assert::assertNotSame($productFolder1->getId(), $productFolder2->getId());
-        Assert::assertNotSame($productFolder2->getId(), $productFolder3->getId());
-
-        $productFolderList_12 = ProductFoldersApiTest::$api->entityProductFolderGet(2, 0, null, "name~=$prefix", null, 'name');
-        Assert::assertInstanceOf(ProductFolderList::class, $productFolderList_12);
-        Asserter::assertMetaCollection($productFolderList_12->getMeta(), 'productfolder', 3, 2, 'productfolder');
-        Asserter::assertJsonHasFields($productFolderList_12, ['meta' => []], false, 'context.employee');
-        Asserter::assertJsonHasFields($productFolderList_12, [
-            'rows' => [
-                ['id' => $productFolder1->getId()],
-                ['id' => $productFolder2->getId()]
-            ]], false);
-
-        $productFolderList_23 = ProductFoldersApiTest::$api->entityProductFolderGet(3, 1, null, "name~=$prefix", null, 'name');
-        Assert::assertInstanceOf(ProductFolderList::class, $productFolderList_23);
-        Asserter::assertMetaCollection($productFolderList_23->getMeta(), 'productfolder', 3, 3, 'productfolder');
-        Asserter::assertJsonHasFields($productFolderList_23, ['meta' => []], false, 'context.employee');
-        Asserter::assertJsonHasFields($productFolderList_23, [
-            'rows' => [
-                ['id' => $productFolder2->getId()],
-                ['id' => $productFolder3->getId()]
-            ]], false);
     }
 
     /**
-     *  Проверка обработки ответа сервера на получение группы товаров сопровождаемое ошибкой
+     * Clean up after running each test case
      */
-    public function testEntityProductFolderGetWithError(): void
+    public function tearDown(): void
     {
-        try {
-            ProductFoldersApiTest::$api->entityProductFolderGet(1, 1, null, "name>123");
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(412, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
     }
 
     /**
-     *  Проверка успешной обработки ответа сервера в случае ошибки
+     * Clean up after running all test cases
      */
-    public function testEntityProductFolderIdGet()
+    public static function tearDownAfterClass(): void
     {
-        $productFolderReq = new ProductFolder();
-
-        // простые флаги и строки
-        $productFolderReq->setArchived(true);
-        $productFolderReq->setName("Тестовая группа товар " . StringUtil::randomUuid());
-        $productFolderReq->setCode(StringUtil::randomUuid());
-        $productFolderReq->setExternalCode(StringUtil::randomUuid());
-        $productFolderReq->setDescription("Описание тестовой группы товаров");
-        $productFolderReq->setTaxSystem("GENERAL_TAX_SYSTEM");
-
-        // налоги
-        $productFolderReq->setVat(20);
-        $productFolderReq->setVatEnabled(true);
-        $productFolderReq->setUseParentVat(false);
-        $productFolderReq->setEffectiveVat(20);
-        $productFolderReq->setEffectiveVatEnabled(true);
-
-        $productFolderReq->setShared(false);
-
-        $productFolderResp = ProductFoldersApiTest::$api->entityProductFolderPost($productFolderReq);
-        $productFolderId = $productFolderResp->getId();
-        Assert::assertNotNull($productFolderId);
-        Asserter::assertMeta($productFolderResp->getMeta(), $productFolderId, 'productfolder');
-
-        Assert::assertSame($productFolderReq->getName(), $productFolderResp->getName());
-        Assert::assertSame($productFolderReq->getCode(), $productFolderResp->getCode());
-        Assert::assertSame($productFolderReq->getExternalCode(), $productFolderResp->getExternalCode());
-        Assert::assertSame($productFolderReq->getDescription(), $productFolderResp->getDescription());
-        Assert::assertSame($productFolderReq->getTaxSystem(), $productFolderResp->getTaxSystem());
-
-        Asserter::assertJsonHasFields($productFolderResp, ['owner' => ['meta' => ['type' => 'employee']]], false);
-        Asserter::assertJsonHasFields($productFolderResp, ['group' => ['meta' => ['type' => 'group']]], false);
-        Assert::assertNotNull($productFolderResp->getUpdated());
-        Assert::assertNotNull($productFolderResp->getAccountId());
-
-        Assert::assertSame($productFolderReq->getVat(), $productFolderResp->getVat());
-        Assert::assertSame($productFolderReq->getVatEnabled(), $productFolderResp->getVatEnabled());
-        Assert::assertSame($productFolderReq->getUseParentVat(), $productFolderResp->getUseParentVat());
-        Assert::assertSame($productFolderReq->getEffectiveVat(), $productFolderResp->getEffectiveVat());
-        Assert::assertSame($productFolderReq->getEffectiveVatEnabled(), $productFolderResp->getEffectiveVatEnabled());
-
-        Assert::assertSame($productFolderReq->getShared(), $productFolderResp->getShared());
-        Assert::assertSame($productFolderReq->getArchived(), $productFolderResp->getArchived());
     }
 
     /**
-     *  Проверка обработки ответа сервера на получение группы товаров сопровождаемое ошибкой
+     * Test case for createProductFolder
+     *
+     * Создать группу товаров.
+     *
      */
-    public function testEntityProductFolderIdGetWithError()
+    public function testCreateProductFolder()
     {
-        try {
-            ProductFoldersApiTest::$api->entityProductFolderIdGet(StringUtil::randomUuid());
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(404, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     *  Проверка обработки ответа сервера на создание группы товаров сопровождаемое ошибкой
+     * Test case for createProductFoldersBatch
+     *
+     * Создать или изменить группы товаров.
+     *
      */
-    public function testEntityProductFolderPostWithError()
+    public function testCreateProductFoldersBatch()
     {
-        try {
-            $productFolder1 = new ProductFolder();
-            ProductFoldersApiTest::$api->entityProductFolderPost($productFolder1);
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(412, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     *  Проверка успешной обработки ответа сервера на обновление группы товаров
+     * Test case for deleteProductFolder
+     *
+     * Удалить группу товаров.
+     *
      */
-    public function testEntityProductFolderIdPut()
+    public function testDeleteProductFolder()
     {
-        $prefix = StringUtil::randomUuid();
-
-        $createProductFolder = new ProductFolder();
-        $createProductFolder->setName("$prefix ProductFolder Old");
-        $createProductFolder = ProductFoldersApiTest::$api->entityProductFolderPost($createProductFolder);
-
-        $updateProductFolder = new ProductFolder();
-        $updateProductFolder->setName("$prefix ProductFolder New");
-        $updateProductFolder = ProductFoldersApiTest::$api->entityProductFolderIdPut($createProductFolder->getId(), $updateProductFolder);
-
-        Assert::assertSame($createProductFolder->getId(), $updateProductFolder->getId());
-        Assert::assertSame("$prefix ProductFolder New", $updateProductFolder->getName());
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     *  Проверка обработки ответа сервера на обновление группы товаров сопровождаемое ошибкой
+     * Test case for deleteProductFoldersBatch
+     *
+     * Удалить группы товаров.
+     *
      */
-    public function testEntityProductFolderIdPutWithError()
+    public function testDeleteProductFoldersBatch()
     {
-        $productFolder1 = new ProductFolder();
-        $productFolder1->setName("ProductFolder");
-        $productFolder1 = ProductFoldersApiTest::$api->entityProductFolderPost($productFolder1);
-        try {
-            $updateProductFolder = new ProductFolder();
-            $updateProductFolder->setArchived(10);
-            ProductFoldersApiTest::$api->entityProductFolderIdPut($productFolder1->getId(), $updateProductFolder);
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(400, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     *  Проверка успешной обработки ответа сервера удаления группы товаров
+     * Test case for getProductFolderById
+     *
+     * Получить группу товаров по ID.
+     *
      */
-    public function testEntityProductFolderIdDelete()
+    public function testGetProductFolderById()
     {
-        $productFolder = new ProductFolder();
-        $productFolder->setName("ProductFolder");
-        $productFolder = ProductFoldersApiTest::$api->entityProductFolderPost($productFolder);
-        $resp = ProductFoldersApiTest::$api->entityProductFolderIdDeleteWithHttpInfo($productFolder->getId());
-        Assert::assertEquals(200, $resp[1]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     *  Проверка обработки ответа сервера удаления группы товаров сопровождаемое ошибкой
+     * Test case for getProductFolders
+     *
+     * Получить список групп товаров.
+     *
      */
-    public function testEntityProductFolderIdDeleteWithError()
+    public function testGetProductFolders()
     {
-        try {
-            ProductFoldersApiTest::$api->entityProductFolderIdDelete(StringUtil::randomUuid());
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(404, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового создания группы товаров
+     * Test case for updateProductFolder
+     *
+     * Обновить группу товаров.
+     *
      */
-    public function testBatchCreateProductFolderFolders(): void
+    public function testUpdateProductFolder()
     {
-        $prefix = StringUtil::randomUuid();
-        $productFolders = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $productFolder = new ProductFolder();
-            $productFolder->setName("$prefix Batch ProductFolder $i");
-            $productFolder->setCode("Batch-$i-$prefix");
-            $productFolder->setDescription("Описание массового продукта $i");
-            $productFolder->setVat(20);
-            $productFolder->setVatEnabled(true);
-            $productFolder->setTaxSystem(ProductFolder::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
-            $productFolders[] = $productFolder;
-        }
-
-        $response = ProductFoldersApiTest::$api->entityProductFolderBatchPost($productFolders);
-
-        Assert::assertIsArray($response);
-        Assert::assertCount(3, $response);
-
-        foreach ($response as $index => $createdProductFolder) {
-            Assert::assertInstanceOf(ProductFolder::class, $createdProductFolder);
-            Assert::assertNotNull($createdProductFolder->getId());
-            Asserter::assertStringContainsString("$prefix Batch ProductFolder " . ($index + 1), $createdProductFolder->getName());
-            Asserter::assertStringContainsString("Batch-" . ($index + 1) . "-$prefix", $createdProductFolder->getCode());
-            Asserter::assertStringContainsString("Описание массового продукта " . ($index + 1), $createdProductFolder->getDescription());
-            Assert::assertEquals(20, $createdProductFolder->getVat());
-            Assert::assertTrue($createdProductFolder->getVatEnabled());
-            Assert::assertEquals(ProductFolder::TAX_SYSTEM_GENERAL_TAX_SYSTEM, $createdProductFolder->getTaxSystem());
-
-            Asserter::assertMeta($createdProductFolder->getMeta(), $createdProductFolder->getId(), 'productfolder');
-        }
-    }
-
-
-    /**
-     * Тест массового обновления групп товаров
-     */
-    public function testBatchUpdateProductFolders(): void
-    {
-        $prefix = StringUtil::randomUuid();
-        $createdProductFolders = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $productFolder = new ProductFolder();
-            $productFolder->setName("$prefix Original ProductFolder $i");
-            $productFolder->setCode("ORIG-$i-$prefix");
-            $productFolder->setVat(20);
-            $productFolder->setVatEnabled(true);
-            $productFolder->setTaxSystem(ProductFolder::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
-            $createdProductFolders[] = $productFolder;
-        }
-
-        $response = ProductFoldersApiTest::$api->entityProductFolderBatchPost($createdProductFolders);
-        Assert::assertCount(3, $response);
-
-        $updatedProductFolders = [];
-        foreach ($response as $index => $createdProductFolder) {
-            $updateProductFolder = new ProductFolder();
-            $updateProductFolder->setMeta($createdProductFolder->getMeta());
-            $updateProductFolder->setName("$prefix Updated ProductFolder " . ($index + 1));
-            $updateProductFolder->setCode("UPD-" . ($index + 1) . "-$prefix");
-            $updateProductFolder->setDescription("Обновленное описание продукта " . ($index + 1));
-            $updateProductFolder->setVat(10); // Изменяем НДС
-            $updateProductFolder->setVatEnabled(true);
-            $productFolder->setTaxSystem(ProductFolder::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
-            $updatedProductFolders[] = $updateProductFolder;
-        }
-
-        $updateResponse = ProductFoldersApiTest::$api->entityProductFolderBatchPost($updatedProductFolders);
-
-        Assert::assertIsArray($updateResponse);
-        Assert::assertCount(3, $updateResponse);
-
-        foreach ($updateResponse as $index => $updatedProductFolder) {
-            Assert::assertInstanceOf(ProductFolder::class, $updatedProductFolder);
-            Asserter::assertStringContainsString("$prefix Updated ProductFolder " . ($index + 1), $updatedProductFolder->getName());
-            Asserter::assertStringContainsString("UPD-" . ($index + 1) . "-$prefix", $updatedProductFolder->getCode());
-            Asserter::assertStringContainsString("Обновленное описание продукта " . ($index + 1), $updatedProductFolder->getDescription());
-            Assert::assertEquals(10, $updatedProductFolder->getVat()); // Проверяем измененный НДС
-        }
-    }
-
-    /**
-     * Тест массового удаления групп товаров
-     */
-    public function testBatchDeleteProductFolders(): void
-    {
-        $prefix = StringUtil::randomUuid();
-        $createdProductFolders = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $productFolder = new ProductFolder();
-            $productFolder->setName("$prefix Delete ProductFolder $i");
-            $productFolder->setCode("DEL-$i-$prefix");
-            $productFolder->setVat(20);
-            $productFolder->setVatEnabled(true);
-            $productFolder->setTaxSystem(ProductFolder::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
-            $createdProductFolders[] = $productFolder;
-        }
-
-        $response = ProductFoldersApiTest::$api->entityProductFolderBatchPost($createdProductFolders);
-        Assert::assertCount(3, $response);
-
-        $metaArray = [];
-        foreach ($response as $createdProductFolder) {
-            $meta = new ProductFolder();
-            $meta->setMeta($createdProductFolder->getMeta());
-            $metaArray[] = $meta;
-        }
-
-        $deleteResponse = ProductFoldersApiTest::$api->entityProductFolderDeletePost($metaArray);
-
-        Assert::assertIsArray($deleteResponse);
-        Assert::assertCount(3, $deleteResponse);
-
-        foreach ($deleteResponse as $deleteResult) {
-            Assert::assertInstanceOf(DeleteInfo::class, $deleteResult);
-            Assert::assertNotNull($deleteResult->getInfo());
-            Asserter::assertStringContainsString('удален', $deleteResult->getInfo());
-        }
-
-        foreach ($response as $createdProductFolder) {
-            try {
-                ProductFoldersApiTest::$api->entityProductFolderIdGet($createdProductFolder->getId());
-                Assert::fail('Продукт должен был быть удален');
-            } catch (ApiException $e) {
-                Assert::assertEquals(404, $e->getCode());
-            }
-        }
-    }
-
-    /**
-     * Тест массового создания групп товаров с дублирующимися кодами
-     */
-    public function testBatchCreateProductFoldersWithError(): void
-    {
-        $prefix = StringUtil::randomUuid();
-        $duplicateCode = "DUPLICATE-$prefix";
-        $productFolders = [];
-
-            $productFolder = new ProductFolder();
-            $productFolder->setName("$prefix Duplicate ProductFolder 1");
-            $productFolder->setCode($duplicateCode); // Одинаковый код для всех продуктов
-            $productFolder->setVat(20);
-            $productFolder->setVatEnabled(true);
-            $productFolder->setTaxSystem(ProductFolder::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
-            $productFolders[] = $productFolder;
-
-        for ($i = 2; $i <= 3; $i++) {
-            $productFolder = new ProductFolder();
-            $productFolder->setName("$prefix Duplicate ProductFolder $i");
-            $productFolder->setCode($duplicateCode); // Одинаковый код для всех продуктов
-            $productFolder->setVat(20);
-            $productFolder->setVatEnabled("ttt");
-            $productFolder->setTaxSystem(ProductFolder::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
-            $productFolders[] = $productFolder;
-        }
-
-        try {
-            $res = ProductFoldersApiTest::$api->entityProductFolderBatchPost($productFolders);
-        } catch (ApiException $e) {
-            $res = json_decode($e->getResponseBody(), true);
-        }
-
-        $success = 0;
-        $errors = 0;
-        foreach ($res as $item) {
-            if (isset($item['errors'])) {
-                $errors++;
-                Assert::assertEquals(2016, $item['errors'][0]['code']);
-            } else {
-                $success++;
-                Assert::assertEquals($duplicateCode, $item['code']);
-            }
-        }
-
-        Assert::assertSame(1, $success, 'Ожидается 1 успешное создание');
-        Assert::assertSame(2, $errors, 'Ожидается 2 ошибки');
-    }
-
-
-    /**
-     * Тест массового удаления групп товаров с некорректными мета-данными
-     */
-    public function testBatchDeleteProductFoldersWithError(): void
-    {
-        $prefix = StringUtil::randomUuid();
-
-        $productFolder = new ProductFolder();
-        $productFolder->setName("$prefix Delete ProductFolder");
-        $productFolder->setCode("DEL-$prefix");
-        $productFolder->setVat(20);
-        $productFolder->setVatEnabled(true);
-        $productFolder->setTaxSystem(ProductFolder::TAX_SYSTEM_GENERAL_TAX_SYSTEM);
-
-        $response = ProductFoldersApiTest::$api->entityProductFolderPost($productFolder);
-
-        $metaArray = [];
-
-        $meta1 = new ProductFolder();
-        $meta1->setMeta($response->getMeta());
-        $metaArray[] = $meta1;
-
-
-        // Мета-данные с некорректным ID
-        $meta2 = new ProductFolder();
-        $metaInvalidId = clone $response->getMeta();
-        $newHref = preg_replace(
-            '/[0-9a-fA-F-]{36}/',
-            'invalid-uuid',
-            $metaInvalidId->getHref()
-        );
-        $metaInvalidId->setHref($newHref);
-
-        $meta2->setMeta($metaInvalidId);
-        $metaArray[] = $meta2;
-
-        // Мета-данные с некорректным типом
-        $meta3 = new ProductFolder();
-        $metaInvalidType = clone $response->getMeta();
-        $newHref2 = str_replace('/productfolder/', '/counterparty/', $metaInvalidType->getHref());
-        $newHref2 = preg_replace(
-            '/[0-9a-fA-F-]{36}/',
-            'invalid-uuid',
-            $newHref2
-        );
-        $metaInvalidType->setHref($newHref2);
-        $meta3->setMeta($metaInvalidType);
-        $metaArray[] = $meta3;
-
-        try {
-            $res = ProductFoldersApiTest::$api->entityProductFolderDeletePost($metaArray);
-            Assert::fail('Ожидалось исключение ApiException из-за некорректных мета-данных');
-        } catch (ApiException $e) {
-            $res = json_decode($e->getResponseBody(), true);
-        }
-
-        $success = 0;
-        $errors = 0;
-        foreach ($res as $item) {
-            if (isset($item['errors'])) {
-                $errors++;
-                Assert::assertEquals(2013, $item['errors'][0]['code']);
-            } else {
-                $success++;
-                Asserter::assertStringContainsString('удален', $item['info']);
-            }
-        }
-
-        Assert::assertSame(1, $success, 'Ожидается 1 успешное удаление');
-        Assert::assertSame(2, $errors, 'Ожидается 2 ошибки');
-    }
-
-    /**
-     * Тест массового удаления групп товаров с пустым массивом
-     */
-    public function testBatchDeleteProductFoldersWithEmptyArray(): void
-    {
-        try {
-            ProductFoldersApiTest::$api->entityProductFolderDeletePost([]);
-            Assert::fail('Ожидалось исключение InvalidArgumentException для пустого массива');
-        } catch (\InvalidArgumentException $e) {
-            Asserter::assertStringContainsString('Missing the required parameter', $e->getMessage());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

@@ -59,7 +59,7 @@ class RetailStoreStateSync implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'message' => 'string',
-        'last_attemp_moment' => '\DateTime'
+        'last_attemp_moment' => 'string'
     ];
 
     /**
@@ -71,7 +71,7 @@ class RetailStoreStateSync implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'message' => null,
-        'last_attemp_moment' => 'date-time'
+        'last_attemp_moment' => null
     ];
 
     /**
@@ -335,7 +335,7 @@ class RetailStoreStateSync implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets last_attemp_moment
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getLastAttempMoment()
     {
@@ -345,7 +345,7 @@ class RetailStoreStateSync implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets last_attemp_moment
      *
-     * @param \DateTime|null $last_attemp_moment Момент последней попытки
+     * @param string|null $last_attemp_moment Момент последней попытки
      *
      * @return self
      */

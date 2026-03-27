@@ -28,9 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\ErrorErrorsInner;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,75 +42,121 @@ use PHPUnit\Framework\TestCase;
 class ErrorErrorsInnerTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "ErrorErrorsInner"
+     */
+    public function testErrorErrorsInner()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "error"
+     */
     public function testPropertyError()
     {
-        $errorErrorsInner = new ErrorErrorsInner();
-        $error = 'ValidationError';
-        $errorErrorsInner->setError($error);
-        Asserter::assertJsonHasFields($errorErrorsInner, ['error' => $error]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "parameter"
+     */
     public function testPropertyParameter()
     {
-        $errorErrorsInner = new ErrorErrorsInner();
-        $parameter = 'name';
-        $errorErrorsInner->setParameter($parameter);
-        Asserter::assertJsonHasFields($errorErrorsInner, ['parameter' => $parameter]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "code"
+     */
     public function testPropertyCode()
     {
-        $errorErrorsInner = new ErrorErrorsInner();
-        $code = 1000;
-        $errorErrorsInner->setCode($code);
-        Asserter::assertJsonHasFields($errorErrorsInner, ['code' => $code]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "error_message"
+     */
     public function testPropertyErrorMessage()
     {
-        $errorErrorsInner = new ErrorErrorsInner();
-        $errorMessage = 'Invalid value';
-        $errorErrorsInner->setErrorMessage($errorMessage);
-        Asserter::assertJsonHasFields($errorErrorsInner, ['error_message' => $errorMessage]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "more_info"
+     */
     public function testPropertyMoreInfo()
     {
-        $errorErrorsInner = new ErrorErrorsInner();
-        $moreInfo = 'https://example.com/docs/error';
-        $errorErrorsInner->setMoreInfo($moreInfo);
-        Asserter::assertJsonHasFields($errorErrorsInner, ['moreInfo' => $moreInfo]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "line"
+     */
     public function testPropertyLine()
     {
-        $errorErrorsInner = new ErrorErrorsInner();
-        $line = 5;
-        $errorErrorsInner->setLine($line);
-        Asserter::assertJsonHasFields($errorErrorsInner, ['line' => $line]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "column"
+     */
     public function testPropertyColumn()
     {
-        $errorErrorsInner = new ErrorErrorsInner();
-        $column = 10;
-        $errorErrorsInner->setColumn($column);
-        Asserter::assertJsonHasFields($errorErrorsInner, ['column' => $column]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "dependencies"
+     */
     public function testPropertyDependencies()
     {
-        $errorErrorsInner = new ErrorErrorsInner();
-        $dependencies = [];
-        $errorErrorsInner->setDependencies($dependencies);
-        Asserter::assertJsonHasFields($errorErrorsInner, ['dependencies' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $errorErrorsInner = new ErrorErrorsInner();
-        $meta = new Meta();
-        $errorErrorsInner->setMeta($meta);
-        Asserter::assertJsonHasFields($errorErrorsInner, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

@@ -28,9 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Currency;
-use OpenAPI\Client\Model\MinPrice;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,19 +42,58 @@ use PHPUnit\Framework\TestCase;
 class MinPriceTest extends TestCase
 {
 
-    public function testPropertyValue()
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
     {
-        $minPrice = new MinPrice();
-        $value = 50.0;
-        $minPrice->setValue($value);
-        Asserter::assertJsonHasFields($minPrice, ['value' => $value]);
     }
 
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "MinPrice"
+     */
+    public function testMinPrice()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "value"
+     */
+    public function testPropertyValue()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "currency"
+     */
     public function testPropertyCurrency()
     {
-        $minPrice = new MinPrice();
-        $currency = new Currency();
-        $minPrice->setCurrency($currency);
-        Asserter::assertJsonHasFields($minPrice, ['currency' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

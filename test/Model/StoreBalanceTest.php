@@ -28,11 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\Store;
-use OpenAPI\Client\Model\StoreBalance;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,43 +42,85 @@ use PHPUnit\Framework\TestCase;
 class StoreBalanceTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "StoreBalance"
+     */
+    public function testStoreBalance()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $storeBalance = new StoreBalance();
-        $id = StringUtil::randomUuid();
-        $storeBalance->setId($id);
-        Asserter::assertJsonHasFields($storeBalance, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $storeBalance = new StoreBalance();
-        $accountId = StringUtil::randomUuid();
-        $storeBalance->setAccountId($accountId);
-        Asserter::assertJsonHasFields($storeBalance, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $storeBalance = new StoreBalance();
-        $meta = new Meta();
-        $storeBalance->setMeta($meta);
-        Asserter::assertJsonHasFields($storeBalance, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "store"
+     */
     public function testPropertyStore()
     {
-        $storeBalance = new StoreBalance();
-        $store = new Store();
-        $storeBalance->setStore($store);
-        Asserter::assertJsonHasFields($storeBalance, ['store' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "quantity"
+     */
     public function testPropertyQuantity()
     {
-        $storeBalance = new StoreBalance();
-        $quantity = 100.5;
-        $storeBalance->setQuantity($quantity);
-        Asserter::assertJsonHasFields($storeBalance, ['quantity' => $quantity]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

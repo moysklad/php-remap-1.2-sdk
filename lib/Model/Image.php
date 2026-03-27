@@ -62,7 +62,7 @@ class Image implements ModelInterface, ArrayAccess, \JsonSerializable
         'title' => 'string',
         'filename' => 'string',
         'size' => 'int',
-        'updated' => '\DateTime',
+        'updated' => 'string',
         'tiny' => '\OpenAPI\Client\Model\Meta',
         'miniature' => '\OpenAPI\Client\Model\Meta'
     ];
@@ -79,7 +79,7 @@ class Image implements ModelInterface, ArrayAccess, \JsonSerializable
         'title' => null,
         'filename' => null,
         'size' => null,
-        'updated' => 'date-time',
+        'updated' => null,
         'tiny' => null,
         'miniature' => null
     ];
@@ -459,7 +459,7 @@ class Image implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -469,7 +469,7 @@ class Image implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Время последнего изменения
+     * @param string|null $updated Время последнего изменения
      *
      * @return self
      */

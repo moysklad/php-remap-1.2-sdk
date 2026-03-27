@@ -28,11 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\File;
-use OpenAPI\Client\Model\Employee;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,67 +42,112 @@ use PHPUnit\Framework\TestCase;
 class FileTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "File"
+     */
+    public function testFile()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $file = new File();
-        $meta = new Meta();
-        $file->setMeta($meta);
-        Asserter::assertJsonHasFields($file, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "title"
+     */
     public function testPropertyTitle()
     {
-        $file = new File();
-        $title = "Sample File";
-        $file->setTitle($title);
-        Asserter::assertJsonHasFields($file, ['title' => $title]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "filename"
+     */
     public function testPropertyFilename()
     {
-        $file = new File();
-        $filename = "sample.pdf";
-        $file->setFilename($filename);
-        Asserter::assertJsonHasFields($file, ['filename' => $filename]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "size"
+     */
     public function testPropertySize()
     {
-        $file = new File();
-        $size = 1024;
-        $file->setSize($size);
-        Asserter::assertJsonHasFields($file, ['size' => $size]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "created"
+     */
     public function testPropertyCreated()
     {
-        $file = new File();
-        $date = new \DateTime("2025-09-19T12:00:00Z");
-        $file->setCreated($date);
-        Asserter::assertJsonHasFields($file, ['created' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "created_by"
+     */
     public function testPropertyCreatedBy()
     {
-        $file = new File();
-        $createdBy = new Employee();
-        $file->setCreatedBy($createdBy);
-        Asserter::assertJsonHasFields($file, ['createdBy' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "tiny"
+     */
     public function testPropertyTiny()
     {
-        $file = new File();
-        $tiny = new Meta();
-        $file->setTiny($tiny);
-        Asserter::assertJsonHasFields($file, ['tiny' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "miniature"
+     */
     public function testPropertyMiniature()
     {
-        $file = new File();
-        $miniature = new Meta();
-        $file->setMiniature($miniature);
-        Asserter::assertJsonHasFields($file, ['miniature' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

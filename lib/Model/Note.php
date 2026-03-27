@@ -64,7 +64,7 @@ class Note implements ModelInterface, ArrayAccess, \JsonSerializable
         'agent' => '\OpenAPI\Client\Model\Counterparty',
         'author' => '\OpenAPI\Client\Model\Employee',
         'author_application' => '\OpenAPI\Client\Model\Application',
-        'created' => '\DateTime',
+        'created' => 'string',
         'description' => 'string'
     ];
 
@@ -82,7 +82,7 @@ class Note implements ModelInterface, ArrayAccess, \JsonSerializable
         'agent' => null,
         'author' => null,
         'author_application' => null,
-        'created' => 'date-time',
+        'created' => null,
         'description' => null
     ];
 
@@ -508,7 +508,7 @@ class Note implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getCreated()
     {
@@ -518,7 +518,7 @@ class Note implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created
      *
-     * @param \DateTime|null $created Время создания объекта
+     * @param string|null $created Время создания объекта
      *
      * @return self
      */

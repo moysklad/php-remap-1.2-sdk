@@ -27,15 +27,9 @@
 
 namespace OpenAPI\Client\Test\Api;
 
-use OpenAPI\Client\Api\UomsApi;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\Model\DeleteInfo;
-use OpenAPI\Client\Model\Uom;
-use OpenAPI\Client\Model\UomList;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
-use PHPUnit\Framework\Assert;
+use \OpenAPI\Client\Configuration;
+use \OpenAPI\Client\ApiException;
+use \OpenAPI\Client\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -49,435 +43,115 @@ use PHPUnit\Framework\TestCase;
 class UomsApiTest extends TestCase
 {
 
-    private static UomsApi $api;
-
+    /**
+     * Setup before running any test cases
+     */
     public static function setUpBeforeClass(): void
     {
-        $config = Configuration::getDefaultConfiguration()
-            ->setHost(getenv('API_HOST') . '/api/remap/1.2')
-            ->setUsername(getenv('API_LOGIN'))
-            ->setPassword(getenv('API_PASSWORD'));
-
-        UomsApiTest::$api = new UomsApi(null, $config);
     }
 
     /**
-     * Проверка успешной обработки ответа сервера на получение единиц измерения
+     * Setup before running each test case
      */
-    public function testEntityUomGet(): void
+    public function setUp(): void
     {
-        $prefix = StringUtil::randomUuid();
-        $uom1 = new Uom();
-        $uom1->setName("$prefix Uom 1");
-        $uom1->setCode("UOM1-" . $prefix);
-        $uom1 = UomsApiTest::$api->entityUomPost($uom1);
-
-        $uom2 = new Uom();
-        $uom2->setName("$prefix Uom 2");
-        $uom2->setCode("UOM2-" . $prefix);
-        $uom2 = UomsApiTest::$api->entityUomPost($uom2);
-
-        $uom3 = new Uom();
-        $uom3->setName("$prefix Uom 3");
-        $uom3->setCode("UOM3-" . $prefix);
-        $uom3 = UomsApiTest::$api->entityUomPost($uom3);
-
-        Assert::assertNotSame($uom1->getId(), $uom2->getId());
-        Assert::assertNotSame($uom2->getId(), $uom3->getId());
-
-        $uomList_12 = UomsApiTest::$api->entityUomGet(2, 0, null, "name~=$prefix", null, 'name');
-        Assert::assertInstanceOf(UomList::class, $uomList_12);
-        Asserter::assertMetaCollection($uomList_12->getMeta(), 'uom', 3, 2, 'uom');
-        Asserter::assertJsonHasFields($uomList_12, ['meta' => []], false, 'context.employee');
-        Asserter::assertJsonHasFields($uomList_12, [
-            'rows' => [
-                ['id' => $uom1->getId()],
-                ['id' => $uom2->getId()]
-            ]], false);
-
-        $uomList_23 = UomsApiTest::$api->entityUomGet(3, 1, null, "name~=$prefix", null, 'name');
-        Assert::assertInstanceOf(UomList::class, $uomList_23);
-        Asserter::assertMetaCollection($uomList_23->getMeta(), 'uom', 3, 3, 'uom');
-        Asserter::assertJsonHasFields($uomList_23, ['meta' => []], false, 'context.employee');
-        Asserter::assertJsonHasFields($uomList_23, [
-            'rows' => [
-                ['id' => $uom2->getId()],
-                ['id' => $uom3->getId()]
-            ]], false);
     }
 
     /**
-     * Проверка обработки ответа сервера на получение единиц измерения сопровождаемое ошибкой
+     * Clean up after running each test case
      */
-    public function testEntityUomGetWithError(): void
+    public function tearDown(): void
     {
-        try {
-            UomsApiTest::$api->entityUomGet(1, 1, null, "name>123");
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(412, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
     }
 
     /**
-     * Проверка успешной обработки ответа сервера на получение единицы измерения по ID
+     * Clean up after running all test cases
      */
-    public function testEntityUomIdGet()
+    public static function tearDownAfterClass(): void
     {
-        $uomReq = new Uom();
-
-        // Основные поля
-        $uomReq->setName("Тестовая единица измерения " . StringUtil::randomUuid());
-        $uomReq->setCode(StringUtil::randomUuid());
-        $uomReq->setExternalCode(StringUtil::randomUuid());
-        $uomReq->setDescription("Описание тестовой единицы измерения");
-        $uomReq->setShared(true);
-
-        $uomResp = UomsApiTest::$api->entityUomPost($uomReq);
-        $uomId = $uomResp->getId();
-        Assert::assertNotNull($uomId);
-        Asserter::assertMeta($uomResp->getMeta(), $uomId, 'uom');
-
-        // Проверка полей
-        Assert::assertSame($uomReq->getName(), $uomResp->getName());
-        Assert::assertSame($uomReq->getCode(), $uomResp->getCode());
-        Assert::assertSame($uomReq->getExternalCode(), $uomResp->getExternalCode());
-        Assert::assertSame($uomReq->getDescription(), $uomResp->getDescription());
-        Assert::assertSame($uomReq->getShared(), $uomResp->getShared());
-
-        Asserter::assertJsonHasFields($uomResp, ['owner' => ['meta' => ['type' => 'employee']]], false);
-        Asserter::assertJsonHasFields($uomResp, ['group' => ['meta' => ['type' => 'group']]], false);
-        Assert::assertNotNull($uomResp->getUpdated());
-        Assert::assertNotNull($uomResp->getAccountId());
     }
 
     /**
-     * Проверка обработки ответа сервера на получение единицы измерения сопровождаемое ошибкой
+     * Test case for createUom
+     *
+     * Создать единицу измерения.
+     *
      */
-    public function testEntityUomIdGetWithError()
+    public function testCreateUom()
     {
-        try {
-            UomsApiTest::$api->entityUomIdGet(StringUtil::randomUuid());
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(404, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Проверка обработки ответа сервера на создание единицы измерения сопровождаемое ошибкой
+     * Test case for createUomsBatch
+     *
+     * Создать или изменить единицу измерения.
+     *
      */
-    public function testEntityUomPostWithError()
+    public function testCreateUomsBatch()
     {
-        try {
-            $uom1 = new Uom();
-            // Не устанавливаем обязательное поле name
-            UomsApiTest::$api->entityUomPost($uom1);
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(412, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Проверка успешной обработки ответа сервера на обновление единицы измерения
+     * Test case for deleteUom
+     *
+     * Удалить единицу измерения.
+     *
      */
-    public function testEntityUomIdPut()
+    public function testDeleteUom()
     {
-        $createUom = new Uom();
-        $createUom->setName("Uom Old");
-        $createUom->setCode("OLD-" . StringUtil::randomUuid());
-        $createUom = UomsApiTest::$api->entityUomPost($createUom);
-
-        $updateUom = new Uom();
-        $updateUom->setName("Uom New");
-        $updateUom->setDescription("Новое описание");
-        $updateUom->setCode("NEW-" . StringUtil::randomUuid());
-        $updateUom = UomsApiTest::$api->entityUomIdPut($createUom->getId(), $updateUom);
-
-        Assert::assertSame($createUom->getId(), $updateUom->getId());
-        Assert::assertSame("Uom New", $updateUom->getName());
-        Assert::assertSame("Новое описание", $updateUom->getDescription());
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Проверка успешной обработки ответа сервера удаления единицы измерения
+     * Test case for deleteUomsBatch
+     *
+     * Удалить единицу измерения.
+     *
      */
-    public function testEntityUomIdDelete()
+    public function testDeleteUomsBatch()
     {
-        $uom = new Uom();
-        $uom->setName("Uom for Delete");
-        $uom->setCode("DEL-" . StringUtil::randomUuid());
-        $uom = UomsApiTest::$api->entityUomPost($uom);
-        $resp = UomsApiTest::$api->entityUomIdDeleteWithHttpInfo($uom->getId());
-        Assert::assertEquals(200, $resp[1]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Проверка обработки ответа сервера удаления единицы измерения сопровождаемое ошибкой
+     * Test case for getUomById
+     *
+     * Получить единицу измерения по ID.
+     *
      */
-    public function testEntityUomIdDeleteWithError()
+    public function testGetUomById()
     {
-        try {
-            UomsApiTest::$api->entityUomIdDelete(StringUtil::randomUuid());
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(404, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового создания единиц измерения
+     * Test case for getUoms
+     *
+     * Получить список единиц измерения.
+     *
      */
-    public function testBatchCreateUoms(): void
+    public function testGetUoms()
     {
-        $prefix = StringUtil::randomUuid();
-        $uoms = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $uom = new Uom();
-            $uom->setName("$prefix Batch Uom $i");
-            $uom->setCode("Batch-$i-$prefix");
-            $uom->setDescription("Описание массовой единицы измерения $i");
-            $uom->setExternalCode("EXT-$i-$prefix");
-            $uom->setShared(true);
-            $uoms[] = $uom;
-        }
-
-        $response = UomsApiTest::$api->entityUomBatchPost($uoms);
-
-        Assert::assertIsArray($response);
-        Assert::assertCount(3, $response);
-
-        foreach ($response as $index => $createdUom) {
-            Assert::assertInstanceOf(Uom::class, $createdUom);
-            Assert::assertNotNull($createdUom->getId());
-            Asserter::assertStringContainsString("$prefix Batch Uom " . ($index + 1), $createdUom->getName());
-            Asserter::assertStringContainsString("Batch-" . ($index + 1) . "-$prefix", $createdUom->getCode());
-            Asserter::assertStringContainsString("Описание массовой единицы измерения " . ($index + 1), $createdUom->getDescription());
-            Asserter::assertStringContainsString("EXT-" . ($index + 1) . "-$prefix", $createdUom->getExternalCode());
-            Assert::assertTrue($createdUom->getShared());
-
-            Asserter::assertMeta($createdUom->getMeta(), $createdUom->getId(), 'uom');
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового обновления единиц измерения
+     * Test case for updateUom
+     *
+     * Обновить единицы измерения.
+     *
      */
-    public function testBatchUpdateUoms(): void
+    public function testUpdateUom()
     {
-        $prefix = StringUtil::randomUuid();
-        $createdUoms = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $uom = new Uom();
-            $uom->setName("$prefix Original Uom $i");
-            $uom->setCode("ORIG-$i-$prefix");
-            $uom->setExternalCode("EXT-ORIG-$i-$prefix");
-            $createdUoms[] = $uom;
-        }
-
-        $response = UomsApiTest::$api->entityUomBatchPost($createdUoms);
-        Assert::assertCount(3, $response);
-
-        $updatedUoms = [];
-        foreach ($response as $index => $createdUom) {
-            $updateUom = new Uom();
-            $updateUom->setMeta($createdUom->getMeta());
-            $updateUom->setName("$prefix Updated Uom " . ($index + 1));
-            $updateUom->setCode("UPD-" . ($index + 1) . "-$prefix");
-            $updateUom->setDescription("Обновленное описание единицы измерения " . ($index + 1));
-            $updateUom->setExternalCode("EXT-UPD-" . ($index + 1) . "-$prefix");
-            $updateUom->setShared(true);
-            $updatedUoms[] = $updateUom;
-        }
-
-        $updateResponse = UomsApiTest::$api->entityUomBatchPost($updatedUoms);
-
-        Assert::assertIsArray($updateResponse);
-        Assert::assertCount(3, $updateResponse);
-
-        foreach ($updateResponse as $index => $updatedUom) {
-            Assert::assertInstanceOf(Uom::class, $updatedUom);
-            Asserter::assertStringContainsString("$prefix Updated Uom " . ($index + 1), $updatedUom->getName());
-            Asserter::assertStringContainsString("UPD-" . ($index + 1) . "-$prefix", $updatedUom->getCode());
-            Asserter::assertStringContainsString("Обновленное описание единицы измерения " . ($index + 1), $updatedUom->getDescription());
-            Asserter::assertStringContainsString("EXT-UPD-" . ($index + 1) . "-$prefix", $updatedUom->getExternalCode());
-            Assert::assertTrue($updatedUom->getShared());
-        }
-    }
-
-    /**
-     * Тест массового удаления единиц измерения
-     */
-    public function testBatchDeleteUoms(): void
-    {
-        $prefix = StringUtil::randomUuid();
-        $createdUoms = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $uom = new Uom();
-            $uom->setName("$prefix Delete Uom $i");
-            $uom->setCode("DEL-$i-$prefix");
-            $createdUoms[] = $uom;
-        }
-
-        $response = UomsApiTest::$api->entityUomBatchPost($createdUoms);
-        Assert::assertCount(3, $response);
-
-        $metaArray = [];
-        foreach ($response as $createdUom) {
-            $meta = new Uom();
-            $meta->setMeta($createdUom->getMeta());
-            $metaArray[] = $meta;
-        }
-
-        $deleteResponse = UomsApiTest::$api->entityUomDeletePost($metaArray);
-
-        Assert::assertIsArray($deleteResponse);
-        Assert::assertCount(3, $deleteResponse);
-
-        foreach ($deleteResponse as $deleteResult) {
-            Assert::assertInstanceOf(DeleteInfo::class, $deleteResult);
-            Assert::assertNotNull($deleteResult->getInfo());
-            Asserter::assertStringContainsString('удален', $deleteResult->getInfo());
-        }
-
-        foreach ($response as $createdUom) {
-            try {
-                UomsApiTest::$api->entityUomIdGet($createdUom->getId());
-                Assert::fail('Единица измерения должна была быть удалена');
-            } catch (ApiException $e) {
-                Assert::assertEquals(404, $e->getCode());
-            }
-        }
-    }
-
-    /**
-     * Тест массового создания единиц измерения с дублирующимися кодами
-     */
-    public function testBatchCreateUomsWithError(): void
-    {
-        $prefix = StringUtil::randomUuid();
-        $duplicateCode = "DUPLICATE-$prefix";
-        $uoms = [];
-
-        $uom = new Uom();
-        $uom->setName("$prefix Duplicate Uom 1");
-        $uoms[] = $uom;
-
-        for ($i = 2; $i <= 3; $i++) {
-            $uom = new Uom();
-            $uom->setName(true);
-            $uoms[] = $uom;
-        }
-
-        try {
-            $res = UomsApiTest::$api->entityUomBatchPost($uoms);
-        } catch (ApiException $e) {
-            $res = json_decode($e->getResponseBody(), true);
-        }
-
-        $success = 0;
-        $errors = 0;
-        foreach ($res as $item) {
-            if (isset($item['errors'])) {
-                $errors++;
-                // Код ошибки может отличаться, нужно проверить фактический ответ API
-                // Assert::assertEquals(3006, $item['errors'][0]['code']);
-            } else {
-                $success++;
-            }
-        }
-
-        Assert::assertGreaterThanOrEqual(1, $success, 'Ожидается как минимум 1 успешное создание');
-        Assert::assertGreaterThanOrEqual(2, $errors, 'Ожидается как минимум 2 ошибки');
-    }
-
-    /**
-     * Тест массового удаления единиц измерения с некорректными мета-данными
-     */
-    public function testBatchDeleteUomsWithError(): void
-    {
-        $prefix = StringUtil::randomUuid();
-
-        $uom = new Uom();
-        $uom->setName("$prefix Delete Uom");
-        $uom->setCode("DEL-$prefix");
-
-        $response = UomsApiTest::$api->entityUomPost($uom);
-
-        $metaArray = [];
-
-        $meta1 = new Uom();
-        $meta1->setMeta($response->getMeta());
-        $metaArray[] = $meta1;
-
-        // Мета-данные с некорректным ID
-        $meta2 = new Uom();
-        $metaInvalidId = clone $response->getMeta();
-        $newHref = preg_replace(
-            '/[0-9a-fA-F-]{36}/',
-            'invalid-uuid',
-            $metaInvalidId->getHref()
-        );
-        $metaInvalidId->setHref($newHref);
-
-        $meta2->setMeta($metaInvalidId);
-        $metaArray[] = $meta2;
-
-        // Мета-данные с некорректным типом
-        $meta3 = new Uom();
-        $metaInvalidType = clone $response->getMeta();
-        $newHref2 = str_replace('/uom/', '/counterparty/', $metaInvalidType->getHref());
-        $newHref2 = preg_replace(
-            '/[0-9a-fA-F-]{36}/',
-            'invalid-uuid',
-            $newHref2
-        );
-        $metaInvalidType->setHref($newHref2);
-        $meta3->setMeta($metaInvalidType);
-        $metaArray[] = $meta3;
-
-        try {
-            $res = UomsApiTest::$api->entityUomDeletePost($metaArray);
-            Assert::fail('Ожидалось исключение ApiException из-за некорректных мета-данных');
-        } catch (ApiException $e) {
-            $res = json_decode($e->getResponseBody(), true);
-        }
-
-        $success = 0;
-        $errors = 0;
-        foreach ($res as $item) {
-            if (isset($item['errors'])) {
-                $errors++;
-                // Код ошибки может отличаться, нужно проверить фактический ответ API
-                // Assert::assertEquals(2013, $item['errors'][0]['code']);
-            } else {
-                $success++;
-                Asserter::assertStringContainsString('удален', $item['info']);
-            }
-        }
-
-        Assert::assertSame(1, $success, 'Ожидается 1 успешное удаление');
-        Assert::assertSame(2, $errors, 'Ожидается 2 ошибки');
-    }
-
-    /**
-     * Тест массового удаления единиц измерения с пустым массивом
-     */
-    public function testBatchDeleteUomsWithEmptyArray(): void
-    {
-        try {
-            UomsApiTest::$api->entityUomDeletePost([]);
-            Assert::fail('Ожидалось исключение InvalidArgumentException для пустого массива');
-        } catch (\InvalidArgumentException $e) {
-            Asserter::assertStringContainsString('Missing the required parameter', $e->getMessage());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

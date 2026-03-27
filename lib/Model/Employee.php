@@ -64,8 +64,8 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'external_code' => 'string',
         'archived' => 'bool',
-        'created' => '\DateTime',
-        'updated' => '\DateTime',
+        'created' => 'string',
+        'updated' => 'string',
         'description' => 'string',
         'email' => 'string',
         'phone' => 'string',
@@ -100,8 +100,8 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'external_code' => null,
         'archived' => null,
-        'created' => 'date-time',
-        'updated' => 'date-time',
+        'created' => null,
+        'updated' => null,
         'description' => null,
         'email' => 'email',
         'phone' => null,
@@ -674,7 +674,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getCreated()
     {
@@ -684,7 +684,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created
      *
-     * @param \DateTime|null $created Момент создания
+     * @param string|null $created Момент создания
      *
      * @return self
      */
@@ -701,7 +701,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -711,7 +711,7 @@ class Employee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Момент последнего обновления
+     * @param string|null $updated Момент последнего обновления
      *
      * @return self
      */

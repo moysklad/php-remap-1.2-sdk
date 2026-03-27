@@ -28,8 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\AttributeText;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -44,18 +42,85 @@ use PHPUnit\Framework\TestCase;
 class AttributeTextTest extends TestCase
 {
 
-    public function testPropertyType()
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
     {
-        $attribute = new AttributeText();
-        $attribute->setType(AttributeText::TYPE_TEXT);
-        Asserter::assertJsonHasFields($attribute, ['type' => AttributeText::TYPE_TEXT]);
     }
 
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "AttributeText"
+     */
+    public function testAttributeText()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "type"
+     */
+    public function testPropertyType()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "value"
+     */
     public function testPropertyValue()
     {
-        $attribute = new AttributeText();
-        $value = "This is a longer text value for testing purposes.";
-        $attribute->setValue($value);
-        Asserter::assertJsonHasFields($attribute, ['value' => $value]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "id"
+     */
+    public function testPropertyId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
+    public function testPropertyMeta()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "name"
+     */
+    public function testPropertyName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

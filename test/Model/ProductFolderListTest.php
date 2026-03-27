@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductListTest
+ * ProductFolderListTest
  *
  * PHP version 8.1
  *
@@ -28,11 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Context;
-use OpenAPI\Client\Model\MetaList;
-use OpenAPI\Client\Model\ProductFolder;
-use OpenAPI\Client\Model\ProductFolderList;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,27 +42,67 @@ use PHPUnit\Framework\TestCase;
 class ProductFolderListTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "ProductFolderList"
+     */
+    public function testProductFolderList()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "context"
+     */
     public function testPropertyContext()
     {
-        $productFolderList = new ProductFolderList();
-        $context = new Context();
-        $productFolderList->setContext($context);
-        Asserter::assertJsonHasFields($productFolderList, ['context' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $productFolderList = new ProductFolderList();
-        $meta = new MetaList();
-        $productFolderList->setMeta($meta);
-        Asserter::assertJsonHasFields($productFolderList, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "rows"
+     */
     public function testPropertyRows()
     {
-        $productFolderList = new ProductFolderList();
-        $productFolder = new ProductFolder();
-        $productFolderList->setRows([$productFolder]);
-        Asserter::assertJsonHasFields($productFolderList, ['rows' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

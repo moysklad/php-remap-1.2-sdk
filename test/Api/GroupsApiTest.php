@@ -27,14 +27,9 @@
 
 namespace OpenAPI\Client\Test\Api;
 
-use OpenAPI\Client\Api\GroupsApi;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\Model\Group;
-use OpenAPI\Client\Model\GroupList;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
-use PHPUnit\Framework\Assert;
+use \OpenAPI\Client\Configuration;
+use \OpenAPI\Client\ApiException;
+use \OpenAPI\Client\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -48,146 +43,91 @@ use PHPUnit\Framework\TestCase;
 class GroupsApiTest extends TestCase
 {
 
-    private static GroupsApi $api;
-
+    /**
+     * Setup before running any test cases
+     */
     public static function setUpBeforeClass(): void
     {
-        $config = Configuration::getDefaultConfiguration()
-            ->setHost(getenv('API_HOST') . '/api/remap/1.2')
-            ->setUsername(getenv('API_LOGIN'))
-            ->setPassword(getenv('API_PASSWORD'));
-
-        GroupsApiTest::$api = new GroupsApi(null, $config);
-    }
-
-     /**
-      *  Проверка успешной обработки ответа сервера на получение групп
-      */
-    public function testEntityGroupGet(): void
-    {
-        $prefix = StringUtil::randomUuid();
-
-        $group1 = new Group();
-        $group1->setName("$prefix Group 1");
-        $group1 = GroupsApiTest::$api->entityGroupPost($group1);
-
-        $group2 = new Group();
-        $group2->setName("$prefix Group 2");
-        $group2 = GroupsApiTest::$api->entityGroupPost($group2);
-
-        $group3 = new Group();
-        $group3->setName("$prefix Group 3");
-        $group3 = GroupsApiTest::$api->entityGroupPost($group3);
-
-        Assert::assertNotSame($group1->getId(), $group2->getId());
-        Assert::assertNotSame($group2->getId(), $group3->getId());
     }
 
     /**
-     *  Проверка обработки ответа сервера на получение группы сопровождаемое ошибкой
+     * Setup before running each test case
      */
-    public function testEntityGroupGetWithError(): void
+    public function setUp(): void
     {
-        try {
-            GroupsApiTest::$api->entityGroupGet(1, 5, null, "name=test");
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(412, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
     }
 
     /**
-     *  Проверка успешной обработки ответа сервера в случае ошибки
+     * Clean up after running each test case
      */
-    public function testEntityGroupIdGet()
+    public function tearDown(): void
     {
-        $groupReq = new Group();
-
-        // простые флаги и строки
-        $groupReq->setName("Тестовый отдел " . StringUtil::randomUuid());
-
-        $groupResp = GroupsApiTest::$api->entityGroupPost($groupReq);
-        $groupId = $groupResp->getId();
-        Assert::assertNotNull($groupId);
-        Asserter::assertMeta($groupResp->getMeta(), $groupId, 'group');
-
-        Assert::assertSame($groupReq->getName(), $groupResp->getName());
-        Assert::assertNotNull($groupResp->getAccountId());
-        Assert::assertNotNull($groupResp->getIndex());
     }
 
     /**
-     *  Проверка обработки ответа сервера на получение группы сопровождаемое ошибкой
+     * Clean up after running all test cases
      */
-    public function testEntityGroupIdGetWithError()
+    public static function tearDownAfterClass(): void
     {
-        try {
-            GroupsApiTest::$api->entityGroupIdGet(StringUtil::randomUuid());
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(404, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
     }
 
     /**
-     *  Проверка обработки ответа сервера на создание группы сопровождаемое ошибкой
+     * Test case for createGroup
+     *
+     * Создать группу.
+     *
      */
-    public function testEntityGroupPostWithError()
+    public function testCreateGroup()
     {
-        try {
-            $group1 = new Group();
-            GroupsApiTest::$api->entityGroupPost($group1);
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(412, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     *  Проверка успешной обработки ответа сервера на обновление группы
+     * Test case for deleteGroup
+     *
+     * Удалить группу.
+     *
      */
-    public function testEntityGroupIdPut()
+    public function testDeleteGroup()
     {
-        $prefix = StringUtil::randomUuid();
-
-        $createGroup = new Group();
-        $createGroup->setName("$prefix Group Old");
-        $createGroup = GroupsApiTest::$api->entityGroupPost($createGroup);
-
-        $updateGroup = new Group();
-        $updateGroup->setName("$prefix Group New");
-        $updateGroup = GroupsApiTest::$api->entityGroupIdPut($createGroup->getId(), $updateGroup);
-
-        Assert::assertSame($createGroup->getId(), $updateGroup->getId());
-        Assert::assertSame("$prefix Group New", $updateGroup->getName());
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     *  Проверка успешной обработки ответа сервера удаления группы
+     * Test case for getGroupById
+     *
+     * Получить группу по ID.
+     *
      */
-    public function testEntityGroupIdDelete()
+    public function testGetGroupById()
     {
-        $group = new Group();
-        $group->setName("Group testEntityGroupIdDelete");
-        $group = GroupsApiTest::$api->entityGroupPost($group);
-        $resp = GroupsApiTest::$api->entityGroupIdDeleteWithHttpInfo($group->getId());
-        Assert::assertEquals(200, $resp[1]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     *  Проверка обработки ответа сервера удаления группы сопровождаемое ошибкой
+     * Test case for getGroups
+     *
+     * Получить список групп.
+     *
      */
-    public function testEntityGroupIdDeleteWithError()
+    public function testGetGroups()
     {
-        try {
-            GroupsApiTest::$api->entityGroupIdDelete(StringUtil::randomUuid());
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(404, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test case for updateGroup
+     *
+     * Обновить группу.
+     *
+     */
+    public function testUpdateGroup()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
+}

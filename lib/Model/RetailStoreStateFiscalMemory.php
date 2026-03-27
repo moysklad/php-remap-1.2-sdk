@@ -60,7 +60,7 @@ class RetailStoreStateFiscalMemory implements ModelInterface, ArrayAccess, \Json
     protected static $openAPITypes = [
         'error' => '\OpenAPI\Client\Model\RetailStoreStateFiscalMemoryError',
         'not_send_doc_count' => 'int',
-        'not_send_first_doc_moment' => '\DateTime'
+        'not_send_first_doc_moment' => 'string'
     ];
 
     /**
@@ -73,7 +73,7 @@ class RetailStoreStateFiscalMemory implements ModelInterface, ArrayAccess, \Json
     protected static $openAPIFormats = [
         'error' => null,
         'not_send_doc_count' => null,
-        'not_send_first_doc_moment' => 'date-time'
+        'not_send_first_doc_moment' => null
     ];
 
     /**
@@ -361,7 +361,7 @@ class RetailStoreStateFiscalMemory implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets not_send_first_doc_moment
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getNotSendFirstDocMoment()
     {
@@ -371,7 +371,7 @@ class RetailStoreStateFiscalMemory implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets not_send_first_doc_moment
      *
-     * @param \DateTime|null $not_send_first_doc_moment Момент первого неотправленного документа
+     * @param string|null $not_send_first_doc_moment Момент первого неотправленного документа
      *
      * @return self
      */

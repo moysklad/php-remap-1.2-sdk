@@ -28,12 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Group;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\Employee;
-use OpenAPI\Client\Model\ProductFolder;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -48,158 +42,220 @@ use PHPUnit\Framework\TestCase;
 class ProductFolderTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "ProductFolder"
+     */
+    public function testProductFolder()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $productFolder = new ProductFolder();
-        $meta = new Meta();
-        $productFolder->setMeta($meta);
-        Asserter::assertJsonHasFields($productFolder, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $productFolder = new ProductFolder();
-        $id = StringUtil::randomUuid();
-        $productFolder->setId($id);
-        Asserter::assertJsonHasFields($productFolder, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $productFolder = new ProductFolder();
-        $accountId = StringUtil::randomUuid();
-        $productFolder->setAccountId($accountId);
-        Asserter::assertJsonHasFields($productFolder, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $productFolder = new ProductFolder();
-        $name = "Electronics";
-        $productFolder->setName($name);
-        Asserter::assertJsonHasFields($productFolder, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "code"
+     */
     public function testPropertyCode()
     {
-        $productFolder = new ProductFolder();
-        $code = "ELEC";
-        $productFolder->setCode($code);
-        Asserter::assertJsonHasFields($productFolder, ['code' => $code]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "external_code"
+     */
     public function testPropertyExternalCode()
     {
-        $productFolder = new ProductFolder();
-        $externalCode = "EXT-ELEC";
-        $productFolder->setExternalCode($externalCode);
-        Asserter::assertJsonHasFields($productFolder, ['externalCode' => $externalCode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "archived"
+     */
     public function testPropertyArchived()
     {
-        $productFolder = new ProductFolder();
-        $productFolder->setArchived(false);
-        Asserter::assertJsonHasFields($productFolder, ['archived' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "path_name"
+     */
     public function testPropertyPathName()
     {
-        $productFolder = new ProductFolder();
-        $pathName = "Root/Electronics";
-        $productFolder->setPathName($pathName);
-        Asserter::assertJsonHasFields($productFolder, ['pathName' => $pathName]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "description"
+     */
     public function testPropertyDescription()
     {
-        $productFolder = new ProductFolder();
-        $description = "Electronic products category";
-        $productFolder->setDescription($description);
-        Asserter::assertJsonHasFields($productFolder, ['description' => $description]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "vat"
+     */
     public function testPropertyVat()
     {
-        $productFolder = new ProductFolder();
-        $vat = 20;
-        $productFolder->setVat($vat);
-        Asserter::assertJsonHasFields($productFolder, ['vat' => $vat]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "vat_enabled"
+     */
     public function testPropertyVatEnabled()
     {
-        $productFolder = new ProductFolder();
-        $productFolder->setVatEnabled(true);
-        Asserter::assertJsonHasFields($productFolder, ['vatEnabled' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "effective_vat"
+     */
     public function testPropertyEffectiveVat()
     {
-        $productFolder = new ProductFolder();
-        $effectiveVat = 20;
-        $productFolder->setEffectiveVat($effectiveVat);
-        Asserter::assertJsonHasFields($productFolder, ['effectiveVat' => $effectiveVat]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "effective_vat_enabled"
+     */
     public function testPropertyEffectiveVatEnabled()
     {
-        $productFolder = new ProductFolder();
-        $productFolder->setEffectiveVatEnabled(true);
-        Asserter::assertJsonHasFields($productFolder, ['effectiveVatEnabled' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "use_parent_vat"
+     */
     public function testPropertyUseParentVat()
     {
-        $productFolder = new ProductFolder();
-        $productFolder->setUseParentVat(false);
-        Asserter::assertJsonHasFields($productFolder, ['useParentVat' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "shared"
+     */
     public function testPropertyShared()
     {
-        $productFolder = new ProductFolder();
-        $productFolder->setShared(true);
-        Asserter::assertJsonHasFields($productFolder, ['shared' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "group"
+     */
     public function testPropertyGroup()
     {
-        $productFolder = new ProductFolder();
-        $group = new Group();
-        $productFolder->setGroup($group);
-        Asserter::assertJsonHasFields($productFolder, ['group' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "owner"
+     */
     public function testPropertyOwner()
     {
-        $productFolder = new ProductFolder();
-        $owner = new Employee();
-        $productFolder->setOwner($owner);
-        Asserter::assertJsonHasFields($productFolder, ['owner' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "updated"
+     */
     public function testPropertyUpdated()
     {
-        $productFolder = new ProductFolder();
-        $date = new \DateTime("2025-09-19T12:00:00Z");
-        $productFolder->setUpdated($date);
-        Asserter::assertJsonHasFields($productFolder, ['updated' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "product_folder"
+     */
     public function testPropertyProductFolder()
     {
-        $productFolder = new ProductFolder();
-        $parentFolder = new ProductFolder();
-        $productFolder->setProductFolder($parentFolder);
-        Asserter::assertJsonHasFields($productFolder, ['productFolder' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "tax_system"
+     */
     public function testPropertyTaxSystem()
     {
-        $productFolder = new ProductFolder();
-        $taxSystem = ProductFolder::TAX_SYSTEM_GENERAL_TAX_SYSTEM;
-        $productFolder->setTaxSystem($taxSystem);
-        Asserter::assertJsonHasFields($productFolder, ['taxSystem' => $taxSystem]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

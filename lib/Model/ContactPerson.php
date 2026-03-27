@@ -61,7 +61,7 @@ class ContactPerson implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => '\OpenAPI\Client\Model\Meta',
         'id' => 'string',
         'account_id' => 'string',
-        'updated' => '\DateTime',
+        'updated' => 'string',
         'name' => 'string',
         'description' => 'string',
         'email' => 'string',
@@ -82,7 +82,7 @@ class ContactPerson implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => null,
         'id' => 'uuid',
         'account_id' => 'uuid',
-        'updated' => 'date-time',
+        'updated' => null,
         'name' => null,
         'description' => null,
         'email' => 'email',
@@ -448,7 +448,7 @@ class ContactPerson implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -458,7 +458,7 @@ class ContactPerson implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Время последнего изменения
+     * @param string|null $updated Время последнего изменения
      *
      * @return self
      */

@@ -59,7 +59,7 @@ class RetailStoreEnvironmentChequePrinterFiscalMemory implements ModelInterface,
       */
     protected static $openAPITypes = [
         'fiscal_data_version' => 'string',
-        'fiscal_validity_date' => '\DateTime'
+        'fiscal_validity_date' => 'string'
     ];
 
     /**
@@ -71,7 +71,7 @@ class RetailStoreEnvironmentChequePrinterFiscalMemory implements ModelInterface,
       */
     protected static $openAPIFormats = [
         'fiscal_data_version' => null,
-        'fiscal_validity_date' => 'date-time'
+        'fiscal_validity_date' => null
     ];
 
     /**
@@ -335,7 +335,7 @@ class RetailStoreEnvironmentChequePrinterFiscalMemory implements ModelInterface,
     /**
      * Gets fiscal_validity_date
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getFiscalValidityDate()
     {
@@ -345,7 +345,7 @@ class RetailStoreEnvironmentChequePrinterFiscalMemory implements ModelInterface,
     /**
      * Sets fiscal_validity_date
      *
-     * @param \DateTime|null $fiscal_validity_date Дата окончания действия фискальной памяти
+     * @param string|null $fiscal_validity_date Дата окончания действия фискальной памяти
      *
      * @return self
      */

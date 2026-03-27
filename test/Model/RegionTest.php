@@ -28,10 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\Region;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -46,67 +42,112 @@ use PHPUnit\Framework\TestCase;
 class RegionTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Region"
+     */
+    public function testRegion()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $region = new Region();
-        $meta = new Meta();
-        $region->setMeta($meta);
-        Asserter::assertJsonHasFields($region, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $region = new Region();
-        $id = StringUtil::randomUuid();
-        $region->setId($id);
-        Asserter::assertJsonHasFields($region, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $region = new Region();
-        $accountId = StringUtil::randomUuid();
-        $region->setAccountId($accountId);
-        Asserter::assertJsonHasFields($region, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $region = new Region();
-        $name = "Moscow Region";
-        $region->setName($name);
-        Asserter::assertJsonHasFields($region, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "code"
+     */
     public function testPropertyCode()
     {
-        $region = new Region();
-        $code = "RU-MOW";
-        $region->setCode($code);
-        Asserter::assertJsonHasFields($region, ['code' => $code]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "external_code"
+     */
     public function testPropertyExternalCode()
     {
-        $region = new Region();
-        $externalCode = "EXT-MOW";
-        $region->setExternalCode($externalCode);
-        Asserter::assertJsonHasFields($region, ['externalCode' => $externalCode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "updated"
+     */
     public function testPropertyUpdated()
     {
-        $region = new Region();
-        $date = new \DateTime("2025-09-19T12:00:00Z");
-        $region->setUpdated($date);
-        Asserter::assertJsonHasFields($region, ['updated' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "version"
+     */
     public function testPropertyVersion()
     {
-        $region = new Region();
-        $version = 1;
-        $region->setVersion($version);
-        Asserter::assertJsonHasFields($region, ['version' => $version]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

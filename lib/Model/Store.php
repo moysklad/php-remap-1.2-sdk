@@ -64,7 +64,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
         'owner' => '\OpenAPI\Client\Model\Employee',
         'shared' => 'bool',
         'group' => '\OpenAPI\Client\Model\Group',
-        'updated' => '\DateTime',
+        'updated' => 'string',
         'name' => 'string',
         'description' => 'string',
         'code' => 'string',
@@ -93,7 +93,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
         'owner' => null,
         'shared' => null,
         'group' => null,
-        'updated' => 'date-time',
+        'updated' => null,
         'name' => null,
         'description' => null,
         'code' => null,
@@ -608,7 +608,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -618,7 +618,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Момент последнего обновления
+     * @param string|null $updated Момент последнего обновления
      *
      * @return self
      */

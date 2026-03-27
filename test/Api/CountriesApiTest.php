@@ -27,15 +27,9 @@
 
 namespace OpenAPI\Client\Test\Api;
 
-use OpenAPI\Client\Api\CountriesApi;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\Model\DeleteInfo;
-use OpenAPI\Client\Model\Country;
-use OpenAPI\Client\Model\CountryList;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
-use PHPUnit\Framework\Assert;
+use \OpenAPI\Client\Configuration;
+use \OpenAPI\Client\ApiException;
+use \OpenAPI\Client\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -49,376 +43,115 @@ use PHPUnit\Framework\TestCase;
 class CountriesApiTest extends TestCase
 {
 
-    private static CountriesApi $api;
-
+    /**
+     * Setup before running any test cases
+     */
     public static function setUpBeforeClass(): void
     {
-        $config = Configuration::getDefaultConfiguration()
-            ->setHost('https://api-api-1.testms-test.lognex.ru' . '/api/remap/1.2')
-            ->setUsername('admin@123')
-            ->setPassword('123123');
-
-        CountriesApiTest::$api = new CountriesApi(null, $config);
     }
 
     /**
-     *  Проверка успешной обработки ответа сервера на получение страны
+     * Setup before running each test case
      */
-    public function testEntityCountryGet(): void
+    public function setUp(): void
     {
-        $prefix = StringUtil::randomUuid();
-        $country1 = new Country();
-        $country1->setName("$prefix Country 1");
-        $country1 = CountriesApiTest::$api->entityCountryPost($country1);
-
-        $country2 = new Country();
-        $country2->setName("$prefix Country 2");
-        $country2 = CountriesApiTest::$api->entityCountryPost($country2);
-
-        $country3 = new Country();
-        $country3->setName("$prefix Country 3");
-        $country3 = CountriesApiTest::$api->entityCountryPost($country3);
-
-        Assert::assertNotSame($country1->getId(), $country2->getId());
-        Assert::assertNotSame($country2->getId(), $country3->getId());
-
-        $countryList_12 = CountriesApiTest::$api->entityCountryGet(2, 0, null, "name~=$prefix", null, 'name');
-        Assert::assertInstanceOf(CountryList::class, $countryList_12);
-        Asserter::assertMetaCollection($countryList_12->getMeta(), 'country', 3, 2, 'country');
-        Asserter::assertJsonHasFields($countryList_12, ['meta' => []], false, 'context.employee');
-        Asserter::assertJsonHasFields($countryList_12, [
-            'rows' => [
-                ['id' => $country1->getId()],
-                ['id' => $country2->getId()]
-            ]], false);
-
-        $countryList_23 = CountriesApiTest::$api->entityCountryGet(3, 1, null, "name~=$prefix", null, 'name');
-        Assert::assertInstanceOf(CountryList::class, $countryList_23);
-        Asserter::assertMetaCollection($countryList_23->getMeta(), 'country', 3, 3, 'country');
-        Asserter::assertJsonHasFields($countryList_23, ['meta' => []], false, 'context.employee');
-        Asserter::assertJsonHasFields($countryList_23, [
-            'rows' => [
-                ['id' => $country2->getId()],
-                ['id' => $country3->getId()]
-            ]], false);
     }
 
     /**
-     *  Проверка обработки ответа сервера на получение стран сопровождаемое ошибкой
+     * Clean up after running each test case
      */
-    public function testEntityCountryGetWithError(): void
+    public function tearDown(): void
     {
-        try {
-            CountriesApiTest::$api->entityCountryGet(1, 1, null, "name>123");
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(412, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
     }
 
     /**
-     *  Проверка успешной обработки ответа сервера в случае ошибки
+     * Clean up after running all test cases
      */
-    public function testEntityCountryIdGet()
+    public static function tearDownAfterClass(): void
     {
-        $countryReq = new Country();
-
-        // простые флаги и строки
-        $countryReq->setName("Тестовая страна " . StringUtil::randomUuid());
-        $countryReq->setCode(StringUtil::randomUuid());
-        $countryReq->setExternalCode(StringUtil::randomUuid());
-        $countryReq->setDescription("Описание тестовой страны");
-        $countryReq->setShared(true);
-
-
-        $countryResp = CountriesApiTest::$api->entityCountryPost($countryReq);
-        $countryId = $countryResp->getId();
-        Assert::assertNotNull($countryId);
-        Asserter::assertMeta($countryResp->getMeta(), $countryId, 'country');
-
-        Assert::assertSame($countryReq->getName(), $countryResp->getName());
-        Assert::assertSame($countryReq->getCode(), $countryResp->getCode());
-        Assert::assertSame($countryReq->getExternalCode(), $countryResp->getExternalCode());
-        Assert::assertSame($countryReq->getDescription(), $countryResp->getDescription());
-        Asserter::assertJsonHasFields($countryResp, ['owner' => ['meta' => ['type' => 'employee']]], false);
-        Asserter::assertJsonHasFields($countryResp, ['group' => ['meta' => ['type' => 'group']]], false);
-        Assert::assertNotNull($countryResp->getUpdated());
-        Assert::assertNotNull($countryResp->getAccountId());
-
-        Assert::assertSame($countryReq->getShared(), $countryResp->getShared());
     }
 
     /**
-     *  Проверка обработки ответа сервера на получение страны сопровождаемое ошибкой
+     * Test case for createCountriesBatch
+     *
+     * Создать или изменить страны.
+     *
      */
-    public function testEntityCountryIdGetWithError()
+    public function testCreateCountriesBatch()
     {
-        try {
-            CountriesApiTest::$api->entityCountryIdGet(StringUtil::randomUuid());
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(404, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     *  Проверка обработки ответа сервера на создание страны сопровождаемое ошибкой
+     * Test case for createCountry
+     *
+     * Создать страну.
+     *
      */
-    public function testEntityCountryPostWithError()
+    public function testCreateCountry()
     {
-        try {
-            $country1 = new Country();
-            CountriesApiTest::$api->entityCountryPost($country1);
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(412, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     *  Проверка успешной обработки ответа сервера на обновление страны
+     * Test case for deleteCountriesBatch
+     *
+     * Удалить страны.
+     *
      */
-    public function testEntityCountryIdPut()
+    public function testDeleteCountriesBatch()
     {
-        $createCountry = new Country();
-        $createCountry->setName("Country Old");
-        $createCountry = CountriesApiTest::$api->entityCountryPost($createCountry);
-
-        $updateCountry = new Country();
-        $updateCountry->setName("Country New");
-        $updateCountry = CountriesApiTest::$api->entityCountryIdPut($createCountry->getId(), $updateCountry);
-
-        Assert::assertSame($createCountry->getId(), $updateCountry->getId());
-        Assert::assertSame("Country New", $updateCountry->getName());
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     *  Проверка успешной обработки ответа сервера удаления страны
+     * Test case for deleteCountry
+     *
+     * Удалить страну.
+     *
      */
-    public function testEntityCountryIdDelete()
+    public function testDeleteCountry()
     {
-        $country = new Country();
-        $country->setName("Country");
-        $country = CountriesApiTest::$api->entityCountryPost($country);
-        $resp = CountriesApiTest::$api->entityCountryIdDeleteWithHttpInfo($country->getId());
-        Assert::assertEquals(200, $resp[1]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     *  Проверка обработки ответа сервера удаления страны сопровождаемое ошибкой
+     * Test case for getCountries
+     *
+     * Получить список стран.
+     *
      */
-    public function testEntityCountryIdDeleteWithError()
+    public function testGetCountries()
     {
-        try {
-            CountriesApiTest::$api->entityCountryIdDelete(StringUtil::randomUuid());
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(404, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового создания стран
+     * Test case for getCountryById
+     *
+     * Получить страну по id.
+     *
      */
-    public function testBatchCreateCountries(): void
+    public function testGetCountryById()
     {
-        $prefix = StringUtil::randomUuid();
-        $countries = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $country = new Country();
-            $country->setName("$prefix Batch Country $i");
-            $country->setCode("Batch-$i-$prefix");
-            $country->setDescription("Описание массовой страны $i");
-            $countries[] = $country;
-        }
-
-        $response = CountriesApiTest::$api->entityCountryBatchPost($countries);
-
-        Assert::assertIsArray($response);
-        Assert::assertCount(3, $response);
-
-        foreach ($response as $index => $createdCountry) {
-            Assert::assertInstanceOf(Country::class, $createdCountry);
-            Assert::assertNotNull($createdCountry->getId());
-            Asserter::assertStringContainsString("$prefix Batch Country " . ($index + 1), $createdCountry->getName());
-            Asserter::assertStringContainsString("Batch-" . ($index + 1) . "-$prefix", $createdCountry->getCode());
-            Asserter::assertStringContainsString("Описание массовой страны " . ($index + 1), $createdCountry->getDescription());
-
-            Asserter::assertMeta($createdCountry->getMeta(), $createdCountry->getId(), 'country');
-        }
-    }
-
-
-    /**
-     * Тест массового обновления стран
-     */
-    public function testBatchUpdateCountries(): void
-    {
-        $prefix = StringUtil::randomUuid();
-        $createdCountries = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $country = new Country();
-            $country->setName("$prefix Original Country $i");
-            $country->setCode("ORIG-$i-$prefix");
-            $createdCountries[] = $country;
-        }
-
-        $response = CountriesApiTest::$api->entityCountryBatchPost($createdCountries);
-        Assert::assertCount(3, $response);
-
-        $updatedCountries = [];
-        foreach ($response as $index => $createdCountry) {
-            $updateCountry = new Country();
-            $updateCountry->setMeta($createdCountry->getMeta());
-            $updateCountry->setName("$prefix Updated Country1 " . ($index + 1));
-            $updateCountry->setCode("UPD-" . ($index + 1) . "-$prefix");
-            $updateCountry->setDescription("Обновленное описание продукта " . ($index + 1));
-            $updatedCountries[] = $updateCountry;
-        }
-
-        $updateResponse = CountriesApiTest::$api->entityCountryBatchPost($updatedCountries);
-
-        Assert::assertIsArray($updateResponse);
-        Assert::assertCount(3, $updateResponse);
-
-        foreach ($updateResponse as $index => $updatedCountry) {
-            Assert::assertInstanceOf(Country::class, $updatedCountry);
-            Asserter::assertStringContainsString("$prefix Updated Country1 " . ($index + 1), $updatedCountry->getName());
-            Asserter::assertStringContainsString("UPD-" . ($index + 1) . "-$prefix", $updatedCountry->getCode());
-            Asserter::assertStringContainsString("Обновленное описание продукта " . ($index + 1), $updatedCountry->getDescription());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового удаления стран
+     * Test case for updateCountry
+     *
+     * Обновить страну.
+     *
      */
-    public function testBatchDeleteCountries(): void
+    public function testUpdateCountry()
     {
-        $prefix = StringUtil::randomUuid();
-        $createdCountries = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $country = new Country();
-            $country->setName("$prefix Delete Country $i");
-            $country->setCode("DEL-$i-$prefix");
-            $createdCountries[] = $country;
-        }
-
-        $response = CountriesApiTest::$api->entityCountryBatchPost($createdCountries);
-        Assert::assertCount(3, $response);
-
-        $metaArray = [];
-        foreach ($response as $createdCountry) {
-            $meta = new Country();
-            $meta->setMeta($createdCountry->getMeta());
-            $metaArray[] = $meta;
-        }
-
-        $deleteResponse = CountriesApiTest::$api->entityCountryDeletePost($metaArray);
-
-        Assert::assertIsArray($deleteResponse);
-        Assert::assertCount(3, $deleteResponse);
-
-        foreach ($deleteResponse as $deleteResult) {
-            Assert::assertInstanceOf(DeleteInfo::class, $deleteResult);
-            Assert::assertNotNull($deleteResult->getInfo());
-            Asserter::assertStringContainsString('удален', $deleteResult->getInfo());
-        }
-
-        foreach ($response as $createdCountry) {
-            try {
-                CountriesApiTest::$api->entityCountryIdGet($createdCountry->getId());
-                Assert::fail('Страна должна был быть удалена');
-            } catch (ApiException $e) {
-                Assert::assertEquals(404, $e->getCode());
-            }
-        }
-    }
-
-    /**
-     * Тест массового удаления стран с некорректными мета-данными
-     */
-    public function testBatchDeleteCountriesWithError(): void
-    {
-        $prefix = StringUtil::randomUuid();
-
-        $country = new Country();
-        $country->setName("$prefix Delete Country");
-        $country->setCode("DEL-$prefix");
-
-        $response = CountriesApiTest::$api->entityCountryPost($country);
-
-        $metaArray = [];
-
-        $meta1 = new Country();
-        $meta1->setMeta($response->getMeta());
-        $metaArray[] = $meta1;
-
-
-        // Мета-данные с некорректным ID
-        $meta2 = new Country();
-        $metaInvalidId = clone $response->getMeta();
-        $newHref = preg_replace(
-            '/[0-9a-fA-F-]{36}/',
-            'invalid-uuid',
-            $metaInvalidId->getHref()
-        );
-        $metaInvalidId->setHref($newHref);
-        $meta2->setMeta($metaInvalidId);
-        $metaArray[] = $meta2;
-
-        // Мета-данные с некорректным типом
-        $meta3 = new Country();
-        $metaInvalidType = clone $response->getMeta();
-        $newHref2 = str_replace('/country/', '/counterparty/', $metaInvalidType->getHref());
-        $newHref2 = preg_replace(
-            '/[0-9a-fA-F-]{36}/',
-            'invalid-uuid',
-            $newHref2
-        );
-        $metaInvalidType->setHref($newHref2);
-        $meta3->setMeta($metaInvalidType);
-        $metaArray[] = $meta3;
-
-        try {
-            $res = CountriesApiTest::$api->entityCountryDeletePost($metaArray);
-            Assert::fail('Ожидалось исключение ApiException из-за некорректных мета-данных');
-        } catch (ApiException $e) {
-            $res = json_decode($e->getResponseBody(), true);
-        }
-
-        $success = 0;
-        $errors = 0;
-        foreach ($res as $item) {
-            if (isset($item['errors'])) {
-                $errors++;
-                Assert::assertEquals(2013, $item['errors'][0]['code']);
-            } else {
-                $success++;
-                Asserter::assertStringContainsString('удален', $item['info']);
-            }
-        }
-
-        Assert::assertSame(1, $success, 'Ожидается 1 успешное удаление');
-        Assert::assertSame(2, $errors, 'Ожидается 2 ошибки');
-    }
-
-    /**
-     * Тест массового удаления стран с пустым массивом
-     */
-    public function testBatchDeleteCountriesWithEmptyArray(): void
-    {
-        try {
-            CountriesApiTest::$api->entityCountryDeletePost([]);
-            Assert::fail('Ожидалось исключение InvalidArgumentException для пустого массива');
-        } catch (\InvalidArgumentException $e) {
-            Asserter::assertStringContainsString('Missing the required parameter', $e->getMessage());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

@@ -271,35 +271,6 @@ class AttributeMetaInfo implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$openAPIModelName;
     }
 
-    public const TYPE_STRING = 'string';
-    public const TYPE_LONG = 'long';
-    public const TYPE_TIME = 'time';
-    public const TYPE_DOUBLE = 'double';
-    public const TYPE_BOOLEAN = 'boolean';
-    public const TYPE_TEXT = 'text';
-    public const TYPE_LINK = 'link';
-    public const TYPE_FILE = 'file';
-    public const TYPE_CUSTOMENTITY = 'customentity';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_STRING,
-            self::TYPE_LONG,
-            self::TYPE_TIME,
-            self::TYPE_DOUBLE,
-            self::TYPE_BOOLEAN,
-            self::TYPE_TEXT,
-            self::TYPE_LINK,
-            self::TYPE_FILE,
-            self::TYPE_CUSTOMENTITY,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -352,15 +323,6 @@ class AttributeMetaInfo implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -452,16 +414,6 @@ class AttributeMetaInfo implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         if (is_null($type)) {
             throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['type'] = $type;
 

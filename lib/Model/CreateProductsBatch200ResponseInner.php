@@ -80,7 +80,7 @@ class CreateProductsBatch200ResponseInner implements ModelInterface, ArrayAccess
         'shared' => 'bool',
         'group' => '\OpenAPI\Client\Model\Group',
         'owner' => '\OpenAPI\Client\Model\Employee',
-        'updated' => '\DateTime',
+        'updated' => 'string',
         'weight' => 'float',
         'volume' => 'float',
         'buy_price' => '\OpenAPI\Client\Model\BuyPrice',
@@ -141,7 +141,7 @@ class CreateProductsBatch200ResponseInner implements ModelInterface, ArrayAccess
         'shared' => null,
         'group' => null,
         'owner' => null,
-        'updated' => 'date-time',
+        'updated' => null,
         'weight' => 'float',
         'volume' => 'float',
         'buy_price' => null,
@@ -1410,7 +1410,7 @@ class CreateProductsBatch200ResponseInner implements ModelInterface, ArrayAccess
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -1420,7 +1420,7 @@ class CreateProductsBatch200ResponseInner implements ModelInterface, ArrayAccess
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Момент последнего обновления сущности
+     * @param string|null $updated Момент последнего обновления сущности
      *
      * @return self
      */

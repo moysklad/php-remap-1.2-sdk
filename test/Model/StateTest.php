@@ -28,10 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\State;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -46,59 +42,103 @@ use PHPUnit\Framework\TestCase;
 class StateTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "State"
+     */
+    public function testState()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $state = new State();
-        $meta = new Meta();
-        $state->setMeta($meta);
-        Asserter::assertJsonHasFields($state, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $state = new State();
-        $id = StringUtil::randomUuid();
-        $state->setId($id);
-        Asserter::assertJsonHasFields($state, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $state = new State();
-        $name = "New State";
-        $state->setName($name);
-        Asserter::assertJsonHasFields($state, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $state = new State();
-        $accountId = StringUtil::randomUuid();
-        $state->setAccountId($accountId);
-        Asserter::assertJsonHasFields($state, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "color"
+     */
     public function testPropertyColor()
     {
-        $state = new State();
-        $color = 16711680;
-        $state->setColor($color);
-        Asserter::assertJsonHasFields($state, ['color' => $color]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "entity_type"
+     */
     public function testPropertyEntityType()
     {
-        $state = new State();
-        $entityType = "demand";
-        $state->setEntityType($entityType);
-        Asserter::assertJsonHasFields($state, ['entityType' => $entityType]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "state_type"
+     */
     public function testPropertyStateType()
     {
-        $state = new State();
-        $stateType = State::STATE_TYPE_REGULAR;
-        $state->setStateType($stateType);
-        Asserter::assertJsonHasFields($state, ['stateType' => $stateType]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

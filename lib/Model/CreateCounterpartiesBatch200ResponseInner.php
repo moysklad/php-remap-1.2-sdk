@@ -65,8 +65,8 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
         'code' => 'string',
         'external_code' => 'string',
         'archived' => 'bool',
-        'created' => '\DateTime',
-        'updated' => '\DateTime',
+        'created' => 'string',
+        'updated' => 'string',
         'description' => 'string',
         'company_type' => 'string',
         'email' => 'string',
@@ -82,19 +82,19 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
         'ogrnip' => 'string',
         'okpo' => 'string',
         'certificate_number' => 'string',
-        'certificate_date' => '\DateTime',
+        'certificate_date' => 'string',
         'legal_title' => 'string',
         'legal_first_name' => 'string',
         'legal_last_name' => 'string',
         'legal_middle_name' => 'string',
-        'birth_date' => '\DateTime',
+        'birth_date' => 'string',
         'sex' => 'string',
         'discount_card_number' => 'string',
         'discounts' => '\OpenAPI\Client\Model\AgentDiscount[]',
         'shared' => 'bool',
         'group' => '\OpenAPI\Client\Model\Group',
         'owner' => '\OpenAPI\Client\Model\Employee',
-        'sales_amount' => 'int',
+        'sales_amount' => 'float',
         'bonus_points' => 'int',
         'bonus_program' => '\OpenAPI\Client\Model\BonusProgram',
         'price_type' => '\OpenAPI\Client\Model\PriceType',
@@ -124,8 +124,8 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
         'code' => null,
         'external_code' => null,
         'archived' => null,
-        'created' => 'date-time',
-        'updated' => 'date-time',
+        'created' => null,
+        'updated' => null,
         'description' => null,
         'company_type' => null,
         'email' => 'email',
@@ -141,19 +141,19 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
         'ogrnip' => null,
         'okpo' => null,
         'certificate_number' => null,
-        'certificate_date' => 'date-time',
+        'certificate_date' => null,
         'legal_title' => null,
         'legal_first_name' => null,
         'legal_last_name' => null,
         'legal_middle_name' => null,
-        'birth_date' => 'date-time',
+        'birth_date' => null,
         'sex' => null,
         'discount_card_number' => null,
         'discounts' => null,
         'shared' => null,
         'group' => null,
         'owner' => null,
-        'sales_amount' => null,
+        'sales_amount' => 'float',
         'bonus_points' => null,
         'bonus_program' => null,
         'price_type' => null,
@@ -977,7 +977,7 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
     /**
      * Gets created
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getCreated()
     {
@@ -987,7 +987,7 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
     /**
      * Sets created
      *
-     * @param \DateTime|null $created Момент создания
+     * @param string|null $created Момент создания
      *
      * @return self
      */
@@ -1004,7 +1004,7 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -1014,7 +1014,7 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Момент последнего обновления
+     * @param string|null $updated Момент последнего обновления
      *
      * @return self
      */
@@ -1496,7 +1496,7 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
     /**
      * Gets certificate_date
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getCertificateDate()
     {
@@ -1506,7 +1506,7 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
     /**
      * Sets certificate_date
      *
-     * @param \DateTime|null $certificate_date Дата свидетельства
+     * @param string|null $certificate_date Дата свидетельства
      *
      * @return self
      */
@@ -1647,7 +1647,7 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
     /**
      * Gets birth_date
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getBirthDate()
     {
@@ -1657,7 +1657,7 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
     /**
      * Sets birth_date
      *
-     * @param \DateTime|null $birth_date Дата рождения для физлица
+     * @param string|null $birth_date Дата рождения для физлица
      *
      * @return self
      */
@@ -1857,7 +1857,7 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
     /**
      * Gets sales_amount
      *
-     * @return int|null
+     * @return float|null
      */
     public function getSalesAmount()
     {
@@ -1867,7 +1867,7 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
     /**
      * Sets sales_amount
      *
-     * @param int|null $sales_amount Сумма продаж
+     * @param float|null $sales_amount Сумма продаж
      *
      * @return self
      */

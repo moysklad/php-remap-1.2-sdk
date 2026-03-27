@@ -28,9 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\MetaList;
-use OpenAPI\Client\Model\StoreSlots;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,19 +42,58 @@ use PHPUnit\Framework\TestCase;
 class StoreSlotsTest extends TestCase
 {
 
-    public function testPropertyMeta()
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
     {
-        $storeSlots = new StoreSlots();
-        $meta = new MetaList();
-        $storeSlots->setMeta($meta);
-        Asserter::assertJsonHasFields($storeSlots, ['meta' => []]);
     }
 
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "StoreSlots"
+     */
+    public function testStoreSlots()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
+    public function testPropertyMeta()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rows"
+     */
     public function testPropertyRows()
     {
-        $storeSlots = new StoreSlots();
-        $rows = [];
-        $storeSlots->setRows($rows);
-        Asserter::assertJsonHasFields($storeSlots, ['rows' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

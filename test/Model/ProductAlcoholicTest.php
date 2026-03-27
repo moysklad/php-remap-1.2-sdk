@@ -28,8 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\ProductAlcoholic;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -44,35 +42,76 @@ use PHPUnit\Framework\TestCase;
 class ProductAlcoholicTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "ProductAlcoholic"
+     */
+    public function testProductAlcoholic()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "excise"
+     */
     public function testPropertyExcise()
     {
-        $productAlcoholic = new ProductAlcoholic();
-        $excise = true;
-        $productAlcoholic->setExcise($excise);
-        Asserter::assertJsonHasFields($productAlcoholic, ['excise' => $excise]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "type"
+     */
     public function testPropertyType()
     {
-        $productAlcoholic = new ProductAlcoholic();
-        $type = 1;
-        $productAlcoholic->setType($type);
-        Asserter::assertJsonHasFields($productAlcoholic, ['type' => $type]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "strength"
+     */
     public function testPropertyStrength()
     {
-        $productAlcoholic = new ProductAlcoholic();
-        $strength = 40.0;
-        $productAlcoholic->setStrength($strength);
-        Asserter::assertJsonHasFields($productAlcoholic, ['strength' => $strength]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "volume"
+     */
     public function testPropertyVolume()
     {
-        $productAlcoholic = new ProductAlcoholic();
-        $volume = 0.5;
-        $productAlcoholic->setVolume($volume);
-        Asserter::assertJsonHasFields($productAlcoholic, ['volume' => $volume]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

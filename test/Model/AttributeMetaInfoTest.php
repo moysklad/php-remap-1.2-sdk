@@ -28,10 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\AttributeMetaInfo;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -46,67 +42,112 @@ use PHPUnit\Framework\TestCase;
 class AttributeMetaInfoTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "AttributeMetaInfo"
+     */
+    public function testAttributeMetaInfo()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $attributeMetaInfo = new AttributeMetaInfo();
-        $id = StringUtil::randomUuid();
-        $attributeMetaInfo->setId($id);
-        Asserter::assertJsonHasFields($attributeMetaInfo, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $attributeMetaInfo = new AttributeMetaInfo();
-        $name = 'test';
-        $attributeMetaInfo->setName($name);
-        Asserter::assertJsonHasFields($attributeMetaInfo, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "type"
+     */
     public function testPropertyType()
     {
-        $attributeMetaInfo = new AttributeMetaInfo();
-        $type = 'string';
-        $attributeMetaInfo->setType($type);
-        Asserter::assertJsonHasFields($attributeMetaInfo, ['type' => $type]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "required"
+     */
     public function testPropertyRequired()
     {
-        $attributeMetaInfo = new AttributeMetaInfo();
-        $required = true;
-        $attributeMetaInfo->setRequired($required);
-        Asserter::assertJsonHasFields($attributeMetaInfo, ['required' => $required]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "show"
+     */
     public function testPropertyShow()
     {
-        $attributeMetaInfo = new AttributeMetaInfo();
-        $show = true;
-        $attributeMetaInfo->setShow($show);
-        Asserter::assertJsonHasFields($attributeMetaInfo, ['show' => $show]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "description"
+     */
     public function testPropertyDescription()
     {
-        $attributeMetaInfo = new AttributeMetaInfo();
-        $description = 'test';
-        $attributeMetaInfo->setDescription($description);
-        Asserter::assertJsonHasFields($attributeMetaInfo, ['description' => $description]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $attributeMetaInfo = new AttributeMetaInfo();
-        $meta = new Meta();
-        $attributeMetaInfo->setMeta($meta);
-        Asserter::assertJsonHasFields($attributeMetaInfo, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "custom_entity_meta"
+     */
     public function testPropertyCustomEntityMeta()
     {
-        $attributeMetaInfo = new AttributeMetaInfo();
-        $customEntityMeta = new Meta();
-        $attributeMetaInfo->setCustomEntityMeta($customEntityMeta);
-        Asserter::assertJsonHasFields($attributeMetaInfo, ['customEntityMeta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

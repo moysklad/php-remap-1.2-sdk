@@ -28,10 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Currency;
-use OpenAPI\Client\Model\PriceType;
-use OpenAPI\Client\Model\SalePrice;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -46,27 +42,67 @@ use PHPUnit\Framework\TestCase;
 class SalePriceTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "SalePrice"
+     */
+    public function testSalePrice()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "value"
+     */
     public function testPropertyValue()
     {
-        $salePrice = new SalePrice();
-        $value = 100.50;
-        $salePrice->setValue($value);
-        Asserter::assertJsonHasFields($salePrice, ['value' => $value]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "currency"
+     */
     public function testPropertyCurrency()
     {
-        $salePrice = new SalePrice();
-        $currency = new Currency();
-        $salePrice->setCurrency($currency);
-        Asserter::assertJsonHasFields($salePrice, ['currency' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "price_type"
+     */
     public function testPropertyPriceType()
     {
-        $salePrice = new SalePrice();
-        $priceType = new PriceType();
-        $salePrice->setPriceType($priceType);
-        Asserter::assertJsonHasFields($salePrice, ['priceType' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

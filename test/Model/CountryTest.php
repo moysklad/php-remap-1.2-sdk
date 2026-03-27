@@ -28,10 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Country;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -46,59 +42,139 @@ use PHPUnit\Framework\TestCase;
 class CountryTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Country"
+     */
+    public function testCountry()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $country = new Country();
-        $meta = new Meta();
-        $country->setMeta($meta);
-        Asserter::assertJsonHasFields($country, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $country = new Country();
-        $id = StringUtil::randomUuid();
-        $country->setId($id);
-        Asserter::assertJsonHasFields($country, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
+    public function testPropertyAccountId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $country = new Country();
-        $name = "Russia";
-        $country->setName($name);
-        Asserter::assertJsonHasFields($country, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "description"
+     */
     public function testPropertyDescription()
     {
-        $country = new Country();
-        $description = "Russian Federation";
-        $country->setDescription($description);
-        Asserter::assertJsonHasFields($country, ['description' => $description]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "code"
+     */
     public function testPropertyCode()
     {
-        $country = new Country();
-        $code = "RU";
-        $country->setCode($code);
-        Asserter::assertJsonHasFields($country, ['code' => $code]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "external_code"
+     */
     public function testPropertyExternalCode()
     {
-        $country = new Country();
-        $externalCode = "EXT-RU";
-        $country->setExternalCode($externalCode);
-        Asserter::assertJsonHasFields($country, ['externalCode' => $externalCode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "updated"
+     */
     public function testPropertyUpdated()
     {
-        $country = new Country();
-        $date = new \DateTime("2025-09-19T12:00:00Z");
-        $country->setUpdated($date);
-        Asserter::assertJsonHasFields($country, ['updated' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "group"
+     */
+    public function testPropertyGroup()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "owner"
+     */
+    public function testPropertyOwner()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "shared"
+     */
+    public function testPropertyShared()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

@@ -28,28 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Attribute;
-use OpenAPI\Client\Model\AttributeDouble;
-use OpenAPI\Client\Model\Barcode;
-use OpenAPI\Client\Model\BuyPrice;
-use OpenAPI\Client\Model\Counterparty;
-use OpenAPI\Client\Model\Country;
-use OpenAPI\Client\Model\FileList;
-use OpenAPI\Client\Model\Group;
-use OpenAPI\Client\Model\ImageList;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\MinimumStockAllWarehouseSum;
-use OpenAPI\Client\Model\MinPrice;
-use OpenAPI\Client\Model\Employee;
-use OpenAPI\Client\Model\Pack;
-use OpenAPI\Client\Model\Product;
-use OpenAPI\Client\Model\ProductAlcoholic;
-use OpenAPI\Client\Model\ProductFolder;
-use OpenAPI\Client\Model\ProductMinimumStock;
-use OpenAPI\Client\Model\SalePrice;
-use OpenAPI\Client\Model\Uom;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -64,394 +42,490 @@ use PHPUnit\Framework\TestCase;
 class ProductTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Product"
+     */
+    public function testProduct()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $product = new Product();
-        $meta = new Meta();
-        $product->setMeta($meta);
-        Asserter::assertJsonHasFields($product, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $product = new Product();
-        $id = StringUtil::randomUuid();
-        $product->setId($id);
-        Asserter::assertJsonHasFields($product, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $product = new Product();
-        $accountId = StringUtil::randomUuid();
-        $product->setAccountId($accountId);
-        Asserter::assertJsonHasFields($product, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "alcoholic"
+     */
     public function testPropertyAlcoholic()
     {
-        $product = new Product();
-        $alcoholic = new ProductAlcoholic();
-        $product->setAlcoholic($alcoholic);
-        Asserter::assertJsonHasFields($product, ['alcoholic' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "archived"
+     */
     public function testPropertyArchived()
     {
-        $product = new Product();
-        $product->setArchived(true);
-        Asserter::assertJsonHasFields($product, ['archived' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "tobacco"
+     */
     public function testPropertyTobacco()
     {
-        $product = new Product();
-        $product->setTobacco(true);
-        Asserter::assertJsonHasFields($product, ['tobacco' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $product = new Product();
-        $name = "TestProduct";
-        $product->setName($name);
-        Asserter::assertJsonHasFields($product, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "code"
+     */
     public function testPropertyCode()
     {
-        $product = new Product();
-        $code = "P-123";
-        $product->setCode($code);
-        Asserter::assertJsonHasFields($product, ['code' => $code]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "external_code"
+     */
     public function testPropertyExternalCode()
     {
-        $product = new Product();
-        $extCode = "EXT-999";
-        $product->setExternalCode($extCode);
-        Asserter::assertJsonHasFields($product, ['externalCode' => $extCode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "path_name"
+     */
     public function testPropertyPathName()
     {
-        $product = new Product();
-        $pathName = "Каталог/Подкаталог";
-        $product->setPathName($pathName);
-        Asserter::assertJsonHasFields($product, ['pathName' => $pathName]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "article"
+     */
     public function testPropertyArticle()
     {
-        $product = new Product();
-        $article = "A-001";
-        $product->setArticle($article);
-        Asserter::assertJsonHasFields($product, ['article' => $article]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "description"
+     */
     public function testPropertyDescription()
     {
-        $product = new Product();
-        $desc = "Test description";
-        $product->setDescription($desc);
-        Asserter::assertJsonHasFields($product, ['description' => $desc]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "vat"
+     */
     public function testPropertyVat()
     {
-        $product = new Product();
-        $vat = 20;
-        $product->setVat($vat);
-        Asserter::assertJsonHasFields($product, ['vat' => $vat]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "vat_enabled"
+     */
     public function testPropertyVatEnabled()
     {
-        $product = new Product();
-        $product->setVatEnabled(true);
-        Asserter::assertJsonHasFields($product, ['vatEnabled' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "use_parent_vat"
+     */
     public function testPropertyUseParentVat()
     {
-        $product = new Product();
-        $product->setUseParentVat(false);
-        Asserter::assertJsonHasFields($product, ['useParentVat' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "effective_vat"
+     */
     public function testPropertyEffectiveVat()
     {
-        $product = new Product();
-        $vat = 10;
-        $product->setEffectiveVat($vat);
-        Asserter::assertJsonHasFields($product, ['effectiveVat' => $vat]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "effective_vat_enabled"
+     */
     public function testPropertyEffectiveVatEnabled()
     {
-        $product = new Product();
-        $product->setEffectiveVatEnabled(true);
-        Asserter::assertJsonHasFields($product, ['effectiveVatEnabled' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "discount_prohibited"
+     */
     public function testPropertyDiscountProhibited()
     {
-        $product = new Product();
-        $product->setDiscountProhibited(true);
-        Asserter::assertJsonHasFields($product, ['discountProhibited' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "variants_count"
+     */
     public function testPropertyVariantsCount()
     {
-        $product = new Product();
-        $count = 5;
-        $product->setVariantsCount($count);
-        Asserter::assertJsonHasFields($product, ['variantsCount' => $count]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "is_serial_trackable"
+     */
     public function testPropertyIsSerialTrackable()
     {
-        $product = new Product();
-        $product->setIsSerialTrackable(true);
-        Asserter::assertJsonHasFields($product, ['isSerialTrackable' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "shared"
+     */
     public function testPropertyShared()
     {
-        $product = new Product();
-        $product->setShared(true);
-        Asserter::assertJsonHasFields($product, ['shared' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "group"
+     */
     public function testPropertyGroup()
     {
-        $product = new Product();
-        $group = new Group();
-        $product->setGroup($group);
-        Asserter::assertJsonHasFields($product, ['group' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "owner"
+     */
     public function testPropertyOwner()
     {
-        $product = new Product();
-        $owner = new Employee();
-        $product->setOwner($owner);
-        Asserter::assertJsonHasFields($product, ['owner' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "updated"
+     */
     public function testPropertyUpdated()
     {
-        $product = new Product();
-        $date = new \DateTime("2025-09-19T12:00:00Z");
-        $product->setUpdated($date);
-        Asserter::assertJsonHasFields($product, ['updated' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "weight"
+     */
     public function testPropertyWeight()
     {
-        $product = new Product();
-        $weight = 2.5;
-        $product->setWeight($weight);
-        Asserter::assertJsonHasFields($product, ['weight' => $weight]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "volume"
+     */
     public function testPropertyVolume()
     {
-        $product = new Product();
-        $volume = 1.2;
-        $product->setVolume($volume);
-        Asserter::assertJsonHasFields($product, ['volume' => $volume]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "buy_price"
+     */
     public function testPropertyBuyPrice()
     {
-        $product = new Product();
-        $buyPrice = new BuyPrice();
-        $product->setBuyPrice($buyPrice);
-        Asserter::assertJsonHasFields($product, ['buyPrice' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "sale_prices"
+     */
     public function testPropertySalePrices()
     {
-        $product = new Product();
-        $salePrice = new SalePrice();
-        $product->setSalePrices([$salePrice]);
-        Asserter::assertJsonHasFields($product, ['salePrices' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "supplier"
+     */
     public function testPropertySupplier()
     {
-        $product = new Product();
-        $supplier = new Counterparty();
-        $product->setSupplier($supplier);
-        Asserter::assertJsonHasFields($product, ['supplier' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "country"
+     */
     public function testPropertyCountry()
     {
-        $product = new Product();
-        $country = new Country();
-        $product->setCountry($country);
-        Asserter::assertJsonHasFields($product, ['country' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "uom"
+     */
     public function testPropertyUom()
     {
-        $product = new Product();
-        $uom = new Uom();
-        $product->setUom($uom);
-        Asserter::assertJsonHasFields($product, ['uom' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "product_folder"
+     */
     public function testPropertyProductFolder()
     {
-        $product = new Product();
-        $folder = new ProductFolder();
-        $product->setProductFolder($folder);
-        Asserter::assertJsonHasFields($product, ['productFolder' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "images"
+     */
     public function testPropertyImages()
     {
-        $product = new Product();
-        $images = new ImageList();
-        $product->setImages($images);
-        Asserter::assertJsonHasFields($product, ['images' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "files"
+     */
     public function testPropertyFiles()
     {
-        $product = new Product();
-        $files = new FileList();
-        $product->setFiles($files);
-        Asserter::assertJsonHasFields($product, ['files' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "barcodes"
+     */
     public function testPropertyBarcodes()
     {
-        $product = new Product();
-        $barcode = new Barcode();
-        $product->setBarcodes([$barcode]);
-        Asserter::assertJsonHasFields($product, ['barcodes' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "packs"
+     */
     public function testPropertyPacks()
     {
-        $product = new Product();
-        $pack = new Pack();
-        $product->setPacks([$pack]);
-        Asserter::assertJsonHasFields($product, ['packs' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "tracking_type"
+     */
     public function testPropertyTrackingType()
     {
-        $product = new Product();
-        $tracking = Product::TRACKING_TYPE_MILK;
-        $product->setTrackingType($tracking);
-        Asserter::assertJsonHasFields($product, ['trackingType' => $tracking]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "tnved"
+     */
     public function testPropertyTnved()
     {
-        $product = new Product();
-        $tnved = "123456";
-        $product->setTnved($tnved);
-        Asserter::assertJsonHasFields($product, ['tnved' => $tnved]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "payment_item_type"
+     */
     public function testPropertyPaymentItemType()
     {
-        $product = new Product();
-        $pit = Product::PAYMENT_ITEM_TYPE_GOOD;
-        $product->setPaymentItemType($pit);
-        Asserter::assertJsonHasFields($product, ['paymentItemType' => $pit]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "tax_system"
+     */
     public function testPropertyTaxSystem()
     {
-        $product = new Product();
-        $tax = Product::TAX_SYSTEM_PATENT_BASED;
-        $product->setTaxSystem($tax);
-        Asserter::assertJsonHasFields($product, ['taxSystem' => $tax]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "attributes"
+     */
     public function testPropertyAttributes()
     {
-        $product = new Product();
-        $attr = new AttributeDouble();
-        $attr->setName("Level");
-        $attr->setValue(12.1);
-        $product->setAttributes([$attr]);
-        Asserter::assertJsonHasFields($product, ['attributes' => [['name' => "Level", 'value' => 12.1]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "minimum_balance"
+     */
     public function testPropertyMinimumBalance()
     {
-        $product = new Product();
-        $minBalance = 10.5;
-        $product->setMinimumBalance($minBalance);
-        Asserter::assertJsonHasFields($product, ['minimumBalance' => $minBalance]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "minimum_stock"
+     */
     public function testPropertyMinimumStock()
     {
-        $product = new Product();
-        $stock = new MinimumStockAllWarehouseSum();
-        $product->setMinimumStock($stock);
-        Asserter::assertJsonHasFields($product, ['minimumStock' => ['type' => 'ALL_WAREHOUSE_SUM']]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "min_price"
+     */
     public function testPropertyMinPrice()
     {
-        $product = new Product();
-        $minPrice = new MinPrice();
-        $product->setMinPrice($minPrice);
-        Asserter::assertJsonHasFields($product, ['minPrice' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "weighed"
+     */
     public function testPropertyWeighed()
     {
-        $product = new Product();
-        $product->setWeighed(true);
-        Asserter::assertJsonHasFields($product, ['weighed' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "on_tap"
+     */
     public function testPropertyOnTap()
     {
-        $product = new Product();
-        $product->setOnTap(true);
-        Asserter::assertJsonHasFields($product, ['onTap' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "partial_disposal"
+     */
     public function testPropertyPartialDisposal()
     {
-        $product = new Product();
-        $product->setPartialDisposal(true);
-        Asserter::assertJsonHasFields($product, ['partialDisposal' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "things"
+     */
     public function testPropertyThings()
     {
-        $product = new Product();
-        $things = ["thing1", "thing2"];
-        $product->setThings($things);
-        Asserter::assertJsonHasFields($product, ['things' => $things]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "sync_id"
+     */
     public function testPropertySyncId()
     {
-        $product = new Product();
-        $syncId = StringUtil::randomUuid();
-        $product->setSyncId($syncId);
-        Asserter::assertJsonHasFields($product, ['syncId' => $syncId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "ppe_type"
+     */
     public function testPropertyPpeType()
     {
-        $product = new Product();
-        $ppe = Product::PPE_TYPE__2400001225606;
-        $product->setPpeType($ppe);
-        Asserter::assertJsonHasFields($product, ['ppeType' => $ppe]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

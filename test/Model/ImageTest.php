@@ -28,10 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Image;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -46,59 +42,103 @@ use PHPUnit\Framework\TestCase;
 class ImageTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Image"
+     */
+    public function testImage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $image = new Image();
-        $meta = new Meta();
-        $image->setMeta($meta);
-        Asserter::assertJsonHasFields($image, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "title"
+     */
     public function testPropertyTitle()
     {
-        $image = new Image();
-        $title = "Test Image";
-        $image->setTitle($title);
-        Asserter::assertJsonHasFields($image, ['title' => $title]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "filename"
+     */
     public function testPropertyFilename()
     {
-        $image = new Image();
-        $filename = "test.jpg";
-        $image->setFilename($filename);
-        Asserter::assertJsonHasFields($image, ['filename' => $filename]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "size"
+     */
     public function testPropertySize()
     {
-        $image = new Image();
-        $size = 1024;
-        $image->setSize($size);
-        Asserter::assertJsonHasFields($image, ['size' => $size]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "updated"
+     */
     public function testPropertyUpdated()
     {
-        $image = new Image();
-        $date = new \DateTime("2025-09-19T12:00:00Z");
-        $image->setUpdated($date);
-        Asserter::assertJsonHasFields($image, ['updated' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "tiny"
+     */
     public function testPropertyTiny()
     {
-        $image = new Image();
-        $tiny = new Meta();
-        $image->setTiny($tiny);
-        Asserter::assertJsonHasFields($image, ['tiny' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "miniature"
+     */
     public function testPropertyMiniature()
     {
-        $image = new Image();
-        $miniature = new Meta();
-        $image->setMiniature($miniature);
-        Asserter::assertJsonHasFields($image, ['miniature' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

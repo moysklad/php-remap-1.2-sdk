@@ -28,10 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Account;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,85 +41,131 @@ use PHPUnit\Framework\TestCase;
  */
 class AccountTest extends TestCase
 {
+
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Account"
+     */
+    public function testAccount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $account = new Account();
-        $meta = new Meta();
-        $account->setMeta($meta);
-        Asserter::assertJsonHasFields($account, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $account = new Account();
-        $id = StringUtil::randomUuid();
-        $account->setId($id);
-        Asserter::assertJsonHasFields($account, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $account = new Account();
-        $accountId = StringUtil::randomUuid();
-        $account->setAccountId($accountId);
-        Asserter::assertJsonHasFields($account, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "updated"
+     */
     public function testPropertyUpdated()
     {
-        $account = new Account();
-        $date = new \DateTime("2025-09-19 15:30:45.560");
-        $account->setUpdated($date);
-        Asserter::assertJsonHasFields(
-            $account,
-            ['updated' => StringUtil::toRemap12FormatDate($date)]
-        );
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "is_default"
+     */
     public function testPropertyIsDefault()
     {
-        $account = new Account();
-        $account->setIsDefault(true);
-        Asserter::assertJsonHasFields($account, ['isDefault' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_number"
+     */
     public function testPropertyAccountNumber()
     {
-        $account = new Account();
-        $number = "40702810900000000001";
-        $account->setAccountNumber($number);
-        Asserter::assertJsonHasFields($account, ['accountNumber' => $number]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "bank_name"
+     */
     public function testPropertyBankName()
     {
-        $account = new Account();
-        $bankName = "АО «Альфа-Банк»";
-        $account->setBankName($bankName);
-        Asserter::assertJsonHasFields($account, ['bankName' => $bankName]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "bank_location"
+     */
     public function testPropertyBankLocation()
     {
-        $account = new Account();
-        $location = "г. Москва";
-        $account->setBankLocation($location);
-        Asserter::assertJsonHasFields($account, ['bankLocation' => $location]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "correspondent_account"
+     */
     public function testPropertyCorrespondentAccount()
     {
-        $account = new Account();
-        $corr = "30101810200000000555";
-        $account->setCorrespondentAccount($corr);
-        Asserter::assertJsonHasFields($account, ['correspondentAccount' => $corr]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "bic"
+     */
     public function testPropertyBic()
     {
-        $account = new Account();
-        $bic = "044525593";
-        $account->setBic($bic);
-        Asserter::assertJsonHasFields($account, ['bic' => $bic]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

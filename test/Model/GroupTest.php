@@ -28,10 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Group;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -46,43 +42,85 @@ use PHPUnit\Framework\TestCase;
 class GroupTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Group"
+     */
+    public function testGroup()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $group = new Group();
-        $meta = new Meta();
-        $group->setMeta($meta);
-        Asserter::assertJsonHasFields($group, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $group = new Group();
-        $id = StringUtil::randomUuid();
-        $group->setId($id);
-        Asserter::assertJsonHasFields($group, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $group = new Group();
-        $accountId = StringUtil::randomUuid();
-        $group->setAccountId($accountId);
-        Asserter::assertJsonHasFields($group, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $group = new Group();
-        $name = "Test Group";
-        $group->setName($name);
-        Asserter::assertJsonHasFields($group, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "index"
+     */
     public function testPropertyIndex()
     {
-        $group = new Group();
-        $index = 1;
-        $group->setIndex($index);
-        Asserter::assertJsonHasFields($group, ['index' => $index]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

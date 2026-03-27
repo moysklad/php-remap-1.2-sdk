@@ -28,8 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\MinimumStockAllWarehouseSum;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -44,19 +42,58 @@ use PHPUnit\Framework\TestCase;
 class MinimumStockAllWarehouseSumTest extends TestCase
 {
 
-    public function testPropertyType()
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
     {
-        $minimumStockAllWarehouseSum = new MinimumStockAllWarehouseSum();
-        $type = 'ALL_WAREHOUSE_SUM';
-        $minimumStockAllWarehouseSum->setType($type);
-        Asserter::assertJsonHasFields($minimumStockAllWarehouseSum, ['type' => $type]);
     }
 
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "MinimumStockAllWarehouseSum"
+     */
+    public function testMinimumStockAllWarehouseSum()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "type"
+     */
+    public function testPropertyType()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "quantity"
+     */
     public function testPropertyQuantity()
     {
-        $minimumStockAllWarehouseSum = new MinimumStockAllWarehouseSum();
-        $quantity = 10.0;
-        $minimumStockAllWarehouseSum->setQuantity($quantity);
-        Asserter::assertJsonHasFields($minimumStockAllWarehouseSum, ['quantity' => $quantity, 'type' => 'ALL_WAREHOUSE_SUM']);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

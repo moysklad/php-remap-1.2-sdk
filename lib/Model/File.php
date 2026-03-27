@@ -62,7 +62,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
         'title' => 'string',
         'filename' => 'string',
         'size' => 'int',
-        'created' => '\DateTime',
+        'created' => 'string',
         'created_by' => '\OpenAPI\Client\Model\Employee',
         'tiny' => '\OpenAPI\Client\Model\Meta',
         'miniature' => '\OpenAPI\Client\Model\Meta'
@@ -80,7 +80,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
         'title' => null,
         'filename' => null,
         'size' => null,
-        'created' => 'date-time',
+        'created' => null,
         'created_by' => null,
         'tiny' => null,
         'miniature' => null
@@ -466,7 +466,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getCreated()
     {
@@ -476,7 +476,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created
      *
-     * @param \DateTime|null $created Время создания объекта
+     * @param string|null $created Время создания объекта
      *
      * @return self
      */

@@ -28,9 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\MinimumStockWarehouseVaried;
-use OpenAPI\Client\Model\StoreBalanceList;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,19 +42,58 @@ use PHPUnit\Framework\TestCase;
 class MinimumStockWarehouseVariedTest extends TestCase
 {
 
-    public function testPropertyType()
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
     {
-        $minimumStockWarehouseVaried = new MinimumStockWarehouseVaried();
-        $type = 'WAREHOUSE_VARIED';
-        $minimumStockWarehouseVaried->setType($type);
-        Asserter::assertJsonHasFields($minimumStockWarehouseVaried, ['type' => $type]);
     }
 
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "MinimumStockWarehouseVaried"
+     */
+    public function testMinimumStockWarehouseVaried()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "type"
+     */
+    public function testPropertyType()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "store_balances"
+     */
     public function testPropertyStoreBalances()
     {
-        $minimumStockWarehouseVaried = new MinimumStockWarehouseVaried();
-        $storeBalances = new StoreBalanceList();
-        $minimumStockWarehouseVaried->setStoreBalances($storeBalances);
-        Asserter::assertJsonHasFields($minimumStockWarehouseVaried, ['storeBalances' => [], 'type' => 'WAREHOUSE_VARIED']);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

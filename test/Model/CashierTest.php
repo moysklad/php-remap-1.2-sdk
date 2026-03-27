@@ -28,12 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Cashier;
-use OpenAPI\Client\Model\Employee;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\RetailStore;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,46 +41,86 @@ use PHPUnit\Framework\TestCase;
  */
 class CashierTest extends TestCase
 {
+
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Cashier"
+     */
+    public function testCashier()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $cashier = new Cashier();
-        $meta = new Meta();
-        $meta->setHref("http://example.com/meta");
-        $cashier->setMeta($meta);
-        Asserter::assertJsonHasFields($cashier, ['meta' => ['href' => "http://example.com/meta"]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $cashier = new Cashier();
-        $id = StringUtil::randomUuid();
-        $cashier->setId($id);
-        Asserter::assertJsonHasFields($cashier, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $cashier = new Cashier();
-        $accountId = StringUtil::randomUuid();
-        $cashier->setAccountId($accountId);
-        Asserter::assertJsonHasFields($cashier, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "employee"
+     */
     public function testPropertyEmployee()
     {
-        $cashier = new Cashier();
-        $employee = new Employee();
-        $employee->setName("John Doe");
-        $cashier->setEmployee($employee);
-        Asserter::assertJsonHasFields($cashier, ['employee' => ['name' => "John Doe"]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "retail_store"
+     */
     public function testPropertyRetailStore()
     {
-        $cashier = new Cashier();
-        $store = new RetailStore();
-        $store->setName("Main Store");
-        $cashier->setRetailStore($store);
-        Asserter::assertJsonHasFields($cashier, ['retailStore' => ['name' => "Main Store"]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

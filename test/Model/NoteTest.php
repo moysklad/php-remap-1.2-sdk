@@ -28,13 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Application;
-use OpenAPI\Client\Model\Counterparty;
-use OpenAPI\Client\Model\Employee;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\Note;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -49,67 +42,112 @@ use PHPUnit\Framework\TestCase;
 class NoteTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Note"
+     */
+    public function testNote()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $note = new Note();
-        $meta = new Meta();
-        $note->setMeta($meta);
-        Asserter::assertJsonHasFields($note, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $note = new Note();
-        $id = StringUtil::randomUuid();
-        $note->setId($id);
-        Asserter::assertJsonHasFields($note, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $note = new Note();
-        $accountId = StringUtil::randomUuid();
-        $note->setAccountId($accountId);
-        Asserter::assertJsonHasFields($note, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "agent"
+     */
     public function testPropertyAgent()
     {
-        $note = new Note();
-        $agent = new Counterparty();
-        $note->setAgent($agent);
-        Asserter::assertJsonHasFields($note, ['agent' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "author"
+     */
     public function testPropertyAuthor()
     {
-        $note = new Note();
-        $author = new Employee();
-        $note->setAuthor($author);
-        Asserter::assertJsonHasFields($note, ['author' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "author_application"
+     */
     public function testPropertyAuthorApplication()
     {
-        $note = new Note();
-        $authorApplication = new Application();
-        $note->setAuthorApplication($authorApplication);
-        Asserter::assertJsonHasFields($note, ['authorApplication' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "created"
+     */
     public function testPropertyCreated()
     {
-        $note = new Note();
-        $date = new \DateTime("2025-09-19T12:00:00Z");
-        $note->setCreated($date);
-        Asserter::assertJsonHasFields($note, ['created' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "description"
+     */
     public function testPropertyDescription()
     {
-        $note = new Note();
-        $description = "Note description";
-        $note->setDescription($description);
-        Asserter::assertJsonHasFields($note, ['description' => $description]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

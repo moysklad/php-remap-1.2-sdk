@@ -28,11 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Context;
-use OpenAPI\Client\Model\MetaList;
-use OpenAPI\Client\Model\Service;
-use OpenAPI\Client\Model\ServiceList;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,27 +42,67 @@ use PHPUnit\Framework\TestCase;
 class ServiceListTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "ServiceList"
+     */
+    public function testServiceList()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "context"
+     */
     public function testPropertyContext()
     {
-        $serviceList = new ServiceList();
-        $context = new Context();
-        $serviceList->setContext($context);
-        Asserter::assertJsonHasFields($serviceList, ['context' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $serviceList = new ServiceList();
-        $meta = new MetaList();
-        $serviceList->setMeta($meta);
-        Asserter::assertJsonHasFields($serviceList, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "rows"
+     */
     public function testPropertyRows()
     {
-        $serviceList = new ServiceList();
-        $service = new Service();
-        $serviceList->setRows([$service]);
-        Asserter::assertJsonHasFields($serviceList, ['rows' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

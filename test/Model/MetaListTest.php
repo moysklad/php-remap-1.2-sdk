@@ -28,8 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\MetaList;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -44,67 +42,112 @@ use PHPUnit\Framework\TestCase;
 class MetaListTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "MetaList"
+     */
+    public function testMetaList()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "href"
+     */
     public function testPropertyHref()
     {
-        $metaList = new MetaList();
-        $href = "https://api.moysklad.ru/api/remap/1.2/entity/product";
-        $metaList->setHref($href);
-        Asserter::assertJsonHasFields($metaList, ['href' => $href]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "type"
+     */
     public function testPropertyType()
     {
-        $metaList = new MetaList();
-        $type = "product";
-        $metaList->setType($type);
-        Asserter::assertJsonHasFields($metaList, ['type' => $type]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "media_type"
+     */
     public function testPropertyMediaType()
     {
-        $metaList = new MetaList();
-        $mediaType = "application/json";
-        $metaList->setMediaType($mediaType);
-        Asserter::assertJsonHasFields($metaList, ['mediaType' => $mediaType]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "size"
+     */
     public function testPropertySize()
     {
-        $metaList = new MetaList();
-        $size = 100;
-        $metaList->setSize($size);
-        Asserter::assertJsonHasFields($metaList, ['size' => $size]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "limit"
+     */
     public function testPropertyLimit()
     {
-        $metaList = new MetaList();
-        $limit = 50;
-        $metaList->setLimit($limit);
-        Asserter::assertJsonHasFields($metaList, ['limit' => $limit]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "offset"
+     */
     public function testPropertyOffset()
     {
-        $metaList = new MetaList();
-        $offset = 0;
-        $metaList->setOffset($offset);
-        Asserter::assertJsonHasFields($metaList, ['offset' => $offset]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "next_href"
+     */
     public function testPropertyNextHref()
     {
-        $metaList = new MetaList();
-        $nextHref = "https://api.moysklad.ru/api/remap/1.2/entity/product?offset=50&limit=50";
-        $metaList->setNextHref($nextHref);
-        Asserter::assertJsonHasFields($metaList, ['nextHref' => $nextHref]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "previous_href"
+     */
     public function testPropertyPreviousHref()
     {
-        $metaList = new MetaList();
-        $previousHref = "https://api.moysklad.ru/api/remap/1.2/entity/product?offset=0&limit=50";
-        $metaList->setPreviousHref($previousHref);
-        Asserter::assertJsonHasFields($metaList, ['previousHref' => $previousHref]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

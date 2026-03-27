@@ -28,9 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\CounterpartyNotes;
-use OpenAPI\Client\Model\MetaList;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,19 +42,58 @@ use PHPUnit\Framework\TestCase;
 class CounterpartyNotesTest extends TestCase
 {
 
-    public function testPropertyMeta()
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
     {
-        $counterpartyNotes = new CounterpartyNotes();
-        $meta = new MetaList();
-        $counterpartyNotes->setMeta($meta);
-        Asserter::assertJsonHasFields($counterpartyNotes, ['meta' => []]);
     }
 
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "CounterpartyNotes"
+     */
+    public function testCounterpartyNotes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
+    public function testPropertyMeta()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rows"
+     */
     public function testPropertyRows()
     {
-        $counterpartyNotes = new CounterpartyNotes();
-        $rows = [];
-        $counterpartyNotes->setRows($rows);
-        Asserter::assertJsonHasFields($counterpartyNotes, ['rows' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

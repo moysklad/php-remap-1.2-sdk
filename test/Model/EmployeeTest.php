@@ -28,15 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\AttributeDouble;
-use OpenAPI\Client\Model\Cashier;
-use OpenAPI\Client\Model\Employee;
-use OpenAPI\Client\Model\EmployeeSalary;
-use OpenAPI\Client\Model\Group;
-use OpenAPI\Client\Model\Image;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -51,211 +42,274 @@ use PHPUnit\Framework\TestCase;
 class EmployeeTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Employee"
+     */
+    public function testEmployee()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $employee = new Employee();
-        $meta = new Meta();
-        $employee->setMeta($meta);
-        Asserter::assertJsonHasFields($employee, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $employee = new Employee();
-        $id = StringUtil::randomUuid();
-        $employee->setId($id);
-        Asserter::assertJsonHasFields($employee, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $employee = new Employee();
-        $accountId = StringUtil::randomUuid();
-        $employee->setAccountId($accountId);
-        Asserter::assertJsonHasFields($employee, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $employee = new Employee();
-        $name = "John Doe";
-        $employee->setName($name);
-        Asserter::assertJsonHasFields($employee, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "external_code"
+     */
     public function testPropertyExternalCode()
     {
-        $employee = new Employee();
-        $externalCode = "EXT-EMP-001";
-        $employee->setExternalCode($externalCode);
-        Asserter::assertJsonHasFields($employee, ['externalCode' => $externalCode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "archived"
+     */
     public function testPropertyArchived()
     {
-        $employee = new Employee();
-        $employee->setArchived(false);
-        Asserter::assertJsonHasFields($employee, ['archived' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "created"
+     */
     public function testPropertyCreated()
     {
-        $employee = new Employee();
-        $date = new \DateTime("2025-09-19T12:00:00Z");
-        $employee->setCreated($date);
-        Asserter::assertJsonHasFields($employee, ['created' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "updated"
+     */
     public function testPropertyUpdated()
     {
-        $employee = new Employee();
-        $date = new \DateTime("2025-09-19T12:00:00Z");
-        $employee->setUpdated($date);
-        Asserter::assertJsonHasFields($employee, ['updated' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "description"
+     */
     public function testPropertyDescription()
     {
-        $employee = new Employee();
-        $description = "Employee description";
-        $employee->setDescription($description);
-        Asserter::assertJsonHasFields($employee, ['description' => $description]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "email"
+     */
     public function testPropertyEmail()
     {
-        $employee = new Employee();
-        $email = "john.doe@example.com";
-        $employee->setEmail($email);
-        Asserter::assertJsonHasFields($employee, ['email' => $email]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "phone"
+     */
     public function testPropertyPhone()
     {
-        $employee = new Employee();
-        $phone = "+7 123 456 78 90";
-        $employee->setPhone($phone);
-        Asserter::assertJsonHasFields($employee, ['phone' => $phone]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "first_name"
+     */
     public function testPropertyFirstName()
     {
-        $employee = new Employee();
-        $firstName = "John";
-        $employee->setFirstName($firstName);
-        Asserter::assertJsonHasFields($employee, ['firstName' => $firstName]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "middle_name"
+     */
     public function testPropertyMiddleName()
     {
-        $employee = new Employee();
-        $middleName = "Ivanovich";
-        $employee->setMiddleName($middleName);
-        Asserter::assertJsonHasFields($employee, ['middleName' => $middleName]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "last_name"
+     */
     public function testPropertyLastName()
     {
-        $employee = new Employee();
-        $lastName = "Doe";
-        $employee->setLastName($lastName);
-        Asserter::assertJsonHasFields($employee, ['lastName' => $lastName]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "full_name"
+     */
     public function testPropertyFullName()
     {
-        $employee = new Employee();
-        $fullName = "John Ivanovich Doe";
-        $employee->setFullName($fullName);
-        Asserter::assertJsonHasFields($employee, ['fullName' => $fullName]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "short_fio"
+     */
     public function testPropertyShortFio()
     {
-        $employee = new Employee();
-        $shortFio = "J.I.D.";
-        $employee->setShortFio($shortFio);
-        Asserter::assertJsonHasFields($employee, ['shortFio' => $shortFio]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "shared"
+     */
     public function testPropertyShared()
     {
-        $employee = new Employee();
-        $employee->setShared(true);
-        Asserter::assertJsonHasFields($employee, ['shared' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "group"
+     */
     public function testPropertyGroup()
     {
-        $employee = new Employee();
-        $group = new Group();
-        $employee->setGroup($group);
-        Asserter::assertJsonHasFields($employee, ['group' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "owner"
+     */
     public function testPropertyOwner()
     {
-        $employee = new Employee();
-        $owner = new Employee();
-        $employee->setOwner($owner);
-        Asserter::assertJsonHasFields($employee, ['owner' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "inn"
+     */
     public function testPropertyInn()
     {
-        $employee = new Employee();
-        $inn = "123456789012";
-        $employee->setInn($inn);
-        Asserter::assertJsonHasFields($employee, ['inn' => $inn]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "position"
+     */
     public function testPropertyPosition()
     {
-        $employee = new Employee();
-        $position = "Manager";
-        $employee->setPosition($position);
-        Asserter::assertJsonHasFields($employee, ['position' => $position]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "uid"
+     */
     public function testPropertyUid()
     {
-        $employee = new Employee();
-        $uid = "john.doe";
-        $employee->setUid($uid);
-        Asserter::assertJsonHasFields($employee, ['uid' => $uid]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "salary"
+     */
     public function testPropertySalary()
     {
-        $employee = new Employee();
-        $salary = new EmployeeSalary();
-        $employee->setSalary($salary);
-        Asserter::assertJsonHasFields($employee, ['salary' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "cashiers"
+     */
     public function testPropertyCashiers()
     {
-        $employee = new Employee();
-        $cashier = new Cashier();
-        $employee->setCashiers([$cashier]);
-        Asserter::assertJsonHasFields($employee, ['cashiers' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "image"
+     */
     public function testPropertyImage()
     {
-        $employee = new Employee();
-        $image = new Image();
-        $employee->setImage($image);
-        Asserter::assertJsonHasFields($employee, ['image' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "attributes"
+     */
     public function testPropertyAttributes()
     {
-        $employee = new Employee();
-        $attr = new AttributeDouble();
-        $attr->setName("Level");
-        $attr->setValue(12.1);
-        $employee->setAttributes([$attr]);
-        Asserter::assertJsonHasFields($employee, ['attributes' => [['name' => "Level", 'value' => 12.1]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

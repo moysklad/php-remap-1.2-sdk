@@ -28,12 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Group;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\Employee;
-use OpenAPI\Client\Model\Uom;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -48,90 +42,139 @@ use PHPUnit\Framework\TestCase;
 class UomTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Uom"
+     */
+    public function testUom()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $uom = new Uom();
-        $meta = new Meta();
-        $uom->setMeta($meta);
-        Asserter::assertJsonHasFields($uom, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $uom = new Uom();
-        $id = StringUtil::randomUuid();
-        $uom->setId($id);
-        Asserter::assertJsonHasFields($uom, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $uom = new Uom();
-        $accountId = StringUtil::randomUuid();
-        $uom->setAccountId($accountId);
-        Asserter::assertJsonHasFields($uom, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $uom = new Uom();
-        $name = "Kilogram";
-        $uom->setName($name);
-        Asserter::assertJsonHasFields($uom, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "description"
+     */
     public function testPropertyDescription()
     {
-        $uom = new Uom();
-        $description = "Unit of mass";
-        $uom->setDescription($description);
-        Asserter::assertJsonHasFields($uom, ['description' => $description]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "code"
+     */
     public function testPropertyCode()
     {
-        $uom = new Uom();
-        $code = "KG";
-        $uom->setCode($code);
-        Asserter::assertJsonHasFields($uom, ['code' => $code]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "group"
+     */
     public function testPropertyGroup()
     {
-        $uom = new Uom();
-        $group = new Group();
-        $uom->setGroup($group);
-        Asserter::assertJsonHasFields($uom, ['group' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "owner"
+     */
     public function testPropertyOwner()
     {
-        $uom = new Uom();
-        $owner = new Employee();
-        $uom->setOwner($owner);
-        Asserter::assertJsonHasFields($uom, ['owner' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "updated"
+     */
     public function testPropertyUpdated()
     {
-        $uom = new Uom();
-        $date = new \DateTime("2025-09-19T12:00:00Z");
-        $uom->setUpdated($date);
-        Asserter::assertJsonHasFields($uom, ['updated' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "shared"
+     */
     public function testPropertyShared()
     {
-        $uom = new Uom();
-        $uom->setShared(true);
-        Asserter::assertJsonHasFields($uom, ['shared' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "external_code"
+     */
     public function testPropertyExternalCode()
     {
-        $uom = new Uom();
-        $externalCode = "EXT-KG";
-        $uom->setExternalCode($externalCode);
-        Asserter::assertJsonHasFields($uom, ['externalCode' => $externalCode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

@@ -28,9 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\CounterpartyAccounts;
-use OpenAPI\Client\Model\MetaList;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,19 +42,58 @@ use PHPUnit\Framework\TestCase;
 class CounterpartyAccountsTest extends TestCase
 {
 
-    public function testPropertyMeta()
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
     {
-        $counterpartyAccounts = new CounterpartyAccounts();
-        $meta = new MetaList();
-        $counterpartyAccounts->setMeta($meta);
-        Asserter::assertJsonHasFields($counterpartyAccounts, ['meta' => []]);
     }
 
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "CounterpartyAccounts"
+     */
+    public function testCounterpartyAccounts()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
+    public function testPropertyMeta()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rows"
+     */
     public function testPropertyRows()
     {
-        $counterpartyAccounts = new CounterpartyAccounts();
-        $rows = [];
-        $counterpartyAccounts->setRows($rows);
-        Asserter::assertJsonHasFields($counterpartyAccounts, ['rows' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

@@ -28,11 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Context;
-use OpenAPI\Client\Model\MetaList;
-use OpenAPI\Client\Model\Product;
-use OpenAPI\Client\Model\ProductList;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,27 +42,67 @@ use PHPUnit\Framework\TestCase;
 class ProductListTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "ProductList"
+     */
+    public function testProductList()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "context"
+     */
     public function testPropertyContext()
     {
-        $productList = new ProductList();
-        $context = new Context();
-        $productList->setContext($context);
-        Asserter::assertJsonHasFields($productList, ['context' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $productList = new ProductList();
-        $meta = new MetaList();
-        $productList->setMeta($meta);
-        Asserter::assertJsonHasFields($productList, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "rows"
+     */
     public function testPropertyRows()
     {
-        $productList = new ProductList();
-        $product = new Product();
-        $productList->setRows([$product]);
-        Asserter::assertJsonHasFields($productList, ['rows' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

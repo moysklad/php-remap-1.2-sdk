@@ -68,7 +68,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'address' => 'string',
         'address_full' => '\OpenAPI\Client\Model\Address',
         'external_code' => 'string',
-        'updated' => '\DateTime',
+        'updated' => 'string',
         'meta' => '\OpenAPI\Client\Model\Meta',
         'organization' => '\OpenAPI\Client\Model\RetailStoreOrganization',
         'store' => '\OpenAPI\Client\Model\Store',
@@ -96,13 +96,13 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_payment_in_on_retail_shift_closing' => 'bool',
         'create_agents_tags' => 'string[]',
         'create_order_with_state' => '\OpenAPI\Client\Model\RetailStoreCreateOrderWithState',
-        'customer_order_states' => '\OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner[]',
+        'customer_order_states' => '\OpenAPI\Client\Model\DeleteProductImagesRequestInner[]',
         'discount_enable' => 'bool',
         'discount_max_percent' => 'int',
         'enable_returns_with_no_reason' => 'bool',
         'issue_orders' => 'bool',
         'last_operation_names' => '\OpenAPI\Client\Model\RetailStoreLastOperationNamesInner[]',
-        'master_retail_stores' => '\OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner[]',
+        'master_retail_stores' => '\OpenAPI\Client\Model\DeleteProductImagesRequestInner[]',
         'ofd_enabled' => 'bool',
         'only_in_stock' => 'bool',
         'order_to_state' => '\OpenAPI\Client\Model\RetailStoreOrderToState',
@@ -151,7 +151,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'address' => null,
         'address_full' => null,
         'external_code' => null,
-        'updated' => 'date-time',
+        'updated' => null,
         'meta' => null,
         'organization' => null,
         'store' => null,
@@ -1333,7 +1333,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -1343,7 +1343,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Момент последнего обновления Точки продаж
+     * @param string|null $updated Момент последнего обновления Точки продаж
      *
      * @return self
      */
@@ -2176,7 +2176,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets customer_order_states
      *
-     * @return \OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner[]|null
+     * @return \OpenAPI\Client\Model\DeleteProductImagesRequestInner[]|null
      */
     public function getCustomerOrderStates()
     {
@@ -2186,7 +2186,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets customer_order_states
      *
-     * @param \OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner[]|null $customer_order_states Возможные состояния заказов покупателей
+     * @param \OpenAPI\Client\Model\DeleteProductImagesRequestInner[]|null $customer_order_states Возможные состояния заказов покупателей
      *
      * @return self
      */
@@ -2338,7 +2338,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets master_retail_stores
      *
-     * @return \OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner[]|null
+     * @return \OpenAPI\Client\Model\DeleteProductImagesRequestInner[]|null
      */
     public function getMasterRetailStores()
     {
@@ -2348,7 +2348,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets master_retail_stores
      *
-     * @param \OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner[]|null $master_retail_stores Список касс-мастеров
+     * @param \OpenAPI\Client\Model\DeleteProductImagesRequestInner[]|null $master_retail_stores Список касс-мастеров
      *
      * @return self
      */

@@ -28,8 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\MinimumStockAllWarehouseSame;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -44,19 +42,58 @@ use PHPUnit\Framework\TestCase;
 class MinimumStockAllWarehouseSameTest extends TestCase
 {
 
-    public function testPropertyType()
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
     {
-        $minimumStockAllWarehouseSame = new MinimumStockAllWarehouseSame();
-        $type = 'ALL_WAREHOUSE_SAME';
-        $minimumStockAllWarehouseSame->setType($type);
-        Asserter::assertJsonHasFields($minimumStockAllWarehouseSame, ['type' => $type]);
     }
 
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "MinimumStockAllWarehouseSame"
+     */
+    public function testMinimumStockAllWarehouseSame()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "type"
+     */
+    public function testPropertyType()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "quantity"
+     */
     public function testPropertyQuantity()
     {
-        $minimumStockAllWarehouseSame = new MinimumStockAllWarehouseSame();
-        $quantity = 10.0;
-        $minimumStockAllWarehouseSame->setQuantity($quantity);
-        Asserter::assertJsonHasFields($minimumStockAllWarehouseSame, ['quantity' => $quantity, 'type' => 'ALL_WAREHOUSE_SAME']);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

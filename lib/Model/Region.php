@@ -64,7 +64,7 @@ class Region implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'code' => 'string',
         'external_code' => 'string',
-        'updated' => '\DateTime',
+        'updated' => 'string',
         'version' => 'int'
     ];
 
@@ -82,7 +82,7 @@ class Region implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'code' => null,
         'external_code' => null,
-        'updated' => 'date-time',
+        'updated' => null,
         'version' => null
     ];
 
@@ -528,7 +528,7 @@ class Region implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -538,7 +538,7 @@ class Region implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Время последнего изменения
+     * @param string|null $updated Время последнего изменения
      *
      * @return self
      */

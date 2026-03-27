@@ -66,7 +66,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         'code' => 'string',
         'group' => '\OpenAPI\Client\Model\Group',
         'owner' => '\OpenAPI\Client\Model\Employee',
-        'updated' => '\DateTime',
+        'updated' => 'string',
         'shared' => 'bool',
         'external_code' => 'string'
     ];
@@ -87,7 +87,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
         'code' => null,
         'group' => null,
         'owner' => null,
-        'updated' => 'date-time',
+        'updated' => null,
         'shared' => null,
         'external_code' => null
     ];
@@ -621,7 +621,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -631,7 +631,7 @@ class Uom implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Момент последнего обновления сущности
+     * @param string|null $updated Момент последнего обновления сущности
      *
      * @return self
      */

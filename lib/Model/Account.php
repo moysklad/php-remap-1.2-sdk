@@ -61,7 +61,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => '\OpenAPI\Client\Model\Meta',
         'id' => 'string',
         'account_id' => 'string',
-        'updated' => '\DateTime',
+        'updated' => 'string',
         'is_default' => 'bool',
         'account_number' => 'string',
         'bank_name' => 'string',
@@ -81,7 +81,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => null,
         'id' => 'uuid',
         'account_id' => 'uuid',
-        'updated' => 'date-time',
+        'updated' => null,
         'is_default' => null,
         'account_number' => null,
         'bank_name' => null,
@@ -437,7 +437,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -447,7 +447,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Время последнего изменения
+     * @param string|null $updated Время последнего изменения
      *
      * @return self
      */

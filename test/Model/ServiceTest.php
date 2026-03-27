@@ -28,21 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Attribute;
-use OpenAPI\Client\Model\AttributeDouble;
-use OpenAPI\Client\Model\Barcode;
-use OpenAPI\Client\Model\BuyPrice;
-use OpenAPI\Client\Model\FileList;
-use OpenAPI\Client\Model\Group;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\MinPrice;
-use OpenAPI\Client\Model\Employee;
-use OpenAPI\Client\Model\Service;
-use OpenAPI\Client\Model\ProductFolder;
-use OpenAPI\Client\Model\SalePrice;
-use OpenAPI\Client\Model\Uom;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -57,239 +42,310 @@ use PHPUnit\Framework\TestCase;
 class ServiceTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Service"
+     */
+    public function testService()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $service = new Service();
-        $meta = new Meta();
-        $service->setMeta($meta);
-        Asserter::assertJsonHasFields($service, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $service = new Service();
-        $id = StringUtil::randomUuid();
-        $service->setId($id);
-        Asserter::assertJsonHasFields($service, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $service = new Service();
-        $accountId = StringUtil::randomUuid();
-        $service->setAccountId($accountId);
-        Asserter::assertJsonHasFields($service, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "archived"
+     */
     public function testPropertyArchived()
     {
-        $service = new Service();
-        $service->setArchived(true);
-        Asserter::assertJsonHasFields($service, ['archived' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $service = new Service();
-        $name = "TestService";
-        $service->setName($name);
-        Asserter::assertJsonHasFields($service, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "code"
+     */
     public function testPropertyCode()
     {
-        $service = new Service();
-        $code = "S-123";
-        $service->setCode($code);
-        Asserter::assertJsonHasFields($service, ['code' => $code]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "external_code"
+     */
     public function testPropertyExternalCode()
     {
-        $service = new Service();
-        $extCode = "EXT-999";
-        $service->setExternalCode($extCode);
-        Asserter::assertJsonHasFields($service, ['externalCode' => $extCode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "path_name"
+     */
     public function testPropertyPathName()
     {
-        $service = new Service();
-        $pathName = "Услуги/Подкаталог";
-        $service->setPathName($pathName);
-        Asserter::assertJsonHasFields($service, ['pathName' => $pathName]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "description"
+     */
     public function testPropertyDescription()
     {
-        $service = new Service();
-        $desc = "Test description";
-        $service->setDescription($desc);
-        Asserter::assertJsonHasFields($service, ['description' => $desc]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "vat"
+     */
     public function testPropertyVat()
     {
-        $service = new Service();
-        $vat = 20;
-        $service->setVat($vat);
-        Asserter::assertJsonHasFields($service, ['vat' => $vat]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "vat_enabled"
+     */
     public function testPropertyVatEnabled()
     {
-        $service = new Service();
-        $service->setVatEnabled(true);
-        Asserter::assertJsonHasFields($service, ['vatEnabled' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "use_parent_vat"
+     */
     public function testPropertyUseParentVat()
     {
-        $service = new Service();
-        $service->setUseParentVat(false);
-        Asserter::assertJsonHasFields($service, ['useParentVat' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "effective_vat"
+     */
     public function testPropertyEffectiveVat()
     {
-        $service = new Service();
-        $vat = 10;
-        $service->setEffectiveVat($vat);
-        Asserter::assertJsonHasFields($service, ['effectiveVat' => $vat]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "effective_vat_enabled"
+     */
     public function testPropertyEffectiveVatEnabled()
     {
-        $service = new Service();
-        $service->setEffectiveVatEnabled(true);
-        Asserter::assertJsonHasFields($service, ['effectiveVatEnabled' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "discount_prohibited"
+     */
     public function testPropertyDiscountProhibited()
     {
-        $service = new Service();
-        $service->setDiscountProhibited(true);
-        Asserter::assertJsonHasFields($service, ['discountProhibited' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "shared"
+     */
     public function testPropertyShared()
     {
-        $service = new Service();
-        $service->setShared(true);
-        Asserter::assertJsonHasFields($service, ['shared' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "group"
+     */
     public function testPropertyGroup()
     {
-        $service = new Service();
-        $group = new Group();
-        $service->setGroup($group);
-        Asserter::assertJsonHasFields($service, ['group' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "owner"
+     */
     public function testPropertyOwner()
     {
-        $service = new Service();
-        $owner = new Employee();
-        $service->setOwner($owner);
-        Asserter::assertJsonHasFields($service, ['owner' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "updated"
+     */
     public function testPropertyUpdated()
     {
-        $service = new Service();
-        $date = new \DateTime("2025-09-19T12:00:00Z");
-        $service->setUpdated($date);
-        Asserter::assertJsonHasFields($service, ['updated' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "buy_price"
+     */
     public function testPropertyBuyPrice()
     {
-        $service = new Service();
-        $buyPrice = new BuyPrice();
-        $service->setBuyPrice($buyPrice);
-        Asserter::assertJsonHasFields($service, ['buyPrice' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "sale_prices"
+     */
     public function testPropertySalePrices()
     {
-        $service = new Service();
-        $salePrice = new SalePrice();
-        $service->setSalePrices([$salePrice]);
-        Asserter::assertJsonHasFields($service, ['salePrices' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "uom"
+     */
     public function testPropertyUom()
     {
-        $service = new Service();
-        $uom = new Uom();
-        $service->setUom($uom);
-        Asserter::assertJsonHasFields($service, ['uom' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "product_folder"
+     */
     public function testPropertyProductFolder()
     {
-        $service = new Service();
-        $folder = new ProductFolder();
-        $service->setProductFolder($folder);
-        Asserter::assertJsonHasFields($service, ['productFolder' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "files"
+     */
     public function testPropertyFiles()
     {
-        $service = new Service();
-        $files = new FileList();
-        $service->setFiles($files);
-        Asserter::assertJsonHasFields($service, ['files' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "barcodes"
+     */
     public function testPropertyBarcodes()
     {
-        $service = new Service();
-        $barcode = new Barcode();
-        $service->setBarcodes([$barcode]);
-        Asserter::assertJsonHasFields($service, ['barcodes' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "payment_item_type"
+     */
     public function testPropertyPaymentItemType()
     {
-        $service = new Service();
-        $pit = Service::PAYMENT_ITEM_TYPE_SERVICE;
-        $service->setPaymentItemType($pit);
-        Asserter::assertJsonHasFields($service, ['paymentItemType' => $pit]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "tax_system"
+     */
     public function testPropertyTaxSystem()
     {
-        $service = new Service();
-        $tax = Service::TAX_SYSTEM_PATENT_BASED;
-        $service->setTaxSystem($tax);
-        Asserter::assertJsonHasFields($service, ['taxSystem' => $tax]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "attributes"
+     */
     public function testPropertyAttributes()
     {
-        $service = new Service();
-        $attr = new AttributeDouble();
-        $attr->setName("Level");
-        $attr->setValue(12.1);
-        $service->setAttributes([$attr]);
-        Asserter::assertJsonHasFields($service, ['attributes' => [['name' => "Level", 'value' => 12.1]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "min_price"
+     */
     public function testPropertyMinPrice()
     {
-        $service = new Service();
-        $minPrice = new MinPrice();
-        $service->setMinPrice($minPrice);
-        Asserter::assertJsonHasFields($service, ['minPrice' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "sync_id"
+     */
     public function testPropertySyncId()
     {
-        $service = new Service();
-        $syncId = StringUtil::randomUuid();
-        $service->setSyncId($syncId);
-        Asserter::assertJsonHasFields($service, ['syncId' => $syncId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

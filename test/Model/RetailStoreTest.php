@@ -28,33 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Address;
-use OpenAPI\Client\Model\Environment;
-use OpenAPI\Client\Model\FiscalType;
-use OpenAPI\Client\Model\Group;
-use OpenAPI\Client\Model\LastOperationNames;
-use OpenAPI\Client\Model\MarkingSellingMode;
-use OpenAPI\Client\Model\MarksCheckMode;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\MinionToMasterType;
-use OpenAPI\Client\Model\Employee;
-use OpenAPI\Client\Model\PriceType;
-use OpenAPI\Client\Model\RetailStore;
-use OpenAPI\Client\Model\RetailStoreAcquire;
-use OpenAPI\Client\Model\RetailStoreCashiers;
-use OpenAPI\Client\Model\RetailStoreCreateOrderWithState;
-use OpenAPI\Client\Model\RetailStoreCustomerOrderStatesInner;
-use OpenAPI\Client\Model\RetailStoreOrderToState;
-use OpenAPI\Client\Model\RetailStoreProductFolders;
-use OpenAPI\Client\Model\RetailStoreQrAcquire;
-use OpenAPI\Client\Model\RetailStoreReceiptTemplate;
-use OpenAPI\Client\Model\Status;
-use OpenAPI\Client\Model\Store;
-use OpenAPI\Client\Model\TaxSystem;
-use OpenAPI\Client\Model\TobaccoMrcControlType;
-use OpenAPI\Client\Model\PriorityOfdSend;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -69,555 +42,697 @@ use PHPUnit\Framework\TestCase;
 class RetailStoreTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "RetailStore"
+     */
+    public function testRetailStore()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $retailStore = new RetailStore();
-        $id = StringUtil::randomUuid();
-        $retailStore->setId($id);
-        Asserter::assertJsonHasFields($retailStore, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $retailStore = new RetailStore();
-        $accountId = StringUtil::randomUuid();
-        $retailStore->setAccountId($accountId);
-        Asserter::assertJsonHasFields($retailStore, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $retailStore = new RetailStore();
-        $name = "Main Store";
-        $retailStore->setName($name);
-        Asserter::assertJsonHasFields($retailStore, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "description"
+     */
     public function testPropertyDescription()
     {
-        $retailStore = new RetailStore();
-        $description = "Main retail store";
-        $retailStore->setDescription($description);
-        Asserter::assertJsonHasFields($retailStore, ['description' => $description]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "active"
+     */
     public function testPropertyActive()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setActive(true);
-        Asserter::assertJsonHasFields($retailStore, ['active' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "archived"
+     */
     public function testPropertyArchived()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setArchived(false);
-        Asserter::assertJsonHasFields($retailStore, ['archived' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "shared"
+     */
     public function testPropertyShared()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setShared(true);
-        Asserter::assertJsonHasFields($retailStore, ['shared' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "address"
+     */
     public function testPropertyAddress()
     {
-        $retailStore = new RetailStore();
-        $address = "Moscow, Red Square";
-        $retailStore->setAddress($address);
-        Asserter::assertJsonHasFields($retailStore, ['address' => $address]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "address_full"
+     */
     public function testPropertyAddressFull()
     {
-        $retailStore = new RetailStore();
-        $addressFull = new Address();
-        $retailStore->setAddressFull($addressFull);
-        Asserter::assertJsonHasFields($retailStore, ['addressFull' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "external_code"
+     */
     public function testPropertyExternalCode()
     {
-        $retailStore = new RetailStore();
-        $externalCode = "EXT-STORE-001";
-        $retailStore->setExternalCode($externalCode);
-        Asserter::assertJsonHasFields($retailStore, ['externalCode' => $externalCode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "updated"
+     */
     public function testPropertyUpdated()
     {
-        $retailStore = new RetailStore();
-        $date = new \DateTime("2025-09-19T12:00:00Z");
-        $retailStore->setUpdated($date);
-        Asserter::assertJsonHasFields($retailStore, ['updated' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $retailStore = new RetailStore();
-        $meta = new Meta();
-        $retailStore->setMeta($meta);
-        Asserter::assertJsonHasFields($retailStore, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "organization"
+     */
     public function testPropertyOrganization()
     {
-        $retailStore = new RetailStore();
-        $organization = new \OpenAPI\Client\Model\RetailStoreOrganization();
-        $retailStore->setOrganization($organization);
-        Asserter::assertJsonHasFields($retailStore, ['organization' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "store"
+     */
     public function testPropertyStore()
     {
-        $retailStore = new RetailStore();
-        $store = new Store();
-        $retailStore->setStore($store);
-        Asserter::assertJsonHasFields($retailStore, ['store' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "group"
+     */
     public function testPropertyGroup()
     {
-        $retailStore = new RetailStore();
-        $group = new Group();
-        $retailStore->setGroup($group);
-        Asserter::assertJsonHasFields($retailStore, ['group' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "owner"
+     */
     public function testPropertyOwner()
     {
-        $retailStore = new RetailStore();
-        $owner = new Employee();
-        $retailStore->setOwner($owner);
-        Asserter::assertJsonHasFields($retailStore, ['owner' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "price_type"
+     */
     public function testPropertyPriceType()
     {
-        $retailStore = new RetailStore();
-        $priceType = new PriceType();
-        $retailStore->setPriceType($priceType);
-        Asserter::assertJsonHasFields($retailStore, ['priceType' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "environment"
+     */
     public function testPropertyEnvironment()
     {
-        $retailStore = new RetailStore();
-        $environment = new Environment();
-        $retailStore->setEnvironment($environment);
-        Asserter::assertJsonHasFields($retailStore, ['environment' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "state"
+     */
     public function testPropertyState()
     {
-        $retailStore = new RetailStore();
-        $state = new Status();
-        $retailStore->setState($state);
-        Asserter::assertJsonHasFields($retailStore, ['state' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "fiscal_type"
+     */
     public function testPropertyFiscalType()
     {
-        $retailStore = new RetailStore();
-        $fiscalType = FiscalType::STANDARD;
-        $retailStore->setFiscalType($fiscalType);
-        Asserter::assertJsonHasFields($retailStore, ['fiscalType' => $fiscalType]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "default_tax_system"
+     */
     public function testPropertyDefaultTaxSystem()
     {
-        $retailStore = new RetailStore();
-        $defaultTaxSystem = TaxSystem::GENERAL_TAX_SYSTEM;
-        $retailStore->setDefaultTaxSystem($defaultTaxSystem);
-        Asserter::assertJsonHasFields($retailStore, ['defaultTaxSystem' => $defaultTaxSystem]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "order_tax_system"
+     */
     public function testPropertyOrderTaxSystem()
     {
-        $retailStore = new RetailStore();
-        $orderTaxSystem = TaxSystem::GENERAL_TAX_SYSTEM;
-        $retailStore->setOrderTaxSystem($orderTaxSystem);
-        Asserter::assertJsonHasFields($retailStore, ['orderTaxSystem' => $orderTaxSystem]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "minion_to_master_type"
+     */
     public function testPropertyMinionToMasterType()
     {
-        $retailStore = new RetailStore();
-        $minionToMasterType = MinionToMasterType::ANY;
-        $retailStore->setMinionToMasterType($minionToMasterType);
-        Asserter::assertJsonHasFields($retailStore, ['minionToMasterType' => $minionToMasterType]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "tobacco_mrc_control_type"
+     */
     public function testPropertyTobaccoMrcControlType()
     {
-        $retailStore = new RetailStore();
-        $tobaccoMrcControlType = TobaccoMrcControlType::MRC_PRICE;
-        $retailStore->setTobaccoMrcControlType($tobaccoMrcControlType);
-        Asserter::assertJsonHasFields($retailStore, ['tobaccoMrcControlType' => $tobaccoMrcControlType]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "marking_selling_mode"
+     */
     public function testPropertyMarkingSellingMode()
     {
-        $retailStore = new RetailStore();
-        $markingSellingMode = MarkingSellingMode::ALL;
-        $retailStore->setMarkingSellingMode($markingSellingMode);
-        Asserter::assertJsonHasFields($retailStore, ['markingSellingMode' => $markingSellingMode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "marks_check_mode"
+     */
     public function testPropertyMarksCheckMode()
     {
-        $retailStore = new RetailStore();
-        $marksCheckMode = MarksCheckMode::ALL;
-        $retailStore->setMarksCheckMode($marksCheckMode);
-        Asserter::assertJsonHasFields($retailStore, ['marksCheckMode' => $marksCheckMode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "priority_ofd_send"
+     */
     public function testPropertyPriorityOfdSend()
     {
-        $retailStore = new RetailStore();
-        $priorityOfdSend = PriorityOfdSend::NONE;
-        $retailStore->setPriorityOfdSend($priorityOfdSend);
-        Asserter::assertJsonHasFields($retailStore, ['priorityOfdSend' => $priorityOfdSend]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "allow_create_products"
+     */
     public function testPropertyAllowCreateProducts()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setAllowCreateProducts(true);
-        Asserter::assertJsonHasFields($retailStore, ['allowCreateProducts' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "allow_custom_price"
+     */
     public function testPropertyAllowCustomPrice()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setAllowCustomPrice(true);
-        Asserter::assertJsonHasFields($retailStore, ['allowCustomPrice' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "allow_delete_receipt_positions"
+     */
     public function testPropertyAllowDeleteReceiptPositions()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setAllowDeleteReceiptPositions(false);
-        Asserter::assertJsonHasFields($retailStore, ['allowDeleteReceiptPositions' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "allow_sell_tobacco_without_mrc"
+     */
     public function testPropertyAllowSellTobaccoWithoutMrc()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setAllowSellTobaccoWithoutMrc(false);
-        Asserter::assertJsonHasFields($retailStore, ['allowSellTobaccoWithoutMRC' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "auth_token_attached"
+     */
     public function testPropertyAuthTokenAttached()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setAuthTokenAttached(true);
-        Asserter::assertJsonHasFields($retailStore, ['authTokenAttached' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "control_cashier_choice"
+     */
     public function testPropertyControlCashierChoice()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setControlCashierChoice(true);
-        Asserter::assertJsonHasFields($retailStore, ['controlCashierChoice' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "control_shipping_stock"
+     */
     public function testPropertyControlShippingStock()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setControlShippingStock(true);
-        Asserter::assertJsonHasFields($retailStore, ['controlShippingStock' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "create_cash_in_on_retail_shift_closing"
+     */
     public function testPropertyCreateCashInOnRetailShiftClosing()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setCreateCashInOnRetailShiftClosing(true);
-        Asserter::assertJsonHasFields($retailStore, ['createCashInOnRetailShiftClosing' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "create_payment_in_on_retail_shift_closing"
+     */
     public function testPropertyCreatePaymentInOnRetailShiftClosing()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setCreatePaymentInOnRetailShiftClosing(true);
-        Asserter::assertJsonHasFields($retailStore, ['createPaymentInOnRetailShiftClosing' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "create_agents_tags"
+     */
     public function testPropertyCreateAgentsTags()
     {
-        $retailStore = new RetailStore();
-        $createAgentsTags = ["tag1", "tag2"];
-        $retailStore->setCreateAgentsTags($createAgentsTags);
-        Asserter::assertJsonHasFields($retailStore, ['createAgentsTags' => $createAgentsTags]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "create_order_with_state"
+     */
     public function testPropertyCreateOrderWithState()
     {
-        $retailStore = new RetailStore();
-        $createOrderWithState = new RetailStoreCreateOrderWithState();
-        $retailStore->setCreateOrderWithState($createOrderWithState);
-        Asserter::assertJsonHasFields($retailStore, ['createOrderWithState' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "customer_order_states"
+     */
     public function testPropertyCustomerOrderStates()
     {
-        $retailStore = new RetailStore();
-        $customerOrderStates = [new RetailStoreCustomerOrderStatesInner()];
-        $retailStore->setCustomerOrderStates($customerOrderStates);
-        Asserter::assertJsonHasFields($retailStore, ['customerOrderStates' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "discount_enable"
+     */
     public function testPropertyDiscountEnable()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setDiscountEnable(true);
-        Asserter::assertJsonHasFields($retailStore, ['discountEnable' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "discount_max_percent"
+     */
     public function testPropertyDiscountMaxPercent()
     {
-        $retailStore = new RetailStore();
-        $discountMaxPercent = 50;
-        $retailStore->setDiscountMaxPercent($discountMaxPercent);
-        Asserter::assertJsonHasFields($retailStore, ['discountMaxPercent' => $discountMaxPercent]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "enable_returns_with_no_reason"
+     */
     public function testPropertyEnableReturnsWithNoReason()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setEnableReturnsWithNoReason(true);
-        Asserter::assertJsonHasFields($retailStore, ['enableReturnsWithNoReason' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "issue_orders"
+     */
     public function testPropertyIssueOrders()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setIssueOrders(true);
-        Asserter::assertJsonHasFields($retailStore, ['issueOrders' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "last_operation_names"
+     */
     public function testPropertyLastOperationNames()
     {
-        $retailStore = new RetailStore();
-        $lastOperationNames = [new LastOperationNames()];
-        $retailStore->setLastOperationNames($lastOperationNames);
-        Asserter::assertJsonHasFields($retailStore, ['lastOperationNames' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "master_retail_stores"
+     */
     public function testPropertyMasterRetailStores()
     {
-        $retailStore = new RetailStore();
-        $masterRetailStores = [new RetailStoreCustomerOrderStatesInner()];
-        $retailStore->setMasterRetailStores($masterRetailStores);
-        Asserter::assertJsonHasFields($retailStore, ['masterRetailStores' => [[]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "ofd_enabled"
+     */
     public function testPropertyOfdEnabled()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setOfdEnabled(true);
-        Asserter::assertJsonHasFields($retailStore, ['ofdEnabled' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "only_in_stock"
+     */
     public function testPropertyOnlyInStock()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setOnlyInStock(true);
-        Asserter::assertJsonHasFields($retailStore, ['onlyInStock' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "order_to_state"
+     */
     public function testPropertyOrderToState()
     {
-        $retailStore = new RetailStore();
-        $orderToState = new RetailStoreOrderToState();
-        $retailStore->setOrderToState($orderToState);
-        Asserter::assertJsonHasFields($retailStore, ['orderToState' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "print_always"
+     */
     public function testPropertyPrintAlways()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setPrintAlways(true);
-        Asserter::assertJsonHasFields($retailStore, ['printAlways' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "product_folders"
+     */
     public function testPropertyProductFolders()
     {
-        $retailStore = new RetailStore();
-        $productFolders = new RetailStoreProductFolders();
-        $retailStore->setProductFolders($productFolders);
-        Asserter::assertJsonHasFields($retailStore, ['productFolders' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "receipt_template"
+     */
     public function testPropertyReceiptTemplate()
     {
-        $retailStore = new RetailStore();
-        $receiptTemplate = new RetailStoreReceiptTemplate();
-        $retailStore->setReceiptTemplate($receiptTemplate);
-        Asserter::assertJsonHasFields($retailStore, ['receiptTemplate' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "required_fio"
+     */
     public function testPropertyRequiredFio()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setRequiredFio(true);
-        Asserter::assertJsonHasFields($retailStore, ['requiredFio' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "required_phone"
+     */
     public function testPropertyRequiredPhone()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setRequiredPhone(true);
-        Asserter::assertJsonHasFields($retailStore, ['requiredPhone' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "required_email"
+     */
     public function testPropertyRequiredEmail()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setRequiredEmail(false);
-        Asserter::assertJsonHasFields($retailStore, ['requiredEmail' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "required_birthdate"
+     */
     public function testPropertyRequiredBirthdate()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setRequiredBirthdate(false);
-        Asserter::assertJsonHasFields($retailStore, ['requiredBirthdate' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "required_sex"
+     */
     public function testPropertyRequiredSex()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setRequiredSex(false);
-        Asserter::assertJsonHasFields($retailStore, ['requiredSex' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "required_discount_card_number"
+     */
     public function testPropertyRequiredDiscountCardNumber()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setRequiredDiscountCardNumber(false);
-        Asserter::assertJsonHasFields($retailStore, ['requiredDiscountCardNumber' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "reserve_prepaid_goods"
+     */
     public function testPropertyReservePrepaidGoods()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setReservePrepaidGoods(true);
-        Asserter::assertJsonHasFields($retailStore, ['reservePrepaidGoods' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "return_from_closed_shift_enabled"
+     */
     public function testPropertyReturnFromClosedShiftEnabled()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setReturnFromClosedShiftEnabled(true);
-        Asserter::assertJsonHasFields($retailStore, ['returnFromClosedShiftEnabled' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "sell_reserves"
+     */
     public function testPropertySellReserves()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setSellReserves(true);
-        Asserter::assertJsonHasFields($retailStore, ['sellReserves' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "send_marks_for_check"
+     */
     public function testPropertySendMarksForCheck()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setSendMarksForCheck(true);
-        Asserter::assertJsonHasFields($retailStore, ['sendMarksForCheck' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "send_marks_to_chestny_znak_on_cloud"
+     */
     public function testPropertySendMarksToChestnyZnakOnCloud()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setSendMarksToChestnyZnakOnCloud(true);
-        Asserter::assertJsonHasFields($retailStore, ['sendMarksToChestnyZnakOnCloud' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "sync_agents"
+     */
     public function testPropertySyncAgents()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setSyncAgents(true);
-        Asserter::assertJsonHasFields($retailStore, ['syncAgents' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "show_beer_on_tap"
+     */
     public function testPropertyShowBeerOnTap()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setShowBeerOnTap(true);
-        Asserter::assertJsonHasFields($retailStore, ['showBeerOnTap' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "qr_pay_enabled"
+     */
     public function testPropertyQrPayEnabled()
     {
-        $retailStore = new RetailStore();
-        $retailStore->setQrPayEnabled(true);
-        Asserter::assertJsonHasFields($retailStore, ['qrPayEnabled' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "bank_percent"
+     */
     public function testPropertyBankPercent()
     {
-        $retailStore = new RetailStore();
-        $bankPercent = 2.5;
-        $retailStore->setBankPercent($bankPercent);
-        Asserter::assertJsonHasFields($retailStore, ['bankPercent' => $bankPercent]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "qr_bank_percent"
+     */
     public function testPropertyQrBankPercent()
     {
-        $retailStore = new RetailStore();
-        $qrBankPercent = 1.5;
-        $retailStore->setQrBankPercent($qrBankPercent);
-        Asserter::assertJsonHasFields($retailStore, ['qrBankPercent' => $qrBankPercent]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "demand_prefix"
+     */
     public function testPropertyDemandPrefix()
     {
-        $retailStore = new RetailStore();
-        $demandPrefix = "ORD";
-        $retailStore->setDemandPrefix($demandPrefix);
-        Asserter::assertJsonHasFields($retailStore, ['demandPrefix' => $demandPrefix]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "qr_terminal_id"
+     */
     public function testPropertyQrTerminalId()
     {
-        $retailStore = new RetailStore();
-        $qrTerminalId = "QR123";
-        $retailStore->setQrTerminalId($qrTerminalId);
-        Asserter::assertJsonHasFields($retailStore, ['qrTerminalId' => $qrTerminalId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id_qr"
+     */
     public function testPropertyIdQr()
     {
-        $retailStore = new RetailStore();
-        $idQr = "IDQR456";
-        $retailStore->setIdQr($idQr);
-        Asserter::assertJsonHasFields($retailStore, ['idQR' => $idQr]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "acquire"
+     */
     public function testPropertyAcquire()
     {
-        $retailStore = new RetailStore();
-        $acquire = new RetailStoreAcquire();
-        $retailStore->setAcquire($acquire);
-        Asserter::assertJsonHasFields($retailStore, ['acquire' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "cashiers"
+     */
     public function testPropertyCashiers()
     {
-        $retailStore = new RetailStore();
-        $cashiers = new RetailStoreCashiers();
-        $retailStore->setCashiers($cashiers);
-        Asserter::assertJsonHasFields($retailStore, ['cashiers' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "qr_acquire"
+     */
     public function testPropertyQrAcquire()
     {
-        $retailStore = new RetailStore();
-        $qrAcquire = new RetailStoreQrAcquire();
-        $retailStore->setQrAcquire($qrAcquire);
-        Asserter::assertJsonHasFields($retailStore, ['qrAcquire' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

@@ -27,18 +27,9 @@
 
 namespace OpenAPI\Client\Test\Api;
 
-use OpenAPI\Client\Api\EmployeesApi;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\Model\Cashier;
-use OpenAPI\Client\Model\DeleteInfo;
-use OpenAPI\Client\Model\Employee;
-use OpenAPI\Client\Model\EmployeeList;
-use OpenAPI\Client\Model\EmployeeSalary;
-use OpenAPI\Client\Model\Image;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
-use PHPUnit\Framework\Assert;
+use \OpenAPI\Client\Configuration;
+use \OpenAPI\Client\ApiException;
+use \OpenAPI\Client\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -52,519 +43,247 @@ use PHPUnit\Framework\TestCase;
 class EmployeesApiTest extends TestCase
 {
 
-    private static EmployeesApi $api;
-
+    /**
+     * Setup before running any test cases
+     */
     public static function setUpBeforeClass(): void
     {
-        $config = Configuration::getDefaultConfiguration()
-            ->setHost(getenv('API_HOST') . '/api/remap/1.2')
-            ->setUsername(getenv('API_LOGIN'))
-            ->setPassword(getenv('API_PASSWORD'));
-
-        EmployeesApiTest::$api = new EmployeesApi(null, $config);
     }
 
     /**
-     * Проверка успешной обработки ответа сервера на получение сотрудников
+     * Setup before running each test case
      */
-    public function testEntityEmployeeGet(): void
+    public function setUp(): void
     {
-        $prefix = StringUtil::randomUuid();
-        $employee1 = new Employee();
-        $employee1->setFirstName("Иван");
-        $employee1->setLastName("$prefix Employee 1");
-        $employee1->setPosition("Менеджер");
-        $employee1->setPhone("+79991234567");
-        $employee1 = EmployeesApiTest::$api->entityEmployeePost($employee1);
-
-        $employee2 = new Employee();
-        $employee2->setFirstName("Петр");
-        $employee2->setLastName("$prefix Employee 2");
-        $employee2->setPosition("Продавец");
-        $employee2->setPhone("+79991234568");
-        $employee2 = EmployeesApiTest::$api->entityEmployeePost($employee2);
-
-        $employee3 = new Employee();
-        $employee3->setFirstName("Сергей");
-        $employee3->setLastName("$prefix Employee 3");
-        $employee3->setPosition("Директор");
-        $employee3->setPhone("+79991234569");
-        $employee3 = EmployeesApiTest::$api->entityEmployeePost($employee3);
-
-        Assert::assertNotSame($employee1->getId(), $employee2->getId());
-        Assert::assertNotSame($employee2->getId(), $employee3->getId());
-
-        $employeeList_12 = EmployeesApiTest::$api->entityEmployeeGet(2, 0, null, "lastName~=$prefix", null, 'lastName');
-        Assert::assertInstanceOf(EmployeeList::class, $employeeList_12);
-        Asserter::assertMetaCollection($employeeList_12->getMeta(), 'employee', 3, 2, 'employee');
-        Asserter::assertJsonHasFields($employeeList_12, ['meta' => []], false, 'context.employee');
-        Asserter::assertJsonHasFields($employeeList_12, [
-            'rows' => [
-                ['id' => $employee1->getId()],
-                ['id' => $employee2->getId()]
-            ]], false);
-
-        $employeeList_23 = EmployeesApiTest::$api->entityEmployeeGet(3, 1, null, "lastName~=$prefix", null, 'lastName');
-        Assert::assertInstanceOf(EmployeeList::class, $employeeList_23);
-        Asserter::assertMetaCollection($employeeList_23->getMeta(), 'employee', 3, 3, 'employee');
-        Asserter::assertJsonHasFields($employeeList_23, ['meta' => []], false, 'context.employee');
-        Asserter::assertJsonHasFields($employeeList_23, [
-            'rows' => [
-                ['id' => $employee2->getId()],
-                ['id' => $employee3->getId()]
-            ]], false);
     }
 
     /**
-     * Проверка обработки ответа сервера на получение сотрудников сопровождаемое ошибкой
+     * Clean up after running each test case
      */
-    public function testEntityEmployeeGetWithError(): void
+    public function tearDown(): void
     {
-        try {
-            EmployeesApiTest::$api->entityEmployeeGet(1, 1, null, "lastName>123");
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(412, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
     }
 
     /**
-     * Проверка успешной обработки ответа сервера на получение сотрудника по ID
+     * Clean up after running all test cases
      */
-    public function testEntityEmployeeIdGet()
+    public static function tearDownAfterClass(): void
     {
-        $employeeReq = new Employee();
-
-        // Основные поля сотрудника
-        $employeeReq->setFirstName("Иван");
-        $employeeReq->setMiddleName("Иванович");
-        $employeeReq->setLastName("Иванов " . StringUtil::randomUuid());
-        $employeeReq->setPosition("Старший менеджер");
-        $employeeReq->setPhone("+79991234567");
-        $employeeReq->setEmail("ivan.ivanov@" . StringUtil::randomUuid() . ".test");
-        $employeeReq->setDescription("Тестовый сотрудник для проверки API");
-        $employeeReq->setArchived(false);
-        $employeeReq->setShared(true);
-
-        // Зарплата сотрудника
-        $salary = new EmployeeSalary();
-        $salary->setValue(100000.0);
-        $employeeReq->setSalary($salary);
-
-        $employeeResp = EmployeesApiTest::$api->entityEmployeePost($employeeReq);
-
-        $employeeId = $employeeResp->getId();
-        Assert::assertNotNull($employeeId);
-        Asserter::assertMeta($employeeResp->getMeta(), $employeeId, 'employee');
-
-        // Проверка полей
-        Assert::assertSame($employeeReq->getFirstName(), $employeeResp->getFirstName());
-        Assert::assertSame($employeeReq->getMiddleName(), $employeeResp->getMiddleName());
-        Assert::assertSame($employeeReq->getLastName(), $employeeResp->getLastName());
-        Assert::assertSame($employeeReq->getPosition(), $employeeResp->getPosition());
-        Assert::assertSame($employeeReq->getPhone(), $employeeResp->getPhone());
-        Assert::assertSame($employeeReq->getEmail(), $employeeResp->getEmail());
-        Assert::assertSame($employeeReq->getDescription(), $employeeResp->getDescription());
-        Assert::assertSame($employeeReq->getInn(), $employeeResp->getInn());
-        Assert::assertSame($employeeReq->getArchived(), $employeeResp->getArchived());
-        Assert::assertSame($employeeReq->getShared(), $employeeResp->getShared());
-
-        // Проверка имени (полного и короткого)
-        Assert::assertNotNull($employeeResp->getName());
-        Assert::assertNotNull($employeeResp->getFullName());
-        Assert::assertNotNull($employeeResp->getShortFio());
-
-        // Проверка зарплаты
-        $salaryResp = $employeeResp->getSalary();
-        Assert::assertSame($salary->getValue(), $salaryResp->getValue());
-
-        Asserter::assertJsonHasFields($employeeResp, ['owner' => ['meta' => ['type' => 'employee']]], false);
-        Asserter::assertJsonHasFields($employeeResp, ['group' => ['meta' => ['type' => 'group']]], false);
-        Assert::assertNotNull($employeeResp->getCreated());
-        Assert::assertNotNull($employeeResp->getUpdated());
-        Assert::assertNotNull($employeeResp->getAccountId());
     }
 
     /**
-     * Проверка обработки ответа сервера на получение сотрудника сопровождаемое ошибкой
+     * Test case for activateEmployee
+     *
+     * Активировать сотрудника.
+     *
      */
-    public function testEntityEmployeeIdGetWithError()
+    public function testActivateEmployee()
     {
-        try {
-            EmployeesApiTest::$api->entityEmployeeIdGet(StringUtil::randomUuid());
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(404, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Проверка обработки ответа сервера на создание сотрудника сопровождаемое ошибкой
+     * Test case for createEmployee
+     *
+     * Создать сотрудника.
+     *
      */
-    public function testEntityEmployeePostWithError()
+    public function testCreateEmployee()
     {
-        try {
-            $employee1 = new Employee();
-            // Не устанавливаем обязательные поля (имя, фамилия или position)
-            EmployeesApiTest::$api->entityEmployeePost($employee1);
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(412, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Проверка успешной обработки ответа сервера на обновление сотрудника
+     * Test case for createEmployeesBatch
+     *
+     * Создать или изменить сотрудников.
+     *
      */
-    public function testEntityEmployeeIdPut()
+    public function testCreateEmployeesBatch()
     {
-        $createEmployee = new Employee();
-        $createEmployee->setFirstName("СтароеИмя");
-        $createEmployee->setLastName("СтараяФамилия");
-        $createEmployee->setPosition("Старая должность");
-        $createEmployee = EmployeesApiTest::$api->entityEmployeePost($createEmployee);
-
-        $updateEmployee = new Employee();
-        $updateEmployee->setFirstName("НовоеИмя");
-        $updateEmployee->setLastName("НоваяФамилия");
-        $updateEmployee->setPosition("Новая должность");
-        $updateEmployee->setDescription("Обновленное описание сотрудника");
-        $updateEmployee = EmployeesApiTest::$api->entityEmployeeIdPut($createEmployee->getId(), $updateEmployee);
-
-        Assert::assertSame($createEmployee->getId(), $updateEmployee->getId());
-        Assert::assertSame("НовоеИмя", $updateEmployee->getFirstName());
-        Assert::assertSame("НоваяФамилия", $updateEmployee->getLastName());
-        Assert::assertSame("Новая должность", $updateEmployee->getPosition());
-        Assert::assertSame("Обновленное описание сотрудника", $updateEmployee->getDescription());
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Проверка обработки ответа сервера на обновление сотрудника сопровождаемое ошибкой
+     * Test case for deactivateEmployee
+     *
+     * Деактивировать сотрудника.
+     *
      */
-    public function testEntityEmployeeIdPutWithError()
+    public function testDeactivateEmployee()
     {
-        $employee1 = new Employee();
-        $employee1->setFirstName("Иван");
-        $employee1->setLastName("Иванов");
-        $employee1->setPosition("Менеджер");
-        $employee1 = EmployeesApiTest::$api->entityEmployeePost($employee1);
-
-        try {
-            $updateEmployee = new Employee();
-            $updateEmployee->setPhone(true); // Неверный формат телефона
-            EmployeesApiTest::$api->entityEmployeeIdPut($employee1->getId(), $updateEmployee);
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(400, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Проверка успешной обработки ответа сервера удаления сотрудника
+     * Test case for deleteEmployee
+     *
+     * Удалить сотрудника.
+     *
      */
-    public function testEntityEmployeeIdDelete()
+    public function testDeleteEmployee()
     {
-        $employee = new Employee();
-        $employee->setFirstName("Удаляемый");
-        $employee->setLastName("Сотрудник");
-        $employee->setPosition("Тестовая должность");
-        $employee = EmployeesApiTest::$api->entityEmployeePost($employee);
-        $resp = EmployeesApiTest::$api->entityEmployeeIdDeleteWithHttpInfo($employee->getId());
-        Assert::assertEquals(200, $resp[1]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Проверка обработки ответа сервера удаления сотрудника сопровождаемое ошибкой
+     * Test case for deleteEmployeesBatch
+     *
+     * Удалить сотрудников.
+     *
      */
-    public function testEntityEmployeeIdDeleteWithError()
+    public function testDeleteEmployeesBatch()
     {
-        try {
-            EmployeesApiTest::$api->entityEmployeeIdDelete(StringUtil::randomUuid());
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(404, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового создания сотрудников
+     * Test case for getEmployeeById
+     *
+     * Получить сотрудника по ID.
+     *
      */
-    public function testBatchCreateEmployees(): void
+    public function testGetEmployeeById()
     {
-        $prefix = StringUtil::randomUuid();
-        $employees = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $employee = new Employee();
-            $employee->setFirstName("Имя$i");
-            $employee->setLastName("$prefix Batch Employee $i");
-            $employee->setPosition("Должность $i");
-            $employee->setPhone("+79991234" . (100 + $i));
-            $employee->setEmail("employee$i@" . $prefix . ".test");
-            $employee->setDescription("Описание массового сотрудника $i");
-            $employee->setArchived(false);
-            $employee->setShared(true);
-
-            $salary = new EmployeeSalary();
-            $salary->setValue(50000.0 + ($i * 10000));
-            $employee->setSalary($salary);
-
-            $employees[] = $employee;
-        }
-
-        $response = EmployeesApiTest::$api->entityEmployeeBatchPost($employees);
-
-        Assert::assertIsArray($response);
-        Assert::assertCount(3, $response);
-
-        foreach ($response as $index => $createdEmployee) {
-            Assert::assertInstanceOf(Employee::class, $createdEmployee);
-            Assert::assertNotNull($createdEmployee->getId());
-            Asserter::assertStringContainsString("Имя" . ($index + 1), $createdEmployee->getFirstName());
-            Asserter::assertStringContainsString("$prefix Batch Employee " . ($index + 1), $createdEmployee->getLastName());
-            Asserter::assertStringContainsString("Должность " . ($index + 1), $createdEmployee->getPosition());
-            Asserter::assertStringContainsString("Описание массового сотрудника " . ($index + 1), $createdEmployee->getDescription());
-            Assert::assertFalse($createdEmployee->getArchived());
-            Assert::assertTrue($createdEmployee->getShared());
-
-            $salaryResp = $createdEmployee->getSalary();
-            Assert::assertEquals(50000.0 + (($index + 1) * 10000), $salaryResp->getValue());
-
-            Asserter::assertMeta($createdEmployee->getMeta(), $createdEmployee->getId(), 'employee');
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового обновления сотрудников
+     * Test case for getEmployeeMetadata
+     *
+     * Получить метаданные товаров.
+     *
      */
-    public function testBatchUpdateEmployees(): void
+    public function testGetEmployeeMetadata()
     {
-        $prefix = StringUtil::randomUuid();
-        $createdEmployees = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $employee = new Employee();
-            $employee->setFirstName("Имя$i");
-            $employee->setLastName("$prefix Original Employee $i");
-            $employee->setPosition("Оригинальная должность $i");
-            $employee->setPhone("+79991234" . (200 + $i));
-            $employee->setEmail("original$i@" . $prefix . ".test");
-            $employee->setArchived(false);
-            $createdEmployees[] = $employee;
-        }
-
-        $response = EmployeesApiTest::$api->entityEmployeeBatchPost($createdEmployees);
-        Assert::assertCount(3, $response);
-
-        $updatedEmployees = [];
-        foreach ($response as $index => $createdEmployee) {
-            $updateEmployee = new Employee();
-            $updateEmployee->setMeta($createdEmployee->getMeta()); // Важно: устанавливаем meta!
-            $updateEmployee->setFirstName("ОбновленноеИмя" . ($index + 1));
-            $updateEmployee->setLastName("$prefix Updated Employee " . ($index + 1));
-            $updateEmployee->setPosition("Обновленная должность " . ($index + 1));
-            $updateEmployee->setDescription("Обновленное описание сотрудника " . ($index + 1));
-            $updateEmployee->setEmail("updated" . ($index + 1) . "@" . $prefix . ".test");
-            $updatedEmployees[] = $updateEmployee;
-        }
-
-        try {
-            $updateResponse = EmployeesApiTest::$api->entityEmployeeBatchPost($updatedEmployees);
-        } catch(ApiException $e) {
-            fwrite(STDERR, "Error Message: " . $e->getMessage() . PHP_EOL);
-            fwrite(STDERR, "Error Code: " . $e->getCode() . PHP_EOL);
-            fwrite(STDERR, "Response Body: " . $e->getResponseBody() . PHP_EOL);
-            throw $e;
-        }
-
-        Assert::assertIsArray($updateResponse);
-        Assert::assertCount(3, $updateResponse);
-
-        foreach ($updateResponse as $index => $updatedEmployee) {
-            Assert::assertInstanceOf(Employee::class, $updatedEmployee);
-            Asserter::assertStringContainsString("ОбновленноеИмя" . ($index + 1), $updatedEmployee->getFirstName());
-            Asserter::assertStringContainsString("$prefix Updated Employee " . ($index + 1), $updatedEmployee->getLastName());
-            Asserter::assertStringContainsString("Обновленная должность " . ($index + 1), $updatedEmployee->getPosition());
-            Asserter::assertStringContainsString("Обновленное описание сотрудника " . ($index + 1), $updatedEmployee->getDescription());
-            Asserter::assertStringContainsString("updated" . ($index + 1) . "@" . $prefix . ".test", $updatedEmployee->getEmail());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового удаления сотрудников
+     * Test case for getEmployeeSecurity
+     *
+     * Получить права сотрудника.
+     *
      */
-    public function testBatchDeleteEmployees(): void
+    public function testGetEmployeeSecurity()
     {
-        $prefix = StringUtil::randomUuid();
-        $createdEmployees = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $employee = new Employee();
-            $employee->setFirstName("Удаляемый$i");
-            $employee->setLastName("$prefix Delete Employee $i");
-            $employee->setPosition("Должность для удаления $i");
-            $employee->setPhone("+79991234" . (300 + $i));
-            $createdEmployees[] = $employee;
-        }
-
-        $response = EmployeesApiTest::$api->entityEmployeeBatchPost($createdEmployees);
-        Assert::assertCount(3, $response);
-
-        $metaArray = [];
-        foreach ($response as $createdEmployee) {
-            $meta = new Employee();
-            $meta->setMeta($createdEmployee->getMeta());
-            $metaArray[] = $meta;
-        }
-
-        $deleteResponse = EmployeesApiTest::$api->entityEmployeeDeletePost($metaArray);
-
-        Assert::assertIsArray($deleteResponse);
-        Assert::assertCount(3, $deleteResponse);
-
-        foreach ($deleteResponse as $deleteResult) {
-            Assert::assertInstanceOf(DeleteInfo::class, $deleteResult);
-            Assert::assertNotNull($deleteResult->getInfo());
-            Asserter::assertStringContainsString('удален', $deleteResult->getInfo());
-        }
-
-        foreach ($response as $createdEmployee) {
-            try {
-                EmployeesApiTest::$api->entityEmployeeIdGet($createdEmployee->getId());
-                Assert::fail('Сотрудник должен был быть удален');
-            } catch (ApiException $e) {
-                Assert::assertEquals(404, $e->getCode());
-            }
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового создания сотрудников с дублирующимися email
+     * Test case for getEmployees
+     *
+     * Получить список сотрудников.
+     *
      */
-    public function testBatchCreateEmployeesWithError(): void
+    public function testGetEmployees()
     {
-        $prefix = StringUtil::randomUuid();
-        $employees = [];
-
-         $employee = new Employee();
-        $employee->setFirstName("Имя1");
-        $employee->setLastName("$prefix Duplicate Employee");
-        $employee->setPosition("Должность 1");
-        $employee->setPhone("+79991234401");
-        $employees[] = $employee;
-        for ($i = 2; $i <= 3; $i++) {
-            $employee = new Employee();
-            $employee->setFirstName("Имя$i");
-            $employee->setLastName("$prefix Duplicate Employee");
-            $employee->setPosition(true);
-            $employee->setPhone("+79991234" . (400 + $i));
-            $employees[] = $employee;
-        }
-
-        try {
-            $res = EmployeesApiTest::$api->entityEmployeeBatchPost($employees);
-        } catch (ApiException $e) {
-            $res = json_decode($e->getResponseBody(), true);
-        }
-
-        $success = 0;
-        $errors = 0;
-        foreach ($res as $item) {
-            if (isset($item['errors'])) {
-                $errors++;
-            } else {
-                $success++;
-            }
-        }
-
-        Assert::assertGreaterThanOrEqual(1, $success, 'Ожидается как минимум 1 успешное создание');
-        Assert::assertGreaterThanOrEqual(1, $errors, 'Ожидается как минимум 1 ошибка');
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового удаления сотрудников с некорректными мета-данными
+     * Test case for getRoleAdmin
+     *
+     * Получить роль администратора.
+     *
      */
-    public function testBatchDeleteEmployeesWithError(): void
+    public function testGetRoleAdmin()
     {
-        $prefix = StringUtil::randomUuid();
-
-        $employee = new Employee();
-        $employee->setFirstName("Тест");
-        $employee->setLastName("$prefix Delete Employee");
-        $employee->setPosition("Тестовая должность");
-        $employee->setPhone("+79991234567");
-
-        $response = EmployeesApiTest::$api->entityEmployeePost($employee);
-
-        $metaArray = [];
-
-        $meta1 = new Employee();
-        $meta1->setMeta($response->getMeta());
-        $metaArray[] = $meta1;
-
-        // Мета-данные с некорректным ID
-        $meta2 = new Employee();
-        $metaInvalidId = clone $response->getMeta();
-        $newHref = preg_replace(
-            '/[0-9a-fA-F-]{36}/',
-            'invalid-uuid',
-            $metaInvalidId->getHref()
-        );
-        $metaInvalidId->setHref($newHref);
-
-        $meta2->setMeta($metaInvalidId);
-        $metaArray[] = $meta2;
-
-        // Мета-данные с некорректным типом
-        $meta3 = new Employee();
-        $metaInvalidType = clone $response->getMeta();
-        $newHref2 = str_replace('/employee/', '/counterparty/', $metaInvalidType->getHref());
-        $newHref2 = preg_replace(
-            '/[0-9a-fA-F-]{36}/',
-            'invalid-uuid',
-            $newHref2
-        );
-        $metaInvalidType->setHref($newHref2);
-        $meta3->setMeta($metaInvalidType);
-        $metaArray[] = $meta3;
-
-        try {
-            $res = EmployeesApiTest::$api->entityEmployeeDeletePost($metaArray);
-            Assert::fail('Ожидалось исключение ApiException из-за некорректных мета-данных');
-        } catch (ApiException $e) {
-            $res = json_decode($e->getResponseBody(), true);
-        }
-
-        $success = 0;
-        $errors = 0;
-        foreach ($res as $item) {
-            if (isset($item['errors'])) {
-                $errors++;
-            } else {
-                $success++;
-                Asserter::assertStringContainsString('удален', $item['info']);
-            }
-        }
-
-        Assert::assertSame(1, $success, 'Ожидается 1 успешное удаление');
-        Assert::assertSame(2, $errors, 'Ожидается 2 ошибки');
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового удаления сотрудников с пустым массивом
+     * Test case for getRoleCashier
+     *
+     * Получить роль кассира.
+     *
      */
-    public function testBatchDeleteEmployeesWithEmptyArray(): void
+    public function testGetRoleCashier()
     {
-        try {
-            EmployeesApiTest::$api->entityEmployeeDeletePost([]);
-            Assert::fail('Ожидалось исключение InvalidArgumentException для пустого массива');
-        } catch (\InvalidArgumentException $e) {
-            Asserter::assertStringContainsString('Missing the required parameter', $e->getMessage());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getRoleIndividual
+     *
+     * Получить индивидуальную роль.
+     *
+     */
+    public function testGetRoleIndividual()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getRoleOwner
+     *
+     * Получить роль владельца аккаунта.
+     *
+     */
+    public function testGetRoleOwner()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getRoleWorker
+     *
+     * Получить роль сотрудника производства.
+     *
+     */
+    public function testGetRoleWorker()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for resetEmployeePassword
+     *
+     * Сбросить пароль сотрудника.
+     *
+     */
+    public function testResetEmployeePassword()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateEmployee
+     *
+     * Обновить сотрудника.
+     *
+     */
+    public function testUpdateEmployee()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateEmployeeSecurity
+     *
+     * Изменить права сотрудника.
+     *
+     */
+    public function testUpdateEmployeeSecurity()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

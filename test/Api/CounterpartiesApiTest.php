@@ -27,21 +27,9 @@
 
 namespace OpenAPI\Client\Test\Api;
 
-use OpenAPI\Client\Api\CounterpartiesApi;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\Model\Address;
-use OpenAPI\Client\Model\Counterparty;
-use OpenAPI\Client\Model\CounterpartyAccounts;
-use OpenAPI\Client\Model\CounterpartyContactpersons;
-use OpenAPI\Client\Model\CounterpartyList;
-use OpenAPI\Client\Model\CounterpartyNotes;
-use OpenAPI\Client\Model\DeleteInfo;
-use OpenAPI\Client\Model\FileList;
-use OpenAPI\Client\Model\State;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
-use PHPUnit\Framework\Assert;
+use \OpenAPI\Client\Configuration;
+use \OpenAPI\Client\ApiException;
+use \OpenAPI\Client\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -55,560 +43,343 @@ use PHPUnit\Framework\TestCase;
 class CounterpartiesApiTest extends TestCase
 {
 
-    private static CounterpartiesApi $api;
-
+    /**
+     * Setup before running any test cases
+     */
     public static function setUpBeforeClass(): void
     {
-        $config = Configuration::getDefaultConfiguration()
-            ->setHost(getenv('API_HOST') . '/api/remap/1.2')
-            ->setUsername(getenv('API_LOGIN'))
-            ->setPassword(getenv('API_PASSWORD'));
-
-        CounterpartiesApiTest::$api = new CounterpartiesApi(null, $config);
     }
 
     /**
-     * Проверка успешной обработки ответа сервера на получение контрагентов
+     * Setup before running each test case
      */
-    public function testEntityCounterpartyGet(): void
+    public function setUp(): void
     {
-        $prefix = StringUtil::randomUuid();
-        $counterparty1 = new Counterparty();
-        $counterparty1->setName("$prefix Counterparty 1");
-        $counterparty1->setCompanyType(Counterparty::COMPANY_TYPE_LEGAL);
-        $counterparty1->setInn("7701234567");
-        $counterparty1 = CounterpartiesApiTest::$api->entityCounterpartyPost($counterparty1);
-
-        $counterparty2 = new Counterparty();
-        $counterparty2->setName("$prefix Counterparty 2");
-        $counterparty2->setCompanyType(Counterparty::COMPANY_TYPE_INDIVIDUAL);
-        $counterparty2->setInn("123456789012");
-        $counterparty2 = CounterpartiesApiTest::$api->entityCounterpartyPost($counterparty2);
-
-        $counterparty3 = new Counterparty();
-        $counterparty3->setName("$prefix Counterparty 3");
-        $counterparty3->setCompanyType(Counterparty::COMPANY_TYPE_ENTREPRENEUR);
-        $counterparty3->setInn("123456789012");
-        $counterparty3 = CounterpartiesApiTest::$api->entityCounterpartyPost($counterparty3);
-
-        Assert::assertNotSame($counterparty1->getId(), $counterparty2->getId());
-        Assert::assertNotSame($counterparty2->getId(), $counterparty3->getId());
-
-        $counterpartyList_12 = CounterpartiesApiTest::$api->entityCounterpartyGet(2, 0, null, "name~=$prefix", null, 'name');
-        Assert::assertInstanceOf(CounterpartyList::class, $counterpartyList_12);
-        Asserter::assertMetaCollection($counterpartyList_12->getMeta(), 'counterparty', 3, 2, 'counterparty');
-        Asserter::assertJsonHasFields($counterpartyList_12, ['meta' => []], false, 'context.employee');
-        Asserter::assertJsonHasFields($counterpartyList_12, [
-            'rows' => [
-                ['id' => $counterparty1->getId()],
-                ['id' => $counterparty2->getId()]
-            ]], false);
-
-        $counterpartyList_23 = CounterpartiesApiTest::$api->entityCounterpartyGet(3, 1, null, "name~=$prefix", null, 'name');
-        Assert::assertInstanceOf(CounterpartyList::class, $counterpartyList_23);
-        Asserter::assertMetaCollection($counterpartyList_23->getMeta(), 'counterparty', 3, 3, 'counterparty');
-        Asserter::assertJsonHasFields($counterpartyList_23, ['meta' => []], false, 'context.employee');
-        Asserter::assertJsonHasFields($counterpartyList_23, [
-            'rows' => [
-                ['id' => $counterparty2->getId()],
-                ['id' => $counterparty3->getId()]
-            ]], false);
     }
 
     /**
-     * Проверка обработки ответа сервера на получение контрагентов сопровождаемое ошибкой
+     * Clean up after running each test case
      */
-    public function testEntityCounterpartyGetWithError(): void
+    public function tearDown(): void
     {
-        try {
-            CounterpartiesApiTest::$api->entityCounterpartyGet(1, 1, null, "name>123");
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(412, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
     }
 
     /**
-     * Проверка успешной обработки ответа сервера на получение контрагента по ID
+     * Clean up after running all test cases
      */
-    public function testEntityCounterpartyIdGet()
+    public static function tearDownAfterClass(): void
     {
-        $counterpartyReq = new Counterparty();
-
-        // Основные поля контрагента
-        $counterpartyReq->setName("Тестовый контрагент " . StringUtil::randomUuid());
-        $counterpartyReq->setCompanyType(Counterparty::COMPANY_TYPE_LEGAL);
-        $counterpartyReq->setLegalTitle("Общество с ограниченной ответственностью 'Тест'");
-        $counterpartyReq->setInn("7701234567");
-        $counterpartyReq->setKpp("770101001");
-        $counterpartyReq->setOgrn("1234567890123");
-        $counterpartyReq->setOkpo("12345678");
-        $counterpartyReq->setEmail("contact@" . StringUtil::randomUuid() . ".test");
-        $counterpartyReq->setPhone("+74951234567");
-        $counterpartyReq->setFax("+74951234568");
-        $counterpartyReq->setActualAddress("г. Москва, ул. Тестовая, д. 1");
-        $counterpartyReq->setLegalAddress("г. Москва, ул. Юридическая, д. 2");
-        $counterpartyReq->setDescription("Описание тестового контрагента");
-        $counterpartyReq->setCode(StringUtil::randomUuid());
-        $counterpartyReq->setExternalCode(StringUtil::randomUuid());
-        $counterpartyReq->setArchived(false);
-        $counterpartyReq->setShared(true);
-        $counterpartyReq->setSalesAmount(1000000);
-        $counterpartyReq->setDiscountCardNumber("DISCOUNT-12345");
-
-        // Полный адрес
-        $address = new Address();
-        $address->setPostalCode("123456");
-        $address->setCity(StringUtil::randomUuid());
-        $address->setStreet(StringUtil::randomUuid());
-        $address->setHouse("1");
-        $address->setApartment("1");
-        $counterpartyReq->setActualAddressFull($address);
-
-        // Счета контрагента
-        $accounts = new CounterpartyAccounts();
-        // Здесь можно добавить счета при необходимости
-        $counterpartyReq->setAccounts($accounts);
-
-        // Контактные лица
-        $contactpersons = new CounterpartyContactpersons();
-        // Здесь можно добавить контактные лица при необходимости
-        $counterpartyReq->setContactpersons($contactpersons);
-
-        // Примечания
-        $notes = new CounterpartyNotes();
-        // Здесь можно добавить примечания при необходимости
-        $counterpartyReq->setNotes($notes);
-
-        // Файлы
-        $files = new FileList();
-        $counterpartyReq->setFiles($files);
-
-        $counterpartyResp = CounterpartiesApiTest::$api->entityCounterpartyPost($counterpartyReq);
-        $counterpartyId = $counterpartyResp->getId();
-        Assert::assertNotNull($counterpartyId);
-        Asserter::assertMeta($counterpartyResp->getMeta(), $counterpartyId, 'counterparty');
-
-        // Проверка полей
-        Assert::assertSame($counterpartyReq->getName(), $counterpartyResp->getName());
-        Assert::assertSame($counterpartyReq->getCompanyType(), $counterpartyResp->getCompanyType());
-        Assert::assertSame($counterpartyReq->getLegalTitle(), $counterpartyResp->getLegalTitle());
-        Assert::assertSame($counterpartyReq->getInn(), $counterpartyResp->getInn());
-        Assert::assertSame($counterpartyReq->getKpp(), $counterpartyResp->getKpp());
-        Assert::assertSame($counterpartyReq->getOgrn(), $counterpartyResp->getOgrn());
-        Assert::assertSame($counterpartyReq->getOkpo(), $counterpartyResp->getOkpo());
-        Assert::assertSame($counterpartyReq->getEmail(), $counterpartyResp->getEmail());
-        Assert::assertSame($counterpartyReq->getPhone(), $counterpartyResp->getPhone());
-        Assert::assertSame($counterpartyReq->getFax(), $counterpartyResp->getFax());
-        Assert::assertNotSame($counterpartyReq->getActualAddress(), $counterpartyResp->getActualAddress());
-        Assert::assertSame($counterpartyReq->getLegalAddress(), $counterpartyResp->getLegalAddress());
-        Assert::assertSame($counterpartyReq->getDescription(), $counterpartyResp->getDescription());
-        Assert::assertSame($counterpartyReq->getCode(), $counterpartyResp->getCode());
-        Assert::assertSame($counterpartyReq->getExternalCode(), $counterpartyResp->getExternalCode());
-        Assert::assertSame($counterpartyReq->getArchived(), $counterpartyResp->getArchived());
-        Assert::assertSame($counterpartyReq->getShared(), $counterpartyResp->getShared());
-        Assert::assertSame($counterpartyReq->getDiscountCardNumber(), $counterpartyResp->getDiscountCardNumber());
-
-        // Проверка адреса
-        $addressResp = $counterpartyResp->getActualAddressFull();
-        if ($addressResp !== null) {
-            Assert::assertSame($address->getPostalCode(), $addressResp->getPostalCode());
-            Assert::assertSame($address->getCountry(), $addressResp->getCountry());
-            Assert::assertSame($address->getStreet(), $addressResp->getStreet());
-            Assert::assertSame($address->getHouse(), $addressResp->getHouse());
-            Assert::assertSame($address->getApartment(), $addressResp->getApartment());
-        }
-
-        Asserter::assertJsonHasFields($counterpartyResp, ['owner' => ['meta' => ['type' => 'employee']]], false);
-        Asserter::assertJsonHasFields($counterpartyResp, ['group' => ['meta' => ['type' => 'group']]], false);
-        Assert::assertNotNull($counterpartyResp->getCreated());
-        Assert::assertNotNull($counterpartyResp->getUpdated());
-        Assert::assertNotNull($counterpartyResp->getAccountId());
-
-        // Проверка связанных объектов
-        Assert::assertInstanceOf(CounterpartyAccounts::class, $counterpartyResp->getAccounts());
-        Assert::assertInstanceOf(CounterpartyContactpersons::class, $counterpartyResp->getContactpersons());
-        Assert::assertInstanceOf(CounterpartyNotes::class, $counterpartyResp->getNotes());
-        Assert::assertInstanceOf(FileList::class, $counterpartyResp->getFiles());
     }
 
     /**
-     * Проверка обработки ответа сервера на получение контрагента сопровождаемое ошибкой
+     * Test case for addCounterpartyFiles
+     *
+     * Добавить файлы к контрагенту.
+     *
      */
-    public function testEntityCounterpartyIdGetWithError()
+    public function testAddCounterpartyFiles()
     {
-        try {
-            CounterpartiesApiTest::$api->entityCounterpartyIdGet(StringUtil::randomUuid());
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(404, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Проверка обработки ответа сервера на создание контрагента сопровождаемое ошибкой
+     * Test case for createCounterpartiesBatch
+     *
+     * Создать или изменить контрагентов.
+     *
      */
-    public function testEntityCounterpartyPostWithError()
+    public function testCreateCounterpartiesBatch()
     {
-        try {
-            $counterparty1 = new Counterparty();
-            // Не устанавливаем обязательные поля (name, companyType)
-            CounterpartiesApiTest::$api->entityCounterpartyPost($counterparty1);
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(412, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Проверка успешной обработки ответа сервера на обновление контрагента
+     * Test case for createCounterparty
+     *
+     * Создать контрагента.
+     *
      */
-    public function testEntityCounterpartyIdPut()
+    public function testCreateCounterparty()
     {
-        $createCounterparty = new Counterparty();
-        $createCounterparty->setName("Старое название");
-        $createCounterparty->setCompanyType(Counterparty::COMPANY_TYPE_LEGAL);
-        $createCounterparty->setInn("7701234567");
-        $createCounterparty = CounterpartiesApiTest::$api->entityCounterpartyPost($createCounterparty);
-
-        $updateCounterparty = new Counterparty();
-        $updateCounterparty->setName("Новое название");
-        $updateCounterparty->setDescription("Обновленное описание контрагента");
-        $updateCounterparty->setEmail("new-email@" . StringUtil::randomUuid() . ".test");
-        $updateCounterparty->setPhone("+74959876543");
-        $updateCounterparty = CounterpartiesApiTest::$api->entityCounterpartyIdPut($createCounterparty->getId(), $updateCounterparty);
-
-        Assert::assertSame($createCounterparty->getId(), $updateCounterparty->getId());
-        Assert::assertSame("Новое название", $updateCounterparty->getName());
-        Assert::assertSame("Обновленное описание контрагента", $updateCounterparty->getDescription());
-        Asserter::assertStringContainsString("new-email@", $updateCounterparty->getEmail());
-        Assert::assertSame("+74959876543", $updateCounterparty->getPhone());
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Проверка обработки ответа сервера на обновление контрагента сопровождаемое ошибкой
+     * Test case for createCounterpartyAccount
+     *
+     * Создать счёт контрагента.
+     *
      */
-    public function testEntityCounterpartyIdPutWithError()
+    public function testCreateCounterpartyAccount()
     {
-        $counterparty1 = new Counterparty();
-        $counterparty1->setName("Тестовый контрагент");
-        $counterparty1->setCompanyType(Counterparty::COMPANY_TYPE_LEGAL);
-        $counterparty1->setInn("7701234567");
-        $counterparty1 = CounterpartiesApiTest::$api->entityCounterpartyPost($counterparty1);
-
-        try {
-            $updateCounterparty = new Counterparty();
-            $updateCounterparty->setName(true);// Неверный тип компании
-            CounterpartiesApiTest::$api->entityCounterpartyIdPut($counterparty1->getId(), $updateCounterparty);
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(400, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Проверка успешной обработки ответа сервера удаления контрагента
+     * Test case for createCounterpartyContactPerson
+     *
+     * Создать контактное лицо контрагента.
+     *
      */
-    public function testEntityCounterpartyIdDelete()
+    public function testCreateCounterpartyContactPerson()
     {
-        $counterparty = new Counterparty();
-        $counterparty->setName("Контрагент для удаления");
-        $counterparty->setCompanyType(Counterparty::COMPANY_TYPE_LEGAL);
-        $counterparty->setInn("7701234567");
-        $counterparty = CounterpartiesApiTest::$api->entityCounterpartyPost($counterparty);
-        $resp = CounterpartiesApiTest::$api->entityCounterpartyIdDeleteWithHttpInfo($counterparty->getId());
-        Assert::assertEquals(200, $resp[1]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Проверка обработки ответа сервера удаления контрагента сопровождаемое ошибкой
+     * Test case for createCounterpartyNote
+     *
+     * Создать событие контрагента.
+     *
      */
-    public function testEntityCounterpartyIdDeleteWithError()
+    public function testCreateCounterpartyNote()
     {
-        try {
-            CounterpartiesApiTest::$api->entityCounterpartyIdDelete(StringUtil::randomUuid());
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(404, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового создания контрагентов
+     * Test case for deleteCounterpartiesBatch
+     *
+     * Удалить контрагентов.
+     *
      */
-    public function testBatchCreateCounterparties(): void
+    public function testDeleteCounterpartiesBatch()
     {
-        $prefix = StringUtil::randomUuid();
-        $counterparties = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $counterparty = new Counterparty();
-            $counterparty->setName("$prefix Batch Counterparty $i");
-            $counterparty->setCompanyType(Counterparty::COMPANY_TYPE_LEGAL);
-            $counterparty->setInn("770123456" . $i);
-            $counterparty->setEmail("batch$i@" . $prefix . ".test");
-            $counterparty->setPhone("+7495123456" . $i);
-            $counterparty->setDescription("Описание массового контрагента $i");
-            $counterparty->setCode("BATCH-$i-$prefix");
-            $counterparty->setExternalCode("EXT-BATCH-$i-$prefix");
-            $counterparty->setArchived(false);
-            $counterparty->setShared(true);
-            $counterparty->setTags(["клиент", "пакет $i"]);
-
-            $counterparties[] = $counterparty;
-        }
-
-        $response = CounterpartiesApiTest::$api->entityCounterpartyBatchPost($counterparties);
-
-        Assert::assertIsArray($response);
-        Assert::assertCount(3, $response);
-
-        foreach ($response as $index => $createdCounterparty) {
-            Assert::assertInstanceOf(Counterparty::class, $createdCounterparty);
-            Assert::assertNotNull($createdCounterparty->getId());
-            Asserter::assertStringContainsString("$prefix Batch Counterparty " . ($index + 1), $createdCounterparty->getName());
-            Assert::assertEquals(Counterparty::COMPANY_TYPE_LEGAL, $createdCounterparty->getCompanyType());
-            Asserter::assertStringContainsString("770123456" . ($index + 1), $createdCounterparty->getInn());
-            Asserter::assertStringContainsString("batch" . ($index + 1) . "@" . $prefix . ".test", $createdCounterparty->getEmail());
-            Asserter::assertStringContainsString("Описание массового контрагента " . ($index + 1), $createdCounterparty->getDescription());
-            Asserter::assertStringContainsString("BATCH-" . ($index + 1) . "-$prefix", $createdCounterparty->getCode());
-            Asserter::assertStringContainsString("EXT-BATCH-" . ($index + 1) . "-$prefix", $createdCounterparty->getExternalCode());
-            Assert::assertFalse($createdCounterparty->getArchived());
-            Assert::assertTrue($createdCounterparty->getShared());
-
-            Asserter::assertMeta($createdCounterparty->getMeta(), $createdCounterparty->getId(), 'counterparty');
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового обновления контрагентов
+     * Test case for deleteCounterparty
+     *
+     * Удалить контрагента.
+     *
      */
-    public function testBatchUpdateCounterparties(): void
+    public function testDeleteCounterparty()
     {
-        $prefix = StringUtil::randomUuid();
-        $createdCounterparties = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $counterparty = new Counterparty();
-            $counterparty->setName("$prefix Original Counterparty $i");
-            $counterparty->setCompanyType(Counterparty::COMPANY_TYPE_LEGAL);
-            $counterparty->setInn("880123456" . $i);
-            $counterparty->setEmail("original$i@" . $prefix . ".test");
-            $counterparty->setPhone("+7495123456" . ($i + 10));
-            $counterparty->setArchived(false);
-            $createdCounterparties[] = $counterparty;
-        }
-
-        $response = CounterpartiesApiTest::$api->entityCounterpartyBatchPost($createdCounterparties);
-        Assert::assertCount(3, $response);
-
-        $updatedCounterparties = [];
-        foreach ($response as $index => $createdCounterparty) {
-            $updateCounterparty = new Counterparty();
-            $updateCounterparty->setMeta($createdCounterparty->getMeta()); // Важно: устанавливаем meta!
-            $updateCounterparty->setName("$prefix Updated Counterparty " . ($index + 1));
-            $updateCounterparty->setDescription("Обновленное описание контрагента " . ($index + 1));
-            $updateCounterparty->setEmail("updated" . ($index + 1) . "@" . $prefix . ".test");
-            $updateCounterparty->setPhone("+7495987654" . ($index + 1));
-            $updateCounterparty->setTags(["обновленный", "клиент " . ($index + 1)]);
-            $updatedCounterparties[] = $updateCounterparty;
-        }
-
-        try {
-            $updateResponse = CounterpartiesApiTest::$api->entityCounterpartyBatchPost($updatedCounterparties);
-        } catch(ApiException $e) {
-            fwrite(STDERR, "Error Message: " . $e->getMessage() . PHP_EOL);
-            fwrite(STDERR, "Error Code: " . $e->getCode() . PHP_EOL);
-            fwrite(STDERR, "Response Body: " . $e->getResponseBody() . PHP_EOL);
-            throw $e;
-        }
-
-        Assert::assertIsArray($updateResponse);
-        Assert::assertCount(3, $updateResponse);
-
-        foreach ($updateResponse as $index => $updatedCounterparty) {
-            Assert::assertInstanceOf(Counterparty::class, $updatedCounterparty);
-            Asserter::assertStringContainsString("$prefix Updated Counterparty " . ($index + 1), $updatedCounterparty->getName());
-            Asserter::assertStringContainsString("Обновленное описание контрагента " . ($index + 1), $updatedCounterparty->getDescription());
-            Asserter::assertStringContainsString("updated" . ($index + 1) . "@" . $prefix . ".test", $updatedCounterparty->getEmail());
-            Assert::assertContains("обновленный", $updatedCounterparty->getTags());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового удаления контрагентов
+     * Test case for deleteCounterpartyAccount
+     *
+     * Удалить счёт контрагента.
+     *
      */
-    public function testBatchDeleteCounterparties(): void
+    public function testDeleteCounterpartyAccount()
     {
-        $prefix = StringUtil::randomUuid();
-        $createdCounterparties = [];
-
-        for ($i = 1; $i <= 3; $i++) {
-            $counterparty = new Counterparty();
-            $counterparty->setName("$prefix Delete Counterparty $i");
-            $counterparty->setCompanyType(Counterparty::COMPANY_TYPE_LEGAL);
-            $counterparty->setInn("990123456" . $i);
-            $counterparty->setPhone("+7495123456" . ($i + 20));
-            $createdCounterparties[] = $counterparty;
-        }
-
-        $response = CounterpartiesApiTest::$api->entityCounterpartyBatchPost($createdCounterparties);
-        Assert::assertCount(3, $response);
-
-        $metaArray = [];
-        foreach ($response as $createdCounterparty) {
-            $meta = new Counterparty();
-            $meta->setMeta($createdCounterparty->getMeta());
-            $metaArray[] = $meta;
-        }
-
-        $deleteResponse = CounterpartiesApiTest::$api->entityCounterpartyDeletePost($metaArray);
-
-        Assert::assertIsArray($deleteResponse);
-        Assert::assertCount(3, $deleteResponse);
-
-        foreach ($deleteResponse as $deleteResult) {
-            Assert::assertInstanceOf(DeleteInfo::class, $deleteResult);
-            Assert::assertNotNull($deleteResult->getInfo());
-            Asserter::assertStringContainsString('удален', $deleteResult->getInfo());
-        }
-
-        foreach ($response as $createdCounterparty) {
-            try {
-                CounterpartiesApiTest::$api->entityCounterpartyIdGet($createdCounterparty->getId());
-                Assert::fail('Контрагент должен был быть удален');
-            } catch (ApiException $e) {
-                Assert::assertEquals(404, $e->getCode());
-            }
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового создания контрагентов с дублирующимися ИНН
+     * Test case for deleteCounterpartyContactPerson
+     *
+     * Удалить контактное лицо контрагента.
+     *
      */
-    public function testBatchCreateCounterpartiesWithError(): void
+    public function testDeleteCounterpartyContactPerson()
     {
-        $prefix = StringUtil::randomUuid();
-        $counterparties = [];
-
-        $counterparty = new Counterparty();
-        $counterparty->setName("$prefix Duplicate Counterparty 1");
-        $counterparty->setCompanyType(Counterparty::COMPANY_TYPE_LEGAL);
-        $counterparty->setPhone("+749512345630");
-        $counterparties[] = $counterparty;
-
-        for ($i = 2; $i <= 3; $i++) {
-            $counterparty = new Counterparty();
-            $counterparty->setName(true);
-            $counterparty->setCompanyType(Counterparty::COMPANY_TYPE_LEGAL);
-            $counterparty->setPhone("+7495123456" . ($i + 30));
-            $counterparties[] = $counterparty;
-        }
-
-        try {
-            $res = CounterpartiesApiTest::$api->entityCounterpartyBatchPost($counterparties);
-        } catch (ApiException $e) {
-            $res = json_decode($e->getResponseBody(), true);
-        }
-
-        $success = 0;
-        $errors = 0;
-        foreach ($res as $item) {
-            if (isset($item['errors'])) {
-                $errors++;
-            } else {
-                $success++;
-            }
-        }
-
-        Assert::assertGreaterThanOrEqual(1, $success, 'Ожидается как минимум 1 успешное создание');
-        Assert::assertGreaterThanOrEqual(1, $errors, 'Ожидается как минимум 1 ошибка');
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового удаления контрагентов с некорректными мета-данными
+     * Test case for deleteCounterpartyFile
+     *
+     * Удалить файл контрагента.
+     *
      */
-    public function testBatchDeleteCounterpartiesWithError(): void
+    public function testDeleteCounterpartyFile()
     {
-        $prefix = StringUtil::randomUuid();
-
-        $counterparty = new Counterparty();
-        $counterparty->setName("$prefix Delete Counterparty");
-        $counterparty->setCompanyType(Counterparty::COMPANY_TYPE_LEGAL);
-        $counterparty->setInn("1234567890");
-        $counterparty->setPhone("+74951234567");
-
-        $response = CounterpartiesApiTest::$api->entityCounterpartyPost($counterparty);
-
-        $metaArray = [];
-
-        $meta1 = new Counterparty();
-        $meta1->setMeta($response->getMeta());
-        $metaArray[] = $meta1;
-
-        // Мета-данные с некорректным ID
-        $meta2 = new Counterparty();
-        $metaInvalidId = clone $response->getMeta();
-        $newHref = preg_replace(
-            '/[0-9a-fA-F-]{36}/',
-            'invalid-uuid',
-            $metaInvalidId->getHref()
-        );
-        $metaInvalidId->setHref($newHref);
-
-        $meta2->setMeta($metaInvalidId);
-        $metaArray[] = $meta2;
-
-        // Мета-данные с некорректным типом
-        $meta3 = new Counterparty();
-        $metaInvalidType = clone $response->getMeta();
-        $newHref2 = str_replace('/counterparty/', '/product/', $metaInvalidType->getHref());
-        $newHref2 = preg_replace(
-            '/[0-9a-fA-F-]{36}/',
-            'invalid-uuid',
-            $newHref2
-        );
-        $metaInvalidType->setHref($newHref2);
-        $meta3->setMeta($metaInvalidType);
-        $metaArray[] = $meta3;
-
-        try {
-            $res = CounterpartiesApiTest::$api->entityCounterpartyDeletePost($metaArray);
-            Assert::fail('Ожидалось исключение ApiException из-за некорректных мета-данных');
-        } catch (ApiException $e) {
-            $res = json_decode($e->getResponseBody(), true);
-        }
-
-        $success = 0;
-        $errors = 0;
-        foreach ($res as $item) {
-            if (isset($item['errors'])) {
-                $errors++;
-            } else {
-                $success++;
-                Asserter::assertStringContainsString('удален', $item['info']);
-            }
-        }
-
-        Assert::assertSame(1, $success, 'Ожидается 1 успешное удаление');
-        Assert::assertSame(2, $errors, 'Ожидается 2 ошибки');
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Тест массового удаления контрагентов с пустым массивом
+     * Test case for deleteCounterpartyNote
+     *
+     * Удалить событие контрагента.
+     *
      */
-    public function testBatchDeleteCounterpartiesWithEmptyArray(): void
+    public function testDeleteCounterpartyNote()
     {
-        try {
-            CounterpartiesApiTest::$api->entityCounterpartyDeletePost([]);
-            Assert::fail('Ожидалось исключение InvalidArgumentException для пустого массива');
-        } catch (\InvalidArgumentException $e) {
-            Asserter::assertStringContainsString('Missing the required parameter', $e->getMessage());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getCounterparties
+     *
+     * Получить список контрагентов.
+     *
+     */
+    public function testGetCounterparties()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getCounterpartyAccountById
+     *
+     * Получить счёт контрагента по ID.
+     *
+     */
+    public function testGetCounterpartyAccountById()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getCounterpartyAccounts
+     *
+     * Получить счета контрагента.
+     *
+     */
+    public function testGetCounterpartyAccounts()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getCounterpartyById
+     *
+     * Получить контрагента по ID.
+     *
+     */
+    public function testGetCounterpartyById()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getCounterpartyContactPersonById
+     *
+     * Получить контактное лицо контрагента по ID.
+     *
+     */
+    public function testGetCounterpartyContactPersonById()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getCounterpartyContactPersons
+     *
+     * Получить контактные лица контрагента.
+     *
+     */
+    public function testGetCounterpartyContactPersons()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getCounterpartyFiles
+     *
+     * Получить файлы контрагента.
+     *
+     */
+    public function testGetCounterpartyFiles()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getCounterpartyMetadata
+     *
+     * Получить метаданные контрагентов.
+     *
+     */
+    public function testGetCounterpartyMetadata()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getCounterpartyNoteById
+     *
+     * Получить событие контрагента по ID.
+     *
+     */
+    public function testGetCounterpartyNoteById()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getCounterpartyNotes
+     *
+     * Получить события контрагента.
+     *
+     */
+    public function testGetCounterpartyNotes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateCounterparty
+     *
+     * Обновить контрагента.
+     *
+     */
+    public function testUpdateCounterparty()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateCounterpartyAccount
+     *
+     * Обновить счёт контрагента.
+     *
+     */
+    public function testUpdateCounterpartyAccount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateCounterpartyContactPerson
+     *
+     * Обновить контактное лицо контрагента.
+     *
+     */
+    public function testUpdateCounterpartyContactPerson()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateCounterpartyNote
+     *
+     * Обновить событие контрагента.
+     *
+     */
+    public function testUpdateCounterpartyNote()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

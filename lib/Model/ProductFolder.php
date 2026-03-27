@@ -75,7 +75,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'shared' => 'bool',
         'group' => '\OpenAPI\Client\Model\Group',
         'owner' => '\OpenAPI\Client\Model\Employee',
-        'updated' => '\DateTime',
+        'updated' => 'string',
         'product_folder' => '\OpenAPI\Client\Model\ProductFolder',
         'tax_system' => 'string'
     ];
@@ -105,7 +105,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
         'shared' => null,
         'group' => null,
         'owner' => null,
-        'updated' => 'date-time',
+        'updated' => null,
         'product_folder' => null,
         'tax_system' => null
     ];
@@ -981,7 +981,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -991,7 +991,7 @@ class ProductFolder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Момент последнего обновления
+     * @param string|null $updated Момент последнего обновления
      *
      * @return self
      */

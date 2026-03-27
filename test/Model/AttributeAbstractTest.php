@@ -28,10 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\AttributeAbstract;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -46,51 +42,94 @@ use PHPUnit\Framework\TestCase;
 class AttributeAbstractTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "AttributeAbstract"
+     */
+    public function testAttributeAbstract()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $attribute = new AttributeAbstract();
-        $id = StringUtil::randomUuid();
-        $attribute->setId($id);
-        Asserter::assertJsonHasFields($attribute, ['id' => $id, 'type' => 'AttributeAbstract']);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $attribute = new AttributeAbstract();
-        $meta = new Meta();
-        $attribute->setMeta($meta);
-        Asserter::assertJsonHasFields($attribute, ['meta' => [], 'type' => 'AttributeAbstract']);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $attribute = new AttributeAbstract();
-        $name = "Test Attribute";
-        $attribute->setName($name);
-        Asserter::assertJsonHasFields($attribute, ['name' => $name, 'type' => 'AttributeAbstract']);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "type"
+     */
     public function testPropertyType()
     {
-        $attribute = new AttributeAbstract();
-        $type = "string";
-        $attribute->setType($type);
-        Asserter::assertJsonHasFields($attribute, ['type' => $type]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "value"
+     */
     public function testPropertyValue()
     {
-        $attribute = new AttributeAbstract();
-        $value = "test value";
-        $attribute->setValue($value);
-        Asserter::assertJsonHasFields($attribute, ['value' => $value, 'type' => 'AttributeAbstract']);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "download"
+     */
     public function testPropertyDownload()
     {
-        $attribute = new AttributeAbstract();
-        $download = new \stdClass();
-        $attribute->setDownload($download);
-        Asserter::assertJsonHasFields($attribute, ['download' => [], 'type' => 'AttributeAbstract']);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

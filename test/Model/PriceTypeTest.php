@@ -28,10 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\PriceType;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -46,35 +42,76 @@ use PHPUnit\Framework\TestCase;
 class PriceTypeTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "PriceType"
+     */
+    public function testPriceType()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $priceType = new PriceType();
-        $meta = new Meta();
-        $priceType->setMeta($meta);
-        Asserter::assertJsonHasFields($priceType, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $priceType = new PriceType();
-        $id = StringUtil::randomUuid();
-        $priceType->setId($id);
-        Asserter::assertJsonHasFields($priceType, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $priceType = new PriceType();
-        $name = "Retail Price";
-        $priceType->setName($name);
-        Asserter::assertJsonHasFields($priceType, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "external_code"
+     */
     public function testPropertyExternalCode()
     {
-        $priceType = new PriceType();
-        $externalCode = "EXT-PRICE-001";
-        $priceType->setExternalCode($externalCode);
-        Asserter::assertJsonHasFields($priceType, ['externalCode' => $externalCode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

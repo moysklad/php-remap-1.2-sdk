@@ -63,8 +63,8 @@ class CreateEmployeesBatch200ResponseInner implements ModelInterface, ArrayAcces
         'name' => 'string',
         'external_code' => 'string',
         'archived' => 'bool',
-        'created' => '\DateTime',
-        'updated' => '\DateTime',
+        'created' => 'string',
+        'updated' => 'string',
         'description' => 'string',
         'email' => 'string',
         'phone' => 'string',
@@ -100,8 +100,8 @@ class CreateEmployeesBatch200ResponseInner implements ModelInterface, ArrayAcces
         'name' => null,
         'external_code' => null,
         'archived' => null,
-        'created' => 'date-time',
-        'updated' => 'date-time',
+        'created' => null,
+        'updated' => null,
         'description' => null,
         'email' => 'email',
         'phone' => null,
@@ -683,7 +683,7 @@ class CreateEmployeesBatch200ResponseInner implements ModelInterface, ArrayAcces
     /**
      * Gets created
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getCreated()
     {
@@ -693,7 +693,7 @@ class CreateEmployeesBatch200ResponseInner implements ModelInterface, ArrayAcces
     /**
      * Sets created
      *
-     * @param \DateTime|null $created Момент создания
+     * @param string|null $created Момент создания
      *
      * @return self
      */
@@ -710,7 +710,7 @@ class CreateEmployeesBatch200ResponseInner implements ModelInterface, ArrayAcces
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -720,7 +720,7 @@ class CreateEmployeesBatch200ResponseInner implements ModelInterface, ArrayAcces
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Момент последнего обновления
+     * @param string|null $updated Момент последнего обновления
      *
      * @return self
      */

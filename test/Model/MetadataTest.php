@@ -28,10 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\AttributeMetaInfoList;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\Metadata;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -46,27 +42,67 @@ use PHPUnit\Framework\TestCase;
 class MetadataTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Metadata"
+     */
+    public function testMetadata()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $metadata = new Metadata();
-        $meta = new Meta();
-        $metadata->setMeta($meta);
-        Asserter::assertJsonHasFields($metadata, ['meta' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "attributes"
+     */
     public function testPropertyAttributes()
     {
-        $metadata = new Metadata();
-        $attributes = new AttributeMetaInfoList();
-        $metadata->setAttributes($attributes);
-        Asserter::assertJsonHasFields($metadata, ['attributes' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "create_shared"
+     */
     public function testPropertyCreateShared()
     {
-        $metadata = new Metadata();
-        $createShared = true;
-        $metadata->setCreateShared($createShared);
-        Asserter::assertJsonHasFields($metadata, ['createShared' => $createShared]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

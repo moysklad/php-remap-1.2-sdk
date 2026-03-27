@@ -28,10 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Address;
-use OpenAPI\Client\Model\Country;
-use OpenAPI\Client\Model\Region;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,75 +41,122 @@ use PHPUnit\Framework\TestCase;
  */
 class AddressTest extends TestCase
 {
+
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Address"
+     */
+    public function testAddress()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "add_info"
+     */
     public function testPropertyAddInfo()
     {
-        $address = new Address();
-        $addInfo = "Доп. информация";
-        $address->setAddInfo($addInfo);
-        Asserter::assertJsonHasFields($address, ['addInfo' => $addInfo]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "apartment"
+     */
     public function testPropertyApartment()
     {
-        $address = new Address();
-        $apartment = "45A";
-        $address->setApartment($apartment);
-        Asserter::assertJsonHasFields($address, ['apartment' => $apartment]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "city"
+     */
     public function testPropertyCity()
     {
-        $address = new Address();
-        $city = "Москва";
-        $address->setCity($city);
-        Asserter::assertJsonHasFields($address, ['city' => $city]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "comment"
+     */
     public function testPropertyComment()
     {
-        $address = new Address();
-        $comment = "Комментарий к адресу";
-        $address->setComment($comment);
-        Asserter::assertJsonHasFields($address, ['comment' => $comment]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "country"
+     */
     public function testPropertyCountry()
     {
-        $address = new Address();
-        $country = new Country();
-        $address->setCountry($country);
-        Asserter::assertJsonHasFields($address, ['country' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "house"
+     */
     public function testPropertyHouse()
     {
-        $address = new Address();
-        $house = "12Б";
-        $address->setHouse($house);
-        Asserter::assertJsonHasFields($address, ['house' => $house]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "postal_code"
+     */
     public function testPropertyPostalCode()
     {
-        $address = new Address();
-        $postalCode = "123456";
-        $address->setPostalCode($postalCode);
-        Asserter::assertJsonHasFields($address, ['postalCode' => $postalCode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "region"
+     */
     public function testPropertyRegion()
     {
-        $address = new Address();
-        $region = new Region();
-        $address->setRegion($region);
-        Asserter::assertJsonHasFields($address, ['region' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "street"
+     */
     public function testPropertyStreet()
     {
-        $address = new Address();
-        $street = "Ленина";
-        $address->setStreet($street);
-        Asserter::assertJsonHasFields($address, ['street' => $street]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

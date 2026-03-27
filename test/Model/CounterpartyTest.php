@@ -28,19 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Attribute;
-use OpenAPI\Client\Model\AttributeDouble;
-use OpenAPI\Client\Model\Counterparty;
-use OpenAPI\Client\Model\CounterpartyAccounts;
-use OpenAPI\Client\Model\CounterpartyContactpersons;
-use OpenAPI\Client\Model\CounterpartyNotes;
-use OpenAPI\Client\Model\FileList;
-use OpenAPI\Client\Model\Group;
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Model\Employee;
-use OpenAPI\Client\Model\State;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -55,361 +42,472 @@ use PHPUnit\Framework\TestCase;
 class CounterpartyTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Counterparty"
+     */
+    public function testCounterparty()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
     public function testPropertyMeta()
     {
-        $entity = new Counterparty();
-        $meta = new Meta();
-        $meta->setHref("http://example.com/meta");
-        $entity->setMeta($meta);
-        Asserter::assertJsonHasFields($entity, ['meta' => ['href' => "http://example.com/meta"]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "id"
+     */
     public function testPropertyId()
     {
-        $entity = new Counterparty();
-        $id = StringUtil::randomUuid();
-        $entity->setId($id);
-        Asserter::assertJsonHasFields($entity, ['id' => $id]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "sync_id"
+     */
+    public function testPropertySyncId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "account_id"
+     */
     public function testPropertyAccountId()
     {
-        $entity = new Counterparty();
-        $accountId = StringUtil::randomUuid();
-        $entity->setAccountId($accountId);
-        Asserter::assertJsonHasFields($entity, ['accountId' => $accountId]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "name"
+     */
     public function testPropertyName()
     {
-        $entity = new Counterparty();
-        $name = "Company Name";
-        $entity->setName($name);
-        Asserter::assertJsonHasFields($entity, ['name' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "code"
+     */
     public function testPropertyCode()
     {
-        $entity = new Counterparty();
-        $code = "CODE123";
-        $entity->setCode($code);
-        Asserter::assertJsonHasFields($entity, ['code' => $code]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "external_code"
+     */
     public function testPropertyExternalCode()
     {
-        $entity = new Counterparty();
-        $externalCode = "EXT123";
-        $entity->setExternalCode($externalCode);
-        Asserter::assertJsonHasFields($entity, ['externalCode' => $externalCode]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "archived"
+     */
     public function testPropertyArchived()
     {
-        $entity = new Counterparty();
-        $entity->setArchived(true);
-        Asserter::assertJsonHasFields($entity, ['archived' => true]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "created"
+     */
     public function testPropertyCreated()
     {
-        $entity = new Counterparty();
-        $date = new \DateTime("2023-05-10T10:00:00Z");
-        $entity->setCreated($date);
-        Asserter::assertJsonHasFields($entity, ['created' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "updated"
+     */
     public function testPropertyUpdated()
     {
-        $entity = new Counterparty();
-        $date = new \DateTime("2024-06-15T09:30:00Z");
-        $entity->setUpdated($date);
-        Asserter::assertJsonHasFields($entity, ['updated' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "description"
+     */
     public function testPropertyDescription()
     {
-        $entity = new Counterparty();
-        $description = "Company description";
-        $entity->setDescription($description);
-        Asserter::assertJsonHasFields($entity, ['description' => $description]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "company_type"
+     */
     public function testPropertyCompanyType()
     {
-        $entity = new Counterparty();
-        $type = "legal";
-        $entity->setCompanyType($type);
-        Asserter::assertJsonHasFields($entity, ['companyType' => $type]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "email"
+     */
     public function testPropertyEmail()
     {
-        $entity = new Counterparty();
-        $email = "contact@company.com";
-        $entity->setEmail($email);
-        Asserter::assertJsonHasFields($entity, ['email' => $email]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "phone"
+     */
     public function testPropertyPhone()
     {
-        $entity = new Counterparty();
-        $phone = "+987654321";
-        $entity->setPhone($phone);
-        Asserter::assertJsonHasFields($entity, ['phone' => $phone]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "fax"
+     */
     public function testPropertyFax()
     {
-        $entity = new Counterparty();
-        $fax = "123-456-789";
-        $entity->setFax($fax);
-        Asserter::assertJsonHasFields($entity, ['fax' => $fax]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "actual_address"
+     */
     public function testPropertyActualAddress()
     {
-        $entity = new Counterparty();
-        $addr = "Street 1, City";
-        $entity->setActualAddress($addr);
-        Asserter::assertJsonHasFields($entity, ['actualAddress' => $addr]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "actual_address_full"
+     */
+    public function testPropertyActualAddressFull()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "legal_address"
+     */
     public function testPropertyLegalAddress()
     {
-        $entity = new Counterparty();
-        $addr = "Street 2, City";
-        $entity->setLegalAddress($addr);
-        Asserter::assertJsonHasFields($entity, ['legalAddress' => $addr]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "legal_address_full"
+     */
+    public function testPropertyLegalAddressFull()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "inn"
+     */
     public function testPropertyInn()
     {
-        $entity = new Counterparty();
-        $inn = "1234567890";
-        $entity->setInn($inn);
-        Asserter::assertJsonHasFields($entity, ['inn' => $inn]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "kpp"
+     */
     public function testPropertyKpp()
     {
-        $entity = new Counterparty();
-        $kpp = "987654321";
-        $entity->setKpp($kpp);
-        Asserter::assertJsonHasFields($entity, ['kpp' => $kpp]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "ogrn"
+     */
     public function testPropertyOgrn()
     {
-        $entity = new Counterparty();
-        $ogrn = "1234567890123";
-        $entity->setOgrn($ogrn);
-        Asserter::assertJsonHasFields($entity, ['ogrn' => $ogrn]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "ogrnip"
+     */
     public function testPropertyOgrnip()
     {
-        $entity = new Counterparty();
-        $ogrnip = "987654321098765";
-        $entity->setOgrnip($ogrnip);
-        Asserter::assertJsonHasFields($entity, ['ogrnip' => $ogrnip]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "okpo"
+     */
     public function testPropertyOkpo()
     {
-        $entity = new Counterparty();
-        $okpo = "12345678";
-        $entity->setOkpo($okpo);
-        Asserter::assertJsonHasFields($entity, ['okpo' => $okpo]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "certificate_number"
+     */
     public function testPropertyCertificateNumber()
     {
-        $entity = new Counterparty();
-        $cert = "CERT123";
-        $entity->setCertificateNumber($cert);
-        Asserter::assertJsonHasFields($entity, ['certificateNumber' => $cert]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "certificate_date"
+     */
     public function testPropertyCertificateDate()
     {
-        $entity = new Counterparty();
-        $date = new \DateTime("2023-01-20");
-        $entity->setCertificateDate($date);
-        Asserter::assertJsonHasFields($entity, ['certificateDate' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "legal_title"
+     */
     public function testPropertyLegalTitle()
     {
-        $entity = new Counterparty();
-        $title = "LLC Example";
-        $entity->setLegalTitle($title);
-        Asserter::assertJsonHasFields($entity, ['legalTitle' => $title]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "legal_first_name"
+     */
     public function testPropertyLegalFirstName()
     {
-        $entity = new Counterparty();
-        $name = "Ivan";
-        $entity->setLegalFirstName($name);
-        Asserter::assertJsonHasFields($entity, ['legalFirstName' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "legal_last_name"
+     */
     public function testPropertyLegalLastName()
     {
-        $entity = new Counterparty();
-        $name = "Petrov";
-        $entity->setLegalLastName($name);
-        Asserter::assertJsonHasFields($entity, ['legalLastName' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "legal_middle_name"
+     */
     public function testPropertyLegalMiddleName()
     {
-        $entity = new Counterparty();
-        $name = "Sergeevich";
-        $entity->setLegalMiddleName($name);
-        Asserter::assertJsonHasFields($entity, ['legalMiddleName' => $name]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "birth_date"
+     */
     public function testPropertyBirthDate()
     {
-        $entity = new Counterparty();
-        $date = new \DateTime("1990-05-15");
-        $entity->setBirthDate($date);
-        Asserter::assertJsonHasFields($entity, ['birthDate' => StringUtil::toRemap12FormatDate($date)]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "sex"
+     */
     public function testPropertySex()
     {
-        $entity = new Counterparty();
-        $sex = "MALE";
-        $entity->setSex($sex);
-        Asserter::assertJsonHasFields($entity, ['sex' => $sex]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "discount_card_number"
+     */
     public function testPropertyDiscountCardNumber()
     {
-        $entity = new Counterparty();
-        $num = "DC12345";
-        $entity->setDiscountCardNumber($num);
-        Asserter::assertJsonHasFields($entity, ['discountCardNumber' => $num]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "discounts"
+     */
+    public function testPropertyDiscounts()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "shared"
+     */
     public function testPropertyShared()
     {
-        $entity = new Counterparty();
-        $entity->setShared(false);
-        Asserter::assertJsonHasFields($entity, ['shared' => false]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "group"
+     */
     public function testPropertyGroup()
     {
-        $entity = new Counterparty();
-        $group = new Group();
-        $group->setName("Group A");
-        $entity->setGroup($group);
-        Asserter::assertJsonHasFields($entity, ['group' => ['name' => "Group A"]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "owner"
+     */
     public function testPropertyOwner()
     {
-        $entity = new Counterparty();
-        $owner = new Employee();
-        $owner->setName("Owner A");
-        $entity->setOwner($owner);
-        Asserter::assertJsonHasFields($entity, ['owner' => ['name' => "Owner A"]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "sales_amount"
+     */
     public function testPropertySalesAmount()
     {
-        $entity = new Counterparty();
-        $amount = 12345;
-        $entity->setSalesAmount($amount);
-        Asserter::assertJsonHasFields($entity, ['salesAmount' => $amount]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "bonus_points"
+     */
     public function testPropertyBonusPoints()
     {
-        $entity = new Counterparty();
-        $points = 50;
-        $entity->setBonusPoints($points);
-        Asserter::assertJsonHasFields($entity, ['bonusPoints' => $points]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "bonus_program"
+     */
     public function testPropertyBonusProgram()
     {
-        $entity = new Counterparty();
-        $meta = new Meta();
-        $meta->setHref("http://example.com/bonus");
-        $entity->setBonusProgram($meta);
-        Asserter::assertJsonHasFields($entity, ['bonusProgram' => ['href' => "http://example.com/bonus"]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "price_type"
+     */
     public function testPropertyPriceType()
     {
-        $entity = new Counterparty();
-        $meta = new Meta();
-        $meta->setHref("http://example.com/priceType");
-        $entity->setPriceType($meta);
-        Asserter::assertJsonHasFields($entity, ['priceType' => ['href' => "http://example.com/priceType"]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "state"
+     */
     public function testPropertyState()
     {
-        $entity = new Counterparty();
-        $state = new State();
-        $state->setName("Active");
-        $entity->setState($state);
-        Asserter::assertJsonHasFields($entity, ['state' => ['name' => "Active"]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "accounts"
+     */
     public function testPropertyAccounts()
     {
-        $entity = new Counterparty();
-        $accounts = new CounterpartyAccounts();
-        $entity->setAccounts($accounts);
-        Asserter::assertJsonHasFields($entity, ['accounts' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "contactpersons"
+     */
     public function testPropertyContactpersons()
     {
-        $entity = new Counterparty();
-        $cp = new CounterpartyContactpersons();
-        $entity->setContactpersons($cp);
-        Asserter::assertJsonHasFields($entity, ['contactpersons' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "notes"
+     */
     public function testPropertyNotes()
     {
-        $entity = new Counterparty();
-        $notes = new CounterpartyNotes();
-        $entity->setNotes($notes);
-        Asserter::assertJsonHasFields($entity, ['notes' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "files"
+     */
     public function testPropertyFiles()
     {
-        $entity = new Counterparty();
-        $files = new FileList();
-        $entity->setFiles($files);
-        Asserter::assertJsonHasFields($entity, ['files' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "tags"
+     */
     public function testPropertyTags()
     {
-        $entity = new Counterparty();
-        $tags = ["VIP", "Partner"];
-        $entity->setTags($tags);
-        Asserter::assertJsonHasFields($entity, ['tags' => $tags]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "attributes"
+     */
     public function testPropertyAttributes()
     {
-        $entity = new Counterparty();
-        $attr = new AttributeDouble();
-        $attr->setName("Level");
-        $attr->setValue(12.1);
-        $entity->setAttributes([$attr]);
-        Asserter::assertJsonHasFields($entity, ['attributes' => [['name' => "Level", 'value' => 12.1]]]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

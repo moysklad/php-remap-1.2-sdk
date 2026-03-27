@@ -58,7 +58,7 @@ class AttributeDateTime implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'value' => '\DateTime',
+        'value' => 'string',
         'id' => 'string',
         'meta' => '\OpenAPI\Client\Model\Meta',
         'name' => 'string'
@@ -73,7 +73,7 @@ class AttributeDateTime implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPIFormats = [
         'type' => null,
-        'value' => 'date-time',
+        'value' => null,
         'id' => 'uuid',
         'meta' => null,
         'name' => null
@@ -379,7 +379,7 @@ class AttributeDateTime implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets value
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getValue()
     {
@@ -389,7 +389,7 @@ class AttributeDateTime implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets value
      *
-     * @param \DateTime|null $value value
+     * @param string|null $value value
      *
      * @return self
      */

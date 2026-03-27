@@ -64,7 +64,7 @@ class CreateCountriesBatch200ResponseInner implements ModelInterface, ArrayAcces
         'description' => 'string',
         'code' => 'string',
         'external_code' => 'string',
-        'updated' => '\DateTime',
+        'updated' => 'string',
         'group' => '\OpenAPI\Client\Model\Group',
         'owner' => '\OpenAPI\Client\Model\Employee',
         'shared' => 'bool',
@@ -86,7 +86,7 @@ class CreateCountriesBatch200ResponseInner implements ModelInterface, ArrayAcces
         'description' => null,
         'code' => null,
         'external_code' => null,
-        'updated' => 'date-time',
+        'updated' => null,
         'group' => null,
         'owner' => null,
         'shared' => null,
@@ -561,7 +561,7 @@ class CreateCountriesBatch200ResponseInner implements ModelInterface, ArrayAcces
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -571,7 +571,7 @@ class CreateCountriesBatch200ResponseInner implements ModelInterface, ArrayAcces
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Момент последнего обновления сущности
+     * @param string|null $updated Момент последнего обновления сущности
      *
      * @return self
      */

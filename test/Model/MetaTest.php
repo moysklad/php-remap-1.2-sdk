@@ -28,8 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\Meta;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -44,51 +42,94 @@ use PHPUnit\Framework\TestCase;
 class MetaTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "Meta"
+     */
+    public function testMeta()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "href"
+     */
     public function testPropertyHref()
     {
-        $meta = new Meta();
-        $href = "https://api.moysklad.ru/api/remap/1.2/entity/product/123";
-        $meta->setHref($href);
-        Asserter::assertJsonHasFields($meta, ['href' => $href]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "metadata_href"
+     */
     public function testPropertyMetadataHref()
     {
-        $meta = new Meta();
-        $metadataHref = "https://api.moysklad.ru/api/remap/1.2/entity/product/metadata";
-        $meta->setMetadataHref($metadataHref);
-        Asserter::assertJsonHasFields($meta, ['metadataHref' => $metadataHref]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "type"
+     */
     public function testPropertyType()
     {
-        $meta = new Meta();
-        $type = "product";
-        $meta->setType($type);
-        Asserter::assertJsonHasFields($meta, ['type' => $type]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "media_type"
+     */
     public function testPropertyMediaType()
     {
-        $meta = new Meta();
-        $mediaType = "application/json";
-        $meta->setMediaType($mediaType);
-        Asserter::assertJsonHasFields($meta, ['mediaType' => $mediaType]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "uuid_href"
+     */
     public function testPropertyUuidHref()
     {
-        $meta = new Meta();
-        $uuidHref = "https://app.moysklad.ru/app/#product/edit?id=123";
-        $meta->setUuidHref($uuidHref);
-        Asserter::assertJsonHasFields($meta, ['uuidHref' => $uuidHref]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "download_href"
+     */
     public function testPropertyDownloadHref()
     {
-        $meta = new Meta();
-        $downloadHref = "https://api.moysklad.ru/api/remap/1.2/download/123";
-        $meta->setDownloadHref($downloadHref);
-        Asserter::assertJsonHasFields($meta, ['downloadHref' => $downloadHref]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

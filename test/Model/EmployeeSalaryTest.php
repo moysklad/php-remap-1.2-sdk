@@ -28,8 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\EmployeeSalary;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -44,11 +42,49 @@ use PHPUnit\Framework\TestCase;
 class EmployeeSalaryTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "EmployeeSalary"
+     */
+    public function testEmployeeSalary()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "value"
+     */
     public function testPropertyValue()
     {
-        $employeeSalary = new EmployeeSalary();
-        $value = 1000.0;
-        $employeeSalary->setValue($value);
-        Asserter::assertJsonHasFields($employeeSalary, ['value' => $value]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

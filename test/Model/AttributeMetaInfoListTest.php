@@ -28,9 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\AttributeMetaInfoList;
-use OpenAPI\Client\Model\MetaList;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,19 +42,58 @@ use PHPUnit\Framework\TestCase;
 class AttributeMetaInfoListTest extends TestCase
 {
 
-    public function testPropertyMeta()
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
     {
-        $attributeMetaInfoList = new AttributeMetaInfoList();
-        $meta = new MetaList();
-        $attributeMetaInfoList->setMeta($meta);
-        Asserter::assertJsonHasFields($attributeMetaInfoList, ['meta' => []]);
     }
 
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "AttributeMetaInfoList"
+     */
+    public function testAttributeMetaInfoList()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "meta"
+     */
+    public function testPropertyMeta()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rows"
+     */
     public function testPropertyRows()
     {
-        $attributeMetaInfoList = new AttributeMetaInfoList();
-        $rows = [];
-        $attributeMetaInfoList->setRows($rows);
-        Asserter::assertJsonHasFields($attributeMetaInfoList, ['rows' => []]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

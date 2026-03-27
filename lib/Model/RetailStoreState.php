@@ -59,7 +59,7 @@ class RetailStoreState implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'sync' => '\OpenAPI\Client\Model\RetailStoreStateSync',
-        'last_check_moment' => '\DateTime',
+        'last_check_moment' => 'string',
         'fiscal_memory' => '\OpenAPI\Client\Model\RetailStoreStateFiscalMemory',
         'payment_terminal' => '\OpenAPI\Client\Model\RetailStoreStatePaymentTerminal'
     ];
@@ -73,7 +73,7 @@ class RetailStoreState implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'sync' => null,
-        'last_check_moment' => 'date-time',
+        'last_check_moment' => null,
         'fiscal_memory' => null,
         'payment_terminal' => null
     ];
@@ -341,7 +341,7 @@ class RetailStoreState implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets last_check_moment
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getLastCheckMoment()
     {
@@ -351,7 +351,7 @@ class RetailStoreState implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets last_check_moment
      *
-     * @param \DateTime|null $last_check_moment Момент последней проверки
+     * @param string|null $last_check_moment Момент последней проверки
      *
      * @return self
      */

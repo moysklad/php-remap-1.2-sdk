@@ -74,7 +74,7 @@ class CreateProductFoldersBatch200ResponseInner implements ModelInterface, Array
         'shared' => 'bool',
         'group' => '\OpenAPI\Client\Model\Group',
         'owner' => '\OpenAPI\Client\Model\Employee',
-        'updated' => '\DateTime',
+        'updated' => 'string',
         'product_folder' => '\OpenAPI\Client\Model\ProductFolder',
         'tax_system' => 'string',
         'errors' => '\OpenAPI\Client\Model\ErrorErrorsInner[]'
@@ -105,7 +105,7 @@ class CreateProductFoldersBatch200ResponseInner implements ModelInterface, Array
         'shared' => null,
         'group' => null,
         'owner' => null,
-        'updated' => 'date-time',
+        'updated' => null,
         'product_folder' => null,
         'tax_system' => null,
         'errors' => null
@@ -990,7 +990,7 @@ class CreateProductFoldersBatch200ResponseInner implements ModelInterface, Array
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -1000,7 +1000,7 @@ class CreateProductFoldersBatch200ResponseInner implements ModelInterface, Array
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Момент последнего обновления
+     * @param string|null $updated Момент последнего обновления
      *
      * @return self
      */

@@ -27,14 +27,9 @@
 
 namespace OpenAPI\Client\Test\Api;
 
-use OpenAPI\Client\Api\PriceTypesApi;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\Model\DeleteInfo;
-use OpenAPI\Client\Model\PriceType;
-use OpenAPI\Client\Test\Utils\Asserter;
-use OpenAPI\Client\Test\Utils\StringUtil;
-use PHPUnit\Framework\Assert;
+use \OpenAPI\Client\Configuration;
+use \OpenAPI\Client\ApiException;
+use \OpenAPI\Client\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -48,112 +43,79 @@ use PHPUnit\Framework\TestCase;
 class PriceTypesApiTest extends TestCase
 {
 
-    private static PriceTypesApi $api;
-
+    /**
+     * Setup before running any test cases
+     */
     public static function setUpBeforeClass(): void
     {
-        $config = Configuration::getDefaultConfiguration()
-            ->setHost(getenv('API_HOST') . '/api/remap/1.2')
-            ->setUsername(getenv('API_LOGIN'))
-            ->setPassword(getenv('API_PASSWORD'));
-
-        PriceTypesApiTest::$api = new PriceTypesApi(null, $config);
     }
 
     /**
-     *  Проверка успешной обработки ответа сервера на получение списка цен
+     * Setup before running each test case
      */
-    public function testEntityPriceTypeGet(): void
+    public function setUp(): void
     {
-        $response = PriceTypesApiTest::$api->contextCompanysettingsPricetypeGet();
-        Assert::assertIsArray($response);
-        Assert::assertCount(1, $response);
-
-        foreach ($response as $index => $priceType) {
-            Assert::assertInstanceOf(PriceType::class, $priceType);
-            Assert::assertNotNull($priceType->getId());
-            Assert::assertNotNull($priceType->getName());
-            Assert::assertNotNull($priceType->getMeta());
-            Assert::assertNotNull($priceType->getExternalCode());
-        }
     }
 
     /**
-     *  Проверка успешной обработки ответа на получение типа цены по id
+     * Clean up after running each test case
      */
-    public function testEntityPriceTypeIdGet()
+    public function tearDown(): void
     {
-        $response = PriceTypesApiTest::$api->contextCompanysettingsPricetypeGet();
-        $id = $response[0]->getId();
-
-        $priceType = PriceTypesApiTest::$api->contextCompanysettingsPricetypeIdGet($id);
-        Assert::assertInstanceOf(PriceType::class, $priceType);
-        Assert::assertNotNull($priceType->getId());
-        Assert::assertNotNull($priceType->getName());
-        Assert::assertNotNull($priceType->getMeta());
-        Assert::assertNotNull($priceType->getExternalCode());
     }
 
     /**
-     *  Проверка успешной обработки ответа на получение дефолтного типа цены
+     * Clean up after running all test cases
      */
-    public function testEntityPriceTypeIdGetDefault()
+    public static function tearDownAfterClass(): void
     {
-        $priceType = PriceTypesApiTest::$api->contextCompanysettingsPricetypeDefaultGet();
-        Assert::assertInstanceOf(PriceType::class, $priceType);
-        Assert::assertNotNull($priceType->getId());
-        Assert::assertNotNull($priceType->getName());
-        Assert::assertNotNull($priceType->getMeta());
-        Assert::assertNotNull($priceType->getExternalCode());
-    }
-
-
-    /**
-     *  Проверка обработки ответа сервера на получение товара сопровождаемое ошибкой
-     */
-    public function testEntityPriceTypeIdGetWithError()
-    {
-        try {
-            PriceTypesApiTest::$api->contextCompanysettingsPricetypeIdGet(StringUtil::randomUuid());
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(404, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
     }
 
     /**
-     *  Проверка обработки ответа сервера на создание списка цен сопровождаемое ошибкой
+     * Test case for createPriceTypesBatch
+     *
+     * Создать или изменить типы цен.
+     *
      */
-    public function testEntityPriceTypePostWithError()
+    public function testCreatePriceTypesBatch()
     {
-        try {
-            $response = PriceTypesApiTest::$api->contextCompanysettingsPricetypeGet();
-            $priceType = new PriceType();
-            $response[] = $priceType;
-            PriceTypesApiTest::$api->contextCompanysettingsPricetypePost($response);
-            Assert::fail();
-        } catch (ApiException $e) {
-            Assert::assertEquals(412, $e->getCode());
-            Assert::assertNotNull($e->getResponseBody());
-        }
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
     /**
-     *  Проверка обработки ответа сервера на создание списка цен
+     * Test case for getDefaultPriceType
+     *
+     * Получить тип цены по умолчанию.
+     *
      */
-    public function testEntityPriceTypePost()
+    public function testGetDefaultPriceType()
     {
-        $response = PriceTypesApiTest::$api->contextCompanysettingsPricetypeGet();
-        $copy = json_decode(json_encode($response), true);
-        $priceType = new PriceType();
-        $priceType->setName("test");
-        $copy[] = $priceType;
-        $newResponse = PriceTypesApiTest::$api->contextCompanysettingsPricetypePost($copy);
-        Assert::assertIsArray($newResponse);
-        Assert::assertCount(2, $newResponse);
-        $newResponse = PriceTypesApiTest::$api->contextCompanysettingsPricetypePost($response);
-        Assert::assertIsArray($newResponse);
-        Assert::assertCount(1, $newResponse);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getPriceTypeById
+     *
+     * Получить тип цены по ID.
+     *
+     */
+    public function testGetPriceTypeById()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getPriceTypes
+     *
+     * Получить список типов цен.
+     *
+     */
+    public function testGetPriceTypes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }

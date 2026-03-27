@@ -75,7 +75,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
         'shared' => 'bool',
         'group' => '\OpenAPI\Client\Model\Group',
         'owner' => '\OpenAPI\Client\Model\Employee',
-        'updated' => '\DateTime',
+        'updated' => 'string',
         'buy_price' => '\OpenAPI\Client\Model\BuyPrice',
         'sale_prices' => '\OpenAPI\Client\Model\SalePrice[]',
         'uom' => '\OpenAPI\Client\Model\Uom',
@@ -115,7 +115,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
         'shared' => null,
         'group' => null,
         'owner' => null,
-        'updated' => 'date-time',
+        'updated' => null,
         'buy_price' => null,
         'sale_prices' => null,
         'uom' => null,
@@ -1107,7 +1107,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -1117,7 +1117,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Момент последнего обновления сущности
+     * @param string|null $updated Момент последнего обновления сущности
      *
      * @return self
      */

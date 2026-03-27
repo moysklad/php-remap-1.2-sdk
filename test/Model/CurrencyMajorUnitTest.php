@@ -28,8 +28,6 @@
 
 namespace OpenAPI\Client\Test\Model;
 
-use OpenAPI\Client\Model\CurrencyMajorUnit;
-use OpenAPI\Client\Test\Utils\Asserter;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -44,35 +42,76 @@ use PHPUnit\Framework\TestCase;
 class CurrencyMajorUnitTest extends TestCase
 {
 
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass(): void
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass(): void
+    {
+    }
+
+    /**
+     * Test "CurrencyMajorUnit"
+     */
+    public function testCurrencyMajorUnit()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "gender"
+     */
     public function testPropertyGender()
     {
-        $currencyMajorUnit = new CurrencyMajorUnit();
-        $gender = 'masculine';
-        $currencyMajorUnit->setGender($gender);
-        Asserter::assertJsonHasFields($currencyMajorUnit, ['gender' => $gender]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "s1"
+     */
     public function testPropertyS1()
     {
-        $currencyMajorUnit = new CurrencyMajorUnit();
-        $s1 = 'test';
-        $currencyMajorUnit->setS1($s1);
-        Asserter::assertJsonHasFields($currencyMajorUnit, ['s1' => $s1]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "s2"
+     */
     public function testPropertyS2()
     {
-        $currencyMajorUnit = new CurrencyMajorUnit();
-        $s2 = 'test';
-        $currencyMajorUnit->setS2($s2);
-        Asserter::assertJsonHasFields($currencyMajorUnit, ['s2' => $s2]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 
+    /**
+     * Test attribute "s5"
+     */
     public function testPropertyS5()
     {
-        $currencyMajorUnit = new CurrencyMajorUnit();
-        $s5 = 'test';
-        $currencyMajorUnit->setS5($s5);
-        Asserter::assertJsonHasFields($currencyMajorUnit, ['s5' => $s5]);
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
     }
 }
