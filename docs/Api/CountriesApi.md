@@ -162,7 +162,7 @@ try {
 ## `deleteCountriesBatch()`
 
 ```php
-deleteCountriesBatch($country, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]
+deleteCountriesBatch($country, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\DeleteContractsBatch200ResponseInner[]
 ```
 
 Удалить страны
@@ -215,7 +215,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]**](../Model/DeleteProductsBatch200ResponseInner.md)
+[**\OpenAPI\Client\Model\DeleteContractsBatch200ResponseInner[]**](../Model/DeleteContractsBatch200ResponseInner.md)
 
 ### Authorization
 

@@ -1,8 +1,7 @@
 {
-    "version": "7.4",
     "name": "moysklad/php-remap-1.2-sdk",
     "type": "library",
-    "description": "API для манипуляции с сущностями и создания отчетов в онлайн-сервисе МойСклад.",
+    "description": "SDK for manipulating entities and creating reports in the MoySklad online service.",
     "keywords": [
         "openapitools",
         "openapi-generator",
@@ -10,16 +9,29 @@
         "php",
         "sdk",
         "rest",
-        "api"
+        "api",
+        "MoySklad",
+        "JSON API",
+        "Remap 1.2"
     ],
-    "homepage": "https://openapi-generator.tech",
+    "homepage": "https://dev.moysklad.ru/",
     "license": "unlicense",
     "authors": [
         {
             "name": "OpenAPI",
-            "homepage": "https://openapi-generator.tech"
+            "homepage": "https://openapi-generator.tech",
+            "role": "Code generation tool"
+        },
+        {
+            "name": "Lognex dev team",
+            "role": "API Specification Maintainers"
         }
     ],
+    "support": {
+        "issues": "https://github.com/moysklad/php-remap-1.2-sdk/issues",
+        "source": "https://github.com/moysklad/php-remap-1.2-sdk",
+        "specification": "https://github.com/moysklad/api-remap-1.2-openapi-specification"
+    },
     "require": {
         "php": "^8.1",
         "ext-curl": "*",

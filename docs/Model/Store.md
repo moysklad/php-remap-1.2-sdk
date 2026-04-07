@@ -17,11 +17,11 @@ Name | Type | Description | Notes
 **external_code** | **string** | Внешний код Склада | [optional]
 **archived** | **bool** | Добавлен ли в архив | [optional]
 **address** | **string** | Адрес склада | [optional]
-**address_full** | [**\OpenAPI\Client\Model\Address**](Address.md) |  | [optional]
+**address_full** | [**\OpenAPI\Client\Model\Address**](Address.md) | Адрес с детализацией | [optional]
 **path_name** | **string** | Группа Склада | [optional] [readonly]
 **parent** | [**\OpenAPI\Client\Model\Store**](Store.md) | Метаданные родительского склада (Группы) | [optional]
 **attributes** | [**\OpenAPI\Client\Model\AttributeAbstract[]**](AttributeAbstract.md) | Дополнительные поля | [optional]
-**zones** | [**\OpenAPI\Client\Model\StoreZones**](StoreZones.md) |  | [optional]
-**slots** | [**\OpenAPI\Client\Model\StoreSlots**](StoreSlots.md) |  | [optional]
+**zones** | [**\OpenAPI\Client\Model\StoreZoneList**](StoreZoneList.md) | Зоны склада | [optional]
+**slots** | [**\OpenAPI\Client\Model\StoreSlotList**](StoreSlotList.md) | Ячейки склада | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

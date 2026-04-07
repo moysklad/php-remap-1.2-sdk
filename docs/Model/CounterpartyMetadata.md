@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**\OpenAPI\Client\Model\Meta**](Meta.md) |  | [optional]
 **attributes** | [**\OpenAPI\Client\Model\AttributeMetaInfoList**](AttributeMetaInfoList.md) |  | [optional]
-**states** | [**\OpenAPI\Client\Model\CounterpartyMetadataStatesInner[]**](CounterpartyMetadataStatesInner.md) | Массив статусов контрагентов | [optional]
+**states** | [**\OpenAPI\Client\Model\State[]**](State.md) | Массив статусов контрагентов | [optional]
 **tags** | **string[]** | Тэги контрагентов | [optional]
 **create_shared** | **bool** | Создавать новых контрагентов с меткой \&quot;Общий\&quot; | [optional]
 

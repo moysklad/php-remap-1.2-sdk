@@ -49,7 +49,7 @@ class ProductFolderList implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'productFolderList';
+    protected static $openAPIModelName = 'ProductFolderList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -288,15 +288,6 @@ class ProductFolderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['context'] === null) {
-            $invalidProperties[] = "'context' can't be null";
-        }
-        if ($this->container['meta'] === null) {
-            $invalidProperties[] = "'meta' can't be null";
-        }
-        if ($this->container['rows'] === null) {
-            $invalidProperties[] = "'rows' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -315,7 +306,7 @@ class ProductFolderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets context
      *
-     * @return \OpenAPI\Client\Model\Context
+     * @return \OpenAPI\Client\Model\Context|null
      */
     public function getContext()
     {
@@ -325,7 +316,7 @@ class ProductFolderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets context
      *
-     * @param \OpenAPI\Client\Model\Context $context context
+     * @param \OpenAPI\Client\Model\Context|null $context context
      *
      * @return self
      */
@@ -342,7 +333,7 @@ class ProductFolderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets meta
      *
-     * @return \OpenAPI\Client\Model\MetaList
+     * @return \OpenAPI\Client\Model\MetaList|null
      */
     public function getMeta()
     {
@@ -352,7 +343,7 @@ class ProductFolderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets meta
      *
-     * @param \OpenAPI\Client\Model\MetaList $meta meta
+     * @param \OpenAPI\Client\Model\MetaList|null $meta meta
      *
      * @return self
      */
@@ -369,7 +360,7 @@ class ProductFolderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets rows
      *
-     * @return \OpenAPI\Client\Model\ProductFolder[]
+     * @return \OpenAPI\Client\Model\ProductFolder[]|null
      */
     public function getRows()
     {
@@ -379,7 +370,7 @@ class ProductFolderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\ProductFolder[] $rows Массив группы товаров
+     * @param \OpenAPI\Client\Model\ProductFolder[]|null $rows Массив группы товаров
      *
      * @return self
      */

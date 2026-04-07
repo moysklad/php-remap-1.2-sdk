@@ -413,6 +413,15 @@ class RetailStoreTest extends TestCase
     }
 
     /**
+     * Test attribute "filter_agents_tags"
+     */
+    public function testPropertyFilterAgentsTags()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "create_order_with_state"
      */
     public function testPropertyCreateOrderWithState()

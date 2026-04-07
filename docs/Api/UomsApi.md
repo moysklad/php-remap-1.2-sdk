@@ -230,7 +230,7 @@ void (empty response body)
 ## `deleteUomsBatch()`
 
 ```php
-deleteUomsBatch($uom, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]
+deleteUomsBatch($uom, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\DeleteContractsBatch200ResponseInner[]
 ```
 
 Удалить единицу измерения
@@ -283,7 +283,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]**](../Model/DeleteProductsBatch200ResponseInner.md)
+[**\OpenAPI\Client\Model\DeleteContractsBatch200ResponseInner[]**](../Model/DeleteContractsBatch200ResponseInner.md)
 
 ### Authorization
 

@@ -817,7 +817,7 @@ void (empty response body)
 ## `deleteProductsBatch()`
 
 ```php
-deleteProductsBatch($product, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]
+deleteProductsBatch($product, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\DeleteContractsBatch200ResponseInner[]
 ```
 
 Удалить товары
@@ -870,7 +870,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]**](../Model/DeleteProductsBatch200ResponseInner.md)
+[**\OpenAPI\Client\Model\DeleteContractsBatch200ResponseInner[]**](../Model/DeleteContractsBatch200ResponseInner.md)
 
 ### Authorization
 

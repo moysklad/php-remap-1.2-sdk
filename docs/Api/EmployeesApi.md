@@ -382,7 +382,7 @@ void (empty response body)
 ## `deleteEmployeesBatch()`
 
 ```php
-deleteEmployeesBatch($employee, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]
+deleteEmployeesBatch($employee, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\DeleteContractsBatch200ResponseInner[]
 ```
 
 Удалить сотрудников
@@ -435,7 +435,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]**](../Model/DeleteProductsBatch200ResponseInner.md)
+[**\OpenAPI\Client\Model\DeleteContractsBatch200ResponseInner[]**](../Model/DeleteContractsBatch200ResponseInner.md)
 
 ### Authorization
 

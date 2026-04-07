@@ -70,7 +70,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_code' => 'string',
         'updated' => 'string',
         'meta' => '\OpenAPI\Client\Model\Meta',
-        'organization' => '\OpenAPI\Client\Model\RetailStoreOrganization',
+        'organization' => '\OpenAPI\Client\Model\Organization',
         'store' => '\OpenAPI\Client\Model\Store',
         'group' => '\OpenAPI\Client\Model\Group',
         'owner' => '\OpenAPI\Client\Model\Employee',
@@ -95,19 +95,20 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_cash_in_on_retail_shift_closing' => 'bool',
         'create_payment_in_on_retail_shift_closing' => 'bool',
         'create_agents_tags' => 'string[]',
-        'create_order_with_state' => '\OpenAPI\Client\Model\RetailStoreCreateOrderWithState',
-        'customer_order_states' => '\OpenAPI\Client\Model\DeleteProductImagesRequestInner[]',
+        'filter_agents_tags' => 'string[]',
+        'create_order_with_state' => '\OpenAPI\Client\Model\State',
+        'customer_order_states' => '\OpenAPI\Client\Model\State[]',
         'discount_enable' => 'bool',
         'discount_max_percent' => 'int',
         'enable_returns_with_no_reason' => 'bool',
         'issue_orders' => 'bool',
         'last_operation_names' => '\OpenAPI\Client\Model\RetailStoreLastOperationNamesInner[]',
-        'master_retail_stores' => '\OpenAPI\Client\Model\DeleteProductImagesRequestInner[]',
+        'master_retail_stores' => '\OpenAPI\Client\Model\RetailStoreList',
         'ofd_enabled' => 'bool',
         'only_in_stock' => 'bool',
-        'order_to_state' => '\OpenAPI\Client\Model\RetailStoreOrderToState',
+        'order_to_state' => '\OpenAPI\Client\Model\State',
         'print_always' => 'bool',
-        'product_folders' => '\OpenAPI\Client\Model\RetailStoreProductFolders',
+        'product_folders' => '\OpenAPI\Client\Model\ProductFolderList',
         'receipt_template' => '\OpenAPI\Client\Model\RetailStoreReceiptTemplate',
         'required_fio' => 'bool',
         'required_phone' => 'bool',
@@ -128,9 +129,9 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'demand_prefix' => 'string',
         'qr_terminal_id' => 'string',
         'id_qr' => 'string',
-        'acquire' => '\OpenAPI\Client\Model\RetailStoreAcquire',
-        'cashiers' => '\OpenAPI\Client\Model\RetailStoreCashiers',
-        'qr_acquire' => '\OpenAPI\Client\Model\RetailStoreQrAcquire'
+        'acquire' => '\OpenAPI\Client\Model\Counterparty',
+        'cashiers' => '\OpenAPI\Client\Model\CashierList',
+        'qr_acquire' => '\OpenAPI\Client\Model\Counterparty'
     ];
 
     /**
@@ -178,6 +179,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_cash_in_on_retail_shift_closing' => null,
         'create_payment_in_on_retail_shift_closing' => null,
         'create_agents_tags' => null,
+        'filter_agents_tags' => null,
         'create_order_with_state' => null,
         'customer_order_states' => null,
         'discount_enable' => null,
@@ -259,19 +261,20 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_cash_in_on_retail_shift_closing' => false,
         'create_payment_in_on_retail_shift_closing' => false,
         'create_agents_tags' => false,
-        'create_order_with_state' => false,
+        'filter_agents_tags' => false,
+        'create_order_with_state' => true,
         'customer_order_states' => false,
         'discount_enable' => false,
         'discount_max_percent' => false,
         'enable_returns_with_no_reason' => false,
         'issue_orders' => false,
         'last_operation_names' => false,
-        'master_retail_stores' => false,
+        'master_retail_stores' => true,
         'ofd_enabled' => false,
         'only_in_stock' => false,
-        'order_to_state' => false,
+        'order_to_state' => true,
         'print_always' => false,
-        'product_folders' => false,
+        'product_folders' => true,
         'receipt_template' => false,
         'required_fio' => false,
         'required_phone' => false,
@@ -293,8 +296,8 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'qr_terminal_id' => false,
         'id_qr' => false,
         'acquire' => false,
-        'cashiers' => false,
-        'qr_acquire' => false
+        'cashiers' => true,
+        'qr_acquire' => true
     ];
 
     /**
@@ -420,6 +423,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_cash_in_on_retail_shift_closing' => 'createCashInOnRetailShiftClosing',
         'create_payment_in_on_retail_shift_closing' => 'createPaymentInOnRetailShiftClosing',
         'create_agents_tags' => 'createAgentsTags',
+        'filter_agents_tags' => 'filterAgentsTags',
         'create_order_with_state' => 'createOrderWithState',
         'customer_order_states' => 'customerOrderStates',
         'discount_enable' => 'discountEnable',
@@ -501,6 +505,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_cash_in_on_retail_shift_closing' => 'setCreateCashInOnRetailShiftClosing',
         'create_payment_in_on_retail_shift_closing' => 'setCreatePaymentInOnRetailShiftClosing',
         'create_agents_tags' => 'setCreateAgentsTags',
+        'filter_agents_tags' => 'setFilterAgentsTags',
         'create_order_with_state' => 'setCreateOrderWithState',
         'customer_order_states' => 'setCustomerOrderStates',
         'discount_enable' => 'setDiscountEnable',
@@ -582,6 +587,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_cash_in_on_retail_shift_closing' => 'getCreateCashInOnRetailShiftClosing',
         'create_payment_in_on_retail_shift_closing' => 'getCreatePaymentInOnRetailShiftClosing',
         'create_agents_tags' => 'getCreateAgentsTags',
+        'filter_agents_tags' => 'getFilterAgentsTags',
         'create_order_with_state' => 'getCreateOrderWithState',
         'customer_order_states' => 'getCustomerOrderStates',
         'discount_enable' => 'getDiscountEnable',
@@ -864,6 +870,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('create_cash_in_on_retail_shift_closing', $data ?? [], null);
         $this->setIfExists('create_payment_in_on_retail_shift_closing', $data ?? [], null);
         $this->setIfExists('create_agents_tags', $data ?? [], null);
+        $this->setIfExists('filter_agents_tags', $data ?? [], null);
         $this->setIfExists('create_order_with_state', $data ?? [], null);
         $this->setIfExists('customer_order_states', $data ?? [], null);
         $this->setIfExists('discount_enable', $data ?? [], null);
@@ -1387,7 +1394,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets organization
      *
-     * @return \OpenAPI\Client\Model\RetailStoreOrganization|null
+     * @return \OpenAPI\Client\Model\Organization|null
      */
     public function getOrganization()
     {
@@ -1397,7 +1404,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets organization
      *
-     * @param \OpenAPI\Client\Model\RetailStoreOrganization|null $organization organization
+     * @param \OpenAPI\Client\Model\Organization|null $organization Метаданные юрлица-владельца Точки продаж
      *
      * @return self
      */
@@ -2147,9 +2154,36 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets filter_agents_tags
+     *
+     * @return string[]|null
+     */
+    public function getFilterAgentsTags()
+    {
+        return $this->container['filter_agents_tags'];
+    }
+
+    /**
+     * Sets filter_agents_tags
+     *
+     * @param string[]|null $filter_agents_tags Группы, по которым фильтруются агенты
+     *
+     * @return self
+     */
+    public function setFilterAgentsTags($filter_agents_tags)
+    {
+        if (is_null($filter_agents_tags)) {
+            throw new \InvalidArgumentException('non-nullable filter_agents_tags cannot be null');
+        }
+        $this->container['filter_agents_tags'] = $filter_agents_tags;
+
+        return $this;
+    }
+
+    /**
      * Gets create_order_with_state
      *
-     * @return \OpenAPI\Client\Model\RetailStoreCreateOrderWithState|null
+     * @return \OpenAPI\Client\Model\State|null
      */
     public function getCreateOrderWithState()
     {
@@ -2159,14 +2193,21 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets create_order_with_state
      *
-     * @param \OpenAPI\Client\Model\RetailStoreCreateOrderWithState|null $create_order_with_state create_order_with_state
+     * @param \OpenAPI\Client\Model\State|null $create_order_with_state Статус, в котором создаются заказы покупателей
      *
      * @return self
      */
     public function setCreateOrderWithState($create_order_with_state)
     {
         if (is_null($create_order_with_state)) {
-            throw new \InvalidArgumentException('non-nullable create_order_with_state cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'create_order_with_state');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('create_order_with_state', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['create_order_with_state'] = $create_order_with_state;
 
@@ -2176,7 +2217,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets customer_order_states
      *
-     * @return \OpenAPI\Client\Model\DeleteProductImagesRequestInner[]|null
+     * @return \OpenAPI\Client\Model\State[]|null
      */
     public function getCustomerOrderStates()
     {
@@ -2186,7 +2227,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets customer_order_states
      *
-     * @param \OpenAPI\Client\Model\DeleteProductImagesRequestInner[]|null $customer_order_states Возможные состояния заказов покупателей
+     * @param \OpenAPI\Client\Model\State[]|null $customer_order_states Возможные состояния заказов покупателей
      *
      * @return self
      */
@@ -2338,7 +2379,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets master_retail_stores
      *
-     * @return \OpenAPI\Client\Model\DeleteProductImagesRequestInner[]|null
+     * @return \OpenAPI\Client\Model\RetailStoreList|null
      */
     public function getMasterRetailStores()
     {
@@ -2348,14 +2389,21 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets master_retail_stores
      *
-     * @param \OpenAPI\Client\Model\DeleteProductImagesRequestInner[]|null $master_retail_stores Список касс-мастеров
+     * @param \OpenAPI\Client\Model\RetailStoreList|null $master_retail_stores Список касс-мастеров
      *
      * @return self
      */
     public function setMasterRetailStores($master_retail_stores)
     {
         if (is_null($master_retail_stores)) {
-            throw new \InvalidArgumentException('non-nullable master_retail_stores cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'master_retail_stores');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('master_retail_stores', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['master_retail_stores'] = $master_retail_stores;
 
@@ -2419,7 +2467,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_to_state
      *
-     * @return \OpenAPI\Client\Model\RetailStoreOrderToState|null
+     * @return \OpenAPI\Client\Model\State|null
      */
     public function getOrderToState()
     {
@@ -2429,14 +2477,21 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order_to_state
      *
-     * @param \OpenAPI\Client\Model\RetailStoreOrderToState|null $order_to_state order_to_state
+     * @param \OpenAPI\Client\Model\State|null $order_to_state Метаданные статуса заказа покупателя
      *
      * @return self
      */
     public function setOrderToState($order_to_state)
     {
         if (is_null($order_to_state)) {
-            throw new \InvalidArgumentException('non-nullable order_to_state cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'order_to_state');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_to_state', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['order_to_state'] = $order_to_state;
 
@@ -2473,7 +2528,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets product_folders
      *
-     * @return \OpenAPI\Client\Model\RetailStoreProductFolders|null
+     * @return \OpenAPI\Client\Model\ProductFolderList|null
      */
     public function getProductFolders()
     {
@@ -2483,14 +2538,21 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets product_folders
      *
-     * @param \OpenAPI\Client\Model\RetailStoreProductFolders|null $product_folders product_folders
+     * @param \OpenAPI\Client\Model\ProductFolderList|null $product_folders Список групп товаров
      *
      * @return self
      */
     public function setProductFolders($product_folders)
     {
         if (is_null($product_folders)) {
-            throw new \InvalidArgumentException('non-nullable product_folders cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_folders');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_folders', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product_folders'] = $product_folders;
 
@@ -3052,7 +3114,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets acquire
      *
-     * @return \OpenAPI\Client\Model\RetailStoreAcquire|null
+     * @return \OpenAPI\Client\Model\Counterparty|null
      */
     public function getAcquire()
     {
@@ -3062,7 +3124,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets acquire
      *
-     * @param \OpenAPI\Client\Model\RetailStoreAcquire|null $acquire acquire
+     * @param \OpenAPI\Client\Model\Counterparty|null $acquire Эквайер
      *
      * @return self
      */
@@ -3079,7 +3141,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cashiers
      *
-     * @return \OpenAPI\Client\Model\RetailStoreCashiers|null
+     * @return \OpenAPI\Client\Model\CashierList|null
      */
     public function getCashiers()
     {
@@ -3089,14 +3151,21 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cashiers
      *
-     * @param \OpenAPI\Client\Model\RetailStoreCashiers|null $cashiers cashiers
+     * @param \OpenAPI\Client\Model\CashierList|null $cashiers Кассиры, работающие на точке продаж
      *
      * @return self
      */
     public function setCashiers($cashiers)
     {
         if (is_null($cashiers)) {
-            throw new \InvalidArgumentException('non-nullable cashiers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cashiers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cashiers', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cashiers'] = $cashiers;
 
@@ -3106,7 +3175,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets qr_acquire
      *
-     * @return \OpenAPI\Client\Model\RetailStoreQrAcquire|null
+     * @return \OpenAPI\Client\Model\Counterparty|null
      */
     public function getQrAcquire()
     {
@@ -3116,14 +3185,21 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets qr_acquire
      *
-     * @param \OpenAPI\Client\Model\RetailStoreQrAcquire|null $qr_acquire qr_acquire
+     * @param \OpenAPI\Client\Model\Counterparty|null $qr_acquire Эквайер для QR-платежей
      *
      * @return self
      */
     public function setQrAcquire($qr_acquire)
     {
         if (is_null($qr_acquire)) {
-            throw new \InvalidArgumentException('non-nullable qr_acquire cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'qr_acquire');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('qr_acquire', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['qr_acquire'] = $qr_acquire;
 

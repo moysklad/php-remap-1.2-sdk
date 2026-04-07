@@ -89,6 +89,15 @@ class MinimumStockAbstractTest extends TestCase
     }
 
     /**
+     * Test attribute "inherited"
+     */
+    public function testPropertyInherited()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "quantity"
      */
     public function testPropertyQuantity()

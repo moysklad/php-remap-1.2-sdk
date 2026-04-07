@@ -58,6 +58,7 @@ class MinimumStockAbstract implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'type' => 'string',
+        'inherited' => 'bool',
         'quantity' => 'float',
         'store_balances' => '\OpenAPI\Client\Model\StoreBalanceList'
     ];
@@ -71,6 +72,7 @@ class MinimumStockAbstract implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'type' => null,
+        'inherited' => null,
         'quantity' => 'float',
         'store_balances' => null
     ];
@@ -82,6 +84,7 @@ class MinimumStockAbstract implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'type' => false,
+        'inherited' => true,
         'quantity' => false,
         'store_balances' => false
     ];
@@ -173,6 +176,7 @@ class MinimumStockAbstract implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'type' => 'type',
+        'inherited' => 'inherited',
         'quantity' => 'quantity',
         'store_balances' => 'storeBalances'
     ];
@@ -184,6 +188,7 @@ class MinimumStockAbstract implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'type' => 'setType',
+        'inherited' => 'setInherited',
         'quantity' => 'setQuantity',
         'store_balances' => 'setStoreBalances'
     ];
@@ -195,6 +200,7 @@ class MinimumStockAbstract implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'type' => 'getType',
+        'inherited' => 'getInherited',
         'quantity' => 'getQuantity',
         'store_balances' => 'getStoreBalances'
     ];
@@ -274,6 +280,7 @@ class MinimumStockAbstract implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(?array $data = null)
     {
         $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('inherited', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('store_balances', $data ?? [], null);
 
@@ -372,6 +379,40 @@ class MinimumStockAbstract implements ModelInterface, ArrayAccess, \JsonSerializ
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets inherited
+     *
+     * @return bool|null
+     */
+    public function getInherited()
+    {
+        return $this->container['inherited'];
+    }
+
+    /**
+     * Sets inherited
+     *
+     * @param bool|null $inherited Признак наследуемости
+     *
+     * @return self
+     */
+    public function setInherited($inherited)
+    {
+        if (is_null($inherited)) {
+            array_push($this->openAPINullablesSetToNull, 'inherited');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inherited', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['inherited'] = $inherited;
 
         return $this;
     }

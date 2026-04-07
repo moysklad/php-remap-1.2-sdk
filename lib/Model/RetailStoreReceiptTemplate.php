@@ -58,7 +58,9 @@ class RetailStoreReceiptTemplate implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\OpenAPI\Client\Model\Meta'
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'header' => 'string',
+        'footer' => 'string'
     ];
 
     /**
@@ -69,7 +71,9 @@ class RetailStoreReceiptTemplate implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'meta' => null
+        'meta' => null,
+        'header' => null,
+        'footer' => null
     ];
 
     /**
@@ -78,7 +82,9 @@ class RetailStoreReceiptTemplate implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'meta' => false
+        'meta' => false,
+        'header' => false,
+        'footer' => false
     ];
 
     /**
@@ -167,7 +173,9 @@ class RetailStoreReceiptTemplate implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'meta' => 'meta'
+        'meta' => 'meta',
+        'header' => 'header',
+        'footer' => 'footer'
     ];
 
     /**
@@ -176,7 +184,9 @@ class RetailStoreReceiptTemplate implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'meta' => 'setMeta'
+        'meta' => 'setMeta',
+        'header' => 'setHeader',
+        'footer' => 'setFooter'
     ];
 
     /**
@@ -185,7 +195,9 @@ class RetailStoreReceiptTemplate implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'meta' => 'getMeta'
+        'meta' => 'getMeta',
+        'header' => 'getHeader',
+        'footer' => 'getFooter'
     ];
 
     /**
@@ -246,6 +258,8 @@ class RetailStoreReceiptTemplate implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(?array $data = null)
     {
         $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('header', $data ?? [], null);
+        $this->setIfExists('footer', $data ?? [], null);
     }
 
     /**
@@ -313,6 +327,60 @@ class RetailStoreReceiptTemplate implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable meta cannot be null');
         }
         $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets header
+     *
+     * @return string|null
+     */
+    public function getHeader()
+    {
+        return $this->container['header'];
+    }
+
+    /**
+     * Sets header
+     *
+     * @param string|null $header header
+     *
+     * @return self
+     */
+    public function setHeader($header)
+    {
+        if (is_null($header)) {
+            throw new \InvalidArgumentException('non-nullable header cannot be null');
+        }
+        $this->container['header'] = $header;
+
+        return $this;
+    }
+
+    /**
+     * Gets footer
+     *
+     * @return string|null
+     */
+    public function getFooter()
+    {
+        return $this->container['footer'];
+    }
+
+    /**
+     * Sets footer
+     *
+     * @param string|null $footer footer
+     *
+     * @return self
+     */
+    public function setFooter($footer)
+    {
+        if (is_null($footer)) {
+            throw new \InvalidArgumentException('non-nullable footer cannot be null');
+        }
+        $this->container['footer'] = $footer;
 
         return $this;
     }

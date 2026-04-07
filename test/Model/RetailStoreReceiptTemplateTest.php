@@ -87,4 +87,22 @@ class RetailStoreReceiptTemplateTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "header"
+     */
+    public function testPropertyHeader()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "footer"
+     */
+    public function testPropertyFooter()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

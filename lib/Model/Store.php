@@ -75,8 +75,8 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
         'path_name' => 'string',
         'parent' => '\OpenAPI\Client\Model\Store',
         'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]',
-        'zones' => '\OpenAPI\Client\Model\StoreZones',
-        'slots' => '\OpenAPI\Client\Model\StoreSlots'
+        'zones' => '\OpenAPI\Client\Model\StoreZoneList',
+        'slots' => '\OpenAPI\Client\Model\StoreSlotList'
     ];
 
     /**
@@ -127,12 +127,12 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_code' => false,
         'archived' => false,
         'address' => false,
-        'address_full' => false,
+        'address_full' => true,
         'path_name' => false,
         'parent' => true,
         'attributes' => false,
-        'zones' => false,
-        'slots' => false
+        'zones' => true,
+        'slots' => true
     ];
 
     /**
@@ -834,14 +834,21 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets address_full
      *
-     * @param \OpenAPI\Client\Model\Address|null $address_full address_full
+     * @param \OpenAPI\Client\Model\Address|null $address_full Адрес с детализацией
      *
      * @return self
      */
     public function setAddressFull($address_full)
     {
         if (is_null($address_full)) {
-            throw new \InvalidArgumentException('non-nullable address_full cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address_full');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address_full', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address_full'] = $address_full;
 
@@ -939,7 +946,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets zones
      *
-     * @return \OpenAPI\Client\Model\StoreZones|null
+     * @return \OpenAPI\Client\Model\StoreZoneList|null
      */
     public function getZones()
     {
@@ -949,14 +956,21 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets zones
      *
-     * @param \OpenAPI\Client\Model\StoreZones|null $zones zones
+     * @param \OpenAPI\Client\Model\StoreZoneList|null $zones Зоны склада
      *
      * @return self
      */
     public function setZones($zones)
     {
         if (is_null($zones)) {
-            throw new \InvalidArgumentException('non-nullable zones cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'zones');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('zones', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['zones'] = $zones;
 
@@ -966,7 +980,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets slots
      *
-     * @return \OpenAPI\Client\Model\StoreSlots|null
+     * @return \OpenAPI\Client\Model\StoreSlotList|null
      */
     public function getSlots()
     {
@@ -976,14 +990,21 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets slots
      *
-     * @param \OpenAPI\Client\Model\StoreSlots|null $slots slots
+     * @param \OpenAPI\Client\Model\StoreSlotList|null $slots Ячейки склада
      *
      * @return self
      */
     public function setSlots($slots)
     {
         if (is_null($slots)) {
-            throw new \InvalidArgumentException('non-nullable slots cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'slots');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('slots', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['slots'] = $slots;
 

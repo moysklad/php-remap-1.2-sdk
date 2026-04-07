@@ -60,8 +60,7 @@ class AttributeBase implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'meta' => '\OpenAPI\Client\Model\Meta',
         'name' => 'string',
-        'type' => 'string',
-        'value' => 'object'
+        'type' => 'string'
     ];
 
     /**
@@ -75,8 +74,7 @@ class AttributeBase implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'uuid',
         'meta' => null,
         'name' => null,
-        'type' => null,
-        'value' => null
+        'type' => null
     ];
 
     /**
@@ -88,8 +86,7 @@ class AttributeBase implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'meta' => false,
         'name' => false,
-        'type' => false,
-        'value' => false
+        'type' => false
     ];
 
     /**
@@ -181,8 +178,7 @@ class AttributeBase implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'meta' => 'meta',
         'name' => 'name',
-        'type' => 'type',
-        'value' => 'value'
+        'type' => 'type'
     ];
 
     /**
@@ -194,8 +190,7 @@ class AttributeBase implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'meta' => 'setMeta',
         'name' => 'setName',
-        'type' => 'setType',
-        'value' => 'setValue'
+        'type' => 'setType'
     ];
 
     /**
@@ -207,8 +202,7 @@ class AttributeBase implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'meta' => 'getMeta',
         'name' => 'getName',
-        'type' => 'getType',
-        'value' => 'getValue'
+        'type' => 'getType'
     ];
 
     /**
@@ -272,7 +266,6 @@ class AttributeBase implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('value', $data ?? [], null);
     }
 
     /**
@@ -421,33 +414,6 @@ class AttributeBase implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets value
-     *
-     * @return object|null
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param object|null $value value
-     *
-     * @return self
-     */
-    public function setValue($value)
-    {
-        if (is_null($value)) {
-            throw new \InvalidArgumentException('non-nullable value cannot be null');
-        }
-        $this->container['value'] = $value;
 
         return $this;
     }

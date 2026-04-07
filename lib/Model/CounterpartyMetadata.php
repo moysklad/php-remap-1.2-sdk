@@ -60,7 +60,7 @@ class CounterpartyMetadata implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPITypes = [
         'meta' => '\OpenAPI\Client\Model\Meta',
         'attributes' => '\OpenAPI\Client\Model\AttributeMetaInfoList',
-        'states' => '\OpenAPI\Client\Model\CounterpartyMetadataStatesInner[]',
+        'states' => '\OpenAPI\Client\Model\State[]',
         'tags' => 'string[]',
         'create_shared' => 'bool'
     ];
@@ -375,7 +375,7 @@ class CounterpartyMetadata implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets states
      *
-     * @return \OpenAPI\Client\Model\CounterpartyMetadataStatesInner[]|null
+     * @return \OpenAPI\Client\Model\State[]|null
      */
     public function getStates()
     {
@@ -385,7 +385,7 @@ class CounterpartyMetadata implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets states
      *
-     * @param \OpenAPI\Client\Model\CounterpartyMetadataStatesInner[]|null $states Массив статусов контрагентов
+     * @param \OpenAPI\Client\Model\State[]|null $states Массив статусов контрагентов
      *
      * @return self
      */

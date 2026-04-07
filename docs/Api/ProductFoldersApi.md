@@ -230,7 +230,7 @@ void (empty response body)
 ## `deleteProductFoldersBatch()`
 
 ```php
-deleteProductFoldersBatch($product_folder, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]
+deleteProductFoldersBatch($product_folder, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\DeleteContractsBatch200ResponseInner[]
 ```
 
 Удалить группы товаров
@@ -283,7 +283,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DeleteProductsBatch200ResponseInner[]**](../Model/DeleteProductsBatch200ResponseInner.md)
+[**\OpenAPI\Client\Model\DeleteContractsBatch200ResponseInner[]**](../Model/DeleteContractsBatch200ResponseInner.md)
 
 ### Authorization
 

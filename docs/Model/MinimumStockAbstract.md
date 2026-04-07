@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** | Тип неснижаемого остатка | [readonly]
+**inherited** | **bool** | Признак наследуемости | [optional]
 **quantity** | **float** | Количество неснижаемого остатка | [optional]
 **store_balances** | [**\OpenAPI\Client\Model\StoreBalanceList**](.md) |  | [optional]
 
