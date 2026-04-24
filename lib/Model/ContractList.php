@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ContractList Class Doc Comment
  *
  * @category Class
+ * @description Список договоров
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -288,15 +289,6 @@ class ContractList implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['context'] === null) {
-            $invalidProperties[] = "'context' can't be null";
-        }
-        if ($this->container['meta'] === null) {
-            $invalidProperties[] = "'meta' can't be null";
-        }
-        if ($this->container['rows'] === null) {
-            $invalidProperties[] = "'rows' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -315,7 +307,7 @@ class ContractList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets context
      *
-     * @return \OpenAPI\Client\Model\Context
+     * @return \OpenAPI\Client\Model\Context|null
      */
     public function getContext()
     {
@@ -325,7 +317,7 @@ class ContractList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets context
      *
-     * @param \OpenAPI\Client\Model\Context $context context
+     * @param \OpenAPI\Client\Model\Context|null $context context
      *
      * @return self
      */
@@ -342,7 +334,7 @@ class ContractList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets meta
      *
-     * @return \OpenAPI\Client\Model\MetaList
+     * @return \OpenAPI\Client\Model\MetaList|null
      */
     public function getMeta()
     {
@@ -352,7 +344,7 @@ class ContractList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets meta
      *
-     * @param \OpenAPI\Client\Model\MetaList $meta meta
+     * @param \OpenAPI\Client\Model\MetaList|null $meta meta
      *
      * @return self
      */
@@ -369,7 +361,7 @@ class ContractList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rows
      *
-     * @return \OpenAPI\Client\Model\Contract[]
+     * @return \OpenAPI\Client\Model\Contract[]|null
      */
     public function getRows()
     {
@@ -379,7 +371,7 @@ class ContractList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\Contract[] $rows Массив договоров
+     * @param \OpenAPI\Client\Model\Contract[]|null $rows Массив договоров
      *
      * @return self
      */

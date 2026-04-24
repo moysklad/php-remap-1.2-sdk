@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * PurchaseOrderListTest Class Doc Comment
  *
  * @category    Class
- * @description PurchaseOrderList
+ * @description Список Заказов поставщику
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

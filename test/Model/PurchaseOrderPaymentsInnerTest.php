@@ -186,4 +186,202 @@ class PurchaseOrderPaymentsInnerTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "owner"
+     */
+    public function testPropertyOwner()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "group"
+     */
+    public function testPropertyGroup()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "applicable"
+     */
+    public function testPropertyApplicable()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "printed"
+     */
+    public function testPropertyPrinted()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "published"
+     */
+    public function testPropertyPublished()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rate"
+     */
+    public function testPropertyRate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "organization"
+     */
+    public function testPropertyOrganization()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "agent"
+     */
+    public function testPropertyAgent()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "expense_item"
+     */
+    public function testPropertyExpenseItem()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "attributes"
+     */
+    public function testPropertyAttributes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "contract"
+     */
+    public function testPropertyContract()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "files"
+     */
+    public function testPropertyFiles()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "no_closing_docs"
+     */
+    public function testPropertyNoClosingDocs()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "payment_purpose"
+     */
+    public function testPropertyPaymentPurpose()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "project"
+     */
+    public function testPropertyProject()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "sales_channel"
+     */
+    public function testPropertySalesChannel()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "shared"
+     */
+    public function testPropertyShared()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "state"
+     */
+    public function testPropertyState()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "sum"
+     */
+    public function testPropertySum()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "vat_sum"
+     */
+    public function testPropertyVatSum()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "facture_in"
+     */
+    public function testPropertyFactureIn()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "operations"
+     */
+    public function testPropertyOperations()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

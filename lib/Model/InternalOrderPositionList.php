@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * InternalOrderPositionList Class Doc Comment
  *
  * @category Class
+ * @description Список позиций Внутреннего заказа
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -370,7 +371,7 @@ class InternalOrderPositionList implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\InternalOrderPosition[]|null $rows rows
+     * @param \OpenAPI\Client\Model\InternalOrderPosition[]|null $rows Массив позиций Внутреннего заказа
      *
      * @return self
      */

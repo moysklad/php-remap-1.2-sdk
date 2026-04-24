@@ -50,7 +50,7 @@ class Meta implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'meta';
+    protected static $openAPIModelName = 'Meta';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -63,7 +63,8 @@ class Meta implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'string',
         'media_type' => 'string',
         'uuid_href' => 'string',
-        'download_href' => 'string'
+        'download_href' => 'string',
+        'download_permanent_href' => 'string'
     ];
 
     /**
@@ -79,7 +80,8 @@ class Meta implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => null,
         'media_type' => null,
         'uuid_href' => 'uri',
-        'download_href' => 'uri'
+        'download_href' => 'uri',
+        'download_permanent_href' => 'uri'
     ];
 
     /**
@@ -93,7 +95,8 @@ class Meta implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => false,
         'media_type' => false,
         'uuid_href' => false,
-        'download_href' => false
+        'download_href' => false,
+        'download_permanent_href' => false
     ];
 
     /**
@@ -187,7 +190,8 @@ class Meta implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'type',
         'media_type' => 'mediaType',
         'uuid_href' => 'uuidHref',
-        'download_href' => 'downloadHref'
+        'download_href' => 'downloadHref',
+        'download_permanent_href' => 'downloadPermanentHref'
     ];
 
     /**
@@ -201,7 +205,8 @@ class Meta implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'setType',
         'media_type' => 'setMediaType',
         'uuid_href' => 'setUuidHref',
-        'download_href' => 'setDownloadHref'
+        'download_href' => 'setDownloadHref',
+        'download_permanent_href' => 'setDownloadPermanentHref'
     ];
 
     /**
@@ -215,7 +220,8 @@ class Meta implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'getType',
         'media_type' => 'getMediaType',
         'uuid_href' => 'getUuidHref',
-        'download_href' => 'getDownloadHref'
+        'download_href' => 'getDownloadHref',
+        'download_permanent_href' => 'getDownloadPermanentHref'
     ];
 
     /**
@@ -281,6 +287,7 @@ class Meta implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('media_type', $data ?? [], null);
         $this->setIfExists('uuid_href', $data ?? [], null);
         $this->setIfExists('download_href', $data ?? [], null);
+        $this->setIfExists('download_permanent_href', $data ?? [], null);
     }
 
     /**
@@ -483,6 +490,33 @@ class Meta implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable download_href cannot be null');
         }
         $this->container['download_href'] = $download_href;
+
+        return $this;
+    }
+
+    /**
+     * Gets download_permanent_href
+     *
+     * @return string|null
+     */
+    public function getDownloadPermanentHref()
+    {
+        return $this->container['download_permanent_href'];
+    }
+
+    /**
+     * Sets download_permanent_href
+     *
+     * @param string|null $download_permanent_href Постоянная ссылка для скачивания изображения. Возвращается только при передаче параметра `?fields=downloadPermanentHref`. Доступно только на платных тарифах.
+     *
+     * @return self
+     */
+    public function setDownloadPermanentHref($download_permanent_href)
+    {
+        if (is_null($download_permanent_href)) {
+            throw new \InvalidArgumentException('non-nullable download_permanent_href cannot be null');
+        }
+        $this->container['download_permanent_href'] = $download_permanent_href;
 
         return $this;
     }

@@ -107,9 +107,9 @@ class AccumulationDiscountTest extends TestCase
     }
 
     /**
-     * Test attribute "level"
+     * Test attribute "levels"
      */
-    public function testPropertyLevel()
+    public function testPropertyLevels()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

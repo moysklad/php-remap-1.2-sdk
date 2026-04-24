@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * ServiceListTest Class Doc Comment
  *
  * @category    Class
- * @description ServiceList
+ * @description Список услуг
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

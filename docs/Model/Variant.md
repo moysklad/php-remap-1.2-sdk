@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **barcodes** | [**\OpenAPI\Client\Model\Barcode[]**](Barcode.md) | Штрихкоды Модификации | [optional]
 **packs** | [**\OpenAPI\Client\Model\VariantPack[]**](VariantPack.md) | Упаковки Модификации | [optional]
 **images** | [**\OpenAPI\Client\Model\ImageList**](ImageList.md) | Массив метаданных Изображений | [optional]
-**minimum_stock** | [**\OpenAPI\Client\Model\MinimumStockAbstract**](MinimumStockAbstract.md) | Неснижаемый остаток | [optional]
+**minimum_stock** | [**\OpenAPI\Client\Model\MinimumStockAbstract**](MinimumStockAbstract.md) | Неснижаемый остаток. Не выводится по умолчанию. Для получения передайте параметр &#x60;?fields&#x3D;minimumStock&#x60;. | [optional]
 **things** | **string[]** | Серийные номера | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

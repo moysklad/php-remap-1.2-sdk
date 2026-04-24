@@ -65,6 +65,7 @@ class BonusProgram implements ModelInterface, ArrayAccess, \JsonSerializable
         'welcome_bonuses_enabled' => 'bool',
         'welcome_bonuses_value' => 'int',
         'welcome_bonuses_mode' => 'string',
+        'max_paid_rate_percents' => 'int',
         'all_products' => 'bool',
         'id' => 'string',
         'meta' => '\OpenAPI\Client\Model\Meta',
@@ -90,6 +91,7 @@ class BonusProgram implements ModelInterface, ArrayAccess, \JsonSerializable
         'welcome_bonuses_enabled' => null,
         'welcome_bonuses_value' => 'int32',
         'welcome_bonuses_mode' => null,
+        'max_paid_rate_percents' => 'int32',
         'all_products' => null,
         'id' => 'uuid',
         'meta' => null,
@@ -113,6 +115,7 @@ class BonusProgram implements ModelInterface, ArrayAccess, \JsonSerializable
         'welcome_bonuses_enabled' => false,
         'welcome_bonuses_value' => false,
         'welcome_bonuses_mode' => false,
+        'max_paid_rate_percents' => false,
         'all_products' => false,
         'id' => false,
         'meta' => false,
@@ -216,6 +219,7 @@ class BonusProgram implements ModelInterface, ArrayAccess, \JsonSerializable
         'welcome_bonuses_enabled' => 'welcomeBonusesEnabled',
         'welcome_bonuses_value' => 'welcomeBonusesValue',
         'welcome_bonuses_mode' => 'welcomeBonusesMode',
+        'max_paid_rate_percents' => 'maxPaidRatePercents',
         'all_products' => 'allProducts',
         'id' => 'id',
         'meta' => 'meta',
@@ -239,6 +243,7 @@ class BonusProgram implements ModelInterface, ArrayAccess, \JsonSerializable
         'welcome_bonuses_enabled' => 'setWelcomeBonusesEnabled',
         'welcome_bonuses_value' => 'setWelcomeBonusesValue',
         'welcome_bonuses_mode' => 'setWelcomeBonusesMode',
+        'max_paid_rate_percents' => 'setMaxPaidRatePercents',
         'all_products' => 'setAllProducts',
         'id' => 'setId',
         'meta' => 'setMeta',
@@ -262,6 +267,7 @@ class BonusProgram implements ModelInterface, ArrayAccess, \JsonSerializable
         'welcome_bonuses_enabled' => 'getWelcomeBonusesEnabled',
         'welcome_bonuses_value' => 'getWelcomeBonusesValue',
         'welcome_bonuses_mode' => 'getWelcomeBonusesMode',
+        'max_paid_rate_percents' => 'getMaxPaidRatePercents',
         'all_products' => 'getAllProducts',
         'id' => 'getId',
         'meta' => 'getMeta',
@@ -351,6 +357,7 @@ class BonusProgram implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('welcome_bonuses_enabled', $data ?? [], null);
         $this->setIfExists('welcome_bonuses_value', $data ?? [], null);
         $this->setIfExists('welcome_bonuses_mode', $data ?? [], null);
+        $this->setIfExists('max_paid_rate_percents', $data ?? [], null);
         $this->setIfExists('all_products', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('meta', $data ?? [], null);
@@ -395,6 +402,14 @@ class BonusProgram implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->container['welcome_bonuses_mode'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['max_paid_rate_percents']) && ($this->container['max_paid_rate_percents'] > 100)) {
+            $invalidProperties[] = "invalid value for 'max_paid_rate_percents', must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['max_paid_rate_percents']) && ($this->container['max_paid_rate_percents'] < 0)) {
+            $invalidProperties[] = "invalid value for 'max_paid_rate_percents', must be bigger than or equal to 0.";
         }
 
         if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
@@ -611,6 +626,41 @@ class BonusProgram implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['welcome_bonuses_mode'] = $welcome_bonuses_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_paid_rate_percents
+     *
+     * @return int|null
+     */
+    public function getMaxPaidRatePercents()
+    {
+        return $this->container['max_paid_rate_percents'];
+    }
+
+    /**
+     * Sets max_paid_rate_percents
+     *
+     * @param int|null $max_paid_rate_percents Максимальный процент оплаты баллами
+     *
+     * @return self
+     */
+    public function setMaxPaidRatePercents($max_paid_rate_percents)
+    {
+        if (is_null($max_paid_rate_percents)) {
+            throw new \InvalidArgumentException('non-nullable max_paid_rate_percents cannot be null');
+        }
+
+        if (($max_paid_rate_percents > 100)) {
+            throw new \InvalidArgumentException('invalid value for $max_paid_rate_percents when calling BonusProgram., must be smaller than or equal to 100.');
+        }
+        if (($max_paid_rate_percents < 0)) {
+            throw new \InvalidArgumentException('invalid value for $max_paid_rate_percents when calling BonusProgram., must be bigger than or equal to 0.');
+        }
+
+        $this->container['max_paid_rate_percents'] = $max_paid_rate_percents;
 
         return $this;
     }

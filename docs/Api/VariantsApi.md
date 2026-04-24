@@ -294,7 +294,7 @@ try {
 ## `getVariantById()`
 
 ```php
-getVariantById($id, $expand, $accept, $accept_encoding): \OpenAPI\Client\Model\Variant
+getVariantById($id, $expand, $fields, $accept, $accept_encoding): \OpenAPI\Client\Model\Variant
 ```
 
 Получить Модификацию
@@ -323,11 +323,12 @@ $apiInstance = new OpenAPI\Client\Api\VariantsApi(
 );
 $id = 12a8b923-692c-11e6-8a84-bae500000053; // string | ID сущности
 $expand = agent,organization; // string | Замена ссылок объектами с помощью expand
+$fields = minimumStock; // string | Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - `minimumStock` — неснижаемый остаток (товар, модификация) - `downloadPermanentHref` — постоянная ссылка на изображение (платный тариф) - `stock` — остатки и себестоимость в позициях документов - `declaration` — прослеживаемость импортных товаров в позициях документов
 $accept = 'application/json;charset=utf-8'; // string
 $accept_encoding = gzip, deflate, br; // string
 
 try {
-    $result = $apiInstance->getVariantById($id, $expand, $accept, $accept_encoding);
+    $result = $apiInstance->getVariantById($id, $expand, $fields, $accept, $accept_encoding);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VariantsApi->getVariantById: ', $e->getMessage(), PHP_EOL;
@@ -340,6 +341,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID сущности | |
 | **expand** | **string**| Замена ссылок объектами с помощью expand | [optional] |
+| **fields** | **string**| Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов | [optional] |
 | **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
 | **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
 
@@ -428,7 +430,7 @@ try {
 ## `getVariants()`
 
 ```php
-getVariants($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding): \OpenAPI\Client\Model\VariantList
+getVariants($limit, $offset, $search, $filter, $expand, $fields, $order, $accept, $accept_encoding): \OpenAPI\Client\Model\VariantList
 ```
 
 Получить список Модификаций
@@ -460,12 +462,13 @@ $offset = 0; // int | Отступ в выданном списке
 $search = name=123; // string | Контекстный поиск по строковым полям сущностей
 $filter = archived=false; // string | Фильтрация выборки
 $expand = agent,organization; // string | Замена ссылок объектами с помощью expand
+$fields = minimumStock; // string | Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - `minimumStock` — неснижаемый остаток (товар, модификация) - `downloadPermanentHref` — постоянная ссылка на изображение (платный тариф) - `stock` — остатки и себестоимость в позициях документов - `declaration` — прослеживаемость импортных товаров в позициях документов
 $order = name; // string | Сортировка
 $accept = 'application/json;charset=utf-8'; // string
 $accept_encoding = gzip, deflate, br; // string
 
 try {
-    $result = $apiInstance->getVariants($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding);
+    $result = $apiInstance->getVariants($limit, $offset, $search, $filter, $expand, $fields, $order, $accept, $accept_encoding);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VariantsApi->getVariants: ', $e->getMessage(), PHP_EOL;
@@ -481,6 +484,7 @@ try {
 | **search** | **string**| Контекстный поиск по строковым полям сущностей | [optional] |
 | **filter** | **string**| Фильтрация выборки | [optional] |
 | **expand** | **string**| Замена ссылок объектами с помощью expand | [optional] |
+| **fields** | **string**| Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов | [optional] |
 | **order** | **string**| Сортировка | [optional] |
 | **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
 | **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |

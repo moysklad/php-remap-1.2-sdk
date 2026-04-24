@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ThingList Class Doc Comment
  *
  * @category Class
+ * @description Список Серийных номеров
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -370,7 +371,7 @@ class ThingList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\Thing[]|null $rows rows
+     * @param \OpenAPI\Client\Model\Thing[]|null $rows Массив Серийных номеров
      *
      * @return self
      */

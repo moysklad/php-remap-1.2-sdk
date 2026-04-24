@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**assortment** | [**\OpenAPI\Client\Model\Product[]**](Product.md) | Товары со скидкой | [optional]
+**assortment** | [**\OpenAPI\Client\Model\DiscountAssortmentItem[]**](DiscountAssortmentItem.md) | Товары, услуги и модификации со скидкой | [optional]
 **product_folders** | [**\OpenAPI\Client\Model\ProductFolder[]**](ProductFolder.md) | Группы товаров со скидкой | [optional]
 **all_products** | **bool** | Для всех ли товаров скидка | [optional]
-**level** | **object[]** | Процент скидки при определенной сумме продаж | [optional]
+**levels** | **object[]** | Проценты скидок при определенной сумме продаж | [optional]
 **id** | **string** | ID дополнительного поля | [optional] [readonly]
 **meta** | [**\OpenAPI\Client\Model\Meta**](Meta.md) |  | [optional]
 **account_id** | **string** | ID учетной записи | [optional] [readonly]

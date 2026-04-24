@@ -538,6 +538,7 @@ class CreateInternalOrderPositionsRequest implements ModelInterface, ArrayAccess
      * Gets assortment
      *
      * @return \OpenAPI\Client\Model\Assortment|null
+     * @deprecated
      */
     public function getAssortment()
     {
@@ -550,6 +551,7 @@ class CreateInternalOrderPositionsRequest implements ModelInterface, ArrayAccess
      * @param \OpenAPI\Client\Model\Assortment|null $assortment assortment
      *
      * @return self
+     * @deprecated
      */
     public function setAssortment($assortment)
     {

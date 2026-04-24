@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BundleComponentList Class Doc Comment
  *
  * @category Class
+ * @description Список элементов комплекта
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -57,7 +58,7 @@ class BundleComponentList implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'context' => '\OpenAPI\Client\Model\Context',
+        'context' => '\OpenAPI\Client\Model\Context1',
         'meta' => '\OpenAPI\Client\Model\MetaList',
         'rows' => '\OpenAPI\Client\Model\BundleComponent[]'
     ];
@@ -306,7 +307,7 @@ class BundleComponentList implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets context
      *
-     * @return \OpenAPI\Client\Model\Context|null
+     * @return \OpenAPI\Client\Model\Context1|null
      */
     public function getContext()
     {
@@ -316,7 +317,7 @@ class BundleComponentList implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets context
      *
-     * @param \OpenAPI\Client\Model\Context|null $context context
+     * @param \OpenAPI\Client\Model\Context1|null $context context
      *
      * @return self
      */
@@ -370,7 +371,7 @@ class BundleComponentList implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\BundleComponent[]|null $rows rows
+     * @param \OpenAPI\Client\Model\BundleComponent[]|null $rows Массив элементов комплекта
      *
      * @return self
      */

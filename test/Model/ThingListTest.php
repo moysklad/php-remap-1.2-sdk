@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * ThingListTest Class Doc Comment
  *
  * @category    Class
- * @description ThingList
+ * @description Список Серийных номеров
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

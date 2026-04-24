@@ -49,7 +49,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'error';
+    protected static $openAPIModelName = 'Error';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

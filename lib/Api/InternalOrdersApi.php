@@ -6684,6 +6684,7 @@ class InternalOrdersApi
      * Обновить отдельное доп. поле InternalOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info attribute_meta_info (required)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -6693,9 +6694,9 @@ class InternalOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AttributeMetaInfo|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function updateInternalOrderMetadataAttributeById($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataAttributeById'][0])
+    public function updateInternalOrderMetadataAttributeById($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataAttributeById'][0])
     {
-        list($response) = $this->updateInternalOrderMetadataAttributeByIdWithHttpInfo($id, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->updateInternalOrderMetadataAttributeByIdWithHttpInfo($id, $attribute_meta_info, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -6705,6 +6706,7 @@ class InternalOrdersApi
      * Обновить отдельное доп. поле InternalOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6714,9 +6716,9 @@ class InternalOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AttributeMetaInfo|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateInternalOrderMetadataAttributeByIdWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataAttributeById'][0])
+    public function updateInternalOrderMetadataAttributeByIdWithHttpInfo($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataAttributeById'][0])
     {
-        $request = $this->updateInternalOrderMetadataAttributeByIdRequest($id, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updateInternalOrderMetadataAttributeByIdRequest($id, $attribute_meta_info, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6807,6 +6809,7 @@ class InternalOrdersApi
      * Обновить отдельное доп. поле InternalOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6815,9 +6818,9 @@ class InternalOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateInternalOrderMetadataAttributeByIdAsync($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataAttributeById'][0])
+    public function updateInternalOrderMetadataAttributeByIdAsync($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataAttributeById'][0])
     {
-        return $this->updateInternalOrderMetadataAttributeByIdAsyncWithHttpInfo($id, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->updateInternalOrderMetadataAttributeByIdAsyncWithHttpInfo($id, $attribute_meta_info, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6831,6 +6834,7 @@ class InternalOrdersApi
      * Обновить отдельное доп. поле InternalOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6839,10 +6843,10 @@ class InternalOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateInternalOrderMetadataAttributeByIdAsyncWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataAttributeById'][0])
+    public function updateInternalOrderMetadataAttributeByIdAsyncWithHttpInfo($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataAttributeById'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AttributeMetaInfo';
-        $request = $this->updateInternalOrderMetadataAttributeByIdRequest($id, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updateInternalOrderMetadataAttributeByIdRequest($id, $attribute_meta_info, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6884,6 +6888,7 @@ class InternalOrdersApi
      * Create request for operation 'updateInternalOrderMetadataAttributeById'
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6892,13 +6897,20 @@ class InternalOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateInternalOrderMetadataAttributeByIdRequest($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataAttributeById'][0])
+    public function updateInternalOrderMetadataAttributeByIdRequest($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataAttributeById'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $id when calling updateInternalOrderMetadataAttributeById'
+            );
+        }
+
+        // verify the required parameter 'attribute_meta_info' is set
+        if ($attribute_meta_info === null || (is_array($attribute_meta_info) && count($attribute_meta_info) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $attribute_meta_info when calling updateInternalOrderMetadataAttributeById'
             );
         }
 
@@ -6944,7 +6956,14 @@ class InternalOrdersApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($attribute_meta_info)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($attribute_meta_info));
+            } else {
+                $httpBody = $attribute_meta_info;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -7004,6 +7023,7 @@ class InternalOrdersApi
      * Обновить отдельный статус InternalOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state state (required)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -7013,9 +7033,9 @@ class InternalOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\State|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function updateInternalOrderMetadataStateById($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataStateById'][0])
+    public function updateInternalOrderMetadataStateById($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataStateById'][0])
     {
-        list($response) = $this->updateInternalOrderMetadataStateByIdWithHttpInfo($id, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->updateInternalOrderMetadataStateByIdWithHttpInfo($id, $state, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -7025,6 +7045,7 @@ class InternalOrdersApi
      * Обновить отдельный статус InternalOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7034,9 +7055,9 @@ class InternalOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\State|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateInternalOrderMetadataStateByIdWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataStateById'][0])
+    public function updateInternalOrderMetadataStateByIdWithHttpInfo($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataStateById'][0])
     {
-        $request = $this->updateInternalOrderMetadataStateByIdRequest($id, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updateInternalOrderMetadataStateByIdRequest($id, $state, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7127,6 +7148,7 @@ class InternalOrdersApi
      * Обновить отдельный статус InternalOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7135,9 +7157,9 @@ class InternalOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateInternalOrderMetadataStateByIdAsync($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataStateById'][0])
+    public function updateInternalOrderMetadataStateByIdAsync($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataStateById'][0])
     {
-        return $this->updateInternalOrderMetadataStateByIdAsyncWithHttpInfo($id, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->updateInternalOrderMetadataStateByIdAsyncWithHttpInfo($id, $state, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7151,6 +7173,7 @@ class InternalOrdersApi
      * Обновить отдельный статус InternalOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7159,10 +7182,10 @@ class InternalOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateInternalOrderMetadataStateByIdAsyncWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataStateById'][0])
+    public function updateInternalOrderMetadataStateByIdAsyncWithHttpInfo($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataStateById'][0])
     {
         $returnType = '\OpenAPI\Client\Model\State';
-        $request = $this->updateInternalOrderMetadataStateByIdRequest($id, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updateInternalOrderMetadataStateByIdRequest($id, $state, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7204,6 +7227,7 @@ class InternalOrdersApi
      * Create request for operation 'updateInternalOrderMetadataStateById'
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7212,13 +7236,20 @@ class InternalOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateInternalOrderMetadataStateByIdRequest($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataStateById'][0])
+    public function updateInternalOrderMetadataStateByIdRequest($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderMetadataStateById'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $id when calling updateInternalOrderMetadataStateById'
+            );
+        }
+
+        // verify the required parameter 'state' is set
+        if ($state === null || (is_array($state) && count($state) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $state when calling updateInternalOrderMetadataStateById'
             );
         }
 
@@ -7264,7 +7295,14 @@ class InternalOrdersApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($state)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($state));
+            } else {
+                $httpBody = $state;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -7334,7 +7372,7 @@ class InternalOrdersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\InternalOrder|\OpenAPI\Client\Model\ErrorOrArray
+     * @return \OpenAPI\Client\Model\InternalOrderPosition|\OpenAPI\Client\Model\ErrorOrArray
      */
     public function updateInternalOrderPosition($id, $position_id, $internal_order_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderPosition'][0])
     {
@@ -7358,7 +7396,7 @@ class InternalOrdersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\InternalOrder|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\InternalOrderPosition|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateInternalOrderPositionWithHttpInfo($id, $position_id, $internal_order_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderPosition'][0])
     {
@@ -7390,7 +7428,7 @@ class InternalOrdersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\InternalOrder',
+                        '\OpenAPI\Client\Model\InternalOrderPosition',
                         $request,
                         $response,
                     );
@@ -7418,7 +7456,7 @@ class InternalOrdersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\InternalOrder',
+                '\OpenAPI\Client\Model\InternalOrderPosition',
                 $request,
                 $response,
             );
@@ -7427,7 +7465,7 @@ class InternalOrdersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InternalOrder',
+                        '\OpenAPI\Client\Model\InternalOrderPosition',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7493,7 +7531,7 @@ class InternalOrdersApi
      */
     public function updateInternalOrderPositionAsyncWithHttpInfo($id, $position_id, $internal_order_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateInternalOrderPosition'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\InternalOrder';
+        $returnType = '\OpenAPI\Client\Model\InternalOrderPosition';
         $request = $this->updateInternalOrderPositionRequest($id, $position_id, $internal_order_position, $expand, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client

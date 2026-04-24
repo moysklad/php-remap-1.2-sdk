@@ -3306,6 +3306,7 @@ class PurchaseOrdersApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -3315,9 +3316,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\PurchaseOrder|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function getPurchaseOrderById($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderById'][0])
+    public function getPurchaseOrderById($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderById'][0])
     {
-        list($response) = $this->getPurchaseOrderByIdWithHttpInfo($id, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->getPurchaseOrderByIdWithHttpInfo($id, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -3328,6 +3329,7 @@ class PurchaseOrdersApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -3337,9 +3339,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\PurchaseOrder|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPurchaseOrderByIdWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderById'][0])
+    public function getPurchaseOrderByIdWithHttpInfo($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderById'][0])
     {
-        $request = $this->getPurchaseOrderByIdRequest($id, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->getPurchaseOrderByIdRequest($id, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3431,6 +3433,7 @@ class PurchaseOrdersApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -3439,9 +3442,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPurchaseOrderByIdAsync($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderById'][0])
+    public function getPurchaseOrderByIdAsync($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderById'][0])
     {
-        return $this->getPurchaseOrderByIdAsyncWithHttpInfo($id, $expand, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->getPurchaseOrderByIdAsyncWithHttpInfo($id, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3456,6 +3459,7 @@ class PurchaseOrdersApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -3464,10 +3468,10 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPurchaseOrderByIdAsyncWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderById'][0])
+    public function getPurchaseOrderByIdAsyncWithHttpInfo($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderById'][0])
     {
         $returnType = '\OpenAPI\Client\Model\PurchaseOrder';
-        $request = $this->getPurchaseOrderByIdRequest($id, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->getPurchaseOrderByIdRequest($id, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3510,6 +3514,7 @@ class PurchaseOrdersApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -3518,7 +3523,7 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPurchaseOrderByIdRequest($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderById'][0])
+    public function getPurchaseOrderByIdRequest($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderById'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -3527,6 +3532,7 @@ class PurchaseOrdersApi
                 'Missing the required parameter $id when calling getPurchaseOrderById'
             );
         }
+
 
 
 
@@ -3544,6 +3550,15 @@ class PurchaseOrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -3643,6 +3658,7 @@ class PurchaseOrdersApi
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -3652,9 +3668,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\PurchaseOrderList|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function getPurchaseOrderList($limit = 1000, $offset = 0, $search = null, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderList'][0])
+    public function getPurchaseOrderList($limit = 1000, $offset = 0, $search = null, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderList'][0])
     {
-        list($response) = $this->getPurchaseOrderListWithHttpInfo($limit, $offset, $search, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->getPurchaseOrderListWithHttpInfo($limit, $offset, $search, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -3667,6 +3683,7 @@ class PurchaseOrdersApi
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -3676,9 +3693,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\PurchaseOrderList|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPurchaseOrderListWithHttpInfo($limit = 1000, $offset = 0, $search = null, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderList'][0])
+    public function getPurchaseOrderListWithHttpInfo($limit = 1000, $offset = 0, $search = null, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderList'][0])
     {
-        $request = $this->getPurchaseOrderListRequest($limit, $offset, $search, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->getPurchaseOrderListRequest($limit, $offset, $search, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3772,6 +3789,7 @@ class PurchaseOrdersApi
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -3780,9 +3798,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPurchaseOrderListAsync($limit = 1000, $offset = 0, $search = null, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderList'][0])
+    public function getPurchaseOrderListAsync($limit = 1000, $offset = 0, $search = null, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderList'][0])
     {
-        return $this->getPurchaseOrderListAsyncWithHttpInfo($limit, $offset, $search, $expand, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->getPurchaseOrderListAsyncWithHttpInfo($limit, $offset, $search, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3799,6 +3817,7 @@ class PurchaseOrdersApi
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -3807,10 +3826,10 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPurchaseOrderListAsyncWithHttpInfo($limit = 1000, $offset = 0, $search = null, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderList'][0])
+    public function getPurchaseOrderListAsyncWithHttpInfo($limit = 1000, $offset = 0, $search = null, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderList'][0])
     {
         $returnType = '\OpenAPI\Client\Model\PurchaseOrderList';
-        $request = $this->getPurchaseOrderListRequest($limit, $offset, $search, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->getPurchaseOrderListRequest($limit, $offset, $search, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3855,6 +3874,7 @@ class PurchaseOrdersApi
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -3863,7 +3883,7 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPurchaseOrderListRequest($limit = 1000, $offset = 0, $search = null, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderList'][0])
+    public function getPurchaseOrderListRequest($limit = 1000, $offset = 0, $search = null, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderList'][0])
     {
 
         if ($limit !== null && $limit > 1000) {
@@ -3877,6 +3897,7 @@ class PurchaseOrdersApi
             throw new \InvalidArgumentException('invalid value for "$offset" when calling PurchaseOrdersApi.getPurchaseOrderList, must be bigger than or equal to 0.');
         }
         
+
 
 
 
@@ -3921,6 +3942,15 @@ class PurchaseOrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -5290,6 +5320,7 @@ class PurchaseOrdersApi
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -5299,9 +5330,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\PurchaseOrderPosition|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function getPurchaseOrderPositionById($id, $position_id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositionById'][0])
+    public function getPurchaseOrderPositionById($id, $position_id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositionById'][0])
     {
-        list($response) = $this->getPurchaseOrderPositionByIdWithHttpInfo($id, $position_id, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->getPurchaseOrderPositionByIdWithHttpInfo($id, $position_id, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -5313,6 +5344,7 @@ class PurchaseOrdersApi
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5322,9 +5354,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\PurchaseOrderPosition|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPurchaseOrderPositionByIdWithHttpInfo($id, $position_id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositionById'][0])
+    public function getPurchaseOrderPositionByIdWithHttpInfo($id, $position_id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositionById'][0])
     {
-        $request = $this->getPurchaseOrderPositionByIdRequest($id, $position_id, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->getPurchaseOrderPositionByIdRequest($id, $position_id, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5417,6 +5449,7 @@ class PurchaseOrdersApi
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5425,9 +5458,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPurchaseOrderPositionByIdAsync($id, $position_id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositionById'][0])
+    public function getPurchaseOrderPositionByIdAsync($id, $position_id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositionById'][0])
     {
-        return $this->getPurchaseOrderPositionByIdAsyncWithHttpInfo($id, $position_id, $expand, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->getPurchaseOrderPositionByIdAsyncWithHttpInfo($id, $position_id, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5443,6 +5476,7 @@ class PurchaseOrdersApi
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5451,10 +5485,10 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPurchaseOrderPositionByIdAsyncWithHttpInfo($id, $position_id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositionById'][0])
+    public function getPurchaseOrderPositionByIdAsyncWithHttpInfo($id, $position_id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositionById'][0])
     {
         $returnType = '\OpenAPI\Client\Model\PurchaseOrderPosition';
-        $request = $this->getPurchaseOrderPositionByIdRequest($id, $position_id, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->getPurchaseOrderPositionByIdRequest($id, $position_id, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5498,6 +5532,7 @@ class PurchaseOrdersApi
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5506,7 +5541,7 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPurchaseOrderPositionByIdRequest($id, $position_id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositionById'][0])
+    public function getPurchaseOrderPositionByIdRequest($id, $position_id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositionById'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -5528,6 +5563,7 @@ class PurchaseOrdersApi
 
 
 
+
         $resourcePath = '/entity/purchaseorder/{id}/positions/{positionId}';
         $formParams = [];
         $queryParams = [];
@@ -5539,6 +5575,15 @@ class PurchaseOrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -5646,6 +5691,7 @@ class PurchaseOrdersApi
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -5655,9 +5701,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\PurchaseOrderPosition[]|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function getPurchaseOrderPositions($id, $limit = 1000, $offset = 0, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositions'][0])
+    public function getPurchaseOrderPositions($id, $limit = 1000, $offset = 0, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositions'][0])
     {
-        list($response) = $this->getPurchaseOrderPositionsWithHttpInfo($id, $limit, $offset, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->getPurchaseOrderPositionsWithHttpInfo($id, $limit, $offset, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -5670,6 +5716,7 @@ class PurchaseOrdersApi
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5679,9 +5726,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\PurchaseOrderPosition[]|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPurchaseOrderPositionsWithHttpInfo($id, $limit = 1000, $offset = 0, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositions'][0])
+    public function getPurchaseOrderPositionsWithHttpInfo($id, $limit = 1000, $offset = 0, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositions'][0])
     {
-        $request = $this->getPurchaseOrderPositionsRequest($id, $limit, $offset, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->getPurchaseOrderPositionsRequest($id, $limit, $offset, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5775,6 +5822,7 @@ class PurchaseOrdersApi
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5783,9 +5831,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPurchaseOrderPositionsAsync($id, $limit = 1000, $offset = 0, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositions'][0])
+    public function getPurchaseOrderPositionsAsync($id, $limit = 1000, $offset = 0, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositions'][0])
     {
-        return $this->getPurchaseOrderPositionsAsyncWithHttpInfo($id, $limit, $offset, $expand, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->getPurchaseOrderPositionsAsyncWithHttpInfo($id, $limit, $offset, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5802,6 +5850,7 @@ class PurchaseOrdersApi
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5810,10 +5859,10 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPurchaseOrderPositionsAsyncWithHttpInfo($id, $limit = 1000, $offset = 0, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositions'][0])
+    public function getPurchaseOrderPositionsAsyncWithHttpInfo($id, $limit = 1000, $offset = 0, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositions'][0])
     {
         $returnType = '\OpenAPI\Client\Model\PurchaseOrderPosition[]';
-        $request = $this->getPurchaseOrderPositionsRequest($id, $limit, $offset, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->getPurchaseOrderPositionsRequest($id, $limit, $offset, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5858,6 +5907,7 @@ class PurchaseOrdersApi
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5866,7 +5916,7 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPurchaseOrderPositionsRequest($id, $limit = 1000, $offset = 0, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositions'][0])
+    public function getPurchaseOrderPositionsRequest($id, $limit = 1000, $offset = 0, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getPurchaseOrderPositions'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -5887,6 +5937,7 @@ class PurchaseOrdersApi
             throw new \InvalidArgumentException('invalid value for "$offset" when calling PurchaseOrdersApi.getPurchaseOrderPositions, must be bigger than or equal to 0.');
         }
         
+
 
 
 
@@ -5921,6 +5972,15 @@ class PurchaseOrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -6332,6 +6392,7 @@ class PurchaseOrdersApi
      * @param  string $id ID сущности (required)
      * @param  \OpenAPI\Client\Model\PurchaseOrder $purchase_order purchase_order (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -6341,9 +6402,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\PurchaseOrder|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function updatePurchaseOrder($id, $purchase_order, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrder'][0])
+    public function updatePurchaseOrder($id, $purchase_order, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrder'][0])
     {
-        list($response) = $this->updatePurchaseOrderWithHttpInfo($id, $purchase_order, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->updatePurchaseOrderWithHttpInfo($id, $purchase_order, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -6355,6 +6416,7 @@ class PurchaseOrdersApi
      * @param  string $id ID сущности (required)
      * @param  \OpenAPI\Client\Model\PurchaseOrder $purchase_order (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6364,9 +6426,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\PurchaseOrder|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updatePurchaseOrderWithHttpInfo($id, $purchase_order, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrder'][0])
+    public function updatePurchaseOrderWithHttpInfo($id, $purchase_order, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrder'][0])
     {
-        $request = $this->updatePurchaseOrderRequest($id, $purchase_order, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updatePurchaseOrderRequest($id, $purchase_order, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6459,6 +6521,7 @@ class PurchaseOrdersApi
      * @param  string $id ID сущности (required)
      * @param  \OpenAPI\Client\Model\PurchaseOrder $purchase_order (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6467,9 +6530,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePurchaseOrderAsync($id, $purchase_order, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrder'][0])
+    public function updatePurchaseOrderAsync($id, $purchase_order, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrder'][0])
     {
-        return $this->updatePurchaseOrderAsyncWithHttpInfo($id, $purchase_order, $expand, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->updatePurchaseOrderAsyncWithHttpInfo($id, $purchase_order, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6485,6 +6548,7 @@ class PurchaseOrdersApi
      * @param  string $id ID сущности (required)
      * @param  \OpenAPI\Client\Model\PurchaseOrder $purchase_order (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6493,10 +6557,10 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePurchaseOrderAsyncWithHttpInfo($id, $purchase_order, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrder'][0])
+    public function updatePurchaseOrderAsyncWithHttpInfo($id, $purchase_order, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrder'][0])
     {
         $returnType = '\OpenAPI\Client\Model\PurchaseOrder';
-        $request = $this->updatePurchaseOrderRequest($id, $purchase_order, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updatePurchaseOrderRequest($id, $purchase_order, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6540,6 +6604,7 @@ class PurchaseOrdersApi
      * @param  string $id ID сущности (required)
      * @param  \OpenAPI\Client\Model\PurchaseOrder $purchase_order (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6548,7 +6613,7 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updatePurchaseOrderRequest($id, $purchase_order, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrder'][0])
+    public function updatePurchaseOrderRequest($id, $purchase_order, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrder'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -6570,6 +6635,7 @@ class PurchaseOrdersApi
 
 
 
+
         $resourcePath = '/entity/purchaseorder/{id}';
         $formParams = [];
         $queryParams = [];
@@ -6581,6 +6647,15 @@ class PurchaseOrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -6684,6 +6759,7 @@ class PurchaseOrdersApi
      * Обновить отдельное доп. поле PurchaseOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info attribute_meta_info (required)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -6693,9 +6769,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AttributeMetaInfo|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function updatePurchaseOrderMetadataAttributeById($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataAttributeById'][0])
+    public function updatePurchaseOrderMetadataAttributeById($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataAttributeById'][0])
     {
-        list($response) = $this->updatePurchaseOrderMetadataAttributeByIdWithHttpInfo($id, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->updatePurchaseOrderMetadataAttributeByIdWithHttpInfo($id, $attribute_meta_info, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -6705,6 +6781,7 @@ class PurchaseOrdersApi
      * Обновить отдельное доп. поле PurchaseOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6714,9 +6791,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AttributeMetaInfo|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updatePurchaseOrderMetadataAttributeByIdWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataAttributeById'][0])
+    public function updatePurchaseOrderMetadataAttributeByIdWithHttpInfo($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataAttributeById'][0])
     {
-        $request = $this->updatePurchaseOrderMetadataAttributeByIdRequest($id, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updatePurchaseOrderMetadataAttributeByIdRequest($id, $attribute_meta_info, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6807,6 +6884,7 @@ class PurchaseOrdersApi
      * Обновить отдельное доп. поле PurchaseOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6815,9 +6893,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePurchaseOrderMetadataAttributeByIdAsync($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataAttributeById'][0])
+    public function updatePurchaseOrderMetadataAttributeByIdAsync($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataAttributeById'][0])
     {
-        return $this->updatePurchaseOrderMetadataAttributeByIdAsyncWithHttpInfo($id, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->updatePurchaseOrderMetadataAttributeByIdAsyncWithHttpInfo($id, $attribute_meta_info, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6831,6 +6909,7 @@ class PurchaseOrdersApi
      * Обновить отдельное доп. поле PurchaseOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6839,10 +6918,10 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePurchaseOrderMetadataAttributeByIdAsyncWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataAttributeById'][0])
+    public function updatePurchaseOrderMetadataAttributeByIdAsyncWithHttpInfo($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataAttributeById'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AttributeMetaInfo';
-        $request = $this->updatePurchaseOrderMetadataAttributeByIdRequest($id, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updatePurchaseOrderMetadataAttributeByIdRequest($id, $attribute_meta_info, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6884,6 +6963,7 @@ class PurchaseOrdersApi
      * Create request for operation 'updatePurchaseOrderMetadataAttributeById'
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6892,13 +6972,20 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updatePurchaseOrderMetadataAttributeByIdRequest($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataAttributeById'][0])
+    public function updatePurchaseOrderMetadataAttributeByIdRequest($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataAttributeById'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $id when calling updatePurchaseOrderMetadataAttributeById'
+            );
+        }
+
+        // verify the required parameter 'attribute_meta_info' is set
+        if ($attribute_meta_info === null || (is_array($attribute_meta_info) && count($attribute_meta_info) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $attribute_meta_info when calling updatePurchaseOrderMetadataAttributeById'
             );
         }
 
@@ -6944,7 +7031,14 @@ class PurchaseOrdersApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($attribute_meta_info)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($attribute_meta_info));
+            } else {
+                $httpBody = $attribute_meta_info;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -7004,6 +7098,7 @@ class PurchaseOrdersApi
      * Обновить отдельный статус PurchaseOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state state (required)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -7013,9 +7108,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\State|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function updatePurchaseOrderMetadataStateById($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataStateById'][0])
+    public function updatePurchaseOrderMetadataStateById($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataStateById'][0])
     {
-        list($response) = $this->updatePurchaseOrderMetadataStateByIdWithHttpInfo($id, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->updatePurchaseOrderMetadataStateByIdWithHttpInfo($id, $state, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -7025,6 +7120,7 @@ class PurchaseOrdersApi
      * Обновить отдельный статус PurchaseOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7034,9 +7130,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\State|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updatePurchaseOrderMetadataStateByIdWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataStateById'][0])
+    public function updatePurchaseOrderMetadataStateByIdWithHttpInfo($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataStateById'][0])
     {
-        $request = $this->updatePurchaseOrderMetadataStateByIdRequest($id, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updatePurchaseOrderMetadataStateByIdRequest($id, $state, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7127,6 +7223,7 @@ class PurchaseOrdersApi
      * Обновить отдельный статус PurchaseOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7135,9 +7232,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePurchaseOrderMetadataStateByIdAsync($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataStateById'][0])
+    public function updatePurchaseOrderMetadataStateByIdAsync($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataStateById'][0])
     {
-        return $this->updatePurchaseOrderMetadataStateByIdAsyncWithHttpInfo($id, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->updatePurchaseOrderMetadataStateByIdAsyncWithHttpInfo($id, $state, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7151,6 +7248,7 @@ class PurchaseOrdersApi
      * Обновить отдельный статус PurchaseOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7159,10 +7257,10 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePurchaseOrderMetadataStateByIdAsyncWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataStateById'][0])
+    public function updatePurchaseOrderMetadataStateByIdAsyncWithHttpInfo($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataStateById'][0])
     {
         $returnType = '\OpenAPI\Client\Model\State';
-        $request = $this->updatePurchaseOrderMetadataStateByIdRequest($id, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updatePurchaseOrderMetadataStateByIdRequest($id, $state, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7204,6 +7302,7 @@ class PurchaseOrdersApi
      * Create request for operation 'updatePurchaseOrderMetadataStateById'
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7212,13 +7311,20 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updatePurchaseOrderMetadataStateByIdRequest($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataStateById'][0])
+    public function updatePurchaseOrderMetadataStateByIdRequest($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderMetadataStateById'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $id when calling updatePurchaseOrderMetadataStateById'
+            );
+        }
+
+        // verify the required parameter 'state' is set
+        if ($state === null || (is_array($state) && count($state) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $state when calling updatePurchaseOrderMetadataStateById'
             );
         }
 
@@ -7264,7 +7370,14 @@ class PurchaseOrdersApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($state)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($state));
+            } else {
+                $httpBody = $state;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -7327,6 +7440,7 @@ class PurchaseOrdersApi
      * @param  string $position_id ID позиции (required)
      * @param  \OpenAPI\Client\Model\PurchaseOrderPosition $purchase_order_position purchase_order_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -7334,11 +7448,11 @@ class PurchaseOrdersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PurchaseOrder|\OpenAPI\Client\Model\ErrorOrArray
+     * @return \OpenAPI\Client\Model\PurchaseOrderPosition|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function updatePurchaseOrderPosition($id, $position_id, $purchase_order_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderPosition'][0])
+    public function updatePurchaseOrderPosition($id, $position_id, $purchase_order_position, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderPosition'][0])
     {
-        list($response) = $this->updatePurchaseOrderPositionWithHttpInfo($id, $position_id, $purchase_order_position, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->updatePurchaseOrderPositionWithHttpInfo($id, $position_id, $purchase_order_position, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -7351,6 +7465,7 @@ class PurchaseOrdersApi
      * @param  string $position_id ID позиции (required)
      * @param  \OpenAPI\Client\Model\PurchaseOrderPosition $purchase_order_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7358,11 +7473,11 @@ class PurchaseOrdersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PurchaseOrder|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PurchaseOrderPosition|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updatePurchaseOrderPositionWithHttpInfo($id, $position_id, $purchase_order_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderPosition'][0])
+    public function updatePurchaseOrderPositionWithHttpInfo($id, $position_id, $purchase_order_position, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderPosition'][0])
     {
-        $request = $this->updatePurchaseOrderPositionRequest($id, $position_id, $purchase_order_position, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updatePurchaseOrderPositionRequest($id, $position_id, $purchase_order_position, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7390,7 +7505,7 @@ class PurchaseOrdersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\PurchaseOrder',
+                        '\OpenAPI\Client\Model\PurchaseOrderPosition',
                         $request,
                         $response,
                     );
@@ -7418,7 +7533,7 @@ class PurchaseOrdersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\PurchaseOrder',
+                '\OpenAPI\Client\Model\PurchaseOrderPosition',
                 $request,
                 $response,
             );
@@ -7427,7 +7542,7 @@ class PurchaseOrdersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PurchaseOrder',
+                        '\OpenAPI\Client\Model\PurchaseOrderPosition',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7456,6 +7571,7 @@ class PurchaseOrdersApi
      * @param  string $position_id ID позиции (required)
      * @param  \OpenAPI\Client\Model\PurchaseOrderPosition $purchase_order_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7464,9 +7580,9 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePurchaseOrderPositionAsync($id, $position_id, $purchase_order_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderPosition'][0])
+    public function updatePurchaseOrderPositionAsync($id, $position_id, $purchase_order_position, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderPosition'][0])
     {
-        return $this->updatePurchaseOrderPositionAsyncWithHttpInfo($id, $position_id, $purchase_order_position, $expand, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->updatePurchaseOrderPositionAsyncWithHttpInfo($id, $position_id, $purchase_order_position, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7483,6 +7599,7 @@ class PurchaseOrdersApi
      * @param  string $position_id ID позиции (required)
      * @param  \OpenAPI\Client\Model\PurchaseOrderPosition $purchase_order_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7491,10 +7608,10 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePurchaseOrderPositionAsyncWithHttpInfo($id, $position_id, $purchase_order_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderPosition'][0])
+    public function updatePurchaseOrderPositionAsyncWithHttpInfo($id, $position_id, $purchase_order_position, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderPosition'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\PurchaseOrder';
-        $request = $this->updatePurchaseOrderPositionRequest($id, $position_id, $purchase_order_position, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $returnType = '\OpenAPI\Client\Model\PurchaseOrderPosition';
+        $request = $this->updatePurchaseOrderPositionRequest($id, $position_id, $purchase_order_position, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7539,6 +7656,7 @@ class PurchaseOrdersApi
      * @param  string $position_id ID позиции (required)
      * @param  \OpenAPI\Client\Model\PurchaseOrderPosition $purchase_order_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7547,7 +7665,7 @@ class PurchaseOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updatePurchaseOrderPositionRequest($id, $position_id, $purchase_order_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderPosition'][0])
+    public function updatePurchaseOrderPositionRequest($id, $position_id, $purchase_order_position, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updatePurchaseOrderPosition'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -7576,6 +7694,7 @@ class PurchaseOrdersApi
 
 
 
+
         $resourcePath = '/entity/purchaseorder/{id}/positions/{positionId}';
         $formParams = [];
         $queryParams = [];
@@ -7587,6 +7706,15 @@ class PurchaseOrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode

@@ -75,7 +75,7 @@ Name | Type | Description | Notes
 **demand_prefix** | **string** | Префикс номера заказа | [optional]
 **qr_terminal_id** | **string** | Идентификатор QR-терминала | [optional]
 **id_qr** | **string** | Идентификатор QR | [optional]
-**acquire** | [**\OpenAPI\Client\Model\Counterparty**](.md) |  | [optional]
+**acquire** | [**\OpenAPI\Client\Model\Counterparty**](Counterparty.md) |  | [optional]
 **cashiers** | [**\OpenAPI\Client\Model\CashierList**](CashierList.md) | Кассиры, работающие на точке продаж | [optional]
 **qr_acquire** | [**\OpenAPI\Client\Model\Counterparty**](Counterparty.md) | Эквайер для QR-платежей | [optional]
 **errors** | [**\OpenAPI\Client\Model\ErrorErrorsInner[]**](ErrorErrorsInner.md) |  |

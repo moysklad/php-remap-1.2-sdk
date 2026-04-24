@@ -9,14 +9,17 @@ All URIs are relative to https://api.moysklad.ru/api/remap/1.2, except if the op
 | [**createContractsBatch()**](ContractsApi.md#createContractsBatch) | **POST** /entity/contract/batch | Создать или изменить договоры |
 | [**deleteContract()**](ContractsApi.md#deleteContract) | **DELETE** /entity/contract/{id} | Удалить договор |
 | [**deleteContractMetadataAttribute()**](ContractsApi.md#deleteContractMetadataAttribute) | **DELETE** /entity/contract/metadata/attributes/{id} | Удалить доп. поле договора |
+| [**deleteContractMetadataStateById()**](ContractsApi.md#deleteContractMetadataStateById) | **DELETE** /entity/contract/metadata/states/{id} | Удалить отдельный статус Contract |
 | [**deleteContractsBatch()**](ContractsApi.md#deleteContractsBatch) | **POST** /entity/contract/delete | Удалить договоры |
 | [**getContractById()**](ContractsApi.md#getContractById) | **GET** /entity/contract/{id} | Получить договор по ID |
 | [**getContractMetadata()**](ContractsApi.md#getContractMetadata) | **GET** /entity/contract/metadata | Получить метаданные договоров |
 | [**getContractMetadataAttributeById()**](ContractsApi.md#getContractMetadataAttributeById) | **GET** /entity/contract/metadata/attributes/{id} | Получить доп. поле договора по ID |
 | [**getContractMetadataAttributes()**](ContractsApi.md#getContractMetadataAttributes) | **GET** /entity/contract/metadata/attributes | Получить доп. поля договоров |
+| [**getContractMetadataStateById()**](ContractsApi.md#getContractMetadataStateById) | **GET** /entity/contract/metadata/states/{id} | Отдельный статус Contracts |
 | [**getContracts()**](ContractsApi.md#getContracts) | **GET** /entity/contract | Получить список договоров |
 | [**updateContract()**](ContractsApi.md#updateContract) | **PUT** /entity/contract/{id} | Обновить договор |
 | [**updateContractMetadataAttribute()**](ContractsApi.md#updateContractMetadataAttribute) | **PUT** /entity/contract/metadata/attributes/{id} | Обновить доп. поле договора |
+| [**updateContractMetadataStateById()**](ContractsApi.md#updateContractMetadataStateById) | **PUT** /entity/contract/metadata/states/{id} | Обновить отдельный статус Contract |
 
 
 ## `createContract()`
@@ -354,6 +357,74 @@ try {
 | **id** | **string**| ID сущности | |
 | **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
 | **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`, `text/html;charset=UTF-8`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteContractMetadataStateById()`
+
+```php
+deleteContractMetadataStateById($id, $accept, $accept_encoding, $content_type)
+```
+
+Удалить отдельный статус Contract
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\ContractsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 12a8b923-692c-11e6-8a84-bae500000053; // string | ID сущности
+$accept = 'application/json;charset=utf-8'; // string
+$accept_encoding = gzip, deflate, br; // string
+$content_type = 'application/json'; // string
+
+try {
+    $apiInstance->deleteContractMetadataStateById($id, $accept, $accept_encoding, $content_type);
+} catch (Exception $e) {
+    echo 'Exception when calling ContractsApi->deleteContractMetadataStateById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID сущности | |
+| **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
+| **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
+| **content_type** | **string**|  | [optional] [default to &#39;application/json&#39;] |
 
 ### Return type
 
@@ -717,6 +788,77 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getContractMetadataStateById()`
+
+```php
+getContractMetadataStateById($id, $state, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\State
+```
+
+Отдельный статус Contracts
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\ContractsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 12a8b923-692c-11e6-8a84-bae500000053; // string | ID сущности
+$state = new \OpenAPI\Client\Model\State(); // \OpenAPI\Client\Model\State
+$accept = 'application/json;charset=utf-8'; // string
+$accept_encoding = gzip, deflate, br; // string
+$content_type = 'application/json'; // string
+
+try {
+    $result = $apiInstance->getContractMetadataStateById($id, $state, $accept, $accept_encoding, $content_type);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContractsApi->getContractMetadataStateById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID сущности | |
+| **state** | [**\OpenAPI\Client\Model\State**](../Model/State.md)|  | |
+| **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
+| **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
+| **content_type** | **string**|  | [optional] [default to &#39;application/json&#39;] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\State**](../Model/State.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`, `text/html;charset=UTF-8`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getContracts()`
 
 ```php
@@ -938,6 +1080,75 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`, `text/html;charset=UTF-8`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateContractMetadataStateById()`
+
+```php
+updateContractMetadataStateById($id, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\State
+```
+
+Обновить отдельный статус Contract
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\ContractsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 12a8b923-692c-11e6-8a84-bae500000053; // string | ID сущности
+$accept = 'application/json;charset=utf-8'; // string
+$accept_encoding = gzip, deflate, br; // string
+$content_type = 'application/json'; // string
+
+try {
+    $result = $apiInstance->updateContractMetadataStateById($id, $accept, $accept_encoding, $content_type);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContractsApi->updateContractMetadataStateById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| ID сущности | |
+| **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
+| **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
+| **content_type** | **string**|  | [optional] [default to &#39;application/json&#39;] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\State**](../Model/State.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`, `text/html;charset=UTF-8`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

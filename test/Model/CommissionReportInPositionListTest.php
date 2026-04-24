@@ -1,6 +1,6 @@
 <?php
 /**
- * InternalOrderRateTest
+ * CommissionReportInPositionListTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace OpenAPI\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * InternalOrderRateTest Class Doc Comment
+ * CommissionReportInPositionListTest Class Doc Comment
  *
  * @category    Class
- * @description Валюта
+ * @description Список позиций Полученного отчета комиссионера
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class InternalOrderRateTest extends TestCase
+class CommissionReportInPositionListTest extends TestCase
 {
 
     /**
@@ -71,27 +71,36 @@ class InternalOrderRateTest extends TestCase
     }
 
     /**
-     * Test "InternalOrderRate"
+     * Test "CommissionReportInPositionList"
      */
-    public function testInternalOrderRate()
+    public function testCommissionReportInPositionList()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "currency"
+     * Test attribute "context"
      */
-    public function testPropertyCurrency()
+    public function testPropertyContext()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "value"
+     * Test attribute "meta"
      */
-    public function testPropertyValue()
+    public function testPropertyMeta()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "rows"
+     */
+    public function testPropertyRows()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

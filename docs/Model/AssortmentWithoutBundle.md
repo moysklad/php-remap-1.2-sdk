@@ -46,7 +46,7 @@ Name | Type | Description | Notes
 **tax_system** | **string** | Код системы налогообложения | [optional]
 **attributes** | [**\OpenAPI\Client\Model\AttributeAbstract[]**](AttributeAbstract.md) | Дополнительные поля | [optional]
 **minimum_balance** | **float** | Неснижаемый остаток (устаревшее) | [optional]
-**minimum_stock** | [**\OpenAPI\Client\Model\MinimumStockAbstract**](MinimumStockAbstract.md) | Неснижаемый остаток | [optional]
+**minimum_stock** | [**\OpenAPI\Client\Model\MinimumStockAbstract**](MinimumStockAbstract.md) | Неснижаемый остаток. Не выводится по умолчанию. Для получения передайте параметр &#x60;?fields&#x3D;minimumStock&#x60;. | [optional]
 **min_price** | [**\OpenAPI\Client\Model\MinPrice**](MinPrice.md) |  | [optional]
 **weighed** | **bool** | Поле, показывающее является ли товар весовым | [optional]
 **on_tap** | **bool** | Поле, показывающее является ли товар разливным | [optional]
@@ -56,5 +56,9 @@ Name | Type | Description | Notes
 **ppe_type** | **string** | Код вида номенклатурной классификации медицинских средств индивидуальной защиты. Допустимые значения перечислены в константах класса | [optional]
 **product** | [**\OpenAPI\Client\Model\Product**](Product.md) |  | [optional]
 **characteristics** | [**\OpenAPI\Client\Model\VariantCharacteristicValue[]**](VariantCharacteristicValue.md) | Характеристики Модификации | [optional]
+**stock** | **float** | Остаток | [optional]
+**reserve** | **float** | Резерв | [optional]
+**in_transit** | **float** | Ожидание | [optional]
+**quantity** | **float** | Доступно | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

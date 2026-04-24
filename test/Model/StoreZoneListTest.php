@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * StoreZoneListTest Class Doc Comment
  *
  * @category    Class
- * @description StoreZoneList
+ * @description Список зон Склада
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

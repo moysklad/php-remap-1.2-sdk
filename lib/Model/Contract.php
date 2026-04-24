@@ -82,7 +82,7 @@ class Contract implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => '\OpenAPI\Client\Model\State',
         'organization_account' => '\OpenAPI\Client\Model\Account',
         'agent_account' => '\OpenAPI\Client\Model\Account',
-        'rate' => '\OpenAPI\Client\Model\InternalOrderRate',
+        'rate' => '\OpenAPI\Client\Model\CurrencyRate',
         'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]'
     ];
 
@@ -1267,7 +1267,7 @@ class Contract implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rate
      *
-     * @return \OpenAPI\Client\Model\InternalOrderRate|null
+     * @return \OpenAPI\Client\Model\CurrencyRate|null
      */
     public function getRate()
     {
@@ -1277,7 +1277,7 @@ class Contract implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rate
      *
-     * @param \OpenAPI\Client\Model\InternalOrderRate|null $rate rate
+     * @param \OpenAPI\Client\Model\CurrencyRate|null $rate rate
      *
      * @return self
      */

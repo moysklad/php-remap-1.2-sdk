@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PurchaseOrderList Class Doc Comment
  *
  * @category Class
+ * @description Список Заказов поставщику
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -370,7 +371,7 @@ class PurchaseOrderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\PurchaseOrder[]|null $rows rows
+     * @param \OpenAPI\Client\Model\PurchaseOrder[]|null $rows Массив Заказов поставщику
      *
      * @return self
      */

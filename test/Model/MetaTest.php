@@ -132,4 +132,13 @@ class MetaTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "download_permanent_href"
+     */
+    public function testPropertyDownloadPermanentHref()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

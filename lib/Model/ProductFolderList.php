@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ProductFolderList Class Doc Comment
  *
  * @category Class
+ * @description Список группы товаров
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

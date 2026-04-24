@@ -70,7 +70,8 @@ class CustomerOrderPosition implements ModelInterface, ArrayAccess, \JsonSeriali
         'vat_enabled' => 'bool',
         'tax_system' => 'string',
         'assortment' => '\OpenAPI\Client\Model\Assortment',
-        'pack' => '\OpenAPI\Client\Model\Pack'
+        'pack' => '\OpenAPI\Client\Model\Pack',
+        'stock' => '\OpenAPI\Client\Model\PositionStock'
     ];
 
     /**
@@ -93,7 +94,8 @@ class CustomerOrderPosition implements ModelInterface, ArrayAccess, \JsonSeriali
         'vat_enabled' => null,
         'tax_system' => null,
         'assortment' => null,
-        'pack' => null
+        'pack' => null,
+        'stock' => null
     ];
 
     /**
@@ -114,7 +116,8 @@ class CustomerOrderPosition implements ModelInterface, ArrayAccess, \JsonSeriali
         'vat_enabled' => false,
         'tax_system' => false,
         'assortment' => false,
-        'pack' => true
+        'pack' => true,
+        'stock' => true
     ];
 
     /**
@@ -215,7 +218,8 @@ class CustomerOrderPosition implements ModelInterface, ArrayAccess, \JsonSeriali
         'vat_enabled' => 'vatEnabled',
         'tax_system' => 'taxSystem',
         'assortment' => 'assortment',
-        'pack' => 'pack'
+        'pack' => 'pack',
+        'stock' => 'stock'
     ];
 
     /**
@@ -236,7 +240,8 @@ class CustomerOrderPosition implements ModelInterface, ArrayAccess, \JsonSeriali
         'vat_enabled' => 'setVatEnabled',
         'tax_system' => 'setTaxSystem',
         'assortment' => 'setAssortment',
-        'pack' => 'setPack'
+        'pack' => 'setPack',
+        'stock' => 'setStock'
     ];
 
     /**
@@ -257,7 +262,8 @@ class CustomerOrderPosition implements ModelInterface, ArrayAccess, \JsonSeriali
         'vat_enabled' => 'getVatEnabled',
         'tax_system' => 'getTaxSystem',
         'assortment' => 'getAssortment',
-        'pack' => 'getPack'
+        'pack' => 'getPack',
+        'stock' => 'getStock'
     ];
 
     /**
@@ -353,6 +359,7 @@ class CustomerOrderPosition implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('tax_system', $data ?? [], null);
         $this->setIfExists('assortment', $data ?? [], null);
         $this->setIfExists('pack', $data ?? [], null);
+        $this->setIfExists('stock', $data ?? [], null);
     }
 
     /**
@@ -717,6 +724,7 @@ class CustomerOrderPosition implements ModelInterface, ArrayAccess, \JsonSeriali
      * Gets assortment
      *
      * @return \OpenAPI\Client\Model\Assortment|null
+     * @deprecated
      */
     public function getAssortment()
     {
@@ -729,6 +737,7 @@ class CustomerOrderPosition implements ModelInterface, ArrayAccess, \JsonSeriali
      * @param \OpenAPI\Client\Model\Assortment|null $assortment assortment
      *
      * @return self
+     * @deprecated
      */
     public function setAssortment($assortment)
     {
@@ -770,6 +779,40 @@ class CustomerOrderPosition implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['pack'] = $pack;
+
+        return $this;
+    }
+
+    /**
+     * Gets stock
+     *
+     * @return \OpenAPI\Client\Model\PositionStock|null
+     */
+    public function getStock()
+    {
+        return $this->container['stock'];
+    }
+
+    /**
+     * Sets stock
+     *
+     * @param \OpenAPI\Client\Model\PositionStock|null $stock Остатки и себестоимость позиции. Не выводится по умолчанию. Для получения передайте параметр `?fields=stock`.
+     *
+     * @return self
+     */
+    public function setStock($stock)
+    {
+        if (is_null($stock)) {
+            array_push($this->openAPINullablesSetToNull, 'stock');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('stock', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['stock'] = $stock;
 
         return $this;
     }

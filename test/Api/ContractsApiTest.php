@@ -132,6 +132,18 @@ class ContractsApiTest extends TestCase
     }
 
     /**
+     * Test case for deleteContractMetadataStateById
+     *
+     * Удалить отдельный статус Contract.
+     *
+     */
+    public function testDeleteContractMetadataStateById()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for deleteContractsBatch
      *
      * Удалить договоры.
@@ -192,6 +204,18 @@ class ContractsApiTest extends TestCase
     }
 
     /**
+     * Test case for getContractMetadataStateById
+     *
+     * Отдельный статус Contracts.
+     *
+     */
+    public function testGetContractMetadataStateById()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getContracts
      *
      * Получить список договоров.
@@ -222,6 +246,18 @@ class ContractsApiTest extends TestCase
      *
      */
     public function testUpdateContractMetadataAttribute()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateContractMetadataStateById
+     *
+     * Обновить отдельный статус Contract.
+     *
+     */
+    public function testUpdateContractMetadataStateById()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

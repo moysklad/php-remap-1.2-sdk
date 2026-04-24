@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CashierList Class Doc Comment
  *
  * @category Class
+ * @description Список кассиров
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -370,7 +371,7 @@ class CashierList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\Cashier[]|null $rows rows
+     * @param \OpenAPI\Client\Model\Cashier[]|null $rows Массив кассиров
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CurrencyList Class Doc Comment
  *
  * @category Class
+ * @description Список валют
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -49,7 +50,7 @@ class CurrencyList implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'currencyList';
+    protected static $openAPIModelName = 'CurrencyList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -288,15 +289,6 @@ class CurrencyList implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['context'] === null) {
-            $invalidProperties[] = "'context' can't be null";
-        }
-        if ($this->container['meta'] === null) {
-            $invalidProperties[] = "'meta' can't be null";
-        }
-        if ($this->container['rows'] === null) {
-            $invalidProperties[] = "'rows' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -315,7 +307,7 @@ class CurrencyList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets context
      *
-     * @return \OpenAPI\Client\Model\Context
+     * @return \OpenAPI\Client\Model\Context|null
      */
     public function getContext()
     {
@@ -325,7 +317,7 @@ class CurrencyList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets context
      *
-     * @param \OpenAPI\Client\Model\Context $context context
+     * @param \OpenAPI\Client\Model\Context|null $context context
      *
      * @return self
      */
@@ -342,7 +334,7 @@ class CurrencyList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets meta
      *
-     * @return \OpenAPI\Client\Model\MetaList
+     * @return \OpenAPI\Client\Model\MetaList|null
      */
     public function getMeta()
     {
@@ -352,7 +344,7 @@ class CurrencyList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets meta
      *
-     * @param \OpenAPI\Client\Model\MetaList $meta meta
+     * @param \OpenAPI\Client\Model\MetaList|null $meta meta
      *
      * @return self
      */
@@ -369,7 +361,7 @@ class CurrencyList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rows
      *
-     * @return \OpenAPI\Client\Model\Currency[]
+     * @return \OpenAPI\Client\Model\Currency[]|null
      */
     public function getRows()
     {
@@ -379,7 +371,7 @@ class CurrencyList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\Currency[] $rows Массив валют
+     * @param \OpenAPI\Client\Model\Currency[]|null $rows Массив валют
      *
      * @return self
      */

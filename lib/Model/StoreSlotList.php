@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * StoreSlotList Class Doc Comment
  *
  * @category Class
+ * @description Список ячеек Склада
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -370,7 +371,7 @@ class StoreSlotList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\StoreSlot[]|null $rows rows
+     * @param \OpenAPI\Client\Model\StoreSlot[]|null $rows Массив ячеек Склада
      *
      * @return self
      */

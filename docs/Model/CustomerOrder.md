@@ -42,7 +42,7 @@ Name | Type | Description | Notes
 **attributes** | [**\OpenAPI\Client\Model\AttributeAbstract[]**](AttributeAbstract.md) | Коллекция метаданных доп. полей | [optional]
 **files** | [**\OpenAPI\Client\Model\FileList**](FileList.md) | Метаданные массива Файлов | [optional]
 **tax_system** | **string** | Код системы налогообложения | [optional]
-**rate** | [**\OpenAPI\Client\Model\InternalOrderRate**](InternalOrderRate.md) |  | [optional]
+**rate** | [**\OpenAPI\Client\Model\CurrencyRate**](CurrencyRate.md) |  | [optional]
 **positions** | [**\OpenAPI\Client\Model\CustomerOrderPositionList**](.md) | Позиций Заказа покупателя | [optional]
 **sales_channel** | [**\OpenAPI\Client\Model\SalesChannel**](SalesChannel.md) | Метаданные канала продаж | [optional]
 **shipment_address** | **string** | Адрес доставки Заказа покупателя | [optional]

@@ -3013,7 +3013,7 @@ class BundlesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BundleComponentList|\OpenAPI\Client\Model\ErrorOrArray
+     * @return \OpenAPI\Client\Model\BundleComponent|\OpenAPI\Client\Model\ErrorOrArray
      */
     public function getBundleComponents($id, $limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getBundleComponents'][0])
     {
@@ -3039,7 +3039,7 @@ class BundlesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BundleComponentList|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BundleComponent|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBundleComponentsWithHttpInfo($id, $limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getBundleComponents'][0])
     {
@@ -3071,7 +3071,7 @@ class BundlesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\BundleComponentList',
+                        '\OpenAPI\Client\Model\BundleComponent',
                         $request,
                         $response,
                     );
@@ -3099,7 +3099,7 @@ class BundlesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\BundleComponentList',
+                '\OpenAPI\Client\Model\BundleComponent',
                 $request,
                 $response,
             );
@@ -3108,7 +3108,7 @@ class BundlesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\BundleComponentList',
+                        '\OpenAPI\Client\Model\BundleComponent',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3178,7 +3178,7 @@ class BundlesApi
      */
     public function getBundleComponentsAsyncWithHttpInfo($id, $limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getBundleComponents'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\BundleComponentList';
+        $returnType = '\OpenAPI\Client\Model\BundleComponent';
         $request = $this->getBundleComponentsRequest($id, $limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
 
         return $this->client

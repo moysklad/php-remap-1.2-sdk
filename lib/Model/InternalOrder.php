@@ -87,7 +87,7 @@ class InternalOrder implements ModelInterface, ArrayAccess, \JsonSerializable
         'group' => '\OpenAPI\Client\Model\Group',
         'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]',
         'files' => '\OpenAPI\Client\Model\FileList',
-        'rate' => '\OpenAPI\Client\Model\InternalOrderRate',
+        'rate' => '\OpenAPI\Client\Model\CurrencyRate',
         'positions' => '\OpenAPI\Client\Model\InternalOrderPositionList',
         'purchase_orders' => '\OpenAPI\Client\Model\PurchaseOrder[]',
         'production_tasks' => '\OpenAPI\Client\Model\ProductionTask[]',
@@ -1388,7 +1388,7 @@ class InternalOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rate
      *
-     * @return \OpenAPI\Client\Model\InternalOrderRate|null
+     * @return \OpenAPI\Client\Model\CurrencyRate|null
      */
     public function getRate()
     {
@@ -1398,7 +1398,7 @@ class InternalOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rate
      *
-     * @param \OpenAPI\Client\Model\InternalOrderRate|null $rate rate
+     * @param \OpenAPI\Client\Model\CurrencyRate|null $rate rate
      *
      * @return self
      */

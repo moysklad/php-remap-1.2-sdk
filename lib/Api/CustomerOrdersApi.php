@@ -3306,6 +3306,7 @@ class CustomerOrdersApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerOrderById'] to see the possible values for this operation
@@ -3314,9 +3315,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\CustomerOrder|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function getCustomerOrderById($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCustomerOrderById'][0])
+    public function getCustomerOrderById($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCustomerOrderById'][0])
     {
-        list($response) = $this->getCustomerOrderByIdWithHttpInfo($id, $expand, $accept, $accept_encoding, $contentType);
+        list($response) = $this->getCustomerOrderByIdWithHttpInfo($id, $expand, $fields, $accept, $accept_encoding, $contentType);
         return $response;
     }
 
@@ -3327,6 +3328,7 @@ class CustomerOrdersApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerOrderById'] to see the possible values for this operation
@@ -3335,9 +3337,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\CustomerOrder|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCustomerOrderByIdWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCustomerOrderById'][0])
+    public function getCustomerOrderByIdWithHttpInfo($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCustomerOrderById'][0])
     {
-        $request = $this->getCustomerOrderByIdRequest($id, $expand, $accept, $accept_encoding, $contentType);
+        $request = $this->getCustomerOrderByIdRequest($id, $expand, $fields, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3429,6 +3431,7 @@ class CustomerOrdersApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerOrderById'] to see the possible values for this operation
@@ -3436,9 +3439,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCustomerOrderByIdAsync($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCustomerOrderById'][0])
+    public function getCustomerOrderByIdAsync($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCustomerOrderById'][0])
     {
-        return $this->getCustomerOrderByIdAsyncWithHttpInfo($id, $expand, $accept, $accept_encoding, $contentType)
+        return $this->getCustomerOrderByIdAsyncWithHttpInfo($id, $expand, $fields, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3453,6 +3456,7 @@ class CustomerOrdersApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerOrderById'] to see the possible values for this operation
@@ -3460,10 +3464,10 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCustomerOrderByIdAsyncWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCustomerOrderById'][0])
+    public function getCustomerOrderByIdAsyncWithHttpInfo($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCustomerOrderById'][0])
     {
         $returnType = '\OpenAPI\Client\Model\CustomerOrder';
-        $request = $this->getCustomerOrderByIdRequest($id, $expand, $accept, $accept_encoding, $contentType);
+        $request = $this->getCustomerOrderByIdRequest($id, $expand, $fields, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3506,6 +3510,7 @@ class CustomerOrdersApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerOrderById'] to see the possible values for this operation
@@ -3513,7 +3518,7 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCustomerOrderByIdRequest($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCustomerOrderById'][0])
+    public function getCustomerOrderByIdRequest($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getCustomerOrderById'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -3522,6 +3527,7 @@ class CustomerOrdersApi
                 'Missing the required parameter $id when calling getCustomerOrderById'
             );
         }
+
 
 
 
@@ -3538,6 +3544,15 @@ class CustomerOrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -3633,6 +3648,7 @@ class CustomerOrdersApi
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -3642,9 +3658,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\CustomerOrderList|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function getCustomerOrderList($limit = 1000, $offset = 0, $search = null, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderList'][0])
+    public function getCustomerOrderList($limit = 1000, $offset = 0, $search = null, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderList'][0])
     {
-        list($response) = $this->getCustomerOrderListWithHttpInfo($limit, $offset, $search, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->getCustomerOrderListWithHttpInfo($limit, $offset, $search, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -3657,6 +3673,7 @@ class CustomerOrdersApi
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -3666,9 +3683,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\CustomerOrderList|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCustomerOrderListWithHttpInfo($limit = 1000, $offset = 0, $search = null, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderList'][0])
+    public function getCustomerOrderListWithHttpInfo($limit = 1000, $offset = 0, $search = null, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderList'][0])
     {
-        $request = $this->getCustomerOrderListRequest($limit, $offset, $search, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->getCustomerOrderListRequest($limit, $offset, $search, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3762,6 +3779,7 @@ class CustomerOrdersApi
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -3770,9 +3788,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCustomerOrderListAsync($limit = 1000, $offset = 0, $search = null, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderList'][0])
+    public function getCustomerOrderListAsync($limit = 1000, $offset = 0, $search = null, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderList'][0])
     {
-        return $this->getCustomerOrderListAsyncWithHttpInfo($limit, $offset, $search, $expand, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->getCustomerOrderListAsyncWithHttpInfo($limit, $offset, $search, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3789,6 +3807,7 @@ class CustomerOrdersApi
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -3797,10 +3816,10 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCustomerOrderListAsyncWithHttpInfo($limit = 1000, $offset = 0, $search = null, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderList'][0])
+    public function getCustomerOrderListAsyncWithHttpInfo($limit = 1000, $offset = 0, $search = null, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderList'][0])
     {
         $returnType = '\OpenAPI\Client\Model\CustomerOrderList';
-        $request = $this->getCustomerOrderListRequest($limit, $offset, $search, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->getCustomerOrderListRequest($limit, $offset, $search, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3845,6 +3864,7 @@ class CustomerOrdersApi
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -3853,7 +3873,7 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCustomerOrderListRequest($limit = 1000, $offset = 0, $search = null, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderList'][0])
+    public function getCustomerOrderListRequest($limit = 1000, $offset = 0, $search = null, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderList'][0])
     {
 
         if ($limit !== null && $limit > 1000) {
@@ -3867,6 +3887,7 @@ class CustomerOrdersApi
             throw new \InvalidArgumentException('invalid value for "$offset" when calling CustomerOrdersApi.getCustomerOrderList, must be bigger than or equal to 0.');
         }
         
+
 
 
 
@@ -3911,6 +3932,15 @@ class CustomerOrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -5280,6 +5310,7 @@ class CustomerOrdersApi
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -5289,9 +5320,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\CustomerOrderPosition|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function getCustomerOrderPositionById($id, $position_id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositionById'][0])
+    public function getCustomerOrderPositionById($id, $position_id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositionById'][0])
     {
-        list($response) = $this->getCustomerOrderPositionByIdWithHttpInfo($id, $position_id, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->getCustomerOrderPositionByIdWithHttpInfo($id, $position_id, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -5303,6 +5334,7 @@ class CustomerOrdersApi
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5312,9 +5344,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\CustomerOrderPosition|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCustomerOrderPositionByIdWithHttpInfo($id, $position_id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositionById'][0])
+    public function getCustomerOrderPositionByIdWithHttpInfo($id, $position_id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositionById'][0])
     {
-        $request = $this->getCustomerOrderPositionByIdRequest($id, $position_id, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->getCustomerOrderPositionByIdRequest($id, $position_id, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5407,6 +5439,7 @@ class CustomerOrdersApi
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5415,9 +5448,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCustomerOrderPositionByIdAsync($id, $position_id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositionById'][0])
+    public function getCustomerOrderPositionByIdAsync($id, $position_id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositionById'][0])
     {
-        return $this->getCustomerOrderPositionByIdAsyncWithHttpInfo($id, $position_id, $expand, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->getCustomerOrderPositionByIdAsyncWithHttpInfo($id, $position_id, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5433,6 +5466,7 @@ class CustomerOrdersApi
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5441,10 +5475,10 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCustomerOrderPositionByIdAsyncWithHttpInfo($id, $position_id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositionById'][0])
+    public function getCustomerOrderPositionByIdAsyncWithHttpInfo($id, $position_id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositionById'][0])
     {
         $returnType = '\OpenAPI\Client\Model\CustomerOrderPosition';
-        $request = $this->getCustomerOrderPositionByIdRequest($id, $position_id, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->getCustomerOrderPositionByIdRequest($id, $position_id, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5488,6 +5522,7 @@ class CustomerOrdersApi
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5496,7 +5531,7 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCustomerOrderPositionByIdRequest($id, $position_id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositionById'][0])
+    public function getCustomerOrderPositionByIdRequest($id, $position_id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositionById'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -5518,6 +5553,7 @@ class CustomerOrdersApi
 
 
 
+
         $resourcePath = '/entity/customerorder/{id}/positions/{positionId}';
         $formParams = [];
         $queryParams = [];
@@ -5529,6 +5565,15 @@ class CustomerOrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -5636,6 +5681,7 @@ class CustomerOrdersApi
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -5645,9 +5691,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\CustomerOrderPosition[]|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function getCustomerOrderPositions($id, $limit = 1000, $offset = 0, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositions'][0])
+    public function getCustomerOrderPositions($id, $limit = 1000, $offset = 0, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositions'][0])
     {
-        list($response) = $this->getCustomerOrderPositionsWithHttpInfo($id, $limit, $offset, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->getCustomerOrderPositionsWithHttpInfo($id, $limit, $offset, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -5660,6 +5706,7 @@ class CustomerOrdersApi
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5669,9 +5716,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\CustomerOrderPosition[]|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCustomerOrderPositionsWithHttpInfo($id, $limit = 1000, $offset = 0, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositions'][0])
+    public function getCustomerOrderPositionsWithHttpInfo($id, $limit = 1000, $offset = 0, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositions'][0])
     {
-        $request = $this->getCustomerOrderPositionsRequest($id, $limit, $offset, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->getCustomerOrderPositionsRequest($id, $limit, $offset, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5765,6 +5812,7 @@ class CustomerOrdersApi
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5773,9 +5821,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCustomerOrderPositionsAsync($id, $limit = 1000, $offset = 0, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositions'][0])
+    public function getCustomerOrderPositionsAsync($id, $limit = 1000, $offset = 0, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositions'][0])
     {
-        return $this->getCustomerOrderPositionsAsyncWithHttpInfo($id, $limit, $offset, $expand, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->getCustomerOrderPositionsAsyncWithHttpInfo($id, $limit, $offset, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5792,6 +5840,7 @@ class CustomerOrdersApi
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5800,10 +5849,10 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCustomerOrderPositionsAsyncWithHttpInfo($id, $limit = 1000, $offset = 0, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositions'][0])
+    public function getCustomerOrderPositionsAsyncWithHttpInfo($id, $limit = 1000, $offset = 0, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositions'][0])
     {
         $returnType = '\OpenAPI\Client\Model\CustomerOrderPosition[]';
-        $request = $this->getCustomerOrderPositionsRequest($id, $limit, $offset, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->getCustomerOrderPositionsRequest($id, $limit, $offset, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5848,6 +5897,7 @@ class CustomerOrdersApi
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -5856,7 +5906,7 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCustomerOrderPositionsRequest($id, $limit = 1000, $offset = 0, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositions'][0])
+    public function getCustomerOrderPositionsRequest($id, $limit = 1000, $offset = 0, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCustomerOrderPositions'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -5877,6 +5927,7 @@ class CustomerOrdersApi
             throw new \InvalidArgumentException('invalid value for "$offset" when calling CustomerOrdersApi.getCustomerOrderPositions, must be bigger than or equal to 0.');
         }
         
+
 
 
 
@@ -5911,6 +5962,15 @@ class CustomerOrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -6322,6 +6382,7 @@ class CustomerOrdersApi
      * @param  string $id ID сущности (required)
      * @param  \OpenAPI\Client\Model\CustomerOrder $customer_order customer_order (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -6331,9 +6392,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\CustomerOrder|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function updateCustomerOrder($id, $customer_order, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrder'][0])
+    public function updateCustomerOrder($id, $customer_order, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrder'][0])
     {
-        list($response) = $this->updateCustomerOrderWithHttpInfo($id, $customer_order, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->updateCustomerOrderWithHttpInfo($id, $customer_order, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -6345,6 +6406,7 @@ class CustomerOrdersApi
      * @param  string $id ID сущности (required)
      * @param  \OpenAPI\Client\Model\CustomerOrder $customer_order (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6354,9 +6416,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\CustomerOrder|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCustomerOrderWithHttpInfo($id, $customer_order, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrder'][0])
+    public function updateCustomerOrderWithHttpInfo($id, $customer_order, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrder'][0])
     {
-        $request = $this->updateCustomerOrderRequest($id, $customer_order, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updateCustomerOrderRequest($id, $customer_order, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6449,6 +6511,7 @@ class CustomerOrdersApi
      * @param  string $id ID сущности (required)
      * @param  \OpenAPI\Client\Model\CustomerOrder $customer_order (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6457,9 +6520,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerOrderAsync($id, $customer_order, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrder'][0])
+    public function updateCustomerOrderAsync($id, $customer_order, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrder'][0])
     {
-        return $this->updateCustomerOrderAsyncWithHttpInfo($id, $customer_order, $expand, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->updateCustomerOrderAsyncWithHttpInfo($id, $customer_order, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6475,6 +6538,7 @@ class CustomerOrdersApi
      * @param  string $id ID сущности (required)
      * @param  \OpenAPI\Client\Model\CustomerOrder $customer_order (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6483,10 +6547,10 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerOrderAsyncWithHttpInfo($id, $customer_order, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrder'][0])
+    public function updateCustomerOrderAsyncWithHttpInfo($id, $customer_order, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrder'][0])
     {
         $returnType = '\OpenAPI\Client\Model\CustomerOrder';
-        $request = $this->updateCustomerOrderRequest($id, $customer_order, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updateCustomerOrderRequest($id, $customer_order, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6530,6 +6594,7 @@ class CustomerOrdersApi
      * @param  string $id ID сущности (required)
      * @param  \OpenAPI\Client\Model\CustomerOrder $customer_order (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6538,7 +6603,7 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCustomerOrderRequest($id, $customer_order, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrder'][0])
+    public function updateCustomerOrderRequest($id, $customer_order, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrder'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -6560,6 +6625,7 @@ class CustomerOrdersApi
 
 
 
+
         $resourcePath = '/entity/customerorder/{id}';
         $formParams = [];
         $queryParams = [];
@@ -6571,6 +6637,15 @@ class CustomerOrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -6674,6 +6749,7 @@ class CustomerOrdersApi
      * Обновить отдельное доп. поле CustomerOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info attribute_meta_info (required)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -6683,9 +6759,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AttributeMetaInfo|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function updateCustomerOrderMetadataAttributeById($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataAttributeById'][0])
+    public function updateCustomerOrderMetadataAttributeById($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataAttributeById'][0])
     {
-        list($response) = $this->updateCustomerOrderMetadataAttributeByIdWithHttpInfo($id, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->updateCustomerOrderMetadataAttributeByIdWithHttpInfo($id, $attribute_meta_info, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -6695,6 +6771,7 @@ class CustomerOrdersApi
      * Обновить отдельное доп. поле CustomerOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6704,9 +6781,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AttributeMetaInfo|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCustomerOrderMetadataAttributeByIdWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataAttributeById'][0])
+    public function updateCustomerOrderMetadataAttributeByIdWithHttpInfo($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataAttributeById'][0])
     {
-        $request = $this->updateCustomerOrderMetadataAttributeByIdRequest($id, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updateCustomerOrderMetadataAttributeByIdRequest($id, $attribute_meta_info, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6797,6 +6874,7 @@ class CustomerOrdersApi
      * Обновить отдельное доп. поле CustomerOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6805,9 +6883,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerOrderMetadataAttributeByIdAsync($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataAttributeById'][0])
+    public function updateCustomerOrderMetadataAttributeByIdAsync($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataAttributeById'][0])
     {
-        return $this->updateCustomerOrderMetadataAttributeByIdAsyncWithHttpInfo($id, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->updateCustomerOrderMetadataAttributeByIdAsyncWithHttpInfo($id, $attribute_meta_info, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6821,6 +6899,7 @@ class CustomerOrdersApi
      * Обновить отдельное доп. поле CustomerOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6829,10 +6908,10 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerOrderMetadataAttributeByIdAsyncWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataAttributeById'][0])
+    public function updateCustomerOrderMetadataAttributeByIdAsyncWithHttpInfo($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataAttributeById'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AttributeMetaInfo';
-        $request = $this->updateCustomerOrderMetadataAttributeByIdRequest($id, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updateCustomerOrderMetadataAttributeByIdRequest($id, $attribute_meta_info, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6874,6 +6953,7 @@ class CustomerOrdersApi
      * Create request for operation 'updateCustomerOrderMetadataAttributeById'
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\AttributeMetaInfo $attribute_meta_info (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -6882,13 +6962,20 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCustomerOrderMetadataAttributeByIdRequest($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataAttributeById'][0])
+    public function updateCustomerOrderMetadataAttributeByIdRequest($id, $attribute_meta_info, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataAttributeById'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $id when calling updateCustomerOrderMetadataAttributeById'
+            );
+        }
+
+        // verify the required parameter 'attribute_meta_info' is set
+        if ($attribute_meta_info === null || (is_array($attribute_meta_info) && count($attribute_meta_info) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $attribute_meta_info when calling updateCustomerOrderMetadataAttributeById'
             );
         }
 
@@ -6934,7 +7021,14 @@ class CustomerOrdersApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($attribute_meta_info)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($attribute_meta_info));
+            } else {
+                $httpBody = $attribute_meta_info;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -6994,6 +7088,7 @@ class CustomerOrdersApi
      * Обновить отдельный статус CustomerOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state state (required)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -7003,9 +7098,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\State|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function updateCustomerOrderMetadataStateById($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataStateById'][0])
+    public function updateCustomerOrderMetadataStateById($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataStateById'][0])
     {
-        list($response) = $this->updateCustomerOrderMetadataStateByIdWithHttpInfo($id, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->updateCustomerOrderMetadataStateByIdWithHttpInfo($id, $state, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -7015,6 +7110,7 @@ class CustomerOrdersApi
      * Обновить отдельный статус CustomerOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7024,9 +7120,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\State|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCustomerOrderMetadataStateByIdWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataStateById'][0])
+    public function updateCustomerOrderMetadataStateByIdWithHttpInfo($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataStateById'][0])
     {
-        $request = $this->updateCustomerOrderMetadataStateByIdRequest($id, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updateCustomerOrderMetadataStateByIdRequest($id, $state, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7117,6 +7213,7 @@ class CustomerOrdersApi
      * Обновить отдельный статус CustomerOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7125,9 +7222,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerOrderMetadataStateByIdAsync($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataStateById'][0])
+    public function updateCustomerOrderMetadataStateByIdAsync($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataStateById'][0])
     {
-        return $this->updateCustomerOrderMetadataStateByIdAsyncWithHttpInfo($id, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->updateCustomerOrderMetadataStateByIdAsyncWithHttpInfo($id, $state, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7141,6 +7238,7 @@ class CustomerOrdersApi
      * Обновить отдельный статус CustomerOrder
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7149,10 +7247,10 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerOrderMetadataStateByIdAsyncWithHttpInfo($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataStateById'][0])
+    public function updateCustomerOrderMetadataStateByIdAsyncWithHttpInfo($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataStateById'][0])
     {
         $returnType = '\OpenAPI\Client\Model\State';
-        $request = $this->updateCustomerOrderMetadataStateByIdRequest($id, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updateCustomerOrderMetadataStateByIdRequest($id, $state, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7194,6 +7292,7 @@ class CustomerOrdersApi
      * Create request for operation 'updateCustomerOrderMetadataStateById'
      *
      * @param  string $id ID сущности (required)
+     * @param  \OpenAPI\Client\Model\State $state (required)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7202,13 +7301,20 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCustomerOrderMetadataStateByIdRequest($id, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataStateById'][0])
+    public function updateCustomerOrderMetadataStateByIdRequest($id, $state, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderMetadataStateById'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $id when calling updateCustomerOrderMetadataStateById'
+            );
+        }
+
+        // verify the required parameter 'state' is set
+        if ($state === null || (is_array($state) && count($state) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $state when calling updateCustomerOrderMetadataStateById'
             );
         }
 
@@ -7254,7 +7360,14 @@ class CustomerOrdersApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($state)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($state));
+            } else {
+                $httpBody = $state;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -7317,6 +7430,7 @@ class CustomerOrdersApi
      * @param  string $position_id ID позиции (required)
      * @param  \OpenAPI\Client\Model\CustomerOrderPosition $customer_order_position customer_order_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type content_type (optional, default to 'application/json')
@@ -7324,11 +7438,11 @@ class CustomerOrdersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CustomerOrder|\OpenAPI\Client\Model\ErrorOrArray
+     * @return \OpenAPI\Client\Model\CustomerOrderPosition|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function updateCustomerOrderPosition($id, $position_id, $customer_order_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderPosition'][0])
+    public function updateCustomerOrderPosition($id, $position_id, $customer_order_position, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderPosition'][0])
     {
-        list($response) = $this->updateCustomerOrderPositionWithHttpInfo($id, $position_id, $customer_order_position, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->updateCustomerOrderPositionWithHttpInfo($id, $position_id, $customer_order_position, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -7341,6 +7455,7 @@ class CustomerOrdersApi
      * @param  string $position_id ID позиции (required)
      * @param  \OpenAPI\Client\Model\CustomerOrderPosition $customer_order_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7348,11 +7463,11 @@ class CustomerOrdersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CustomerOrder|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\CustomerOrderPosition|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCustomerOrderPositionWithHttpInfo($id, $position_id, $customer_order_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderPosition'][0])
+    public function updateCustomerOrderPositionWithHttpInfo($id, $position_id, $customer_order_position, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderPosition'][0])
     {
-        $request = $this->updateCustomerOrderPositionRequest($id, $position_id, $customer_order_position, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updateCustomerOrderPositionRequest($id, $position_id, $customer_order_position, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7380,7 +7495,7 @@ class CustomerOrdersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\CustomerOrder',
+                        '\OpenAPI\Client\Model\CustomerOrderPosition',
                         $request,
                         $response,
                     );
@@ -7408,7 +7523,7 @@ class CustomerOrdersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\CustomerOrder',
+                '\OpenAPI\Client\Model\CustomerOrderPosition',
                 $request,
                 $response,
             );
@@ -7417,7 +7532,7 @@ class CustomerOrdersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\CustomerOrder',
+                        '\OpenAPI\Client\Model\CustomerOrderPosition',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7446,6 +7561,7 @@ class CustomerOrdersApi
      * @param  string $position_id ID позиции (required)
      * @param  \OpenAPI\Client\Model\CustomerOrderPosition $customer_order_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7454,9 +7570,9 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerOrderPositionAsync($id, $position_id, $customer_order_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderPosition'][0])
+    public function updateCustomerOrderPositionAsync($id, $position_id, $customer_order_position, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderPosition'][0])
     {
-        return $this->updateCustomerOrderPositionAsyncWithHttpInfo($id, $position_id, $customer_order_position, $expand, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->updateCustomerOrderPositionAsyncWithHttpInfo($id, $position_id, $customer_order_position, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7473,6 +7589,7 @@ class CustomerOrdersApi
      * @param  string $position_id ID позиции (required)
      * @param  \OpenAPI\Client\Model\CustomerOrderPosition $customer_order_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7481,10 +7598,10 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerOrderPositionAsyncWithHttpInfo($id, $position_id, $customer_order_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderPosition'][0])
+    public function updateCustomerOrderPositionAsyncWithHttpInfo($id, $position_id, $customer_order_position, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderPosition'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\CustomerOrder';
-        $request = $this->updateCustomerOrderPositionRequest($id, $position_id, $customer_order_position, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $returnType = '\OpenAPI\Client\Model\CustomerOrderPosition';
+        $request = $this->updateCustomerOrderPositionRequest($id, $position_id, $customer_order_position, $expand, $fields, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7529,6 +7646,7 @@ class CustomerOrdersApi
      * @param  string $position_id ID позиции (required)
      * @param  \OpenAPI\Client\Model\CustomerOrderPosition $customer_order_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string|null $content_type (optional, default to 'application/json')
@@ -7537,7 +7655,7 @@ class CustomerOrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCustomerOrderPositionRequest($id, $position_id, $customer_order_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderPosition'][0])
+    public function updateCustomerOrderPositionRequest($id, $position_id, $customer_order_position, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCustomerOrderPosition'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -7566,6 +7684,7 @@ class CustomerOrdersApi
 
 
 
+
         $resourcePath = '/entity/customerorder/{id}/positions/{positionId}';
         $formParams = [];
         $queryParams = [];
@@ -7577,6 +7696,15 @@ class CustomerOrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode

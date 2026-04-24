@@ -732,7 +732,7 @@ try {
 ## `getCustomerOrderById()`
 
 ```php
-getCustomerOrderById($id, $expand, $accept, $accept_encoding): \OpenAPI\Client\Model\CustomerOrder
+getCustomerOrderById($id, $expand, $fields, $accept, $accept_encoding): \OpenAPI\Client\Model\CustomerOrder
 ```
 
 Получить CustomerOrders
@@ -761,11 +761,12 @@ $apiInstance = new OpenAPI\Client\Api\CustomerOrdersApi(
 );
 $id = 12a8b923-692c-11e6-8a84-bae500000053; // string | ID сущности
 $expand = agent,organization; // string | Замена ссылок объектами с помощью expand
+$fields = minimumStock; // string | Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - `minimumStock` — неснижаемый остаток (товар, модификация) - `downloadPermanentHref` — постоянная ссылка на изображение (платный тариф) - `stock` — остатки и себестоимость в позициях документов - `declaration` — прослеживаемость импортных товаров в позициях документов
 $accept = 'application/json;charset=utf-8'; // string
 $accept_encoding = gzip, deflate, br; // string
 
 try {
-    $result = $apiInstance->getCustomerOrderById($id, $expand, $accept, $accept_encoding);
+    $result = $apiInstance->getCustomerOrderById($id, $expand, $fields, $accept, $accept_encoding);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomerOrdersApi->getCustomerOrderById: ', $e->getMessage(), PHP_EOL;
@@ -778,6 +779,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID сущности | |
 | **expand** | **string**| Замена ссылок объектами с помощью expand | [optional] |
+| **fields** | **string**| Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов | [optional] |
 | **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
 | **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
 
@@ -801,7 +803,7 @@ try {
 ## `getCustomerOrderList()`
 
 ```php
-getCustomerOrderList($limit, $offset, $search, $expand, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\CustomerOrderList
+getCustomerOrderList($limit, $offset, $search, $expand, $fields, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\CustomerOrderList
 ```
 
 Получить список CustomerOrders
@@ -832,12 +834,13 @@ $limit = 1000; // int | Максимальное количество элеме
 $offset = 0; // int | Отступ в выданном списке
 $search = name=123; // string | Контекстный поиск по строковым полям сущностей
 $expand = agent,organization; // string | Замена ссылок объектами с помощью expand
+$fields = minimumStock; // string | Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - `minimumStock` — неснижаемый остаток (товар, модификация) - `downloadPermanentHref` — постоянная ссылка на изображение (платный тариф) - `stock` — остатки и себестоимость в позициях документов - `declaration` — прослеживаемость импортных товаров в позициях документов
 $accept = 'application/json;charset=utf-8'; // string
 $accept_encoding = gzip, deflate, br; // string
 $content_type = 'application/json'; // string
 
 try {
-    $result = $apiInstance->getCustomerOrderList($limit, $offset, $search, $expand, $accept, $accept_encoding, $content_type);
+    $result = $apiInstance->getCustomerOrderList($limit, $offset, $search, $expand, $fields, $accept, $accept_encoding, $content_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomerOrdersApi->getCustomerOrderList: ', $e->getMessage(), PHP_EOL;
@@ -852,6 +855,7 @@ try {
 | **offset** | **int**| Отступ в выданном списке | [optional] [default to 0] |
 | **search** | **string**| Контекстный поиск по строковым полям сущностей | [optional] |
 | **expand** | **string**| Замена ссылок объектами с помощью expand | [optional] |
+| **fields** | **string**| Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов | [optional] |
 | **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
 | **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
 | **content_type** | **string**|  | [optional] [default to &#39;application/json&#39;] |
@@ -1152,7 +1156,7 @@ try {
 ## `getCustomerOrderPositionById()`
 
 ```php
-getCustomerOrderPositionById($id, $position_id, $expand, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\CustomerOrderPosition
+getCustomerOrderPositionById($id, $position_id, $expand, $fields, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\CustomerOrderPosition
 ```
 
 Получить позицию CustomerOrders
@@ -1182,12 +1186,13 @@ $apiInstance = new OpenAPI\Client\Api\CustomerOrdersApi(
 $id = 12a8b923-692c-11e6-8a84-bae500000053; // string | ID сущности
 $position_id = 12a8b923-692c-11e6-8a84-bae500000054; // string | ID позиции
 $expand = agent,organization; // string | Замена ссылок объектами с помощью expand
+$fields = minimumStock; // string | Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - `minimumStock` — неснижаемый остаток (товар, модификация) - `downloadPermanentHref` — постоянная ссылка на изображение (платный тариф) - `stock` — остатки и себестоимость в позициях документов - `declaration` — прослеживаемость импортных товаров в позициях документов
 $accept = 'application/json;charset=utf-8'; // string
 $accept_encoding = gzip, deflate, br; // string
 $content_type = 'application/json'; // string
 
 try {
-    $result = $apiInstance->getCustomerOrderPositionById($id, $position_id, $expand, $accept, $accept_encoding, $content_type);
+    $result = $apiInstance->getCustomerOrderPositionById($id, $position_id, $expand, $fields, $accept, $accept_encoding, $content_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomerOrdersApi->getCustomerOrderPositionById: ', $e->getMessage(), PHP_EOL;
@@ -1201,6 +1206,7 @@ try {
 | **id** | **string**| ID сущности | |
 | **position_id** | **string**| ID позиции | |
 | **expand** | **string**| Замена ссылок объектами с помощью expand | [optional] |
+| **fields** | **string**| Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов | [optional] |
 | **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
 | **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
 | **content_type** | **string**|  | [optional] [default to &#39;application/json&#39;] |
@@ -1225,7 +1231,7 @@ try {
 ## `getCustomerOrderPositions()`
 
 ```php
-getCustomerOrderPositions($id, $limit, $offset, $expand, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\CustomerOrderPosition[]
+getCustomerOrderPositions($id, $limit, $offset, $expand, $fields, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\CustomerOrderPosition[]
 ```
 
 Получить позиции CustomerOrders
@@ -1256,12 +1262,13 @@ $id = 12a8b923-692c-11e6-8a84-bae500000053; // string | ID сущности
 $limit = 1000; // int | Максимальное количество элементов в выданном списке (максимум 1000)
 $offset = 0; // int | Отступ в выданном списке
 $expand = agent,organization; // string | Замена ссылок объектами с помощью expand
+$fields = minimumStock; // string | Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - `minimumStock` — неснижаемый остаток (товар, модификация) - `downloadPermanentHref` — постоянная ссылка на изображение (платный тариф) - `stock` — остатки и себестоимость в позициях документов - `declaration` — прослеживаемость импортных товаров в позициях документов
 $accept = 'application/json;charset=utf-8'; // string
 $accept_encoding = gzip, deflate, br; // string
 $content_type = 'application/json'; // string
 
 try {
-    $result = $apiInstance->getCustomerOrderPositions($id, $limit, $offset, $expand, $accept, $accept_encoding, $content_type);
+    $result = $apiInstance->getCustomerOrderPositions($id, $limit, $offset, $expand, $fields, $accept, $accept_encoding, $content_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomerOrdersApi->getCustomerOrderPositions: ', $e->getMessage(), PHP_EOL;
@@ -1276,6 +1283,7 @@ try {
 | **limit** | **int**| Максимальное количество элементов в выданном списке (максимум 1000) | [optional] [default to 1000] |
 | **offset** | **int**| Отступ в выданном списке | [optional] [default to 0] |
 | **expand** | **string**| Замена ссылок объектами с помощью expand | [optional] |
+| **fields** | **string**| Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов | [optional] |
 | **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
 | **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
 | **content_type** | **string**|  | [optional] [default to &#39;application/json&#39;] |
@@ -1369,7 +1377,7 @@ try {
 ## `updateCustomerOrder()`
 
 ```php
-updateCustomerOrder($id, $customer_order, $expand, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\CustomerOrder
+updateCustomerOrder($id, $customer_order, $expand, $fields, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\CustomerOrder
 ```
 
 Изменить CustomerOrders
@@ -1399,12 +1407,13 @@ $apiInstance = new OpenAPI\Client\Api\CustomerOrdersApi(
 $id = 12a8b923-692c-11e6-8a84-bae500000053; // string | ID сущности
 $customer_order = new \OpenAPI\Client\Model\CustomerOrder(); // \OpenAPI\Client\Model\CustomerOrder
 $expand = agent,organization; // string | Замена ссылок объектами с помощью expand
+$fields = minimumStock; // string | Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - `minimumStock` — неснижаемый остаток (товар, модификация) - `downloadPermanentHref` — постоянная ссылка на изображение (платный тариф) - `stock` — остатки и себестоимость в позициях документов - `declaration` — прослеживаемость импортных товаров в позициях документов
 $accept = 'application/json;charset=utf-8'; // string
 $accept_encoding = gzip, deflate, br; // string
 $content_type = 'application/json'; // string
 
 try {
-    $result = $apiInstance->updateCustomerOrder($id, $customer_order, $expand, $accept, $accept_encoding, $content_type);
+    $result = $apiInstance->updateCustomerOrder($id, $customer_order, $expand, $fields, $accept, $accept_encoding, $content_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomerOrdersApi->updateCustomerOrder: ', $e->getMessage(), PHP_EOL;
@@ -1418,6 +1427,7 @@ try {
 | **id** | **string**| ID сущности | |
 | **customer_order** | [**\OpenAPI\Client\Model\CustomerOrder**](../Model/CustomerOrder.md)|  | |
 | **expand** | **string**| Замена ссылок объектами с помощью expand | [optional] |
+| **fields** | **string**| Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов | [optional] |
 | **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
 | **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
 | **content_type** | **string**|  | [optional] [default to &#39;application/json&#39;] |
@@ -1442,7 +1452,7 @@ try {
 ## `updateCustomerOrderMetadataAttributeById()`
 
 ```php
-updateCustomerOrderMetadataAttributeById($id, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\AttributeMetaInfo
+updateCustomerOrderMetadataAttributeById($id, $attribute_meta_info, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\AttributeMetaInfo
 ```
 
 Обновить отдельное доп. поле CustomerOrder
@@ -1470,12 +1480,13 @@ $apiInstance = new OpenAPI\Client\Api\CustomerOrdersApi(
     $config
 );
 $id = 12a8b923-692c-11e6-8a84-bae500000053; // string | ID сущности
+$attribute_meta_info = new \OpenAPI\Client\Model\AttributeMetaInfo(); // \OpenAPI\Client\Model\AttributeMetaInfo
 $accept = 'application/json;charset=utf-8'; // string
 $accept_encoding = gzip, deflate, br; // string
 $content_type = 'application/json'; // string
 
 try {
-    $result = $apiInstance->updateCustomerOrderMetadataAttributeById($id, $accept, $accept_encoding, $content_type);
+    $result = $apiInstance->updateCustomerOrderMetadataAttributeById($id, $attribute_meta_info, $accept, $accept_encoding, $content_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomerOrdersApi->updateCustomerOrderMetadataAttributeById: ', $e->getMessage(), PHP_EOL;
@@ -1487,6 +1498,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID сущности | |
+| **attribute_meta_info** | [**\OpenAPI\Client\Model\AttributeMetaInfo**](../Model/AttributeMetaInfo.md)|  | |
 | **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
 | **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
 | **content_type** | **string**|  | [optional] [default to &#39;application/json&#39;] |
@@ -1501,7 +1513,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`, `text/html;charset=UTF-8`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1511,7 +1523,7 @@ try {
 ## `updateCustomerOrderMetadataStateById()`
 
 ```php
-updateCustomerOrderMetadataStateById($id, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\State
+updateCustomerOrderMetadataStateById($id, $state, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\State
 ```
 
 Обновить отдельный статус CustomerOrder
@@ -1539,12 +1551,13 @@ $apiInstance = new OpenAPI\Client\Api\CustomerOrdersApi(
     $config
 );
 $id = 12a8b923-692c-11e6-8a84-bae500000053; // string | ID сущности
+$state = new \OpenAPI\Client\Model\State(); // \OpenAPI\Client\Model\State
 $accept = 'application/json;charset=utf-8'; // string
 $accept_encoding = gzip, deflate, br; // string
 $content_type = 'application/json'; // string
 
 try {
-    $result = $apiInstance->updateCustomerOrderMetadataStateById($id, $accept, $accept_encoding, $content_type);
+    $result = $apiInstance->updateCustomerOrderMetadataStateById($id, $state, $accept, $accept_encoding, $content_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomerOrdersApi->updateCustomerOrderMetadataStateById: ', $e->getMessage(), PHP_EOL;
@@ -1556,6 +1569,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID сущности | |
+| **state** | [**\OpenAPI\Client\Model\State**](../Model/State.md)|  | |
 | **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
 | **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
 | **content_type** | **string**|  | [optional] [default to &#39;application/json&#39;] |
@@ -1570,7 +1584,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`, `text/html;charset=UTF-8`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1580,7 +1594,7 @@ try {
 ## `updateCustomerOrderPosition()`
 
 ```php
-updateCustomerOrderPosition($id, $position_id, $customer_order_position, $expand, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\CustomerOrder
+updateCustomerOrderPosition($id, $position_id, $customer_order_position, $expand, $fields, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\CustomerOrderPosition
 ```
 
 Изменить позицию CustomerOrders
@@ -1611,12 +1625,13 @@ $id = 12a8b923-692c-11e6-8a84-bae500000053; // string | ID сущности
 $position_id = 12a8b923-692c-11e6-8a84-bae500000054; // string | ID позиции
 $customer_order_position = new \OpenAPI\Client\Model\CustomerOrderPosition(); // \OpenAPI\Client\Model\CustomerOrderPosition
 $expand = agent,organization; // string | Замена ссылок объектами с помощью expand
+$fields = minimumStock; // string | Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - `minimumStock` — неснижаемый остаток (товар, модификация) - `downloadPermanentHref` — постоянная ссылка на изображение (платный тариф) - `stock` — остатки и себестоимость в позициях документов - `declaration` — прослеживаемость импортных товаров в позициях документов
 $accept = 'application/json;charset=utf-8'; // string
 $accept_encoding = gzip, deflate, br; // string
 $content_type = 'application/json'; // string
 
 try {
-    $result = $apiInstance->updateCustomerOrderPosition($id, $position_id, $customer_order_position, $expand, $accept, $accept_encoding, $content_type);
+    $result = $apiInstance->updateCustomerOrderPosition($id, $position_id, $customer_order_position, $expand, $fields, $accept, $accept_encoding, $content_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomerOrdersApi->updateCustomerOrderPosition: ', $e->getMessage(), PHP_EOL;
@@ -1631,13 +1646,14 @@ try {
 | **position_id** | **string**| ID позиции | |
 | **customer_order_position** | [**\OpenAPI\Client\Model\CustomerOrderPosition**](../Model/CustomerOrderPosition.md)|  | |
 | **expand** | **string**| Замена ссылок объектами с помощью expand | [optional] |
+| **fields** | **string**| Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов | [optional] |
 | **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
 | **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
 | **content_type** | **string**|  | [optional] [default to &#39;application/json&#39;] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CustomerOrder**](../Model/CustomerOrder.md)
+[**\OpenAPI\Client\Model\CustomerOrderPosition**](../Model/CustomerOrderPosition.md)
 
 ### Authorization
 

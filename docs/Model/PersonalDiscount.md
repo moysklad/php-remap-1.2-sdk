@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**assortment** | [**\OpenAPI\Client\Model\Product[]**](Product.md) | Товары со скидкой | [optional]
+**assortment** | [**\OpenAPI\Client\Model\DiscountAssortmentItem[]**](DiscountAssortmentItem.md) | Товары, услуги и модификации со скидкой | [optional]
 **product_folders** | [**\OpenAPI\Client\Model\ProductFolder[]**](ProductFolder.md) | Группы товаров со скидкой | [optional]
 **all_products** | **bool** | Для всех ли товаров скидка | [optional]
 **id** | **string** | ID дополнительного поля | [optional] [readonly]

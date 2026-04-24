@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **group** | [**\OpenAPI\Client\Model\Group**](Group.md) |  | [optional]
 **attributes** | [**\OpenAPI\Client\Model\AttributeAbstract[]**](AttributeAbstract.md) | Коллекция метаданных доп. полей | [optional]
 **files** | [**\OpenAPI\Client\Model\FileList**](FileList.md) | Метаданные массива Файлов | [optional]
-**rate** | [**\OpenAPI\Client\Model\InternalOrderRate**](InternalOrderRate.md) |  | [optional]
+**rate** | [**\OpenAPI\Client\Model\CurrencyRate**](CurrencyRate.md) |  | [optional]
 **positions** | [**\OpenAPI\Client\Model\InternalOrderPositionList**](.md) | Позиций Внутреннего заказа | [optional]
 **purchase_orders** | [**\OpenAPI\Client\Model\PurchaseOrder[]**](PurchaseOrder.md) | Коллекция метаданных на связанные заказы поставщику | [optional]
 **production_tasks** | [**\OpenAPI\Client\Model\ProductionTask[]**](ProductionTask.md) | Массив ссылок на связанные производственные задания | [optional]

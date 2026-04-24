@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BundleList Class Doc Comment
  *
  * @category Class
+ * @description Список комплектов
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -370,7 +371,7 @@ class BundleList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\Bundle[]|null $rows rows
+     * @param \OpenAPI\Client\Model\Bundle[]|null $rows Массив комплектов
      *
      * @return self
      */

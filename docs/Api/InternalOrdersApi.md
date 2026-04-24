@@ -1444,7 +1444,7 @@ try {
 ## `updateInternalOrderMetadataAttributeById()`
 
 ```php
-updateInternalOrderMetadataAttributeById($id, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\AttributeMetaInfo
+updateInternalOrderMetadataAttributeById($id, $attribute_meta_info, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\AttributeMetaInfo
 ```
 
 Обновить отдельное доп. поле InternalOrder
@@ -1472,12 +1472,13 @@ $apiInstance = new OpenAPI\Client\Api\InternalOrdersApi(
     $config
 );
 $id = 12a8b923-692c-11e6-8a84-bae500000053; // string | ID сущности
+$attribute_meta_info = new \OpenAPI\Client\Model\AttributeMetaInfo(); // \OpenAPI\Client\Model\AttributeMetaInfo
 $accept = 'application/json;charset=utf-8'; // string
 $accept_encoding = gzip, deflate, br; // string
 $content_type = 'application/json'; // string
 
 try {
-    $result = $apiInstance->updateInternalOrderMetadataAttributeById($id, $accept, $accept_encoding, $content_type);
+    $result = $apiInstance->updateInternalOrderMetadataAttributeById($id, $attribute_meta_info, $accept, $accept_encoding, $content_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InternalOrdersApi->updateInternalOrderMetadataAttributeById: ', $e->getMessage(), PHP_EOL;
@@ -1489,6 +1490,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID сущности | |
+| **attribute_meta_info** | [**\OpenAPI\Client\Model\AttributeMetaInfo**](../Model/AttributeMetaInfo.md)|  | |
 | **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
 | **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
 | **content_type** | **string**|  | [optional] [default to &#39;application/json&#39;] |
@@ -1503,7 +1505,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`, `text/html;charset=UTF-8`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1513,7 +1515,7 @@ try {
 ## `updateInternalOrderMetadataStateById()`
 
 ```php
-updateInternalOrderMetadataStateById($id, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\State
+updateInternalOrderMetadataStateById($id, $state, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\State
 ```
 
 Обновить отдельный статус InternalOrder
@@ -1541,12 +1543,13 @@ $apiInstance = new OpenAPI\Client\Api\InternalOrdersApi(
     $config
 );
 $id = 12a8b923-692c-11e6-8a84-bae500000053; // string | ID сущности
+$state = new \OpenAPI\Client\Model\State(); // \OpenAPI\Client\Model\State
 $accept = 'application/json;charset=utf-8'; // string
 $accept_encoding = gzip, deflate, br; // string
 $content_type = 'application/json'; // string
 
 try {
-    $result = $apiInstance->updateInternalOrderMetadataStateById($id, $accept, $accept_encoding, $content_type);
+    $result = $apiInstance->updateInternalOrderMetadataStateById($id, $state, $accept, $accept_encoding, $content_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InternalOrdersApi->updateInternalOrderMetadataStateById: ', $e->getMessage(), PHP_EOL;
@@ -1558,6 +1561,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID сущности | |
+| **state** | [**\OpenAPI\Client\Model\State**](../Model/State.md)|  | |
 | **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
 | **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
 | **content_type** | **string**|  | [optional] [default to &#39;application/json&#39;] |
@@ -1572,7 +1576,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`, `text/html;charset=UTF-8`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1582,7 +1586,7 @@ try {
 ## `updateInternalOrderPosition()`
 
 ```php
-updateInternalOrderPosition($id, $position_id, $internal_order_position, $expand, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\InternalOrder
+updateInternalOrderPosition($id, $position_id, $internal_order_position, $expand, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\InternalOrderPosition
 ```
 
 Изменить позицию InternalOrder
@@ -1639,7 +1643,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\InternalOrder**](../Model/InternalOrder.md)
+[**\OpenAPI\Client\Model\InternalOrderPosition**](../Model/InternalOrderPosition.md)
 
 ### Authorization
 

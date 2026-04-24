@@ -94,7 +94,7 @@ class CreatePurchaseOrderBatch200ResponseInner implements ModelInterface, ArrayA
         'group' => '\OpenAPI\Client\Model\Group',
         'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]',
         'files' => '\OpenAPI\Client\Model\FileList',
-        'rate' => '\OpenAPI\Client\Model\InternalOrderRate',
+        'rate' => '\OpenAPI\Client\Model\PurchaseOrderRate',
         'positions' => '\OpenAPI\Client\Model\PurchaseOrderPositionList',
         'internal_order' => '\OpenAPI\Client\Model\InternalOrder',
         'customer_orders' => '\OpenAPI\Client\Model\CustomerOrder[]',
@@ -1704,7 +1704,7 @@ class CreatePurchaseOrderBatch200ResponseInner implements ModelInterface, ArrayA
     /**
      * Gets rate
      *
-     * @return \OpenAPI\Client\Model\InternalOrderRate|null
+     * @return \OpenAPI\Client\Model\PurchaseOrderRate|null
      */
     public function getRate()
     {
@@ -1714,7 +1714,7 @@ class CreatePurchaseOrderBatch200ResponseInner implements ModelInterface, ArrayA
     /**
      * Sets rate
      *
-     * @param \OpenAPI\Client\Model\InternalOrderRate|null $rate rate
+     * @param \OpenAPI\Client\Model\PurchaseOrderRate|null $rate rate
      *
      * @return self
      */

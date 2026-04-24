@@ -548,6 +548,7 @@ class CreateInternalOrderPositions200ResponseInner implements ModelInterface, Ar
      * Gets assortment
      *
      * @return \OpenAPI\Client\Model\Assortment|null
+     * @deprecated
      */
     public function getAssortment()
     {
@@ -560,6 +561,7 @@ class CreateInternalOrderPositions200ResponseInner implements ModelInterface, Ar
      * @param \OpenAPI\Client\Model\Assortment|null $assortment assortment
      *
      * @return self
+     * @deprecated
      */
     public function setAssortment($assortment)
     {

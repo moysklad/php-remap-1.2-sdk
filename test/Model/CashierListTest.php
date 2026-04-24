@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * CashierListTest Class Doc Comment
  *
  * @category    Class
- * @description CashierList
+ * @description Список кассиров
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

@@ -195,4 +195,13 @@ class CreateCustomerOrderPositionsRequestTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "stock"
+     */
+    public function testPropertyStock()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

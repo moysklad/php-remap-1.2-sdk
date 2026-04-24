@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * InternalOrderListTest Class Doc Comment
  *
  * @category    Class
- * @description InternalOrderList
+ * @description Список Внутренних заказов
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

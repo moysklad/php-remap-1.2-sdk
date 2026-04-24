@@ -70,6 +70,7 @@ class CreateCustomerOrderPositions200ResponseInner implements ModelInterface, Ar
         'tax_system' => 'string',
         'assortment' => '\OpenAPI\Client\Model\Assortment',
         'pack' => '\OpenAPI\Client\Model\Pack',
+        'stock' => '\OpenAPI\Client\Model\PositionStock',
         'errors' => '\OpenAPI\Client\Model\ErrorErrorsInner[]'
     ];
 
@@ -94,6 +95,7 @@ class CreateCustomerOrderPositions200ResponseInner implements ModelInterface, Ar
         'tax_system' => null,
         'assortment' => null,
         'pack' => null,
+        'stock' => null,
         'errors' => null
     ];
 
@@ -116,6 +118,7 @@ class CreateCustomerOrderPositions200ResponseInner implements ModelInterface, Ar
         'tax_system' => false,
         'assortment' => false,
         'pack' => true,
+        'stock' => true,
         'errors' => false
     ];
 
@@ -218,6 +221,7 @@ class CreateCustomerOrderPositions200ResponseInner implements ModelInterface, Ar
         'tax_system' => 'taxSystem',
         'assortment' => 'assortment',
         'pack' => 'pack',
+        'stock' => 'stock',
         'errors' => 'errors'
     ];
 
@@ -240,6 +244,7 @@ class CreateCustomerOrderPositions200ResponseInner implements ModelInterface, Ar
         'tax_system' => 'setTaxSystem',
         'assortment' => 'setAssortment',
         'pack' => 'setPack',
+        'stock' => 'setStock',
         'errors' => 'setErrors'
     ];
 
@@ -262,6 +267,7 @@ class CreateCustomerOrderPositions200ResponseInner implements ModelInterface, Ar
         'tax_system' => 'getTaxSystem',
         'assortment' => 'getAssortment',
         'pack' => 'getPack',
+        'stock' => 'getStock',
         'errors' => 'getErrors'
     ];
 
@@ -358,6 +364,7 @@ class CreateCustomerOrderPositions200ResponseInner implements ModelInterface, Ar
         $this->setIfExists('tax_system', $data ?? [], null);
         $this->setIfExists('assortment', $data ?? [], null);
         $this->setIfExists('pack', $data ?? [], null);
+        $this->setIfExists('stock', $data ?? [], null);
         $this->setIfExists('errors', $data ?? [], null);
     }
 
@@ -726,6 +733,7 @@ class CreateCustomerOrderPositions200ResponseInner implements ModelInterface, Ar
      * Gets assortment
      *
      * @return \OpenAPI\Client\Model\Assortment|null
+     * @deprecated
      */
     public function getAssortment()
     {
@@ -738,6 +746,7 @@ class CreateCustomerOrderPositions200ResponseInner implements ModelInterface, Ar
      * @param \OpenAPI\Client\Model\Assortment|null $assortment assortment
      *
      * @return self
+     * @deprecated
      */
     public function setAssortment($assortment)
     {
@@ -779,6 +788,40 @@ class CreateCustomerOrderPositions200ResponseInner implements ModelInterface, Ar
             }
         }
         $this->container['pack'] = $pack;
+
+        return $this;
+    }
+
+    /**
+     * Gets stock
+     *
+     * @return \OpenAPI\Client\Model\PositionStock|null
+     */
+    public function getStock()
+    {
+        return $this->container['stock'];
+    }
+
+    /**
+     * Sets stock
+     *
+     * @param \OpenAPI\Client\Model\PositionStock|null $stock Остатки и себестоимость позиции. Не выводится по умолчанию. Для получения передайте параметр `?fields=stock`.
+     *
+     * @return self
+     */
+    public function setStock($stock)
+    {
+        if (is_null($stock)) {
+            array_push($this->openAPINullablesSetToNull, 'stock');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('stock', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['stock'] = $stock;
 
         return $this;
     }

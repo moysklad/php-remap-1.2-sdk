@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * CurrencyListTest Class Doc Comment
  *
  * @category    Class
- * @description CurrencyList
+ * @description Список валют
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

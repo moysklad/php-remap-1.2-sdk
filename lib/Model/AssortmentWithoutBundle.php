@@ -109,7 +109,11 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
         'sync_id' => 'string',
         'ppe_type' => 'string',
         'product' => '\OpenAPI\Client\Model\Product',
-        'characteristics' => '\OpenAPI\Client\Model\VariantCharacteristicValue[]'
+        'characteristics' => '\OpenAPI\Client\Model\VariantCharacteristicValue[]',
+        'stock' => 'float',
+        'reserve' => 'float',
+        'in_transit' => 'float',
+        'quantity' => 'float'
     ];
 
     /**
@@ -171,7 +175,11 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
         'sync_id' => 'uuid',
         'ppe_type' => null,
         'product' => null,
-        'characteristics' => null
+        'characteristics' => null,
+        'stock' => 'double',
+        'reserve' => 'double',
+        'in_transit' => 'double',
+        'quantity' => 'double'
     ];
 
     /**
@@ -231,7 +239,11 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
         'sync_id' => false,
         'ppe_type' => false,
         'product' => false,
-        'characteristics' => false
+        'characteristics' => false,
+        'stock' => false,
+        'reserve' => false,
+        'in_transit' => false,
+        'quantity' => false
     ];
 
     /**
@@ -371,7 +383,11 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
         'sync_id' => 'syncId',
         'ppe_type' => 'ppeType',
         'product' => 'product',
-        'characteristics' => 'characteristics'
+        'characteristics' => 'characteristics',
+        'stock' => 'stock',
+        'reserve' => 'reserve',
+        'in_transit' => 'inTransit',
+        'quantity' => 'quantity'
     ];
 
     /**
@@ -431,7 +447,11 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
         'sync_id' => 'setSyncId',
         'ppe_type' => 'setPpeType',
         'product' => 'setProduct',
-        'characteristics' => 'setCharacteristics'
+        'characteristics' => 'setCharacteristics',
+        'stock' => 'setStock',
+        'reserve' => 'setReserve',
+        'in_transit' => 'setInTransit',
+        'quantity' => 'setQuantity'
     ];
 
     /**
@@ -491,7 +511,11 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
         'sync_id' => 'getSyncId',
         'ppe_type' => 'getPpeType',
         'product' => 'getProduct',
-        'characteristics' => 'getCharacteristics'
+        'characteristics' => 'getCharacteristics',
+        'stock' => 'getStock',
+        'reserve' => 'getReserve',
+        'in_transit' => 'getInTransit',
+        'quantity' => 'getQuantity'
     ];
 
     /**
@@ -649,6 +673,10 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('ppe_type', $data ?? [], null);
         $this->setIfExists('product', $data ?? [], null);
         $this->setIfExists('characteristics', $data ?? [], null);
+        $this->setIfExists('stock', $data ?? [], null);
+        $this->setIfExists('reserve', $data ?? [], null);
+        $this->setIfExists('in_transit', $data ?? [], null);
+        $this->setIfExists('quantity', $data ?? [], null);
     }
 
     /**
@@ -2025,7 +2053,7 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets minimum_stock
      *
-     * @param \OpenAPI\Client\Model\MinimumStockAbstract|null $minimum_stock Неснижаемый остаток
+     * @param \OpenAPI\Client\Model\MinimumStockAbstract|null $minimum_stock Неснижаемый остаток. Не выводится по умолчанию. Для получения передайте параметр `?fields=minimumStock`.
      *
      * @return self
      */
@@ -2285,6 +2313,114 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable characteristics cannot be null');
         }
         $this->container['characteristics'] = $characteristics;
+
+        return $this;
+    }
+
+    /**
+     * Gets stock
+     *
+     * @return float|null
+     */
+    public function getStock()
+    {
+        return $this->container['stock'];
+    }
+
+    /**
+     * Sets stock
+     *
+     * @param float|null $stock Остаток
+     *
+     * @return self
+     */
+    public function setStock($stock)
+    {
+        if (is_null($stock)) {
+            throw new \InvalidArgumentException('non-nullable stock cannot be null');
+        }
+        $this->container['stock'] = $stock;
+
+        return $this;
+    }
+
+    /**
+     * Gets reserve
+     *
+     * @return float|null
+     */
+    public function getReserve()
+    {
+        return $this->container['reserve'];
+    }
+
+    /**
+     * Sets reserve
+     *
+     * @param float|null $reserve Резерв
+     *
+     * @return self
+     */
+    public function setReserve($reserve)
+    {
+        if (is_null($reserve)) {
+            throw new \InvalidArgumentException('non-nullable reserve cannot be null');
+        }
+        $this->container['reserve'] = $reserve;
+
+        return $this;
+    }
+
+    /**
+     * Gets in_transit
+     *
+     * @return float|null
+     */
+    public function getInTransit()
+    {
+        return $this->container['in_transit'];
+    }
+
+    /**
+     * Sets in_transit
+     *
+     * @param float|null $in_transit Ожидание
+     *
+     * @return self
+     */
+    public function setInTransit($in_transit)
+    {
+        if (is_null($in_transit)) {
+            throw new \InvalidArgumentException('non-nullable in_transit cannot be null');
+        }
+        $this->container['in_transit'] = $in_transit;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return float|null
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param float|null $quantity Доступно
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        if (is_null($quantity)) {
+            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+        }
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }

@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * StoreListTest Class Doc Comment
  *
  * @category    Class
- * @description StoreList
+ * @description Список Складов
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

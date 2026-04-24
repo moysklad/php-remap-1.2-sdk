@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **state** | [**\OpenAPI\Client\Model\State**](State.md) | Метаданные статуса договора | [optional]
 **organization_account** | [**\OpenAPI\Client\Model\Account**](Account.md) | Метаданные счета вашего юрлица | [optional]
 **agent_account** | [**\OpenAPI\Client\Model\Account**](Account.md) | Метаданные счета контрагента | [optional]
-**rate** | [**\OpenAPI\Client\Model\InternalOrderRate**](InternalOrderRate.md) |  | [optional]
+**rate** | [**\OpenAPI\Client\Model\CurrencyRate**](CurrencyRate.md) |  | [optional]
 **attributes** | [**\OpenAPI\Client\Model\AttributeAbstract[]**](AttributeAbstract.md) | Коллекция доп. полей | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

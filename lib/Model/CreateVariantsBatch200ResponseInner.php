@@ -984,7 +984,7 @@ class CreateVariantsBatch200ResponseInner implements ModelInterface, ArrayAccess
     /**
      * Sets minimum_stock
      *
-     * @param \OpenAPI\Client\Model\MinimumStockAbstract|null $minimum_stock Неснижаемый остаток
+     * @param \OpenAPI\Client\Model\MinimumStockAbstract|null $minimum_stock Неснижаемый остаток. Не выводится по умолчанию. Для получения передайте параметр `?fields=minimumStock`.
      *
      * @return self
      */

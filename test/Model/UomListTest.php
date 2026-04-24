@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * UomListTest Class Doc Comment
  *
  * @category    Class
- * @description UomList
+ * @description Список единиц измерения
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

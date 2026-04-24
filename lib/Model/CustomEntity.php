@@ -1,6 +1,6 @@
 <?php
 /**
- * InternalOrderRate
+ * CustomEntity
  *
  * PHP version 8.1
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * InternalOrderRate Class Doc Comment
+ * CustomEntity Class Doc Comment
  *
  * @category Class
- * @description Валюта
+ * @description Пользовательский справочник (customentity)
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class InternalOrderRate implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomEntity implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class InternalOrderRate implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'InternalOrder_rate';
+    protected static $openAPIModelName = 'CustomEntity';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class InternalOrderRate implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'currency' => '\OpenAPI\Client\Model\Currency',
-        'value' => 'float'
+        'meta' => '\OpenAPI\Client\Model\Meta',
+        'id' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -70,8 +71,9 @@ class InternalOrderRate implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'currency' => null,
-        'value' => 'double'
+        'meta' => null,
+        'id' => 'uuid',
+        'name' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class InternalOrderRate implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'currency' => false,
-        'value' => false
+        'meta' => false,
+        'id' => false,
+        'name' => false
     ];
 
     /**
@@ -170,8 +173,9 @@ class InternalOrderRate implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'currency' => 'currency',
-        'value' => 'value'
+        'meta' => 'meta',
+        'id' => 'id',
+        'name' => 'name'
     ];
 
     /**
@@ -180,8 +184,9 @@ class InternalOrderRate implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'currency' => 'setCurrency',
-        'value' => 'setValue'
+        'meta' => 'setMeta',
+        'id' => 'setId',
+        'name' => 'setName'
     ];
 
     /**
@@ -190,8 +195,9 @@ class InternalOrderRate implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'currency' => 'getCurrency',
-        'value' => 'getValue'
+        'meta' => 'getMeta',
+        'id' => 'getId',
+        'name' => 'getName'
     ];
 
     /**
@@ -251,8 +257,9 @@ class InternalOrderRate implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -282,6 +289,10 @@ class InternalOrderRate implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        }
+
         return $invalidProperties;
     }
 
@@ -298,55 +309,86 @@ class InternalOrderRate implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets currency
+     * Gets meta
      *
-     * @return \OpenAPI\Client\Model\Currency|null
+     * @return \OpenAPI\Client\Model\Meta|null
      */
-    public function getCurrency()
+    public function getMeta()
     {
-        return $this->container['currency'];
+        return $this->container['meta'];
     }
 
     /**
-     * Sets currency
+     * Sets meta
      *
-     * @param \OpenAPI\Client\Model\Currency|null $currency currency
+     * @param \OpenAPI\Client\Model\Meta|null $meta meta
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setMeta($meta)
     {
-        if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
         }
-        $this->container['currency'] = $currency;
+        $this->container['meta'] = $meta;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets id
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getValue()
+    public function getId()
     {
-        return $this->container['value'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets value
+     * Sets id
      *
-     * @param float|null $value Курс валюты
+     * @param string|null $id ID пользовательского справочника
      *
      * @return self
      */
-    public function setValue($value)
+    public function setId($id)
     {
-        if (is_null($value)) {
-            throw new \InvalidArgumentException('non-nullable value cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['value'] = $value;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Наименование пользовательского справочника
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling CustomEntity., must be smaller than or equal to 255.');
+        }
+
+        $this->container['name'] = $name;
 
         return $this;
     }

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CustomerOrderList Class Doc Comment
  *
  * @category Class
+ * @description Список Заказов покупателей
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -288,15 +289,6 @@ class CustomerOrderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['context'] === null) {
-            $invalidProperties[] = "'context' can't be null";
-        }
-        if ($this->container['meta'] === null) {
-            $invalidProperties[] = "'meta' can't be null";
-        }
-        if ($this->container['rows'] === null) {
-            $invalidProperties[] = "'rows' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -315,7 +307,7 @@ class CustomerOrderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets context
      *
-     * @return \OpenAPI\Client\Model\Context
+     * @return \OpenAPI\Client\Model\Context|null
      */
     public function getContext()
     {
@@ -325,7 +317,7 @@ class CustomerOrderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets context
      *
-     * @param \OpenAPI\Client\Model\Context $context context
+     * @param \OpenAPI\Client\Model\Context|null $context context
      *
      * @return self
      */
@@ -342,7 +334,7 @@ class CustomerOrderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets meta
      *
-     * @return \OpenAPI\Client\Model\MetaList
+     * @return \OpenAPI\Client\Model\MetaList|null
      */
     public function getMeta()
     {
@@ -352,7 +344,7 @@ class CustomerOrderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets meta
      *
-     * @param \OpenAPI\Client\Model\MetaList $meta meta
+     * @param \OpenAPI\Client\Model\MetaList|null $meta meta
      *
      * @return self
      */
@@ -369,7 +361,7 @@ class CustomerOrderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets rows
      *
-     * @return \OpenAPI\Client\Model\CustomerOrder[]
+     * @return \OpenAPI\Client\Model\CustomerOrder[]|null
      */
     public function getRows()
     {
@@ -379,7 +371,7 @@ class CustomerOrderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\CustomerOrder[] $rows rows
+     * @param \OpenAPI\Client\Model\CustomerOrder[]|null $rows Массив Заказов покупателей
      *
      * @return self
      */

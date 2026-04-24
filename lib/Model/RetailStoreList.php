@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RetailStoreList Class Doc Comment
  *
  * @category Class
+ * @description Список точек продаж
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

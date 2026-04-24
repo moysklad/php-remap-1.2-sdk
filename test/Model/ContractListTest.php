@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * ContractListTest Class Doc Comment
  *
  * @category    Class
- * @description ContractList
+ * @description Список договоров
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

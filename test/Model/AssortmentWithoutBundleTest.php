@@ -546,4 +546,40 @@ class AssortmentWithoutBundleTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "stock"
+     */
+    public function testPropertyStock()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "reserve"
+     */
+    public function testPropertyReserve()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "in_transit"
+     */
+    public function testPropertyInTransit()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "quantity"
+     */
+    public function testPropertyQuantity()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

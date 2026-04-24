@@ -57,10 +57,10 @@ class AccumulationDiscount implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'assortment' => '\OpenAPI\Client\Model\Product[]',
+        'assortment' => '\OpenAPI\Client\Model\DiscountAssortmentItem[]',
         'product_folders' => '\OpenAPI\Client\Model\ProductFolder[]',
         'all_products' => 'bool',
-        'level' => 'object[]',
+        'levels' => 'object[]',
         'id' => 'string',
         'meta' => '\OpenAPI\Client\Model\Meta',
         'account_id' => 'string',
@@ -81,7 +81,7 @@ class AccumulationDiscount implements ModelInterface, ArrayAccess, \JsonSerializ
         'assortment' => null,
         'product_folders' => null,
         'all_products' => null,
-        'level' => null,
+        'levels' => null,
         'id' => 'uuid',
         'meta' => null,
         'account_id' => 'uuid',
@@ -100,7 +100,7 @@ class AccumulationDiscount implements ModelInterface, ArrayAccess, \JsonSerializ
         'assortment' => false,
         'product_folders' => false,
         'all_products' => false,
-        'level' => false,
+        'levels' => false,
         'id' => false,
         'meta' => false,
         'account_id' => false,
@@ -199,7 +199,7 @@ class AccumulationDiscount implements ModelInterface, ArrayAccess, \JsonSerializ
         'assortment' => 'assortment',
         'product_folders' => 'productFolders',
         'all_products' => 'allProducts',
-        'level' => 'level',
+        'levels' => 'levels',
         'id' => 'id',
         'meta' => 'meta',
         'account_id' => 'accountId',
@@ -218,7 +218,7 @@ class AccumulationDiscount implements ModelInterface, ArrayAccess, \JsonSerializ
         'assortment' => 'setAssortment',
         'product_folders' => 'setProductFolders',
         'all_products' => 'setAllProducts',
-        'level' => 'setLevel',
+        'levels' => 'setLevels',
         'id' => 'setId',
         'meta' => 'setMeta',
         'account_id' => 'setAccountId',
@@ -237,7 +237,7 @@ class AccumulationDiscount implements ModelInterface, ArrayAccess, \JsonSerializ
         'assortment' => 'getAssortment',
         'product_folders' => 'getProductFolders',
         'all_products' => 'getAllProducts',
-        'level' => 'getLevel',
+        'levels' => 'getLevels',
         'id' => 'getId',
         'meta' => 'getMeta',
         'account_id' => 'getAccountId',
@@ -307,7 +307,7 @@ class AccumulationDiscount implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('assortment', $data ?? [], null);
         $this->setIfExists('product_folders', $data ?? [], null);
         $this->setIfExists('all_products', $data ?? [], null);
-        $this->setIfExists('level', $data ?? [], null);
+        $this->setIfExists('levels', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
@@ -366,7 +366,7 @@ class AccumulationDiscount implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets assortment
      *
-     * @return \OpenAPI\Client\Model\Product[]|null
+     * @return \OpenAPI\Client\Model\DiscountAssortmentItem[]|null
      */
     public function getAssortment()
     {
@@ -376,7 +376,7 @@ class AccumulationDiscount implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets assortment
      *
-     * @param \OpenAPI\Client\Model\Product[]|null $assortment Товары со скидкой
+     * @param \OpenAPI\Client\Model\DiscountAssortmentItem[]|null $assortment Товары, услуги и модификации со скидкой
      *
      * @return self
      */
@@ -445,28 +445,28 @@ class AccumulationDiscount implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets level
+     * Gets levels
      *
      * @return object[]|null
      */
-    public function getLevel()
+    public function getLevels()
     {
-        return $this->container['level'];
+        return $this->container['levels'];
     }
 
     /**
-     * Sets level
+     * Sets levels
      *
-     * @param object[]|null $level Процент скидки при определенной сумме продаж
+     * @param object[]|null $levels Проценты скидок при определенной сумме продаж
      *
      * @return self
      */
-    public function setLevel($level)
+    public function setLevels($levels)
     {
-        if (is_null($level)) {
-            throw new \InvalidArgumentException('non-nullable level cannot be null');
+        if (is_null($levels)) {
+            throw new \InvalidArgumentException('non-nullable levels cannot be null');
         }
-        $this->container['level'] = $level;
+        $this->container['levels'] = $levels;
 
         return $this;
     }

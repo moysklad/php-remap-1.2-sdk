@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **welcome_bonuses_enabled** | **bool** | Возможность начисления приветственных баллов | [optional]
 **welcome_bonuses_value** | **int** | Количество приветственных баллов, начисляемых участникам бонусной программы | [optional]
 **welcome_bonuses_mode** | **string** | Условие начисления приветственных баллов | [optional]
+**max_paid_rate_percents** | **int** | Максимальный процент оплаты баллами | [optional]
 **all_products** | **bool** | Для всех ли товаров скидка | [optional]
 **id** | **string** | ID дополнительного поля | [optional] [readonly]
 **meta** | [**\OpenAPI\Client\Model\Meta**](Meta.md) |  | [optional]

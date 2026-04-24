@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * VariantListTest Class Doc Comment
  *
  * @category    Class
- * @description VariantList
+ * @description Список Модификаций
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

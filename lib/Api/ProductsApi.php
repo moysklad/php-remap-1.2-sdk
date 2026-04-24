@@ -4143,6 +4143,7 @@ class ProductsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductById'] to see the possible values for this operation
@@ -4151,9 +4152,9 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\Product|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function getProductById($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductById'][0])
+    public function getProductById($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductById'][0])
     {
-        list($response) = $this->getProductByIdWithHttpInfo($id, $expand, $accept, $accept_encoding, $contentType);
+        list($response) = $this->getProductByIdWithHttpInfo($id, $expand, $fields, $accept, $accept_encoding, $contentType);
         return $response;
     }
 
@@ -4164,6 +4165,7 @@ class ProductsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductById'] to see the possible values for this operation
@@ -4172,9 +4174,9 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\Product|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getProductByIdWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductById'][0])
+    public function getProductByIdWithHttpInfo($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductById'][0])
     {
-        $request = $this->getProductByIdRequest($id, $expand, $accept, $accept_encoding, $contentType);
+        $request = $this->getProductByIdRequest($id, $expand, $fields, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4266,6 +4268,7 @@ class ProductsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductById'] to see the possible values for this operation
@@ -4273,9 +4276,9 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getProductByIdAsync($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductById'][0])
+    public function getProductByIdAsync($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductById'][0])
     {
-        return $this->getProductByIdAsyncWithHttpInfo($id, $expand, $accept, $accept_encoding, $contentType)
+        return $this->getProductByIdAsyncWithHttpInfo($id, $expand, $fields, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4290,6 +4293,7 @@ class ProductsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductById'] to see the possible values for this operation
@@ -4297,10 +4301,10 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getProductByIdAsyncWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductById'][0])
+    public function getProductByIdAsyncWithHttpInfo($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductById'][0])
     {
         $returnType = '\OpenAPI\Client\Model\Product';
-        $request = $this->getProductByIdRequest($id, $expand, $accept, $accept_encoding, $contentType);
+        $request = $this->getProductByIdRequest($id, $expand, $fields, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4343,6 +4347,7 @@ class ProductsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductById'] to see the possible values for this operation
@@ -4350,7 +4355,7 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getProductByIdRequest($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductById'][0])
+    public function getProductByIdRequest($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductById'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -4359,6 +4364,7 @@ class ProductsApi
                 'Missing the required parameter $id when calling getProductById'
             );
         }
+
 
 
 
@@ -4375,6 +4381,15 @@ class ProductsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -4818,6 +4833,7 @@ class ProductsApi
      * @param  string $id ID сущности (required)
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductImages'] to see the possible values for this operation
@@ -4826,9 +4842,9 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\GetProductImages200Response|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function getProductImages($id, $limit = 1000, $offset = 0, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductImages'][0])
+    public function getProductImages($id, $limit = 1000, $offset = 0, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductImages'][0])
     {
-        list($response) = $this->getProductImagesWithHttpInfo($id, $limit, $offset, $accept, $accept_encoding, $contentType);
+        list($response) = $this->getProductImagesWithHttpInfo($id, $limit, $offset, $fields, $accept, $accept_encoding, $contentType);
         return $response;
     }
 
@@ -4840,6 +4856,7 @@ class ProductsApi
      * @param  string $id ID сущности (required)
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductImages'] to see the possible values for this operation
@@ -4848,9 +4865,9 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\GetProductImages200Response|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getProductImagesWithHttpInfo($id, $limit = 1000, $offset = 0, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductImages'][0])
+    public function getProductImagesWithHttpInfo($id, $limit = 1000, $offset = 0, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductImages'][0])
     {
-        $request = $this->getProductImagesRequest($id, $limit, $offset, $accept, $accept_encoding, $contentType);
+        $request = $this->getProductImagesRequest($id, $limit, $offset, $fields, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4943,6 +4960,7 @@ class ProductsApi
      * @param  string $id ID сущности (required)
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductImages'] to see the possible values for this operation
@@ -4950,9 +4968,9 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getProductImagesAsync($id, $limit = 1000, $offset = 0, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductImages'][0])
+    public function getProductImagesAsync($id, $limit = 1000, $offset = 0, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductImages'][0])
     {
-        return $this->getProductImagesAsyncWithHttpInfo($id, $limit, $offset, $accept, $accept_encoding, $contentType)
+        return $this->getProductImagesAsyncWithHttpInfo($id, $limit, $offset, $fields, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4968,6 +4986,7 @@ class ProductsApi
      * @param  string $id ID сущности (required)
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductImages'] to see the possible values for this operation
@@ -4975,10 +4994,10 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getProductImagesAsyncWithHttpInfo($id, $limit = 1000, $offset = 0, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductImages'][0])
+    public function getProductImagesAsyncWithHttpInfo($id, $limit = 1000, $offset = 0, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductImages'][0])
     {
         $returnType = '\OpenAPI\Client\Model\GetProductImages200Response';
-        $request = $this->getProductImagesRequest($id, $limit, $offset, $accept, $accept_encoding, $contentType);
+        $request = $this->getProductImagesRequest($id, $limit, $offset, $fields, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5022,6 +5041,7 @@ class ProductsApi
      * @param  string $id ID сущности (required)
      * @param  int|null $limit Максимальное количество элементов в выданном списке (максимум 1000) (optional, default to 1000)
      * @param  int|null $offset Отступ в выданном списке (optional, default to 0)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductImages'] to see the possible values for this operation
@@ -5029,7 +5049,7 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getProductImagesRequest($id, $limit = 1000, $offset = 0, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductImages'][0])
+    public function getProductImagesRequest($id, $limit = 1000, $offset = 0, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProductImages'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -5050,6 +5070,7 @@ class ProductsApi
             throw new \InvalidArgumentException('invalid value for "$offset" when calling ProductsApi.getProductImages, must be bigger than or equal to 0.');
         }
         
+
 
 
 
@@ -5074,6 +5095,15 @@ class ProductsApi
             $offset,
             'offset', // param base name
             'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             false // required
@@ -5849,6 +5879,7 @@ class ProductsApi
      * @param  string|null $filter Фильтрация выборки (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $order Сортировка (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProducts'] to see the possible values for this operation
@@ -5857,9 +5888,9 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ProductList|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function getProducts($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProducts'][0])
+    public function getProducts($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProducts'][0])
     {
-        list($response) = $this->getProductsWithHttpInfo($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
+        list($response) = $this->getProductsWithHttpInfo($limit, $offset, $search, $filter, $expand, $order, $fields, $accept, $accept_encoding, $contentType);
         return $response;
     }
 
@@ -5874,6 +5905,7 @@ class ProductsApi
      * @param  string|null $filter Фильтрация выборки (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $order Сортировка (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProducts'] to see the possible values for this operation
@@ -5882,9 +5914,9 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ProductList|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getProductsWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProducts'][0])
+    public function getProductsWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProducts'][0])
     {
-        $request = $this->getProductsRequest($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
+        $request = $this->getProductsRequest($limit, $offset, $search, $filter, $expand, $order, $fields, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5980,6 +6012,7 @@ class ProductsApi
      * @param  string|null $filter Фильтрация выборки (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $order Сортировка (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProducts'] to see the possible values for this operation
@@ -5987,9 +6020,9 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getProductsAsync($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProducts'][0])
+    public function getProductsAsync($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProducts'][0])
     {
-        return $this->getProductsAsyncWithHttpInfo($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType)
+        return $this->getProductsAsyncWithHttpInfo($limit, $offset, $search, $filter, $expand, $order, $fields, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6008,6 +6041,7 @@ class ProductsApi
      * @param  string|null $filter Фильтрация выборки (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $order Сортировка (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProducts'] to see the possible values for this operation
@@ -6015,10 +6049,10 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getProductsAsyncWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProducts'][0])
+    public function getProductsAsyncWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProducts'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ProductList';
-        $request = $this->getProductsRequest($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
+        $request = $this->getProductsRequest($limit, $offset, $search, $filter, $expand, $order, $fields, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6065,6 +6099,7 @@ class ProductsApi
      * @param  string|null $filter Фильтрация выборки (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $order Сортировка (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProducts'] to see the possible values for this operation
@@ -6072,7 +6107,7 @@ class ProductsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getProductsRequest($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProducts'][0])
+    public function getProductsRequest($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getProducts'][0])
     {
 
         if ($limit !== null && $limit > 1000) {
@@ -6086,6 +6121,7 @@ class ProductsApi
             throw new \InvalidArgumentException('invalid value for "$offset" when calling ProductsApi.getProducts, must be bigger than or equal to 0.');
         }
         
+
 
 
 
@@ -6149,6 +6185,15 @@ class ProductsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $order,
             'order', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode

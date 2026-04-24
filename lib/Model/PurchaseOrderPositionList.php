@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PurchaseOrderPositionList Class Doc Comment
  *
  * @category Class
+ * @description Список позиций Заказа поставщику
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

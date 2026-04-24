@@ -81,7 +81,7 @@ class CreateContractsBatch200ResponseInner implements ModelInterface, ArrayAcces
         'state' => '\OpenAPI\Client\Model\State',
         'organization_account' => '\OpenAPI\Client\Model\Account',
         'agent_account' => '\OpenAPI\Client\Model\Account',
-        'rate' => '\OpenAPI\Client\Model\InternalOrderRate',
+        'rate' => '\OpenAPI\Client\Model\CurrencyRate',
         'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]',
         'errors' => '\OpenAPI\Client\Model\ErrorErrorsInner[]'
     ];
@@ -1276,7 +1276,7 @@ class CreateContractsBatch200ResponseInner implements ModelInterface, ArrayAcces
     /**
      * Gets rate
      *
-     * @return \OpenAPI\Client\Model\InternalOrderRate|null
+     * @return \OpenAPI\Client\Model\CurrencyRate|null
      */
     public function getRate()
     {
@@ -1286,7 +1286,7 @@ class CreateContractsBatch200ResponseInner implements ModelInterface, ArrayAcces
     /**
      * Sets rate
      *
-     * @param \OpenAPI\Client\Model\InternalOrderRate|null $rate rate
+     * @param \OpenAPI\Client\Model\CurrencyRate|null $rate rate
      *
      * @return self
      */

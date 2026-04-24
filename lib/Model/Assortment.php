@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Assortment Class Doc Comment
  *
  * @category Class
- * @description Товар/услуга/модификация/комплект
+ * @description Товар/услуга/модификация/комплект, данная модель уже не поддерживается
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -111,7 +111,11 @@ class Assortment implements ModelInterface, ArrayAccess, \JsonSerializable
         'product' => '\OpenAPI\Client\Model\Product',
         'characteristics' => '\OpenAPI\Client\Model\VariantCharacteristicValue[]',
         'overhead' => '\OpenAPI\Client\Model\BundleOverhead',
-        'components' => '\OpenAPI\Client\Model\BundleComponentList'
+        'components' => '\OpenAPI\Client\Model\BundleComponentList',
+        'stock' => 'float',
+        'reserve' => 'float',
+        'in_transit' => 'float',
+        'quantity' => 'float'
     ];
 
     /**
@@ -175,7 +179,11 @@ class Assortment implements ModelInterface, ArrayAccess, \JsonSerializable
         'product' => null,
         'characteristics' => null,
         'overhead' => null,
-        'components' => null
+        'components' => null,
+        'stock' => 'double',
+        'reserve' => 'double',
+        'in_transit' => 'double',
+        'quantity' => 'double'
     ];
 
     /**
@@ -237,7 +245,11 @@ class Assortment implements ModelInterface, ArrayAccess, \JsonSerializable
         'product' => false,
         'characteristics' => false,
         'overhead' => false,
-        'components' => false
+        'components' => false,
+        'stock' => false,
+        'reserve' => false,
+        'in_transit' => false,
+        'quantity' => false
     ];
 
     /**
@@ -379,7 +391,11 @@ class Assortment implements ModelInterface, ArrayAccess, \JsonSerializable
         'product' => 'product',
         'characteristics' => 'characteristics',
         'overhead' => 'overhead',
-        'components' => 'components'
+        'components' => 'components',
+        'stock' => 'stock',
+        'reserve' => 'reserve',
+        'in_transit' => 'inTransit',
+        'quantity' => 'quantity'
     ];
 
     /**
@@ -441,7 +457,11 @@ class Assortment implements ModelInterface, ArrayAccess, \JsonSerializable
         'product' => 'setProduct',
         'characteristics' => 'setCharacteristics',
         'overhead' => 'setOverhead',
-        'components' => 'setComponents'
+        'components' => 'setComponents',
+        'stock' => 'setStock',
+        'reserve' => 'setReserve',
+        'in_transit' => 'setInTransit',
+        'quantity' => 'setQuantity'
     ];
 
     /**
@@ -503,7 +523,11 @@ class Assortment implements ModelInterface, ArrayAccess, \JsonSerializable
         'product' => 'getProduct',
         'characteristics' => 'getCharacteristics',
         'overhead' => 'getOverhead',
-        'components' => 'getComponents'
+        'components' => 'getComponents',
+        'stock' => 'getStock',
+        'reserve' => 'getReserve',
+        'in_transit' => 'getInTransit',
+        'quantity' => 'getQuantity'
     ];
 
     /**
@@ -661,6 +685,10 @@ class Assortment implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('characteristics', $data ?? [], null);
         $this->setIfExists('overhead', $data ?? [], null);
         $this->setIfExists('components', $data ?? [], null);
+        $this->setIfExists('stock', $data ?? [], null);
+        $this->setIfExists('reserve', $data ?? [], null);
+        $this->setIfExists('in_transit', $data ?? [], null);
+        $this->setIfExists('quantity', $data ?? [], null);
     }
 
     /**
@@ -1996,7 +2024,7 @@ class Assortment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets minimum_stock
      *
-     * @param \OpenAPI\Client\Model\MinimumStockAbstract|null $minimum_stock Неснижаемый остаток
+     * @param \OpenAPI\Client\Model\MinimumStockAbstract|null $minimum_stock Неснижаемый остаток. Не выводится по умолчанию. Для получения передайте параметр `?fields=minimumStock`.
      *
      * @return self
      */
@@ -2300,7 +2328,7 @@ class Assortment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets components
      *
-     * @param \OpenAPI\Client\Model\BundleComponentList|null $components components
+     * @param \OpenAPI\Client\Model\BundleComponentList|null $components Массив компонентов Комплекта
      *
      * @return self
      */
@@ -2310,6 +2338,114 @@ class Assortment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable components cannot be null');
         }
         $this->container['components'] = $components;
+
+        return $this;
+    }
+
+    /**
+     * Gets stock
+     *
+     * @return float|null
+     */
+    public function getStock()
+    {
+        return $this->container['stock'];
+    }
+
+    /**
+     * Sets stock
+     *
+     * @param float|null $stock Остаток
+     *
+     * @return self
+     */
+    public function setStock($stock)
+    {
+        if (is_null($stock)) {
+            throw new \InvalidArgumentException('non-nullable stock cannot be null');
+        }
+        $this->container['stock'] = $stock;
+
+        return $this;
+    }
+
+    /**
+     * Gets reserve
+     *
+     * @return float|null
+     */
+    public function getReserve()
+    {
+        return $this->container['reserve'];
+    }
+
+    /**
+     * Sets reserve
+     *
+     * @param float|null $reserve Резерв
+     *
+     * @return self
+     */
+    public function setReserve($reserve)
+    {
+        if (is_null($reserve)) {
+            throw new \InvalidArgumentException('non-nullable reserve cannot be null');
+        }
+        $this->container['reserve'] = $reserve;
+
+        return $this;
+    }
+
+    /**
+     * Gets in_transit
+     *
+     * @return float|null
+     */
+    public function getInTransit()
+    {
+        return $this->container['in_transit'];
+    }
+
+    /**
+     * Sets in_transit
+     *
+     * @param float|null $in_transit Ожидание
+     *
+     * @return self
+     */
+    public function setInTransit($in_transit)
+    {
+        if (is_null($in_transit)) {
+            throw new \InvalidArgumentException('non-nullable in_transit cannot be null');
+        }
+        $this->container['in_transit'] = $in_transit;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return float|null
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param float|null $quantity Доступно
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        if (is_null($quantity)) {
+            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+        }
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }

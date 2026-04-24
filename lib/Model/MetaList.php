@@ -50,7 +50,7 @@ class MetaList implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'metaList';
+    protected static $openAPIModelName = 'MetaList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

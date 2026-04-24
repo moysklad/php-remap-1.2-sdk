@@ -41,7 +41,7 @@ Name | Type | Description | Notes
 **group** | [**\OpenAPI\Client\Model\Group**](Group.md) |  | [optional]
 **attributes** | [**\OpenAPI\Client\Model\AttributeAbstract[]**](AttributeAbstract.md) | Коллекция метаданных доп. полей | [optional]
 **files** | [**\OpenAPI\Client\Model\FileList**](FileList.md) | Метаданные массива Файлов | [optional]
-**rate** | [**\OpenAPI\Client\Model\InternalOrderRate**](InternalOrderRate.md) |  | [optional]
+**rate** | [**\OpenAPI\Client\Model\PurchaseOrderRate**](PurchaseOrderRate.md) |  | [optional]
 **positions** | [**\OpenAPI\Client\Model\PurchaseOrderPositionList**](.md) | Позиции Заказа поставщику | [optional]
 **internal_order** | [**\OpenAPI\Client\Model\InternalOrder**](InternalOrder.md) | Внутренний заказ, связанный с заказом поставщику | [optional]
 **customer_orders** | [**\OpenAPI\Client\Model\CustomerOrder[]**](CustomerOrder.md) | Массив ссылок на связанные заказы покупателей | [optional]

@@ -96,7 +96,7 @@ class CustomerOrder implements ModelInterface, ArrayAccess, \JsonSerializable
         'attributes' => '\OpenAPI\Client\Model\AttributeAbstract[]',
         'files' => '\OpenAPI\Client\Model\FileList',
         'tax_system' => 'string',
-        'rate' => '\OpenAPI\Client\Model\InternalOrderRate',
+        'rate' => '\OpenAPI\Client\Model\CurrencyRate',
         'positions' => '\OpenAPI\Client\Model\CustomerOrderPositionList',
         'sales_channel' => '\OpenAPI\Client\Model\SalesChannel',
         'shipment_address' => 'string',
@@ -1803,7 +1803,7 @@ class CustomerOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rate
      *
-     * @return \OpenAPI\Client\Model\InternalOrderRate|null
+     * @return \OpenAPI\Client\Model\CurrencyRate|null
      */
     public function getRate()
     {
@@ -1813,7 +1813,7 @@ class CustomerOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rate
      *
-     * @param \OpenAPI\Client\Model\InternalOrderRate|null $rate rate
+     * @param \OpenAPI\Client\Model\CurrencyRate|null $rate rate
      *
      * @return self
      */

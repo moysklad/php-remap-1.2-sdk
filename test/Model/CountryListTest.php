@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * CountryListTest Class Doc Comment
  *
  * @category    Class
- * @description CountryList
+ * @description Список стран
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

@@ -3124,7 +3124,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets acquire
      *
-     * @param \OpenAPI\Client\Model\Counterparty|null $acquire Эквайер
+     * @param \OpenAPI\Client\Model\Counterparty|null $acquire acquire
      *
      * @return self
      */

@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **tax_system** | **string** | Код системы налогообложения | [optional]
 **assortment** | [**\OpenAPI\Client\Model\Assortment**](Assortment.md) |  | [optional]
 **pack** | [**\OpenAPI\Client\Model\Pack**](Pack.md) | Упаковка Товара | [optional]
+**stock** | [**\OpenAPI\Client\Model\PositionStock**](PositionStock.md) | Остатки и себестоимость позиции. Не выводится по умолчанию. Для получения передайте параметр &#x60;?fields&#x3D;stock&#x60;. | [optional]
 **errors** | [**\OpenAPI\Client\Model\ErrorErrorsInner[]**](ErrorErrorsInner.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

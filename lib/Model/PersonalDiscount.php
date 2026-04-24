@@ -57,7 +57,7 @@ class PersonalDiscount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'assortment' => '\OpenAPI\Client\Model\Product[]',
+        'assortment' => '\OpenAPI\Client\Model\DiscountAssortmentItem[]',
         'product_folders' => '\OpenAPI\Client\Model\ProductFolder[]',
         'all_products' => 'bool',
         'id' => 'string',
@@ -359,7 +359,7 @@ class PersonalDiscount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets assortment
      *
-     * @return \OpenAPI\Client\Model\Product[]|null
+     * @return \OpenAPI\Client\Model\DiscountAssortmentItem[]|null
      */
     public function getAssortment()
     {
@@ -369,7 +369,7 @@ class PersonalDiscount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets assortment
      *
-     * @param \OpenAPI\Client\Model\Product[]|null $assortment Товары со скидкой
+     * @param \OpenAPI\Client\Model\DiscountAssortmentItem[]|null $assortment Товары, услуги и модификации со скидкой
      *
      * @return self
      */

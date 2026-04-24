@@ -539,6 +539,7 @@ class InternalOrderPosition implements ModelInterface, ArrayAccess, \JsonSeriali
      * Gets assortment
      *
      * @return \OpenAPI\Client\Model\Assortment|null
+     * @deprecated
      */
     public function getAssortment()
     {
@@ -551,6 +552,7 @@ class InternalOrderPosition implements ModelInterface, ArrayAccess, \JsonSeriali
      * @param \OpenAPI\Client\Model\Assortment|null $assortment assortment
      *
      * @return self
+     * @deprecated
      */
     public function setAssortment($assortment)
     {

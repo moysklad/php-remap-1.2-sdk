@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * BundleComponentListTest Class Doc Comment
  *
  * @category    Class
- * @description BundleComponentList
+ * @description Список элементов комплекта
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

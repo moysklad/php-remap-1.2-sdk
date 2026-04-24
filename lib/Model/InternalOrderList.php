@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * InternalOrderList Class Doc Comment
  *
  * @category Class
+ * @description Список Внутренних заказов
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -370,7 +371,7 @@ class InternalOrderList implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets rows
      *
-     * @param \OpenAPI\Client\Model\InternalOrder[]|null $rows rows
+     * @param \OpenAPI\Client\Model\InternalOrder[]|null $rows Массив Внутренних заказов
      *
      * @return self
      */

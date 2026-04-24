@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * AssortmentTest Class Doc Comment
  *
  * @category    Class
- * @description Товар/услуга/модификация/комплект
+ * @description Товар/услуга/модификация/комплект, данная модель уже не поддерживается
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
@@ -560,6 +560,42 @@ class AssortmentTest extends TestCase
      * Test attribute "components"
      */
     public function testPropertyComponents()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "stock"
+     */
+    public function testPropertyStock()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "reserve"
+     */
+    public function testPropertyReserve()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "in_transit"
+     */
+    public function testPropertyInTransit()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "quantity"
+     */
+    public function testPropertyQuantity()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

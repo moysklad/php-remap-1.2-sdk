@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * GroupListTest Class Doc Comment
  *
  * @category    Class
- * @description GroupList
+ * @description Список групп
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * EmployeeListTest Class Doc Comment
  *
  * @category    Class
- * @description EmployeeList
+ * @description Список сотрудников
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

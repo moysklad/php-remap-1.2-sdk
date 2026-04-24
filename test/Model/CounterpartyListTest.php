@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * CounterpartyListTest Class Doc Comment
  *
  * @category    Class
- * @description CounterpartyList
+ * @description Список контрагентов
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

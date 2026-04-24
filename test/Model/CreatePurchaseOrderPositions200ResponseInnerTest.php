@@ -188,6 +188,15 @@ class CreatePurchaseOrderPositions200ResponseInnerTest extends TestCase
     }
 
     /**
+     * Test attribute "stock"
+     */
+    public function testPropertyStock()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "errors"
      */
     public function testPropertyErrors()

@@ -143,6 +143,15 @@ class BonusProgramTest extends TestCase
     }
 
     /**
+     * Test attribute "max_paid_rate_percents"
+     */
+    public function testPropertyMaxPaidRatePercents()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "all_products"
      */
     public function testPropertyAllProducts()

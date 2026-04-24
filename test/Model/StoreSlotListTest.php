@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  * StoreSlotListTest Class Doc Comment
  *
  * @category    Class
- * @description StoreSlotList
+ * @description Список ячеек Склада
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

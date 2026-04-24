@@ -1406,6 +1406,7 @@ class VariantsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVariantById'] to see the possible values for this operation
@@ -1414,9 +1415,9 @@ class VariantsApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\Variant|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function getVariantById($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariantById'][0])
+    public function getVariantById($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariantById'][0])
     {
-        list($response) = $this->getVariantByIdWithHttpInfo($id, $expand, $accept, $accept_encoding, $contentType);
+        list($response) = $this->getVariantByIdWithHttpInfo($id, $expand, $fields, $accept, $accept_encoding, $contentType);
         return $response;
     }
 
@@ -1427,6 +1428,7 @@ class VariantsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVariantById'] to see the possible values for this operation
@@ -1435,9 +1437,9 @@ class VariantsApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\Variant|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getVariantByIdWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariantById'][0])
+    public function getVariantByIdWithHttpInfo($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariantById'][0])
     {
-        $request = $this->getVariantByIdRequest($id, $expand, $accept, $accept_encoding, $contentType);
+        $request = $this->getVariantByIdRequest($id, $expand, $fields, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1529,6 +1531,7 @@ class VariantsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVariantById'] to see the possible values for this operation
@@ -1536,9 +1539,9 @@ class VariantsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getVariantByIdAsync($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariantById'][0])
+    public function getVariantByIdAsync($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariantById'][0])
     {
-        return $this->getVariantByIdAsyncWithHttpInfo($id, $expand, $accept, $accept_encoding, $contentType)
+        return $this->getVariantByIdAsyncWithHttpInfo($id, $expand, $fields, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1553,6 +1556,7 @@ class VariantsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVariantById'] to see the possible values for this operation
@@ -1560,10 +1564,10 @@ class VariantsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getVariantByIdAsyncWithHttpInfo($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariantById'][0])
+    public function getVariantByIdAsyncWithHttpInfo($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariantById'][0])
     {
         $returnType = '\OpenAPI\Client\Model\Variant';
-        $request = $this->getVariantByIdRequest($id, $expand, $accept, $accept_encoding, $contentType);
+        $request = $this->getVariantByIdRequest($id, $expand, $fields, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1606,6 +1610,7 @@ class VariantsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVariantById'] to see the possible values for this operation
@@ -1613,7 +1618,7 @@ class VariantsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getVariantByIdRequest($id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariantById'][0])
+    public function getVariantByIdRequest($id, $expand = null, $fields = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariantById'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -1622,6 +1627,7 @@ class VariantsApi
                 'Missing the required parameter $id when calling getVariantById'
             );
         }
+
 
 
 
@@ -1638,6 +1644,15 @@ class VariantsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -2024,6 +2039,7 @@ class VariantsApi
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $filter Фильтрация выборки (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
@@ -2033,9 +2049,9 @@ class VariantsApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\VariantList|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function getVariants($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariants'][0])
+    public function getVariants($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $fields = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariants'][0])
     {
-        list($response) = $this->getVariantsWithHttpInfo($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
+        list($response) = $this->getVariantsWithHttpInfo($limit, $offset, $search, $filter, $expand, $fields, $order, $accept, $accept_encoding, $contentType);
         return $response;
     }
 
@@ -2049,6 +2065,7 @@ class VariantsApi
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $filter Фильтрация выборки (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
@@ -2058,9 +2075,9 @@ class VariantsApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\VariantList|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getVariantsWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariants'][0])
+    public function getVariantsWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $fields = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariants'][0])
     {
-        $request = $this->getVariantsRequest($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
+        $request = $this->getVariantsRequest($limit, $offset, $search, $filter, $expand, $fields, $order, $accept, $accept_encoding, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2155,6 +2172,7 @@ class VariantsApi
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $filter Фильтрация выборки (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
@@ -2163,9 +2181,9 @@ class VariantsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getVariantsAsync($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariants'][0])
+    public function getVariantsAsync($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $fields = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariants'][0])
     {
-        return $this->getVariantsAsyncWithHttpInfo($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType)
+        return $this->getVariantsAsyncWithHttpInfo($limit, $offset, $search, $filter, $expand, $fields, $order, $accept, $accept_encoding, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2183,6 +2201,7 @@ class VariantsApi
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $filter Фильтрация выборки (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
@@ -2191,10 +2210,10 @@ class VariantsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getVariantsAsyncWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariants'][0])
+    public function getVariantsAsyncWithHttpInfo($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $fields = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariants'][0])
     {
         $returnType = '\OpenAPI\Client\Model\VariantList';
-        $request = $this->getVariantsRequest($limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding, $contentType);
+        $request = $this->getVariantsRequest($limit, $offset, $search, $filter, $expand, $fields, $order, $accept, $accept_encoding, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2240,6 +2259,7 @@ class VariantsApi
      * @param  string|null $search Контекстный поиск по строковым полям сущностей (optional)
      * @param  string|null $filter Фильтрация выборки (optional)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
+     * @param  string|null $fields Включить в ответ скрытые поля, не выводимые по умолчанию. В одном запросе можно передать только одно значение. - &#x60;minimumStock&#x60; — неснижаемый остаток (товар, модификация) - &#x60;downloadPermanentHref&#x60; — постоянная ссылка на изображение (платный тариф) - &#x60;stock&#x60; — остатки и себестоимость в позициях документов - &#x60;declaration&#x60; — прослеживаемость импортных товаров в позициях документов (optional)
      * @param  string|null $order Сортировка (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
@@ -2248,7 +2268,7 @@ class VariantsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getVariantsRequest($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariants'][0])
+    public function getVariantsRequest($limit = 1000, $offset = 0, $search = null, $filter = null, $expand = null, $fields = null, $order = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', string $contentType = self::contentTypes['getVariants'][0])
     {
 
         if ($limit !== null && $limit > 1000) {
@@ -2262,6 +2282,7 @@ class VariantsApi
             throw new \InvalidArgumentException('invalid value for "$offset" when calling VariantsApi.getVariants, must be bigger than or equal to 0.');
         }
         
+
 
 
 
@@ -2316,6 +2337,15 @@ class VariantsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $expand,
             'expand', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
             'string', // openApiType
             '', // style
             false, // explode

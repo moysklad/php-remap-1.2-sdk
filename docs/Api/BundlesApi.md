@@ -650,7 +650,7 @@ try {
 ## `getBundleComponents()`
 
 ```php
-getBundleComponents($id, $limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding): \OpenAPI\Client\Model\BundleComponentList
+getBundleComponents($id, $limit, $offset, $search, $filter, $expand, $order, $accept, $accept_encoding): \OpenAPI\Client\Model\BundleComponent
 ```
 
 Получить компоненты Комплекта
@@ -711,7 +711,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BundleComponentList**](../Model/BundleComponentList.md)
+[**\OpenAPI\Client\Model\BundleComponent**](../Model/BundleComponent.md)
 
 ### Authorization
 
