@@ -44,77 +44,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
-    public const TRACKING_TYPE_BEER_ALCOHOL = 'BEER_ALCOHOL';
-    public const TRACKING_TYPE_BICYCLE = 'BICYCLE';
-    public const TRACKING_TYPE_ELECTRONICS = 'ELECTRONICS';
-    public const TRACKING_TYPE_FOOD_SUPPLEMENT = 'FOOD_SUPPLEMENT';
-    public const TRACKING_TYPE_LP_CLOTHES = 'LP_CLOTHES';
-    public const TRACKING_TYPE_LP_LINENS = 'LP_LINENS';
-    public const TRACKING_TYPE_MEDICAL_DEVICES = 'MEDICAL_DEVICES';
-    public const TRACKING_TYPE_MILK = 'MILK';
-    public const TRACKING_TYPE_NABEER = 'NABEER';
-    public const TRACKING_TYPE_NCP = 'NCP';
-    public const TRACKING_TYPE_NOT_TRACKED = 'NOT_TRACKED';
-    public const TRACKING_TYPE_OTP = 'OTP';
-    public const TRACKING_TYPE_PERFUMERY = 'PERFUMERY';
-    public const TRACKING_TYPE_PET_FOOD = 'PET_FOOD';
-    public const TRACKING_TYPE_SANITIZER = 'SANITIZER';
-    public const TRACKING_TYPE_SEAFOOD = 'SEAFOOD';
-    public const TRACKING_TYPE_SHOES = 'SHOES';
-    public const TRACKING_TYPE_SOFT_DRINKS = 'SOFT_DRINKS';
-    public const TRACKING_TYPE_TIRES = 'TIRES';
-    public const TRACKING_TYPE_TOBACCO = 'TOBACCO';
-    public const TRACKING_TYPE_VEGETABLE_OIL = 'VEGETABLE_OIL';
-    public const TRACKING_TYPE_VETPHARMA = 'VETPHARMA';
-    public const TRACKING_TYPE_WATER = 'WATER';
-
-    public const PPE_TYPE__2400001225408 = '2400001225408';
-    public const PPE_TYPE__2400001225606 = '2400001225606';
-    public const PPE_TYPE__2400001226108 = '2400001226108';
-    public const PPE_TYPE__2400001226306 = '2400001226306';
-    public const PPE_TYPE__2400001226405 = '2400001226405';
-    public const PPE_TYPE__2400001323807 = '2400001323807';
-    public const PPE_TYPE__2400001368105 = '2400001368105';
-    public const PPE_TYPE__2400001393107 = '2400001393107';
-    public const PPE_TYPE__2400001393503 = '2400001393503';
-    public const PPE_TYPE__2400001393602 = '2400001393602';
-    public const PPE_TYPE__2400001565306 = '2400001565306';
-    public const PPE_TYPE__2400001807703 = '2400001807703';
-    public const PPE_TYPE__2400001818303 = '2400001818303';
-    public const PPE_TYPE__2400001857005 = '2400001857005';
-    public const PPE_TYPE__2400001857203 = '2400001857203';
-    public const PPE_TYPE__2400001858309 = '2400001858309';
-    public const PPE_TYPE__2400001858507 = '2400001858507';
-    public const PPE_TYPE__2400002015909 = '2400002015909';
-    public const PPE_TYPE__2400002016005 = '2400002016005';
-    public const PPE_TYPE__2400002016104 = '2400002016104';
-    public const PPE_TYPE__2400002052805 = '2400002052805';
-    public const PPE_TYPE__2400002052904 = '2400002052904';
-    public const PPE_TYPE__2400002186203 = '2400002186203';
-    public const PPE_TYPE__2400002886707 = '2400002886707';
-    public const PPE_TYPE__2400002886806 = '2400002886806';
-    public const PPE_TYPE__2400002984502 = '2400002984502';
-    public const PPE_TYPE__2400003117107 = '2400003117107';
-    public const PPE_TYPE__2400003117206 = '2400003117206';
-    public const PPE_TYPE__2400003161209 = '2400003161209';
-    public const PPE_TYPE__2400003207907 = '2400003207907';
-    public const PPE_TYPE__2400003215308 = '2400003215308';
-    public const PPE_TYPE__2400003227806 = '2400003227806';
-    public const PPE_TYPE__2400003237409 = '2400003237409';
-    public const PPE_TYPE__2400003263408 = '2400003263408';
-    public const PPE_TYPE__2400003297700 = '2400003297700';
-    public const PPE_TYPE__2400003356704 = '2400003356704';
-    public const PPE_TYPE__2400003356803 = '2400003356803';
-    public const PPE_TYPE__2400003356902 = '2400003356902';
-    public const PPE_TYPE__2400003433108 = '2400003433108';
-    public const PPE_TYPE__2400003492303 = '2400003492303';
-    public const PPE_TYPE__2400003495700 = '2400003495700';
-    public const PPE_TYPE__2400003495809 = '2400003495809';
-    public const PPE_TYPE__2400003495908 = '2400003495908';
-    public const PPE_TYPE__2400003496004 = '2400003496004';
-    public const PPE_TYPE__2400003496103 = '2400003496103';
-    public const PPE_TYPE__2400003675805 = '2400003675805';
-
     /**
       * The original name of the model.
       *
@@ -593,50 +522,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const PAYMENT_ITEM_TYPE_GOOD = 'GOOD';
-    public const PAYMENT_ITEM_TYPE_EXCISABLE_GOOD = 'EXCISABLE_GOOD';
-    public const PAYMENT_ITEM_TYPE_COMPOUND_PAYMENT_ITEM = 'COMPOUND_PAYMENT_ITEM';
-    public const PAYMENT_ITEM_TYPE_ANOTHER_PAYMENT_ITEM = 'ANOTHER_PAYMENT_ITEM';
-    public const TAX_SYSTEM_GENERAL_TAX_SYSTEM = 'GENERAL_TAX_SYSTEM';
-    public const TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME';
-    public const TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME';
-    public const TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX = 'UNIFIED_AGRICULTURAL_TAX';
-    public const TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM = 'PRESUMPTIVE_TAX_SYSTEM';
-    public const TAX_SYSTEM_PATENT_BASED = 'PATENT_BASED';
-    public const TAX_SYSTEM_TAX_SYSTEM_SAME_AS_GROUP = 'TAX_SYSTEM_SAME_AS_GROUP';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPaymentItemTypeAllowableValues()
-    {
-        return [
-            self::PAYMENT_ITEM_TYPE_GOOD,
-            self::PAYMENT_ITEM_TYPE_EXCISABLE_GOOD,
-            self::PAYMENT_ITEM_TYPE_COMPOUND_PAYMENT_ITEM,
-            self::PAYMENT_ITEM_TYPE_ANOTHER_PAYMENT_ITEM,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTaxSystemAllowableValues()
-    {
-        return [
-            self::TAX_SYSTEM_GENERAL_TAX_SYSTEM,
-            self::TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME,
-            self::TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME,
-            self::TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX,
-            self::TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM,
-            self::TAX_SYSTEM_PATENT_BASED,
-            self::TAX_SYSTEM_TAX_SYSTEM_SAME_AS_GROUP,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -770,24 +655,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['tnved']) && (mb_strlen($this->container['tnved']) > 255)) {
             $invalidProperties[] = "invalid value for 'tnved', the character length must be smaller than or equal to 255.";
-        }
-
-        $allowedValues = $this->getPaymentItemTypeAllowableValues();
-        if (!is_null($this->container['payment_item_type']) && !in_array($this->container['payment_item_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'payment_item_type', must be one of '%s'",
-                $this->container['payment_item_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getTaxSystemAllowableValues();
-        if (!is_null($this->container['tax_system']) && !in_array($this->container['tax_system'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'tax_system', must be one of '%s'",
-                $this->container['tax_system'],
-                implode("', '", $allowedValues)
-            );
         }
 
         return $invalidProperties;
@@ -1884,7 +1751,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tracking_type
      *
-     * @param string|null $tracking_type Тип маркируемой продукции. Допустимые значения перечислены в константах класса
+     * @param string|null $tracking_type Тип маркируемой продукции. Известные значения описаны в TrackingType
      *
      * @return self
      */
@@ -1942,7 +1809,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_item_type
      *
-     * @param string|null $payment_item_type Признак предмета расчета
+     * @param string|null $payment_item_type Признак предмета расчета. Известные значения описаны в PaymentItemType
      *
      * @return self
      */
@@ -1950,16 +1817,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($payment_item_type)) {
             throw new \InvalidArgumentException('non-nullable payment_item_type cannot be null');
-        }
-        $allowedValues = $this->getPaymentItemTypeAllowableValues();
-        if (!in_array($payment_item_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'payment_item_type', must be one of '%s'",
-                    $payment_item_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['payment_item_type'] = $payment_item_type;
 
@@ -1979,7 +1836,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tax_system
      *
-     * @param string|null $tax_system Код системы налогообложения
+     * @param string|null $tax_system Код системы налогообложения. Известные значения описаны в TaxSystem
      *
      * @return self
      */
@@ -1987,16 +1844,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($tax_system)) {
             throw new \InvalidArgumentException('non-nullable tax_system cannot be null');
-        }
-        $allowedValues = $this->getTaxSystemAllowableValues();
-        if (!in_array($tax_system, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'tax_system', must be one of '%s'",
-                    $tax_system,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['tax_system'] = $tax_system;
 
@@ -2268,7 +2115,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ppe_type
      *
-     * @param string|null $ppe_type Код вида номенклатурной классификации медицинских средств индивидуальной защиты. Допустимые значения перечислены в константах класса
+     * @param string|null $ppe_type Код вида номенклатурной классификации медицинских средств индивидуальной защиты. Известные значения описаны в PpeType
      *
      * @return self
      */

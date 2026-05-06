@@ -319,21 +319,6 @@ class BonusProgram implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const WELCOME_BONUSES_MODE_REGISTRATION = 'REGISTRATION';
-    public const WELCOME_BONUSES_MODE_FIRST_PURCHASE = 'FIRST_PURCHASE';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getWelcomeBonusesModeAllowableValues()
-    {
-        return [
-            self::WELCOME_BONUSES_MODE_REGISTRATION,
-            self::WELCOME_BONUSES_MODE_FIRST_PURCHASE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -394,15 +379,6 @@ class BonusProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getWelcomeBonusesModeAllowableValues();
-        if (!is_null($this->container['welcome_bonuses_mode']) && !in_array($this->container['welcome_bonuses_mode'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'welcome_bonuses_mode', must be one of '%s'",
-                $this->container['welcome_bonuses_mode'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         if (!is_null($this->container['max_paid_rate_percents']) && ($this->container['max_paid_rate_percents'] > 100)) {
             $invalidProperties[] = "invalid value for 'max_paid_rate_percents', must be smaller than or equal to 100.";
@@ -606,7 +582,7 @@ class BonusProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets welcome_bonuses_mode
      *
-     * @param string|null $welcome_bonuses_mode Условие начисления приветственных баллов
+     * @param string|null $welcome_bonuses_mode Условие начисления приветственных баллов. Известные значения описаны в WelcomeBonusesMode
      *
      * @return self
      */
@@ -614,16 +590,6 @@ class BonusProgram implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($welcome_bonuses_mode)) {
             throw new \InvalidArgumentException('non-nullable welcome_bonuses_mode cannot be null');
-        }
-        $allowedValues = $this->getWelcomeBonusesModeAllowableValues();
-        if (!in_array($welcome_bonuses_mode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'welcome_bonuses_mode', must be one of '%s'",
-                    $welcome_bonuses_mode,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['welcome_bonuses_mode'] = $welcome_bonuses_mode;
 

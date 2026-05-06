@@ -324,7 +324,7 @@ class CurrencyMinorUnit implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets gender
      *
-     * @param string|null $gender Пол
+     * @param string|null $gender Пол. Известные значения описаны в Gender
      *
      * @return self
      */

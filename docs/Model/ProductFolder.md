@@ -23,6 +23,6 @@ Name | Type | Description | Notes
 **owner** | [**\OpenAPI\Client\Model\Employee**](Employee.md) | Владелец группы товаров. Может быть Meta объектом или полным объектом в зависимости от expand параметра | [optional]
 **updated** | **string** | Момент последнего обновления | [optional] [readonly]
 **product_folder** | [**\OpenAPI\Client\Model\ProductFolder**](ProductFolder.md) | Родительская группа товаров | [optional]
-**tax_system** | **string** | Код системы налогообложения | [optional]
+**tax_system** | **string** | Код системы налогообложения. Известные значения описаны в TaxSystem | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

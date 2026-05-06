@@ -253,19 +253,6 @@ class VariantCharacteristic implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
-    public const TYPE_STRING = 'string';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_STRING,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -318,15 +305,6 @@ class VariantCharacteristic implements ModelInterface, ArrayAccess, \JsonSeriali
 
         if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
-        }
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
         }
 
         if (!is_null($this->container['type']) && (mb_strlen($this->container['type']) > 255)) {
@@ -446,7 +424,7 @@ class VariantCharacteristic implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets type
      *
-     * @param string|null $type Тип значения Характеристики
+     * @param string|null $type Тип значения Характеристики. Известные значения описаны в VariantCharacteristicType
      *
      * @return self
      */
@@ -454,16 +432,6 @@ class VariantCharacteristic implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         if (is_null($type)) {
             throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         if ((mb_strlen($type) > 255)) {
             throw new \InvalidArgumentException('invalid length for $type when calling VariantCharacteristic., must be smaller than or equal to 255.');

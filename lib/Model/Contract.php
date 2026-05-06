@@ -44,6 +44,17 @@ use \OpenAPI\Client\ObjectSerializer;
 class Contract implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
+    public static function createWithMeta(string $id) : Contract {
+        $o = new Contract();
+        $config = \OpenAPI\Client\Configuration::getDefaultConfiguration();
+        $meta = new Meta();
+        $meta->setType('contract');
+        $href = $config->getHost() . '/' . 'entity' . '/' . 'contract' . '/' . $id;
+        $meta->setHref($href);
+        $o->setMeta($meta);
+        $o->setId($id);
+        return $o;
+    }
 
     /**
       * The original name of the model.
@@ -379,36 +390,6 @@ class Contract implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const CONTRACT_TYPE_COMMISSION = 'Commission';
-    public const CONTRACT_TYPE_SALES = 'Sales';
-    public const REWARD_TYPE_PERCENT_OF_SALES = 'PercentOfSales';
-    public const REWARD_TYPE_NONE = 'None';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getContractTypeAllowableValues()
-    {
-        return [
-            self::CONTRACT_TYPE_COMMISSION,
-            self::CONTRACT_TYPE_SALES,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getRewardTypeAllowableValues()
-    {
-        return [
-            self::REWARD_TYPE_PERCENT_OF_SALES,
-            self::REWARD_TYPE_NONE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -494,24 +475,6 @@ class Contract implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['external_code']) && (mb_strlen($this->container['external_code']) > 255)) {
             $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
-        }
-
-        $allowedValues = $this->getContractTypeAllowableValues();
-        if (!is_null($this->container['contract_type']) && !in_array($this->container['contract_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'contract_type', must be one of '%s'",
-                $this->container['contract_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getRewardTypeAllowableValues();
-        if (!is_null($this->container['reward_type']) && !in_array($this->container['reward_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'reward_type', must be one of '%s'",
-                $this->container['reward_type'],
-                implode("', '", $allowedValues)
-            );
         }
 
         if (!is_null($this->container['reward_percent']) && ($this->container['reward_percent'] > 100)) {
@@ -843,7 +806,7 @@ class Contract implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets contract_type
      *
-     * @param string|null $contract_type Тип Договора
+     * @param string|null $contract_type Тип Договора. Известные значения описаны в ContractType
      *
      * @return self
      */
@@ -851,16 +814,6 @@ class Contract implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($contract_type)) {
             throw new \InvalidArgumentException('non-nullable contract_type cannot be null');
-        }
-        $allowedValues = $this->getContractTypeAllowableValues();
-        if (!in_array($contract_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'contract_type', must be one of '%s'",
-                    $contract_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['contract_type'] = $contract_type;
 
@@ -880,7 +833,7 @@ class Contract implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets reward_type
      *
-     * @param string|null $reward_type Тип Вознаграждения
+     * @param string|null $reward_type Тип Вознаграждения. Известные значения описаны в RewardType
      *
      * @return self
      */
@@ -888,16 +841,6 @@ class Contract implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($reward_type)) {
             throw new \InvalidArgumentException('non-nullable reward_type cannot be null');
-        }
-        $allowedValues = $this->getRewardTypeAllowableValues();
-        if (!in_array($reward_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'reward_type', must be one of '%s'",
-                    $reward_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['reward_type'] = $reward_type;
 

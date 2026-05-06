@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **rate** | **float** | Курс валюты | [optional]
 **margin** | **float** | Наценка при автоматическом обновлении курса | [optional]
 **indirect** | **bool** | Признак обратного курса валюты | [optional]
-**rate_update_type** | **string** | Способ обновления курса валюты | [optional]
+**rate_update_type** | **string** | Способ обновления курса валюты. Известные значения описаны в RateUpdateType | [optional]
 **archived** | **bool** | Добавлена ли валюта в архив | [optional]
 **default** | **bool** | Валюта учета по умолчанию | [optional]
 **major_unit** | [**\OpenAPI\Client\Model\CurrencyMajorUnit**](CurrencyMajorUnit.md) |  | [optional]

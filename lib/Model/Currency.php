@@ -319,21 +319,6 @@ class Currency implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const RATE_UPDATE_TYPE_MANUAL = 'manual';
-    public const RATE_UPDATE_TYPE_AUTO = 'auto';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getRateUpdateTypeAllowableValues()
-    {
-        return [
-            self::RATE_UPDATE_TYPE_MANUAL,
-            self::RATE_UPDATE_TYPE_AUTO,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -394,15 +379,6 @@ class Currency implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getRateUpdateTypeAllowableValues();
-        if (!is_null($this->container['rate_update_type']) && !in_array($this->container['rate_update_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'rate_update_type', must be one of '%s'",
-                $this->container['rate_update_type'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -729,7 +705,7 @@ class Currency implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rate_update_type
      *
-     * @param string|null $rate_update_type Способ обновления курса валюты
+     * @param string|null $rate_update_type Способ обновления курса валюты. Известные значения описаны в RateUpdateType
      *
      * @return self
      */
@@ -737,16 +713,6 @@ class Currency implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($rate_update_type)) {
             throw new \InvalidArgumentException('non-nullable rate_update_type cannot be null');
-        }
-        $allowedValues = $this->getRateUpdateTypeAllowableValues();
-        if (!in_array($rate_update_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'rate_update_type', must be one of '%s'",
-                    $rate_update_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['rate_update_type'] = $rate_update_type;
 

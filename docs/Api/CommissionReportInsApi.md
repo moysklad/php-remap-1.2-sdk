@@ -1523,7 +1523,7 @@ try {
 ## `getCommissionReportInReturnedPositionById()`
 
 ```php
-getCommissionReportInReturnedPositionById($id, $position_id, $expand, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\CommissionReportInPosition
+getCommissionReportInReturnedPositionById($id, $position_id, $expand, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\CommissionReportInReturnedPosition
 ```
 
 Получить позицию возврата на склад комиссионера
@@ -1578,7 +1578,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CommissionReportInPosition**](../Model/CommissionReportInPosition.md)
+[**\OpenAPI\Client\Model\CommissionReportInReturnedPosition**](../Model/CommissionReportInReturnedPosition.md)
 
 ### Authorization
 
@@ -1961,7 +1961,7 @@ try {
 ## `updateCommissionReportInReturnedPosition()`
 
 ```php
-updateCommissionReportInReturnedPosition($id, $position_id, $commission_report_in_position, $expand, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\CommissionReportInPosition
+updateCommissionReportInReturnedPosition($id, $position_id, $commission_report_in_returned_position, $expand, $accept, $accept_encoding, $content_type): \OpenAPI\Client\Model\CommissionReportInReturnedPosition
 ```
 
 Изменить позицию возврата на склад комиссионера
@@ -1990,14 +1990,14 @@ $apiInstance = new OpenAPI\Client\Api\CommissionReportInsApi(
 );
 $id = 12a8b923-692c-11e6-8a84-bae500000053; // string | ID сущности
 $position_id = 12a8b923-692c-11e6-8a84-bae500000054; // string | ID позиции
-$commission_report_in_position = new \OpenAPI\Client\Model\CommissionReportInPosition(); // \OpenAPI\Client\Model\CommissionReportInPosition
+$commission_report_in_returned_position = new \OpenAPI\Client\Model\CommissionReportInReturnedPosition(); // \OpenAPI\Client\Model\CommissionReportInReturnedPosition
 $expand = agent,organization; // string | Замена ссылок объектами с помощью expand
 $accept = 'application/json;charset=utf-8'; // string
 $accept_encoding = gzip, deflate, br; // string
 $content_type = 'application/json'; // string
 
 try {
-    $result = $apiInstance->updateCommissionReportInReturnedPosition($id, $position_id, $commission_report_in_position, $expand, $accept, $accept_encoding, $content_type);
+    $result = $apiInstance->updateCommissionReportInReturnedPosition($id, $position_id, $commission_report_in_returned_position, $expand, $accept, $accept_encoding, $content_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommissionReportInsApi->updateCommissionReportInReturnedPosition: ', $e->getMessage(), PHP_EOL;
@@ -2010,7 +2010,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| ID сущности | |
 | **position_id** | **string**| ID позиции | |
-| **commission_report_in_position** | [**\OpenAPI\Client\Model\CommissionReportInPosition**](../Model/CommissionReportInPosition.md)|  | |
+| **commission_report_in_returned_position** | [**\OpenAPI\Client\Model\CommissionReportInReturnedPosition**](../Model/CommissionReportInReturnedPosition.md)|  | |
 | **expand** | **string**| Замена ссылок объектами с помощью expand | [optional] |
 | **accept** | **string**|  | [optional] [default to &#39;application/json;charset&#x3D;utf-8&#39;] |
 | **accept_encoding** | **string**|  | [optional] [default to &#39;gzip, deflate, br&#39;] |
@@ -2018,7 +2018,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CommissionReportInPosition**](../Model/CommissionReportInPosition.md)
+[**\OpenAPI\Client\Model\CommissionReportInReturnedPosition**](../Model/CommissionReportInReturnedPosition.md)
 
 ### Authorization
 

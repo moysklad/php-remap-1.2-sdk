@@ -366,53 +366,6 @@ class CreateBonusTransaction200Response implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
-    public const TRANSACTION_TYPE_EARNING = 'EARNING';
-    public const TRANSACTION_TYPE_SPENDING = 'SPENDING';
-    public const TRANSACTION_STATUS_WAIT_PROCESSING = 'WAIT_PROCESSING';
-    public const TRANSACTION_STATUS_COMPLETED = 'COMPLETED';
-    public const TRANSACTION_STATUS_CANCELED = 'CANCELED';
-    public const CATEGORY_TYPE_REGULAR = 'REGULAR';
-    public const CATEGORY_TYPE_WELCOME = 'WELCOME';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTransactionTypeAllowableValues()
-    {
-        return [
-            self::TRANSACTION_TYPE_EARNING,
-            self::TRANSACTION_TYPE_SPENDING,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTransactionStatusAllowableValues()
-    {
-        return [
-            self::TRANSACTION_STATUS_WAIT_PROCESSING,
-            self::TRANSACTION_STATUS_COMPLETED,
-            self::TRANSACTION_STATUS_CANCELED,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCategoryTypeAllowableValues()
-    {
-        return [
-            self::CATEGORY_TYPE_REGULAR,
-            self::CATEGORY_TYPE_WELCOME,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -481,33 +434,6 @@ class CreateBonusTransaction200Response implements ModelInterface, ArrayAccess, 
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getTransactionTypeAllowableValues();
-        if (!is_null($this->container['transaction_type']) && !in_array($this->container['transaction_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'transaction_type', must be one of '%s'",
-                $this->container['transaction_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getTransactionStatusAllowableValues();
-        if (!is_null($this->container['transaction_status']) && !in_array($this->container['transaction_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'transaction_status', must be one of '%s'",
-                $this->container['transaction_status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getCategoryTypeAllowableValues();
-        if (!is_null($this->container['category_type']) && !in_array($this->container['category_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'category_type', must be one of '%s'",
-                $this->container['category_type'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         if (!is_null($this->container['code']) && (mb_strlen($this->container['code']) > 255)) {
             $invalidProperties[] = "invalid value for 'code', the character length must be smaller than or equal to 255.";
@@ -857,7 +783,7 @@ class CreateBonusTransaction200Response implements ModelInterface, ArrayAccess, 
     /**
      * Sets transaction_type
      *
-     * @param string|null $transaction_type Тип бонусной операции
+     * @param string|null $transaction_type Тип бонусной операции. Известные значения описаны в TransactionType
      *
      * @return self
      */
@@ -865,16 +791,6 @@ class CreateBonusTransaction200Response implements ModelInterface, ArrayAccess, 
     {
         if (is_null($transaction_type)) {
             throw new \InvalidArgumentException('non-nullable transaction_type cannot be null');
-        }
-        $allowedValues = $this->getTransactionTypeAllowableValues();
-        if (!in_array($transaction_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'transaction_type', must be one of '%s'",
-                    $transaction_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['transaction_type'] = $transaction_type;
 
@@ -894,7 +810,7 @@ class CreateBonusTransaction200Response implements ModelInterface, ArrayAccess, 
     /**
      * Sets transaction_status
      *
-     * @param string|null $transaction_status Статус бонусной операции
+     * @param string|null $transaction_status Статус бонусной операции. Известные значения описаны в TransactionStatus
      *
      * @return self
      */
@@ -902,16 +818,6 @@ class CreateBonusTransaction200Response implements ModelInterface, ArrayAccess, 
     {
         if (is_null($transaction_status)) {
             throw new \InvalidArgumentException('non-nullable transaction_status cannot be null');
-        }
-        $allowedValues = $this->getTransactionStatusAllowableValues();
-        if (!in_array($transaction_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'transaction_status', must be one of '%s'",
-                    $transaction_status,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['transaction_status'] = $transaction_status;
 
@@ -931,7 +837,7 @@ class CreateBonusTransaction200Response implements ModelInterface, ArrayAccess, 
     /**
      * Sets category_type
      *
-     * @param string|null $category_type Категория бонусной операции
+     * @param string|null $category_type Категория бонусной операции. Известные значения описаны в CategoryType
      *
      * @return self
      */
@@ -939,16 +845,6 @@ class CreateBonusTransaction200Response implements ModelInterface, ArrayAccess, 
     {
         if (is_null($category_type)) {
             throw new \InvalidArgumentException('non-nullable category_type cannot be null');
-        }
-        $allowedValues = $this->getCategoryTypeAllowableValues();
-        if (!in_array($category_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'category_type', must be one of '%s'",
-                    $category_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['category_type'] = $category_type;
 

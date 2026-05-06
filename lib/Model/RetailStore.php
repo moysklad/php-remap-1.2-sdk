@@ -667,156 +667,6 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const FISCAL_TYPE_STANDARD = 'STANDARD';
-    public const FISCAL_TYPE_MASTER = 'MASTER';
-    public const FISCAL_TYPE_CLOUD = 'CLOUD';
-    public const DEFAULT_TAX_SYSTEM_GENERAL_TAX_SYSTEM = 'GENERAL_TAX_SYSTEM';
-    public const DEFAULT_TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME';
-    public const DEFAULT_TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME';
-    public const DEFAULT_TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX = 'UNIFIED_AGRICULTURAL_TAX';
-    public const DEFAULT_TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM = 'PRESUMPTIVE_TAX_SYSTEM';
-    public const DEFAULT_TAX_SYSTEM_PATENT_BASED = 'PATENT_BASED';
-    public const ORDER_TAX_SYSTEM_GENERAL_TAX_SYSTEM = 'GENERAL_TAX_SYSTEM';
-    public const ORDER_TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME';
-    public const ORDER_TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME';
-    public const ORDER_TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX = 'UNIFIED_AGRICULTURAL_TAX';
-    public const ORDER_TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM = 'PRESUMPTIVE_TAX_SYSTEM';
-    public const ORDER_TAX_SYSTEM_PATENT_BASED = 'PATENT_BASED';
-    public const MINION_TO_MASTER_TYPE_ANY = 'ANY';
-    public const MINION_TO_MASTER_TYPE_SAME_GROUP = 'SAME_GROUP';
-    public const MINION_TO_MASTER_TYPE_CHOSEN = 'CHOSEN';
-    public const TOBACCO_MRC_CONTROL_TYPE_USER_PRICE = 'USER_PRICE';
-    public const TOBACCO_MRC_CONTROL_TYPE_MRC_PRICE = 'MRC_PRICE';
-    public const TOBACCO_MRC_CONTROL_TYPE_SAME_PRICE = 'SAME_PRICE';
-    public const MARKING_SELLING_MODE_CORRECT_MARKS_ONLY = 'CORRECT_MARKS_ONLY';
-    public const MARKING_SELLING_MODE_WITHOUT_ERRORS = 'WITHOUT_ERRORS';
-    public const MARKING_SELLING_MODE_ALL = 'ALL';
-    public const MARKS_CHECK_MODE_CORRECT_MARKS_ONLY = 'CORRECT_MARKS_ONLY';
-    public const MARKS_CHECK_MODE_WITHOUT_ERRORS = 'WITHOUT_ERRORS';
-    public const MARKS_CHECK_MODE_ALL = 'ALL';
-    public const MARKS_CHECK_MODE_ALL_CHECKED = 'ALL_CHECKED';
-    public const PRIORITY_OFD_SEND_PHONE = 'phone';
-    public const PRIORITY_OFD_SEND_EMAIL = 'email';
-    public const PRIORITY_OFD_SEND_NONE = 'none';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getFiscalTypeAllowableValues()
-    {
-        return [
-            self::FISCAL_TYPE_STANDARD,
-            self::FISCAL_TYPE_MASTER,
-            self::FISCAL_TYPE_CLOUD,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDefaultTaxSystemAllowableValues()
-    {
-        return [
-            self::DEFAULT_TAX_SYSTEM_GENERAL_TAX_SYSTEM,
-            self::DEFAULT_TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME,
-            self::DEFAULT_TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME,
-            self::DEFAULT_TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX,
-            self::DEFAULT_TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM,
-            self::DEFAULT_TAX_SYSTEM_PATENT_BASED,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getOrderTaxSystemAllowableValues()
-    {
-        return [
-            self::ORDER_TAX_SYSTEM_GENERAL_TAX_SYSTEM,
-            self::ORDER_TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME,
-            self::ORDER_TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME,
-            self::ORDER_TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX,
-            self::ORDER_TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM,
-            self::ORDER_TAX_SYSTEM_PATENT_BASED,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getMinionToMasterTypeAllowableValues()
-    {
-        return [
-            self::MINION_TO_MASTER_TYPE_ANY,
-            self::MINION_TO_MASTER_TYPE_SAME_GROUP,
-            self::MINION_TO_MASTER_TYPE_CHOSEN,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTobaccoMrcControlTypeAllowableValues()
-    {
-        return [
-            self::TOBACCO_MRC_CONTROL_TYPE_USER_PRICE,
-            self::TOBACCO_MRC_CONTROL_TYPE_MRC_PRICE,
-            self::TOBACCO_MRC_CONTROL_TYPE_SAME_PRICE,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getMarkingSellingModeAllowableValues()
-    {
-        return [
-            self::MARKING_SELLING_MODE_CORRECT_MARKS_ONLY,
-            self::MARKING_SELLING_MODE_WITHOUT_ERRORS,
-            self::MARKING_SELLING_MODE_ALL,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getMarksCheckModeAllowableValues()
-    {
-        return [
-            self::MARKS_CHECK_MODE_CORRECT_MARKS_ONLY,
-            self::MARKS_CHECK_MODE_WITHOUT_ERRORS,
-            self::MARKS_CHECK_MODE_ALL,
-            self::MARKS_CHECK_MODE_ALL_CHECKED,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPriorityOfdSendAllowableValues()
-    {
-        return [
-            self::PRIORITY_OFD_SEND_PHONE,
-            self::PRIORITY_OFD_SEND_EMAIL,
-            self::PRIORITY_OFD_SEND_NONE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -950,78 +800,6 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['external_code']) && (mb_strlen($this->container['external_code']) > 255)) {
             $invalidProperties[] = "invalid value for 'external_code', the character length must be smaller than or equal to 255.";
-        }
-
-        $allowedValues = $this->getFiscalTypeAllowableValues();
-        if (!is_null($this->container['fiscal_type']) && !in_array($this->container['fiscal_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'fiscal_type', must be one of '%s'",
-                $this->container['fiscal_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getDefaultTaxSystemAllowableValues();
-        if (!is_null($this->container['default_tax_system']) && !in_array($this->container['default_tax_system'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'default_tax_system', must be one of '%s'",
-                $this->container['default_tax_system'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getOrderTaxSystemAllowableValues();
-        if (!is_null($this->container['order_tax_system']) && !in_array($this->container['order_tax_system'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'order_tax_system', must be one of '%s'",
-                $this->container['order_tax_system'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getMinionToMasterTypeAllowableValues();
-        if (!is_null($this->container['minion_to_master_type']) && !in_array($this->container['minion_to_master_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'minion_to_master_type', must be one of '%s'",
-                $this->container['minion_to_master_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getTobaccoMrcControlTypeAllowableValues();
-        if (!is_null($this->container['tobacco_mrc_control_type']) && !in_array($this->container['tobacco_mrc_control_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'tobacco_mrc_control_type', must be one of '%s'",
-                $this->container['tobacco_mrc_control_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getMarkingSellingModeAllowableValues();
-        if (!is_null($this->container['marking_selling_mode']) && !in_array($this->container['marking_selling_mode'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'marking_selling_mode', must be one of '%s'",
-                $this->container['marking_selling_mode'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getMarksCheckModeAllowableValues();
-        if (!is_null($this->container['marks_check_mode']) && !in_array($this->container['marks_check_mode'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'marks_check_mode', must be one of '%s'",
-                $this->container['marks_check_mode'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getPriorityOfdSendAllowableValues();
-        if (!is_null($this->container['priority_ofd_send']) && !in_array($this->container['priority_ofd_send'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'priority_ofd_send', must be one of '%s'",
-                $this->container['priority_ofd_send'],
-                implode("', '", $allowedValues)
-            );
         }
 
         if (!is_null($this->container['demand_prefix']) && (mb_strlen($this->container['demand_prefix']) > 255)) {
@@ -1600,7 +1378,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fiscal_type
      *
-     * @param string|null $fiscal_type Фискальный режим работы Точки продаж
+     * @param string|null $fiscal_type Фискальный режим работы Точки продаж. Известные значения описаны в FiscalType
      *
      * @return self
      */
@@ -1608,16 +1386,6 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($fiscal_type)) {
             throw new \InvalidArgumentException('non-nullable fiscal_type cannot be null');
-        }
-        $allowedValues = $this->getFiscalTypeAllowableValues();
-        if (!in_array($fiscal_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'fiscal_type', must be one of '%s'",
-                    $fiscal_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['fiscal_type'] = $fiscal_type;
 
@@ -1637,7 +1405,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets default_tax_system
      *
-     * @param string|null $default_tax_system Система налогообложения по умолчанию
+     * @param string|null $default_tax_system Система налогообложения по умолчанию. Известные значения описаны в TaxSystem
      *
      * @return self
      */
@@ -1645,16 +1413,6 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($default_tax_system)) {
             throw new \InvalidArgumentException('non-nullable default_tax_system cannot be null');
-        }
-        $allowedValues = $this->getDefaultTaxSystemAllowableValues();
-        if (!in_array($default_tax_system, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'default_tax_system', must be one of '%s'",
-                    $default_tax_system,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['default_tax_system'] = $default_tax_system;
 
@@ -1674,7 +1432,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order_tax_system
      *
-     * @param string|null $order_tax_system Система налогообложения заказов
+     * @param string|null $order_tax_system Система налогообложения заказов. Известные значения описаны в TaxSystem
      *
      * @return self
      */
@@ -1682,16 +1440,6 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($order_tax_system)) {
             throw new \InvalidArgumentException('non-nullable order_tax_system cannot be null');
-        }
-        $allowedValues = $this->getOrderTaxSystemAllowableValues();
-        if (!in_array($order_tax_system, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'order_tax_system', must be one of '%s'",
-                    $order_tax_system,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['order_tax_system'] = $order_tax_system;
 
@@ -1711,7 +1459,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets minion_to_master_type
      *
-     * @param string|null $minion_to_master_type Ограничение связи касс-слуг с кассами-мастерами
+     * @param string|null $minion_to_master_type Ограничение связи касс-слуг с кассами-мастерами. Известные значения описаны в MinionToMasterType
      *
      * @return self
      */
@@ -1719,16 +1467,6 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($minion_to_master_type)) {
             throw new \InvalidArgumentException('non-nullable minion_to_master_type cannot be null');
-        }
-        $allowedValues = $this->getMinionToMasterTypeAllowableValues();
-        if (!in_array($minion_to_master_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'minion_to_master_type', must be one of '%s'",
-                    $minion_to_master_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['minion_to_master_type'] = $minion_to_master_type;
 
@@ -1748,7 +1486,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tobacco_mrc_control_type
      *
-     * @param string|null $tobacco_mrc_control_type Режим контроля минимальных розничных цен на табак
+     * @param string|null $tobacco_mrc_control_type Режим контроля минимальных розничных цен на табак. Известные значения описаны в TobaccoMrcControlType
      *
      * @return self
      */
@@ -1756,16 +1494,6 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($tobacco_mrc_control_type)) {
             throw new \InvalidArgumentException('non-nullable tobacco_mrc_control_type cannot be null');
-        }
-        $allowedValues = $this->getTobaccoMrcControlTypeAllowableValues();
-        if (!in_array($tobacco_mrc_control_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'tobacco_mrc_control_type', must be one of '%s'",
-                    $tobacco_mrc_control_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['tobacco_mrc_control_type'] = $tobacco_mrc_control_type;
 
@@ -1785,7 +1513,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets marking_selling_mode
      *
-     * @param string|null $marking_selling_mode Режим продажи маркированных товаров
+     * @param string|null $marking_selling_mode Режим продажи маркированных товаров. Известные значения описаны в MarkingSellingMode
      *
      * @return self
      */
@@ -1793,16 +1521,6 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($marking_selling_mode)) {
             throw new \InvalidArgumentException('non-nullable marking_selling_mode cannot be null');
-        }
-        $allowedValues = $this->getMarkingSellingModeAllowableValues();
-        if (!in_array($marking_selling_mode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'marking_selling_mode', must be one of '%s'",
-                    $marking_selling_mode,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['marking_selling_mode'] = $marking_selling_mode;
 
@@ -1822,7 +1540,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets marks_check_mode
      *
-     * @param string|null $marks_check_mode Режим проверки кодов маркировки
+     * @param string|null $marks_check_mode Режим проверки кодов маркировки. Известные значения описаны в MarksCheckMode
      *
      * @return self
      */
@@ -1830,16 +1548,6 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($marks_check_mode)) {
             throw new \InvalidArgumentException('non-nullable marks_check_mode cannot be null');
-        }
-        $allowedValues = $this->getMarksCheckModeAllowableValues();
-        if (!in_array($marks_check_mode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'marks_check_mode', must be one of '%s'",
-                    $marks_check_mode,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['marks_check_mode'] = $marks_check_mode;
 
@@ -1859,7 +1567,7 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets priority_ofd_send
      *
-     * @param string|null $priority_ofd_send Приоритетный способ отправки чека покупателю
+     * @param string|null $priority_ofd_send Приоритетный способ отправки чека покупателю. Известные значения описаны в PriorityOfdSend
      *
      * @return self
      */
@@ -1867,16 +1575,6 @@ class RetailStore implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($priority_ofd_send)) {
             throw new \InvalidArgumentException('non-nullable priority_ofd_send cannot be null');
-        }
-        $allowedValues = $this->getPriorityOfdSendAllowableValues();
-        if (!in_array($priority_ofd_send, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'priority_ofd_send', must be one of '%s'",
-                    $priority_ofd_send,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['priority_ofd_send'] = $priority_ofd_send;
 

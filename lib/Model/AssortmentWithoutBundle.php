@@ -559,52 +559,6 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    public const PAYMENT_ITEM_TYPE_WORK = 'WORK';
-    public const PAYMENT_ITEM_TYPE_SERVICE = 'SERVICE';
-    public const PAYMENT_ITEM_TYPE_COMPOUND_PAYMENT_ITEM = 'COMPOUND_PAYMENT_ITEM';
-    public const PAYMENT_ITEM_TYPE_PROVIDING_RID = 'PROVIDING_RID';
-    public const PAYMENT_ITEM_TYPE_ANOTHER_PAYMENT_ITEM = 'ANOTHER_PAYMENT_ITEM';
-    public const TAX_SYSTEM_GENERAL_TAX_SYSTEM = 'GENERAL_TAX_SYSTEM';
-    public const TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME';
-    public const TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME';
-    public const TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX = 'UNIFIED_AGRICULTURAL_TAX';
-    public const TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM = 'PRESUMPTIVE_TAX_SYSTEM';
-    public const TAX_SYSTEM_PATENT_BASED = 'PATENT_BASED';
-    public const TAX_SYSTEM_TAX_SYSTEM_SAME_AS_GROUP = 'TAX_SYSTEM_SAME_AS_GROUP';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPaymentItemTypeAllowableValues()
-    {
-        return [
-            self::PAYMENT_ITEM_TYPE_WORK,
-            self::PAYMENT_ITEM_TYPE_SERVICE,
-            self::PAYMENT_ITEM_TYPE_COMPOUND_PAYMENT_ITEM,
-            self::PAYMENT_ITEM_TYPE_PROVIDING_RID,
-            self::PAYMENT_ITEM_TYPE_ANOTHER_PAYMENT_ITEM,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTaxSystemAllowableValues()
-    {
-        return [
-            self::TAX_SYSTEM_GENERAL_TAX_SYSTEM,
-            self::TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME,
-            self::TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME,
-            self::TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX,
-            self::TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM,
-            self::TAX_SYSTEM_PATENT_BASED,
-            self::TAX_SYSTEM_TAX_SYSTEM_SAME_AS_GROUP,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -744,24 +698,6 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
 
         if (!is_null($this->container['tnved']) && (mb_strlen($this->container['tnved']) > 255)) {
             $invalidProperties[] = "invalid value for 'tnved', the character length must be smaller than or equal to 255.";
-        }
-
-        $allowedValues = $this->getPaymentItemTypeAllowableValues();
-        if (!is_null($this->container['payment_item_type']) && !in_array($this->container['payment_item_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'payment_item_type', must be one of '%s'",
-                $this->container['payment_item_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getTaxSystemAllowableValues();
-        if (!is_null($this->container['tax_system']) && !in_array($this->container['tax_system'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'tax_system', must be one of '%s'",
-                $this->container['tax_system'],
-                implode("', '", $allowedValues)
-            );
         }
 
         return $invalidProperties;
@@ -1865,7 +1801,7 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets tracking_type
      *
-     * @param string|null $tracking_type Тип маркируемой продукции. Допустимые значения перечислены в константах класса
+     * @param string|null $tracking_type Тип маркируемой продукции. Известные значения описаны в TrackingType
      *
      * @return self
      */
@@ -1923,7 +1859,7 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets payment_item_type
      *
-     * @param string|null $payment_item_type Признак предмета расчета
+     * @param string|null $payment_item_type Признак предмета расчета. Известные значения описаны в PaymentItemType
      *
      * @return self
      */
@@ -1931,16 +1867,6 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
     {
         if (is_null($payment_item_type)) {
             throw new \InvalidArgumentException('non-nullable payment_item_type cannot be null');
-        }
-        $allowedValues = $this->getPaymentItemTypeAllowableValues();
-        if (!in_array($payment_item_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'payment_item_type', must be one of '%s'",
-                    $payment_item_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['payment_item_type'] = $payment_item_type;
 
@@ -1960,7 +1886,7 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets tax_system
      *
-     * @param string|null $tax_system Код системы налогообложения
+     * @param string|null $tax_system Код системы налогообложения. Известные значения описаны в TaxSystem
      *
      * @return self
      */
@@ -1968,16 +1894,6 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
     {
         if (is_null($tax_system)) {
             throw new \InvalidArgumentException('non-nullable tax_system cannot be null');
-        }
-        $allowedValues = $this->getTaxSystemAllowableValues();
-        if (!in_array($tax_system, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'tax_system', must be one of '%s'",
-                    $tax_system,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['tax_system'] = $tax_system;
 
@@ -2249,7 +2165,7 @@ class AssortmentWithoutBundle implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets ppe_type
      *
-     * @param string|null $ppe_type Код вида номенклатурной классификации медицинских средств индивидуальной защиты. Допустимые значения перечислены в константах класса
+     * @param string|null $ppe_type Код вида номенклатурной классификации медицинских средств индивидуальной защиты. Известные значения описаны в PpeType
      *
      * @return self
      */

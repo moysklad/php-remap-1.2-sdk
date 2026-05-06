@@ -265,23 +265,6 @@ class State implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const STATE_TYPE_REGULAR = 'Regular';
-    public const STATE_TYPE_SUCCESSFUL = 'Successful';
-    public const STATE_TYPE_UNSUCCESSFUL = 'Unsuccessful';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStateTypeAllowableValues()
-    {
-        return [
-            self::STATE_TYPE_REGULAR,
-            self::STATE_TYPE_SUCCESSFUL,
-            self::STATE_TYPE_UNSUCCESSFUL,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -336,15 +319,6 @@ class State implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
-        }
-
-        $allowedValues = $this->getStateTypeAllowableValues();
-        if (!is_null($this->container['state_type']) && !in_array($this->container['state_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'state_type', must be one of '%s'",
-                $this->container['state_type'],
-                implode("', '", $allowedValues)
-            );
         }
 
         return $invalidProperties;
@@ -541,7 +515,7 @@ class State implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets state_type
      *
-     * @param string|null $state_type Тип Статуса
+     * @param string|null $state_type Тип Статуса. Известные значения описаны в StateType
      *
      * @return self
      */
@@ -549,16 +523,6 @@ class State implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($state_type)) {
             throw new \InvalidArgumentException('non-nullable state_type cannot be null');
-        }
-        $allowedValues = $this->getStateTypeAllowableValues();
-        if (!in_array($state_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'state_type', must be one of '%s'",
-                    $state_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['state_type'] = $state_type;
 

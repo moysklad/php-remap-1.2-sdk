@@ -247,21 +247,6 @@ class CurrencyMajorUnit implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$openAPIModelName;
     }
 
-    public const GENDER_MASCULINE = 'masculine';
-    public const GENDER_FEMININE = 'feminine';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getGenderAllowableValues()
-    {
-        return [
-            self::GENDER_MASCULINE,
-            self::GENDER_FEMININE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -311,15 +296,6 @@ class CurrencyMajorUnit implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getGenderAllowableValues();
-        if (!is_null($this->container['gender']) && !in_array($this->container['gender'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'gender', must be one of '%s'",
-                $this->container['gender'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -348,7 +324,7 @@ class CurrencyMajorUnit implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets gender
      *
-     * @param string|null $gender Пол
+     * @param string|null $gender Пол. Известные значения описаны в Gender
      *
      * @return self
      */
@@ -356,16 +332,6 @@ class CurrencyMajorUnit implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         if (is_null($gender)) {
             throw new \InvalidArgumentException('non-nullable gender cannot be null');
-        }
-        $allowedValues = $this->getGenderAllowableValues();
-        if (!in_array($gender, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'gender', must be one of '%s'",
-                    $gender,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['gender'] = $gender;
 

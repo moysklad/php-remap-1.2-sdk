@@ -529,29 +529,6 @@ class CashInOperationAnyOf implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
-    public const TAX_SYSTEM_GENERAL_TAX_SYSTEM = 'GENERAL_TAX_SYSTEM';
-    public const TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME';
-    public const TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME = 'SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME';
-    public const TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX = 'UNIFIED_AGRICULTURAL_TAX';
-    public const TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM = 'PRESUMPTIVE_TAX_SYSTEM';
-    public const TAX_SYSTEM_PATENT_BASED = 'PATENT_BASED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTaxSystemAllowableValues()
-    {
-        return [
-            self::TAX_SYSTEM_GENERAL_TAX_SYSTEM,
-            self::TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME,
-            self::TAX_SYSTEM_SIMPLIFIED_TAX_SYSTEM_INCOME_OUTCOME,
-            self::TAX_SYSTEM_UNIFIED_AGRICULTURAL_TAX,
-            self::TAX_SYSTEM_PRESUMPTIVE_TAX_SYSTEM,
-            self::TAX_SYSTEM_PATENT_BASED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -662,15 +639,6 @@ class CashInOperationAnyOf implements ModelInterface, ArrayAccess, \JsonSerializ
 
         if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4096)) {
             $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
-        }
-
-        $allowedValues = $this->getTaxSystemAllowableValues();
-        if (!is_null($this->container['tax_system']) && !in_array($this->container['tax_system'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'tax_system', must be one of '%s'",
-                $this->container['tax_system'],
-                implode("', '", $allowedValues)
-            );
         }
 
         if (!is_null($this->container['shipment_address']) && (mb_strlen($this->container['shipment_address']) > 255)) {
@@ -1786,7 +1754,7 @@ class CashInOperationAnyOf implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets tax_system
      *
-     * @param string|null $tax_system Код системы налогообложения
+     * @param string|null $tax_system Код системы налогообложения. Известные значения описаны в TaxSystem
      *
      * @return self
      */
@@ -1794,16 +1762,6 @@ class CashInOperationAnyOf implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         if (is_null($tax_system)) {
             throw new \InvalidArgumentException('non-nullable tax_system cannot be null');
-        }
-        $allowedValues = $this->getTaxSystemAllowableValues();
-        if (!in_array($tax_system, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'tax_system', must be one of '%s'",
-                    $tax_system,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['tax_system'] = $tax_system;
 

@@ -516,38 +516,6 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    public const COMPANY_TYPE_LEGAL = 'legal';
-    public const COMPANY_TYPE_ENTREPRENEUR = 'entrepreneur';
-    public const COMPANY_TYPE_INDIVIDUAL = 'individual';
-    public const SEX_MALE = 'MALE';
-    public const SEX_FEMALE = 'FEMALE';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCompanyTypeAllowableValues()
-    {
-        return [
-            self::COMPANY_TYPE_LEGAL,
-            self::COMPANY_TYPE_ENTREPRENEUR,
-            self::COMPANY_TYPE_INDIVIDUAL,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSexAllowableValues()
-    {
-        return [
-            self::SEX_MALE,
-            self::SEX_FEMALE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -658,15 +626,6 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
             $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4096.";
         }
 
-        $allowedValues = $this->getCompanyTypeAllowableValues();
-        if (!is_null($this->container['company_type']) && !in_array($this->container['company_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'company_type', must be one of '%s'",
-                $this->container['company_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         if (!is_null($this->container['actual_address']) && (mb_strlen($this->container['actual_address']) > 255)) {
             $invalidProperties[] = "invalid value for 'actual_address', the character length must be smaller than or equal to 255.";
         }
@@ -713,15 +672,6 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
 
         if (!is_null($this->container['legal_middle_name']) && (mb_strlen($this->container['legal_middle_name']) > 255)) {
             $invalidProperties[] = "invalid value for 'legal_middle_name', the character length must be smaller than or equal to 255.";
-        }
-
-        $allowedValues = $this->getSexAllowableValues();
-        if (!is_null($this->container['sex']) && !in_array($this->container['sex'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'sex', must be one of '%s'",
-                $this->container['sex'],
-                implode("', '", $allowedValues)
-            );
         }
 
         if (!is_null($this->container['discount_card_number']) && (mb_strlen($this->container['discount_card_number']) > 255)) {
@@ -1072,7 +1022,7 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
     /**
      * Sets company_type
      *
-     * @param string|null $company_type Тип контрагента
+     * @param string|null $company_type Тип контрагента. Известные значения описаны в CompanyType
      *
      * @return self
      */
@@ -1080,16 +1030,6 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
     {
         if (is_null($company_type)) {
             throw new \InvalidArgumentException('non-nullable company_type cannot be null');
-        }
-        $allowedValues = $this->getCompanyTypeAllowableValues();
-        if (!in_array($company_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'company_type', must be one of '%s'",
-                    $company_type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['company_type'] = $company_type;
 
@@ -1684,7 +1624,7 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
     /**
      * Sets sex
      *
-     * @param string|null $sex Пол контрагента
+     * @param string|null $sex Пол контрагента. Известные значения описаны в Sex
      *
      * @return self
      */
@@ -1692,16 +1632,6 @@ class CreateCounterpartiesBatch200ResponseInner implements ModelInterface, Array
     {
         if (is_null($sex)) {
             throw new \InvalidArgumentException('non-nullable sex cannot be null');
-        }
-        $allowedValues = $this->getSexAllowableValues();
-        if (!in_array($sex, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sex', must be one of '%s'",
-                    $sex,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['sex'] = $sex;
 

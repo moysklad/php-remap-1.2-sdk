@@ -289,21 +289,6 @@ class CompanySettings implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const DISCOUNT_STRATEGY_BY_SUM = 'bySum';
-    public const DISCOUNT_STRATEGY_BY_PRIORITY = 'byPriority';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDiscountStrategyAllowableValues()
-    {
-        return [
-            self::DISCOUNT_STRATEGY_BY_SUM,
-            self::DISCOUNT_STRATEGY_BY_PRIORITY,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -359,15 +344,6 @@ class CompanySettings implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getDiscountStrategyAllowableValues();
-        if (!is_null($this->container['discount_strategy']) && !in_array($this->container['discount_strategy'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'discount_strategy', must be one of '%s'",
-                $this->container['discount_strategy'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         if (!is_null($this->container['company_address']) && (mb_strlen($this->container['company_address']) > 255)) {
             $invalidProperties[] = "invalid value for 'company_address', the character length must be smaller than or equal to 255.";
@@ -486,7 +462,7 @@ class CompanySettings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets discount_strategy
      *
-     * @param string|null $discount_strategy Совместное применение скидок
+     * @param string|null $discount_strategy Совместное применение скидок. Известные значения описаны в DiscountStrategy
      *
      * @return self
      */
@@ -494,16 +470,6 @@ class CompanySettings implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($discount_strategy)) {
             throw new \InvalidArgumentException('non-nullable discount_strategy cannot be null');
-        }
-        $allowedValues = $this->getDiscountStrategyAllowableValues();
-        if (!in_array($discount_strategy, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'discount_strategy', must be one of '%s'",
-                    $discount_strategy,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['discount_strategy'] = $discount_strategy;
 

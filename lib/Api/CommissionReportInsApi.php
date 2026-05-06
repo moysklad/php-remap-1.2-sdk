@@ -7039,7 +7039,7 @@ class CommissionReportInsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CommissionReportInPosition|\OpenAPI\Client\Model\ErrorOrArray
+     * @return \OpenAPI\Client\Model\CommissionReportInReturnedPosition|\OpenAPI\Client\Model\ErrorOrArray
      */
     public function getCommissionReportInReturnedPositionById($id, $position_id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCommissionReportInReturnedPositionById'][0])
     {
@@ -7062,7 +7062,7 @@ class CommissionReportInsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CommissionReportInPosition|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\CommissionReportInReturnedPosition|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCommissionReportInReturnedPositionByIdWithHttpInfo($id, $position_id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCommissionReportInReturnedPositionById'][0])
     {
@@ -7094,7 +7094,7 @@ class CommissionReportInsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\CommissionReportInPosition',
+                        '\OpenAPI\Client\Model\CommissionReportInReturnedPosition',
                         $request,
                         $response,
                     );
@@ -7122,7 +7122,7 @@ class CommissionReportInsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\CommissionReportInPosition',
+                '\OpenAPI\Client\Model\CommissionReportInReturnedPosition',
                 $request,
                 $response,
             );
@@ -7131,7 +7131,7 @@ class CommissionReportInsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\CommissionReportInPosition',
+                        '\OpenAPI\Client\Model\CommissionReportInReturnedPosition',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7195,7 +7195,7 @@ class CommissionReportInsApi
      */
     public function getCommissionReportInReturnedPositionByIdAsyncWithHttpInfo($id, $position_id, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['getCommissionReportInReturnedPositionById'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\CommissionReportInPosition';
+        $returnType = '\OpenAPI\Client\Model\CommissionReportInReturnedPosition';
         $request = $this->getCommissionReportInReturnedPositionByIdRequest($id, $position_id, $expand, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
@@ -9166,7 +9166,7 @@ class CommissionReportInsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
-     * @param  \OpenAPI\Client\Model\CommissionReportInPosition $commission_report_in_position commission_report_in_position (required)
+     * @param  \OpenAPI\Client\Model\CommissionReportInReturnedPosition $commission_report_in_returned_position commission_report_in_returned_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding accept_encoding (optional, default to 'gzip, deflate, br')
@@ -9175,11 +9175,11 @@ class CommissionReportInsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CommissionReportInPosition|\OpenAPI\Client\Model\ErrorOrArray
+     * @return \OpenAPI\Client\Model\CommissionReportInReturnedPosition|\OpenAPI\Client\Model\ErrorOrArray
      */
-    public function updateCommissionReportInReturnedPosition($id, $position_id, $commission_report_in_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCommissionReportInReturnedPosition'][0])
+    public function updateCommissionReportInReturnedPosition($id, $position_id, $commission_report_in_returned_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCommissionReportInReturnedPosition'][0])
     {
-        list($response) = $this->updateCommissionReportInReturnedPositionWithHttpInfo($id, $position_id, $commission_report_in_position, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        list($response) = $this->updateCommissionReportInReturnedPositionWithHttpInfo($id, $position_id, $commission_report_in_returned_position, $expand, $accept, $accept_encoding, $content_type, $contentType);
         return $response;
     }
 
@@ -9190,7 +9190,7 @@ class CommissionReportInsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
-     * @param  \OpenAPI\Client\Model\CommissionReportInPosition $commission_report_in_position (required)
+     * @param  \OpenAPI\Client\Model\CommissionReportInReturnedPosition $commission_report_in_returned_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
@@ -9199,11 +9199,11 @@ class CommissionReportInsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CommissionReportInPosition|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\CommissionReportInReturnedPosition|\OpenAPI\Client\Model\ErrorOrArray, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCommissionReportInReturnedPositionWithHttpInfo($id, $position_id, $commission_report_in_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCommissionReportInReturnedPosition'][0])
+    public function updateCommissionReportInReturnedPositionWithHttpInfo($id, $position_id, $commission_report_in_returned_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCommissionReportInReturnedPosition'][0])
     {
-        $request = $this->updateCommissionReportInReturnedPositionRequest($id, $position_id, $commission_report_in_position, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $request = $this->updateCommissionReportInReturnedPositionRequest($id, $position_id, $commission_report_in_returned_position, $expand, $accept, $accept_encoding, $content_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9231,7 +9231,7 @@ class CommissionReportInsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\CommissionReportInPosition',
+                        '\OpenAPI\Client\Model\CommissionReportInReturnedPosition',
                         $request,
                         $response,
                     );
@@ -9259,7 +9259,7 @@ class CommissionReportInsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\CommissionReportInPosition',
+                '\OpenAPI\Client\Model\CommissionReportInReturnedPosition',
                 $request,
                 $response,
             );
@@ -9268,7 +9268,7 @@ class CommissionReportInsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\CommissionReportInPosition',
+                        '\OpenAPI\Client\Model\CommissionReportInReturnedPosition',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9295,7 +9295,7 @@ class CommissionReportInsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
-     * @param  \OpenAPI\Client\Model\CommissionReportInPosition $commission_report_in_position (required)
+     * @param  \OpenAPI\Client\Model\CommissionReportInReturnedPosition $commission_report_in_returned_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
@@ -9305,9 +9305,9 @@ class CommissionReportInsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCommissionReportInReturnedPositionAsync($id, $position_id, $commission_report_in_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCommissionReportInReturnedPosition'][0])
+    public function updateCommissionReportInReturnedPositionAsync($id, $position_id, $commission_report_in_returned_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCommissionReportInReturnedPosition'][0])
     {
-        return $this->updateCommissionReportInReturnedPositionAsyncWithHttpInfo($id, $position_id, $commission_report_in_position, $expand, $accept, $accept_encoding, $content_type, $contentType)
+        return $this->updateCommissionReportInReturnedPositionAsyncWithHttpInfo($id, $position_id, $commission_report_in_returned_position, $expand, $accept, $accept_encoding, $content_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9322,7 +9322,7 @@ class CommissionReportInsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
-     * @param  \OpenAPI\Client\Model\CommissionReportInPosition $commission_report_in_position (required)
+     * @param  \OpenAPI\Client\Model\CommissionReportInReturnedPosition $commission_report_in_returned_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
@@ -9332,10 +9332,10 @@ class CommissionReportInsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCommissionReportInReturnedPositionAsyncWithHttpInfo($id, $position_id, $commission_report_in_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCommissionReportInReturnedPosition'][0])
+    public function updateCommissionReportInReturnedPositionAsyncWithHttpInfo($id, $position_id, $commission_report_in_returned_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCommissionReportInReturnedPosition'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\CommissionReportInPosition';
-        $request = $this->updateCommissionReportInReturnedPositionRequest($id, $position_id, $commission_report_in_position, $expand, $accept, $accept_encoding, $content_type, $contentType);
+        $returnType = '\OpenAPI\Client\Model\CommissionReportInReturnedPosition';
+        $request = $this->updateCommissionReportInReturnedPositionRequest($id, $position_id, $commission_report_in_returned_position, $expand, $accept, $accept_encoding, $content_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9378,7 +9378,7 @@ class CommissionReportInsApi
      *
      * @param  string $id ID сущности (required)
      * @param  string $position_id ID позиции (required)
-     * @param  \OpenAPI\Client\Model\CommissionReportInPosition $commission_report_in_position (required)
+     * @param  \OpenAPI\Client\Model\CommissionReportInReturnedPosition $commission_report_in_returned_position (required)
      * @param  string|null $expand Замена ссылок объектами с помощью expand (optional)
      * @param  string|null $accept (optional, default to 'application/json;charset=utf-8')
      * @param  string|null $accept_encoding (optional, default to 'gzip, deflate, br')
@@ -9388,7 +9388,7 @@ class CommissionReportInsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCommissionReportInReturnedPositionRequest($id, $position_id, $commission_report_in_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCommissionReportInReturnedPosition'][0])
+    public function updateCommissionReportInReturnedPositionRequest($id, $position_id, $commission_report_in_returned_position, $expand = null, $accept = 'application/json;charset=utf-8', $accept_encoding = 'gzip, deflate, br', $content_type = 'application/json', string $contentType = self::contentTypes['updateCommissionReportInReturnedPosition'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -9405,10 +9405,10 @@ class CommissionReportInsApi
             );
         }
 
-        // verify the required parameter 'commission_report_in_position' is set
-        if ($commission_report_in_position === null || (is_array($commission_report_in_position) && count($commission_report_in_position) === 0)) {
+        // verify the required parameter 'commission_report_in_returned_position' is set
+        if ($commission_report_in_returned_position === null || (is_array($commission_report_in_returned_position) && count($commission_report_in_returned_position) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $commission_report_in_position when calling updateCommissionReportInReturnedPosition'
+                'Missing the required parameter $commission_report_in_returned_position when calling updateCommissionReportInReturnedPosition'
             );
         }
 
@@ -9472,12 +9472,12 @@ class CommissionReportInsApi
         );
 
         // for model (json/xml)
-        if (isset($commission_report_in_position)) {
+        if (isset($commission_report_in_returned_position)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($commission_report_in_position));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($commission_report_in_returned_position));
             } else {
-                $httpBody = $commission_report_in_position;
+                $httpBody = $commission_report_in_returned_position;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
